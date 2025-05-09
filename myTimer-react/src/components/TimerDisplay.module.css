@@ -1,0 +1,16 @@
+/* TimerDisplay.module.css */
+
+.text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: bold;
+  gap: 0.25rem;
+  color: #f1f5f9; /* slate-100 */
+}
+
+.colon {
+  padding: 0 0.25rem;
+  font-size: 3rem;
+}

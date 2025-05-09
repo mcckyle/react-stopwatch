@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Root theme and typography */
+:root {
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+
+  color-scheme: dark;
+  background-color: #0f172a; /* slate-900 */
+  color: #e5e7eb; /* slate-200 */
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Body setup */
+body {
+  @apply bg-slate-900 text-slate-200 font-sans;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* Default link style */
+a {
+  @apply font-medium text-emerald-400 no-underline transition-colors duration-300;
+}
+a:hover {
+  @apply text-emerald-300;
+}
+
+
+/* Headings refinement */
+h1, h2, h3, h4, h5, h6 {
+  @apply font-display font-semibold text-slate-100;
+}
+
+/* Custom button reset */
+button {
+  @apply px-4 py-2 rounded-md font-medium text-sm bg-slate-800 text-white hover:bg-slate-700 transition;
+}
+
+
+/* Light mode override */
+@media (prefers-color-scheme: light) {
+  :root {
+    background-color: #f9fafb; /* gray-50 */
+    color: #1e293b; /* slate-800 */
+    color-scheme: light;
+  }
+
+  body {
+    @apply bg-gray-50 text-slate-800;
+  }
+
+  a {
+    @apply text-emerald-600;
+  }
+
+  a:hover {
+    @apply text-emerald-500;
+  }
+
+  button {
+    @apply bg-gray-100 text-slate-800 hover:bg-gray-200;
+  }
+}
