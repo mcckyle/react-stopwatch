@@ -2,13 +2,16 @@
 
 export function formatTime(ms, includeCentiseconds = false)
 {
-    const totalCentiSeconds = Math.floor(ms / 10);
-    const centiSeconds = totalCentiSeconds % 100;
-    const totalSeconds = Math.floor(totalCentiSeconds / 100);
-    const seconds = totalSeconds % 60;
-    const totalMinutes = Math.floor(totalSeconds / 60);
-    const minutes = totalMinutes % 60;
-    const hours = Math.floor(totalMinutes / 60);
+    //const totalCentiSeconds = Math.floor(ms / 10);
+    const centiSeconds = Math.floor((ms % 1000) / 10);
+
+    //const totalSeconds = Math.floor(ms / 1000);
+    const seconds = Math.floor((ms / 1000) % 60);
+
+    //const totalMinutes = Math.floor(totalSeconds / 60);
+    const minutes = Math.floor((ms / (1000 * 60)) % 60);
+
+    const hours = Math.floor(ms / (1000 * 60 * 60));
 
     const pad = (num, size = 2) => String(num).padStart(size, "0");
 

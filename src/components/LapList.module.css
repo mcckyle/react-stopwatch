@@ -1,18 +1,50 @@
+/*src/components/LapList.module.css*/
+
 .lapList {
-    max-height: 200px;
+    max-height: 240px;
     overflow-y: auto;
     margin-top: 1rem;
-    padding: 1rem;
-    border-radius: 12px;
+    padding: 1.25rem;
+    border-radius: 16px;
     background-color: #0f172a;
     color: #e2e8f0;
     font-family: 'Courier New', monospace;
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
 }
 
 .lap {
     display: flex;
     justify-content: space-between;
-    padding: 0.4rem 0;
-    border-bottom: 1px solid #334155;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.lap:last-child {
+    border-bottom: none;
+}
+
+.lapLabel {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.lapTime {
+    color: #fcd34d;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+}
+
+.lap:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+.lapSeparator {
+    margin: 0 0.5rem;
+    color: #475569;
 }

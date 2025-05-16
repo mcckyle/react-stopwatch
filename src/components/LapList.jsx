@@ -8,14 +8,19 @@ const LapList = ({ laps }) => {
     return (
         <div className={styles.lapList}>
             {laps.map((lap, index) => {
+                const lapNumber = laps.length - index;
                 const { hours, minutes, seconds, centiSeconds } = formatTime(lap, true);
 
                 return (
                     <div key={index} className={styles.lap}>
-                        <span>Lap {laps.length - index}</span>
-                        <span>
-                        {hours}:{minutes}:{seconds}.{centiSeconds}
-                        </span>
+                        <div className = {styles.lapLabel}>Lap {lapNumber}</div>
+                        <div className = {styles.lapSeparator}> </div>
+                        <div className = {styles.lapTime}>
+                            {hours !== "00"
+                                ? `${hours}:${minutes}:${seconds}.${centiSeconds}`
+                                : `${minutes}:${seconds}.${centiSeconds}`
+                            }
+                        </div>
                     </div>
                 );
             })}
