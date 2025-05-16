@@ -3,14 +3,7 @@
 import React from "react";
 import AnimatedDigit from "./AnimatedDigit";
 import styles from "./TimerDisplay.module.css";
-
-const formatTime = (totalSeconds) => {
-  const safeSeconds = Number.isFinite(totalSeconds) ? totalSeconds : 0;
-  const hours = String(Math.floor(safeSeconds / 3600)).padStart(2, "0");
-  const minutes = String(Math.floor((safeSeconds % 3600) / 60)).padStart(2, "0");
-  const seconds = String(safeSeconds % 60).padStart(2, "0");
-  return { hours, minutes, seconds };
-};
+import { formatTime } from "../utils/formatTime";
 
 const TimerDisplay = ({ time }) => {
   const { hours, minutes, seconds} = formatTime(time);

@@ -5,35 +5,46 @@ import { Button } from "@mantine/core";
 import { motion } from "framer-motion";
 import styles from "./TimerControls.module.css";
 
-const TimerControls = ({ isRunning, toggle, reset, children }) => {
+const TimerControls = ({ isRunning, toggle, reset, children, recordLap }) => {
   return (
-      <div className={styles.box}>
+      <div className={styles.controls}>
           {children}
-          <div className={styles.buttons}>
-                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                    <Button
-                        size="lg"
-                        variant="gradient"
-                        gradient={{ from: "lime", to: "teal", deg: 90 }}
-                        radius="xl"
-                        onClick={toggle}
-                        >
-                            {isRunning ? "Pause" : "Start"}
-                    </Button>
-                </motion.div>
-
-                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                    <Button
-                        size="lg"
-                        variant="gradient"
-                        gradient={{ from: "red", to: "pink", deg: 90 }}
-                        radius="xl"
-                        onClick={reset}
+            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+                <Button
+                    size="lg"
+                    variant="gradient"
+                    gradient={{ from: "lime", to: "teal", deg: 90 }}
+                    radius="xl"
+                    onClick={toggle}
                     >
-                        Reset
-                    </Button>
-                </motion.div>
-          </div>
+                        {isRunning ? "Pause" : "Start"}
+                </Button>
+            </motion.div>
+
+            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+                <Button
+                    size="lg"
+                    variant="gradient"
+                    gradient={{ from: "blue", to: "violet", deg: 90 }}
+                    radius="xl"
+                    onClick={() => recordLap()}
+                    disabled={!isRunning}
+                    >
+                        Lap
+                </Button>
+            </motion.div>
+
+            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+                <Button
+                    size="lg"
+                    variant="gradient"
+                    gradient={{ from: "red", to: "pink", deg: 90 }}
+                    radius="xl"
+                    onClick={reset}
+                >
+                    Reset
+                </Button>
+            </motion.div>
       </div>
     );
 };

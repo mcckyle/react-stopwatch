@@ -1,6 +1,49 @@
 /* TimerControls.module.css */
 
-.box {
+.controls {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/*.button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #f8fafc;
+  background-color: #10b981;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.2);
+}
+
+.button:hover {
+  background-color: #059669;
+  transform: translateY(-1px);
+}
+
+.button:active {
+  background-color: #047857;
+  transform: scale(0.98);
+}
+
+.secondary {
+  background-color: #334155;
+  box-shadow: 0 4px 14px rgba(51, 65, 85, 0.2);
+}
+
+.secondary:hover {
+  background-color: #1e293b;
+}
+
+.secondary:active {
+  background-color: #0f172a;
+}*/
+
+/*.box {
   max-width: 700px;
   width: 100%;
   padding: 32px;
@@ -15,9 +58,9 @@
   gap: 32px;
   justify-content: center;
   text-align: center;
-}
+}*/
 
-.buttons {
+/*.buttons {
   display: flex;
   gap: 16px;
   justify-content: center;
@@ -28,4 +71,4 @@
   font-weight: 500;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-}
+}*/

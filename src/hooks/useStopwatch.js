@@ -1,38 +1,58 @@
 // src/hooks/useStopwatch.js
-import { useEffect, useState } from "react";
 
-export function useStopwatch() {
-  const [seconds, setSeconds] = useState(0);
+import { useEffect, useRef, useState } from "react";
+
+export function useStopwatch()
+{
+  const [elapsed, setElapsed] = useState(0); // Stored in milliseconds.
   const [isRunning, setIsRunning] = useState(false);
 
-  useEffect(() => {
-    let interval = null;
+  const startTimeRef = useRef(null);
+  const intervalRef = useRef(null);
 
+  useEffect(() => {
     if (isRunning)
     {
-      interval = setInterval(() => {
-        setSeconds(prev => (typeof prev === "number" ? prev + 1 : 0));
-      }, 1000);
+      intervalRef.current = setInterval(() => {
+        setElapsed(Date.now() - startTimeRef.current);
+      }, 100); // Update the UI every 100ms.
+    }
+    else
+    {
+        clearInterval(intervalRef.current);
     }
 
-    return () => clearInterval(interval);
+    return () => clearInterval(intervalRef.current);
   }, [isRunning]);
 
-  const reset = () => setSeconds(0);
-  const toggle = () => setIsRunning(prev => !prev);
-
-  const format = () => {
-    const safeSeconds = isNaN(seconds) ? 0 : seconds;
-    const hrs = String(Math.floor(safeSeconds / 3600)).padStart(2, '0');
-    const mins = String(Math.floor((safeSeconds % 3600) / 60)).padStart(2, '0');
-    const secs = String(safeSeconds % 60).padStart(2, '0');
-    return `${hrs}:${mins}:${secs}`;
+  const toggle = () => {
+    if (!isRunning)
+    {
+        startTimeRef.current = Date.now() - elapsed;
+    }
+    setIsRunning(prev => !prev);
   };
 
-  return { time: format(),
-           seconds,
-           isRunning,
-           toggle,
-           reset
-        };
+  const reset = () => {
+    clearInterval(intervalRef.current);
+    setIsRunning(false);
+    setElapsed(0);
+    startTimeRef.current = null;
+  }
+
+  const getCurrentTime = () => {
+    if (isRunning && startTimeRef.current !== null)
+    {
+        return Date.now() - startTimeRef.current;
+    }
+    return elapsed;
+  };
+
+  return {
+    time: elapsed, //time in milliseconds.
+    isRunning,
+    toggle,
+    reset,
+    getCurrentTime,
+  };
 }

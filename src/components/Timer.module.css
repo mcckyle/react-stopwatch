@@ -6,22 +6,32 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #1f2937, #111827);
-  padding: 24px;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  padding: 2rem;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .box {
-  max-width: 700px;
   width: 100%;
-  padding: 32px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 20px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  max-width: 640px;
+  padding: 2.5rem 2rem;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 32px;
+  gap: 2.5rem;
+}
+
+.title {
+  font-size: 2rem;
+  color: #f1f5f9;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  letter-spacing: 0.03rem;
 }

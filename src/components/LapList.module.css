@@ -1,0 +1,18 @@
+.lapList {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 12px;
+    background-color: #0f172a;
+    color: #e2e8f0;
+    font-family: 'Courier New', monospace;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+}
+
+.lap {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid #334155;
+}
