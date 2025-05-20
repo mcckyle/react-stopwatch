@@ -10,7 +10,7 @@ A simple, modern stopwatch app built with **React**, **Tailwind CSS**, and **Vit
 - 🎨 Beautiful UI with [Tailwind CSS](https://tailwindcss.com/)
 - 💡 Minimalist design, dark-themed interface
 - 📱 Responsive layout for desktop and mobile
-- 🧠 Built with composability and future enhancements in mind
+- 🧠 Built with composability and future enhancements in mind!
 
 ---
 
@@ -19,8 +19,8 @@ A simple, modern stopwatch app built with **React**, **Tailwind CSS**, and **Vit
 Clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/your-username/myTimer-react.git
-cd myTimer-react
+git clone https://github.com/your-username/react-timer.git
+cd react-timer
 npm install
 ```
 
@@ -50,24 +50,41 @@ npm run build
 ## 📁 Project Structure
 
 ```
-myTimer-react/
-├── public/           # Static assets
-├── src/
-│   ├── components/   # Timer component
-│   ├── App.jsx       # App entry
-│   ├── main.jsx      # Root render logic
-│   ├── index.css     # Tailwind and global styles
-│   └── App.css       # Optional component styles
-├── tailwind.config.js
-├── postcss.config.js
-└── vite.config.js
+react-timer/
+├── .github/              # GitHub workflows (CI/CD).
+├── public/               # Static assets (served as-is).
+├── src/                  # Source code
+│   ├── components/       # Reusable components.
+│   ├── hooks/            # Custom React hooks.
+│   ├── __tests__/        # Unit tests for components and hooks.
+│   ├── test/             # Utility functions for Jest unit tests.
+│   │   └── test-utils.jsx
+│   ├── App.jsx           # Main app component.
+│   ├── main.jsx          # React DOM entry point.
+│   ├── App.css           # App-specific styles.
+│   └── index.css         # Tailwind and global styles.
+├── dist/                 # Production build output (auto-generated).
+├── index.html            # HTML entry file.
+├── .gitignore            # Git ignored files and folders.
+├── LICENSE               # Project license.
+├── README.md             # Project overview and documentation.
+├── babel.config.cjs      # Babel config for Jest.
+├── jest.config.js        # Jest testing configuration.
+├── eslint.config.js      # ESLint configuration.
+├── setUpTests.js         # Global test setup file.
+├── tailwind.config.js    # Tailwind CSS configuration.
+├── postcss.config.js     # PostCSS plugins.
+├── vite.config.js        # Vite build and dev server config.
+├── package.json          # Project metadata and scripts.
+└── package-lock.json     # Dependency lockfile.
 ```
 
 ---
 
 ## 🎯 Roadmap
 
-- [ ] Lap functionality
+- [x] Lap functionality
+- [x] Keyboard shortcuts
 - [ ] Save past sessions to local storage
 
 ---

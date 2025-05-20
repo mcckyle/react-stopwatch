@@ -1,7 +1,7 @@
 //src/__tests__/Timer.test.jsx
 
 import React from "react";
-import { render, screen } from "./test-utils";
+import { render, screen } from "../test/test-utils";
 import { fireEvent, act } from "@testing-library/react";
 import Timer from "../components/Timer";
 import * as useStopWatchModule from "../hooks/useStopwatch";
