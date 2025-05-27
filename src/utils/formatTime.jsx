@@ -1,4 +1,7 @@
-//src/utils/formatTime.js
+//File name: formatTime.js
+//Author: Kyle McColgan
+//Date: 26 May 2025
+//Description: This file contains a custom formatting helper function built for the React timer site.
 
 export function formatTime(ms, includeCentiseconds = false)
 {

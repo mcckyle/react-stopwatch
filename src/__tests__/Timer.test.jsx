@@ -1,4 +1,7 @@
-//src/__tests__/Timer.test.jsx
+//File name: Timer.test.jsx
+//Author: Kyle McColgan
+//Date: 26 May 2025
+//Description: Jest unit test suite for the Timer component.
 
 import React from "react";
 import { render, screen } from "../test/test-utils";
@@ -34,12 +37,15 @@ describe("Timer Component", () => {
         expect(screen.getByText("Timer")).toBeInTheDocument();
     });
 
-//     test("2. Renders TimerDisplay with initial time.", () => {
-//         render(<Timer />);
-//         expect(screen.getByText("00:00:00")).toBeInTheDocument();
-//     });
+    test("2. Renders the TimerDisplay component with initial time.", () => {
+        render(<Timer />);
+        expect(screen.getByText((content, element) => {
+            return element?.textContent?.replace(/\s/g, '') === '00:00:00';
+        })
+      ).toBeInTheDocument();
+    });
 
-    test("3. Renders TimerControls.", () => {
+    test("3. Renders the TimerControls component.", () => {
         render(<Timer />);
         expect(screen.getByRole("button", { name: /start/i })).toBeInTheDocument();
     });
@@ -49,20 +55,31 @@ describe("Timer Component", () => {
         expect(screen.queryByText("00:00:01")).not.toBeInTheDocument();
     });
 
-//     test("5. Records a lap and renders it.", () => {
-//         render(<Timer />);
-//         const lapButton = screen.getByRole("button", { name: /lap/i});
-//         fireEvent.click(lapButton);
-//         expect(screen.getByText("00:00:01")).toBeInTheDocument();
-//     });
+    test("5. Records a lap and renders it.", () => {
 
-    test("6. Calls toggle when Start/Stop is clicked.", () => {
+        useStopWatchModule.useStopwatch.mockReturnValue({
+            time: 1000, //One second.
+            isRunning: true, //Enable the Lap button.
+            toggle: jest.fn(),
+            reset: jest.fn(),
+            getCurrentTime: jest.fn(() => 1000),
+        });
+
+        render(<Timer />);
+        const lapButton = screen.getByRole("button", { name: /lap/i});
+        fireEvent.click(lapButton);
+
+        //Custom matcher for the Lap time.
+        expect(screen.getByText(/00:01\.00/)).toBeInTheDocument();
+    });
+
+    test("6. Calls toggle when Start/Stop gets clicked.", () => {
         render(<Timer />);
         fireEvent.click(screen.getByRole("button", { name: /start/i}));
         expect(mockToggle).toHaveBeenCalled();
     });
 
-    test("7. Calls Reset when Reset is clicked.", () => {
+    test("7. Calls Reset when Reset gets clicked.", () => {
         render(<Timer />);
         fireEvent.click(screen.getByRole("button", { name: /reset/i}));
         expect(mockReset).toHaveBeenCalled();
@@ -79,18 +96,47 @@ describe("Timer Component", () => {
         expect(screen.queryByText(/keyboard shortcuts/i)).not.toBeInTheDocument();
     });
 
-//     test("9. HelpModal appears when showHelp manually triggered.", () => {
-//         const { rerender } = render(<Timer />);
-//         fireEvent.keyDown(document, { code: "Slash", shiftKey: true });
-//         rerender(<Timer />);
-//         expect(screen.queryByText(/keyboard shortcuts/i)).not.toBeNull();
-//     });
-//
-//     test("10. HelpModal closes when Close is clicked.", () => {
-//         render(<Timer />);
-//         //Manually open the HelpModal component...
-//         fireEvent.keyDown(document, { code: "Slash", shiftKey: true });
-//         fireEvent.click(screen.getByText("Close"));
-//         expect(screen.queryByText(/keyboard shortcuts/i)).not.toBeInTheDocument();
-//     });
+    test("9. HelpModal appears when showHelp gets triggered manually.", () => {
+        let helpCallback;
+
+        //Capture the onOpenHelp callback from the mock.
+        useKeyboardShortcutsModule.useKeyboardShortcuts.mockImplementation(({ onOpenHelp }) => {
+            helpCallback = onOpenHelp;
+        });
+
+        render(<Timer />);
+
+        //Wrap the state update in 'act' so React will process and flush the render update before assertions.
+        act(() => {
+            helpCallback();
+        });
+
+        //Help modal should appear...
+        expect(screen.queryByText(/keyboard shortcuts/i)).not.toBeNull();
+    });
+
+    test("10. HelpModal closes when Close is clicked.", () => {
+        let helpCallback;
+
+        //Capture the onOpenHelp callback from the mock.
+        useKeyboardShortcutsModule.useKeyboardShortcuts.mockImplementation(({ onOpenHelp }) => {
+            helpCallback = onOpenHelp;
+        });
+
+        render(<Timer />);
+
+        //Open the HelpModal component manually via the captured callback.
+        act(() => {
+            helpCallback();
+        });
+
+        //Help modal should appear...
+        expect(screen.queryByText(/keyboard shortcuts/i)).toBeInTheDocument();
+
+        //Click the close button...
+        fireEvent.click(screen.getByRole("button", { name: /close/i }));
+
+        //The HelpModal should no longer appear.
+        expect(screen.queryByText(/keyboard shortcuts/i)).not.toBeInTheDocument();
+    });
 });

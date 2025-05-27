@@ -1,4 +1,7 @@
-//src/components/Timer.jsx
+//File name: Timer.jsx
+//Author: Kyle McColgan
+//Date: 26 May 2025
+//Description: This file contains the main parent Timer component for the React timer site.
 
 import React, { useState } from "react";
 import { Clock } from "lucide-react";
