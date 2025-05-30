@@ -4,6 +4,7 @@
 //Description: This file contains the main parent Timer component for the React timer site.
 
 import React, { useState } from "react";
+import { Moon, Sun } from "lucide-react";
 import { Clock } from "lucide-react";
 import { useStopwatch } from "../hooks/useStopwatch";
 import { useKeyboardShortcuts } from "../hooks/useKeyboardShortcuts";
@@ -17,6 +18,13 @@ const Timer = () => {
   const { time, isRunning, toggle, reset, getCurrentTime } = useStopwatch();
   const [laps, setLaps] = useState([]);
   const [showHelp, setShowHelp] = useState(false);
+
+  const [dark, setDark] = useState(true);
+
+  const toggleTheme = () => {
+    setDark(!dark);
+    document.body.classList.toggle("light-theme");
+  }
 
   const recordLap = () => {
     const current = getCurrentTime();
@@ -33,6 +41,13 @@ const Timer = () => {
   return (
     <div className={styles.container}>
         <div className = {styles.box}>
+            <button
+                className={styles.themeToggle}
+                onClick={toggleTheme}
+                title="Toggle theme"
+            >
+            {dark ? <Sun size={20} color="#facc15" /> : <Moon size={20} color="#38bdf8" />}
+            </button>
             <h1 className={styles.title}>Timer</h1>
             <TimerDisplay time={time} />
             <TimerControls

@@ -1,5 +1,25 @@
 /* Timer.module.css */
 
+.themeToggle
+{
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2 ease;
+  backdrop-filter: blur(6px);
+}
+
+.themeToggle:hover
+{
+  background: rgba(255, 255, 255, 0.08);
+  transform: scale(1.05);
+}
+
 .container {
   min-height: 100vh;
   width: 100vw;
@@ -10,6 +30,7 @@
   padding: 2rem;
   box-sizing: border-box;
   overflow: hidden;
+  transition: background 0.5s ease;
 }
 
 .box {
@@ -25,6 +46,18 @@
   flex-direction: column;
   align-items: center;
   gap: 2.5rem;
+  transition: background 0.4s ease, border 0.4s ease, transform 0.2s ease;
+}
+
+.box:hover
+{
+  transform: translateY(-2px);
+}
+
+.box svg:hover
+{
+  transform: rotate(5deg);
+  transition: transform 0.3s ease;
 }
 
 .title {
