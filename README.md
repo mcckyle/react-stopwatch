@@ -83,9 +83,13 @@ react-timer/
 
 ## 🎯 Roadmap
 
-- [x] Lap functionality
-- [x] Keyboard shortcuts
-- [ ] Save past sessions to local storage
+- [x] Basic lap functionality.
+- [x] Keyboard shortcuts for core controls.
+- [x] Persist laps using browser localStorage.
+- [ ] Highlight fastest and slowest lap.
+- [ ] Add lap time deltas (difference from previous lap).
+- [ ] Add light/dark mode toggle with animation.
+- [ ] Export laps to CSV or JSON.
 
 ---
 

@@ -1,6 +1,6 @@
 //File name: LapList.jsx
 //Author: Kyle McColgan
-//Date: 26 May 2025
+//Date: 02 June 2025
 //Description: This file contains the Lap component for the React timer site.
 
 import React from "react";
