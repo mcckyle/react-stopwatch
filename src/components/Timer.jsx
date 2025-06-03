@@ -24,8 +24,9 @@ const Timer = () => {
   const hasLoadedLaps = useRef(false);
 
   const toggleTheme = () => {
-    setDark(!dark);
-    document.body.classList.toggle("light-theme");
+    const newDark = !dark;
+    setDark(newDark);
+    document.body.classList.toggle("light-theme", !newDark);
   }
 
   const recordLap = () => {

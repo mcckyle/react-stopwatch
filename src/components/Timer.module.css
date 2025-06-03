@@ -1,5 +1,39 @@
 /* Timer.module.css */
 
+:global(body.light-theme)
+{
+    background: #f8fafc;
+    color: #1e293b;
+}
+
+:global(body.light-theme) .container
+{
+    background: linear-gradient(135deg, #e2e8f0, #f8fafc);
+}
+
+:global(body.light-theme) .box
+{
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+:global(body.light-theme) .title
+{
+    color: #1e293b;
+}
+
+:global(body.light-theme) .themeToggle
+{
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+:global(body.light-theme) .themeToggle:hover
+{
+  background: rgba(0, 0, 0, 0.08);
+}
+
 .themeToggle
 {
   position: absolute;
