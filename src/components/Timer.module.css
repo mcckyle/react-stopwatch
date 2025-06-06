@@ -1,14 +1,40 @@
 /* Timer.module.css */
 
+:global(html),
+:global(body)
+{
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100vw;
+    background: #0f172a; /* default dark background. */
+}
+
 :global(body.light-theme)
 {
-    background: #f8fafc;
+    --button-text-color: #1e293b; /* dark text for light background. */
+}
+
+:global(body)
+{
+    --button-text-color: #f1f5f9; /* light text for dark background (default).*/
+}
+
+:global(html.light-theme),
+:global(body.light-theme)
+{
+  background: #f8fafc !important;
+}
+
+:global(body.light-theme)
+{
+    background: #f8fafc !important;
     color: #1e293b;
 }
 
 :global(body.light-theme) .container
 {
-    background: linear-gradient(135deg, #e2e8f0, #f8fafc);
+    background: linear-gradient(135deg, #e2e8f0, #f8fafc) !important;
 }
 
 :global(body.light-theme) .box

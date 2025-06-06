@@ -1,4 +1,33 @@
-/*src/components/LapList.module.css*/
+/* LapList.module.css */
+
+:global(body.light-theme) .lapList
+{
+    background-color: #f1f5f9; /* slate-100 */
+    color: #1e293b; /* slate-800 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+:global(body.light-theme) .lap
+{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+:global(body.light-theme) .lapLabel
+{
+    color: #475569; /* slate-600 */
+}
+
+:global(body.light-theme) .lapTime
+{
+    color: #d97706; /* amber-600 */
+}
+
+:global(body.light-theme) .lap:hover
+{
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
 
 .lapList {
     max-height: 240px;

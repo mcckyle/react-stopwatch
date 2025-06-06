@@ -1,5 +1,14 @@
 /*src/components/AnimatedDigit.module.css*/
 
+:global(body.light-theme) .digitContainer
+{
+    background: rgba(255, 255, 255, 0.8);
+    color: #1e293b; /* slate-800 */
+    box-shadow:
+        inset 0 0 6px rgba(0, 0, 0, 0.04),
+        0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .digitContainer {
     position: relative;
     width: 2.5rem;

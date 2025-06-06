@@ -1,5 +1,17 @@
 /* TimerDisplay.module.css */
 
+:globla(body.light-theme) .text
+{
+    color: #1e293b; /* slate-800 */
+    text-shadow: none;
+}
+
+:globla(body.light-theme) .colon
+{
+  color: #1d4ed8; /* blue-700 */
+  text-shadow: 0 0 6px rgba(30, 64, 175, 0.3);
+}
+
 .text {
   display: flex;
   align-items: center;
