@@ -1,12 +1,12 @@
 //File name: Timer.test.jsx
 //Author: Kyle McColgan
-//Date: 26 May 2025
+//Date: 06 June 2025
 //Description: Jest unit test suite for the Timer component.
 
 import React from "react";
 import { render, screen } from "../test/test-utils";
 import { fireEvent, act } from "@testing-library/react";
-import Timer from "../components/Timer";
+import Timer from "../components/Timer/Timer.jsx";
 import * as useStopWatchModule from "../hooks/useStopwatch";
 import * as useKeyboardShortcutsModule from "../hooks/useKeyboardShortcuts";
 

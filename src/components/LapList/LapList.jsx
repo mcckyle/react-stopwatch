@@ -1,11 +1,11 @@
 //File name: LapList.jsx
 //Author: Kyle McColgan
-//Date: 02 June 2025
+//Date: 06 June 2025
 //Description: This file contains the Lap component for the React timer site.
 
 import React from "react";
 import styles from "./LapList.module.css";
-import { formatTime } from "../utils/formatTime";
+import { formatTime } from "../../utils/formatTime";
 
 const LapList = ({ laps }) => {
     return (

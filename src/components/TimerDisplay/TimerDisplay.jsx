@@ -1,9 +1,12 @@
-// src/components/TimerDisplay.jsx
+//File name: TimerDisplay.jsx
+//Author: Kyle McColgan
+//Date: 06 June 2025
+//Description: This file contains the Timer display component for the React timer site.
 
 import React from "react";
-import AnimatedDigit from "./AnimatedDigit";
+import AnimatedDigit from "../AnimatedDigit/AnimatedDigit.jsx";
 import styles from "./TimerDisplay.module.css";
-import { formatTime } from "../utils/formatTime";
+import { formatTime } from "../../utils/formatTime";
 
 const TimerDisplay = ({ time }) => {
   const { hours, minutes, seconds} = formatTime(time);

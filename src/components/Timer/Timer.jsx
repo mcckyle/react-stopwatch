@@ -1,17 +1,17 @@
 //File name: Timer.jsx
 //Author: Kyle McColgan
-//Date: 02 June 2025
+//Date: 06 June 2025
 //Description: This file contains the main parent Timer component for the React timer site.
 
 import React, { useState, useEffect, useRef } from "react";
 import { Moon, Sun, Clock } from "lucide-react";
-import { useStopwatch } from "../hooks/useStopwatch";
-import { useKeyboardShortcuts } from "../hooks/useKeyboardShortcuts";
-import TimerDisplay from "./TimerDisplay";
-import TimerControls from "./TimerControls";
-import LapList from "./LapList";
-import HelpModal from "./HelpModal";
-import styles from './Timer.module.css';
+import { useStopwatch } from "../../hooks/useStopwatch";
+import { useKeyboardShortcuts } from "../../hooks/useKeyboardShortcuts";
+import TimerDisplay from "../TimerDisplay/TimerDisplay.jsx";
+import TimerControls from "../TimerControls/TimerControls";
+import LapList from "../LapList/LapList.jsx";
+import HelpModal from "../HelpModal/HelpModal.jsx";
+import styles from '../Timer.module.css';
 
 const LAP_STORAGE_KEY = "timer-app-laps"; //Key for browser localStorage.
 

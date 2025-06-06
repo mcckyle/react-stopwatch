@@ -6,7 +6,7 @@
 import React from "react";
 import { Button } from "@mantine/core";
 import { motion } from "framer-motion";
-import { useTheme } from "../hooks/useTheme";
+import { useTheme } from "../../hooks/useTheme";
 import styles from "./TimerControls.module.css";
 
 const TimerControls = ({ isRunning, toggle, reset, children, recordLap }) => {
