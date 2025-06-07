@@ -8,79 +8,36 @@
     min-height: 100vh;
     width: 100vw;
     background: #0f172a; /* default dark background. */
-}
-
-:global(body.light-theme)
-{
-    --button-text-color: #1e293b; /* dark text for light background. */
+    transition: background 0.5s ease;
 }
 
 :global(body)
 {
-    --button-text-color: #f1f5f9; /* light text for dark background (default).*/
+    --button-text-color: #f1f5f9; /* light text for dark background (default). */
+    --box-bg: rgba(255, 255, 255, 0.04);
+    --box-border: rgba(255, 255, 255, 0.12);
+    --box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    --title-color: #f1f5f9;
+    --theme-toggle-bg: rgba(255, 255, 255, 0.05);
+    --theme-toggle-border: rgba(255, 255, 255, 0.15);
+    --theme-toggle-hover: rgba(255, 255, 255, 0.08);
 }
 
-:global(html.light-theme),
 :global(body.light-theme)
 {
-  background: #f8fafc !important;
+  background: #f8fafc;
+  --button-text-color: #1e293b;
+  --box-bg: rgba(255, 255, 255, 0.85);
+  --box-border: rgba(0, 0, 0, 0.1);
+  --box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  --title-color: #1e293b;
+  --theme-toggle-bg: rgba(0, 0, 0, 0.05);
+  --theme-toggle-border: rgba(0, 0, 0, 0.1);
+  --theme-toggle-hover: rgba(0, 0, 0, 0.08);
 }
 
-:global(body.light-theme)
+.container
 {
-    background: #f8fafc !important;
-    color: #1e293b;
-}
-
-:global(body.light-theme) .container
-{
-    background: linear-gradient(135deg, #e2e8f0, #f8fafc) !important;
-}
-
-:global(body.light-theme) .box
-{
-    background: rgba(255, 255, 255, 0.85);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-}
-
-:global(body.light-theme) .title
-{
-    color: #1e293b;
-}
-
-:global(body.light-theme) .themeToggle
-{
-    background: rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-:global(body.light-theme) .themeToggle:hover
-{
-  background: rgba(0, 0, 0, 0.08);
-}
-
-.themeToggle
-{
-  position: absolute;
-  top: 1.25rem;
-  right: 1.25rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 9999px;
-  padding: 0.5rem;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2 ease;
-  backdrop-filter: blur(6px);
-}
-
-.themeToggle:hover
-{
-  background: rgba(255, 255, 255, 0.08);
-  transform: scale(1.05);
-}
-
-.container {
   min-height: 100vh;
   width: 100vw;
   display: flex;
@@ -93,21 +50,28 @@
   transition: background 0.5s ease;
 }
 
-.box {
+:global(body.light-theme) .container
+{
+    background: linear-gradient(135deg, #e2e8f0, #f8fafc);
+}
+
+.box
+{
   width: 100%;
   max-width: 640px;
   padding: 2.5rem 2rem;
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--box-bg);
   backdrop-filter: blur(12px);
   border-radius: 1.25rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--box-border);
+  box-shadow: var(--box-shadow);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2.5rem;
-  transition: background 0.4s ease, border 0.4s ease, transform 0.2s ease;
+  transition: all 0.4s ease;
 }
+
 
 .box:hover
 {
@@ -120,11 +84,61 @@
   transition: transform 0.3s ease;
 }
 
-.title {
+.title
+{
   font-size: 2rem;
-  color: #f1f5f9;
+  color: var(--title-color);
   font-weight: 500;
   margin-bottom: 0.5rem;
   text-align: center;
   letter-spacing: 0.03rem;
+  transition: color 0.3s ease;
 }
+
+.themeToggle
+{
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: var(--theme-toggle-bg);
+  border: 1px solid var(--theme-toggle-border);
+  border-radius: 9999px;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2 ease;
+  backdrop-filter: blur(6px);
+}
+
+.themeToggle:hover
+{
+  background: var(--theme-toggle-hover);
+  transform: scale(1.05);
+}
+
+/*.containerLight
+{
+    background: linear-gradient(135deg, #e2e8f0, #f8fafc) !important;
+}
+
+.boxLight
+{
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.titleLight
+{
+    color: #1e293b;
+}
+
+.themeToggleLight
+{
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.themeToggleLight:hover
+{
+    background: rgba(0, 0, 0, 0.08);
+}*/

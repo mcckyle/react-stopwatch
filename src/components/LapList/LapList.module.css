@@ -1,79 +1,82 @@
 /* LapList.module.css */
 
-:global(body.light-theme) .lapList
+.lapList
 {
-    background-color: #f1f5f9; /* slate-100 */
-    color: #1e293b; /* slate-800 */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-:global(body.light-theme) .lap
-{
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-:global(body.light-theme) .lapLabel
-{
-    color: #475569; /* slate-600 */
-}
-
-:global(body.light-theme) .lapTime
-{
-    color: #d97706; /* amber-600 */
-}
-
-:global(body.light-theme) .lap:hover
-{
-    background-color: rgba(0, 0, 0, 0.03);
-}
-
-
-.lapList {
     max-height: 240px;
     overflow-y: auto;
     margin-top: 1rem;
     padding: 1.25rem;
-    border-radius: 16px;
-    background-color: #0f172a;
-    color: #e2e8f0;
+    border-radius: 1rem;
+    background-color: #0f172a; /* dark slate */
+    color: #e2e8f0; /* slate-200 */
     font-family: 'Courier New', monospace;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    transition: all 0.3s ease;
 }
 
-.lap {
+/* Light mode override */
+body.light-theme .lapList
+{
+    background-color: #f9fafb; /* gray-50 */
+    color: #1e293b; /* slate-800 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.lap
+{
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 8px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.2s ease, border-color 0.3s ease;
 }
 
-.lap:last-child {
+body.light-theme .lap
+{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.lap:last-child
+{
     border-bottom: none;
 }
 
-.lapLabel {
-    color: #94a3b8;
+.lapLabel
+{
+    color: #94a3b8; /* slate-400 */
     font-size: 0.95rem;
     font-weight: 500;
     letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .lapLabel
+{
+    color: #64748b; /* slate-500 */
 }
 
 .lapTime {
-    color: #fcd34d;
+    color: #fcd34d; /* amber-300 */
     font-weight: 700;
     font-size: 1rem;
     letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .lapTime
+{
+    color: #d97706; /* amber-600 */
 }
 
 .lap:hover {
     background-color: rgba(255, 255, 255, 0.02);
     border-radius: 8px;
-    transition: background 0.2s ease;
 }
 
 .lapSeparator {
     margin: 0 0.5rem;
     color: #475569;
+    opacity: 0.3;
 }

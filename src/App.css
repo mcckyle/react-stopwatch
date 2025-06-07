@@ -1,51 +1,35 @@
 /* App.css */
 
-#root {
-margin: 0 auto;
-padding: 2rem;
-font-family: 'Inter', system-ui, sans-serif;
-color: #f5f5f5;
-background-color: #0f172a; /* deep blue-gray */
-min-height: 100vh;
-box-sizing: border-box;
+#root
+{
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: 'Inter', system-ui, sans-serif;
+    min-height: 100vh;
+    box-sizing: border-box;
 }
 
 /* Subtle scroll smoothing */
-html {
+html
+{
   scroll-behavior: smooth;
 }
 
 /* General typography and tone */
-body {
+body
+{
   margin: 0;
   font-size: 16px;
-  background-color: #0f172a;
-  color: #e5e7eb;
   line-height: 1.6;
+  background-color: transparent; /* Let index.css body handle this. */
+  color: inherit;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  color: #10b981; /* emerald */
-  text-decoration: none;
+a
+{
   transition: color 0.3s ease;
-}
-a:hover {
-  color: #34d399;
-}
-
-/* Remove outlines for mouse users, keep for keyboard users */
-button:focus-visible,
-a:focus-visible {
-  outline: 2px dashed #10b981;
-  outline-offset: 4px;
-}
-
-button {
-  border: none;
-  background: none;
-  cursor: pointer;
 }
 
 /* Image and media tweaks */
@@ -53,16 +37,4 @@ img,
 svg {
   max-width: 100%;
   display: block;
-}
-
-/* Utility spacing for future use */
-.section {
-  margin-top: 4rem;
-  margin-bottom: 4rem;
-}
-
-.card,
-.logo,
-.read-the-docs {
-  all: unset;
 }

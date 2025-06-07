@@ -11,7 +11,7 @@ import TimerDisplay from "../TimerDisplay/TimerDisplay.jsx";
 import TimerControls from "../TimerControls/TimerControls";
 import LapList from "../LapList/LapList.jsx";
 import HelpModal from "../HelpModal/HelpModal.jsx";
-import styles from '../Timer.module.css';
+import styles from './Timer.module.css';
 
 const LAP_STORAGE_KEY = "timer-app-laps"; //Key for browser localStorage.
 
@@ -26,8 +26,11 @@ const Timer = () => {
   const toggleTheme = () => {
     const newDark = !dark;
     setDark(newDark);
-    document.body.classList.toggle("light-theme", !newDark);
   }
+
+  useEffect(() => {
+    document.body.classList.toggle('light-theme', !dark);
+  }, [dark]);
 
   const recordLap = () => {
     const current = getCurrentTime();
@@ -91,12 +94,8 @@ const Timer = () => {
   return (
     <div className={styles.container}>
         <div className = {styles.box}>
-            <button
-                className={styles.themeToggle}
-                onClick={toggleTheme}
-                title="Toggle theme"
-            >
-            {dark ? <Sun size={20} color="#facc15" /> : <Moon size={20} color="#38bdf8" />}
+            <button className={styles.themeToggle} onClick={toggleTheme} title="Toggle theme">
+              {dark ? <Sun size={20} color="#facc15" /> : <Moon size={20} color="#38bdf8" />}
             </button>
             <h1 className={styles.title}>Timer</h1>
             <TimerDisplay time={time} />

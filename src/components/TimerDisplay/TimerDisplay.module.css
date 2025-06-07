@@ -1,18 +1,7 @@
 /* TimerDisplay.module.css */
 
-:globla(body.light-theme) .text
+.text
 {
-    color: #1e293b; /* slate-800 */
-    text-shadow: none;
-}
-
-:globla(body.light-theme) .colon
-{
-  color: #1d4ed8; /* blue-700 */
-  text-shadow: 0 0 6px rgba(30, 64, 175, 0.3);
-}
-
-.text {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,9 +13,17 @@
   user-select: none;
   letter-spacing: 0.05rem;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: color 0.3s ease;
 }
 
-.colon {
+.textLight
+{
+    color: #1e293b;
+    text-shadow: none;
+}
+
+.colon
+{
   padding: 0 0.35rem;
   color: #60a5fa;
   font-weight: 500;
@@ -36,6 +33,20 @@
 
 @keyframes blink {
   50% {
-    opacity: 0.25s;
+    opacity: 0;
   }
+}
+
+@media (max-width: 480px)
+{
+    .text
+    {
+        font-size: 2.75rem;
+        gap: 0.25rem;
+    }
+
+    .colon
+    {
+        padding: 0 0.25rem;
+    }
 }

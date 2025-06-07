@@ -1,7 +1,7 @@
 //File name: TimerControls.jsx
 //Author: Kyle McColgan
-//Date: 05 June 2025
-//Description: This file contains the Timer controls component for the React timer site.
+//Date: 06 June 2025
+//Description: This file contains the Timer controls component for the react timer.
 
 import React from "react";
 import { Button } from "@mantine/core";
@@ -12,10 +12,46 @@ import styles from "./TimerControls.module.css";
 const TimerControls = ({ isRunning, toggle, reset, children, recordLap }) => {
 
   const theme = useTheme();
+  const isLight = theme === "light";
 
-  const lapGradient = theme === "light"
-    ? { from: "indigo", to: "purple", deg: 90 }
-    : { from: "blue", to: "violet", deg: 90 };
+  const commonProps = {
+    size: "lg",
+    radius: "xl",
+  };
+
+  const getButtonProps = (type) => {
+    const config = {
+        start: {
+            color: "teal",
+            gradient: { from: "teal", to: isLight ? "cyan" : "lime", deg: 90 },
+            textColor: isLight ? "#1e293b" : "#f1f5f9",
+        },
+        lap: {
+            color: "grape",
+            gradient: { from: "indigo", to: isLight ? "blue" : "violet", deg: 90 },
+            textColor: "#f8fafc",
+        },
+        reset: {
+            color: "red",
+            gradient: { from: "red", to: isLight ? "orange" : "pink", deg: 90 },
+            textColor: "#f8fafc",
+        },
+    };
+
+    const {color, gradient, textColor } = config[type];
+
+    return {
+        variant: isLight ? "filled" : "gradient",
+        color,
+        gradient: !isLight ? gradient : undefined,
+        styles: {
+            root: {
+                color: textColor,
+                fontWeight: 500,
+            },
+        },
+    };
+  };
 
 
   return (
@@ -23,16 +59,9 @@ const TimerControls = ({ isRunning, toggle, reset, children, recordLap }) => {
           {children}
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
                 <Button
-                    size="lg"
-                    variant="gradient"
-                    gradient={{ from: "lime", to: "teal", deg: 90 }}
-                    radius="xl"
+                    {...commonProps}
                     onClick={toggle}
-                    styles={{
-                        root: {
-                            color: 'var(--button-text-color)',
-                        },
-                    }}
+                    {...getButtonProps("start")}
                     >
                         {isRunning ? "Pause" : "Start"}
                 </Button>
@@ -40,17 +69,10 @@ const TimerControls = ({ isRunning, toggle, reset, children, recordLap }) => {
 
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
                 <Button
-                    size="lg"
-                    variant="gradient"
-                    gradient={lapGradient}
-                    radius="xl"
-                    onClick={() => recordLap()}
+                    {...commonProps}
+                    onClick={recordLap}
                     disabled={!isRunning}
-                    styles={{
-                        root: {
-                            color: 'var(--button-text-color)',
-                        },
-                    }}
+                    {...getButtonProps("lap")}
                     >
                         Lap
                 </Button>
@@ -58,16 +80,9 @@ const TimerControls = ({ isRunning, toggle, reset, children, recordLap }) => {
 
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
                 <Button
-                    size="lg"
-                    variant="gradient"
-                    gradient={{ from: "red", to: "pink", deg: 90 }}
-                    radius="xl"
+                    {...commonProps}
                     onClick={reset}
-                    styles={{
-                        root: {
-                            color: 'var(--button-text-color)',
-                        },
-                    }}
+                    {...getButtonProps("reset")}
                 >
                     Reset
                 </Button>

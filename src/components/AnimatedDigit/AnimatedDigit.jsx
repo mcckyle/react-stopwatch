@@ -1,4 +1,7 @@
-// src/components/AnimatedDigit.jsx
+//File name: AnimatedDigit.jsx
+//Author: Kyle McColgan
+//Date: 06 June 2025
+//Description: This file contains the Digits component for the React timer site.
 
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';

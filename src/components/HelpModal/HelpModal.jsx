@@ -1,4 +1,7 @@
-//src/components/HelpModal.jsx
+//File name: HelpModal.jsx
+//Author: Kyle McColgan
+//Date: 06 June 2025
+//Description: This file contains the Help modal component for the React timer site.
 
 import React from "react";
 import styles from "./HelpModal.module.css";

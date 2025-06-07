@@ -7,9 +7,9 @@
   font-family: 'Inter', system-ui, sans-serif;
   line-height: 1.6;
   font-weight: 400;
-
   color-scheme: dark;
-  background-color: #0f172a; /* slate-900 */
+
+  background-color: #0f172a; /* Dark mode */
   color: #e5e7eb; /* slate-200 */
 
   text-rendering: optimizeLegibility;
@@ -27,15 +27,10 @@ body {
 
 body.light-theme
 {
+  @apply font-sans;
   background-color: #f8fafc;
   color: #1e293b;
 }
-
-body.light-theme.Timer_container__*
-{
-  background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
-}
-
 
 /* Default link style */
 a {
@@ -45,39 +40,55 @@ a:hover {
   @apply text-emerald-300;
 }
 
+/* Light mode links */
+body.light-theme a
+{
+    color: #7c3aed; /* violet-600 */
+}
+
+body.light-theme a:hover
+{
+    color: #6d28d9; /* violet-700 */
+}
+
 
 /* Headings refinement */
-h1, h2, h3, h4, h5, h6 {
-  @apply font-display font-semibold text-slate-100;
+h1, h2, h3, h4, h5, h6
+{
+  @apply font-display font-semibold;
+  color: inherit;
 }
 
-/* Custom button reset */
-button {
-  @apply px-4 py-2 rounded-md font-medium text-sm bg-slate-800 text-white hover:bg-slate-700 transition;
+body.light-theme h1,
+body.light-theme h2,
+body.light-theme h3
+{
+    color: #4c1d95; /* purple-900 */
 }
 
+/* Button focus */
+button:focus-visible,
+a:focus-visible
+{
+    outline: 2px dashed #10b981;
+    outline-offset: 4px;
+}
 
-/* Light mode override */
-@media (prefers-color-scheme: light) {
-  :root {
-    background-color: #f9fafb; /* gray-50 */
-    color: #1e293b; /* slate-800 */
-    color-scheme: light;
-  }
+body.light-theme button:focus-visible,
+body.light-theme a:focus-visible
+{
+    outline-color: #7c3aed;
+}
 
-  body {
-    @apply bg-gray-50 text-slate-800;
-  }
+/* Utility spacing */
+.section
+{
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
 
-  a {
-    @apply text-emerald-600;
-  }
-
-  a:hover {
-    @apply text-emerald-500;
-  }
-
-  button {
-    @apply bg-gray-100 text-slate-800 hover:bg-gray-200;
-  }
+.card,
+.logo,
+.read-the-docs {
+  all: unset;
 }

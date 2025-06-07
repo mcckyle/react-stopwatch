@@ -1,22 +1,11 @@
 /* TimerControls.module.css */
 
-.controls {
+.controls
+{
   display: flex;
-  gap: 16px;
-  justify-content: center;
   flex-wrap: wrap;
-}
-
-:global(body.light-theme) .mantine-Button-root
-{
-    color: #1e293b !important;
-    font-weight: 600;
-    text-shadow: none;
-    background-blend-mode: multiply;
-}
-
-:global(body.light-theme) .mantine-Button-root[data-variant="gradient"]
-{
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  transition: all 0.3s ease-in-out;
 }
