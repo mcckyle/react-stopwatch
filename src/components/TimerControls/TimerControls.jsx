@@ -1,6 +1,6 @@
 //File name: TimerControls.jsx
 //Author: Kyle McColgan
-//Date: 06 June 2025
+//Date: 09 June 2025
 //Description: This file contains the Timer controls component for the react timer.
 
 import React from "react";
@@ -44,7 +44,7 @@ const TimerControls = ({ isRunning, toggle, reset, children, recordLap }) => {
         variant: isLight ? "filled" : "gradient",
         color,
         gradient: !isLight ? gradient : undefined,
-        styles: {
+        style: {
             root: {
                 color: textColor,
                 fontWeight: 500,
