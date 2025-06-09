@@ -1,6 +1,6 @@
 //File name: TimerDisplay.jsx
 //Author: Kyle McColgan
-//Date: 06 June 2025
+//Date: 09 June 2025
 //Description: This file contains the Timer display component for the React timer site.
 
 import React from "react";
@@ -18,15 +18,15 @@ const TimerDisplay = ({ time }) => {
   return (
     <div className={`${styles.text} ${isLight ? styles.textLight : ""}`} role="timer" aria-label="Stopwatch time">
         {[...hours].map((digit, i) => (
-            <AnimatedDigit key={`hr-${i}`} value={parseInt(digit)} />
+            <AnimatedDigit key={`hr-${i}`} value={parseInt(digit)} color={isLight ? "#1e293b" : "#f1f5f9"} />
         ))}
         <span className={styles.colon}>:</span>
         {[...minutes].map((digit, i) => (
-            <AnimatedDigit key={`min-${i}`} value={parseInt(digit)} />
+            <AnimatedDigit key={`min-${i}`} value={parseInt(digit)} color={isLight ? "#1e293b" : "#f1f5f9"} />
         ))}
         <span className={styles.colon}>:</span>
         {[...seconds].map((digit, i) => (
-            <AnimatedDigit key={`sec-${i}`} value={parseInt(digit)} />
+            <AnimatedDigit key={`sec-${i}`} value={parseInt(digit)} color={isLight ? "#1e293b" : "#f1f5f9"} />
         ))}
     </div>
   );

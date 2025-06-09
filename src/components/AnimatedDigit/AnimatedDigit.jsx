@@ -7,12 +7,13 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from "./AnimatedDigit.module.css";
 
-function AnimatedDigit({ value }) {
+function AnimatedDigit({ value, color = "f1f5f9" }) {
   return (
     <div className={styles.digitContainer}>
       <AnimatePresence initial={false} mode="popLayout">
         <motion.div
           key={value}
+          style = {{ color }}
           initial={{ y: 40, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -40, opacity: 0 }}
