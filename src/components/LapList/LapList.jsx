@@ -1,15 +1,20 @@
 //File name: LapList.jsx
 //Author: Kyle McColgan
-//Date: 06 June 2025
+//Date: 09 June 2025
 //Description: This file contains the Lap component for the React timer site.
 
 import React from "react";
 import styles from "./LapList.module.css";
 import { formatTime } from "../../utils/formatTime";
+import { useTheme } from "../../hooks/useTheme";
 
 const LapList = ({ laps }) => {
+
+    const theme = useTheme();
+    const isLight = theme === "light";
+
     return (
-        <div className={styles.lapList}>
+        <div className={`${styles.lapList} ${isLight ? styles.lapListLight : ""}`}>
             {laps.map((lap, index) => {
                 const lapNumber = laps.length - index;
                 const { hours, minutes, seconds, centiSeconds } = formatTime(lap, true);

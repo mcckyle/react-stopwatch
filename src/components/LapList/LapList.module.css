@@ -14,8 +14,7 @@
     transition: all 0.3s ease;
 }
 
-/* Light mode override */
-body.light-theme .lapList
+.lapListLight
 {
     background-color: #f9fafb; /* gray-50 */
     color: #1e293b; /* slate-800 */
@@ -23,6 +22,7 @@ body.light-theme .lapList
     border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
+/* Individual lap row */
 .lap
 {
     display: flex;
@@ -33,7 +33,7 @@ body.light-theme .lapList
     transition: background 0.2s ease, border-color 0.3s ease;
 }
 
-body.light-theme .lap
+.lapListLight .lap
 {
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
@@ -43,6 +43,7 @@ body.light-theme .lap
     border-bottom: none;
 }
 
+/* Lap label (e.g., "Lap 1"). */
 .lapLabel
 {
     color: #94a3b8; /* slate-400 */
@@ -52,12 +53,14 @@ body.light-theme .lap
     transition: color 0.3s ease;
 }
 
-body.light-theme .lapLabel
+.lapListLight .lapLabel
 {
     color: #64748b; /* slate-500 */
 }
 
-.lapTime {
+/* Lap time (e.g., "00:12:34.56"). */
+.lapTime
+{
     color: #fcd34d; /* amber-300 */
     font-weight: 700;
     font-size: 1rem;
@@ -65,18 +68,23 @@ body.light-theme .lapLabel
     transition: color 0.3s ease;
 }
 
-body.light-theme .lapTime
+.lapListLight .lapTime
 {
     color: #d97706; /* amber-600 */
 }
 
-.lap:hover {
-    background-color: rgba(255, 255, 255, 0.02);
-    border-radius: 8px;
-}
-
-.lapSeparator {
+/* Separator between label and time. */
+.lapSeparator
+{
     margin: 0 0.5rem;
     color: #475569;
     opacity: 0.3;
 }
+
+/* Hover effect. */
+.lap:hover
+{
+    background-color: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+}
+
