@@ -22,19 +22,19 @@ const TimerControls = ({ isRunning, toggle, reset, children, recordLap }) => {
   const getButtonProps = (type) => {
     const config = {
         start: {
-            color: "teal",
-            gradient: { from: "teal", to: isLight ? "cyan" : "lime", deg: 90 },
-            textColor: isLight ? "#1e293b" : "#f1f5f9",
+            color: "yellow",
+            gradient: { from: "#facc15", to: "#fde047", deg: 45 },
+            textColor: isLight ? "#1e293b" : "#fefce8",
         },
         lap: {
             color: "grape",
-            gradient: { from: "indigo", to: isLight ? "blue" : "violet", deg: 90 },
+            gradient: { from: "#7e22ce", to: "#8b5cf6", deg: 90 },
             textColor: "#f8fafc",
         },
         reset: {
             color: "red",
-            gradient: { from: "red", to: isLight ? "orange" : "pink", deg: 90 },
-            textColor: "#f8fafc",
+            gradient: { from: "#dc2626", to: "#f43f5e", deg: 90 },
+            textColor: "#fff1f2",
         },
     };
 

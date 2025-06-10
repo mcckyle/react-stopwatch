@@ -1,38 +1,28 @@
-/*src/components/AnimatedDigit.module.css*/
+/* src/components/AnimatedDigit.module.css */
 
-.digitContainer {
-    position: relative;
-    width: 2.5rem;
-    height: 3.5rem;
-    overflow: hidden;
-    text-align: center;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: #f1f5f9; /* slate-100 */
-    line-height: 1;
-    border-radius: 0.5rem;
-    background: rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(2px);
-    box-shadow:
-        inset 0 0 6px rgba(255, 255, 255, 0.05),
-        0 4px 10px rgba(0, 0, 0, 0.25);
-    transition: all 0.3s ease;
-}
-
-body.light-theme .digitContainer
+.digitContainer
 {
-    color: #1e293b; /* slate-800 */
-    background: rgba(255, 255, 255, 0.65);
-    backdrop-filter: blur(4px);
-    box-shadow:
-        inset 0 0 3px rgba(0, 0, 0, 0.05),
-        0 3px 8px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    width: 2ch;
+    text-align: center;
+    position: relative;
 }
 
-.digit {
-    position: absolute;
-    width: 100%;
-    top: 0;
-    left: 0;
+.digit
+{
+    display: inline-block;
+    font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: #fef9c3; /* soft gold */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.35), 0 0 10px rgba(252, 211, 77, 0.3);
+    transition: color 0.4s ease;
 }
+
+body.light-theme .digit
+{
+    color: #92400e; /* amber */
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15), 0 0 4px rgba(255, 237, 213, 0.4);
+}
+
+

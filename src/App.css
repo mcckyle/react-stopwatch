@@ -1,18 +1,20 @@
 /* App.css */
 
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Playfair+Display:wght@500;600&display=swap');
+
 #root
 {
     margin: 0 auto;
     padding: 2rem;
-    font-family: 'Inter', system-ui, sans-serif;
     min-height: 100vh;
     box-sizing: border-box;
+    font-family: 'Cinzel', 'Playfair Display', serif;
 }
 
 /* Subtle scroll smoothing */
 html
 {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 /* General typography and tone */
@@ -27,14 +29,39 @@ body
   -moz-osx-font-smoothing: grayscale;
 }
 
-a
-{
-  transition: color 0.3s ease;
-}
-
 /* Image and media tweaks */
-img,
-svg {
+img, svg
+{
   max-width: 100%;
   display: block;
+}
+
+.appWrapper
+{
+    background: linear-gradient(to bottom, #1e1b4b, #111827);
+    background-attachment: fixed;
+    color: #f8fafc;
+    font-family: 'Cinzel', serif;
+    transition: background 0.5s ease;
+    padding-bottom: 4rem;
+    text-align: center;
+}
+
+body.light-theme .appWrapper
+{
+    background: linear-gradient(to bottom, #fff7ed, #fef9f2);
+    color: #1e293b;
+}
+
+.header
+{
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 8px rgba(252, 211, 77, 0.2);
+    color: #facc15;
+}
+
+body.light-theme .header
+{
+    color: #92400e;
+    text-shadow: 1px 1px 4px rgba(255, 237, 213, 0.5);
 }

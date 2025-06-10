@@ -5,33 +5,41 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Courier New', monospace;
-  font-size: 4rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4.25rem;
   font-weight: 700;
-  color: #f1f5f9;
-  gap: 0.35rem;
+  color: #fef08a; /* sunlit gold */
+  gap: 0.4rem;
   user-select: none;
-  letter-spacing: 0.05rem;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-  transition: color 0.3s ease;
+  letter-spacing: 0.1rem;
+  text-shadow:
+    0 0 3px rgba(255, 215, 0, 0.5),
+    0 0 8px rgba(255, 255, 200, 0.25),
+    2px 2px 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
 }
 
 .textLight
 {
-    color: #1e293b;
-    text-shadow: none;
+    color: #7f1d1d; /* velvet red */
+    text-shadow:
+      0 0 1px rgba(0, 0, 0, 0.15),
+      2px 2px 2px rgba(0, 0, 0, 0.05);
 }
 
 .colon
 {
-  padding: 0 0.35rem;
-  color: #60a5fa;
-  font-weight: 500;
+  padding: 0 0.5rem;
+  color: #facc15;
+  font-weight: 600;
   animation: blink 1s step-end infinite;
-  text-shadow: 0 0 8px rgba(96, 165, 250, 0.4);
+  text-shadow:
+    0 0 6px rgba(250, 204, 21, 0.3),
+    0 0 12px rgba(255, 255, 255, 0.05);
 }
 
-@keyframes blink {
+@keyframes blink
+{
   50% {
     opacity: 0;
   }
@@ -41,12 +49,12 @@
 {
     .text
     {
-        font-size: 2.75rem;
-        gap: 0.25rem;
+        font-size: 3rem;
+        gap: 0.3rem;
     }
 
     .colon
     {
-        padding: 0 0.25rem;
+        padding: 0 0.3rem;
     }
 }

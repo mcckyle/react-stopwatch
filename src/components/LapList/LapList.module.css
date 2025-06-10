@@ -4,22 +4,25 @@
 {
     max-height: 240px;
     overflow-y: auto;
-    margin-top: 1rem;
-    padding: 1.25rem;
+    margin-top: 1.5rem;
+    padding: 1.75rem;
     border-radius: 1rem;
-    background-color: #0f172a; /* dark slate */
-    color: #e2e8f0; /* slate-200 */
-    font-family: 'Courier New', monospace;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    background: linear-gradient(to bottom right, #1e293b, #0f172a);
+    color: #fef3c7; /* soft gold */
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2), inset 0 0 5px rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 215, 0, 0.4);
+    backdrop-filter: blur(6px);
     transition: all 0.3s ease;
 }
 
 .lapListLight
 {
-    background-color: #f9fafb; /* gray-50 */
-    color: #1e293b; /* slate-800 */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-    border: 1px solid rgba(0, 0, 0, 0.04);
+    background: linear-gradient(to bottom right, #fff8e1, #fdf6d9);
+    color: #7f1d1d; /* velvet red */
+    box-shadow: 0 0 12px rgba(128, 0, 0, 0.15), inset 0 0 5px rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 204, 0, 0.4);
 }
 
 /* Individual lap row */
@@ -28,14 +31,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    transition: background 0.2s ease, border-color 0.3s ease;
+    padding: 10px 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .lapListLight .lap
 {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
 }
 
 .lap:last-child
@@ -46,45 +49,49 @@
 /* Lap label (e.g., "Lap 1"). */
 .lapLabel
 {
-    color: #94a3b8; /* slate-400 */
-    font-size: 0.95rem;
-    font-weight: 500;
-    letter-spacing: 0.5px;
+    color: #facc15; /* bright gold */
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    text-shadow: 0 0 2px rgba(255, 215, 0, 0.4);
     transition: color 0.3s ease;
 }
 
 .lapListLight .lapLabel
 {
-    color: #64748b; /* slate-500 */
+    color: #b45309; /* amber-700 */
 }
 
 /* Lap time (e.g., "00:12:34.56"). */
 .lapTime
 {
-    color: #fcd34d; /* amber-300 */
+    color: #fcd34d; /* gold */
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 1.1rem;
     letter-spacing: 0.5px;
+    text-shadow: 0 0 4px rgba(255, 215, 0, 0.4);
     transition: color 0.3s ease;
 }
 
 .lapListLight .lapTime
 {
     color: #d97706; /* amber-600 */
+    text-shadow: none;
 }
 
 /* Separator between label and time. */
 .lapSeparator
 {
     margin: 0 0.5rem;
-    color: #475569;
-    opacity: 0.3;
+    color: #fef09a;
+    opacity: 0.25;
 }
 
 /* Hover effect. */
 .lap:hover
 {
-    background-color: rgba(255, 255, 255, 0.02);
+    background-color: rgba(255, 255, 255, 0.05);
     border-radius: 8px;
+    transform: scale(1.01);
 }
 

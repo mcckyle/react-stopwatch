@@ -1,6 +1,6 @@
 //File name: App.jsx
 //Author: Kyle McColgan
-//Date: 06 June 2025
+//Date: 09 June 2025
 //Description: This file contains the entry point React component for the react-timer.
 
 import React from "react";
@@ -9,7 +9,10 @@ import './App.css';
 
 function App() {
   return (
-      <main className="min-h-screen flex items-center justify-center px-4 transition-all duration-300">
+      <main className="min-h-screen flex flex-col items-center justify-center px-4 py-10 transition-all duration-300 appWrapper">
+          <h1 className="text-4xl md:text-5xl font-cinzel font-bold text-yellow-400 drop-shadow-lg header">
+              React Timer
+          </h1>
           <Timer />
       </main>
   );

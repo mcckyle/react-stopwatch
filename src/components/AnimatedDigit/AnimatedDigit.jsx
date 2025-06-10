@@ -1,27 +1,26 @@
 //File name: AnimatedDigit.jsx
 //Author: Kyle McColgan
-//Date: 06 June 2025
+//Date: 09 June 2025
 //Description: This file contains the Digits component for the React timer site.
 
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from "./AnimatedDigit.module.css";
 
-function AnimatedDigit({ value, color = "f1f5f9" }) {
+function AnimatedDigit({ value }) {
   return (
     <div className={styles.digitContainer}>
-      <AnimatePresence initial={false} mode="popLayout">
-        <motion.div
+      <AnimatePresence mode="wait">
+        <motion.span
           key={value}
-          style = {{ color }}
-          initial={{ y: 40, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -40, opacity: 0 }}
-          transition={{ duration: 0.25, ease: "easeOut" }}
+          initial={{ y: -20, opacity: 0, scale: 0.95 }}
+          animate={{ y: 0, opacity: 1, scale: 1 }}
+          exit={{ y: 20, opacity: 0, scale: 1.05 }}
+          transition={{ duration: 0.4, ease: [0.43, 0.13, 0.23, 0.96] }}
           className={styles.digit}
         >
           {value}
-        </motion.div>
+        </motion.span>
       </AnimatePresence>
     </div>
   );
