@@ -11,9 +11,11 @@ function App() {
   return (
       <main className="min-h-screen flex flex-col items-center justify-center px-4 py-10 transition-all duration-300 appWrapper">
           <h1 className="text-4xl md:text-5xl font-cinzel font-bold text-yellow-400 drop-shadow-lg header">
-              React Timer
+              <span className="tracking-wide border-b-4 border-yellow-400 pb-1"> React Timer</span>
           </h1>
-          <Timer />
+          <div className="frame-deco">
+              <Timer />
+          </div>
       </main>
   );
 }
