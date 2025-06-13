@@ -115,7 +115,9 @@ const Timer = () => {
                     time={time}
                     recordLap={recordLap}
                 />
-                <Clock size={48} color="#10b981" strokeWidth={1.5} />
+                <div className={styles.clockEmblem}>
+                    <Clock size={56} color="#d4af37" strokeWidth={1.5} />
+                </div>
                 <LapList laps={laps} />
               </div>
             </div>
