@@ -1,4 +1,7 @@
-//ThemeWrapper.jsx
+//File name: ThemeWrapper.jsx
+//Author: Kyle McColgan
+//Date: 15 June 2025
+//Description: This file contains the ThemeWrapper React UI/UX component for the react-timer.
 
 import React from "react";
 import { MantineProvider } from "@mantine/core";
@@ -15,6 +18,7 @@ const ThemeWrapper = ({ children }) => {
                 colorScheme: theme,
                 fontFamily: "Inter, sans-serif",
                 defaultRadius: "lg",
+                primaryColor: "yellow",
                 headings: {
                     fontFamily: "Playfair Display, serif",
                     sizes: {

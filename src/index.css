@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:wght@500;700&family=Playfair+Display:wght@500;600&family=Inter:wght@400;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -21,11 +21,10 @@
 
 /* Body setup */
 body {
-  @apply bg-slate-900 text-slate-200 font-sans;
+  @apply bg-slate-900 text-slate-200;
   margin: 0;
   padding: 0;
   transition: background-color 0.3s ease, color 0.3s ease;
-  font-family: 'Cormorant Garamond', serif;
 }
 
 body.light-theme
@@ -90,8 +89,8 @@ body.light-theme a:focus-visible
     margin-bottom: 4rem;
 }
 
-.card,
+/*.card,
 .logo,
 .read-the-docs {
   all: unset;
-}
+}*/

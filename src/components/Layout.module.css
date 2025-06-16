@@ -1,0 +1,93 @@
+/* Layout.module.css */
+
+.shell
+{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(145deg, #0a1128, #1f2937);
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.header
+{
+    padding: 2rem;
+    text-align: center;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.2), transparent);
+    border-bottom: 2px solid rgba(212, 175, 55, 0.2);
+}
+
+.logo
+{
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--gold, #d4af37);
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+    animation: fadeInDown 1s ease-out forwards;
+}
+
+@keyframes fadeInDown
+{
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.main
+{
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer
+{
+    text-align: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    color: #d1d5db;
+    font-size: 0.875rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.appWrapper
+{
+    background: linear-gradient(to bottom, #1e1b4b, #111827);
+    background-attachment: fixed;
+    color: #f8fafc;
+    font-family: 'Cinzel', serif;
+    transition: background 0.5s ease;
+    padding-bottom: 4rem;
+    text-align: center;
+}
+
+body.light-theme .appWrapper
+{
+    background: linear-gradient(to bottom, #fff7ed, #fef9f2);
+    color: #1e293b;
+}
+
+.header
+{
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 8px rgba(252, 211, 77, 0.2);
+    color: #facc15;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.05rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+}
+
+body.light-theme .header
+{
+    color: #92400e;
+    text-shadow: 1px 1px 4px rgba(255, 237, 213, 0.5);
+}

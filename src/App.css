@@ -2,6 +2,12 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Playfair+Display:wght@500;600&display=swap');
 
+/* Subtle scroll smoothing */
+html
+{
+    scroll-behavior: smooth;
+}
+
 #root
 {
     margin: 0 auto;
@@ -9,12 +15,6 @@
     min-height: 100vh;
     box-sizing: border-box;
     font-family: 'Cinzel', 'Playfair Display', serif;
-}
-
-/* Subtle scroll smoothing */
-html
-{
-    scroll-behavior: smooth;
 }
 
 /* General typography and tone */
@@ -36,41 +36,7 @@ img, svg
   display: block;
 }
 
-.appWrapper
-{
-    background: linear-gradient(to bottom, #1e1b4b, #111827);
-    background-attachment: fixed;
-    color: #f8fafc;
-    font-family: 'Cinzel', serif;
-    transition: background 0.5s ease;
-    padding-bottom: 4rem;
-    text-align: center;
-}
-
-body.light-theme .appWrapper
-{
-    background: linear-gradient(to bottom, #fff7ed, #fef9f2);
-    color: #1e293b;
-}
-
-.header
-{
-    margin-bottom: 2rem;
-    text-shadow: 2px 2px 8px rgba(252, 211, 77, 0.2);
-    color: #facc15;
-    font-family: 'Cinzel', serif;
-    letter-spacing: 0.05rem;
-    border-radius: 0.5rem;
-    padding: 0.5rem 1rem;
-}
-
-body.light-theme .header
-{
-    color: #92400e;
-    text-shadow: 1px 1px 4px rgba(255, 237, 213, 0.5);
-}
-
-.frame-deco
+/*.frame-deco
 {
     width: 100%;
     max-width: 720px;
@@ -94,4 +60,4 @@ body.light-theme .frame-deco
     border-color: #d97706;
     background: rgba(255, 255, 255, 0.85);
     box-shadow: 0 0 25px rgba(234, 179, 8, 0.15);
-}
+}*/
