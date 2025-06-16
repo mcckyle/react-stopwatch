@@ -84,6 +84,8 @@ body.light-theme .appWrapper
     letter-spacing: 0.05rem;
     border-radius: 0.5rem;
     padding: 0.5rem 1rem;
+
+    position: relative;
 }
 
 body.light-theme .header
@@ -91,3 +93,28 @@ body.light-theme .header
     color: #92400e;
     text-shadow: 1px 1px 4px rgba(255, 237, 213, 0.5);
 }
+
+.themeToggle
+{
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    background: var(--gold);
+    color: #0a1128;
+    border: 2px solid #fff5cc;
+    border-radius: 12px;
+    padding: 0.6rem 1rem;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    backdrop-filter: blur(6px);
+}
+
+.themeToggle:hover
+{
+    background: var(--theme-toggle-hover);
+    transform: scale(1.05);
+}
+
