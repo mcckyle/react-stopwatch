@@ -1,0 +1,39 @@
+/* theme.module.css */
+
+:global(:root)
+{
+    --gold: #d4af37;
+    --deep-blue: #0a1128;
+    --shadow: 0 0 35px rgba(212, 175, 55, 0.45);
+    --inner-glow: inset 0 0 15px rgba(255, 255, 255, 0.05);
+}
+
+/* Default (dark) theme variables. */
+:global(body)
+{
+    --button-text-color: #f1f5f9; /* light text for dark background (default). */
+    --box-bg: rgba(255, 255, 255, 0.04);
+    --box-border: rgba(255, 255, 255, 0.12);
+    --box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    --title-color: #f1f5f9;
+    --theme-toggle-bg: rgba(255, 255, 255, 0.05);
+    --theme-toggle-border: rgba(255, 255, 255, 0.15);
+    --theme-toggle-hover: rgba(255, 255, 255, 0.08);
+    background: #0f172a;
+    transition: background 0.5s ease;
+}
+
+/* Light theme overrides. */
+:global(body.light-theme)
+{
+    background: #f8fafc;
+    --button-text-color: #1e293b;
+    --box-bg: rgba(255, 255, 255, 0.85);
+    --box-border: rgba(0, 0, 0, 0.1);
+    --box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    --title-color: #1e293b;
+    --theme-toggle-bg: rgba(0, 0, 0, 0.05);
+    --theme-toggle-border: rgba(0, 0, 0, 0.1);
+    --theme-toggle-hover: rgba(0, 0, 0, 0.08);
+}
+
