@@ -15,14 +15,27 @@
     font-size: 3.5rem;
     font-weight: 600;
     color: #fef9c3; /* soft gold */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.35), 0 0 10px rgba(252, 211, 77, 0.3);
-    transition: color 0.4s ease;
+    text-shadow:
+      1px 1px 2px rgba(0, 0, 0, 0.35),
+      0 0 8px rgba(252, 211, 77, 0.3);
+    transition: color 0.4s ease, text-shadow 0.4s ease;
 }
 
-body.light-theme .digit
+@keyframes pulse
 {
-    color: #92400e; /* amber */
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15), 0 0 4px rgba(255, 237, 213, 0.4);
+    0%, 100% { text-shadow: 0 0 5px rgba(255, 237, 213, 0.2); }
+    50% { text-shadow: 0 0 12px rgba(255, 237, 213, 0.45); }
+}
+
+.light .digit
+{
+    color: #7c2d12; /* Color: Dark burnt sienna/Chestnut... */
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.2),
+      1px 2px 0px rgba(255, 237, 213, 0.4),
+      0 0 6px rgba(255, 241, 210, 0.3);
+
+    animation: pulse 2.5s ease-in-out infinite;
 }
 
 

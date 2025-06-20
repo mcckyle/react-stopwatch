@@ -12,10 +12,10 @@ import { useTheme } from "../../hooks/useTheme";
 const TimerDisplay = ({ time }) => {
   const { hours, minutes, seconds} = formatTime(time);
   const theme = useTheme();
-  const isLight = theme === "light";
+  //const isLight = theme === "light";
 
   return (
-    <div className={`${styles.text} ${isLight ? styles.textLight : ""}`}
+    <div className={`${styles.text} ${theme}`}
          role="timer"
          aria-label="Stopwatch time"
     >

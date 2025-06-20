@@ -1,12 +1,12 @@
 //File name: App.jsx
 //Author: Kyle McColgan
-//Date: 16 June 2025
+//Date: 18 June 2025
 //Description: This file contains the entry point React component for the react-timer.
 
 import React, { useState, useEffect } from "react";
 import Timer from "./components/Timer/Timer.jsx";
-import Layout from "./components/Layout.jsx";
-import './components/theme.module.css';
+import Layout from "./components/Layout/Layout.jsx";
+import './components/theme.css';
 import './App.css';
 
 function App() {
@@ -17,9 +17,13 @@ function App() {
     const newTheme = !dark;
     setDark(newTheme);
 
-    document.body.classList.toggle("light-theme", !newTheme);
     localStorage.setItem("theme", newTheme ? "dark" : "light");
   };
+
+  useEffect(() => {
+    document.body.classList.toggle("light", !dark);
+    document.body.classList.toggle("dark", dark);
+  }, [dark]);
 
   //Load theme preference from localStorage...
   useEffect(() => {
@@ -28,18 +32,17 @@ function App() {
     if(storedTheme === "light")
     {
         setDark(false);
-        document.body.classList.add("light-theme");
     }
   }, []);
 
-  useEffect(() => {
-    document.body.classList.toggle('light-theme', !dark);
-  }, [dark]);
+  const themeClass = dark ? "dark" : "light";
 
   return (
+    <div className={themeClass}>
       <Layout dark={dark} toggleTheme={toggleTheme}>
           <Timer/>
       </Layout>
+    </div>
   );
 }
 

@@ -1,0 +1,47 @@
+/* theme.css */
+
+:root
+{
+    --gold: #d4af37;
+    --deep-blue: #0a1128;
+    --ivory: #fffaf0;
+    --velvet: #fef634;
+    --rich-shadow: 0 12px 24px rgba(34, 34, 34, 0.2);
+    --light-glow: inset 0 0 10px rgba(255, 255, 255, 0.4);
+    --inner-glow: inset 0 0 15px rgba(255, 255, 255, 0.05);
+    --shadow: 0 0 35px rgba(212, 175, 55, 0.45);
+}
+
+/* Default (dark) theme variables. */
+.dark
+{
+    --button-text-color: #f1f5f9; /* light text for dark background (default). */
+    --box-bg: rgba(255, 255, 255, 0.04);
+    --box-border: rgba(255, 255, 255, 0.12);
+    --box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    --title-color: #f1f5f9;
+    --theme-toggle-bg: rgba(255, 255, 255, 0.05);
+    --theme-toggle-border: rgba(255, 255, 255, 0.15);
+    --theme-toggle-hover: rgba(255, 255, 255, 0.08);
+    /*background: #0f172a;*/
+    background: linear-gradient(to bottom, #1e1b4b, #111827); /* dark mode, blurple gradient... */
+    color: #e5e7eb;
+    transition: background 0.5s ease;
+}
+
+/* Light theme overrides. */
+.light
+{
+    background: linear-gradient(145deg, var(--ivory), var(--velvet));
+    color: #3b2f2f;
+
+    --button-text-color: #3b2f2f;
+    --box-bg: rgba(255, 255, 255, 0.9);
+    --box-border: rgba(212, 175, 55, 0.35);
+    --box-shadow: var(--rich-shadow);
+    --title-color: #7c3e00;
+
+    --theme-toggle-bg: rgba(255, 255, 255, 0.4);
+    --theme-toggle-border: rgba(0, 0, 0, 0.05);
+    --theme-toggle-hover: rgba(255, 255, 255, 0.6);
+}

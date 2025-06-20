@@ -1,4 +1,7 @@
-//src/__tests__/test-utils.jsx
+//File name: test-utils.jsx
+//Author: Kyle McColgan
+//Date: 19 June 2025
+//Description: This file contains set up related code for the Jest unit testing on the react-timer.
 
 import React from "react";
 import { MantineProvider } from "@mantine/core";

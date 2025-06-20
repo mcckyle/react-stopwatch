@@ -19,12 +19,13 @@
   transition: all 0.3s ease;
 }
 
-.textLight
+:global(.light) .text
 {
-    color: #7f1d1d; /* velvet red */
+    color: #5b1a0a; /* velvet red */
     text-shadow:
       0 0 1px rgba(0, 0, 0, 0.15),
-      2px 2px 2px rgba(0, 0, 0, 0.05);
+      0 0 6px rgba(255, 240, 190, 0.5),
+      0 0 14px rgba(252, 211, 77, 0.25);
 }
 
 .colon

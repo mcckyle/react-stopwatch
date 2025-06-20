@@ -1,3 +1,5 @@
+/* index.css */
+
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:wght@500;700&family=Playfair+Display:wght@500;600&family=Inter:wght@400;600&display=swap');
 
 @tailwind base;
@@ -5,67 +7,61 @@
 @tailwind utilities;
 
 /* Root theme and typography */
-:root {
-  font-family: 'Inter', system-ui, sans-serif;
-  line-height: 1.6;
-  font-weight: 400;
-  color-scheme: dark;
+:root
+{
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.6;
+    font-weight: 400;
+    color-scheme: dark;
+    color: #e5e7eb; /* slate-200 */
 
-  background-color: #0f172a; /* Dark mode */
-  color: #e5e7eb; /* slate-200 */
-
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* Body setup */
-body {
-  @apply bg-slate-900 text-slate-200;
-  margin: 0;
-  padding: 0;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-body.light-theme
+html
 {
-  @apply font-sans;
-  background-color: #f8fafc;
-  color: #1e293b;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.5s ease, color 0.5s ease;
+
 }
 
 /* Default link style */
-a {
-  @apply font-medium text-emerald-400 no-underline transition-colors duration-300;
-}
-a:hover {
-  @apply text-emerald-300;
-}
+a { @apply font-medium text-emerald-400 no-underline transition-colors duration-300; }
+a:hover { @apply text-emerald-300; }
 
 /* Light mode links */
-body.light-theme a
+.light a
 {
-    color: #7c3aed; /* violet-600 */
+    font-weight: 500;
+    color: #7c3aed;
 }
 
-body.light-theme a:hover
+.light a:hover
 {
-    color: #6d28d9; /* violet-700 */
+    color: #6d28d9;
 }
 
 
 /* Headings refinement */
 h1, h2, h3, h4, h5, h6
 {
-  @apply font-display font-semibold;
-  color: inherit;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.03rem;
+    margin-bottom: 0.5rem;
+    color: inherit;
 }
 
-body.light-theme h1,
-body.light-theme h2,
-body.light-theme h3
+.light h1,
+.light h2,
+.light h3
 {
-    color: #4c1d95; /* purple-900 */
+    color: #5b21b6;
 }
 
 /* Button focus */
@@ -76,8 +72,8 @@ a:focus-visible
     outline-offset: 4px;
 }
 
-body.light-theme button:focus-visible,
-body.light-theme a:focus-visible
+.light button:focus-visible,
+.light a:focus-visible
 {
     outline-color: #7c3aed;
 }
@@ -88,9 +84,3 @@ body.light-theme a:focus-visible
     margin-top: 4rem;
     margin-bottom: 4rem;
 }
-
-/*.card,
-.logo,
-.read-the-docs {
-  all: unset;
-}*/

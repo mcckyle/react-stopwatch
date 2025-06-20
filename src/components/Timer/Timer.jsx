@@ -1,12 +1,13 @@
 //File name: Timer.jsx
 //Author: Kyle McColgan
-//Date: 16 June 2025
+//Date: 19 June 2025
 //Description: This file contains the main parent Timer component for the React timer site.
 
 import React, { useState, useEffect, useRef } from "react";
 import { Clock } from "lucide-react";
 import { useStopwatch } from "../../hooks/useStopwatch";
 import { useKeyboardShortcuts } from "../../hooks/useKeyboardShortcuts";
+import { useTheme } from "../../hooks/useTheme";
 import TimerDisplay from "../TimerDisplay/TimerDisplay.jsx";
 import TimerControls from "../TimerControls/TimerControls";
 import LapList from "../LapList/LapList.jsx";
@@ -19,6 +20,8 @@ const Timer = () => {
   const { time, isRunning, toggle, reset, getCurrentTime } = useStopwatch();
   const [laps, setLaps] = useState([]);
   const [showHelp, setShowHelp] = useState(false);
+
+  const theme = useTheme();
 
   const hasLoadedLaps = useRef(false);
 
@@ -46,7 +49,6 @@ const Timer = () => {
                 const parsed = JSON.parse(savedLaps);
                 console.log("Parsed laps from localStorage: ", parsed);
                 setLaps(parsed);
-
             }
             catch (e)
             {
@@ -82,10 +84,11 @@ const Timer = () => {
   });
 
   return (
-    <div className={styles.container}>
+    <div className={theme}>
+      <div className={styles.container}>
             <h1 className={styles.banner}>
                 <Clock size={32} style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} />
-                Timer
+                <span className={styles.bannerText}>Timer</span>
             </h1>
 
             <div className = {styles.frame}>
@@ -105,6 +108,7 @@ const Timer = () => {
               </div>
             </div>
         {showHelp && <HelpModal onClose={() => setShowHelp(false)} />}
+      </div>
     </div>
   );
 };
