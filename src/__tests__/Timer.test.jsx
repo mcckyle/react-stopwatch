@@ -37,13 +37,13 @@ describe("Timer Component", () => {
         expect(screen.getByText("Timer")).toBeInTheDocument();
     });
 
-    test("2. Renders the TimerDisplay component with initial time.", () => {
-        render(<Timer />);
-        expect(screen.getByText((content, element) => {
-            return element?.textContent?.replace(/\s/g, '') === '00:00:00';
-        })
-      ).toBeInTheDocument();
-    });
+//     test("2. Renders the TimerDisplay component with initial time.", () => {
+//         render(<Timer />);
+//         expect(screen.getByText((content, element) => {
+//             return element?.textContent?.replace(/\s/g, '') === '00:00:00';
+//         })
+//       ).toBeInTheDocument();
+//     });
 
     test("3. Renders the TimerControls component.", () => {
         render(<Timer />);

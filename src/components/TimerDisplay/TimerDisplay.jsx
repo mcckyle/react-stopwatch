@@ -15,22 +15,24 @@ const TimerDisplay = ({ time }) => {
   //const isLight = theme === "light";
 
   return (
-    <div className={`${styles.text} ${theme}`}
-         role="timer"
-         aria-label="Stopwatch time"
-    >
-        {[...hours].map((digit, i) => (
-            <AnimatedDigit key={`hr-${i}`} value={parseInt(digit)} />
-        ))}
-        <span className={styles.colon}>:</span>
-        {[...minutes].map((digit, i) => (
-            <AnimatedDigit key={`min-${i}`} value={parseInt(digit)} />
-        ))}
-        <span className={styles.colon}>:</span>
-        {[...seconds].map((digit, i) => (
-            <AnimatedDigit key={`sec-${i}`} value={parseInt(digit)} />
-        ))}
-    </div>
+    <div className = {theme}>
+        <div className={styles.text}
+            role="timer"
+            aria-label="Stopwatch time"
+        >
+            {[...hours].map((digit, i) => (
+                <AnimatedDigit key={`hr-${i}`} value={parseInt(digit)} />
+            ))}
+            <span className={styles.colon}>:</span>
+            {[...minutes].map((digit, i) => (
+                <AnimatedDigit key={`min-${i}`} value={parseInt(digit)} />
+            ))}
+            <span className={styles.colon}>:</span>
+            {[...seconds].map((digit, i) => (
+                <AnimatedDigit key={`sec-${i}`} value={parseInt(digit)} />
+            ))}
+        </div>
+      </div>
   );
 };
 
