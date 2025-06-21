@@ -68,7 +68,7 @@
     transition: background 0.5s ease, color 0.5s ease;
 }
 
-.light .header
+:global(.light) .header
 {
     color: #92400e;
     text-shadow: 1px 1px 4px rgba(255, 237, 213, 0.5);

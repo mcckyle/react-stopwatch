@@ -27,7 +27,7 @@
     50% { text-shadow: 0 0 12px rgba(255, 237, 213, 0.45); }
 }
 
-.light .digit
+:global(.light) .digit
 {
     color: #7c2d12; /* Color: Dark burnt sienna/Chestnut... */
     text-shadow:
