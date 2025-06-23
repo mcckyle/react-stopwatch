@@ -8,23 +8,13 @@
     text-align: center;
     letter-spacing: 0.1rem;
     margin-bottom: 2rem;
-
-    /* Rendering fixes for blur on the word Timer... */
-    /*transform: translateZ(0);
-    backface-visibility: hidden;
-    -webkit-font-smoothing: antialiased;
-    -mox-osx-font-smoothing: grayscale;*/
-
     position: relative;
     color: #facc15;
 }
 
 .bannerText
 {
-    /*background: linear-gradient(90deg, #facc15, #fde68a, #facc15);*/
     background-size: 200% auto;
-/*    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;*/
     display: inline-block;
 
     animation: glowText 6s ease-in-out infinite;
@@ -35,14 +25,12 @@
 {
     background: linear-gradient(90deg, #fbbf24, #fde68a, #fcd34d);
     text-shadow: 0 0 2px rgba(251, 191, 36, 0.25);
-    /*filter: drop-shadow(1px 1px 1px rgba(234, 179, 8, 0.5));*/
 }
 
 :global(.light) .banner
 {
     background: linear-gradient(90deg, #fbbf24, #fde68a, #fcd34d);
     text-shadow: 0 0 4px rgba(251, 191, 36, 0.3);
-    /*filter: drop-shadow(1px 1px 1px rgba(234, 179, 8, 0.5));*/
 }
 
 .banner::after
@@ -67,17 +55,26 @@
 
 .frame
 {
-    border: 10px solid var(--gold);
-    border-radius: 1.75rem;
-    padding: 2rem;
-    background: rgba(10, 17, 40, 0.5); /* dark blue overlay. */
+    width: 100%;
+    max-width: none;
+    flex: 1;
+    padding: 3rem;
+    border: 12px solid var(--gold);
+    border-radius: 2.25rem;
+    /*padding: 3.5rem 2rem;*/
+    background: rgba(22, 20, 50, 0.55); /* dark blue overlay. */
 
-    box-shadow: var(--shadow), var(--inner-glow);
-    backdrop-filter: blur(8px);
+    /*box-shadow: var(--shadow), var(--inner-glow);*/
+    box-shadow:
+      0 0 40px rgba(212, 175, 55, 0.15),
+      inset 0 0 18px rgba(255, 255, 255, 0.04);
+
+    backdrop-filter: blur(10px);
 
     transition: all 0.5s ease;
     position: relative;
-    overflow: hidden;
+    /*overflow: hidden;*/
+    overflow: visible;
 }
 
 .frame::before
@@ -115,19 +112,18 @@
 
 :global(.light) .frame
 {
-    background: linear-gradient(to bottom right, #fff9e6, #fef6e4);
+    background: linear-gradient(to bottom right, #fffaf0, #fefae0);
     border-color: #eab308;
-    box-shadow: 0 0 30px rgba(251, 191, 36, 0.25);
+    box-shadow: 0 0 30px rgba(251, 191, 36, 0.2);
 }
 
 :global(.light) .box
 {
-    background: linear-gradient(145deg, #fff8dc, #fef6e4);
+    background: linear-gradient(145deg, #fffef0, #fefae0);
     border: 1px solid #eab308;
-    border-color: #eab308; /* Golden. */
     box-shadow:
       0 0 25px rgba(251, 191, 36, 0.25),
-      inset 0 0 8px rgba(255, 255, 255, 0.3);
+      inset 0 0 8px rgba(255, 255, 255, 0.25);
 }
 
 :global(.light) .clockEmblem
@@ -141,25 +137,20 @@
 {
     min-height: 100vh;
     width: 100%;
-    max-width: 720px;
+    /*max-width: 720px;*/
+    max-width: none;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /*background: linear-gradient(145deg, #0a1128, #1f2937);*/
-    /*background: linear-gradient(145deg, #0d0d0d, #1a1a1a);*/
-    /*background: linear-gradient(145deg, #111827, #1e293b);*/
-    /*background: linear-gradient(145deg, #1c0f13, #2d1a23);*/
-    /*background: linear-gradient(145deg, #0e0e10, #1a1a2e);*/
-    /*background: radial-gradient(circle at top left, #1c1b29, #0f0e17 60%);*/
-    /*background: radial-gradient(ellipse at top left, #1a1325, #0c0b10 80%);*/
-    /*background: radial-gradient(circle at top left, #181826, #0e0e1a 70%);*/
-    /*background: radial-gradient(circle at 40% 30%, rgba(12, 12, 20, 0.98) 0%, rgba(6, 6, 14, 1) 100%);*/
+
     background: linear-gradient(145deg, rgba(36, 32, 84, 0.65), rgba(17, 17, 39, 0.85));
     padding: 2rem;
     box-sizing: border-box;
-    overflow: hidden;
+    /*overflow: hidden;*/
+    overflow: visible;
     transition: background 0.5s ease;
+    position: relative;
 }
 
 .container::before
@@ -179,24 +170,25 @@
 :global(.light) .container
 {
     background: linear-gradient(135deg, #fffef9, #f3f4f6);
-    /*background: linear-gradient(135deg, #fffdf5, #fefae0);*/
-    /*background: linear-gradient(135deg, #fffef6, #fefae0);*/
 }
 
 .box
 {
     width: 100%;
-    max-width: 640px;
-    padding: 2.5rem 2rem;
+    max-width: none;
+    min-height: 80vh;
+    padding: 6rem 4rem;
     background: var(--box-bg); /* default: rgba(255, 255, 255, 0.04). */
-    backdrop-filter: blur(10px);
-    border-radius: 1.5rem;
+    backdrop-filter: blur(12px);
+    border-radius: 2.5rem;
     border: 1px solid var(--box-border);
     box-shadow: var(--box-shadow);
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2.5rem;
+    justify-content: center;
+    gap: 4rem;
     box-sizing: border-box;
 
     opacity: 0;
