@@ -74,4 +74,12 @@
 /*    animation: pulse 2.5s ease-in-out infinite;*/
 }
 
+@media(max-width: 480px)
+{
+    .digitContainer
+    {
+        width: 1.6ch;
+    }
+}
+
 
