@@ -2,11 +2,16 @@
 
 .digitContainer
 {
-    display: inline-block;
-    width: 2ch;
-    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+/*    text-align: center;
     position: relative;
-    padding: 0 0.25rem;
+    padding: 0 0.25rem;*/
+    min-width: 1.25ch;
+    flex-shrink: 1;
+    box-sizing: border-box;
 }
 
 .digitContainer::before
@@ -28,7 +33,9 @@
 {
     display: inline-block;
     font-family: 'Cinzel Decorative', 'Cinzel', serif;
-    font-size: clamp(2rem, 8vw, 9rem);
+    font-size: clamp(1.5rem, 5vw, 3.5rem);
+    white-space: nowrap;
+    flex-shrink: 1;
     font-weight: 900;
     color: #fef08a; /* soft gold */
 
@@ -70,16 +77,17 @@
       0 1px 2px rgba(0, 0, 0, 0.15),
       0 0 12px rgba(234, 179, 8, 0.25),
       1px 1px 3px rgba(255, 255, 255, 0.3);
-
-/*    animation: pulse 2.5s ease-in-out infinite;*/
 }
 
-@media(max-width: 480px)
+@media(max-width: 768px)
 {
     .digitContainer
     {
-        width: 1.6ch;
+        width: 1.5ch;
+    }
+
+    .digit
+    {
+        font-size: clamp(1.25rem, 4vw, 2.5rem);
     }
 }
-
-

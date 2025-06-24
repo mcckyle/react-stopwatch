@@ -84,3 +84,26 @@ a:focus-visible
     margin-top: 4rem;
     margin-bottom: 4rem;
 }
+
+/* MEDIA TEMP QUERY */
+/*@media(max-width: 400px)
+{
+    body
+    {
+        background: yellow !important;
+    }
+
+    #root
+    {
+        outline: 5px solid red !important;
+    }
+}*/
+
+body,
+html,
+#root
+{
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+

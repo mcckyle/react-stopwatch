@@ -37,35 +37,3 @@ img, svg
   max-width: 100%;
   display: block;
 }
-
-html, body
-{
-    width: 100%;
-    overflow-x: hidden;
-}
-
-/*.frame-deco
-{
-    width: 100%;
-    max-width: 720px;
-    margin: 0 auto;
-    border: 4px double #facc15;
-    padding: 2rem;
-    border-radius: 1rem;
-    margin-top: 2rem;
-    background: rgba(255, 255, 255, 0.02);
-    box-shadow: 0 0 25px rgba(250, 204, 21, 0.15);
-    box-sizing: border-box;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-body.light-theme .frame-deco
-{
-    border-color: #d97706;
-    background: rgba(255, 255, 255, 0.85);
-    box-shadow: 0 0 25px rgba(234, 179, 8, 0.15);
-}*/

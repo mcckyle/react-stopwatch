@@ -234,51 +234,35 @@
 
 @media(max-width: 768px)
 {
-    .frame
-    {
-        padding: clamp(1.5rem, 5vw, 2.5rem);
-        border-width: 6px;
-        border-radius: 1.5rem;
-    }
-
+    .frame,
+    .container,
     .box
-    {
-        padding: 3rem 2rem;
-        gap: 2rem;
-    }
-
-    .container
-    {
-        padding: 1.5rem;
-    }
-
-    .banner
-    {
-        font-size: clamp(2rem, 8vw, 3rem);
-        margin-bottom: 1.5rem;
-    }
-}
-
-@media(max-width: 480px)
-{
-    .frame
-    {
-        padding: clamp(1rem, 4vw, 2rem);
-    }
-
-    .box
-    {
-        padding: 2rem 1.25rem;
-        gap: 1.5rem;
-    }
-
-    .container
     {
         padding: 1rem;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+
+    .frame
+    {
+        width: 100%;
+    }
+
+    .box
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: nowrap;
+/*        padding: 1.5rem;
+        max-width: 100vw;
+        overflow-x: hidden;*/
     }
 
     .banner
     {
-        font-size: clamp(1.75rem, 8vw, 2.5rem);
+        font-size: clamp(1.25rem, 5vw, 2.5rem);
     }
 }
