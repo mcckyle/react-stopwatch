@@ -86,7 +86,7 @@ react-timer/
 - [x] Basic lap functionality.
 - [x] Keyboard shortcuts for core controls.
 - [x] Persist laps using browser localStorage.
-- [ ] Add light/dark mode toggle with animation.
+- [x] Add light/dark mode toggle with animation.
 - [ ] Add a digital clock optional view with current time option for accessibility.
 - [ ] Add an analog clock optional view for completeness.
 - [ ] Highlight fastest and slowest lap.

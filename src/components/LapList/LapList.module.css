@@ -4,41 +4,47 @@
 {
     max-height: 240px;
     overflow-y: auto;
-    margin-top: 1.5rem;
-    padding: 1.75rem;
-    border-radius: 1rem;
+    margin-top: 1.75rem;
+    padding: 2rem;
+    border-radius: 1.25rem;
+
     background: linear-gradient(to bottom right, #1e293b, #0f172a);
-    color: #fef3c7; /* soft gold */
+    color: #fef3c7; /* Soft golden ivory. */
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2), inset 0 0 5px rgba(255, 255, 255, 0.05);
-    border: 2px solid rgba(255, 215, 0, 0.4);
-    backdrop-filter: blur(6px);
-    transition: all 0.3s ease;
+    font-size: 1.15rem;
+
+    box-shadow:
+      0 0 24px rgba(255, 215, 0, 0.25),
+      inset 0 0 6px rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 215, 0, 0.45);
+    backdrop-filter: blur(7px);
+    transition: all 0.35s ease;
 }
 
-.lapListLight
+:global(.light) .lapList
 {
-    background: linear-gradient(to bottom right, #fff8e1, #fdf6d9);
-    color: #7f1d1d; /* velvet red */
-    box-shadow: 0 0 12px rgba(128, 0, 0, 0.15), inset 0 0 5px rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 204, 0, 0.4);
+    background: linear-gradient(to bottom right, #fffaf0, #fdf5d8);
+    color: #7f1d1d; /* Velvet red */
+    box-shadow:
+      0 0 14px rgba(128, 0, 0, 0.15),
+      inset 0 0 6px rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 204, 0, 0.5);
 }
 
-/* Individual lap row */
+/* === INDIVIDUAL LAP ROW === */
 .lap
 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0;
+    padding: 0.75rem 0;
     border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
     transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.lapListLight .lap
+:global(.light) .lap
 {
-    border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
 }
 
 .lap:last-child
@@ -46,52 +52,52 @@
     border-bottom: none;
 }
 
-/* Lap label (e.g., "Lap 1"). */
+/* === LAP LABEL (e.g., "Lap 1"). === */
 .lapLabel
 {
-    color: #facc15; /* bright gold */
+    color: #facc15; /* Bright gold */
     font-size: 1rem;
     font-weight: 600;
-    letter-spacing: 0.6px;
-    text-shadow: 0 0 2px rgba(255, 215, 0, 0.4);
+    letter-spacing: 0.7px;
+    text-shadow: 0 0 3px rgba(255, 215, 0, 0.45);
     transition: color 0.3s ease;
 }
 
-.lapListLight .lapLabel
+:global(.light) .lapLabel
 {
     color: #b45309; /* amber-700 */
 }
 
-/* Lap time (e.g., "00:12:34.56"). */
+/* === LAP TIME (e.g., "00:12:34.56"). === */
 .lapTime
 {
     color: #fcd34d; /* gold */
     font-weight: 700;
-    font-size: 1.1rem;
-    letter-spacing: 0.5px;
-    text-shadow: 0 0 4px rgba(255, 215, 0, 0.4);
+    font-size: 1.15rem;
+    letter-spacing: 0.6px;
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.45);
     transition: color 0.3s ease;
 }
 
-.lapListLight .lapTime
+:global(.light) .lapTime
 {
     color: #d97706; /* amber-600 */
     text-shadow: none;
 }
 
-/* Separator between label and time. */
+/* === SEPARATOR === */
 .lapSeparator
 {
     margin: 0 0.5rem;
-    color: #fef09a;
-    opacity: 0.25;
+    color: #fef08a;
+    opacity: 0.2;
+    font-weight: 500;
 }
 
-/* Hover effect. */
+/* === ROW HOVER EFFECTS. */
 .lap:hover
 {
-    background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    transform: scale(1.01);
+    background-color: rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    transform: scale(1.015);
 }
-

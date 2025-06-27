@@ -6,7 +6,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Root theme and typography */
+/* Root typography and tone */
 :root
 {
     font-family: 'Inter', system-ui, sans-serif;
@@ -18,6 +18,12 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    --gold: #d4af37;
+    --deep-blue: #1e1b4b;
+    --purple: #4c1d95;
+    --cream: #fefae0;
+    --shadow: 0 0 15px rgba(212, 175, 55, 0.3);
 }
 
 /* Body setup */
@@ -25,18 +31,33 @@ html
 {
     margin: 0;
     padding: 0;
+    background-color: var(--deep-blue);
     transition: background-color 0.5s ease, color 0.5s ease;
+}
 
+body
+{
+    margin: 0;
+    font-size: 16px;
+    background-color: transparent;
+    color: inherit;
 }
 
 /* Default link style */
-a { @apply font-medium text-emerald-400 no-underline transition-colors duration-300; }
-a:hover { @apply text-emerald-300; }
+a
+{
+    @apply font-medium no-underline transition-colors duration-300;
+    color: var(--gold);
+}
+
+a:hover
+{
+    color: #fef9c3;
+}
 
 /* Light mode links */
 .light a
 {
-    font-weight: 500;
     color: #7c3aed;
 }
 
@@ -45,16 +66,31 @@ a:hover { @apply text-emerald-300; }
     color: #6d28d9;
 }
 
-
 /* Headings refinement */
 h1, h2, h3, h4, h5, h6
 {
     font-family: 'Cinzel', serif;
     font-weight: 700;
     line-height: 1.2;
-    letter-spacing: 0.03rem;
+    letter-spacing: 0.04rem;
     margin-bottom: 0.5rem;
-    color: inherit;
+    color: var(--gold);
+    text-shadow: 0 0 6px rgba(212, 175, 55, 0.2);
+}
+
+h1
+{
+    font-size: 2.75rem;
+}
+
+h2
+{
+    font-size: 2.25rem;
+}
+
+h3
+{
+    font-size: 1.75rem;
 }
 
 .light h1,
@@ -62,28 +98,67 @@ h1, h2, h3, h4, h5, h6
 .light h3
 {
     color: #5b21b6;
+    text-shadow: 0 0 5px rgba(124, 58, 237, 0.2);
 }
 
 /* Button focus */
 button:focus-visible,
 a:focus-visible
 {
-    outline: 2px dashed #10b981;
+    outline: 2px solid var(--gold);
     outline-offset: 4px;
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
 }
 
 .light button:focus-visible,
 .light a:focus-visible
 {
     outline-color: #7c3aed;
+    box-shadow: 0 0 4px rgba(124, 58, 237, 0.4);
 }
 
-/* Utility spacing */
+/* Utility sections */
 .section
 {
     margin-top: 4rem;
     margin-bottom: 4rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
 }
+
+/* Selection effects */
+::selection
+{
+    background: rgba(212, 175, 55, 0.2);
+    color: var(--cream);
+}
+
+/* Scrollbars */
+::-webkit-scrollbar
+{
+    width: 12px;
+}
+
+::-webkit-scrollbar-track
+{
+    background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb
+{
+    background: var(--gold);
+    border-radius: 6px;
+    border: 2px solid #1e1b4b;
+}
+
+/*.decorative-border
+{
+    border: 2px double var(--gold);
+    padding: 1rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    box-shadow: var(--shadow);
+}*/
 
 /* MEDIA TEMP QUERY */
 /*@media(max-width: 400px)
@@ -99,11 +174,11 @@ a:focus-visible
     }
 }*/
 
-body,
+/*body,
 html,
 #root
 {
     max-width: 100vw;
     overflow-x: hidden;
-}
+}*/
 

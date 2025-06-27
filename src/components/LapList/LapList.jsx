@@ -1,6 +1,6 @@
 //File name: LapList.jsx
 //Author: Kyle McColgan
-//Date: 09 June 2025
+//Date: 26 June 2025
 //Description: This file contains the Lap component for the React timer site.
 
 import React from "react";
@@ -11,27 +11,28 @@ import { useTheme } from "../../hooks/useTheme";
 const LapList = ({ laps }) => {
 
     const theme = useTheme();
-    const isLight = theme === "light";
 
     return (
-        <div className={`${styles.lapList} ${isLight ? styles.lapListLight : ""}`}>
-            {laps.map((lap, index) => {
-                const lapNumber = laps.length - index;
-                const { hours, minutes, seconds, centiSeconds } = formatTime(lap, true);
+        <div className = {theme}>
+            <div className={styles.lapList}>
+                {laps.map((lap, index) => {
+                    const lapNumber = laps.length - index;
+                    const { hours, minutes, seconds, centiSeconds } = formatTime(lap, true);
 
-                return (
-                    <div key={index} className={styles.lap}>
-                        <div className = {styles.lapLabel}>Lap {lapNumber}</div>
-                        <div className = {styles.lapSeparator}> </div>
-                        <div className = {styles.lapTime}>
-                            {hours !== "00"
-                                ? `${hours}:${minutes}:${seconds}.${centiSeconds}`
-                                : `${minutes}:${seconds}.${centiSeconds}`
-                            }
+                    return (
+                        <div key={index} className={styles.lap}>
+                            <div className = {styles.lapLabel}>Lap {lapNumber}</div>
+                            <div className = {styles.lapSeparator}> </div>
+                            <div className = {styles.lapTime}>
+                                {hours !== "00"
+                                    ? `${hours}:${minutes}:${seconds}.${centiSeconds}`
+                                    : `${minutes}:${seconds}.${centiSeconds}`
+                                }
+                            </div>
                         </div>
-                    </div>
-                );
-            })}
+                    );
+                })}
+            </div>
         </div>
     );
 };

@@ -20,14 +20,6 @@ function App() {
     localStorage.setItem("theme", newTheme ? "dark" : "light");
   };
 
-//   useEffect(() => {
-//     console.log("Viewport width (JS):", window.innerWidth);
-//     if(window.innerWidth < 400)
-//     {
-//       document.body.style.background = 'lightgreen';
-//     }
-//   }, []);
-
   useEffect(() => {
     document.body.classList.toggle("light", !dark);
     document.body.classList.toggle("dark", dark);
