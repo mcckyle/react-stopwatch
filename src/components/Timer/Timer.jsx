@@ -1,6 +1,6 @@
 //File name: Timer.jsx
 //Author: Kyle McColgan
-//Date: 19 June 2025
+//Date: 30 June 2025
 //Description: This file contains the main parent Timer component for the React timer site.
 
 import React, { useState, useEffect, useRef } from "react";

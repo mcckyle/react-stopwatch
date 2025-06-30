@@ -12,6 +12,11 @@ const LapList = ({ laps }) => {
 
     const theme = useTheme();
 
+    const lapDurations = laps.map((lap, index) => lap - (laps[index + 1] ?? 0));
+
+    const fastest = Math.min(...lapDurations);
+    const slowest = Math.max(...lapDurations);
+
     return (
         <div className = {theme}>
             <div className={styles.lapList}>
@@ -27,8 +32,12 @@ const LapList = ({ laps }) => {
                         ? `+${hours}:${minutes}:${seconds}:${centiSeconds}`
                         : `+${dMin}:${dSec}:${dCs}`;
 
+                    let highlight = "";
+                    if (delta === fastest) highlight = styles.fastest;
+                    else if (delta === slowest) highlight = styles.slowest;
+
                     return (
-                        <div key={index} className={styles.lap}>
+                        <div key={index} className={`${styles.lap} ${highlight}`}>
                             <div className = {styles.lapLabel}>Lap {lapNumber}</div>
                             <div className = {styles.lapSeparator}> </div>
                             <div className = {styles.lapTime}>

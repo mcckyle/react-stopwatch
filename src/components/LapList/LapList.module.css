@@ -129,3 +129,29 @@
     color: #6930c3;
     text-shadow: none;
 }
+
+.fastest
+{
+    background: rgba(34, 197, 94, 0.12);
+    border-left: 6px solid #22c55e;
+}
+
+.slowest
+{
+    background: rgba(239, 68, 68, 0.12);
+    border-left: 6px solid #ef4444;
+}
+
+.fastest .lapTime,
+.fastest .lapDelta
+{
+    color: #86efac;
+    text-shadow: 0 0 6px rgba(34, 197, 94, 0.5);
+}
+
+.slowest .lapTime,
+.slowest .lapDelta
+{
+    color: #fca5a5;
+    text-shadow: 0 0 6px rgba(239, 68, 68, 0.5);
+}
