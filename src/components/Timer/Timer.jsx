@@ -104,7 +104,9 @@ const Timer = () => {
                 <div className={styles.clockEmblem}>
                     <Clock size={56} color="#d4af37" strokeWidth={1.5} />
                 </div>
-                <LapList laps={laps} />
+                <div className={styles.lapListWrapper}>
+                    <LapList laps={laps} />
+                </div>
               </div>
             </div>
         {showHelp && <HelpModal onClose={() => setShowHelp(false)} />}

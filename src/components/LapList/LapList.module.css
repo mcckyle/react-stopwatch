@@ -2,23 +2,30 @@
 
 .lapList
 {
-    max-height: 240px;
+    width: 100%;
+    max-width: 100%;
+    margin: 2.5rem auto 0 auto;
+    padding: 3rem;
+    max-height: 300px;
     overflow-y: auto;
     margin-top: 1.75rem;
-    padding: 2rem;
-    border-radius: 1.25rem;
+    border-radius: 2rem;
 
-    background: linear-gradient(to bottom right, #1e293b, #0f172a);
+    background: radial-gradient(circle at center, rgba(30, 41, 59, 0.95), #0f172a);
+    border-image: linear-gradient(to right, #eab308, #facc15) 1;
+    border-width: 4px;
+    border-style: solid;
     color: #fef3c7; /* Soft golden ivory. */
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem;
+    font-size: 1.55rem;
 
     box-shadow:
-      0 0 24px rgba(255, 215, 0, 0.25),
-      inset 0 0 6px rgba(255, 255, 255, 0.05);
-    border: 2px solid rgba(255, 215, 0, 0.45);
-    backdrop-filter: blur(7px);
-    transition: all 0.35s ease;
+      0 0 50px rgba(255, 215, 0, 0.3),
+      inset 0 0 18px rgba(255, 255, 255, 0.08);
+    border: 3px solid rgba(255, 215, 0, 0.5);
+    backdrop-filter: blur(8px);
+    transition: all 0.4s ease;
+    box-sizing: border-box;
 }
 
 :global(.light) .lapList
@@ -26,19 +33,21 @@
     background: linear-gradient(to bottom right, #fffaf0, #fdf5d8);
     color: #7f1d1d; /* Velvet red */
     box-shadow:
-      0 0 14px rgba(128, 0, 0, 0.15),
+      0 0 16px rgba(128, 0, 0, 0.18),
       inset 0 0 6px rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 204, 0, 0.5);
+    border: 3px solid rgba(255, 204, 0, 0.55);
 }
 
 /* === INDIVIDUAL LAP ROW === */
 .lap
 {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 6.5rem 1fr auto;
+    /*justify-content: space-between;*/
     align-items: center;
-    padding: 0.75rem 0;
-    border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+    column-gap: 2rem;
+    padding-block: 1.25rem;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.07);
     transition: background 0.3s ease, transform 0.2s ease;
 }
 
@@ -52,14 +61,23 @@
     border-bottom: none;
 }
 
-/* === LAP LABEL (e.g., "Lap 1"). === */
+/* === ROW HOVER EFFECTS. */
+.lap:hover
+{
+    background-color: rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    transform: scale(1.015);
+    box-shadow: 0 0 14px rgba(255, 215, 0, 0.3);
+}
+
+/* === LAP NUMBER LABEL (e.g., "Lap 1"). === */
 .lapLabel
 {
     color: #facc15; /* Bright gold */
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: 0.7px;
-    text-shadow: 0 0 3px rgba(255, 215, 0, 0.45);
+    font-size: 1.45rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 0 0 4px rgba(255, 215, 0, 0.45);
     transition: color 0.3s ease;
 }
 
@@ -72,10 +90,11 @@
 .lapTime
 {
     color: #fcd34d; /* gold */
-    font-weight: 700;
-    font-size: 1.15rem;
+    font-weight: 800;
+    font-size: 1.55rem;
     letter-spacing: 0.6px;
-    text-shadow: 0 0 5px rgba(255, 215, 0, 0.45);
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+    text-align: right;
     transition: color 0.3s ease;
 }
 
@@ -94,10 +113,19 @@
     font-weight: 500;
 }
 
-/* === ROW HOVER EFFECTS. */
-.lap:hover
+/* DELTA TIME. */
+.lapDelta
 {
-    background-color: rgba(255, 255, 255, 0.06);
-    border-radius: 10px;
-    transform: scale(1.015);
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: #a78bfa; /* Lavender. */
+    min-width: 8ch;
+    text-align: right;
+    text-shadow: 0 0 6px rgba(168, 130, 248, 0.3);
+}
+
+.light .lapDelta
+{
+    color: #6930c3;
+    text-shadow: none;
 }

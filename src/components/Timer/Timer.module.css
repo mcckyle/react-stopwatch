@@ -192,6 +192,17 @@
     inset 0 0 8px rgba(255, 255, 255, 0.25);
 }
 
+.box:hover
+{
+    transform: translateY(-2px);
+}
+
+.box svg:hover
+{
+    transform: rotate(5deg);
+    transition: transform 0.3s ease;
+}
+
 @keyframes fadeInUp
 {
   to {
@@ -223,15 +234,13 @@
     transform: rotate(3deg) scale(1.05);
 }
 
-.box:hover
+.lapListWrapper
 {
-    transform: translateY(-2px);
-}
-
-.box svg:hover
-{
-    transform: rotate(5deg);
-    transition: transform 0.3s ease;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 1rem 2rem;
+    box-sizing: border-box;
 }
 
 /* 1) For Big phones & small tablets (less than 640px). */
