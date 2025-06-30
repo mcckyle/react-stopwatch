@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: center;
     font-family: 'Cinzel Decorative', 'Cinzel', serif;
-    font-size: clamp(6rem, 12vw, 13rem);
+    font-size: clamp(5rem, 10vw, 12rem);
     font-weight: 900;
     letter-spacing: 0.2rem;
     color: #fef08a; /* sunlit gold */
@@ -16,7 +16,7 @@
       0 0 22px rgba(255, 255, 200, 0.2),
       3px 3px 10px rgba(0, 0, 0, 0.45);
 
-    padding: 2.25rem 3.5rem;
+    padding: 1.75rem 2.5rem;
     border-radius: 1.75rem;
     background: linear-gradient(
       135deg,
@@ -28,8 +28,15 @@
 
     user-select: none;
     transition: all 0.4s ease-in-out;
-    max-width: 100%;
     box-sizing: border-box;
+
+    max-width: 100%;
+    width: 100%;
+    min-width: 0; /* Prevents overflow from breaking the layout. */
+    flex-wrap: nowrap; /* Avoid stacking the timer digits on smaller screen sizes...*/
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
 }
 
 :global(.light) .text
@@ -68,22 +75,25 @@
   }
 }
 
+/* 1) Medium screen sizes and below. */
+@media(max-width: 1280px)
+{
+  .text
+  {
+      font-size: clamp(3.5rem, 8vw, 9rem);
+      padding: 1.25rem 1.75rem;
+      border-radius: 1.5rem;
+  }
+}
+
+/* 2) Small screens. */
 @media (max-width: 768px)
 {
     .text
     {
-        font-size: clamp(1.75rem, 6vw, 3rem);
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        gap: 0.4rem;
-        flex-wrap: nowrap;
-        overflow: hidden;
-        box-sizing: border-box;
-        padding: 1.25rem 1.5rem;
+        font-size: clamp(2rem, 6.5vw, 4rem);
+        padding: 1rem 1.25rem;
         border-radius: 1rem;
-        /*display: flex;*/
-        /*max-width: 100%;*/
     }
 
     .colon

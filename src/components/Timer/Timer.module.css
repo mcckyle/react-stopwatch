@@ -56,7 +56,9 @@
 .frame
 {
     width: 100%;
-    max-width: none;
+    box-sizing: border-box;
+    max-width: clamp(90vw, 1400px, 95vw);
+    margin-inline: auto;
     flex: 1;
     padding: 3rem;
     border: 12px solid var(--gold);
@@ -158,7 +160,8 @@
 .box
 {
     width: 100%;
-    max-width: none;
+    /*max-width: none;*/
+    max-width: clamp(88vw, 1360px, 93vw);
     min-height: 80vh;
     padding: 6rem 4rem;
     background: var(--box-bg); /* default: rgba(255, 255, 255, 0.04). */
@@ -231,7 +234,31 @@
     transition: transform 0.3s ease;
 }
 
-@media(max-width: 768px)
+/* 1) For Big phones & small tablets (less than 640px). */
+@media(max-width: 640px)
+{
+    .frame,
+    .box
+    {
+        padding: 1rem 1.25rem;
+        border-width: 8px;
+    }
+
+    .banner { font-size: clamp(1.6rem, 9vw, 2.2rem); }
+}
+
+/* 2) For Medium-sized tablets (641 - 1024px screen size). */
+@media(max-width: 1024px)
+{
+    .frame,
+    .box
+    {
+        padding: 1rem 1.25rem; }
+
+    .banner { font-size: clamp(2.1rem, 6.5vw, 3rem); }
+}
+
+/*@media(max-width: 768px)
 {
     .frame,
     .container,
@@ -261,4 +288,4 @@
     {
         font-size: clamp(1.25rem, 5vw, 2.5rem);
     }
-}
+}*/

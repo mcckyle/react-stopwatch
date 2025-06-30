@@ -60,6 +60,8 @@
     align-items: center;
     justify-content: center;
     background: transparent;
+
+    overflow-x: hidden; /* Forbid side-scrolling no matter what. */
 }
 
 /* Layout Container */
