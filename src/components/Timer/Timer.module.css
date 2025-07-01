@@ -243,6 +243,21 @@
     box-sizing: border-box;
 }
 
+.viewToggle
+{
+    margin: 1rem auto;
+}
+
+.viewToggle:hover
+{
+    background: linear-gradient(to right, #fde68a, #facc15);
+}
+
+.clockView
+{
+    display: flex;
+}
+
 /* 1) For Big phones & small tablets (less than 640px). */
 @media(max-width: 640px)
 {

@@ -1,0 +1,87 @@
+//File name: AnalogClock.jsx
+//Author: Kyle McColgan
+//Date: 30 June 2025
+//Description: This file contains the Analog clock component for the React timer site.
+
+import React, { useState, useEffect } from "react";
+import { getChicagoParts } from "../utils/clock";
+import styles from './AnalogClock.module.css';
+
+export default function AnalogClock()
+{
+    const [time, setTime] = useState(getChicagoParts());
+
+    // Updates every second.
+    useEffect(() => {
+        const id = setInterval(() => setTime(getChicagoParts()), 1000);
+        return () => clearInterval(id);
+    }, []);
+
+    // Highlights the current second tick.
+    useEffect(() => {
+        const { s } = time;
+        const now = document.querySelector(`line[data-second="${s}"]`);
+        const prev = document.querySelector(`line[data-second="${(s + 59) % 60}"]`);
+
+        now?.classList.add(styles.active);
+        prev?.classList.remove(styles.active);
+
+        const timeout = setTimeout(() => now?.classList.remove(styles.active), 450);
+
+        return () => clearTimeout(timeout);
+    }, [time]);
+
+    // Hand Angles.
+    const { h, m, s } = time;
+
+    const secondDeg = s * 6 - 90;
+    const minuteDeg = m * 6 + s * 0.1 - 90;
+    const hourDeg = ((h % 12) + m / 60) * 30 - 90;
+
+    return (
+        <div className = {styles.clockContainer}>
+            <div className = {styles.clockFace}>
+                <svg className={styles.ticks} viewBox="0 0 200 200">
+                    {Array.from({ length: 60 }).map((_, i) => {
+                        const angle = (i * 6) * (Math.PI / 180);
+                        const x1 = 100 + 85 * Math.cos(angle);
+                        const y1 = 100 + 85 * Math.sin(angle);
+                        const x2 = 100 + 95 * Math.cos(angle);
+                        const y2 = 100 + 95 * Math.sin(angle);
+
+                        return (
+                            <line key = {i}
+                                  x1={x1} y1={y1} x2={x2} y2={y2}
+                                  data-second={i}
+                                  className={styles.tick} />
+                        );
+                    })}
+
+                    {Array.from({ length: 12 }).map((_, i) => {
+                        const ROMAN = [
+                            "XII","I","II","III","IV","V",
+                            "VI","VII","VIII","IX","X","XI"
+                        ];
+                        const angle = (i * 30 - 90) * (Math.PI / 180);
+                        const x = 100 + 70 * Math.cos(angle);
+                        const y = 100 + 70 * Math.sin(angle);
+
+                        return (
+                            <text key = {i} x={x} y={y} className={styles.numeral}>
+                                {ROMAN[i]}
+                            </text>
+                        );
+                    })}
+                </svg>
+
+                <div className={styles.hands}>
+                    <div className = {styles.hourHand} style={{ transform: `rotate(${hourDeg}deg)` }} />
+                    <div className = {styles.minuteHand} style={{ transform: `rotate(${minuteDeg}deg)` }} />
+                    <div className = {styles.secondHand} style={{ transform: `rotate(${secondDeg}deg)` }} />
+                </div>
+
+                <div className={styles.glassOverlay} />
+            </div>
+        </div>
+    );
+};
