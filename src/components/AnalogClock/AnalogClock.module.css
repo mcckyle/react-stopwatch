@@ -54,8 +54,16 @@
     transition: stroke 0.3s, stroke-width 0.3s;
 }
 
-/* Hour ticks... */
-.tick:nth-of-type(5n)
+/* Golden hour ticks... */
+/*.tick:nth-of-type(5n)
+{
+    stroke-width: 4;
+    stroke: #ffe66d;
+    filter: drop-shadow(0 0 4px rgba(255, 214, 10, 0.4));
+}*/
+
+/* Golden hour ticks... */
+.hourTick
 {
     stroke-width: 4;
     stroke: #ffe66d;
@@ -97,12 +105,23 @@
     inset: 0;
 }
 
-.hands div
+.handWrapper
 {
     position: absolute;
     left: 50%;
     top: 50%;
-    transform-origin: 0 0;
+
+    /* Pivot exaclty in the centre of the dial:
+     5 0% 50% = middle of the element itself.
+     translate(-50%, -100%) moves the rectangle so its base
+     sits on the centre point and it points UP by default. */
+    transform: translate(-50%, -100%);
+    transform-origin: 50% 100%;
+}
+
+.hands div
+{
+    transform-origin: 50% 100%;
 }
 
 .hourHand
@@ -112,6 +131,8 @@
     background: linear-gradient(to bottom, #d4af37, #a67c00);
     border-radius: 0.5rem;
     box-shadow: 0 0 4px rgba(250, 204, 21, 0.3);
+
+    transform: rotate(var(--hourDeg, 0deg));
 }
 
 .minuteHand
@@ -121,6 +142,8 @@
     background: linear-gradient(to bottom, #fef08a, #d97706);
     border-radius: 0.35rem;
     box-shadow: 0 0 5px rgba(255, 230, 130, 0.35);
+
+    transform: rotate(var(--minuteDeg, 0deg));
 }
 
 .secondHand
@@ -131,6 +154,14 @@
     border-radius: 0.2rem;
     box-shadow: 0 0 6px rgba(255, 128, 128, 0.3);
     transition: transform 0.1s linear;
+
+    transform: rotate(var(--secondDeg, 0deg));
+}
+
+.tickRing
+{
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
 }
 
 @media(min-width: 1024px)

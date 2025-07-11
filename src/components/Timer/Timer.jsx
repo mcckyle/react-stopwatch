@@ -1,6 +1,6 @@
 //File name: Timer.jsx
 //Author: Kyle McColgan
-//Date: 30 June 2025
+//Date: 01 July 2025
 //Description: This file contains the main parent Timer component for the React timer site.
 
 import React, { useState, useEffect, useRef } from "react";
@@ -12,7 +12,7 @@ import TimerDisplay from "../TimerDisplay/TimerDisplay.jsx";
 import TimerControls from "../TimerControls/TimerControls";
 import LapList from "../LapList/LapList.jsx";
 import HelpModal from "../HelpModal/HelpModal.jsx";
-import AnalogClock from "../AnalogClock.jsx";
+import AnalogClock from "../AnalogClock/AnalogClock.jsx";
 import styles from './Timer.module.css';
 
 const LAP_STORAGE_KEY = "timer-app-laps"; //Key for browser localStorage.
