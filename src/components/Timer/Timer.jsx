@@ -12,7 +12,6 @@ import TimerDisplay from "../TimerDisplay/TimerDisplay.jsx";
 import TimerControls from "../TimerControls/TimerControls";
 import LapList from "../LapList/LapList.jsx";
 import HelpModal from "../HelpModal/HelpModal.jsx";
-import AnalogClock from "../AnalogClock/AnalogClock.jsx";
 import styles from './Timer.module.css';
 
 const LAP_STORAGE_KEY = "timer-app-laps"; //Key for browser localStorage.
@@ -92,39 +91,24 @@ const Timer = () => {
                 <Clock size={32} style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} />
                 <span className={styles.bannerText}>Timer</span>
             </h1>
-
-            <button
-                onClick={() => setView(view === "timer" ? "clock" : "timer")}
-                className={styles.viewToggle}
-            >
-                {view === "timer" ? "Show Clock" : "Back to Timer"}
-            </button>
-
-            {view === "timer" ? (
-                <div className = {styles.frame}>
-                    <div className = {styles.box}>
-                        <TimerDisplay time={time} />
-                        <TimerControls
-                            isRunning={isRunning}
-                            toggle={toggle}
-                            reset={reset}
-                            time={time}
-                            recordLap={recordLap}
-                        />
-                        <div className={styles.clockEmblem}>
-                            <Clock size={56} color="#d4af37" strokeWidth={1.5} />
-                        </div>
-                        <div className={styles.lapListWrapper}>
-                            <LapList laps={laps} />
-                        </div>
+            <div className = {styles.frame}>
+                <div className = {styles.box}>
+                    <TimerDisplay time={time} />
+                    <TimerControls
+                        isRunning={isRunning}
+                        toggle={toggle}
+                        reset={reset}
+                        time={time}
+                        recordLap={recordLap}
+                    />
+                    <div className={styles.clockEmblem}>
+                        <Clock size={56} color="#d4af37" strokeWidth={1.5} />
+                    </div>
+                    <div className={styles.lapListWrapper}>
+                        <LapList laps={laps} />
                     </div>
                 </div>
-              ) : (
-                <div className={styles.clockView}>
-                    <AnalogClock />
-                </div>
-                )}
-
+            </div>
                 {showHelp && <HelpModal onClose={() => setShowHelp(false)} />}
           </div>
         </div>
