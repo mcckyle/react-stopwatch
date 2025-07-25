@@ -1,59 +1,59 @@
-/* LapList.module.css */
+/* Filename: LapList.module.css */
 
+/* ==== CONTAINER STYLE. ==== */
 .lapList
 {
     width: 100%;
-    max-width: 100%;
     margin: 2.5rem auto 0 auto;
-    padding: 3rem;
-    max-height: 300px;
+    padding: 2rem 3rem;
+    max-height: 320px;
     overflow-y: auto;
-    margin-top: 1.75rem;
-    border-radius: 2rem;
 
     background: radial-gradient(circle at center, rgba(30, 41, 59, 0.95), #0f172a);
-    border-image: linear-gradient(to right, #eab308, #facc15) 1;
-    border-width: 4px;
-    border-style: solid;
+    border-radius: 2rem;
+
+    /*border-image: linear-gradient(to right, #eab308, #facc15) 1;*/
+    border: 3px solid rgba(250, 204, 21, 0.55);
+    box-shadow:
+        0 0 28px rgba(255, 215, 0, 0.28),
+        inset 0 0 16px rgba(255, 255, 255, 0.05);
+
     color: #fef3c7; /* Soft golden ivory. */
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.55rem;
 
-    box-shadow:
-      0 0 50px rgba(255, 215, 0, 0.3),
-      inset 0 0 18px rgba(255, 255, 255, 0.08);
-    border: 3px solid rgba(255, 215, 0, 0.5);
     backdrop-filter: blur(8px);
+    scroll-behavior: smooth;
     transition: all 0.4s ease;
-    box-sizing: border-box;
 }
+
+/* ==== CONTAINER - LIGHT THEME ADAPTATION STYLE. ==== */
 
 :global(.light) .lapList
 {
     background: linear-gradient(to bottom right, #fffaf0, #fdf5d8);
     color: #7f1d1d; /* Velvet red */
     box-shadow:
-      0 0 16px rgba(128, 0, 0, 0.18),
+      0 0 14px rgba(128, 0, 0, 0.15),
       inset 0 0 6px rgba(255, 255, 255, 0.1);
     border: 3px solid rgba(255, 204, 0, 0.55);
 }
 
-/* === INDIVIDUAL LAP ROW === */
+/* ==== INDIVIDUAL LAP ROW STYLES. ==== */
 .lap
 {
     display: grid;
-    grid-template-columns: 6.5rem 1fr auto;
-    /*justify-content: space-between;*/
+    grid-template-columns: 7rem 1fr auto;
     align-items: center;
-    column-gap: 2rem;
-    padding-block: 1.25rem;
-    border-bottom: 1px dashed rgba(255, 255, 255, 0.07);
+    column-gap: 1.8rem;
+    padding: 1rem 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
     transition: background 0.3s ease, transform 0.2s ease;
 }
 
 :global(.light) .lap
 {
-    border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
 }
 
 .lap:last-child
@@ -61,50 +61,51 @@
     border-bottom: none;
 }
 
-/* === ROW HOVER EFFECTS. */
+/* ==== HOVER ROW HIGHLIGHT EFFECTS. ==== */
 .lap:hover
 {
-    background-color: rgba(255, 255, 255, 0.06);
-    border-radius: 12px;
-    transform: scale(1.015);
-    box-shadow: 0 0 14px rgba(255, 215, 0, 0.3);
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    transform: scale(1.02);
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
 }
 
-/* === LAP NUMBER LABEL (e.g., "Lap 1"). === */
+/* ==== LAP NUMBER LABEL (e.g., "Lap 1"). ==== */
 .lapLabel
 {
-    color: #facc15; /* Bright gold */
-    font-size: 1.45rem;
+    color: #facc15; /* Bright gold. */
+    font-size: 1.35rem;
     font-weight: 700;
     letter-spacing: 1px;
-    text-shadow: 0 0 4px rgba(255, 215, 0, 0.45);
-    transition: color 0.3s ease;
+    text-transform: uppercase;
+    text-shadow: 0 0 4px rgba(255, 215, 0, 0.5);
+    /*transition: color 0.3s ease;*/
 }
 
 :global(.light) .lapLabel
 {
-    color: #b45309; /* amber-700 */
+    color: #b45309; /* Color: amber-700 */
 }
 
-/* === LAP TIME (e.g., "00:12:34.56"). === */
+/* ==== MAIN LAP TIME STYLES (e.g., "00:12:34.56"). ==== */
 .lapTime
 {
-    color: #fcd34d; /* gold */
+    text-align: right;
     font-weight: 800;
     font-size: 1.55rem;
-    letter-spacing: 0.6px;
-    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
-    text-align: right;
-    transition: color 0.3s ease;
+    color: #fcd34d; /* gold */
+    text-shadow: 0 0 6px rgba(255, 215, 0, 0.45);
+    /*letter-spacing: 0.6px;
+    transition: color 0.3s ease;*/
 }
 
 :global(.light) .lapTime
 {
-    color: #d97706; /* amber-600 */
+    color: #d97706; /* Color: amber-600 */
     text-shadow: none;
 }
 
-/* === SEPARATOR === */
+/* ==== SEPARATOR ==== */
 .lapSeparator
 {
     margin: 0 0.5rem;
@@ -113,45 +114,98 @@
     font-weight: 500;
 }
 
-/* DELTA TIME. */
+/* ==== DELTA TIME. ==== */
 .lapDelta
 {
-    font-size: 1.45rem;
+    font-size: 1.35rem;
     font-weight: 700;
-    color: #a78bfa; /* Lavender. */
+    color: #a78bfa; /* Color: Lavender. */
     min-width: 8ch;
     text-align: right;
-    text-shadow: 0 0 6px rgba(168, 130, 248, 0.3);
+    text-shadow: 0 0 6px rgba(168, 130, 248, 0.35);
 }
 
-.light .lapDelta
+:global(.light) .lapDelta
 {
-    color: #6930c3;
+    color: #6d28d9;
     text-shadow: none;
 }
 
+/* ==== FASTEST AND SLOWEST HIGHLIGHTS. ==== */
+
 .fastest
 {
-    background: rgba(34, 197, 94, 0.12);
+    background: rgba(34, 197, 94, 0.14);
     border-left: 6px solid #22c55e;
+    border-radius: 8px;
 }
 
 .slowest
 {
-    background: rgba(239, 68, 68, 0.12);
+    background: rgba(239, 68, 68, 0.14);
     border-left: 6px solid #ef4444;
+    border-radius: 8px;
 }
 
 .fastest .lapTime,
 .fastest .lapDelta
 {
     color: #86efac;
-    text-shadow: 0 0 6px rgba(34, 197, 94, 0.5);
+    text-shadow: 0 0 6px rgba(34, 197, 94, 0.55);
 }
 
 .slowest .lapTime,
 .slowest .lapDelta
 {
     color: #fca5a5;
-    text-shadow: 0 0 6px rgba(239, 68, 68, 0.5);
+    text-shadow: 0 0 6px rgba(239, 68, 68, 0.55);
+}
+
+/* ==== SCROLLBAR STYLINGS. ==== */
+.lapList::-webkit-scrollbar
+{
+    width: 10px;
+}
+
+.lapList::-webkit-scrollbar-thumb
+{
+    background: linear-gradient(180deg, #facc15, #eab308);
+    border-radius: 8px;
+}
+
+.lapList::-webkit-scrollbar-track
+{
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* ==== RESPONSIVE DESIGN STYLINGS. ==== */
+
+@media(max-width: 768px)
+{
+    .lap
+    {
+        grid-template-columns: 6rem auto;
+        grid-template-areas:
+            "label time"
+            ". delta";
+        row-gap: 0.5rem;
+    }
+
+    .lapLabel
+    {
+        grid-area: label;
+        font-size: 1.2rem;
+    }
+
+    .lapTime
+    {
+        grid-area: time;
+        font-size: 1.35rem;
+    }
+
+    .lapDelta
+    {
+        grid-area: delta;
+        font-size: 1.15rem;
+    }
 }

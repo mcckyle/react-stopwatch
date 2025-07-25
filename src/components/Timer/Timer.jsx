@@ -1,10 +1,10 @@
 //File name: Timer.jsx
 //Author: Kyle McColgan
-//Date: 01 July 2025
+//Date: 22 July 2025
 //Description: This file contains the main parent Timer component for the React timer site.
 
 import React, { useState, useEffect, useRef } from "react";
-import { Clock } from "lucide-react";
+import { Clock, Sun, Moon } from "lucide-react";
 import { useStopwatch } from "../../hooks/useStopwatch";
 import { useKeyboardShortcuts } from "../../hooks/useKeyboardShortcuts";
 import { useTheme } from "../../hooks/useTheme";
@@ -16,14 +16,12 @@ import styles from './Timer.module.css';
 
 const LAP_STORAGE_KEY = "timer-app-laps"; //Key for browser localStorage.
 
-const Timer = () => {
+const Timer = ({ dark, toggleTheme }) => {
   const { time, isRunning, toggle, reset, getCurrentTime } = useStopwatch();
   const [laps, setLaps] = useState([]);
   const [showHelp, setShowHelp] = useState(false);
-  const [view, setView] = useState("timer");
 
   const theme = useTheme();
-
   const hasLoadedLaps = useRef(false);
 
   const recordLap = () => {
@@ -87,10 +85,21 @@ const Timer = () => {
   return (
     <div className={theme}>
       <div className={styles.container}>
+        <div className={styles.bannerWrapper}>
             <h1 className={styles.banner}>
                 <Clock size={32} style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} />
-                <span className={styles.bannerText}>Timer</span>
+                <span className={styles.bannerText}>L'horlage</span>
             </h1>
+            <button
+                className={styles.themeToggle}
+                onClick={toggleTheme}
+                title="Toggle theme"
+                aria-label="Toggle theme"
+            >
+                {dark ? <Sun size={20} color="#facc15" /> : <Moon size={20} color="#38bdf8" />}
+            </button>
+            </div>
+
             <div className = {styles.frame}>
                 <div className = {styles.box}>
                     <TimerDisplay time={time} />

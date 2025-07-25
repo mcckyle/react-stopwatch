@@ -1,4 +1,4 @@
-/* theme.css */
+/* Filename: theme.css */
 
 :root
 {
@@ -18,13 +18,35 @@
     --high-glow: 0 0 24px rgba(212, 175, 55, 0.4);
 }
 
-/* Default (dark) theme variables. */
+/* Full viewport alignment for the wrapper. */
+html, body
+{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
 .dark
 {
-    background: linear-gradient(to bottom, #1e1b4b, #0f0e2c); /* dark mode, blurple gradient... */
+    background: radial-gradient(circle at 30% 30%, #1e1b4b 0%, #0f0e2c 70%);
+    color: #e5e7eb;
+}
+
+.light
+{
+    background: linear-gradient(145deg, var(--ivory), var(--velvet));
+    color: #3b2f2f;
+}
+
+
+/* *** Old styles commented out below this line!! *** */
+/*.dark
+{
+    background: linear-gradient(to bottom, #1e1b4b, #0f0e2c);
     color: #e5e7eb;
 
-    --button-text-color: #f3f4f6; /* light text for dark background (default). */
+    --button-text-color: #f3f4f6;
     --box-bg: rgba(255, 255, 255, 0.035);
     --box-border: rgba(255, 255, 255, 0.08);
     --box-shadow: 0 20px 48px rgba(0, 0, 0, 0.45);
@@ -37,7 +59,6 @@
     transition: background 0.6s ease-in-out;
 }
 
-/* Light theme overrides. */
 .light
 {
     background: linear-gradient(145deg, var(--ivory), var(--velvet));
@@ -55,4 +76,4 @@
     --theme-toggle-hover: rgba(255, 255, 255, 0.75);
 
     transition: background 0.6s ease-in-out;
-}
+}*/

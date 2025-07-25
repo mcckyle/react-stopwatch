@@ -1,109 +1,82 @@
-/* TimerControls.module.css */
+/* Filename: TimerControls.module.css */
 
+/* ======= CONTAINER ======= */
 .controls
 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1.5rem;
-    margin-top: 2.75rem;
-    padding: 1.5rem 2.5rem;
-    background: linear-gradient(135deg, rgba(30, 24, 64, 0.4), rgba(0, 0, 0, 0.2));
-    border-radius: 2.25rem;
+    gap: 1.75rem;
+    margin-top: 3rem;
+    padding: 1.75rem 3rem;
+    background: linear-gradient(
+        135deg,
+        rgba(22, 20, 50, 0.55),
+        rgba(17, 17, 39, 0.45)
+    );
+    border-radius: 2.5rem;
 
     box-shadow:
-      inset 0 0 0.35rem rgba(255, 255, 255, 0.06),
-      0 12px 32px rgba(0, 0, 0, 0.45);
-    backdrop-filter: blur(9px);
-    border: 1px solid rgba(212, 175, 55, 0.18);
-    transition: all 0.35s ease-in-out;
+      inset 0 0 0.5rem rgba(255, 255, 255, 0.06),
+      0 14px 28px rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(212, 175, 55, 0.28);
+    max-width: 100%;
+    transition: all 0.4s ease-in-out;
 }
+
+:global(.light) .controls
+{
+    background: linear-gradient(135deg, #fffdf6, #fefae0);
+    border-color: rgba(234, 179, 8, 0.4);
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.1),
+        inset 0 0 6px rgba(255, 255, 255, 0.25);
+}
+
+/* ======= BUTTONS ======= */
 
 .button
 {
     font-family: 'Cinzel', serif;
-    letter-spacing: 0.09rem;
-    font-size: 1.3rem;
-    padding: 1rem 2.25rem;
-    border-radius: 1.75rem;
-    font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-size: 1.35rem;
+    padding: 1rem 2.75rem;
+    border-radius: 2rem;
+    font-weight: 700;
 
-    box-shadow:
-      0 2px 5rem rgba(0, 0, 0, 0.3),
-      inset 0 -2px 5px rgba(255, 255, 255, 0.06);
     border: none;
     position: relative;
     z-index: 0;
     overflow: hidden;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    cursor: pointer;
+
+    box-shadow:
+      0 6px 18px rgba(0, 0, 0, 0.35),
+      inset 0 -2px 8px rgba(255, 255, 255, 0.08);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
 .button:hover
 {
-    transform: translateY(-3px);
+    transform: translateY(-4px);
     box-shadow:
-      0 8px 18px rgba(0, 0, 0, 0.4),
-      inset 0 0 0.35rem rgba(255, 255, 255, 0.12);
+      0 10px 22px rgba(0, 0, 0, 0.45),
+      inset 0 0 8px rgba(255, 255, 255, 0.12);
 }
 
-/* ======= BUTTON VARIANTS ======= */
-
-.start,
-.pause
-{
-    background: linear-gradient(90deg, #facc15, #fde047);
-    color: #1e293b;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
-}
-
-:global(.light) .start,
-:global(.light) .pause
-{
-    background: linear-gradient(90deg, #fde047, #facc15);
-    color: #7c2d12;
-}
-
-/* LAP BUTTON. */
-
-.lap
-{
-    background: linear-gradient(90deg, #7e22ce, #8b5cf6);
-    color: #fefefe;
-    text-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
-}
-
-:global(.light) .lap
-{
-    background: linear-gradient(90deg, #d8b4fe, #c084fc);
-    color: #3c0753;
-}
-
-/* RESET BUTTON. */
-
-.reset
-{
-    background: linear-gradient(90deg, #dc2626, #f43f5e);
-    color: #fff1f2;
-    text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-}
-
-:global(.light) .reset
-{
-    background: linear-gradient(90deg, #f87171, #fca5a5);
-    color: #7c2d12;
-}
-
-/* Halo effect. */
+/* Halo Shimmer Visual Effects Styles. */
 .button::before
 {
     content: "";
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    background: radial-gradient(circle at center, rgba(255, 215, 0, 0.1), transparent 70%);
+    background: radial-gradient(circle at center, rgba(255, 215, 0, 0.15), transparent 70%);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.35s ease;
     z-index: -1;
 }
 
@@ -112,25 +85,84 @@
     opacity: 1;
 }
 
-/* Mantine Override. */
+/* ======= BUTTON VARIANTS ======= */
 
-/*.controls :global(.mantine-Button-root)
+.start,
+.pause
 {
-    font-family: 'Cormorant Garamond', serif;
-    letter-spacing: 0.05rem;
-    font-size: 1.2rem;
-    padding: 0.75rem 1.5rem;
-    border-radius: 1rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    box-shadow: inset 0 0 0 rgba(0, 0, 0, 0);
-    transition: all 0.25s ease;
+    background: linear-gradient(92deg, #facc15, #fde047);
+    color: #1e293b;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.25);
 }
 
-.controls :global(.mantine-Button-root:hover)
+:global(.light) .start,
+:global(.light) .pause
 {
-    transform: translateY(-2px);
-    box-shadow:
-      0 4px 12px rgba(0, 0, 0, 0.2),
-      inset 0 0 0.25rem rgba(255, 255, 255, 0.1);
-}*/
+    background: linear-gradient(92deg, #fde047, #facc15);
+    color: #7c2d12;
+}
+
+/* LAP BUTTON. */
+
+.lap
+{
+    background: linear-gradient(92deg, #6d28d9, #8b5cf6);
+    color: #fefefe;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.35);
+}
+
+:global(.light) .lap
+{
+    background: linear-gradient(92deg, #d8b4fe, #c084fc);
+    color: #3c0753;
+}
+
+/* RESET BUTTON. */
+
+.reset
+{
+    background: linear-gradient(92deg, #dc2626, #f43f5e);
+    color: #fff1f2;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+}
+
+:global(.light) .reset
+{
+    background: linear-gradient(92deg, #f87171, #fca5a5);
+    color: #7c2d12;
+}
+
+/* ======= RESPONSIVE DESIGN STYLES. ======= */
+
+/* 1) For Medium-sized tablets (641 - 1024px screen size). */
+@media(max-width: 1024px)
+{
+    .controls
+    {
+        padding: 1rem 1.5rem;
+        gap: 1rem;
+    }
+
+    .button
+    {
+        font-size: 1.1rem;
+        padding: 0.85rem 1.75rem;
+    }
+}
+
+/* 2) For Big phones & small tablets (less than 640px). */
+@media(max-width: 640px)
+{
+    .controls
+    {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .button
+    {
+        width: 80%;
+    }
+}
+
+

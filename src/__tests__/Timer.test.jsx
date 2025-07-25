@@ -34,7 +34,7 @@ describe("Timer Component", () => {
 
     test("1. Renders title.", () => {
         render(<Timer />);
-        expect(screen.getByText("Timer")).toBeInTheDocument();
+        expect(screen.getByText("L'horlage")).toBeInTheDocument();
     });
 
 //     test("2. Renders the TimerDisplay component with initial time.", () => {
