@@ -4,7 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root
+/*:root
 {
     font-family: 'Inter', system-ui, sans-serif;
     line-height: 1.6;
@@ -12,25 +12,26 @@
 
     --gold: #d4af37;
     --deep-blue: #1a103d;
-}
+}*/
 
-html, body
+html, body, #root
 {
+    height: 100%;
+    width: 100%;
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
     background: var(--deep-blue);
+    overflow: hidden;
 }
 
 body
 {
+    font-size: 16px;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #fefae0;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 16px;
-    color: inherit;
 }
 
 /* *** Old styles commented out below this line!! ****/
