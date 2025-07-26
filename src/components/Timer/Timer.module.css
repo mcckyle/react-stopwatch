@@ -124,6 +124,7 @@
     transform: scale(1.01);
 }
 
+/* Shimmer Visual Effects. */
 .frame::before
 {
     content: "";
@@ -135,15 +136,42 @@
     background: linear-gradient(
       120deg,
       transparent 0%,
-      rgba(212, 175, 55, 0.2) 40%,
-      rgba(212, 175, 55, 0.75) 50%,
-      rgba(212, 175, 55, 0.2) 60%,
+      rgba(212, 175, 55, 0.08) 45%,
+      rgba(212, 175, 55, 0.25) 50%,
+      rgba(212, 175, 55, 0.08) 55%,
       transparent 100%
     );
 
     transform: rotate(25deg);
-    animation: shimmer 6s linear infinite;
     pointer-events: none;
+    opacity: 0.3;
+    animation: shimmer 12s ease-in-out infinite;
+}
+
+@keyframes shimmer
+{
+    0%
+    {
+        transform: rotate(25deg) translate(-150%, -150%);
+        opacity: 0;
+    }
+    20%
+    {
+        opacity: 0.3;
+    }
+    50%
+    {
+        opacity: 0.15;
+    }
+    80%
+    {
+        opacity: 0.3;
+    }
+    100%
+    {
+        transform: rotate(25deg) translate(150%, 150%);
+        opacity: 0;
+    }
 }
 
 :global(.light) .frame
@@ -151,12 +179,6 @@
     background: linear-gradient(to bottom right, #fffaf0, #fefae0);
     border-color: #eab308;
     box-shadow: 0 0 30px rgba(251, 191, 36, 0.2);
-}
-
-@keyframes shimmer
-{
-    0% { transform: rotate(25deg) translate(-100%, -100%); }
-    100% { transform: rotate(25deg) translate(-100%, -100%); }
 }
 
 .container
