@@ -27,6 +27,7 @@ const TimerControls = ({ isRunning, toggle, reset, children, recordLap }) => {
                             {...commonProps}
                             onClick={toggle}
                             className={`${styles.button} ${isRunning ? styles.pause : styles.start}`}
+                            aria-label={isRunning ? "Pause timer" : "Start timer"}
                             >
                                 {isRunning ? "Pause" : "Start"}
                         </Button>
@@ -38,6 +39,7 @@ const TimerControls = ({ isRunning, toggle, reset, children, recordLap }) => {
                             onClick={recordLap}
                             disabled={!isRunning}
                             className={`${styles.button} ${styles.lap}`}
+                            aria-label="Record lap time"
                             >
                                 Lap
                         </Button>
@@ -48,6 +50,7 @@ const TimerControls = ({ isRunning, toggle, reset, children, recordLap }) => {
                             {...commonProps}
                             onClick={reset}
                             className={`${styles.button} ${styles.reset}`}
+                            aria-label="Reset timer"
                         >
                             Reset
                         </Button>

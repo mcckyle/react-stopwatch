@@ -1,6 +1,8 @@
 /* Filename: TimerControls.module.css */
 
-/* ======= CONTAINER ======= */
+/* =========================
+   CONTROLS CONTAINER.
+============================ */
 .controls
 {
     display: flex;
@@ -9,6 +11,7 @@
     gap: 1.75rem;
     margin-top: 3rem;
     padding: 1.75rem 3rem;
+
     background: linear-gradient(
         135deg,
         rgba(22, 20, 50, 0.55),
@@ -16,13 +19,15 @@
     );
     border-radius: 2.5rem;
 
+    border: 2px solid rgba(212, 175, 55, 0.28);
+    backdrop-filter: blur(10px);
+
     box-shadow:
       inset 0 0 0.5rem rgba(255, 255, 255, 0.06),
       0 14px 28px rgba(0, 0, 0, 0.55);
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(212, 175, 55, 0.28);
+
     max-width: 100%;
-    transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease;
 }
 
 :global(.light) .controls
@@ -30,11 +35,13 @@
     background: linear-gradient(135deg, #fffdf6, #fefae0);
     border-color: rgba(234, 179, 8, 0.4);
     box-shadow:
-        0 8px 18px rgba(0, 0, 0, 0.1),
-        inset 0 0 6px rgba(255, 255, 255, 0.25);
+      0 8px 18px rgba(0, 0, 0, 0.1),
+      inset 0 0 6px rgba(255, 255, 255, 0.2);
 }
 
-/* ======= BUTTONS ======= */
+/* =========================
+   BUTTON BASE STYLING.
+============================ */
 
 .button
 {
@@ -45,13 +52,13 @@
     padding: 1rem 2.75rem;
     border-radius: 2rem;
     font-weight: 700;
-
+    cursor: pointer;
     border: none;
     position: relative;
     z-index: 0;
     overflow: hidden;
-    cursor: pointer;
 
+    color: #fff;
     box-shadow:
       0 6px 18px rgba(0, 0, 0, 0.35),
       inset 0 -2px 8px rgba(255, 255, 255, 0.08);
@@ -67,17 +74,18 @@
       inset 0 0 8px rgba(255, 255, 255, 0.12);
 }
 
-/* Halo Shimmer Visual Effects Styles. */
+/* Subtle Radial Shimmer on Hover Styles. */
 .button::before
 {
     content: "";
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    background: radial-gradient(circle at center, rgba(255, 215, 0, 0.15), transparent 70%);
+    background: radial-gradient(circle at center, rgba(255, 215, 0, 0.1), transparent 70%);
     opacity: 0;
-    transition: opacity 0.35s ease;
     z-index: -1;
+
+    transition: opacity 0.4s ease;
 }
 
 .button:hover::before
@@ -85,14 +93,16 @@
     opacity: 1;
 }
 
-/* ======= BUTTON VARIANTS ======= */
+/* =======================
+   BUTTON VARIANTS STYLES.
+========================== */
 
 .start,
 .pause
 {
     background: linear-gradient(92deg, #facc15, #fde047);
     color: #1e293b;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.25);
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
 }
 
 :global(.light) .start,
@@ -102,7 +112,7 @@
     color: #7c2d12;
 }
 
-/* LAP BUTTON. */
+/* LAP BUTTON STYLE. */
 
 .lap
 {
@@ -117,7 +127,7 @@
     color: #3c0753;
 }
 
-/* RESET BUTTON. */
+/* RESET BUTTON STYLE. */
 
 .reset
 {
@@ -132,25 +142,27 @@
     color: #7c2d12;
 }
 
-/* ======= RESPONSIVE DESIGN STYLES. ======= */
+/* ===========================
+   RESPONSIVE DESIGN STYLES.
+============================== */
 
 /* 1) For Medium-sized tablets (641 - 1024px screen size). */
 @media(max-width: 1024px)
 {
     .controls
     {
-        padding: 1rem 1.5rem;
-        gap: 1rem;
+        padding: 1.25rem 2rem;
+        gap: 1.25rem;
     }
 
     .button
     {
-        font-size: 1.1rem;
-        padding: 0.85rem 1.75rem;
+        font-size: 1.15rem;
+        padding: 0.85rem 2rem;
     }
 }
 
-/* 2) For Big phones & small tablets (less than 640px). */
+/* 2) For Small Devices (less than 640px). */
 @media(max-width: 640px)
 {
     .controls
@@ -161,8 +173,7 @@
 
     .button
     {
-        width: 80%;
+        width: 85%;
+        text-align: center;
     }
 }
-
-

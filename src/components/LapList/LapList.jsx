@@ -1,9 +1,10 @@
 //File name: LapList.jsx
 //Author: Kyle McColgan
-//Date: 30 June 2025
+//Date: 28 July 2025
 //Description: This file contains the Lap component for the React timer site.
 
 import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import styles from "./LapList.module.css";
 import { formatTime } from "../../utils/formatTime";
 import { useTheme } from "../../hooks/useTheme";
@@ -20,6 +21,7 @@ const LapList = ({ laps }) => {
     return (
         <div className = {theme}>
             <div className={styles.lapList}>
+              <AnimatePresence mode="popLayout">
                 {laps.map((lap, index) => {
                     const lapNumber = laps.length - index;
                     const prevLap = laps[index + 1] ?? 0;
@@ -37,8 +39,19 @@ const LapList = ({ laps }) => {
                     else if (delta === slowest) highlight = styles.slowest;
 
                     return (
-                        <div key={index} className={`${styles.lap} ${highlight}`}>
-                            <div className = {styles.lapLabel}>Lap {lapNumber}</div>
+                        <motion.div
+                          key={index}
+                          className={`${styles.lap} ${highlight}`}
+                          initial={{ opacity: 0, y: 20, scale: 0.98 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition ={{
+                              duration: 0.4,
+                              ease: [0.25, 1, 0.5, 1],
+                              delay: index * 0.04,
+                          }}
+                        >
+                            <div className = {styles.lapLabel} aria-label={`Lap ${lapNumber}`}>Lap {lapNumber}</div>
                             <div className = {styles.lapSeparator}> </div>
                             <div className = {styles.lapTime}>
                                 {hours !== "00"
@@ -48,9 +61,10 @@ const LapList = ({ laps }) => {
                             </div>
                             {}
                             <div className={styles.lapDelta}>{deltaLabel}</div>
-                        </div>
+                        </motion.div>
                     );
                 })}
+              </AnimatePresence>
             </div>
         </div>
     );

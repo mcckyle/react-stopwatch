@@ -2,29 +2,31 @@
 
 /* ============================
    TIMER MODULE STYLING.
-   ============================
-*/
+=============================== */
 
 .bannerWrapper
 {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1rem;
-    text-align: center;
     width: 100%;
-    max-width: 90vw;
+    max-width: 100%;
+    padding: 1rem clamp(1rem, 4vw, 2rem);
+    margin-inline: auto;
     margin-bottom: 2rem;
-    padding: clamp(0.75em, 2vw, 1.5rem), clamp(1rem, 3vw, 2rem);
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: clamp(0.5rem, 2vw, 1rem);
+
     border-bottom: 2px solid rgba(212, 175, 55, 0.35);
-    background: linear-gradient(145deg, rgba(30, 27, 75, 0.85), rgba(15, 14, 44, 0.9));
     border-radius: 1.5rem;
+    background: linear-gradient(145deg, rgba(30, 27, 75, 0.85), rgba(15, 14, 44, 0.9));
     box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
     backdrop-filter: blur(6px);
     position: relative;
     z-index: 5;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 .bannerWrapper:hover
@@ -42,6 +44,10 @@
 
 .banner
 {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    box-sizing: border-box;
     font-family: 'Cinzel', serif;
     font-weight: 700;
     font-size: clamp(2.5rem, 6vw, 4rem);
@@ -104,18 +110,15 @@
 .frame
 {
     width: 100%;
-    max-width: 90vw;
+    max-width: 100%;
     margin-inline: auto;
+    padding: clamp(1.5rem, 4vw, 4rem);
     border: 10px double var(--gold);
-    border-image: linear-gradient(90deg, #d4af37, #fef08a, #d4af37) 1;
     border-radius: 1.75rem;
     background: linear-gradient(160deg, rgba(30, 27, 75, 0.7), rgba(10, 17, 40, 0.85));
     backdrop-filter: blur(10px);
-    padding: clamp(1rem, 2vw, 3rem);
     box-sizing: border-box;
-    position: relative;
     overflow: hidden;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .frame:hover
@@ -144,34 +147,8 @@
 
     transform: rotate(25deg);
     pointer-events: none;
-    opacity: 0.3;
-    animation: shimmer 12s ease-in-out infinite;
-}
-
-@keyframes shimmer
-{
-    0%
-    {
-        transform: rotate(25deg) translate(-150%, -150%);
-        opacity: 0;
-    }
-    20%
-    {
-        opacity: 0.3;
-    }
-    50%
-    {
-        opacity: 0.15;
-    }
-    80%
-    {
-        opacity: 0.3;
-    }
-    100%
-    {
-        transform: rotate(25deg) translate(150%, 150%);
-        opacity: 0;
-    }
+    opacity: 0.08 !important;
+    animation: shimmer 30s ease-in-out infinite;
 }
 
 :global(.light) .frame
@@ -185,7 +162,7 @@
 {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     justify-content: flex-start;
     min-height: 100vh;
     width: 100%;
@@ -194,9 +171,6 @@
     position: relative;
     overflow-x: hidden;
     overflow-y: auto;
-
-    /*background: linear-gradient(145deg, rgba(36, 32, 84, 0.65), rgba(17, 17, 39, 0.85));
-    transition: background 0.5s ease;*/
 }
 
 .container::before
@@ -221,22 +195,18 @@
 .box
 {
     width: 100%;
-    max-width: 95%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     gap: clamp(1rem, 3vw, 2.5rem);
-    overflow: visible;
+    padding: clamp(1rem, 3vw, 2.5rem);
 
-    padding: clamp(0.5rem, 2vw, 2rem);
-    box-sizing: border-box;
-
-    background: rgba(255, 255, 255, 0.03);
     border-radius: 1.5rem;
     border: 2px solid rgba(212, 175, 55, 0.25);
-    box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.05),
-                0 0 30px rgba(212, 175, 55, 0.25);
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow:
+        inset 0 0 8px rgba(255, 255, 255, 0.05),
+        0 0 30px rgba(212, 175, 55, 0.25);
 }
 
 :global(.light) .box
@@ -244,8 +214,8 @@
     background: linear-gradient(145deg, #fffef0, #fefae0);
     border: 1px solid #eab308;
     box-shadow:
-    0 0 25px rgba(251, 191, 36, 0.25),
-    inset 0 0 8px rgba(255, 255, 255, 0.25);
+      0 0 25px rgba(251, 191, 36, 0.25),
+      inset 0 0 8px rgba(255, 255, 255, 0.25);
 }
 
 .box:hover
@@ -257,14 +227,6 @@
 {
     transform: rotate(5deg);
     transition: transform 0.3s ease;
-}
-
-@keyframes fadeInUp
-{
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* Clock Emblem */
@@ -302,6 +264,10 @@
 /* Glowing theme toggle button. */
 .themeToggle
 {
+    flex-shrink: 0;
+    max-width: 3rem;
+    max-height: 3rem;
+
     background: linear-gradient(145deg, #d4af37, #eab308);
     color: #0a1128;
     border: 2px solid #fff8dc;
@@ -327,6 +293,40 @@
 .clockView
 {
     display: flex;
+}
+
+@keyframes shimmer
+{
+    0%
+    {
+        transform: rotate(25deg) translate(-150%, -150%);
+        opacity: 0;
+    }
+    20%
+    {
+        opacity: 0.3;
+    }
+    50%
+    {
+        opacity: 0.15;
+    }
+    80%
+    {
+        opacity: 0.3;
+    }
+    100%
+    {
+        transform: rotate(25deg) translate(150%, 150%);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInUp
+{
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* 1) For very small screens (less than 640px). */

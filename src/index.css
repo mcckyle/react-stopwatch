@@ -4,16 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/*:root
-{
-    font-family: 'Inter', system-ui, sans-serif;
-    line-height: 1.6;
-    color: #fefae0;
-
-    --gold: #d4af37;
-    --deep-blue: #1a103d;
-}*/
-
 html, body, #root
 {
     height: 100%;
@@ -21,7 +11,8 @@ html, body, #root
     margin: 0;
     padding: 0;
     background: var(--deep-blue);
-    overflow: hidden;
+    overflow-x: hidden;
+    box-sizing: border-box;
 }
 
 body
@@ -31,10 +22,22 @@ body
     color: #fefae0;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
+    padding: 0;
 }
 
 /* *** Old styles commented out below this line!! ****/
+
+/*:root
+ * {
+ *    font-family: 'Inter', system-ui, sans-serif;
+ *    line-height: 1.6;
+ *    color: #fefae0;
+ *
+ *    --gold: #d4af37;
+ *    --deep-blue: #1a103d;
+ * }*/
+
 /*a
 {
     @apply font-medium no-underline transition-colors duration-300;
