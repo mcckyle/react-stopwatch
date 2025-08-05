@@ -101,24 +101,21 @@
     background-clip: text;
 }
 
-@keyframes glowText
-{
-    0% { background-position: 0% center; }
-    100% { background-position: 200% center; }
-}
-
 .frame
 {
     width: 100%;
     max-width: 100%;
+    height: auto;
     margin-inline: auto;
-    padding: clamp(1.5rem, 4vw, 4rem);
-    border: 10px double var(--gold);
-    border-radius: 1.75rem;
+    padding: clamp(2rem, 4vw, 4rem);
+    border: 12px double var(--gold);
+    border-radius: 2rem;
     background: linear-gradient(160deg, rgba(30, 27, 75, 0.7), rgba(10, 17, 40, 0.85));
     backdrop-filter: blur(10px);
     box-sizing: border-box;
     overflow: hidden;
+    position: relative;
+    box-shadow: 0 0 60px rgba(212, 175, 55, 0.35);
 }
 
 .frame:hover
@@ -162,15 +159,14 @@
 {
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    min-height: 100vh;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
     width: 100%;
-    padding: clamp(1rem, 3vw, 2rem);
+    padding: 1rem clamp(1rem, 3vw, 2rem);
     box-sizing: border-box;
     position: relative;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden;
 }
 
 .container::before
@@ -255,10 +251,11 @@
 .lapListWrapper
 {
     width: 100%;
-    max-height: 200px;
+    max-height: 160px;
     overflow-y: auto;
     padding: 0.5rem;
     box-sizing: border-box;
+    border-top: 1px solid rgba(212, 175, 55, 0.15);
 }
 
 /* Glowing theme toggle button. */
@@ -293,6 +290,12 @@
 .clockView
 {
     display: flex;
+}
+
+@keyframes glowText
+{
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
 }
 
 @keyframes shimmer
