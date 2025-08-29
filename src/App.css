@@ -6,41 +6,50 @@
 {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: stretch;
-
     height: 100vh;
     width: 100vw;
-    margin: 0;
-    padding: 0;
 
-    background: radial-gradient(circle at 30% 30%, #1a103d, #0c081b);
-    background-attachment: fixed;
-
-    box-shadow:
-        inset 0 0 160px rgba(212, 175, 55, 0.2),
-        0 0 60px rgba(212, 175, 55, 0.15);
-
-    font-family: 'Playfair Display', serif;
+    box-sizing: border-box;
+    padding: 2rem;
+    position: relative;
     overflow: hidden;
 }
 
 .app.dark
 {
-    background: radial-gradient(circle at 30% 30%, #1a103d, #0c081b);
+    background: radial-gradient(circle at 50% 40%, #0a0a2a, #0c081b 90%);
 }
 
 .app.light
 {
-    background: radial-gradient(circle at 30% 30%, #fdf6e3, #f4e1c1);
+    background: radial-gradient(circle at 50% 40%, #fff9e8, #f4e1c1 90%);
 }
 
-.app > *
+.app::before
 {
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    content: "";
+    position: absolute;
+    inset: -25%;
+    border-radius: 50%;
+    background: conic-gradient(
+        from -45deg,
+        rgba(212, 175, 55, 0.1) 0deg,
+        transparent 40deg,
+        rgba(212, 175, 55, 0.15) 80deg,
+        transparent 120deg
+    );
+    z-index: 0;
+    pointer-events: none;
+
+    animation: slowRotate 240s linear infinite;
+}
+
+@keyframes slowRotate
+{
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 /* *** Old styles commented out below this line!! ****/

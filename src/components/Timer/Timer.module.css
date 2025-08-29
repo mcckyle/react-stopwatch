@@ -24,9 +24,10 @@
     box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
     backdrop-filter: blur(6px);
     position: relative;
-    z-index: 5;
-    box-sizing: border-box;
     overflow: hidden;
+    box-sizing: border-box;
+
+    transition: all 0.3s ease;
 }
 
 .bannerWrapper:hover
@@ -44,38 +45,35 @@
 
 .banner
 {
-    max-width: 100%;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    box-sizing: border-box;
     font-family: 'Cinzel', serif;
     font-weight: 700;
     font-size: clamp(2.5rem, 6vw, 4rem);
     text-align: center;
-    letter-spacing: 0.1rem;
+    letter-spacing: 0.12rem;
     margin-bottom: 1rem;
     position: relative;
-    color: #facc15;
+    color: transparent;
     background: linear-gradient(90deg, #fbbf24, #fde68a, #fcd34d);
     background-clip: text;
     -webkit-background-clip: text;
-    text-shadow: 0 0 6px rgba(251, 191, 36, 0.25);
-    animation: glowText 6s ease-in-out infinite;
-    will-change: background-position;
+    text-shadow:
+         1px 1px 2px rgba(0, 0, 0, 0.4),
+         0 0 8px rgba(251, 191, 36, 0.3);
+
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.6));
 }
 
 .banner::after
 {
     content: "";
     position: absolute;
-    bottom: -0.4rem;
+    bottom: -0.6rem;
     left: 50%;
     transform: translateX(-50%);
-    width: 60%;
-    height: 2px;
+    width: 70%;
+    height: 3px;
     background: linear-gradient(to right, #eab308, #fef08a, #eab308);
-    border-radius: 1px;
-    opacity: 0.8;
+    border-radius: 2px;
 }
 
 :global(.light) .banner
@@ -87,11 +85,10 @@
 
 .bannerText
 {
-    background-size: 200% auto;
     display: inline-block;
-
-    animation: glowText 6s ease-in-out infinite;
     text-shadow: 0 0 4px rgba(212, 175, 55, 0.35); /* Slight glow... */
+
+    animation: bannerPulse 5s ease-in-out infinite;
 }
 
 :global(.light) .bannerText
@@ -104,18 +101,17 @@
 .frame
 {
     width: 100%;
-    max-width: 100%;
-    height: auto;
-    margin-inline: auto;
-    padding: clamp(2rem, 4vw, 4rem);
-    border: 12px double var(--gold);
-    border-radius: 2rem;
-    background: linear-gradient(160deg, rgba(30, 27, 75, 0.7), rgba(10, 17, 40, 0.85));
+    border: 14px double var(--gold);
+    border-radius: 1.5rem;
+    background: linear-gradient(165deg, rgba(30, 27, 75, 0.8), rgba(10, 17, 40, 0.9));
     backdrop-filter: blur(10px);
-    box-sizing: border-box;
     overflow: hidden;
     position: relative;
-    box-shadow: 0 0 60px rgba(212, 175, 55, 0.35);
+    box-shadow:
+        inset 0 0 12px rgba(255, 255, 255, 0.05),
+        0 0 60px rgba(212, 175, 55, 0.35);
+
+    transition: all 0.3s ease;
 }
 
 .frame:hover
@@ -125,14 +121,18 @@
 }
 
 /* Shimmer Visual Effects. */
-.frame::before
+.frame::before,
+.frame::after
 {
     content: "";
+    pointer-events: none;
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
+}
+
+.frame::before
+{
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
     background: linear-gradient(
       120deg,
       transparent 0%,
@@ -143,9 +143,17 @@
     );
 
     transform: rotate(25deg);
-    pointer-events: none;
-    opacity: 0.08 !important;
+    opacity: 0.08;
+
     animation: shimmer 30s ease-in-out infinite;
+}
+
+.frame::after
+{
+    top: 0; bottom: 0; left: 50%;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, rgba(212, 175, 55, 0.15), transparent);
+    transform: translateX(-50%);
 }
 
 :global(.light) .frame
@@ -157,6 +165,9 @@
 
 .container
 {
+    flex: 1;
+    min-height: 0;
+    max-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -197,21 +208,24 @@
     gap: clamp(1rem, 3vw, 2.5rem);
     padding: clamp(1rem, 3vw, 2.5rem);
 
-    border-radius: 1.5rem;
+    border-radius: 1rem;
     border: 2px solid rgba(212, 175, 55, 0.25);
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.02);
     box-shadow:
-        inset 0 0 8px rgba(255, 255, 255, 0.05),
-        0 0 30px rgba(212, 175, 55, 0.25);
+        inset 0 0 6px rgba(255, 255, 255, 0.05),
+        0 0 20px rgba(212, 175, 55, 0.2);
+
+    background-image: radial-gradient(
+        circle at 20% 20%,
+        rgba(255, 255, 255, 0.08),
+        transparent 40%
+    );
 }
 
 :global(.light) .box
 {
-    background: linear-gradient(145deg, #fffef0, #fefae0);
-    border: 1px solid #eab308;
-    box-shadow:
-      0 0 25px rgba(251, 191, 36, 0.25),
-      inset 0 0 8px rgba(255, 255, 255, 0.25);
+    background: linear-gradient(145deg, #fffef0, #fdf6e3);
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.25);
 }
 
 .box:hover
@@ -228,12 +242,15 @@
 /* Clock Emblem */
 .clockEmblem
 {
-    padding: 0.5rem;
-    border: 4px solid var(--gold);
+    padding: 0.75rem;
+    border: 5px solid var(--gold);
     border-radius: 50%;
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
-    background: rgba(255, 255, 255, 0.05);
-    transition: transform 0.4s ease;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.2));
+    box-shadow:
+        inset 0 0 8px rgba(255, 255, 255, 0.1),
+        0 0 18px rgba(212, 175, 55, 0.6);
+
+    position: relative;
 }
 
 :global(.light) .clockEmblem
@@ -248,14 +265,58 @@
     transform: rotate(3deg) scale(1.05);
 }
 
+.clockEmblem::after
+{
+    content: "";
+    position: absolute;
+    inset: 8%;
+    border-radius: 50%;
+    border: 2px dashed rgba(212, 175, 55, 0.4);
+    pointer-events: none;
+}
+
 .lapListWrapper
 {
-    width: 100%;
-    max-height: 160px;
+    flex: 1;
+    width: 90%;
+    max-height: 25vh;
     overflow-y: auto;
-    padding: 0.5rem;
-    box-sizing: border-box;
-    border-top: 1px solid rgba(212, 175, 55, 0.15);
+    padding: 0.75rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 0.5rem;
+
+    backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+
+}
+
+.lapListWrapper::-webkit-scrollbar
+{
+    width: 8px;
+}
+
+.lapListWrapper::-webkit-scrollbar-thumb
+{
+    background: rgba(212, 175, 55, 0.4);
+    border-radius: 6px;
+}
+
+.lapListWrapper::-webkit-scrollbar-thumb:hover
+{
+    background: rgba(212, 175, 55, 0.6);
+}
+
+:global(.light) .lapListWrapper::-webkit-scrollbar-thumb
+{
+    background: rgba(234, 179, 8, 0.35);
+}
+
+:global(.light) .lapListWrapper
+{
+    width: 90%;
+    background: linear-gradient(180deg, #fffdf5, #fefae0);
+    border-top: 1px solid rgba(212, 175, 55, 0.25);
 }
 
 /* Glowing theme toggle button. */
@@ -278,6 +339,7 @@
     font-weight: 700;
     cursor: pointer;
     box-shadow: 0 0 18px rgba(212, 175, 55, 0.55);
+
     transition: transform 0.2s ease, background 0.3s ease;
 }
 
@@ -285,6 +347,12 @@
 {
     transform: scale(1.12) rotate(8deg);
     background: linear-gradient(145deg, #facc15, #fde68a);
+}
+
+.themeToggle:active
+{
+    transform: scale(0.95);
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.7), 0 0 60px rgba(212, 175, 55, 0.3);
 }
 
 .clockView
@@ -298,30 +366,19 @@
     100% { background-position: 200% center; }
 }
 
+@keyframes bannerPulse
+{
+    0% { text-shadow: 0 0 6px rgba(212, 175, 55, 0.25); }
+    100% { text-shadow: 0 0 14px rgba(212, 175, 55, 0.55); }
+}
+
 @keyframes shimmer
 {
-    0%
-    {
-        transform: rotate(25deg) translate(-150%, -150%);
-        opacity: 0;
-    }
-    20%
-    {
-        opacity: 0.3;
-    }
-    50%
-    {
-        opacity: 0.15;
-    }
-    80%
-    {
-        opacity: 0.3;
-    }
-    100%
-    {
-        transform: rotate(25deg) translate(150%, 150%);
-        opacity: 0;
-    }
+    0% { transform: rotate(25deg) translate(-150%, -150%); opacity: 0; }
+    20% { opacity: 0.3; }
+    50% { opacity: 0.15; }
+    80% { opacity: 0.3; }
+    100% { transform: rotate(25deg) translate(150%, 150%);opacity: 0; }
 }
 
 @keyframes fadeInUp
@@ -332,24 +389,22 @@
     }
 }
 
-/* 1) For very small screens (less than 640px). */
-@media(max-width: 640px)
-{
-    .frame
-    {
-        border-width: 6px;
-        padding: 1rem;
-    }
-
-    .bannerWrapper { padding: 0.5rem 1rem; }
-}
-
-/* 2) For tablets (641 - 1024px screen size). */
+/* 1) For tablets (641 - 1024px screen size). */
 @media(max-width: 1024px)
 {
     .frame
     {
         border-width: 8px;
         padding: 1.5rem;
+    }
+}
+
+/* 2) For very small screens (less than 640px). */
+@media(max-width: 640px)
+{
+    .frame
+    {
+        border-width: 6px;
+        padding: 1rem;
     }
 }

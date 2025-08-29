@@ -15,22 +15,23 @@
     color: #fef3c7; /* Gilded ivory-gold tone. */
 
     background: linear-gradient(
-      135deg,
-      rgba(212, 175, 55, 0.12),
-      rgba(255, 255, 255, 0.04)
+      145deg,
+      rgba(30, 27, 75, 0.85),
+      rgba(10, 10, 40, 0.9)
     );
-    border: 3px solid rgba(212, 175, 55, 0.3);
-    border-radius: 2rem;
-    padding: clamp(1rem, 2vw, 3rem);
-
+    border: 2px solid rgba(212, 175, 55, 0.3);
     backdrop-filter: blur(12px);
+    box-shadow:
+      inset 0 0 10px rgba(255, 255, 255, 0.05),
+      0 0 35px rgba(212, 175, 55, 0.25);
+
+    border-radius: 1.5rem;
+    padding: clamp(1rem, 2vw, 3rem);
     text-shadow:
       0 0 14px rgba(255, 215, 0, 0.4),
       0 0 24px rgba(255, 255, 200, 0.18),
       3px 3px 12px rgba(0, 0, 0, 0.5);
-    box-shadow:
-      inset 0 0 12px rgba(255, 255, 255, 0.05),
-      0 0 25px rgba(212, 175, 55, 0.2);
+
 
     user-select: none;
     text-align: center;
@@ -38,6 +39,12 @@
     overflow: hidden;
     max-width: 100%;
     width: 100%;
+
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: textShimmer 8s linear infinite;
+
     animation: fadeIn 0.8s ease-out both;
     transition: all 0.4s ease-in-out;
 }
@@ -46,18 +53,14 @@
 :global(.light) .text
 {
     color: #7c3e00; /* Golden brown. */
-    background: linear-gradient(
-      135deg,
-      rgba(255, 249, 230, 0.55),
-      rgba(250, 240, 200, 0.28)
-    );
+    background: linear-gradient(135deg, #fffef9, #f3f4f6);
     text-shadow:
       0 1px 3px rgba(255, 255, 255, 0.6),
       0 0 14px rgba(234, 179, 8, 0.3);
     border-color: rgba(234, 179, 8, 0.45);
     box-shadow:
       inset 0 0 6px rgba(255, 255, 255, 0.1),
-      0 0 20px rgba(234, 179, 8, 0.25);
+      0 0 25px rgba(234, 179, 8, 0.25);
 }
 
 .colon
@@ -72,14 +75,13 @@
       0 0 14px rgba(255, 255, 255, 0.15),
       2px 2px 6px rgba(0, 0, 0, 0.35);
 
-    animation: blink 1.1s step-end infinite;
+    animation: colonBlink 1.1s step-end infinite;
 }
 
-@keyframes blink
+@keyframes colonBlink
 {
-  50% {
-    opacity: 0.2;
-  }
+  0%, 100% { opacity: 1; color: #facc15; }
+  50% { opacity: 0.2; color: #fde68a; }
 }
 
 @keyframes fadeIn
@@ -92,6 +94,12 @@
       opacity: 1;
       transform: scale(1);
     }
+}
+
+@keyframes textShimmer
+{
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
 }
 
 /* 1) Medium screen sizes and below. */
@@ -120,4 +128,19 @@
         font-size: 0.85em;
         padding: 0 0.5rem;
     }
+}
+
+@media (max-width: 640px)
+{
+  .text
+  {
+    font-size: clamp(2rem, 5vw, 4rem);
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+  }
+
+  .colon
+  {
+    padding: 0 0.35rem;
+  }
 }

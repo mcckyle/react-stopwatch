@@ -10,20 +10,21 @@ html, body, #root
     width: 100%;
     margin: 0;
     padding: 0;
-    background: var(--deep-blue);
-    overflow-x: hidden;
     box-sizing: border-box;
-}
-
-body
-{
+    font-family: 'Playfair Display', serif;
     font-size: 16px;
-    font-family: 'Inter', system-ui, sans-serif;
     color: #fefae0;
+
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    background-attachment: fixed;
+    background-size: cover;
+
     display: flex;
     justify-content: center;
-    align-items: start;
-    padding: 0;
+    align-items: center;
 }
 
 /* *** Old styles commented out below this line!! ****/
