@@ -1,58 +1,57 @@
 /* Filename: App.css */
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Playfair+Display:wght@500;600&display=swap');
-
 .app
 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: stretch;
+    align-items: stretch; /* or center here... */
     height: 100vh;
     width: 100vw;
-
-    box-sizing: border-box;
     padding: 2rem;
     position: relative;
     overflow: hidden;
-}
 
-.app.dark
-{
-    background: radial-gradient(circle at 50% 40%, #0a0a2a, #0c081b 90%);
-}
-
-.app.light
-{
-    background: radial-gradient(circle at 50% 40%, #fff9e8, #f4e1c1 90%);
+    background: inherit;
+    color: inherit;
 }
 
 .app::before
 {
     content: "";
     position: absolute;
-    inset: -25%;
+    inset: -20%;
     border-radius: 50%;
     background: conic-gradient(
         from -45deg,
-        rgba(212, 175, 55, 0.1) 0deg,
-        transparent 40deg,
-        rgba(212, 175, 55, 0.15) 80deg,
-        transparent 120deg
+        rgba(212, 175, 55, 0.05) 0deg,
+        transparent 60deg,
+        rgba(212, 175, 55, 0.1) 120deg,
+        transparent 180deg
     );
     z-index: 0;
     pointer-events: none;
 
-    animation: slowRotate 240s linear infinite;
+    animation: slowRotate 180s linear infinite;
 }
 
 @keyframes slowRotate
 {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 /* *** Old styles commented out below this line!! ****/
+/*.app.dark
+ {  *
+ background: radial-gradient(circle at 50% 40%, #0a0a2a, #0c081b 90%);
+ }
+
+ .app.light
+ {
+ background: radial-gradient(circle at 50% 40%, #fff9e8, #f4e1c1 90%);
+ }*/
+
 /* Subtle Scroll Smoothing. */
 /*html, body, #root
  {  *

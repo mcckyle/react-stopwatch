@@ -1,6 +1,6 @@
 //File name: ThemeWrapper.jsx
 //Author: Kyle McColgan
-//Date: 26 August 2025
+//Date: 05 September 2025
 //Description: This file contains the ThemeWrapper React UI/UX component for the react-timer.
 
 import React from "react";

@@ -13,19 +13,32 @@ html, body, #root
     box-sizing: border-box;
     font-family: 'Playfair Display', serif;
     font-size: 16px;
-    color: #fefae0;
 
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    background-attachment: fixed;
-    background-size: cover;
-
     display: flex;
     justify-content: center;
     align-items: center;
+
+    transition: background 0.4s ease, color 0.4s ease;
 }
+
+/* *** Dark Mode Global Background. *** */
+html.dark, body.dark
+{
+    background: #0a1128; /* Color: Deep Navy. */
+    color: #e5e7eb; /* Color: Soft Off-White For Text. */
+}
+
+/* *** Light Mode Global Background. *** */
+html.light, body.light
+{
+    background: #fffaf0; /* Color: Ivory. */
+    color: #3b2f2f; /* Color: Deep Text. */
+}
+
 
 /* *** Old styles commented out below this line!! ****/
 

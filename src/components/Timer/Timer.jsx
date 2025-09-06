@@ -1,7 +1,7 @@
 //File name: Timer.jsx
 //Author: Kyle McColgan
-//Date: 22 July 2025
-//Description: This file contains the main parent Timer component for the React timer site.
+//Date: 05 September 2025
+//Description: This file contains the parent Timer component for the React timer site.
 
 import React, { useState, useEffect, useRef } from "react";
 import { Clock, Sun, Moon } from "lucide-react";
@@ -99,7 +99,7 @@ const Timer = ({ dark, toggleTheme }) => {
         >
             <h1 className={styles.banner}>
                 <Clock size={32} style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} />
-                <span className={styles.bannerText}>L'horlage</span>
+                <span className={styles.bannerText}>Timer</span>
             </h1>
             <button
                 className={styles.themeToggle}

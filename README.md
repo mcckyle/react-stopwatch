@@ -53,30 +53,30 @@ npm run build
 react-timer/
 ├── .github/              # GitHub workflows (CI/CD).
 ├── public/               # Static assets (served as-is).
-├── src/                  # Source code
-│   ├── components/       # Reusable components.
+├── src/                  # Application Source code.
+│   ├── components/       # Reusable React components.
 │   ├── hooks/            # Custom React hooks.
 │   ├── __tests__/        # Unit tests for components and hooks.
 │   ├── test/             # Utility functions for Jest unit tests.
 │   │   └── test-utils.jsx
-│   ├── App.jsx           # Main app component.
+│   ├── App.jsx           # Main React application component.
 │   ├── main.jsx          # React DOM entry point.
-│   ├── App.css           # App-specific styles.
-│   └── index.css         # Tailwind and global styles.
+│   ├── App.css           # Styles specific to App.jsx.
+│   └── index.css         # Global styles and Tailwind imports.
 ├── dist/                 # Production build output (auto-generated).
-├── index.html            # HTML entry file.
-├── .gitignore            # Git ignored files and folders.
-├── LICENSE               # Project license.
-├── README.md             # Project overview and documentation.
+├── index.html            # HTML entry point.
+├── .gitignore            # Specifies intentionally untracked files and folders to ignore.
+├── LICENSE               # Open source license for the project.
+├── README.md             # Project overview, instructions, and documentation.
 ├── babel.config.cjs      # Babel config for Jest.
 ├── jest.config.js        # Jest testing configuration.
 ├── eslint.config.js      # ESLint configuration.
-├── setUpTests.js         # Global test setup file.
+├── setUpTests.js         # Global setup for Jest tests.
 ├── tailwind.config.js    # Tailwind CSS configuration.
-├── postcss.config.js     # PostCSS plugins.
-├── vite.config.js        # Vite build and dev server config.
-├── package.json          # Project metadata and scripts.
-└── package-lock.json     # Dependency lockfile.
+├── postcss.config.js     # PostCSS plugins for CSS processing.
+├── vite.config.js        # Vite config for build and development.
+├── package.json          # Project metadata, dependencies, and scripts.
+└── package-lock.json     # Exact versions of installed dependencies.
 ```
 
 ---
@@ -89,8 +89,6 @@ react-timer/
 - [x] Highlight fastest and slowest lap.
 - [x] Add lap time deltas (difference from previous lap).
 - [x] Add light/dark mode toggle with animation.
-- [ ] Add an analog clock optional view for completeness.
-- [ ] Add a digital clock optional view with current time option for accessibility.
 - [ ] Export laps to CSV or JSON.
 
 ---
