@@ -95,12 +95,19 @@ react-timer/
 
 ## 📄 License
 
-MIT License. Free to use, fork, and extend.
+This project is licensed under the [MIT License](./LICENSE).
+Feel free to use it as inspiration, extend it for your own projects, or contribute improvements back to the community.
 
 ---
 
 ## 🙌 Acknowledgments
 
-- [Vite](https://vitejs.dev/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Mantine](https://mantine.dev/)
+This project was made possible thanks to the open-source community and the following tools, frameworks, and libraries:
+
+- [React](https://react.dev) - A modern library designed specifically for building fast, interactive UIs.
+- [Vite](https://vitejs.dev/) - Next-generation frontend tooling with lightning-fase dev server and build optimizations.
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework for crafting responsive, modern designs.
+- [Mantine](https://mantine.dev/) - Accessible, fully-featured React components for building polished interfaces.
+- [Framer Motion](https://www.framer.com/motion/) - Animation library powering fluid, accessible transitions.
+
+Special thanks to the broader open-source ecosystem for inspiration, guidance, and tools that empower developers to create and share freely.

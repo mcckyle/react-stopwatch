@@ -21,18 +21,18 @@
     );
 }
 
-.theme-surface.dark
-{
-    background: var(--gradient-dark);
-    color: #f3f4f6;
-    box-shadow: inset 0 0 80px rgba(212, 175, 55, 0.08);
-}
-
-.theme-surface.light
+/* *** Light Mode. *** */
+html.light, body.light
 {
     background: var(--gradient-light);
     color: #2e2e2e;
-    box-shadow: inset 0 0 60px rgba(212, 175, 55, 0.1);
+}
+
+/* *** Dark Mode. *** */
+html.dark, body.dark
+{
+    background: var(--gradient-dark);
+    color: #f3f4f6;
 }
 
 /* *** Old styles commented out below this line!! *** */

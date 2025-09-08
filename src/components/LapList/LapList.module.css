@@ -5,47 +5,45 @@
 {
     width: 100%;
     margin: 2rem auto 0 auto;
-    padding: 1.5rem 2rem;
-    max-height: 320px;
+    padding: 1rem 1.5rem;
+    max-height: 280px;
     overflow-y: auto;
 
-    background: rgba(20, 20, 40, 0.65);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 1.5rem;
-    backdrop-filter: blur(16px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    background: rgba(20, 20, 40, 0.55);
+    border-radius: 1rem;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
 
-    font-family: 'Cinzel', serif; /* Matches TimerDisplay.jsx. */
-    font-size: 1.4rem;
-    color: #fefce8; /* Soft golden ivory. */
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    color: #fefce8; /* Color: Soft golden-ivory. */
 
-    scroll-behavior: smooth;
     transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* ==== CONTAINER -- LIGHT THEME STYLE. ==== */
 
-:global(.light) .lapList
+.lapList.light
 {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.75);
     color: #1f2937;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* ==== INDIVIDUAL LAP ROW STYLES. ==== */
+/* ==== ROW STYLES. ==== */
 .lap
 {
     display: grid;
-    grid-template-columns: 6rem 1fr auto;
+    grid-template-columns: 5rem 1fr auto;
     align-items: center;
-    column-gap: 1.5rem;
-    padding: 0.9rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    column-gap: 1rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 
     transition: background 0.3s ease, transform 0.2s ease;
 }
 
-:global(.light) .lap
+.lapList.light .lap
 {
     border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
 }
@@ -57,7 +55,7 @@
 
 .lap:hover
 {
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.04);
     transform: translateY(-1px);
 }
 
@@ -65,13 +63,13 @@
 .lapLabel
 {
     color: #facc15; /* Color: yellow. */
-    font-weight: 700;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.08rem;
-    font-size: 1.25rem;
+    letter-spacing: 0.05rem;
+    font-size: 1.1rem;
 }
 
-:global(.light) .lapLabel
+.lapList.light .lapLabel
 {
     color: #b45309; /* Color: amber-700 */
 }
@@ -80,50 +78,40 @@
 .lapTime
 {
     text-align: right;
-    font-weight: 800;
-    font-size: 1.4rem;
-    color: #fde047; /* gold */
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #fde047; /* Color: gold */
 }
 
-:global(.light) .lapTime
+.lapList.light .lapTime
 {
     color: #d97706; /* Color: amber-600 */
-}
-
-/* ==== SEPARATOR ==== */
-.lapSeparator
-{
-    margin: 0 0.5rem;
-    opacity: 0.25;
 }
 
 /* ==== DELTA TIME. ==== */
 .lapDelta
 {
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 500;
     color: #a78bfa; /* Color: purple. */
     text-align: right;
-    min-width: 8ch;
+    min-width: 7ch;
 }
 
-:global(.light) .lapDelta
+.lapList.light .lapDelta
 {
     color: #6d28d9;
 }
 
-/* ==== FASTEST AND SLOWEST HIGHLIGHTS. ==== */
-
+/* ==== HIGHLIGHTS. ==== */
 .fastest
 {
-    background: rgba(34, 197, 94, 0.08);
-    border-left: 4px solid #22c55e;
+    box-shadow: inset 2px 0 0 #22c55e;
 }
 
 .slowest
 {
-    background: rgba(239, 68, 68, 0.08);
-    border-left: 4px solid #ef4444;
+    box-shadow: inset 2px 0 0 #ef4444;
 }
 
 .fastest .lapTime,
@@ -141,22 +129,21 @@
 /* ==== SCROLLBAR STYLES. ==== */
 .lapList::-webkit-scrollbar
 {
-    width: 8px;
+    width: 6px;
 }
 
 .lapList::-webkit-scrollbar-thumb
 {
     background: linear-gradient(180deg, #facc15, #eab308);
-    border-radius: 6px;
+    border-radius: 3px;
 }
 
 .lapList::-webkit-scrollbar-track
 {
-    background: rgba(0, 0, 0, 0.1);
+    background: transparent;
 }
 
 /* ==== RESPONSIVE DESIGN STYLES. ==== */
-
 @media(max-width: 768px)
 {
     .lap
@@ -168,7 +155,7 @@
         row-gap: 0.4rem;
     }
 
-    .lapLabel { font-size: 1.1rem; }
-    .lapTime { font-size: 1.25rem; }
-    .lapDelta { font-size: 1rem; }
+    .lapLabel { font-size: 1rem; }
+    .lapTime { font-size: 1.2rem; }
+    .lapDelta { font-size: 0.9rem; }
 }

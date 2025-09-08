@@ -1,7 +1,7 @@
 //File name: TimerDisplay.jsx
 //Author: Kyle McColgan
-//Date: 28 July 2025
-//Description: This file contains the Timer display component for the React timer site.
+//Date: 07 September 2025
+//Description: This file contains the timer display component for the React timer site.
 
 import React from "react";
 import AnimatedDigit from "../AnimatedDigit/AnimatedDigit.jsx";
@@ -14,10 +14,11 @@ const TimerDisplay = ({ time }) => {
   const theme = useTheme();
 
   return (
-    <div className = {theme}>
-        <div className={styles.text}
-            role="timer"
-            aria-label={`Timer showing ${hours}:${minutes}:${seconds}`}
+    <div className = {`${styles.wrapper} ${theme}`}>
+        <time
+          className={styles.text}
+          role="timer"
+          aria-live="polite"
         >
             {[...hours].map((digit, i) => (
                 <AnimatedDigit key={`hr-${i}`} value={parseInt(digit)} />
@@ -30,7 +31,7 @@ const TimerDisplay = ({ time }) => {
             {[...seconds].map((digit, i) => (
                 <AnimatedDigit key={`sec-${i}`} value={parseInt(digit)} />
             ))}
-        </div>
+        </time>
       </div>
   );
 };

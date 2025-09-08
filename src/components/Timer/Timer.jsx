@@ -1,6 +1,6 @@
 //File name: Timer.jsx
 //Author: Kyle McColgan
-//Date: 05 September 2025
+//Date: 07 September 2025
 //Description: This file contains the parent Timer component for the React timer site.
 
 import React, { useState, useEffect, useRef } from "react";
@@ -21,9 +21,9 @@ const Timer = ({ dark, toggleTheme }) => {
   const { time, isRunning, toggle, reset, getCurrentTime } = useStopwatch();
   const [laps, setLaps] = useState([]);
   const [showHelp, setShowHelp] = useState(false);
-
-  const theme = useTheme();
   const hasLoadedLaps = useRef(false);
+
+  const { theme } = useTheme();
 
   const recordLap = () => {
     const current = getCurrentTime();
@@ -84,22 +84,17 @@ const Timer = ({ dark, toggleTheme }) => {
   });
 
   return (
-    <div className={theme}>
+    <div className = {`${theme}`}>
       <motion.div
         className={styles.container}
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        <motion.div
-          className={styles.bannerWrapper}
-          initial={{ opacity: 0, scale: 0.98 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.2, duration: 0.4 }}
-        >
+        <header className={styles.header}>
             <h1 className={styles.banner}>
-                <Clock size={32} style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} />
-                <span className={styles.bannerText}>Timer</span>
+                <Clock size={32} className={styles.icon} />
+                <span>Timer</span>
             </h1>
             <button
                 className={styles.themeToggle}
@@ -107,15 +102,15 @@ const Timer = ({ dark, toggleTheme }) => {
                 title="Toggle theme"
                 aria-label="Toggle theme"
             >
-                {dark ? <Sun size={20} color="#facc15" /> : <Moon size={20} color="#38bdf8" />}
+                {dark ? <Sun size={20}/> : <Moon size={20} />}
             </button>
-          </motion.div>
+        </header>
 
-            <motion.div
+            <motion.section
               className = {styles.frame}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
             >
                 <div className = {styles.box}>
                     <TimerDisplay time={time} />
@@ -128,16 +123,16 @@ const Timer = ({ dark, toggleTheme }) => {
                     />
                     <motion.div
                       className={styles.clockEmblem}
-                      whileHover={{ rotate: 3, scale: 1.08 }}
-                      transition={{ type: "spring", stiffness: 200 }}
+                      whileHover={{ rotate: 2, scale: 1.06 }}
+                      transition={{ type: "spring", stiffness: 180 }}
                     >
-                        <Clock size={56} color="#d4af37" strokeWidth={1.5} />
+                        <Clock size={56} color="var(--gold)" strokeWidth={1.5} />
                     </motion.div>
                     <div className={styles.lapListWrapper}>
                         <LapList laps={laps} />
                     </div>
                 </div>
-            </motion.div>
+            </motion.section>
                 {showHelp && <HelpModal onClose={() => setShowHelp(false)} />}
           </motion.div>
         </div>

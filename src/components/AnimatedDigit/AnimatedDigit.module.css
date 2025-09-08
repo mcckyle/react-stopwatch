@@ -1,7 +1,6 @@
 /* Filename: AnimatedDigit.module.css */
 
-/* ==== COMMON CONTAINER. ========================= */
-
+/* ==== DIGIT CONTAINER. ========================= */
 .digitContainer
 {
     position: relative;
@@ -9,62 +8,56 @@
     justify-content: center;
     align-items: center;
 
-    min-width: 1.25ch;
-    padding: 0.05em 0.12em;
+    min-width: 1.2ch;
+    padding: 0 0.1em;
     overflow: hidden;
-
-    transition: transform 0.3s ease;
 }
 
 /* ==== DIGIT STYLE. ========================= */
-
 .digit
 {
-    font-family: 'Cinzel', serif;
-    font-weight: 800;
-    font-size: clamp(1.8rem, 5vw, 3.4rem);
+    font-family: 'JetBrains Mono', 'Inter', monospace;
+    font-weight: 700;
+    font-size: clamp(1.9rem, 5vw, 3.2rem);
     line-height: 1;
     white-space: nowrap;
 
     color: #fef08a; /* Color: Soft gold. */
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.45);
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.35);
 
     will-change: transform, text-shadow;
     transform-origin: center;
 
-    transition: transform 0.35s ease, text-shadow 0.35s ease;
+    transition: text-shadow 0.3s ease;
 }
 
 .digit:hover
 {
-    transform: scale(1.05);
-    text-shadow: 0 0 14px rgba(255, 215, 0, 0.55);
+    text-shadow: 0 0 12px rgba(255, 215, 0, 0.55);
 }
 
 /* ==== LIGHT THEME OVERRIDES STYLES: ========================= */
-
-:global(.light) .digit
+.digitContainer.light .digit
 {
     color: #7c3e00; /* Color: Golden brown. */
-    text-shadow: 0 0 8px rgba(234, 179, 8, 0.35);
+    text-shadow: 0 0 6px rgba(234, 179, 8, 0.25);
 }
 
-:global(.light) .digit:hover
+.digitContainer.light .digit:hover
 {
-    text-shadow: 0 0 12px rgba(234, 179, 8, 0.5);
+    text-shadow: 0 0 10px rgba(234, 179, 8, 0.4);
 }
 
 /* ==== RESPONSIVE DESIGN STYLES: ========================= */
-
 @media(max-width: 768px)
 {
     .digitContainer
     {
-        min-width: 1.1ch;
+        min-width: 1ch;
     }
 
     .digit
     {
-        font-size: clamp(1.3rem, 5.5vw, 2.4rem);
+        font-size: clamp(1.4rem, 5.5vw, 2.3rem);
     }
 }

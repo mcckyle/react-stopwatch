@@ -1,14 +1,20 @@
 //File name: ThemeWrapper.jsx
 //Author: Kyle McColgan
-//Date: 05 September 2025
+//Date: 07 September 2025
 //Description: This file contains the ThemeWrapper React UI/UX component for the react-timer.
 
-import React from "react";
+import React, { useEffect } from "react";
 import { MantineProvider } from "@mantine/core";
 import { useTheme } from "../hooks/useTheme";
 
 const ThemeWrapper = ({ children }) => {
-    const theme = useTheme(); //"light" | "dark".
+    const { theme } = useTheme(); //"light" || "dark".
+
+    useEffect(() => {
+        // Apply the theme class globally.
+        document.documentElement.className = theme;
+        document.body.className = theme;
+    }, [theme]);
 
     return (
         <MantineProvider
@@ -31,7 +37,7 @@ const ThemeWrapper = ({ children }) => {
                 },
             }}
         >
-            <div className={`theme-surface ${theme}`}>{children}</div>
+            {children}
         </MantineProvider>
     );
 };
