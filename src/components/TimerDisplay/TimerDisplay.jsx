@@ -1,7 +1,7 @@
 //File name: TimerDisplay.jsx
 //Author: Kyle McColgan
-//Date: 07 September 2025
-//Description: This file contains the timer display component for the React timer site.
+//Date: 12 September 2025
+//Description: This file contains the timer display component for the React timer project.
 
 import React from "react";
 import AnimatedDigit from "../AnimatedDigit/AnimatedDigit.jsx";
@@ -11,7 +11,7 @@ import { useTheme } from "../../hooks/useTheme";
 
 const TimerDisplay = ({ time }) => {
   const { hours, minutes, seconds} = formatTime(time);
-  const theme = useTheme();
+  const { theme } = useTheme();
 
   return (
     <div className = {`${styles.wrapper} ${theme}`}>

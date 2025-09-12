@@ -55,9 +55,35 @@ react-timer/
 ├── public/               # Static assets (served as-is).
 ├── src/                  # Application Source code.
 │   ├── components/       # Reusable React components.
+│   │   ├── Timer/
+│   │   │   ├── Timer.jsx
+│   │   │   └── Timer.module.css
+│   │   ├── TimerDisplay/
+│   │   │   ├── TimerDisplay.jsx
+│   │   │   └── TimerDisplay.module.css
+│   │   ├── TimerControls/
+│   │   │   ├── TimerControls.jsx
+│   │   │   └── TimerControls.module.css
+│   │   ├── LapList/
+│   │   │   ├── LapList.jsx
+│   │   │   └── LapList.module.css
+│   │   ├── AnimatedDigit/
+│   │   │   ├── AnimatedDigit.jsx
+│   │   │   └── AnimatedDigit.module.css
+│   │   ├── HelpModal/
+│   │   │   ├── HelpModal.jsx
+│   │   │   └── HelpModal.module.css
+│   │   ├── ThemeWrapper.jsx
+│   │   └── theme.css
+│   │     
 │   ├── hooks/            # Custom React hooks.
-│   ├── __tests__/        # Unit tests for components and hooks.
-│   ├── test/             # Utility functions for Jest unit tests.
+│   │   ├── useTheme.js
+│   │   ├── useStopwatch.js
+│   │   └── useKeyboardShortcuts.js
+│   │     
+│   ├── __tests__/
+│   │   └── Timer.test.jsx
+│   ├── test/
 │   │   └── test-utils.jsx
 │   ├── App.jsx           # Main React application component.
 │   ├── main.jsx          # React DOM entry point.

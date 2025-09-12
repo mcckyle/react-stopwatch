@@ -1,7 +1,7 @@
 //File name: LapList.jsx
 //Author: Kyle McColgan
-//Date: 07 September 2025
-//Description: This file contains the Lap component for the React timer project.
+//Date: 12 September 2025
+//Description: This file contains the laps component for the React timer project.
 
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -40,13 +40,13 @@ const LapList = ({ laps }) => {
                         <motion.div
                           key={index}
                           className={`${styles.lap} ${highlight}`}
-                          initial={{ opacity: 0, y: 20, scale: 0.98 }}
-                          animate={{ opacity: 1, y: 0, scale: 1 }}
-                          exit={{ opacity: 0, y: -10 }}
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -5 }}
                           transition ={{
-                              duration: 0.35,
+                              duration: 0.3,
                               ease: [0.25, 1, 0.5, 1],
-                              delay: index * 0.03,
+                              delay: index * 0.02,
                           }}
                         >
                             <div className = {styles.lapLabel}>Lap {lapNumber}</div>
@@ -61,7 +61,7 @@ const LapList = ({ laps }) => {
                     );
                 })}
               </AnimatePresence>
-            </div>
+        </div>
     );
 };
 
