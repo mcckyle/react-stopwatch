@@ -1,7 +1,7 @@
 //File name: Timer.jsx
 //Author: Kyle McColgan
-//Date: 07 September 2025
-//Description: This file contains the parent Timer component for the React timer site.
+//Date: 17 September 2025
+//Description: This file contains the parent Timer component for the React timer project.
 
 import React, { useState, useEffect, useRef } from "react";
 import { Clock, Sun, Moon } from "lucide-react";
@@ -84,7 +84,7 @@ const Timer = ({ dark, toggleTheme }) => {
   });
 
   return (
-    <div className = {`${theme}`}>
+    <div className = {theme}>
       <motion.div
         className={styles.container}
         initial={{ opacity: 0, y: 30 }}
@@ -102,17 +102,17 @@ const Timer = ({ dark, toggleTheme }) => {
                 title="Toggle theme"
                 aria-label="Toggle theme"
             >
-                {dark ? <Sun size={20}/> : <Moon size={20} />}
+                {dark ? <Sun size={20} /> : <Moon size={20} />}
             </button>
         </header>
 
             <motion.section
-              className = {styles.frame}
+              className = {styles.card}
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.5 }}
             >
-                <div className = {styles.box}>
+                <div className = {styles.content}>
                     <TimerDisplay time={time} />
                     <TimerControls
                         isRunning={isRunning}
@@ -121,6 +121,7 @@ const Timer = ({ dark, toggleTheme }) => {
                         time={time}
                         recordLap={recordLap}
                     />
+
                     <motion.div
                       className={styles.clockEmblem}
                       whileHover={{ rotate: 2, scale: 1.06 }}
@@ -128,12 +129,14 @@ const Timer = ({ dark, toggleTheme }) => {
                     >
                         <Clock size={56} color="var(--gold)" strokeWidth={1.5} />
                     </motion.div>
+
                     <div className={styles.lapListWrapper}>
                         <LapList laps={laps} />
                     </div>
                 </div>
             </motion.section>
-                {showHelp && <HelpModal onClose={() => setShowHelp(false)} />}
+
+             {showHelp && <HelpModal onClose={() => setShowHelp(false)} />}
           </motion.div>
         </div>
   );

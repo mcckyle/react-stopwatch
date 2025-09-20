@@ -1,31 +1,31 @@
 /* Filename: TimerControls.module.css */
 
-/* =========================
-   CONTROLS CONTAINER.
-============================ */
+/* ==============================
+   CONTROLS CONTAINER STYLES.
+================================= */
 .controls
 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1.25rem;
+    gap: 1.2rem;
     margin-top: 2rem;
-    padding: 1.25rem 2rem;
+    padding: 1.2rem 2rem;
 
-    background: rgba(20, 20, 40, 0.6);
+    background: rgba(20, 20, 40, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 1.5rem;
-    backdrop-filter: blur(14px);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+    border-radius: 1.25rem;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 
     transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 :global(.light) .controls
 {
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.7);
     border-color: rgba(234, 179, 8, 0.2);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 /* =========================
@@ -36,16 +36,16 @@
     font-family: 'Cinzel', serif;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.06rem;
-    font-size: 1.15rem;
+    letter-spacing: 0.05rem;
+    font-size: 1.1rem;
 
-    padding: 0.8rem 2rem;
+    padding: 0.75rem 2rem;
     border-radius: 1.25rem;
     border: none;
     cursor: pointer;
 
     color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
 
     transition: background 0.25s ease, box-shadow 0.25s ease;
 }
@@ -57,23 +57,22 @@
 .start,
 .pause
 {
-    background: linear-gradient(135deg, #facc15, #fde047);
+    background: linear-gradient(135deg, #fde047, #facc15);
     color: #1e293b;
-    box-shadow: 0 0 12px rgba(250, 204, 21, 0.35);
+    box-shadow: 0 0 10px rgba(250, 204, 21, 0.35);
 }
 
 :global(.light) .start,
 :global(.light) .pause
 {
-    background: linear-gradient(135deg, #fde047, #facc15);
     color: #7c2d12;
 }
 
 /* LAP BUTTON STYLE. */
 .lap
 {
-    background: linear-gradient(135deg, #6d28d9, #8b5cf6);
-    box-shadow: 0 0 12px rgba(139, 92, 246, 0.35);
+    background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
 }
 
 :global(.light) .lap
@@ -85,13 +84,13 @@
 /* RESET BUTTON STYLE. */
 .reset
 {
-    background: linear-gradient(135deg, #dc2626, #f43f5e);
-    box-shadow: 0 0 12px rgba(220, 38, 38, 0.35);
+    background: linear-gradient(135deg, #f43f5e, #dc2626);
+    box-shadow: 0 0 10px rgba(220, 38, 38, 0.3);
 }
 
 :global(.light) .reset
 {
-    background: linear-gradient(135deg, #f87171, #fca5a5);
+    background: linear-gradient(135deg, #fca5a5, #f87171);
     color: #7c2d12;
 }
 
@@ -102,13 +101,13 @@
 {
     .controls
     {
-        padding: 1rem 1.5rem;
+        padding: 1rem 1.25rem;
         gap: 1rem;
     }
 
     .button
     {
-        font-size: 1.05rem;
+        font-size: 1rem;
         padding: 0.7rem 1.75rem;
     }
 }

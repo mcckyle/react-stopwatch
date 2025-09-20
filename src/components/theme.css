@@ -7,20 +7,26 @@
     --deep-blue: #0a1128;
 
     --shadow: 0 0 16px rgba(212, 175, 55, 0.25);
+
+    /* Theme Tokens Variables. */
+    --surface-light: #f7ecd9;
+    --surface-dark: #0f0e2c;
+    --text-light: #2e2e2e;
+    --text-dark: #f3f4f6;
 }
 
 /* *** Light Mode. *** */
 html.light
 {
-    background: linear-gradient(145deg, var(--ivory), #f7ecd9);
-    color: #2e2e2e;
+    background: linear-gradient(145deg, var(--ivory), var(--surface-light));
+    color: var(--text-light);
 }
 
 /* *** Dark Mode. *** */
 html.dark
 {
-    background: radial-gradient(circle at 30% 30%, #1e1b4b 0%, #0f0e2c 80%);
-    color: #f3f4f6;
+    background: radial-gradient(circle at 30% 30%, #1e1b4b 0%, var(--surface-dark) 80%);
+    color: var(--text-dark);
 }
 
 /* *** Old styles commented out below this line!! *** */

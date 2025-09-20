@@ -1,6 +1,6 @@
 //File name: TimerControls.jsx
 //Author: Kyle McColgan
-//Date: 12 September 2025
+//Date: 17 September 2025
 //Description: This file contains the timer controls component for the React timer project.
 
 import React from "react";
@@ -19,9 +19,9 @@ const TimerControls = ({ isRunning, toggle, reset, recordLap, children }) => {
     size: "lg",
     radius: "xl",
     className: styles.button,
-    whileHover: { scale: 1.06 },
+    whileHover: { scale: 1.05 },
     whileTap: { scale: 0.95 },
-    transition: { type: "spring", stiffness: 220, damping: 18 }
+    transition: { type: "spring", stiffness: 220, damping: 18 },
   };
 
   return (
@@ -34,7 +34,7 @@ const TimerControls = ({ isRunning, toggle, reset, recordLap, children }) => {
             className={`${styles.button} ${isRunning ? styles.pause : styles.start}`}
             aria-label={isRunning ? "Pause timer" : "Start timer"}
         >
-                {isRunning ? "Pause" : "Start"}
+            {isRunning ? "Pause" : "Start"}
         </MotionButton>
 
         <MotionButton
@@ -44,7 +44,7 @@ const TimerControls = ({ isRunning, toggle, reset, recordLap, children }) => {
             className={`${styles.button} ${styles.lap}`}
             aria-label="Record lap time"
         >
-                Lap
+            Lap
         </MotionButton>
 
         <MotionButton

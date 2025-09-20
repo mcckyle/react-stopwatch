@@ -11,7 +11,7 @@
     align-items: center;
 
     min-width: 1.2ch;
-    padding: 0 0.1em;
+    padding: 0 0.12em;
     overflow: hidden;
 }
 
@@ -20,15 +20,15 @@
 {
     font-family: 'JetBrains Mono', 'Inter', monospace;
     font-weight: 700;
-    font-size: clamp(1.9rem, 5vw, 3.1rem);
+    font-size: clamp(2rem, 5vw, 3rem);
     line-height: 1;
     white-space: nowrap;
 
     color: #fef08a; /* Color: Soft gold. */
-    text-shadow: 0 0 8px rgba(212, 175, 55, 0.35);
+    text-shadow: 0 0 6px rgba(212, 175, 55, 0.35);
 
-    will-change: transform, text-shadow;
     transform-origin: center;
+    will-change: transform, text-shadow;
 
     transition: text-shadow 0.25s ease;
 }
@@ -36,19 +36,19 @@
 /* DIGIT HOVER GLOW STYLE. */
 .digit:hover
 {
-    text-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.55);
 }
 
 /* ==== LIGHT THEME OVERRIDES STYLES: ========================= */
 .digitContainer.light .digit
 {
     color: #7c3e00; /* Color: Golden brown. */
-    text-shadow: 0 0 6px rgba(234, 179, 8, 0.25);
+    text-shadow: 0 0 5px rgba(234, 179, 8, 0.3);
 }
 
 .digitContainer.light .digit:hover
 {
-    text-shadow: 0 0 10px rgba(234, 179, 8, 0.35);
+    text-shadow: 0 0 8px rgba(234, 179, 8, 0.4);
 }
 
 /* ==== RESPONSIVE DESIGN STYLES: ========================= */

@@ -1,6 +1,6 @@
 //File name: LapList.jsx
 //Author: Kyle McColgan
-//Date: 12 September 2025
+//Date: 17 September 2025
 //Description: This file contains the laps component for the React timer project.
 
 import React from "react";
@@ -13,9 +13,23 @@ const LapList = ({ laps }) => {
 
     const { theme } = useTheme();
 
+    if (!laps.length)
+    {
+        return null;
+    }
+
     const lapDurations = laps.map((lap, index) => lap - (laps[index + 1] ?? 0));
     const fastest = Math.min(...lapDurations);
     const slowest = Math.max(...lapDurations);
+
+    const getDeltaLabel = (delta, hours, minutes, seconds, centiSeconds) => {
+        if (hours !== "00")
+        {
+            return `+${hours}:${minutes}:${seconds}:${centiSeconds}`;
+        }
+        const { minutes: dMin, seconds: dSec, centiSeconds: dCs } = formatTime(delta, true);
+        return `+${dMin}:${dSec}:${dCs}`;
+    }
 
     return (
         <div className = {`${styles.lapList} ${theme}`}>
@@ -24,37 +38,31 @@ const LapList = ({ laps }) => {
                     const lapNumber = laps.length - index;
                     const prevLap = laps[index + 1] ?? 0;
                     const delta = lap - prevLap;
+
                     const { hours, minutes, seconds, centiSeconds } = formatTime(lap, true);
-                    const { minutes: dMin, seconds: dSec, centiSeconds: dCs } = formatTime(delta, true);
+                    const deltaLabel = getDeltaLabel(delta, hours, minutes, seconds, centiSeconds);
 
-                    const deltaLabel =
-                      hours !== "00"
-                        ? `+${hours}:${minutes}:${seconds}:${centiSeconds}`
-                        : `+${dMin}:${dSec}:${dCs}`;
-
-                    let highlight = "";
-                    if (delta === fastest) highlight = styles.fastest;
-                    else if (delta === slowest) highlight = styles.slowest;
+                    const highlight =
+                      delta === fastest ? styles.fastest : delta === slowest ? styles.slowest : "";
 
                     return (
                         <motion.div
                           key={index}
                           className={`${styles.lap} ${highlight}`}
-                          initial={{ opacity: 0, y: 10 }}
+                          initial={{ opacity: 0, y: 8 }}
                           animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -5 }}
+                          exit={{ opacity: 0, y: -6 }}
                           transition ={{
-                              duration: 0.3,
+                              duration: 0.25,
                               ease: [0.25, 1, 0.5, 1],
-                              delay: index * 0.02,
+                              delay: index * 0.015,
                           }}
                         >
                             <div className = {styles.lapLabel}>Lap {lapNumber}</div>
                             <div className = {styles.lapTime}>
                                 {hours !== "00"
                                     ? `${hours}:${minutes}:${seconds}.${centiSeconds}`
-                                    : `${minutes}:${seconds}.${centiSeconds}`
-                                }
+                                    : `${minutes}:${seconds}.${centiSeconds}`}
                             </div>
                             <div className={styles.lapDelta}>{deltaLabel}</div>
                         </motion.div>

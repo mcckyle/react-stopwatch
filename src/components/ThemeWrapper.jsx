@@ -1,6 +1,6 @@
 //File name: ThemeWrapper.jsx
 //Author: Kyle McColgan
-//Date: 07 September 2025
+//Date: 17 September 2025
 //Description: This file contains the ThemeWrapper React UI/UX component for the react-timer.
 
 import React, { useEffect } from "react";
@@ -28,8 +28,8 @@ const ThemeWrapper = ({ children }) => {
                 headings: {
                     fontFamily: "Playfair Display, serif",
                     sizes: {
-                        h1: { fontSize: '2.25rem', fontWeight: 700 },
-                        h2: { fontSize: '1.875rem', fontWeight: 600 },
+                        h1: { fontSize: "2.25rem", fontWeight: 700 },
+                        h2: { fontSize: "1.875rem", fontWeight: 600 },
                     },
                 },
                 shadows: {
