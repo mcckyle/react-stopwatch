@@ -13,6 +13,7 @@ html, body, #root
 
     font-family: 'Inter', sans-serif;
     font-size: 16px;
+    line-height: 1.6;
 
     display: flex;
     justify-content: center;
@@ -21,8 +22,6 @@ html, body, #root
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-
-    transition: background 0.6s ease, color 0.6s ease;
 }
 
 /* *** Old styles commented out below this line!! ****/

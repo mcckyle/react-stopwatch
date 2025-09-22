@@ -13,19 +13,22 @@
     --surface-dark: #0f0e2c;
     --text-light: #2e2e2e;
     --text-dark: #f3f4f6;
+
+    --gradient-light: linear-gradient(145deg, var(--ivory), var(--surface-light));
+    --gradient-dark: radial-gradient(circle at 30% 30%, #1e1b4b 0%, var(--surface-dark) 80%);
 }
 
 /* *** Light Mode. *** */
 html.light
 {
-    background: linear-gradient(145deg, var(--ivory), var(--surface-light));
+    background: var(--gradient-light);
     color: var(--text-light);
 }
 
 /* *** Dark Mode. *** */
 html.dark
 {
-    background: radial-gradient(circle at 30% 30%, #1e1b4b 0%, var(--surface-dark) 80%);
+    background: var(--gradient-dark);
     color: var(--text-dark);
 }
 

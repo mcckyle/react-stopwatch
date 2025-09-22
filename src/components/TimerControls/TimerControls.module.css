@@ -8,13 +8,14 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1.2rem;
+    gap: 1rem;
     margin-top: 2rem;
-    padding: 1.2rem 2rem;
 
-    background: rgba(20, 20, 40, 0.5);
+    background: rgba(20, 20, 40, 0.45);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 1.25rem;
+    padding: 1rem 1.5rem;
+
     backdrop-filter: blur(12px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 
@@ -36,18 +37,20 @@
     font-family: 'Cinzel', serif;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.05rem;
-    font-size: 1.1rem;
+    letter-spacing: 0.04rem;
+    font-size: 1rem;
 
-    padding: 0.75rem 2rem;
-    border-radius: 1.25rem;
+    padding: 0.75rem 1.75rem;
+    border-radius: 1rem;
     border: none;
     cursor: pointer;
 
     color: #fff;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
 
-    transition: background 0.25s ease, box-shadow 0.25s ease;
+    transition: background 0.25s ease,
+                box-shadow 0.25s ease,
+                transform 0.2s ease;
 }
 
 /* ===========================
@@ -59,7 +62,7 @@
 {
     background: linear-gradient(135deg, #fde047, #facc15);
     color: #1e293b;
-    box-shadow: 0 0 10px rgba(250, 204, 21, 0.35);
+    box-shadow: 0 0 12px rgba(250, 204, 21, 0.35);
 }
 
 :global(.light) .start,
@@ -72,7 +75,7 @@
 .lap
 {
     background: linear-gradient(135deg, #8b5cf6, #6d28d9);
-    box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+    box-shadow: 0 0 12px rgba(139, 92, 246, 0.35);
 }
 
 :global(.light) .lap
@@ -85,7 +88,7 @@
 .reset
 {
     background: linear-gradient(135deg, #f43f5e, #dc2626);
-    box-shadow: 0 0 10px rgba(220, 38, 38, 0.3);
+    box-shadow: 0 0 12px rgba(220, 38, 38, 0.35);
 }
 
 :global(.light) .reset
@@ -97,34 +100,31 @@
 /* =============================
    RESPONSIVE DESIGN STYLES.
 ================================ */
-@media(max-width: 1024px)
+@media(max-width: 768px)
 {
     .controls
     {
-        padding: 1rem 1.25rem;
-        gap: 1rem;
-    }
-
-    .button
-    {
-        font-size: 1rem;
-        padding: 0.7rem 1.75rem;
-    }
-}
-
-@media(max-width: 640px)
-{
-    .controls
-    {
-        flex-direction: column;
         gap: 0.75rem;
         padding: 1rem;
     }
 
     .button
     {
+        font-size: 0.95rem;
+        padding: 0.7rem 1.5rem;
+    }
+}
+
+@media(max-width: 480px)
+{
+    .controls
+    {
+        flex-direction: column;
         width: 100%;
-        font-size: 1rem;
-        padding: 0.75rem 1.5rem;
+    }
+
+    .button
+    {
+        width: 100%;
     }
 }

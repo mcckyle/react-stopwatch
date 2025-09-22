@@ -1,6 +1,6 @@
 //File name: Timer.jsx
 //Author: Kyle McColgan
-//Date: 17 September 2025
+//Date: 21 September 2025
 //Description: This file contains the parent Timer component for the React timer project.
 
 import React, { useState, useEffect, useRef } from "react";
@@ -13,6 +13,7 @@ import TimerDisplay from "../TimerDisplay/TimerDisplay.jsx";
 import TimerControls from "../TimerControls/TimerControls";
 import LapList from "../LapList/LapList.jsx";
 import HelpModal from "../HelpModal/HelpModal.jsx";
+
 import styles from './Timer.module.css';
 
 const LAP_STORAGE_KEY = "timer-app-laps"; //Key for browser localStorage.
@@ -84,61 +85,59 @@ const Timer = ({ dark, toggleTheme }) => {
   });
 
   return (
-    <div className = {theme}>
-      <motion.div
-        className={styles.container}
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
-        <header className={styles.header}>
-            <h1 className={styles.banner}>
-                <Clock size={32} className={styles.icon} />
-                <span>Timer</span>
-            </h1>
-            <button
-                className={styles.themeToggle}
-                onClick={toggleTheme}
-                title="Toggle theme"
-                aria-label="Toggle theme"
-            >
-                {dark ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
-        </header>
+    <motion.div
+      className={styles.container}
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
+      <header className={styles.header}>
+          <h1 className={styles.banner}>
+              <Clock size={32} className={styles.icon} />
+              <span>Timer</span>
+          </h1>
+          <button
+              className={styles.themeToggle}
+              onClick={toggleTheme}
+              title="Toggle theme"
+              aria-label="Toggle theme"
+          >
+              {dark ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
+      </header>
 
-            <motion.section
-              className = {styles.card}
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-            >
-                <div className = {styles.content}>
-                    <TimerDisplay time={time} />
-                    <TimerControls
-                        isRunning={isRunning}
-                        toggle={toggle}
-                        reset={reset}
-                        time={time}
-                        recordLap={recordLap}
-                    />
+          <motion.section
+            className = {styles.card}
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+          >
+              <div className = {styles.content}>
+                  <TimerDisplay time={time} aria-live="polite" />
+                  <TimerControls
+                      isRunning={isRunning}
+                      toggle={toggle}
+                      reset={reset}
+                      time={time}
+                      recordLap={recordLap}
+                  />
 
-                    <motion.div
-                      className={styles.clockEmblem}
-                      whileHover={{ rotate: 2, scale: 1.06 }}
-                      transition={{ type: "spring", stiffness: 180 }}
-                    >
-                        <Clock size={56} color="var(--gold)" strokeWidth={1.5} />
-                    </motion.div>
+                  <motion.div
+                    className={styles.clockEmblem}
+                    whileHover={{ rotate: 2, scale: 1.06 }}
+                    transition={{ type: "spring", stiffness: 180 }}
+                  >
+                      <Clock size={56} color="var(--gold)" strokeWidth={1.5} />
+                  </motion.div>
 
-                    <div className={styles.lapListWrapper}>
-                        <LapList laps={laps} />
-                    </div>
-                </div>
-            </motion.section>
+                  <div className={styles.lapListWrapper}>
+                      <LapList laps={laps} />
+                  </div>
+              </div>
+          </motion.section>
 
-             {showHelp && <HelpModal onClose={() => setShowHelp(false)} />}
-          </motion.div>
-        </div>
+            {showHelp && <HelpModal onClose={() => setShowHelp(false)} />}
+        </motion.div>
   );
 };
 

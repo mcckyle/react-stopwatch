@@ -5,20 +5,18 @@
 =============================== */
 .digitContainer
 {
-    position: relative;
     display: inline-flex;
     justify-content: center;
     align-items: center;
 
     min-width: 1.2ch;
-    padding: 0 0.12em;
     overflow: hidden;
 }
 
 /* ==== DIGIT STYLE. ========================= */
 .digit
 {
-    font-family: 'JetBrains Mono', 'Inter', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-weight: 700;
     font-size: clamp(2rem, 5vw, 3rem);
     line-height: 1;
@@ -26,9 +24,6 @@
 
     color: #fef08a; /* Color: Soft gold. */
     text-shadow: 0 0 6px rgba(212, 175, 55, 0.35);
-
-    transform-origin: center;
-    will-change: transform, text-shadow;
 
     transition: text-shadow 0.25s ease;
 }
@@ -40,13 +35,13 @@
 }
 
 /* ==== LIGHT THEME OVERRIDES STYLES: ========================= */
-.digitContainer.light .digit
+:global(.light) .digit
 {
     color: #7c3e00; /* Color: Golden brown. */
     text-shadow: 0 0 5px rgba(234, 179, 8, 0.3);
 }
 
-.digitContainer.light .digit:hover
+:global(.light) .digit:hover
 {
     text-shadow: 0 0 8px rgba(234, 179, 8, 0.4);
 }

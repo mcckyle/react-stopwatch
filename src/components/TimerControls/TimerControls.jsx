@@ -1,6 +1,6 @@
 //File name: TimerControls.jsx
 //Author: Kyle McColgan
-//Date: 17 September 2025
+//Date: 21 September 2025
 //Description: This file contains the timer controls component for the React timer project.
 
 import React from "react";
@@ -15,13 +15,10 @@ const TimerControls = ({ isRunning, toggle, reset, recordLap, children }) => {
 
   const { theme } = useTheme();
 
-  const commonProps = {
-    size: "lg",
-    radius: "xl",
-    className: styles.button,
+  const commonMotion = {
     whileHover: { scale: 1.05 },
     whileTap: { scale: 0.95 },
-    transition: { type: "spring", stiffness: 220, damping: 18 },
+    transition: { type: "spring", stiffness: 200, damping: 18 },
   };
 
   return (
@@ -29,7 +26,7 @@ const TimerControls = ({ isRunning, toggle, reset, recordLap, children }) => {
         {children}
 
         <MotionButton
-            {...commonProps}
+            {...commonMotion}
             onClick={toggle}
             className={`${styles.button} ${isRunning ? styles.pause : styles.start}`}
             aria-label={isRunning ? "Pause timer" : "Start timer"}
@@ -38,7 +35,7 @@ const TimerControls = ({ isRunning, toggle, reset, recordLap, children }) => {
         </MotionButton>
 
         <MotionButton
-            {...commonProps}
+            {...commonMotion}
             onClick={recordLap}
             disabled={!isRunning}
             className={`${styles.button} ${styles.lap}`}
@@ -48,7 +45,7 @@ const TimerControls = ({ isRunning, toggle, reset, recordLap, children }) => {
         </MotionButton>
 
         <MotionButton
-            {...commonProps}
+            {...commonMotion}
             onClick={reset}
             className={`${styles.button} ${styles.reset}`}
             aria-label="Reset timer"
