@@ -18,12 +18,12 @@
 {
     font-family: 'JetBrains Mono', monospace;
     font-weight: 700;
-    font-size: clamp(2rem, 5vw, 3rem);
+    font-size: clamp(2rem, 5vw, 3.25rem);
     line-height: 1;
     white-space: nowrap;
 
     color: #fef08a; /* Color: Soft gold. */
-    text-shadow: 0 0 6px rgba(212, 175, 55, 0.35);
+    text-shadow: 0 0 6px rgba(212, 175, 55, 0.3);
 
     transition: text-shadow 0.25s ease;
 }
@@ -38,24 +38,17 @@
 :global(.light) .digit
 {
     color: #7c3e00; /* Color: Golden brown. */
-    text-shadow: 0 0 5px rgba(234, 179, 8, 0.3);
+    text-shadow: 0 0 5px rgba(234, 179, 8, 0.25);
 }
 
 :global(.light) .digit:hover
 {
-    text-shadow: 0 0 8px rgba(234, 179, 8, 0.4);
+    text-shadow: 0 0 8px rgba(234, 179, 8, 0.35);
 }
 
 /* ==== RESPONSIVE DESIGN STYLES: ========================= */
 @media(max-width: 768px)
 {
-    .digitContainer
-    {
-        min-width: 1ch;
-    }
-
-    .digit
-    {
-        font-size: clamp(1.4rem, 5.5vw, 2.25rem);
-    }
+    .digitContainer { min-width: 1ch; }
+    .digit { font-size: clamp(1.4rem, 5.5vw, 2.25rem); }
 }

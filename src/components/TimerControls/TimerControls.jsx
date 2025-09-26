@@ -1,12 +1,13 @@
 //File name: TimerControls.jsx
 //Author: Kyle McColgan
-//Date: 21 September 2025
+//Date: 24 September 2025
 //Description: This file contains the timer controls component for the React timer project.
 
 import React from "react";
 import { Button } from "@mantine/core";
 import { motion } from "framer-motion";
 import { useTheme } from "../../hooks/useTheme";
+
 import styles from "./TimerControls.module.css";
 
 const MotionButton = motion(Button);
@@ -15,10 +16,10 @@ const TimerControls = ({ isRunning, toggle, reset, recordLap, children }) => {
 
   const { theme } = useTheme();
 
-  const commonMotion = {
+  const motionProps = {
     whileHover: { scale: 1.05 },
     whileTap: { scale: 0.95 },
-    transition: { type: "spring", stiffness: 200, damping: 18 },
+    transition: { type: "spring", stiffness: 220, damping: 18 },
   };
 
   return (
@@ -26,7 +27,7 @@ const TimerControls = ({ isRunning, toggle, reset, recordLap, children }) => {
         {children}
 
         <MotionButton
-            {...commonMotion}
+            {...motionProps}
             onClick={toggle}
             className={`${styles.button} ${isRunning ? styles.pause : styles.start}`}
             aria-label={isRunning ? "Pause timer" : "Start timer"}
@@ -35,7 +36,7 @@ const TimerControls = ({ isRunning, toggle, reset, recordLap, children }) => {
         </MotionButton>
 
         <MotionButton
-            {...commonMotion}
+            {...motionProps}
             onClick={recordLap}
             disabled={!isRunning}
             className={`${styles.button} ${styles.lap}`}
@@ -45,7 +46,7 @@ const TimerControls = ({ isRunning, toggle, reset, recordLap, children }) => {
         </MotionButton>
 
         <MotionButton
-            {...commonMotion}
+            {...motionProps}
             onClick={reset}
             className={`${styles.button} ${styles.reset}`}
             aria-label="Reset timer"

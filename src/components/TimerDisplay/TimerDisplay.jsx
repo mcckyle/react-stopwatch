@@ -1,36 +1,32 @@
 //File name: TimerDisplay.jsx
 //Author: Kyle McColgan
-//Date: 21 September 2025
+//Date: 24 September 2025
 //Description: This file contains the timer display component for the React timer project.
 
 import React from "react";
 import AnimatedDigit from "../AnimatedDigit/AnimatedDigit.jsx";
-import styles from "./TimerDisplay.module.css";
 import { formatTime } from "../../utils/formatTime";
+
+import styles from "./TimerDisplay.module.css";
 
 const TimerDisplay = ({ time }) => {
   const { hours, minutes, seconds} = formatTime(time);
 
+  const renderDigits = (label, value) =>
+    [...value].map((digit, index) => (
+      <AnimatedDigit key={`${label}-${index}`} value={parseInt(digit, 10)} />
+    ));
+
   return (
     <div className = {styles.wrapper}>
-        <time
-          className={styles.text}
-          role="timer"
-          aria-live="polite"
-        >
-            {[...hours].map((digit, i) => (
-                <AnimatedDigit key={`hr-${i}`} value={parseInt(digit)} />
-            ))}
-            <span className={styles.colon} aria-hidden="true">:</span>
-            {[...minutes].map((digit, i) => (
-                <AnimatedDigit key={`min-${i}`} value={parseInt(digit)} />
-            ))}
-            <span className={styles.colon} aria-hidden="true">:</span>
-            {[...seconds].map((digit, i) => (
-                <AnimatedDigit key={`sec-${i}`} value={parseInt(digit)} />
-            ))}
-        </time>
-      </div>
+       <time className={styles.text} role="timer" aria-live="polite">
+         {renderDigits("hr", hours)}
+         <span className={styles.colon} aria-hidden="true">:</span>
+         {renderDigits("min", minutes)}
+         <span className={styles.colon} aria-hidden="true">:</span>
+         {renderDigits("sec", seconds)}
+       </time>
+    </div>
   );
 };
 

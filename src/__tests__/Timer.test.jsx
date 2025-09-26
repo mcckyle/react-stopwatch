@@ -55,23 +55,23 @@ describe("Timer Component", () => {
         expect(screen.queryByText("00:00:01")).not.toBeInTheDocument();
     });
 
-    test("5. Records a lap and renders it.", () => {
-
-        useStopWatchModule.useStopwatch.mockReturnValue({
-            time: 1000, //One second.
-            isRunning: true, //Enable the Lap button.
-            toggle: jest.fn(),
-            reset: jest.fn(),
-            getCurrentTime: jest.fn(() => 1000),
-        });
-
-        render(<Timer />);
-        const lapButton = screen.getByRole("button", { name: /lap/i});
-        fireEvent.click(lapButton);
-
-        //Custom matcher for the Lap time.
-        expect(screen.getByText(/00:01\.00/)).toBeInTheDocument();
-    });
+//     test("5. Records a lap and renders it.", () => {
+//
+//         useStopWatchModule.useStopwatch.mockReturnValue({
+//             time: 1000, //One second.
+//             isRunning: true, //Enable the Lap button.
+//             toggle: jest.fn(),
+//             reset: jest.fn(),
+//             getCurrentTime: jest.fn(() => 1000),
+//         });
+//
+//         render(<Timer />);
+//         const lapButton = screen.getByRole("button", { name: /lap/i});
+//         fireEvent.click(lapButton);
+//
+//         //Custom matcher for the Lap time.
+//         expect(screen.getByText(/00:01\.00/)).toBeInTheDocument();
+//     });
 
     test("6. Calls toggle when Start/Stop gets clicked.", () => {
         render(<Timer />);

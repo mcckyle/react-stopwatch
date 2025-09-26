@@ -6,16 +6,13 @@
     --ivory: #fffaf0;
     --deep-blue: #0a1128;
 
-    --shadow: 0 0 16px rgba(212, 175, 55, 0.25);
-
-    /* Theme Tokens Variables. */
-    --surface-light: #f7ecd9;
-    --surface-dark: #0f0e2c;
+    --surface-light: #f8f5ef;
+    --surface-dark: #111122;
     --text-light: #2e2e2e;
     --text-dark: #f3f4f6;
 
-    --gradient-light: linear-gradient(145deg, var(--ivory), var(--surface-light));
-    --gradient-dark: radial-gradient(circle at 30% 30%, #1e1b4b 0%, var(--surface-dark) 80%);
+    --gradient-light: linear-gradient(145deg, var(--ivory) 0%, var(--surface-light) 100%);
+    --gradient-dark: radial-gradient(circle at 30% 30%, #1e1b4b 0%, var(--surface-dark) 100%);
 }
 
 /* *** Light Mode. *** */

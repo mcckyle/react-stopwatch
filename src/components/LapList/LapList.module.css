@@ -1,51 +1,47 @@
 /* Filename: LapList.module.css */
 
 /* ===============================
-   Lap List Container Styles.
+   LAP LIST CONTAINER.
 ================================== */
 .lapList
 {
     width: 100%;
-    margin: 2rem auto 0;
-    padding: 1rem 1.25rem;
-    max-height: 280px;
+    margin-top: 1.25rem;
+    padding: 1rem 1.2rem;
+    max-height: 260px;
     overflow-y: auto;
 
-    background: rgba(20, 20, 40, 0.55);
-    border-radius: 1rem;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    background: rgba(20, 20, 40, 0.35);
+    border-radius: 0.9rem;
+    backdrop-filter: blur(10px);
 
     font-family: "Inter", sans-serif;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: #fefce8; /* Color: Soft golden-ivory. */
 
-    transition: background 0.3s ease, box-shadow 0.3s ease;
+    transition: background 0.3s ease;
 }
 
 :global(.light) .lapList
 {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.65);
     color: #1f2937;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
-/* ==================
-   Row Styles.
-===================== */
+/* =====================
+   ROW BASE STYLES.
+======================== */
 .lap
 {
     display: grid;
     grid-template-columns: 5rem 1fr auto;
-    grid-template-areas: "label time delta";
     align-items: center;
     gap: 1rem;
-    padding: 0.65rem 0;
+
+    padding: 0.55rem 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 
-    transition: background 0.25s ease,
-                transform 0.2s ease,
-                box-shadow 0.25s ease;
+    transition: background 0.25s ease;
 }
 
 :global(.light) .lap
@@ -60,21 +56,19 @@
 
 .lap:hover
 {
-    background: rgba(255, 255, 255, 0.06);
-    transform: translateY(-1px) scale(1.01);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.04);
 }
+
 /* ===============================================
    LAP NUMBER LABEL (e.g., "Lap 1"). Styles.
 ================================================== */
 .lapLabel
 {
-    grid-area: label;
-    color: #facc15; /* Color: yellow. */
+    font-size: 0.8rem;
     font-weight: 600;
-    font-size: 0.95rem;
+
     text-transform: uppercase;
-    letter-spacing: 0.03rem;
+    color: #facc15; /* Color: yellow. */
 }
 
 :global(.light) .lapLabel
@@ -82,13 +76,14 @@
     color: #b45309; /* Color: amber-700 */
 }
 
-/* ==== MAIN LAP TIME STYLES (e.g., "00:12:34.56"). ==== */
+/* ===============================================
+   MAIN LAP TIME STYLES (e.g., "00:12:34.56").
+================================================== */
 .lapTime
 {
-    grid-area: time;
     text-align: right;
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1.05rem;
     color: #fde047; /* Color: gold */
 }
 
@@ -97,15 +92,16 @@
     color: #d97706; /* Color: amber-600 */
 }
 
-/* ==== DELTA TIME. ==== */
+/* =======================
+   DELTA TIME STYLES.
+========================== */
 .lapDelta
 {
-    grid-area: delta;
     text-align: right;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 500;
+    min-width: 6.5ch;
     color: #a78bfa; /* Color: purple. */
-    min-width: 7ch;
 }
 
 :global(.light) .lapDelta
@@ -114,11 +110,11 @@
 }
 
 /* =======================
-   Highlights Styles.
+   HIGHLIGHTS STYLES.
 ========================== */
 .fastest
 {
-    background: linear-gradient(90deg, rgba(34, 197, 94, 0.12), transparent);
+    background: linear-gradient(90deg, rgba(34, 197, 94, 0.1), transparent);
 }
 
 .fastest .lapTime,
@@ -129,7 +125,7 @@
 
 .slowest
 {
-    background: linear-gradient(90deg, rgba(239, 68, 68, 0.12), transparent);
+    background: linear-gradient(90deg, rgba(239, 68, 68, 0.1), transparent);
 }
 
 .slowest .lapTime,
@@ -139,7 +135,7 @@
 }
 
 /* =======================
-   Scrollbar Styles.
+   SCROLLBAR STYLES.
 ========================== */
 .lapList::-webkit-scrollbar
 {
@@ -157,19 +153,21 @@
     background: transparent;
 }
 
-/* ==== LAP LIST MEDIA QUERY STYLES. ==== */
+/* =================================
+   LAP LIST MEDIA QUERY STYLES.
+==================================== */
 @media(max-width: 768px)
 {
     .lap
     {
         grid-template-columns: auto auto;
         grid-template-areas:
-            "label time"
-            "delta delta";
-        row-gap: 0.35rem;
+          "label time"
+          "delta delta";
+        row-gap: 0.25rem;
     }
 
-    .lapLabel { font-size: 0.85rem; }
-    .lapTime { font-size: 1.05rem; }
-    .lapDelta { font-size: 0.8rem; }
+    .lapLabel { font-size: 0.75rem; }
+    .lapTime { font-size: 0.95rem; }
+    .lapDelta { font-size: 0.75rem; }
 }

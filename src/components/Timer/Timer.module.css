@@ -8,7 +8,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2.5rem;
+    gap: 2rem;
     width: 100%;
 }
 
@@ -18,27 +18,25 @@
 .header
 {
     width: 100%;
-    padding: 1rem 2rem 1.5rem;
+    padding: 1rem 1.5rem;
     margin-bottom: 1rem;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    border-bottom: 1px solid rgba(212, 175, 55, 0.25);
 }
 
 .banner
 {
-    font-family: 'Cinzel', serif;
+    font-family: 'Playfair Display', serif;
     font-weight: 700;
-    font-size: clamp(2.25rem, 6vw, 3rem);
+    font-size: clamp(2rem, 6vw, 2.75rem);
 
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.5rem;
 
-    background: linear-gradient(90deg, #fcd34d, #fbbf24);
+    background: linear-gradient(90deg, var(--gold), #fcd34d);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
@@ -64,19 +62,18 @@
 .card
 {
     width: 100%;
-    border: 1px solid rgba(212, 175, 55, 0.25);
     border-radius: 1rem;
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
-    box-shadow: 0 0 18px rgba(212, 175, 55, 0.15);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
 
-    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover
 {
-    box-shadow: 0 0 24px rgba(212, 175, 55, 0.25);
     transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
 .content
@@ -84,7 +81,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1.25rem;
     padding: 2rem;
 }
 
@@ -93,16 +90,21 @@
 ============================= */
 .clockEmblem
 {
-    padding: 1rem;
-    border: 2px solid var(--gold);
+    padding: 0.75rem;
     border-radius: 50%;
+    border: 2px solid var(--gold);
 
-    background: radial-gradient(circle at 40% 40%, rgba(212, 175, 55, 0.12), transparent 70%);
+    background: radial-gradient(
+        circle at 40% 40%,
+        rgba(212, 175, 55, 0.12),
+        transparent 70%
+    );
+
     box-shadow:
-      inset 0 0 10px rgba(212, 175, 55, 0.15),
-      0 0 12px rgba(212, 175, 55, 0.3);
+      inset 0 0 8px rgba(212, 175, 55, 0.25),
+      0 0 10px rgba(212, 175, 55, 0.3);
 
-    transition: transform 0.2s ease;
+    transition: transform 0.25s ease;
 }
 
 /* =======================
@@ -113,11 +115,10 @@
     width: 100%;
     max-height: 25vh;
     overflow-y: auto;
-    padding: 0.75rem;
-    margin-top: 1.25rem;
+    padding: 0.5rem;
+    margin-top: 1rem;
 
-    border-top: 1px solid rgba(212, 175, 55, 0.25);
-    border-radius: inherit;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
 
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -142,29 +143,27 @@
     align-items: center;
     justify-content: center;
 
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(6px);
     border: 1px solid rgba(212, 175, 55, 0.35);
-    box-shadow: 0 0 6px rgba(212, 175, 55, 0.25);
     cursor: pointer;
 
-    transition: transform 0.25s ease, box-shadow 0.35s ease;
+    transition: transform 0.25s ease, box-shadow 0.3s ease;
 }
 
 .themeToggle:hover
 {
-    transform: scale(1.1);
-    box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
+    transform: scale(1.08);
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.35);
 }
 
 html.dark .themeToggle
 {
-    border: 1px solid rgba(148, 163, 184, 0.4);
-    background: rgba(30, 41, 59, 0.4);
-    box-shadow: 0 0 6px rgba(148, 163, 184, 0.25);
+    border-color: rgba(148, 163, 184, 0.3);
+    background: rgba(30, 41, 59, 0.35);
 }
 
 html.dark .themeToggle:hover
 {
-    box-shadow: 0 0 12px rgba(148, 163, 184, 0.4);
+    box-shadow: 0 0 12px rgba(148, 163, 184, 0.35);
 }
