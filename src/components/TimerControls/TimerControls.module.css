@@ -9,7 +9,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 1rem;
-    margin-top: 1.75rem;
+    margin-top: 1.5rem;
 
     padding: 0.75rem 1.25rem;
     border-radius: 1rem;
@@ -40,7 +40,10 @@
     border-radius: 0.9rem;
     border: none;
     cursor: pointer;
+
     color: #fff;
+    background: linear-gradient(135deg, #374151, #111827);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -62,12 +65,6 @@
     box-shadow: 0 0 8px rgba(250, 204, 21, 0.4);
 }
 
-:global(.light) .start,
-:global(.light) .pause
-{
-    color: #713f12;
-}
-
 /* LAP BUTTON STYLE. */
 .lap
 {
@@ -75,17 +72,23 @@
     box-shadow: 0 0 8px rgba(139, 92, 246, 0.35);
 }
 
-:global(.light) .lap
-{
-    background: linear-gradient(135deg, #c4b5fd, #a78bfa);
-    color: #3c0753;
-}
-
 /* RESET BUTTON STYLE. */
 .reset
 {
     background: linear-gradient(135deg, #f43f5e, #dc2626);
     box-shadow: 0 0 8px rgba(220, 38, 38, 0.35);
+}
+
+:global(.light) .start,
+:global(.light) .pause
+{
+    color: #713f12;
+}
+
+:global(.light) .lap
+{
+    background: linear-gradient(135deg, #c4b5fd, #a78bfa);
+    color: #3c0753;
 }
 
 :global(.light) .reset

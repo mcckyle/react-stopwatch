@@ -20,27 +20,27 @@
 {
     content: "";
     position: absolute;
-    inset: -20%;
+    inset: -15%;
     border-radius: 50%;
 
     background: radial-gradient(
         circle at 40% 40%,
-        rgba(212, 175, 55, 0.12),
-        transparent 70%
+        rgba(212, 175, 55, 0.08),
+        transparent 75%
     );
 
-    filter: blur(80px);
+    filter: blur(100px);
     pointer-events: none;
 
-    animation: drift 90s linear infinite;
+    /*animation: drift 90s linear infinite;*/
 }
 
-@keyframes drift
+/*@keyframes drift
 {
     0% { transform: translate(0, 0) rotate(0deg); }
     50% { transform: translate(40px, -20px) rotate(180deg); }
     100% { transform: translate(0, 0) rotate(360deg); }
-}
+}*/
 
 /* *** Old styles commented out below this line!! ****/
 /*.app.dark

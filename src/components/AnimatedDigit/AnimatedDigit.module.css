@@ -9,7 +9,7 @@
     justify-content: center;
     align-items: center;
 
-    min-width: 1.2ch;
+    min-width: 1.15ch;
     overflow: hidden;
 }
 
@@ -22,8 +22,8 @@
     line-height: 1;
     white-space: nowrap;
 
-    color: #fef08a; /* Color: Soft gold. */
-    text-shadow: 0 0 6px rgba(212, 175, 55, 0.3);
+    color: var(--ivory);
+    text-shadow: var(--glow-accent);
 
     transition: text-shadow 0.25s ease;
 }
@@ -31,14 +31,14 @@
 /* DIGIT HOVER GLOW STYLE. */
 .digit:hover
 {
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.55);
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
 }
 
 /* ==== LIGHT THEME OVERRIDES STYLES: ========================= */
 :global(.light) .digit
 {
     color: #7c3e00; /* Color: Golden brown. */
-    text-shadow: 0 0 5px rgba(234, 179, 8, 0.25);
+    text-shadow: var(--glow-accent);
 }
 
 :global(.light) .digit:hover
