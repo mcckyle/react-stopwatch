@@ -1,6 +1,6 @@
 //File name: useTheme.js
 //Author: Kyle McColgan
-//Date: 07 September 2025
+//Date: 3 October 2025
 //Description: This file contains the theming hook for the React timer project.
 
 import { useEffect, useState } from "react";

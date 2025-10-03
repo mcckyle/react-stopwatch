@@ -1,6 +1,6 @@
 //File name: App.jsx
 //Author: Kyle McColgan
-//Date: 23 September 2025
+//Date: 3 October 2025
 //Description: This file contains the entry point React component for the react timer project.
 
 import React from "react";
@@ -15,9 +15,9 @@ function App()
     const { theme, toggleTheme } = useTheme();
 
     return (
-      <main className={`appContainer ${theme}`}>
+      <div className={`appContainer ${theme}`}>
           <Timer toggleTheme={toggleTheme} />
-      </main>
+      </div>
     );
 }
 

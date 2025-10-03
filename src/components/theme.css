@@ -6,17 +6,17 @@
     --ivory: #fffaf0;
     --deep-blue: #0a1128;
 
-    --surface-light: #f8f5ef;
-    --surface-dark: #111122;
+    --surface-light: #f9f7f3;
+    --surface-dark: #11121a;
     --surface-gray: #e5e7eb;
     --text-light: #2e2e2e;
     --text-dark: #f3f4f6;
 
-    --glow-gold: 0 0 12px rgba(212, 175, 55, 0.3);
-    --glow-silver: 0 0 12px rgba(148, 163, 184, 0.3);
+    --glow-gold: 0 0 10px rgba(212, 175, 55, 0.25);
+    --glow-silver: 0 0 10px rgba(148, 163, 184, 0.25);
 
-    --gradient-light: linear-gradient(145deg, var(--ivory) 0%, var(--surface-light) 100%);
-    --gradient-dark: radial-gradient(circle at 25% 25%, #111827 0%, #0a0a0f 100%);
+    --gradient-light: linear-gradient(145deg, var(--ivory), var(--surface-light));
+    --gradient-dark: radial-gradient(circle at 30% 30%, #1a1a24, #0a0a0f);
 }
 
 /* *** Light Mode. *** */

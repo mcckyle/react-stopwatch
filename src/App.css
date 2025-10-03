@@ -1,9 +1,9 @@
 /* Filename: App.css */
 
+/* App Container Styles. */
 .appContainer
 {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center; /* was: stretch. */
     height: 100vh;
@@ -12,7 +12,7 @@
     position: relative;
     overflow: hidden;
 
-    transition: background 0.6s ease, color 0.6s ease;
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* Subtle Spotlight Visual Effect Styles. */
@@ -20,20 +20,20 @@
 {
     content: "";
     position: absolute;
-    inset: -15%;
+    inset: -20%;
     border-radius: 50%;
 
     background: radial-gradient(
-        circle at 40% 40%,
-        rgba(212, 175, 55, 0.08),
-        transparent 75%
+        circle at 35% 35%,
+        rgba(212, 175, 55, 0.1),
+        transparent 70%
     );
 
-    filter: blur(100px);
+    filter: blur(90px);
     pointer-events: none;
-
-    /*animation: drift 90s linear infinite;*/
 }
+
+/*animation: drift 90s linear infinite;*/
 
 /*@keyframes drift
 {

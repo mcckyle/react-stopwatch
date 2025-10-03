@@ -1,7 +1,7 @@
 /* Filename: AnimatedDigit.module.css */
 
 /* ============================
-   ANIMATED DIGIT STYLING.
+   DIGIT CONTAINER STYLING.
 =============================== */
 .digitContainer
 {
@@ -9,16 +9,18 @@
     justify-content: center;
     align-items: center;
 
-    min-width: 1.15ch;
+    min-width: 1ch;
     overflow: hidden;
 }
 
-/* ==== DIGIT STYLE. ========================= */
+/* ============================
+    ANIMATED DIGIT STYLING.
+=============================== */
 .digit
 {
     font-family: 'JetBrains Mono', monospace;
     font-weight: 700;
-    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-size: clamp(1.8rem, 5vw, 3rem);
     line-height: 1;
     white-space: nowrap;
 
@@ -31,14 +33,13 @@
 /* DIGIT HOVER GLOW STYLE. */
 .digit:hover
 {
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.45);
 }
 
 /* ==== LIGHT THEME OVERRIDES STYLES: ========================= */
 :global(.light) .digit
 {
     color: #7c3e00; /* Color: Golden brown. */
-    text-shadow: var(--glow-accent);
 }
 
 :global(.light) .digit:hover
@@ -49,6 +50,5 @@
 /* ==== RESPONSIVE DESIGN STYLES: ========================= */
 @media(max-width: 768px)
 {
-    .digitContainer { min-width: 1ch; }
     .digit { font-size: clamp(1.4rem, 5.5vw, 2.25rem); }
 }
