@@ -3,13 +3,13 @@
 /* ============================
    DIGIT CONTAINER STYLING.
 =============================== */
-.digitContainer
+.container
 {
     display: inline-flex;
     justify-content: center;
     align-items: center;
 
-    min-width: 1ch;
+    min-width: 1.1ch;
     overflow: hidden;
 }
 
@@ -20,35 +20,37 @@
 {
     font-family: 'JetBrains Mono', monospace;
     font-weight: 700;
-    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-size: clamp(2rem, 5vw, 3rem);
     line-height: 1;
     white-space: nowrap;
 
     color: var(--ivory);
-    text-shadow: var(--glow-accent);
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.25);
 
-    transition: text-shadow 0.25s ease;
+    transition: text-shadow 0.25s ease, transform 0.25s ease;
 }
 
 /* DIGIT HOVER GLOW STYLE. */
 .digit:hover
 {
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.45);
+    text-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
+    transform: translateY(-1px);
 }
 
 /* ==== LIGHT THEME OVERRIDES STYLES: ========================= */
 :global(.light) .digit
 {
-    color: #7c3e00; /* Color: Golden brown. */
+    color: #5c3b00; /* Color: Golden brown. */
+    text-shadow: 0 0 6px rgba(234, 179, 8, 0.25);
 }
 
 :global(.light) .digit:hover
 {
-    text-shadow: 0 0 8px rgba(234, 179, 8, 0.35);
+    text-shadow: 0 0 10px rgba(234, 179, 8, 0.45);
 }
 
 /* ==== RESPONSIVE DESIGN STYLES: ========================= */
 @media(max-width: 768px)
 {
-    .digit { font-size: clamp(1.4rem, 5.5vw, 2.25rem); }
+    .digit { font-size: clamp(1.5rem, 5.5vw, 2.4rem); }
 }

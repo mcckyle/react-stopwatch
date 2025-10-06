@@ -6,52 +6,56 @@
 .controls
 {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    flex-wrap: wrap;
+
     gap: 1rem;
     margin-top: 1.5rem;
 
-    padding: 0.75rem 1.25rem;
-    border-radius: 1rem;
+    padding: 1rem 1.75rem;
+    border-radius: 1.5rem;
 
-    background: rgba(20, 20, 40, 0.35);
-    backdrop-filter: blur(12px);
+    background: rgba(28, 28, 45, 0.45);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 
-    transition: background 0.3s ease;
+    transition: background 0.35s ease, transform 0.35s ease;
 }
 
 :global(.light) .controls
 {
-    background: rgba(255, 255, 255, 0.65);
+    background: rgba(255, 255, 255, 0.75);
+    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.12);
 }
 
 /* =========================
-   BASE BUTTONS STYLING.
+   BUTTONS BASE STYLING.
 ============================ */
 .button
 {
-    font-family: 'Cinzel', serif;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
-    text-transform: uppercase;
     letter-spacing: 0.05rem;
     font-size: 0.95rem;
+    text-transform: uppercase;
 
-    padding: 0.7rem 1.5rem;
-    border-radius: 0.9rem;
+    padding: 0.8rem 1.8rem;
+    border-radius: 1.2rem;
     border: none;
     cursor: pointer;
 
     color: #fff;
-    background: linear-gradient(135deg, #374151, #111827);
+    background: linear-gradient(135deg, #2e2e48, #12121f);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 
-    transition: box-shadow 0.25s ease, transform 0.25s ease;
+    transition: all 0.25s ease;
 }
 
 .button:disabled
 {
-    opacity: 0.55;
+    opacity: 0.6;
     cursor: not-allowed;
+    transform: none !important;
 }
 
 /* ===========================
@@ -60,40 +64,42 @@
 .start,
 .pause
 {
-    background: linear-gradient(135deg, #fde047, #facc15);
-    color: #1e293b;
-    box-shadow: 0 0 8px rgba(250, 204, 21, 0.45);
+    background: linear-gradient(145deg, #fde047, #facc15);
+    color: #1e1e2a;
+    box-shadow: 0 0 12px rgba(250, 204, 21, 0.45);
 }
 
 /* LAP BUTTON STYLE. */
 .lap
 {
-    background: linear-gradient(135deg, #8b5cf6, #6d28d9);
-    box-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
+    background: linear-gradient(145deg, #a78bfa, #7c3aed);
+    box-shadow: 0 0 12px rgba(167, 139, 250, 0.4);
 }
 
 /* RESET BUTTON STYLE. */
 .reset
 {
-    background: linear-gradient(135deg, #f43f5e, #dc2626);
-    box-shadow: 0 0 8px rgba(220, 38, 38, 0.45);
+    background: linear-gradient(145deg, #f87171, #dc2626);
+    box-shadow: 0 0 12px rgba(248, 113, 113, 0.45);
 }
 
+/* LIGHT THEME ADJUSTMENTS STYLES. */
 :global(.light) .start,
 :global(.light) .pause
 {
+    background: linear-gradient(145deg, #fef9c3, #fde047);
     color: #713f12;
 }
 
 :global(.light) .lap
 {
-    background: linear-gradient(135deg, #c4b5fd, #a78bfa);
+    background: linear-gradient(145deg, #c4b5fd, #a78bfa);
     color: #3c0753;
 }
 
 :global(.light) .reset
 {
-    background: linear-gradient(135deg, #fca5a5, #f87171);
+    background: linear-gradient(145deg, #fca5a5, #f87171);
     color: #7c2d12;
 }
 
@@ -110,7 +116,7 @@
     .button
     {
         font-size: 0.9rem;
-        padding: 0.65rem 1.2rem;
+        padding: 0.7rem 1.4rem;
     }
 }
 

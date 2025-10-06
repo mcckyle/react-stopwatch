@@ -1,6 +1,6 @@
 //File name: Timer.test.jsx
 //Author: Kyle McColgan
-//Date: 08 September 2025
+//Date: 5 October 2025
 //Description: This file contains the unit test suite for the Timer component.
 
 import React from "react";
@@ -32,59 +32,67 @@ describe("Timer Component", () => {
         jest.clearAllMocks();
     });
 
+    //Test #1
     test("1. Renders title.", () => {
         render(<Timer />);
         expect(screen.getByText("Timer")).toBeInTheDocument();
     });
 
-//     test("2. Renders the TimerDisplay component with initial time.", () => {
-//         render(<Timer />);
-//         expect(screen.getByText((content, element) => {
-//             return element?.textContent?.replace(/\s/g, '') === '00:00:00';
-//         })
-//       ).toBeInTheDocument();
-//     });
+    //Test #2
+    test("2. Renders the TimerDisplay component with initial time.", () => {
+        render(<Timer />);
 
+        const timer = screen.getByRole("timer");
+
+        expect(timer).toHaveTextContent("00:00:00");
+    });
+
+    //Test #3
     test("3. Renders the TimerControls component.", () => {
         render(<Timer />);
         expect(screen.getByRole("button", { name: /start/i })).toBeInTheDocument();
     });
 
+    //Test #4
     test("4. Renders LapList with no laps.", () => {
         render(<Timer />);
         expect(screen.queryByText("00:00:01")).not.toBeInTheDocument();
     });
 
-//     test("5. Records a lap and renders it.", () => {
-//
-//         useStopWatchModule.useStopwatch.mockReturnValue({
-//             time: 1000, //One second.
-//             isRunning: true, //Enable the Lap button.
-//             toggle: jest.fn(),
-//             reset: jest.fn(),
-//             getCurrentTime: jest.fn(() => 1000),
-//         });
-//
-//         render(<Timer />);
-//         const lapButton = screen.getByRole("button", { name: /lap/i});
-//         fireEvent.click(lapButton);
-//
-//         //Custom matcher for the Lap time.
-//         expect(screen.getByText(/00:01\.00/)).toBeInTheDocument();
-//     });
+    //Test #5
+    test("5. Records a lap and renders it.", () => {
 
+        useStopWatchModule.useStopwatch.mockReturnValue({
+            time: 1000, //One second.
+            isRunning: true, //Enable the Lap button.
+            toggle: jest.fn(),
+            reset: jest.fn(),
+            getCurrentTime: jest.fn(() => 1000),
+        });
+
+        render(<Timer />);
+        const lapButton = screen.getByRole("button", { name: /lap/i});
+        fireEvent.click(lapButton);
+
+        const matches = screen.getAllByText(/00:01\.00/);
+        expect(matches.length).toBeGreaterThan(0);
+    });
+
+    //Test #6
     test("6. Calls toggle when Start/Stop gets clicked.", () => {
         render(<Timer />);
         fireEvent.click(screen.getByRole("button", { name: /start/i}));
         expect(mockToggle).toHaveBeenCalled();
     });
 
+    //Test #7
     test("7. Calls Reset when Reset gets clicked.", () => {
         render(<Timer />);
         fireEvent.click(screen.getByRole("button", { name: /reset/i}));
         expect(mockReset).toHaveBeenCalled();
     });
 
+    //Test #8
     test("8. Opens HelpModal on showHelp = true", () => {
         render(<Timer />);
         act(() => {
@@ -96,6 +104,7 @@ describe("Timer Component", () => {
         expect(screen.queryByText(/keyboard shortcuts/i)).not.toBeInTheDocument();
     });
 
+    //Test #9
     test("9. HelpModal appears when showHelp gets triggered manually.", () => {
         let helpCallback;
 
@@ -115,6 +124,7 @@ describe("Timer Component", () => {
         expect(screen.queryByText(/keyboard shortcuts/i)).not.toBeNull();
     });
 
+    //Test #10
     test("10. HelpModal closes when Close is clicked.", () => {
         let helpCallback;
 

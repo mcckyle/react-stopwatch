@@ -1,6 +1,8 @@
 /* Filename: App.css */
 
-/* App Container Styles. */
+/* ==========================
+   ROOT CONTAINER STYLES.
+============================= */
 .appContainer
 {
     display: flex;
@@ -9,28 +11,41 @@
     height: 100vh;
     width: 100vw;
     padding: 2rem;
+
     position: relative;
     overflow: hidden;
+    background: transparent;
 
     transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* Subtle Spotlight Visual Effect Styles. */
+/* ================================
+   AMBIENT LIGHT EFFECT STYLES.
+=================================== */
 .appContainer::before
 {
     content: "";
     position: absolute;
-    inset: -20%;
-    border-radius: 50%;
+    inset: -15%;
+    z-index: 0;
 
     background: radial-gradient(
-        circle at 35% 35%,
-        rgba(212, 175, 55, 0.1),
+        circle at 40% 40%,
+        rgba(212, 175, 55, 0.08),
         transparent 70%
     );
 
     filter: blur(90px);
+    transform: translateZ(0);
     pointer-events: none;
+
+    animation: ambientShift 22s ease-in-out infinite alternate;
+}
+
+@keyframes ambientShift
+{
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(4%, -3%) scale(1.08); }
 }
 
 /*animation: drift 90s linear infinite;*/
