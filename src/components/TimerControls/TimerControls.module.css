@@ -7,55 +7,62 @@
 {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
-
     gap: 1rem;
-    margin-top: 1.5rem;
 
-    padding: 1rem 1.75rem;
-    border-radius: 1.5rem;
+    margin-top: 2rem;
+    padding: 1.25rem 2rem;
+    border-radius: 1rem;
 
-    background: rgba(28, 28, 45, 0.45);
-    backdrop-filter: blur(16px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    background: rgba(25, 25, 40, 0.45);
+    backdrop-filter: blur(18px) saturate(160%);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
 
-    transition: background 0.35s ease, transform 0.35s ease;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 :global(.light) .controls
 {
-    background: rgba(255, 255, 255, 0.75);
-    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.12);
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 /* =========================
-   BUTTONS BASE STYLING.
+   BASE BUTTONS STYLING.
 ============================ */
 .button
 {
     font-family: "Inter", sans-serif;
     font-weight: 600;
-    letter-spacing: 0.05rem;
-    font-size: 0.95rem;
     text-transform: uppercase;
+    letter-spacing: 0.03rem;
 
-    padding: 0.8rem 1.8rem;
-    border-radius: 1.2rem;
+    font-size: 0.95rem;
+    padding: 0.85rem 1.75rem;
+    border-radius: 0.9rem;
+
     border: none;
+    outline: none;
     cursor: pointer;
 
     color: #fff;
-    background: linear-gradient(135deg, #2e2e48, #12121f);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+    background: linear-gradient(145deg, #2a2a42, #141424);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
 
-    transition: all 0.25s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.button:hover:not(:disabled)
+{
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
 }
 
 .button:disabled
 {
-    opacity: 0.6;
+    opacity: 0.55;
     cursor: not-allowed;
-    transform: none !important;
 }
 
 /* ===========================
@@ -64,43 +71,43 @@
 .start,
 .pause
 {
-    background: linear-gradient(145deg, #fde047, #facc15);
-    color: #1e1e2a;
-    box-shadow: 0 0 12px rgba(250, 204, 21, 0.45);
+    background: linear-gradient(145deg, #facc15, #fde047);
+    color: #1a1a25;
+    box-shadow: 0 0 10px rgba(250, 204, 21, 0.35);
 }
 
 /* LAP BUTTON STYLE. */
 .lap
 {
-    background: linear-gradient(145deg, #a78bfa, #7c3aed);
-    box-shadow: 0 0 12px rgba(167, 139, 250, 0.4);
+    background: linear-gradient(145deg, #8b5cf6, #a78bfa);
+    box-shadow: 0 0 10px rgba(167, 139, 250, 0.3);
 }
 
 /* RESET BUTTON STYLE. */
 .reset
 {
-    background: linear-gradient(145deg, #f87171, #dc2626);
-    box-shadow: 0 0 12px rgba(248, 113, 113, 0.45);
+    background: linear-gradient(145deg, #dc2626, #f87171);
+    box-shadow: 0 0 10px rgba(248, 113, 113, 0.3);
 }
 
 /* LIGHT THEME ADJUSTMENTS STYLES. */
 :global(.light) .start,
 :global(.light) .pause
 {
-    background: linear-gradient(145deg, #fef9c3, #fde047);
-    color: #713f12;
+    background: linear-gradient(145deg, #fef08a, #fde047);
+    color: #422006;
 }
 
 :global(.light) .lap
 {
     background: linear-gradient(145deg, #c4b5fd, #a78bfa);
-    color: #3c0753;
+    color: #3b0764;
 }
 
 :global(.light) .reset
 {
     background: linear-gradient(145deg, #fca5a5, #f87171);
-    color: #7c2d12;
+    color: #7f1d1d;
 }
 
 /* =============================
@@ -111,12 +118,13 @@
     .controls
     {
         gap: 0.75rem;
+        padding: 1rem 1.25rem;
     }
 
     .button
     {
-        font-size: 0.9rem;
-        padding: 0.7rem 1.4rem;
+        font-size: 0.85rem;
+        padding: 0.75rem 1.4rem;
     }
 }
 

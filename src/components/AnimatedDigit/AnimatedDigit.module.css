@@ -1,7 +1,7 @@
 /* Filename: AnimatedDigit.module.css */
 
 /* ============================
-   DIGIT CONTAINER STYLING.
+   DIGIT CONTAINER STYLE.
 =============================== */
 .container
 {
@@ -9,23 +9,22 @@
     justify-content: center;
     align-items: center;
 
-    min-width: 1.1ch;
+    min-width: 1ch;
     overflow: hidden;
 }
 
 /* ============================
-    ANIMATED DIGIT STYLING.
+   DIGIT CHARACTER STYLE.
 =============================== */
 .digit
 {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: "JetBrains Mono", monospace;
     font-weight: 700;
-    font-size: clamp(2rem, 5vw, 3rem);
+    font-size: clamp(2rem, 5vw, 3.4rem);
     line-height: 1;
-    white-space: nowrap;
-
     color: var(--ivory);
     text-shadow: 0 0 8px rgba(212, 175, 55, 0.25);
+    will-change: transform, text-shadow;
 
     transition: text-shadow 0.25s ease, transform 0.25s ease;
 }
@@ -33,24 +32,24 @@
 /* DIGIT HOVER GLOW STYLE. */
 .digit:hover
 {
-    text-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
+    text-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
     transform: translateY(-1px);
 }
 
 /* ==== LIGHT THEME OVERRIDES STYLES: ========================= */
 :global(.light) .digit
 {
-    color: #5c3b00; /* Color: Golden brown. */
+    color: #3a2c00;
     text-shadow: 0 0 6px rgba(234, 179, 8, 0.25);
 }
 
 :global(.light) .digit:hover
 {
-    text-shadow: 0 0 10px rgba(234, 179, 8, 0.45);
+    text-shadow: 0 0 10px rgba(234, 179, 8, 0.4);
 }
 
 /* ==== RESPONSIVE DESIGN STYLES: ========================= */
 @media(max-width: 768px)
 {
-    .digit { font-size: clamp(1.5rem, 5.5vw, 2.4rem); }
+    .digit { font-size: clamp(1.6rem, 5vw, 2.6rem); }
 }

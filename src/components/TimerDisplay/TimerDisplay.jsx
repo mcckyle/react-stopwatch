@@ -1,6 +1,6 @@
 //File name: TimerDisplay.jsx
 //Author: Kyle McColgan
-//Date: 4 October 2025
+//Date: 9 October 2025
 //Description: This file contains the timer display component for the React timer project.
 
 import React from "react";
@@ -21,9 +21,9 @@ const TimerDisplay = ({ time }) => {
     <div className = {styles.wrapper}>
       <time className={styles.time} role="timer" aria-live="polite">
         {renderDigits("hr", hours)}
-        <span className={styles.colon}>:</span>
+        <span className={styles.separator}>:</span>
         {renderDigits("min", minutes)}
-        <span className={styles.colon}>:</span>
+        <span className={styles.separator}>:</span>
         {renderDigits("sec", seconds)}
       </time>
     </div>

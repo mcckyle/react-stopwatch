@@ -1,15 +1,15 @@
 //File name: HelpModal.jsx
 //Author: Kyle McColgan
-//Date: 26 June 2025
-//Description: This file contains the Help modal component for the React timer site.
+//Date: 7 October 2025
+//Description: This file contains the Help modal component for the React timer project.
 
 import React from "react";
 import styles from "./HelpModal.module.css";
-import { useTheme } from "../../hooks/useTheme";
+import { useTheme } from "../../context/ThemeContext.jsx";
 
 const HelpModal = ({ onClose }) => {
 
-    const theme = useTheme();
+    const { theme } = useTheme();
 
     return (
         <div className = {theme}>

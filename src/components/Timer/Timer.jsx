@@ -1,6 +1,6 @@
 //File name: Timer.jsx
 //Author: Kyle McColgan
-//Date: 4 October 2025
+//Date: 9 October 2025
 //Description: This file contains the parent Timer component for the React timer project.
 
 import React, { useState, useEffect, useRef } from "react";
@@ -8,13 +8,13 @@ import { Clock, Sun, Moon } from "lucide-react";
 import { motion } from "framer-motion";
 import { useStopwatch } from "../../hooks/useStopwatch";
 import { useKeyboardShortcuts } from "../../hooks/useKeyboardShortcuts";
-import { useTheme } from "../../hooks/useTheme";
+import { useTheme } from "../../context/ThemeContext.jsx";
 import TimerDisplay from "../TimerDisplay/TimerDisplay.jsx";
 import TimerControls from "../TimerControls/TimerControls";
 import LapList from "../LapList/LapList.jsx";
 import HelpModal from "../HelpModal/HelpModal.jsx";
 
-import styles from './Timer.module.css';
+import styles from "./Timer.module.css";
 
 const LAP_STORAGE_KEY = "timer-app-laps"; //Key for browser localStorage.
 
@@ -113,14 +113,16 @@ const Timer = ({ dark, toggleTheme }) => {
         transition={{ delay: 0.2, duration: 0.5 }}
       >
           <div className = {styles.content}>
-            <TimerDisplay time={time} aria-live="polite" />
-            <TimerControls
-              isRunning={isRunning}
-              toggle={toggle}
-              reset={reset}
-              time={time}
-              recordLap={recordLap}
-            />
+            <div className = {styles.timerCore}>
+              <TimerDisplay time={time} aria-live="polite" />
+              <TimerControls
+                isRunning={isRunning}
+                toggle={toggle}
+                reset={reset}
+                time={time}
+                recordLap={recordLap}
+              />
+            </div>
 
             <motion.div
               className={styles.clockEmblem}

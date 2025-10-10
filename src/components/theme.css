@@ -6,50 +6,44 @@
 :root
 {
     --gold: #d4af37;
-    --amber: #facc15;
+    --amber: #fcd34d;
     --ivory: #fffaf0;
     --ink: #0a0b12;
-    --deep-blue: #0a1128;
 
-    --surface-light: #f9f8f5;
-    --surface-dark: #12131b;
+    --surface-light: #fdfdfb;
+    --surface-dark: #121317;
 
-    --text-light: #1f1f1f;
+    --text-light: #181818;
     --text-dark: #f5f5f5;
-
-    --glow-gold: 0 0 12px rgba(212, 175, 55, 0.35);
-    --glow-silver: 0 0 12px rgba(148, 163, 184, 0.3);
 
     --radius: 1.25rem;
 
-    --gradient-light: linear-gradient(145deg, #fffef9, #f3f0e6);
-    --gradient-dark: radial-gradient(circle at 35% 35%, #15151c, #07070a);
+    --gradient-light: radial-gradient(circle at 40% 40%, #fefdf9, #f4f1e6);
+    --gradient-dark: radial-gradient(circle at 40% 40%, #1a1b22, #0a0b12);
 }
 
 /* ==========================
-   LIGHT THEME STYLES.
+   LIGHT THEME VARIABLES.
 ============================= */
 html.light
 {
     --surface: var(--surface-light);
     --text: var(--text-light);
-    --glow-accent: var(--glow-gold);
-
-    background: linear-gradient(145deg, #fffef9, #f3f0e6);
-    color: var(--text);
+    --app-bg: var(--gradient-light);
+    --ambient-glow: rgba(212, 175, 55, 0.08);
+    --glow-accent: 0 0 10px rgba(212, 175, 55, 0.25);
 }
 
 /* ==========================
-   DARK THEME STYLES.
+   DARK THEME VARIABLES.
 ============================= */
 html.dark
 {
-    --surface: var(--surface-dark);
+    --surface: rgba(18, 19, 25, 0.75);
     --text: var(--text-dark);
-    --glow-accent: var(--glow-silver);
-
-    background: radial-gradient(circle at 35% 35%, #15151c, #07070a);
-    color: var(--text);
+    --app-bg: var(--gradient-dark);
+    --ambient-glow: rgba(212, 175, 55, 0.08);
+    --glow-accent: 0 0 10px rgba(212, 175, 55, 0.18);
 }
 
 /* *** Old styles commented out below this line!! *** */

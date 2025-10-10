@@ -1,20 +1,17 @@
 //File name: test-utils.jsx
 //Author: Kyle McColgan
-//Date: 19 June 2025
-//Description: This file contains set up related code for the Jest unit testing on the react-timer.
+//Date: 7 October 2025
+//Description: This file contains set up related code for the Jest unit testing on the React timer project.
 
 import React from "react";
-import { MantineProvider } from "@mantine/core";
 import { render } from "@testing-library/react";
+import { ThemeProvider } from "../context/ThemeContext.jsx";
+import ThemeWrapper from "../components/ThemeWrapper.jsx";
 
 const AllProviders = ({ children }) => (
-    <MantineProvider
-    withGlobalStyles
-    withNormalizeCSS
-    theme ={{}}
-    >
-        {children}
-    </MantineProvider>
+    <ThemeProvider>
+      <ThemeWrapper>{children}</ThemeWrapper>
+    </ThemeProvider>
 );
 
 const customRender = (ui, options) =>

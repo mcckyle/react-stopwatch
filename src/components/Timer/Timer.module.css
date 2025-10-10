@@ -8,8 +8,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    gap: 2.25rem;
     width: 100%;
+    z-index: 1;
+    position: relative;
 }
 
 /* ==========================
@@ -18,8 +20,8 @@
 .header
 {
     width: 100%;
-    padding: 0.75rem 1.25rem;
-    margin-bottom: 1rem;
+    max-width: 680px;
+    padding: 1rem 1.75rem;
 
     display: flex;
     justify-content: space-between;
@@ -30,59 +32,55 @@
 {
     font-family: "Playfair Display", serif;
     font-weight: 700;
-    font-size: clamp(1.8rem, 5vw, 2.4rem);
+    font-size: clamp(2rem, 5vw, 2.4rem);
 
     display: flex;
     align-items: center;
     gap: 0.6rem;
 
-    background: linear-gradient(100deg, var(--gold), #fcd34d, var(--gold));
-    background-size: 200% auto;
+    background: linear-gradient(120deg, var(--gold), var(--amber));
+    background-size: 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
-    text-shadow: 0 0 4px rgba(212, 175, 55, 0.15);
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.18);
 
-    transition: text-shadow 0.3s ease;
+    transition: background-position 0.6s ease, text-shadow 0.4s ease;
 }
 
 .banner:hover
 {
     background-position: right center;
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.35);
-}
-
-/* Banner Clock Icon Styles. */
-.icon
-{
-    flex-shrink: 0;
+    text-shadow: 0 0 14px rgba(212, 175, 55, 0.35);
 }
 
 /* ==========================
-   CARD / FRAME STYLES.
+   TIMER CARD STYLES.
 ============================= */
 .card
 {
     width: 100%;
-    border-radius: 1.25rem;
-    background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(14px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    max-width: 680px;
+    border-radius: var(--radius);
     border: 1px solid rgba(212, 175, 55, 0.15);
+    background: var(--surface);
+    box-shadow: 0 2px 18px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(16px);
 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 html.dark .card
 {
-    background: rgba(17, 18, 25, 0.65);
-    border-color: rgba(255, 255, 255, 0.08);
+    background: rgba(18, 19, 25, 0.6);
+    border-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25);
 }
 
 .card:hover
 {
     transform: translateY(-3px);
-    box-shadow: var(--glow-accent);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
 }
 
 .content
@@ -90,8 +88,8 @@ html.dark .card
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.75rem;
-    padding: 2.25rem;
+    gap: 2.25rem;
+    padding: 3rem 2.5rem;
 }
 
 /* ==========================
@@ -99,17 +97,25 @@ html.dark .card
 ============================= */
 .clockEmblem
 {
-    padding: 0.75rem;
+    padding: 1.25rem;
     border-radius: 50%;
-    border: 2px solid var(--gold);
+    border: 1.5px solid var(--gold);
 
     background: radial-gradient(
         circle,
-        rgba(212, 175, 55, 0.15),
+        rgba(212, 175, 55, 0.1),
         transparent 70%
     );
 
     box-shadow: inset 0 0 6px rgba(212, 175, 55, 0.25);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.clockEmblem:hover
+{
+    transform: scale(1.08);
+    box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.4);
 }
 
 /* =======================
@@ -118,20 +124,27 @@ html.dark .card
 .lapListWrapper
 {
     width: 100%;
-    max-height: 25vh;
+    max-height: 22vh;
     overflow-y: auto;
     padding: 0.5rem;
     margin-top: 1rem;
 
-    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
 
-    -ms-overflow-style: none;
     scrollbar-width: none;
 }
 
 .lapListWrapper::-webkit-scrollbar
 {
     display: none;
+}
+
+.timerCore
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
 }
 
 /* =========================
@@ -141,34 +154,29 @@ html.dark .card
 {
     border: none;
     border-radius: 50%;
-    width: 2.25rem;
-    height: 2.25rem;
+    width: 2.6rem;
+    height: 2.6rem;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
     background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(6px);
-    border: 1px solid rgba(212, 175, 55, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.25);
     cursor: pointer;
 
-    transition: transform 0.25s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .themeToggle:hover
 {
-    transform: scale(1.07);
-    box-shadow: var(--glow-accent);
+    transform: scale(1.08) rotate(4deg);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.25);
 }
 
 html.dark .themeToggle
 {
-    border-color: rgba(148, 163, 184, 0.3);
-    background: rgba(30, 41, 59, 0.35);
-}
-
-html.dark .themeToggle:hover
-{
-    box-shadow: 0 0 12px rgba(148, 163, 184, 0.35);
+    background: rgba(25, 30, 40, 0.5);
+    border-color: rgba(148, 163, 184, 0.25);
 }
