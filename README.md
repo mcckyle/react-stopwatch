@@ -58,21 +58,27 @@ react-timer/
 │   │   ├── Timer/
 │   │   │   ├── Timer.jsx
 │   │   │   └── Timer.module.css
+│   │   │
 │   │   ├── TimerDisplay/
 │   │   │   ├── TimerDisplay.jsx
 │   │   │   └── TimerDisplay.module.css
+│   │   │
 │   │   ├── TimerControls/
 │   │   │   ├── TimerControls.jsx
 │   │   │   └── TimerControls.module.css
+│   │   │
 │   │   ├── LapList/
 │   │   │   ├── LapList.jsx
 │   │   │   └── LapList.module.css
+│   │   │
 │   │   ├── AnimatedDigit/
 │   │   │   ├── AnimatedDigit.jsx
 │   │   │   └── AnimatedDigit.module.css
+│   │   │
 │   │   ├── HelpModal/
 │   │   │   ├── HelpModal.jsx
 │   │   │   └── HelpModal.module.css
+│   │   │
 │   │   ├── ThemeWrapper.jsx
 │   │   └── theme.css
 │   │     
@@ -80,15 +86,21 @@ react-timer/
 │   │   ├── useTheme.js
 │   │   ├── useStopwatch.js
 │   │   └── useKeyboardShortcuts.js
-│   │     
+│   │
+│   ├── context/
+│   │   └── ThemeContext.jsx
+│   │
 │   ├── __tests__/
 │   │   └── Timer.test.jsx
+│   │
 │   ├── test/
 │   │   └── test-utils.jsx
+│   │
 │   ├── App.jsx           # Main React application component.
 │   ├── main.jsx          # React DOM entry point.
 │   ├── App.css           # Styles specific to App.jsx.
 │   └── index.css         # Global styles and Tailwind imports.
+│
 ├── dist/                 # Production build output (auto-generated).
 ├── index.html            # HTML entry point.
 ├── .gitignore            # Specifies intentionally untracked files and folders to ignore.

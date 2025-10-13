@@ -24,13 +24,13 @@
 
 :global(.light) .controls
 {
-    background: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    background: rgba(255, 255, 255, 0.65);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
-/* =========================
-   BASE BUTTONS STYLING.
-============================ */
+/* ==========================
+   BUTTONS BASE STYLING.
+============================= */
 .button
 {
     font-family: "Inter", sans-serif;
@@ -38,7 +38,7 @@
     text-transform: uppercase;
     letter-spacing: 0.03rem;
 
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     padding: 0.85rem 1.75rem;
     border-radius: 0.9rem;
 
@@ -48,7 +48,7 @@
 
     color: #fff;
     background: linear-gradient(145deg, #2a2a42, #141424);
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -56,7 +56,7 @@
 .button:hover:not(:disabled)
 {
     transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
 }
 
 .button:disabled
@@ -73,28 +73,28 @@
 {
     background: linear-gradient(145deg, #facc15, #fde047);
     color: #1a1a25;
-    box-shadow: 0 0 10px rgba(250, 204, 21, 0.35);
+    box-shadow: 0 0 10px rgba(250, 204, 21, 0.3);
 }
 
 /* LAP BUTTON STYLE. */
 .lap
 {
     background: linear-gradient(145deg, #8b5cf6, #a78bfa);
-    box-shadow: 0 0 10px rgba(167, 139, 250, 0.3);
+    box-shadow: 0 0 8px rgba(167, 139, 250, 0.25);
 }
 
 /* RESET BUTTON STYLE. */
 .reset
 {
     background: linear-gradient(145deg, #dc2626, #f87171);
-    box-shadow: 0 0 10px rgba(248, 113, 113, 0.3);
+    box-shadow: 0 0 8px rgba(248, 113, 113, 0.25);
 }
 
 /* LIGHT THEME ADJUSTMENTS STYLES. */
 :global(.light) .start,
 :global(.light) .pause
 {
-    background: linear-gradient(145deg, #fef08a, #fde047);
+    background: linear-gradient(145deg, #fde68a, #fcd34d);
     color: #422006;
 }
 

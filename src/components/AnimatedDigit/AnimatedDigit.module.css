@@ -20,36 +20,36 @@
 {
     font-family: "JetBrains Mono", monospace;
     font-weight: 700;
-    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-size: clamp(2rem, 5vw, 3.2rem);
     line-height: 1;
-    color: var(--ivory);
-    text-shadow: 0 0 8px rgba(212, 175, 55, 0.25);
+    color: var(--text);
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.18);
     will-change: transform, text-shadow;
 
-    transition: text-shadow 0.25s ease, transform 0.25s ease;
+    transition: transform 0.25s ease, text-shadow 0.25s ease;
 }
 
 /* DIGIT HOVER GLOW STYLE. */
 .digit:hover
 {
-    text-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
     transform: translateY(-1px);
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.35);
 }
 
 /* ==== LIGHT THEME OVERRIDES STYLES: ========================= */
-:global(.light) .digit
+html.light .digit
 {
     color: #3a2c00;
-    text-shadow: 0 0 6px rgba(234, 179, 8, 0.25);
+    text-shadow: 0 0 6px rgba(234, 179, 8, 0.22);
 }
 
-:global(.light) .digit:hover
+html.light .digit:hover
 {
-    text-shadow: 0 0 10px rgba(234, 179, 8, 0.4);
+    text-shadow: 0 0 10px rgba(234, 179, 8, 0.35);
 }
 
 /* ==== RESPONSIVE DESIGN STYLES: ========================= */
 @media(max-width: 768px)
 {
-    .digit { font-size: clamp(1.6rem, 5vw, 2.6rem); }
+    .digit { font-size: clamp(1.6rem, 5vw, 2.5rem); }
 }

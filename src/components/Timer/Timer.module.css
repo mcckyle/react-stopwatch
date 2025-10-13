@@ -37,15 +37,17 @@
     display: flex;
     align-items: center;
     gap: 0.6rem;
+    letter-spacing: 0.5px;
 
-    background: linear-gradient(120deg, var(--gold), var(--amber));
-    background-size: 200%;
+    background: linear-gradient(120deg, var(--gold) 20%, var(--amber) 80%);
+    background-size: 250%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
     text-shadow: 0 0 8px rgba(212, 175, 55, 0.18);
 
     transition: background-position 0.6s ease, text-shadow 0.4s ease;
+    animation: bannerGlow 10s ease-in-out infinite alternate;
 }
 
 .banner:hover
@@ -62,10 +64,10 @@
     width: 100%;
     max-width: 680px;
     border-radius: var(--radius);
-    border: 1px solid rgba(212, 175, 55, 0.15);
+    border: 1px solid rgba(212, 175, 55, 0.12);
     background: var(--surface);
-    box-shadow: 0 2px 18px rgba(0, 0, 0, 0.08);
-    backdrop-filter: blur(16px);
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(18px);
 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -80,7 +82,7 @@ html.dark .card
 .card:hover
 {
     transform: translateY(-3px);
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+    box-shadow: 0 0 22px rgba(212, 175, 55, 0.2);
 }
 
 .content
@@ -89,7 +91,7 @@ html.dark .card
     flex-direction: column;
     align-items: center;
     gap: 2.25rem;
-    padding: 3rem 2.5rem;
+    padding: 3rem 2rem 2.75rem;
 }
 
 /* ==========================
@@ -166,17 +168,23 @@ html.dark .card
     border: 1px solid rgba(212, 175, 55, 0.25);
     cursor: pointer;
 
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .themeToggle:hover
 {
-    transform: scale(1.08) rotate(4deg);
-    box-shadow: 0 0 10px rgba(212, 175, 55, 0.25);
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
 }
 
 html.dark .themeToggle
 {
     background: rgba(25, 30, 40, 0.5);
     border-color: rgba(148, 163, 184, 0.25);
+}
+
+@keyframes bannerGlow
+{
+    0% { background-position: left center; }
+    100% { background-position: right center; }
 }
