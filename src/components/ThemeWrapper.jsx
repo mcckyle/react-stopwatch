@@ -1,6 +1,6 @@
 //File name: ThemeWrapper.jsx
 //Author: Kyle McColgan
-//Date: 8 October 2025
+//Date: 14 October 2025
 //Description: This file contains the ThemeWrapper React UI/UX component for the react-timer.
 
 import React from "react";
@@ -18,7 +18,7 @@ const ThemeWrapper = ({ children }) => {
                 colorScheme: theme,
                 fontFamily: "Inter, sans-serif",
                 primaryColor: "yellow",
-                defaultRadius: "md",
+                defaultRadius: "lg",
                 headings: { fontFamily: "Playfair Display, serif" },
                 colors: {
                     yellow: [

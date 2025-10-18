@@ -1,27 +1,27 @@
 /* Filename: Timer.module.css */
 
-/* ==========================
-   TIMER CONTAINER STYLING.
-============================= */
+/* ====================================
+   MAIN TIMER CONTAINER STYLING.
+======================================= */
 .container
 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2.25rem;
+    gap: 2.5rem;
     width: 100%;
-    z-index: 1;
     position: relative;
+    z-index: 1;
 }
 
-/* ==========================
-   TIMER HEADER STYLING.
-============================= */
+/* ====================================
+   TIMER HEADER AND TITLE STYLING.
+======================================= */
 .header
 {
     width: 100%;
     max-width: 680px;
-    padding: 1rem 1.75rem;
+    padding: 1rem 1.5rem;
 
     display: flex;
     justify-content: space-between;
@@ -33,27 +33,35 @@
     font-family: "Playfair Display", serif;
     font-weight: 700;
     font-size: clamp(2rem, 5vw, 2.4rem);
+    letter-spacing: 0.4px;
 
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    letter-spacing: 0.5px;
-
-    background: linear-gradient(120deg, var(--gold) 20%, var(--amber) 80%);
-    background-size: 250%;
+    background: linear-gradient(120deg, var(--gold), var(--amber));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
-    text-shadow: 0 0 8px rgba(212, 175, 55, 0.18);
-
-    transition: background-position 0.6s ease, text-shadow 0.4s ease;
-    animation: bannerGlow 10s ease-in-out infinite alternate;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.12);
 }
 
-.banner:hover
+/* ====================================
+   THEME TOGGLE BUTTON STYLES.
+======================================= */
+.themeToggle
 {
-    background-position: right center;
-    text-shadow: 0 0 14px rgba(212, 175, 55, 0.35);
+    width: 2.4rem;
+    height: 2.4rem;
+
+    border-radius: 50%;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+
+    transition: all 0.25s ease;
+}
+
+.themeToggle:hover
+{
+    transform: scale(1.08);
+    box-shadow: var(--glow-accent);
 }
 
 /* ==========================
@@ -62,36 +70,33 @@
 .card
 {
     width: 100%;
-    max-width: 680px;
+    max-width: 640px;
     border-radius: var(--radius);
     border: 1px solid rgba(212, 175, 55, 0.12);
     background: var(--surface);
-    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.08);
-    backdrop-filter: blur(18px);
+
+    backdrop-filter: blur(var(--blur));
+    box-shadow: 0 2px 18px rgba(0, 0, 0, 0.12);
 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-html.dark .card
-{
-    background: rgba(18, 19, 25, 0.6);
-    border-color: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25);
-}
-
 .card:hover
 {
-    transform: translateY(-3px);
-    box-shadow: 0 0 22px rgba(212, 175, 55, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.16);
 }
 
+/* ====================================
+   CONTENT AND ELEMENTS STYLES.
+======================================= */
 .content
 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2.25rem;
-    padding: 3rem 2rem 2.75rem;
+    gap: 2rem;
+    padding: 3rem 2rem;
 }
 
 /* ==========================
@@ -99,25 +104,25 @@ html.dark .card
 ============================= */
 .clockEmblem
 {
-    padding: 1.25rem;
+    padding: 1.1rem;
     border-radius: 50%;
-    border: 1.5px solid var(--gold);
+    border: 1px solid var(--gold);
 
     background: radial-gradient(
         circle,
-        rgba(212, 175, 55, 0.1),
+        rgba(212, 175, 55, 0.06),
         transparent 70%
     );
 
-    box-shadow: inset 0 0 6px rgba(212, 175, 55, 0.25);
+    box-shadow: inset 0 0 6px rgba(212, 175, 55, 0.22);
 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .clockEmblem:hover
 {
-    transform: scale(1.08);
-    box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.4);
+    transform: scale(1.06);
+    box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.3);
 }
 
 /* =======================
@@ -130,7 +135,6 @@ html.dark .card
     overflow-y: auto;
     padding: 0.5rem;
     margin-top: 1rem;
-
     border-top: 1px solid rgba(212, 175, 55, 0.1);
 
     scrollbar-width: none;
@@ -139,52 +143,4 @@ html.dark .card
 .lapListWrapper::-webkit-scrollbar
 {
     display: none;
-}
-
-.timerCore
-{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-}
-
-/* =========================
-   THEME TOGGLE STYLES.
-============================ */
-.themeToggle
-{
-    border: none;
-    border-radius: 50%;
-    width: 2.6rem;
-    height: 2.6rem;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(212, 175, 55, 0.25);
-    cursor: pointer;
-
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.themeToggle:hover
-{
-    transform: scale(1.05);
-    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-}
-
-html.dark .themeToggle
-{
-    background: rgba(25, 30, 40, 0.5);
-    border-color: rgba(148, 163, 184, 0.25);
-}
-
-@keyframes bannerGlow
-{
-    0% { background-position: left center; }
-    100% { background-position: right center; }
 }

@@ -91,7 +91,11 @@ react-timer/
 │   │   └── ThemeContext.jsx
 │   │
 │   ├── __tests__/
-│   │   └── Timer.test.jsx
+│   │   ├── Timer.test.jsx
+│   │   ├── TimerDisplay.test.jsx
+│   │   ├── TimerControls.test.jsx
+│   │   ├── LapList.test.jsx
+│   │   └── AnimatedDigit.test.jsx
 │   │
 │   ├── test/
 │   │   └── test-utils.jsx

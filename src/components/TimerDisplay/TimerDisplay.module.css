@@ -1,46 +1,23 @@
 /* Filename: TimerDisplay.module.css */
 
 /* ====================================
-   TIMER DISPLAY CONTAINER STYLING.
-======================================= */
-.wrapper
-{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-/* ====================================
    MAIN TIME TEXT STYLING.
 ======================================= */
 .time
 {
     display: flex;
     align-items: baseline;
-    gap: 0.35rem;
+    gap: 0.5rem;
 
     font-family: "JetBrains Mono", monospace;
     font-weight: 700;
-    font-size: clamp(3rem, 6vw, 5.5rem);
-    letter-spacing: 0.015em;
-    line-height: 1;
-    user-select: none;
-    white-space: nowrap;
-
+    font-size: clamp(3.4rem, 6vw, 5.8rem);
     color: var(--text);
-    text-shadow: 0 0 6px rgba(212, 175, 55, 0.18);
-    filter: drop-shadow(0 0 3px rgba(212, 175, 55, 0.1));
+    letter-spacing: 0.015em;
 
-    transition: color 0.4s ease, text-shadow 0.4s ease;
-    animation: fadeIn 0.8s ease-out both;
-}
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.25);
 
-/* Light Theme Variation Styles. */
-html.light .time
-{
-    color: #3a2c00;
-    text-shadow: 0 0 5px rgba(234, 179, 8, 0.2);
+    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 /* =================================
@@ -48,27 +25,19 @@ html.light .time
 ==================================== */
 .separator
 {
-    padding: 0 0.25rem;
-    font-weight: 700;
     color: var(--gold);
-    opacity: 0.8;
+    opacity: 0.9;
 
-    animation: colonPulse 2.4s ease-in-out infinite;
+    animation: colonPulse 2.6s ease-in-out infinite;
 }
 
 /* =================================
    ANIMATIONS STYLES.
 ==================================== */
-@keyframes fadeIn
-{
-    from { opacity: 0; transform: translateY(6px) scale(0.96); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
 @keyframes colonPulse
 {
     0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.65; transform: scale(0.94); }
+    50% { opacity: 0.65; transform: scale(0.95); }
 }
 
 /* Media Query Styles. */
@@ -79,5 +48,5 @@ html.light .time
 
 @media (max-width: 480px)
 {
-    .time { font-size: clamp(1.8rem, 6vw, 3.2rem); }
+    .time { font-size: clamp(1.9rem, 6vw, 3rem); }
 }

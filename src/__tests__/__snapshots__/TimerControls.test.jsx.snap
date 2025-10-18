@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TimerControls Component enables Lap button when isRunning is true 1`] = `
+<DocumentFragment>
+  <div
+    class="controls light"
+  >
+    <button
+      class="button start"
+    >
+      Start
+    </button>
+    <button
+      class="button lap"
+      disabled=""
+    >
+      Lap
+    </button>
+    <button
+      class="button reset"
+    >
+      Reset
+    </button>
+  </div>
+</DocumentFragment>
+`;

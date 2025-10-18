@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AnimatedDigit Component matches snapshot for digit 9 1`] = `
+<DocumentFragment>
+  <div
+    class="container"
+  >
+    <span
+      animate="[object Object]"
+      aria-hidden="true"
+      class="digit"
+      exit="[object Object]"
+      initial="[object Object]"
+      transition="[object Object]"
+    >
+      9
+    </span>
+  </div>
+</DocumentFragment>
+`;

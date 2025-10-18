@@ -1,16 +1,16 @@
 //File name: TimerControls.jsx
 //Author: Kyle McColgan
-//Date: 12 October 2025
+//Date: 15 October 2025
 //Description: This file contains the timer controls component for the React timer project.
 
 import React from "react";
 import { Button } from "@mantine/core";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { useTheme } from "../../context/ThemeContext.jsx";
 
 import styles from "./TimerControls.module.css";
 
-const MotionButton = motion(Button);
+const MotionButton = motion.create(Button);
 
 const TimerControls = ({ isRunning, toggle, reset, recordLap, children }) => {
   const { theme } = useTheme();
