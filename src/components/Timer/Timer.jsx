@@ -1,6 +1,6 @@
 //File name: Timer.jsx
 //Author: Kyle McColgan
-//Date: 9 October 2025
+//Date: 20 October 2025
 //Description: This file contains the parent Timer component for the React timer project.
 
 import React, { useState, useEffect, useRef } from "react";
@@ -107,14 +107,19 @@ const Timer = ({ dark, toggleTheme }) => {
       </header>
 
       <motion.section
-        className = {styles.card}
+        className = {styles.landscapeCard}
         initial={{ opacity: 0, scale: 0.96 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.2, duration: 0.5 }}
       >
-          <div className = {styles.content}>
-            <div className = {styles.timerCore}>
-              <TimerDisplay time={time} aria-live="polite" />
+          <div className = {styles.landscapeContent}>
+            <div className = {styles.timerRow}>
+              <div className = {styles.timerDisplayWrapper}>
+                <TimerDisplay time={time} aria-live="polite" />
+              </div>
+            </div>
+
+            <div className={styles.controlsRow}>
               <TimerControls
                 isRunning={isRunning}
                 toggle={toggle}
@@ -124,15 +129,7 @@ const Timer = ({ dark, toggleTheme }) => {
               />
             </div>
 
-            <motion.div
-              className={styles.clockEmblem}
-              whileHover={{ rotate: 2, scale: 1.06 }}
-              transition={{ type: "spring", stiffness: 180 }}
-            >
-              <Clock size={56} color="var(--gold)" strokeWidth={1.5} />
-            </motion.div>
-
-            <div className={styles.lapListWrapper}>
+            <div className={styles.lapRow}>
               <LapList laps={laps} />
             </div>
           </div>
@@ -144,3 +141,11 @@ const Timer = ({ dark, toggleTheme }) => {
 };
 
 export default Timer;
+
+//             <motion.div
+//               className={styles.clockEmblem}
+//               whileHover={{ rotate: 2, scale: 1.06 }}
+//               transition={{ type: "spring", stiffness: 180 }}
+//             >
+//               <Clock size={56} color="var(--gold)" strokeWidth={1.5} />
+//             </motion.div>

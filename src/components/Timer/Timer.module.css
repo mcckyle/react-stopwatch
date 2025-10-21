@@ -1,45 +1,59 @@
 /* Filename: Timer.module.css */
 
 /* ====================================
-   MAIN TIMER CONTAINER STYLING.
+   CONTAINER ROOT STYLES.
 ======================================= */
 .container
 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2.5rem;
+    justify-content: flex-start;
+
     width: 100%;
-    position: relative;
-    z-index: 1;
+    min-height: 100vh;
+    padding: 2rem 2vw;
+
+    background: radial-gradient(
+        circle at 50% 20%,
+        rgba(255, 215, 0, 0.08),
+        transparent 65%
+    );
+
+    position: relative; /* !Controls need this to properly function. */
+    overflow-x: hidden;
 }
 
 /* ====================================
-   TIMER HEADER AND TITLE STYLING.
+   TIMER HEADER STYLES.
 ======================================= */
 .header
 {
-    width: 100%;
-    max-width: 680px;
-    padding: 1rem 1.5rem;
+    position: absolute;
+    top: 1.6rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 92%;
+    max-width: 1200px;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    z-index: 5;
 }
 
 .banner
 {
     font-family: "Playfair Display", serif;
+    font-size: clamp(1.6rem, 3.2vw, 2.6rem);
     font-weight: 700;
-    font-size: clamp(2rem, 5vw, 2.4rem);
-    letter-spacing: 0.4px;
+    letter-spacing: 0.5px;
 
     background: linear-gradient(120deg, var(--gold), var(--amber));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.12);
 }
 
 /* ====================================
@@ -47,100 +61,236 @@
 ======================================= */
 .themeToggle
 {
-    width: 2.4rem;
-    height: 2.4rem;
+    width: 2.6rem;
+    height: 2.6rem;
 
     border-radius: 50%;
-    border: 1px solid rgba(212, 175, 55, 0.25);
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(8px);
+    border: none;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.15);
 
-    transition: all 0.25s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .themeToggle:hover
 {
-    transform: scale(1.08);
-    box-shadow: var(--glow-accent);
-}
-
-/* ==========================
-   TIMER CARD STYLES.
-============================= */
-.card
-{
-    width: 100%;
-    max-width: 640px;
-    border-radius: var(--radius);
-    border: 1px solid rgba(212, 175, 55, 0.12);
-    background: var(--surface);
-
-    backdrop-filter: blur(var(--blur));
-    box-shadow: 0 2px 18px rgba(0, 0, 0, 0.12);
-
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover
-{
-    transform: translateY(-2px);
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.16);
+    transform: scale(1.12);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
 }
 
 /* ====================================
-   CONTENT AND ELEMENTS STYLES.
+   TIMER CARD STYLES.
 ======================================= */
-.content
+.landscapeCard
+{
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 6rem 4vw 3rem;
+    background: transparent;
+    border: none;
+}
+
+/* ====================================
+   CONTENT STYLES.
+======================================= */
+.landscapeContent
 {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+
     gap: 2rem;
-    padding: 3rem 2rem;
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
 }
 
-/* ==========================
-   CLOCK EMBLEM STYLES.
-============================= */
-.clockEmblem
+.timerRow
 {
-    padding: 1.1rem;
-    border-radius: 50%;
-    border: 1px solid var(--gold);
+    flex: 1;
 
-    background: radial-gradient(
-        circle,
-        rgba(212, 175, 55, 0.06),
-        transparent 70%
-    );
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    box-shadow: inset 0 0 6px rgba(212, 175, 55, 0.22);
-
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
 }
 
-.clockEmblem:hover
+.timerDisplayWrapper
 {
-    transform: scale(1.06);
-    box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.3);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timerDisplayWrapper time
+{
+    font-size: clamp(6rem, 16vw, 12rem);
+}
+
+.controlsRow
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    padding-bottom: 1rem;
 }
 
 /* =======================
    LAP LIST STYLES.
 ========================== */
-.lapListWrapper
+.lapRow
 {
     width: 100%;
+    max-width: 1000px;
     max-height: 22vh;
-    overflow-y: auto;
-    padding: 0.5rem;
-    margin-top: 1rem;
-    border-top: 1px solid rgba(212, 175, 55, 0.1);
 
-    scrollbar-width: none;
+    display: flex;
+    justify-content: center;
+    overflow-y: auto;
+    padding-bottom: 1rem;
 }
 
-.lapListWrapper::-webkit-scrollbar
+@media (max-width: 900px)
+{
+    .landscapeContent
+    {
+        gap: 1.2rem;
+    }
+
+    .timerDisplayWrapper time
+    {
+        font-size: clamp(3.2rem, 12vw, 6.5rem);
+    }
+}
+
+/*
+@media (max-width: 780px), (orientation: portrait)
+{
+    .card
+    {
+        max-width: 680px;
+        height: auto;
+    }
+
+    .content
+    {
+        grid-template-rows: auto auto auto;
+        gap: 1rem;
+        padding: 1.6rem;
+    }
+
+    .timerDisplayWrapper :global(.timerDigits),
+    .timerDisplayWrapper .timerDigits,
+    .timerDisplayWrapper > *
+    {
+        font-size: clamp(2.2rem, 10vw, 4.4rem);
+    }
+}
+
+@media (prefers-reduced-motion: reduce)
+{
+    .card,
+    .container,
+    .themeToggle,
+    .clockEmblem
+    {
+        transition: none !important;
+        animation: none !important;
+    }
+}*/
+
+/*
+
+.card:hover
+{
+    transform: translateY(-3px);
+    box-shadow: 0 6px 28px rgba(212, 175, 55, 0.12);
+}
+
+/*
+.timerDisplayWrapper
+{
+    width: 100%;
+    max-width: 1100px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.timerDisplayWrapper :global(.timerDigits),
+.timerDisplayWrapper .timerDigits,
+.timerDisplayWrapper > *
+{
+    font-size: clamp(3.6rem, 12vw, 8.4rem);
+    line-height: 1;
+    font-weight: 700;
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    letter-spacing: 0.02em;
+    color: var(--text-primary);
+    text-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+}
+
+/*
+
+.controlsRow > *
+{
+    width: 100%;
+    max-width: 720px;
+}
+
+.lapRow > *
+{
+    width: 100%;
+    max-width: 720px;
+    max-height: 100%;
+    overflow-y: auto;
+    padding: 0.6rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.06);
+}
+
+.lapRow::-webkit-scrollbar
 {
     display: none;
 }
+
+.lapRow > *
+{
+    scrollbar-width: none;
+}
+/* ==========================
+   CLOCK EMBLEM STYLES.
+=============================
+.clockEmblem
+{
+    padding: 1rem;
+    border-radius: 50%;
+    border: 1px solid var(--gold);
+
+    background: radial-gradient(
+        circle,
+        rgba(212, 175, 55, 0.08),
+        transparent 70%
+    );
+
+    box-shadow: inset 0 0 5px rgba(212, 175, 55, 0.2);
+
+    transition: transform 0.3s ease;
+}
+
+.clockEmblem:hover
+{
+    transform: scale(1.05);
+}
+
+*/

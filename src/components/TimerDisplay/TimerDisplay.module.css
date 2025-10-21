@@ -1,7 +1,18 @@
 /* Filename: TimerDisplay.module.css */
 
+/* =========================================
+   MAIN TIME DISPLAY CONTAINER STYLES.
+============================================ */
+.wrapper
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
+}
+
 /* ====================================
-   MAIN TIME TEXT STYLING.
+   TIME READOUT STYLING.
 ======================================= */
 .time
 {
@@ -11,42 +22,37 @@
 
     font-family: "JetBrains Mono", monospace;
     font-weight: 700;
-    font-size: clamp(3.4rem, 6vw, 5.8rem);
+    font-size: clamp(5rem, 16vw, 11rem);
     color: var(--text);
-    letter-spacing: 0.015em;
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.18);
 
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.25);
-
-    transition: color 0.3s ease, text-shadow 0.3s ease;
+    transition: color 0.35s ease, text-shadow 0.35s ease;
 }
 
-/* =================================
-   COLONS BETWEEN DIGITS STYLES.
-==================================== */
+/* ====================================
+   COLON (SEPARATOR) STYLES.
+======================================= */
 .separator
 {
     color: var(--gold);
-    opacity: 0.9;
+    font-weight: 500;
 
-    animation: colonPulse 2.6s ease-in-out infinite;
+    animation: colonPulse 2.5s ease-in-out infinite;
 }
 
-/* =================================
+/* ====================================
    ANIMATIONS STYLES.
-==================================== */
+======================================= */
 @keyframes colonPulse
 {
     0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.65; transform: scale(0.95); }
+    50% { opacity: 0.6; transform: scale(0.9); }
 }
 
-/* Media Query Styles. */
+/* ====================================
+   MEDIA QUERY STYLES.
+======================================= */
 @media (max-width: 768px)
 {
-    .time { font-size: clamp(2.4rem, 6vw, 4.2rem); }
-}
-
-@media (max-width: 480px)
-{
-    .time { font-size: clamp(1.9rem, 6vw, 3rem); }
+    .time { font-size: clamp(3rem, 10vw, 6rem); }
 }
