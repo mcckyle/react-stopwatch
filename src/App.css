@@ -7,85 +7,44 @@
 {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
+    justify-content: center;
 
     height: 100vh;
     width: 100vw;
     background: var(--app-bg);
     color: var(--text);
     overflow: hidden;
+    position: relative; /* Removes scrollbars... */
+    isolation: isolate;
 
-    transition: background 0.6s ease, color 0.6s ease;
+    transition: background 0.8s ease, color 0.8s ease;
 }
 
-/* =========================================
-   SIMPLE GRADIENT GLOW BACKDROP STYLES.
-============================================ */
+/* ====================================
+   SIMPLE BACKDROP GLOW STYLES.
+======================================= */
 .app::before
 {
     content: "";
     position: absolute;
     inset: 0;
+    z-index: -1;
 
     background: radial-gradient(
-        circle at 50% 40%,
+        circle at 50% 45%,
         var(--ambient-glow),
-        transparent 70%
+        transparent 75%
     );
 
-    opacity: 0.25;
-    filter: blur(100px);
-    z-index: 0;
+    opacity: 0.18;
+    filter: blur(120px);
 
-
-    animation: drift 160s ease-in-out infinite alternate;
+    animation: drift 90s ease-in-out infinite alternate;
 }
 
 @keyframes drift
 {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(2%, -2%) scale(1.05); }
+    from { transform: translate(0, 0) scale(1); }
+    to { transform: translate(1.5%, -2%) scale(1.05); }
 }
-
-/* ====================================
-   APP INNER WRAPPER STYLES.
-======================================= */
-/*
-.app-inner
-{
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    max-width: 540px;
-    padding: 3rem 2.2rem;
-    text-align: center;
-
-    border-radius: var(--radius);
-    border: 1px solid rgba(212, 175, 55, 0.15);
-    background: var(--surface);
-    box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.15),
-    0 0 20px rgba(212, 175, 55, 0.1);
-
-    backdrop-filter: blur(var(--blur));
-
-    animation: fadeIn 0.7s ease both;
-}
- */
-/*
- * @keyframes fadeIn
- * {
- *    from { opacity: 0; transform: translateY(16px); }
- *    to { opacity: 1; transform: translateY(0); }
- * }
- */
-/*@media(max-width: 768px)
-{
- .app-inner
- {
-   padding: 2rem 1.5rem;
-   max-width: 94%;
- }
-}
- */

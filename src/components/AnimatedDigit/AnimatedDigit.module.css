@@ -18,19 +18,19 @@
 ======================================= */
 .digit
 {
-    font-family: "JetBrains Mono", monospace;
+    font-family: inherit; /* inherit from parent time. */
     font-weight: 700;
-    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    font-size: inherit; /* inherit from parent time. */
     color: var(--text);
-    text-shadow: 0 0 5px rgba(212, 175, 55, 0.18);
+    text-shadow: 0 0 6px rgba(212, 175, 55, 0.2);
 
-    transition: text-shadow 0.25s ease, transform 0.25s ease;
+    transition: transform 0.25s ease, text-shadow 0.25s ease;
 }
 
 /* INTERACTIVE FEEDBACK STYLE. */
 .digit:hover
 {
-    transform: translateY(-1px);
+    transform: translateY(-1px) scale(1.02);
     text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
 }
 
@@ -40,12 +40,7 @@
 html.light .digit
 {
     color: #3a2c00;
-    text-shadow: 0 0 4px rgba(234, 179, 8, 0.25);
-}
-
-html.light .digit:hover
-{
-    text-shadow: 0 0 8px rgba(234, 179, 8, 0.35);
+    text-shadow: 0 0 5px rgba(234, 179, 8, 0.3);
 }
 
 /* ====================================
@@ -53,5 +48,5 @@ html.light .digit:hover
 ======================================= */
 @media(max-width: 768px)
 {
-    .digit { font-size: clamp(1.6rem, 5vw, 2.5rem); }
+    .digit { font-size: inherit; }
 }

@@ -141,11 +141,3 @@ const Timer = ({ dark, toggleTheme }) => {
 };
 
 export default Timer;
-
-//             <motion.div
-//               className={styles.clockEmblem}
-//               whileHover={{ rotate: 2, scale: 1.06 }}
-//               transition={{ type: "spring", stiffness: 180 }}
-//             >
-//               <Clock size={56} color="var(--gold)" strokeWidth={1.5} />
-//             </motion.div>

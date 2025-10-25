@@ -8,7 +8,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 2rem 0;
+    margin: 2.5rem 0;
+    padding: 0.5rem;
 }
 
 /* ====================================
@@ -17,16 +18,19 @@
 .time
 {
     display: flex;
-    align-items: baseline;
-    gap: 0.5rem;
+    align-items: center;
+    gap: 0.45rem;
 
     font-family: "JetBrains Mono", monospace;
     font-weight: 700;
-    font-size: clamp(5rem, 16vw, 11rem);
+    font-size: clamp(6rem, 18vw, 13rem);
     color: var(--text);
-    text-shadow: 0 0 8px rgba(212, 175, 55, 0.18);
 
-    transition: color 0.35s ease, text-shadow 0.35s ease;
+    text-shadow:
+      0 0 8px rgba(212, 175, 55, 0.25),
+      0 0 22px rgba(212, 175, 55, 0.12);
+
+    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 /* ====================================
@@ -34,10 +38,13 @@
 ======================================= */
 .separator
 {
+    font-size: 0.6em;
     color: var(--gold);
-    font-weight: 500;
+    opacity: 0.9;
+    line-height: 1;
+    align-self: center;
 
-    animation: colonPulse 2.5s ease-in-out infinite;
+    animation: colonPulse 2.4s ease-in-out infinite;
 }
 
 /* ====================================
@@ -46,7 +53,7 @@
 @keyframes colonPulse
 {
     0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.6; transform: scale(0.9); }
+    50% { opacity: 0.5; transform: scale(0.95); }
 }
 
 /* ====================================
@@ -54,5 +61,5 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .time { font-size: clamp(3rem, 10vw, 6rem); }
+    .time { font-size: clamp(3rem, 14vw, 7rem); }
 }

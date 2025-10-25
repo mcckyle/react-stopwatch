@@ -12,8 +12,12 @@
 
     --surface-light: #fdfdfb;
     --surface-dark: #18191f;
-    --text-light: #1a1a1a;
-    --text-dark: #f5f5f5;
+    --text-light: #1b1b1b;
+    --text-dark: #f8f8f8;
+
+    --surface-glass: rgba(255, 255, 255, 0.04);
+    --surface-border: rgba(255, 255, 255, 0.08);
+    --surface-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 
     --radius: 1rem;
     --blur: 12px;
@@ -26,7 +30,7 @@ html.light
 {
     --surface: var(--surface-light);
     --text: var(--text-light);
-    --app-bg: radial-gradient(circle at 40% 40%, #fffef9, #efefde);
+    --app-bg: radial-gradient(circle at 45% 40%, #fffef9, #efefde);
     --ambient-glow: rgba(212, 175, 55, 0.08);
     --glow-accent: 0 0 10px rgba(212, 175, 55, 0.15);
 }
@@ -39,6 +43,6 @@ html.dark
     --surface: var(--surface-dark);
     --text: var(--text-dark);
     --app-bg: radial-gradient(circle at 50% 50%, #1a1b20, #090a0f);
-    --ambient-glow: rgba(212, 175, 55, 0.07);
-    --glow-accent: 0 0 10px rgba(212, 175, 55, 0.22);
+    --ambient-glow: rgba(212, 175, 55, 0.06);
+    --glow-accent: 0 0 12px rgba(212, 175, 55, 0.18);
 }
