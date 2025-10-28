@@ -1,4 +1,4 @@
-# react-Timer
+# react-stopwatch
 
 A simple, modern stopwatch app built with **React**, **Tailwind CSS**, and **Vite**. Designed for focus, simplicity, and speed.
 
@@ -19,8 +19,8 @@ A simple, modern stopwatch app built with **React**, **Tailwind CSS**, and **Vit
 Clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/your-username/react-timer.git
-cd react-timer
+git clone https://github.com/your-username/react-stopwatch.git
+cd react-stopwatch
 npm install
 ```
 
@@ -50,22 +50,22 @@ npm run build
 ## 📁 Project Structure
 
 ```
-react-timer/
+react-stopwatch/
 ├── .github/              # GitHub workflows (CI/CD).
 ├── public/               # Static assets (served as-is).
 ├── src/                  # Application Source code.
 │   ├── components/       # Reusable React components.
-│   │   ├── Timer/
-│   │   │   ├── Timer.jsx
-│   │   │   └── Timer.module.css
+│   │   ├── Stopwatch/
+│   │   │   ├── Stopwatch.jsx
+│   │   │   └── Stopwatch.module.css
 │   │   │
-│   │   ├── TimerDisplay/
-│   │   │   ├── TimerDisplay.jsx
-│   │   │   └── TimerDisplay.module.css
+│   │   ├── StopwatchDisplay/
+│   │   │   ├── StopwatchDisplay.jsx
+│   │   │   └── StopwatchDisplay.module.css
 │   │   │
-│   │   ├── TimerControls/
-│   │   │   ├── TimerControls.jsx
-│   │   │   └── TimerControls.module.css
+│   │   ├── StopwatchControls/
+│   │   │   ├── StopwatchControls.jsx
+│   │   │   └── StopwatchControls.module.css
 │   │   │
 │   │   ├── LapList/
 │   │   │   ├── LapList.jsx
@@ -91,9 +91,9 @@ react-timer/
 │   │   └── ThemeContext.jsx
 │   │
 │   ├── __tests__/
-│   │   ├── Timer.test.jsx
-│   │   ├── TimerDisplay.test.jsx
-│   │   ├── TimerControls.test.jsx
+│   │   ├── Stopwatch.test.jsx
+│   │   ├── StopwatchDisplay.test.jsx
+│   │   ├── StopwatchControls.test.jsx
 │   │   ├── LapList.test.jsx
 │   │   └── AnimatedDigit.test.jsx
 │   │

@@ -1,18 +1,18 @@
-//File name: TimerControls.jsx
+//File name: StopwatchControls.jsx
 //Author: Kyle McColgan
-//Date: 15 October 2025
-//Description: This file contains the timer controls component for the React timer project.
+//Date: 26 October 2025
+//Description: This file contains the stopwatch controls component for the React stopwatch project.
 
 import React from "react";
 import { Button } from "@mantine/core";
 import { motion } from "motion/react";
 import { useTheme } from "../../context/ThemeContext.jsx";
 
-import styles from "./TimerControls.module.css";
+import styles from "./StopwatchControls.module.css";
 
 const MotionButton = motion.create(Button);
 
-const TimerControls = ({ isRunning, toggle, reset, recordLap, children }) => {
+const StopwatchControls = ({ isRunning, toggle, reset, recordLap, children }) => {
   const { theme } = useTheme();
 
   const motionProps = {
@@ -53,4 +53,4 @@ const TimerControls = ({ isRunning, toggle, reset, recordLap, children }) => {
   );
 };
 
-export default TimerControls;
+export default StopwatchControls;

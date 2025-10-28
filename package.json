@@ -1,9 +1,9 @@
 {
-  "name": "mytimer-react",
+  "name": "react-stopwatch",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://mcckyle.github.io/react-timer",
+  "homepage": "https://mcckyle.github.io/react-stopwatch",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

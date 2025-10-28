@@ -1,10 +1,10 @@
 //File name: App.jsx
 //Author: Kyle McColgan
-//Date: 20 October 2025
-//Description: This file contains the entry point React component for the react timer project.
+//Date: 26 October 2025
+//Description: This file contains the entry point component for the React stopwatch project.
 
 import React from "react";
-import Timer from "./components/Timer/Timer.jsx";
+import Stopwatch from "./components/Stopwatch/Stopwatch.jsx";
 import { useTheme } from "./context/ThemeContext.jsx";
 
 import "./App.css";
@@ -16,7 +16,7 @@ function App()
 
     return (
       <main className={`app ${theme}`}>
-        <Timer toggleTheme={toggleTheme} />
+        <Stopwatch toggleTheme={toggleTheme} />
       </main>
     );
 }

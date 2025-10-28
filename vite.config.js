@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/react-timer/',
+  base: '/react-stopwatch/',
   plugins: [react()],
   define: {
     'process.env': {}, // Prevents SSR-related undefined issues

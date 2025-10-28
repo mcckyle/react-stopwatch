@@ -1,7 +1,7 @@
 //File name: LapList.jsx
 //Author: Kyle McColgan
-//Date: 19 October 2025
-//Description: This file contains the laps component for the React timer project.
+//Date: 26 October 2025
+//Description: This file contains the laps component for the React stopwatch project.
 
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";

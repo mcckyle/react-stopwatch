@@ -1,7 +1,7 @@
-//File name: Timer.jsx
+//File name: Stopwatch.jsx
 //Author: Kyle McColgan
-//Date: 20 October 2025
-//Description: This file contains the parent Timer component for the React timer project.
+//Date: 26 October 2025
+//Description: This file contains the parent Stopwatch component for the React stopwatch project.
 
 import React, { useState, useEffect, useRef } from "react";
 import { Clock, Sun, Moon } from "lucide-react";
@@ -9,16 +9,16 @@ import { motion } from "framer-motion";
 import { useStopwatch } from "../../hooks/useStopwatch";
 import { useKeyboardShortcuts } from "../../hooks/useKeyboardShortcuts";
 import { useTheme } from "../../context/ThemeContext.jsx";
-import TimerDisplay from "../TimerDisplay/TimerDisplay.jsx";
-import TimerControls from "../TimerControls/TimerControls";
+import StopwatchDisplay from "../StopwatchDisplay/StopwatchDisplay.jsx";
+import StopwatchControls from "../StopwatchControls/StopwatchControls.jsx";
 import LapList from "../LapList/LapList.jsx";
 import HelpModal from "../HelpModal/HelpModal.jsx";
 
-import styles from "./Timer.module.css";
+import styles from "./Stopwatch.module.css";
 
-const LAP_STORAGE_KEY = "timer-app-laps"; //Key for browser localStorage.
+const LAP_STORAGE_KEY = "stopwatch-app-laps"; //Key for browser localStorage.
 
-const Timer = ({ dark, toggleTheme }) => {
+const Stopwatch = ({ dark, toggleTheme }) => {
   const { time, isRunning, toggle, reset, getCurrentTime } = useStopwatch();
   const [laps, setLaps] = useState([]);
   const [showHelp, setShowHelp] = useState(false);
@@ -94,7 +94,7 @@ const Timer = ({ dark, toggleTheme }) => {
       <header className={styles.header}>
         <h1 className={styles.banner}>
           <Clock size={32} className={styles.icon} />
-          <span>Timer</span>
+          <span>Stopwatch</span>
         </h1>
         <button
           className={styles.themeToggle}
@@ -113,14 +113,14 @@ const Timer = ({ dark, toggleTheme }) => {
         transition={{ delay: 0.2, duration: 0.5 }}
       >
           <div className = {styles.landscapeContent}>
-            <div className = {styles.timerRow}>
-              <div className = {styles.timerDisplayWrapper}>
-                <TimerDisplay time={time} aria-live="polite" />
+            <div className = {styles.stopwatchRow}>
+              <div className = {styles.stopwatchDisplayWrapper}>
+                <StopwatchDisplay time={time} aria-live="polite" />
               </div>
             </div>
 
             <div className={styles.controlsRow}>
-              <TimerControls
+              <StopwatchControls
                 isRunning={isRunning}
                 toggle={toggle}
                 reset={reset}
@@ -140,4 +140,4 @@ const Timer = ({ dark, toggleTheme }) => {
   );
 };
 
-export default Timer;
+export default Stopwatch;

@@ -1,11 +1,11 @@
-//File name: TimerControls.test.jsx
+//File name: StopwatchControls.test.jsx
 //Author: Kyle McColgan
-//Date: 15 October 2025
-//Description: This file contains the unit test suite for the TimerControls component.
+//Date: 26 October 2025
+//Description: This file contains the unit test suite for the StopwatchControls component.
 
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import TimerControls from "../components/TimerControls/TimerControls.jsx";
+import StopwatchControls from "../components/StopwatchControls/StopwatchControls.jsx";
 
 //Mock Mantine and Framer Motion to simplify the animation behavior for testing purposes.
 jest.mock("@mantine/core", () => ({
@@ -30,7 +30,7 @@ jest.mock("../context/ThemeContext.jsx", () => ({
 
 import { useTheme } from "../context/ThemeContext.jsx";
 
-describe("TimerControls Component", () => {
+describe("StopwatchControls Component", () => {
     const mockToggle = jest.fn();
     const mockReset = jest.fn();
     const mockRecordLap = jest.fn();
@@ -43,7 +43,7 @@ describe("TimerControls Component", () => {
     //Test #1: Rendering - Renders all the control buttons.
     test("renders the Start, Lap, and Reset buttons", () => {
         render(
-            <TimerControls
+            <StopwatchControls
               isRunning={false}
               toggle={mockToggle}
               reset={mockReset}
@@ -59,7 +59,7 @@ describe("TimerControls Component", () => {
     //Test #2: Displays 'Pause' when running.
     test("displays 'Pause' when the timer is running", () => {
         render(
-            <TimerControls
+            <StopwatchControls
               isRunning={true}
               toggle={mockToggle}
               reset={mockReset}
@@ -70,10 +70,10 @@ describe("TimerControls Component", () => {
         expect(screen.getByRole("button", { name: /pause/i })).toBeInTheDocument();
     });
 
-    //Test #3: Toggles the timer when Start/Paused is clicked.
+    //Test #3: Toggles the stopwatch when Start/Paused is clicked.
     test("calls toggle when Start or Pause button is clicked", () => {
         render(
-            <TimerControls
+            <StopwatchControls
               isRunning={false}
               toggle={mockToggle}
               reset={mockReset}
@@ -88,7 +88,7 @@ describe("TimerControls Component", () => {
     //Test #4: Calls reset when Reset is clicked.
     test("calls reset when Reset button is clicked", () => {
         render(
-            <TimerControls
+            <StopwatchControls
               isRunning={true}
               toggle={mockToggle}
               reset={mockReset}
@@ -103,7 +103,7 @@ describe("TimerControls Component", () => {
     //Test #5: Calls recordLap when Lap is clicked.
     test("calls recordLap when Lap button is clicked", () => {
         render(
-            <TimerControls
+            <StopwatchControls
               isRunning={true}
               toggle={mockToggle}
               reset={mockReset}
@@ -118,7 +118,7 @@ describe("TimerControls Component", () => {
     //Test #6: Disables Lap button when not running.
     test("disables Lap button when isRunning is false", () => {
         render(
-            <TimerControls
+            <StopwatchControls
               isRunning={false}
               toggle={mockToggle}
               reset={mockReset}
@@ -133,7 +133,7 @@ describe("TimerControls Component", () => {
     //Test #7: Enables Lap button when running.
     test("enables Lap button when isRunning is true", () => {
         render(
-            <TimerControls
+            <StopwatchControls
               isRunning={true}
               toggle={mockToggle}
               reset={mockReset}
@@ -148,7 +148,7 @@ describe("TimerControls Component", () => {
     test("applies theme class from ThemeContext", () => {
         useTheme.mockReturnValue({ theme: "dark" });
         const { container } = render(
-            <TimerControls
+            <StopwatchControls
               isRunning={false}
               toggle={mockToggle}
               reset={mockReset}
@@ -162,14 +162,14 @@ describe("TimerControls Component", () => {
     //Test #9: Renders children if provided.
     test("renders children elements if passed", () => {
         render(
-            <TimerControls
+            <StopwatchControls
               isRunning={false}
               toggle={mockToggle}
               reset={mockReset}
               recordLap={mockRecordLap}
             >
               <p data-testid="child-element">Extra</p>
-            </TimerControls>
+            </StopwatchControls>
         );
 
         expect(screen.getByTestId("child-element")).toBeInTheDocument();
@@ -178,7 +178,7 @@ describe("TimerControls Component", () => {
     //Test #10: Snapshot for consistent button layout.
     test("enables Lap button when isRunning is true", () => {
         const { asFragment } = render(
-            <TimerControls
+            <StopwatchControls
               isRunning={false}
               toggle={mockToggle}
               reset={mockReset}

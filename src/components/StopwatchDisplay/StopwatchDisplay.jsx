@@ -1,15 +1,15 @@
-//File name: TimerDisplay.jsx
+//File name: StopwatchDisplay.jsx
 //Author: Kyle McColgan
-//Date: 9 October 2025
-//Description: This file contains the timer display component for the React timer project.
+//Date: 26 October 2025
+//Description: This file contains the stopwatch display component for the React stopwatch project.
 
 import React from "react";
 import AnimatedDigit from "../AnimatedDigit/AnimatedDigit.jsx";
 import { formatTime } from "../../utils/formatTime";
 
-import styles from "./TimerDisplay.module.css";
+import styles from "./StopwatchDisplay.module.css";
 
-const TimerDisplay = ({ time }) => {
+const StopwatchDisplay = ({ time }) => {
   const { hours, minutes, seconds} = formatTime(time);
 
   const renderDigits = (label, value) =>
@@ -30,4 +30,4 @@ const TimerDisplay = ({ time }) => {
   );
 };
 
-export default TimerDisplay;
+export default StopwatchDisplay;

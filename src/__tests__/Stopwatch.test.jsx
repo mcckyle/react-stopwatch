@@ -1,12 +1,12 @@
-//File name: Timer.test.jsx
+//File name: Stopwatch.test.jsx
 //Author: Kyle McColgan
-//Date: 5 October 2025
-//Description: This file contains the unit test suite for the Timer component.
+//Date: 26 October 2025
+//Description: This file contains the unit test suite for the Stopwatch component.
 
 import React from "react";
 import { render, screen } from "../test/test-utils";
 import { fireEvent, act } from "@testing-library/react";
-import Timer from "../components/Timer/Timer.jsx";
+import Stopwatch from "../components/Stopwatch/Stopwatch.jsx";
 import * as useStopWatchModule from "../hooks/useStopwatch";
 import * as useKeyboardShortcutsModule from "../hooks/useKeyboardShortcuts";
 
@@ -14,7 +14,7 @@ import * as useKeyboardShortcutsModule from "../hooks/useKeyboardShortcuts";
 jest.mock("../hooks/useStopwatch");
 jest.mock("../hooks/useKeyboardShortcuts");
 
-describe("Timer Component", () => {
+describe("Stopwatch Component", () => {
     const mockToggle = jest.fn();
     const mockReset = jest.fn();
     const mockGetCurrentTime = jest.fn(() => "00:00:01");
@@ -34,13 +34,13 @@ describe("Timer Component", () => {
 
     //Test #1
     test("1. Renders title.", () => {
-        render(<Timer />);
-        expect(screen.getByText("Timer")).toBeInTheDocument();
+        render(<Stopwatch />);
+        expect(screen.getByText("Stopwatch")).toBeInTheDocument();
     });
 
     //Test #2
-    test("2. Renders the TimerDisplay component with initial time.", () => {
-        render(<Timer />);
+    test("2. Renders the StopwatchDisplay component with initial time.", () => {
+        render(<Stopwatch />);
 
         const timer = screen.getByRole("timer");
 
@@ -48,14 +48,14 @@ describe("Timer Component", () => {
     });
 
     //Test #3
-    test("3. Renders the TimerControls component.", () => {
-        render(<Timer />);
+    test("3. Renders the StopwatchControls component.", () => {
+        render(<Stopwatch />);
         expect(screen.getByRole("button", { name: /start/i })).toBeInTheDocument();
     });
 
     //Test #4
     test("4. Renders LapList with no laps.", () => {
-        render(<Timer />);
+        render(<Stopwatch />);
         expect(screen.queryByText("00:00:01")).not.toBeInTheDocument();
     });
 
@@ -70,7 +70,7 @@ describe("Timer Component", () => {
             getCurrentTime: jest.fn(() => 1000),
         });
 
-        render(<Timer />);
+        render(<Stopwatch />);
         const lapButton = screen.getByRole("button", { name: /lap/i});
         fireEvent.click(lapButton);
 
@@ -80,21 +80,21 @@ describe("Timer Component", () => {
 
     //Test #6
     test("6. Calls toggle when Start/Stop gets clicked.", () => {
-        render(<Timer />);
+        render(<Stopwatch />);
         fireEvent.click(screen.getByRole("button", { name: /start/i}));
         expect(mockToggle).toHaveBeenCalled();
     });
 
     //Test #7
     test("7. Calls Reset when Reset gets clicked.", () => {
-        render(<Timer />);
+        render(<Stopwatch />);
         fireEvent.click(screen.getByRole("button", { name: /reset/i}));
         expect(mockReset).toHaveBeenCalled();
     });
 
     //Test #8
     test("8. Opens HelpModal on showHelp = true", () => {
-        render(<Timer />);
+        render(<Stopwatch />);
         act(() => {
             fireEvent.keyDown(document, { code: "Slash", shiftKey: true });
 
@@ -113,7 +113,7 @@ describe("Timer Component", () => {
             helpCallback = onOpenHelp;
         });
 
-        render(<Timer />);
+        render(<Stopwatch />);
 
         //Wrap the state update in 'act' so React will process and flush the render update before assertions.
         act(() => {
@@ -133,7 +133,7 @@ describe("Timer Component", () => {
             helpCallback = onOpenHelp;
         });
 
-        render(<Timer />);
+        render(<Stopwatch />);
 
         //Open the HelpModal component manually via the captured callback.
         act(() => {

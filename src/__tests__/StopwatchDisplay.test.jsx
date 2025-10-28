@@ -1,11 +1,11 @@
-//File name: TimerDisplay.test.jsx
+//File name: StopwatchDisplay.test.jsx
 //Author: Kyle McColgan
-//Date: 15 October 2025
-//Description: This file contains the unit test suite for the TimerDisplay component.
+//Date: 26 October 2025
+//Description: This file contains the unit test suite for the StopwatchDisplay component.
 
 import React from "react";
 import { render, screen } from "../test/test-utils";
-import TimerDisplay from "../components/TimerDisplay/TimerDisplay.jsx";
+import StopwatchDisplay from "../components/StopwatchDisplay/StopwatchDisplay.jsx";
 import * as formatTimeModule from "../utils/formatTime";
 
 //Mock the AnimatedDigit component.
@@ -13,14 +13,14 @@ jest.mock("../components/AnimatedDigit/AnimatedDigit.jsx", () => ({ value }) => 
     <span data-testid="digit">{value}</span>
 ));
 
-describe("TimerDisplay Component", () => {
+describe("StopwatchDisplay Component", () => {
     beforeEach(() => {
         jest.restoreAllMocks();
     });
 
     //Test #1: Sanity - ensures the component renders without crashing adn includes role="timer".
     test("1. renders without crashing", () => {
-        render(<TimerDisplay time={0} />);
+        render(<StopwatchDisplay time={0} />);
         expect(screen.getByRole("timer")).toBeInTheDocument();
     });
 
@@ -32,7 +32,7 @@ describe("TimerDisplay Component", () => {
             seconds: "00",
         });
 
-        render(<TimerDisplay time={1234} />);
+        render(<StopwatchDisplay time={1234} />);
         expect(spy).toHaveBeenCalledWith(1234);
     });
 
@@ -44,7 +44,7 @@ describe("TimerDisplay Component", () => {
             seconds: "56",
         });
 
-        render(<TimerDisplay time={123456} />);
+        render(<StopwatchDisplay time={123456} />);
         const digits = screen.getAllByTestId("digit");
         expect(digits).toHaveLength(6); //2 for hour, + 2 for minutes, + 2 for seconds.
     });
@@ -57,20 +57,20 @@ describe("TimerDisplay Component", () => {
             seconds: "33",
         });
 
-        render(<TimerDisplay time={98765} />);
+        render(<StopwatchDisplay time={98765} />);
         expect(screen.getAllByTestId("digit").map((d) => d.textContent).join("")).toBe("094533");
     });
 
     //Test #5: Layout - ensures exactly two colons separate the time segments.
     test("5. renders exactly two colon separators", () => {
-        render(<TimerDisplay time={1000} />);
+        render(<StopwatchDisplay time={1000} />);
         const separators = screen.getAllByText(":");
         expect(separators).toHaveLength(2);
     });
 
     //Test #6: Accessibility - validates aria-live="polite" for assistive tech compatability.
     test("6. uses aria-live=polite and role=timer for accessibility", () => {
-        render(<TimerDisplay time={0} />);
+        render(<StopwatchDisplay time={0} />);
         const timer = screen.getByRole("timer");
         expect(timer).toHaveAttribute("aria-live", "polite");
     });
@@ -83,7 +83,7 @@ describe("TimerDisplay Component", () => {
             seconds: "03",
         });
 
-        render(<TimerDisplay time={0} />);
+        render(<StopwatchDisplay time={0} />);
         const digits = screen.getAllByTestId("digit");
         digits.forEach((d) => {
             expect(!isNaN(Number(d.textContent))).toBe(true);
@@ -98,13 +98,13 @@ describe("TimerDisplay Component", () => {
             seconds: "05",
         });
 
-        render(<TimerDisplay time={0} />);
+        render(<StopwatchDisplay time={0} />);
         expect(screen.getAllByTestId("digit")).toHaveLength(6);
     });
 
     //Test #9: Semantic correctness - checks that time data lives inside a <time> tag.
     test("9. renders digits inside a <time> element with the proper class", () => {
-        render(<TimerDisplay time={0} />);
+        render(<StopwatchDisplay time={0} />);
         const timeElement = screen.getByRole("timer");
         expect(timeElement.tagName.toLowerCase()).toBe("time");
         expect(timeElement.className).toContain("time");
@@ -112,9 +112,9 @@ describe("TimerDisplay Component", () => {
 
     //Test #10: React reactivity - ensures the UI updates correctly when the time prop changes values.
     test("10. correctly updates when the time changes", () => {
-        const { rerender } = render(<TimerDisplay time={5000} />);
+        const { rerender } = render(<StopwatchDisplay time={5000} />);
         const firstRenderDigits = screen.getAllByTestId("digit").map((d) => d.textContent).join("");
-        rerender(<TimerDisplay time={10000} />);
+        rerender(<StopwatchDisplay time={10000} />);
         const secondRenderDigits = screen.getAllByTestId("digit").map((d) => d.textContent).join("");
 
         expect(firstRenderDigits).not.toEqual(secondRenderDigits);

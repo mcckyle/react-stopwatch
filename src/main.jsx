@@ -1,7 +1,7 @@
 //File name: main.jsx
 //Author: Kyle McColgan
-//Date: 7 October 2025
-//Description: This file contains the main React component for the React timer project.
+//Date: 26 October 2025
+//Description: This file contains the main React component for the React stopwatch project.
 
 import React from "react";
 import { createRoot } from "react-dom/client";
