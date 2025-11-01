@@ -90,6 +90,9 @@ react-stopwatch/
 │   ├── context/
 │   │   └── ThemeContext.jsx
 │   │
+│   ├── utils/
+│   │   └── formatTime.jsx
+│   │
 │   ├── __tests__/
 │   │   ├── Stopwatch.test.jsx
 │   │   ├── StopwatchDisplay.test.jsx
@@ -105,17 +108,15 @@ react-stopwatch/
 │   ├── App.css           # Styles specific to App.jsx.
 │   └── index.css         # Global styles and Tailwind imports.
 │
-├── dist/                 # Production build output (auto-generated).
-├── index.html            # HTML entry point.
 ├── .gitignore            # Specifies intentionally untracked files and folders to ignore.
 ├── LICENSE               # Open source license for the project.
 ├── README.md             # Project overview, instructions, and documentation.
 ├── babel.config.cjs      # Babel config for Jest.
-├── jest.config.js        # Jest testing configuration.
 ├── eslint.config.js      # ESLint configuration.
+├── index.html            # HTML entry point.
+├── jest.config.js        # Jest testing configuration.
 ├── setUpTests.js         # Global setup for Jest tests.
 ├── tailwind.config.js    # Tailwind CSS configuration.
-├── postcss.config.js     # PostCSS plugins for CSS processing.
 ├── vite.config.js        # Vite config for build and development.
 ├── package.json          # Project metadata, dependencies, and scripts.
 └── package-lock.json     # Exact versions of installed dependencies.

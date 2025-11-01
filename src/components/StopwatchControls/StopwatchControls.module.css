@@ -7,16 +7,16 @@
 {
     display: flex;
     justify-content: center;
+    gap: 1.5rem;
     flex-wrap: wrap;
-    gap: 1.25rem;
-    padding: 1rem 2rem;
-    margin-top: 0.5rem;
 
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid var(--surface-border);
+    padding: 1rem 2rem;
+    margin-top: 1rem;
+
+    background: rgba(255, 255, 255, 0.05);
     border-radius: var(--radius);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     backdrop-filter: blur(12px);
+    box-shadow: var(--glow-accent);
 }
 
 /* ====================================
@@ -27,22 +27,22 @@
     font-family: "JetBrains Mono", monospace;
     font-weight: 600;
 
-    min-width: 120px;
+    min-width: 130px;
     text-transform: uppercase;
     letter-spacing: 0.04em;
     border: none;
-    border-radius: 0.8rem;
+    border-radius: 1rem;
 
-    padding: 0.9rem 1.9rem;
+    padding: 0.9rem 2rem;
     cursor: pointer;
 
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition: all 0.25s ease;
 }
 
 /* General hover / press feedback styles. */
 .button:hover
 {
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(1.05);
     box-shadow: 0 0 18px rgba(255, 215, 0, 0.25);
 }
 

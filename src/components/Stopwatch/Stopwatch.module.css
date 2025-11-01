@@ -10,10 +10,11 @@
     justify-items: center;
     align-items: center;
 
-    width: 100%;
+    width: 100vw;
     height: 100vh;
-    padding: 2rem 1.5rem;
+    padding: 2rem 1rem;
     overflow: hidden;
+    position: relative;
 }
 
 /* ====================================
@@ -22,20 +23,20 @@
 .header
 {
     position: absolute;
-    top: 2.8rem;
+    top: 2rem;
     left: 50%;
     transform: translateX(-50%);
-    width: min(92%, 1200px);
+    width: min(94%, 1200px);
 
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 5;
 
-    background: rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(16px);
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(14px);
     border-radius: var(--radius);
-    padding: 0.6rem 1.4rem;
+    padding: 0.7rem 1.6rem;
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.12);
 }
 
@@ -66,7 +67,7 @@
     border-radius: 50%;
 
     background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(10px);
     box-shadow: var(--glow-accent);
     color: var(--text);
     cursor: pointer;
@@ -85,14 +86,12 @@
 ============================================ */
 .landscapeCard
 {
-    flex: 1;
-
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
 
-    padding: 8rem 0 3.5rem;
+    padding: 6rem 0 3rem;
 }
 
 .landscapeContent
@@ -114,17 +113,18 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin-top: 2.5rem;
+    margin-top: 2rem;
+    user-select: none;
 }
 
 .stopwatchDisplayWrapper .time
 {
     font-family: "JetBrains Mono", monospace;
-    font-size: clamp(4.2rem, 15vw, 10.5rem);
+    font-size: clamp(5rem, 14vw, 12rem);
     font-weight: 700;
     letter-spacing: 0.03em;
     color: var(--text);
-    text-shadow: 0 0 14px rgba(212, 175, 55, 0.35);
+    text-shadow: 0 0 16px rgba(212, 175, 55, 0.35);
 
     transition: text-shadow 0.5s ease;
 }
@@ -138,9 +138,9 @@
     justify-content: center;
     gap: 1.8rem;
     flex-wrap: wrap;
-    padding-top: 0.4rem;
     margin-top: 0.5rem;
     margin-bottom: 1rem;
+    user-select: none;
 }
 
 /* ====================================
@@ -153,12 +153,12 @@
     align-items: center;
     width: 100%;
     max-width: 950px;
-    margin: 0 auto;
     max-height: 22vh;
     overflow-y: auto;
     overflow-x: hidden;
     gap: 0.7rem;
     padding-bottom: 1rem;
+    user-select: none;
 
     background: var(--surface-glass);
     border: 1px solid var(--surface-border);
@@ -185,12 +185,12 @@
 {
     .landscapeContent
     {
-        gap: 1.6rem;
+        gap: 2rem;
     }
 
     .stopwatchDisplayWrapper time
     {
-        font-size: clamp(3rem, 12vw, 6.2rem);
+        font-size: clamp(3rem, 12vw, 6.5rem);
     }
 
     .controlsRow
@@ -200,7 +200,7 @@
 
     .header
     {
-        top: 1.6rem;
+        top: 1.5rem;
         padding: 0.4rem 1rem;
     }
 }
