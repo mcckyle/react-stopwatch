@@ -9,14 +9,13 @@
     justify-content: center;
     gap: 1.5rem;
     flex-wrap: wrap;
-
     padding: 1rem 2rem;
     margin-top: 1rem;
 
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.06);
     border-radius: var(--radius);
-    backdrop-filter: blur(12px);
-    box-shadow: var(--glow-accent);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 /* ====================================
@@ -31,7 +30,7 @@
     text-transform: uppercase;
     letter-spacing: 0.04em;
     border: none;
-    border-radius: 1rem;
+    border-radius: 1.2rem;
 
     padding: 0.9rem 2rem;
     cursor: pointer;
@@ -43,7 +42,7 @@
 .button:hover
 {
     transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 0 18px rgba(255, 215, 0, 0.25);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.25);
 }
 
 .button:disabled
@@ -57,26 +56,26 @@
 ======================================= */
 .start, .pause
 {
-    background: linear-gradient(135deg, #fde047, #facc15);
+    background: linear-gradient(145deg, #fde047, #facc15);
     color: #1b1b25;
 }
 
 .pause
 {
-    background: linear-gradient(135deg, #fcd34d, #fbbf24);
+    background: linear-gradient(145deg, #fcd34d, #fbbf24);
 }
 
 /* LAP BUTTON STYLE. */
 .lap
 {
-    background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+    background: linear-gradient(145deg, #a78bfa, #8b5cf6);
     color: #fff;
 }
 
 /* RESET BUTTON STYLE. */
 .reset
 {
-    background: linear-gradient(135deg, #f87171, #ef4444);
+    background: linear-gradient(145deg, #f87171, #ef4444);
     color: #fff;
 }
 
@@ -87,8 +86,8 @@
 {
     .controls
     {
-        gap: 0.9rem;
-        padding: 1rem 1.3rem;
+        gap: 1rem;
+        padding: 0.9rem 1.3rem;
     }
 
     .button

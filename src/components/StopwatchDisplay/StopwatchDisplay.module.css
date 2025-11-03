@@ -1,34 +1,34 @@
 /* Filename: TimerDisplay.module.css */
 
 /* =========================================
-   MAIN TIME DISPLAY CONTAINER STYLES.
+   STOPWATCH DISPLAY WRAPPER STYLES.
 ============================================ */
 .wrapper
 {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 2.5rem 0;
+    margin: 3rem 0;
     padding: 0.5rem;
 }
 
 /* ====================================
-   TIME READOUT STYLING.
+   TIME READOUT STYLES.
 ======================================= */
 .time
 {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
 
     font-family: "JetBrains Mono", monospace;
     font-weight: 700;
-    font-size: clamp(5rem, 14vw, 11rem);
+    font-size: clamp(5rem, 12vw, 30rem);
     color: var(--text);
 
     text-shadow:
-      0 0 12px rgba(212, 175, 55, 0.25),
-      0 0 30px rgba(212, 175, 55, 0.12);
+      0 0 15px rgba(212, 175, 55, 0.3),
+      0 0 30px rgba(212, 175, 55, 0.15);
 
     transition: color 0.3s ease, text-shadow 0.3s ease;
 }
@@ -40,11 +40,11 @@
 {
     font-size: 0.7em;
     color: var(--amber);
-    opacity: 0.8;
+    opacity: 0.85;
     line-height: 1;
     align-self: center;
 
-    animation: colonPulse 2.4s ease-in-out infinite;
+    animation: colonPulse 2s ease-in-out infinite;
 }
 
 /* ====================================

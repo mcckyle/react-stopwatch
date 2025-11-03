@@ -6,17 +6,15 @@
 .app
 {
     display: grid;
-    grid-template-rows: auto 1fr;
-    justify-items: center;
-    align-items: center;
+    place-items: center;
     width: 100vw;
     height: 100vh;
-
-    background: var(--app-bg);
-    color: var(--text);
     overflow: hidden;
     position: relative; /* Removes scrollbars... */
     isolation: isolate;
+
+    background: var(--app-bg);
+    color: var(--text);
 
     transition: background 0.8s ease, color 0.8s ease;
 }
@@ -34,11 +32,11 @@
     background: radial-gradient(
         circle at 50% 45%,
         var(--ambient-glow),
-        transparent 75%
+        transparent 70%
     );
 
     opacity: 0.18;
-    filter: blur(120px);
+    filter: blur(140px);
 
     animation: drift 90s ease-in-out infinite alternate;
 }
