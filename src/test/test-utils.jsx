@@ -1,7 +1,7 @@
 //File name: test-utils.jsx
 //Author: Kyle McColgan
-//Date: 7 October 2025
-//Description: This file contains set up related code for the Jest unit testing on the React timer project.
+//Date: 6 November 2025
+//Description: This file contains set up related code for the Jest unit testing on the React stopwatch project.
 
 import React from "react";
 import { render } from "@testing-library/react";

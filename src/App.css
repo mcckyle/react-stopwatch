@@ -5,8 +5,11 @@
 ======================================= */
 .app
 {
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -20,7 +23,7 @@
 }
 
 /* ====================================
-   SIMPLE AMBIENT GLOW STYLES.
+   SIMPLE AMBIENT GOLDEN GLOW STYLES.
 ======================================= */
 .app::before
 {
@@ -35,14 +38,14 @@
         transparent 70%
     );
 
-    opacity: 0.18;
-    filter: blur(140px);
+    opacity: 0.2;
+    filter: blur(120px);
 
-    animation: drift 90s ease-in-out infinite alternate;
+    animation: drift 120s ease-in-out infinite alternate;
 }
 
 @keyframes drift
 {
     from { transform: translate(0, 0) scale(1); }
-    to { transform: translate(1.5%, -2%) scale(1.05); }
+    to { transform: translate(2%, -3%) scale(1.06); }
 }
