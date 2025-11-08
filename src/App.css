@@ -39,7 +39,7 @@
     );
 
     opacity: 0.2;
-    filter: blur(120px);
+    filter: blur(140px);
 
     animation: drift 120s ease-in-out infinite alternate;
 }

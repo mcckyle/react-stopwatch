@@ -15,7 +15,7 @@
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
     border-radius: var(--radius);
-    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 4px 22px rgba(0, 0, 0, 0.15);
 }
 
 /* ====================================
@@ -34,7 +34,9 @@
     border-radius: 1.2rem;
     cursor: pointer;
 
-    transition: all 0.25s ease;
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease,
+                opacity 0.25s ease;
 }
 
 /* General hover / press feedback styles. */

@@ -22,7 +22,7 @@
     font-weight: 700;
     font-size: inherit; /* inherit from parent time. */
     color: var(--text);
-    text-shadow: 0 0 18px rgba(212, 175, 55, 0.25);
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
 
     transition: transform 0.25s ease, text-shadow 0.25s ease;
 }
@@ -30,12 +30,12 @@
 /* INTERACTIVE FEEDBACK STYLE. */
 .digit:hover
 {
-    transform: translateY(-2px) scale(1.06);
-    text-shadow: 0 0 22px rgba(212, 175, 55, 0.4);
+    transform: translateY(-2px) scale(1.05);
+    text-shadow: 0 0 28px rgba(212, 175, 55, 0.45);
 }
 
 /* ====================================
-   LIGHT THEME OVERRIDES STYLES.
+   LIGHT THEME OVERRIDES STYLE.
 ======================================= */
 html.light .digit
 {

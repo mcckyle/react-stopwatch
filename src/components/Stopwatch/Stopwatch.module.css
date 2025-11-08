@@ -8,7 +8,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-items: space-between;
 
     width: 100%;
     height: 100%;
@@ -24,7 +23,7 @@
 .header
 {
     position: absolute;
-    top: 1.4rem;
+    top: 1.2rem;
     left: 50%;
     transform: translateX(-50%);
     width: min(92%, 1100px);
@@ -49,7 +48,7 @@
 
     font-family: "Playfair Display", serif;
     font-weight: 700;
-    font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+    font-size: clamp(1.8rem, 2.4vw, 2.2rem);
 
     background: linear-gradient(120deg, var(--gold), var(--amber));
     -webkit-background-clip: text;
@@ -91,7 +90,7 @@
     justify-content: center;
 
     width: 100%;
-    padding: 5rem 0 2rem 0;
+    padding: 6rem 0 2rem 0;
 }
 
 .landscapeContent
@@ -105,7 +104,7 @@
 }
 
 /* ====================================
-   STOPWATCH DISPLAY STYLES.
+   STOPWATCH DISPLAY ROW STYLES.
 ======================================= */
 .stopwatchRow
 {
@@ -121,13 +120,13 @@
 {
     font-family: "JetBrains Mono", monospace;
     font-weight: 700;
-    font-size: min(24vh, 20rem);/*clamp(8rem, 22vw, 18rem);*/
+    font-size: clamp(8rem, 22vw, 20rem); /*min(24vh, 20rem);*/
 
     letter-spacing: 0.02em;
     color: var(--text);
     text-shadow: 0 0 40px rgba(212, 175, 55, 0.25);
 
-    transition: text-shadow 0.4s ease;
+    transition: text-shadow 0.4s ease, color 0.4s ease;
 }
 
 /* ====================================
@@ -137,7 +136,7 @@
 {
     display: flex;
     justify-content: center;
-    gap: 1.4rem;
+    gap: 1.6rem;
     flex-wrap: wrap;
     margin-bottom: 0.8rem;
     user-select: none;
@@ -188,7 +187,7 @@
 
     .stopwatchDisplayWrapper time
     {
-        font-size: min(22vh, 10rem);/*clamp(4rem, 18vw, 9rem);*/
+        font-size: clamp(5rem, 18vw, 10rem);/*min(22vh, 10rem);*/
     }
 
     .controlsRow
