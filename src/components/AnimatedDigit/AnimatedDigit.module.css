@@ -6,10 +6,10 @@
 .container
 {
     display: inline-flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
-    min-width: 1ch;
+    width: 1ch;
     overflow: hidden;
 }
 
@@ -18,20 +18,15 @@
 ======================================= */
 .digit
 {
+    display: inline-block;
+
     font-family: inherit; /* inherit from parent time. */
-    font-weight: 700;
     font-size: inherit; /* inherit from parent time. */
-    color: var(--text);
-    text-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
+    font-weight: inherit;
+    line-height: 1;
+    text-align: center;
 
-    transition: transform 0.25s ease, text-shadow 0.25s ease;
-}
-
-/* INTERACTIVE FEEDBACK STYLE. */
-.digit:hover
-{
-    transform: translateY(-2px) scale(1.05);
-    text-shadow: 0 0 28px rgba(212, 175, 55, 0.45);
+    will-change: transform, opacity;
 }
 
 /* ====================================
@@ -40,5 +35,5 @@
 html.light .digit
 {
     color: #3a2c00;
-    text-shadow: 0 0 8px rgba(234, 179, 8, 0.25);
+    text-shadow: 0 0 6px rgba(234, 179, 8, 0.2);
 }

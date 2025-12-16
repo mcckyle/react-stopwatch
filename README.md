@@ -1,13 +1,13 @@
 # react-stopwatch
 
-A simple, modern stopwatch app built with **React**, **Tailwind CSS**, and **Vite**. Designed for focus, simplicity, and speed.
+A simple, modern stopwatch app built with **React**, **Mantine UI**, and **Vite**. Designed for focus, simplicity, and speed.
 
 ---
 
 ## Features
 
 - ⚡ Instant load with [Vite](https://vitejs.dev/)
-- 🎨 Beautiful UI with [Tailwind CSS](https://tailwindcss.com/)
+- 🎨 Beautiful UI with [Mantine UI](https://mantine.dev/)
 - 💡 Minimalist design, dark-themed interface
 - 📱 Responsive layout for desktop and mobile
 - 🧠 Built with composability and future enhancements in mind!
@@ -19,7 +19,7 @@ A simple, modern stopwatch app built with **React**, **Tailwind CSS**, and **Vit
 Clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/your-username/react-stopwatch.git
+git clone https://github.com/mcckyle/react-stopwatch.git
 cd react-stopwatch
 npm install
 ```
@@ -42,7 +42,6 @@ npm run build
 
 - [React](https://reactjs.org/)
 - [Vite](https://vitejs.dev/)
-- [Tailwind CSS](https://tailwindcss.com/)
 - [Mantine UI](https://mantine.dev/) (for theme configuration)
 
 ---
@@ -116,7 +115,6 @@ react-stopwatch/
 ├── index.html            # HTML entry point.
 ├── jest.config.js        # Jest testing configuration.
 ├── setUpTests.js         # Global setup for Jest tests.
-├── tailwind.config.js    # Tailwind CSS configuration.
 ├── vite.config.js        # Vite config for build and development.
 ├── package.json          # Project metadata, dependencies, and scripts.
 └── package-lock.json     # Exact versions of installed dependencies.
@@ -149,8 +147,7 @@ This project was made possible thanks to the open-source community and the follo
 
 - [React](https://react.dev) - A modern library designed specifically for building fast, interactive UIs.
 - [Vite](https://vitejs.dev/) - Next-generation frontend tooling with lightning-fase dev server and build optimizations.
-- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework for crafting responsive, modern designs.
-- [Mantine](https://mantine.dev/) - Accessible, fully-featured React components for building polished interfaces.
+- [Mantine UI](https://mantine.dev/) - Accessible, fully-featured React components for building polished interfaces.
 - [Framer Motion](https://www.framer.com/motion/) - Animation library powering fluid, accessible transitions.
 
 Special thanks to the broader open-source ecosystem for inspiration, guidance, and tools that empower developers to create and share freely.

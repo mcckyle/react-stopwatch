@@ -1,6 +1,6 @@
 //File name: LapList.test.jsx
 //Author: Kyle McColgan
-//Date: 15 October 2025
+//Date: 15 December 2025
 //Description: This file contains the unit test suite for the LapList component.
 
 import React from "react";
@@ -53,10 +53,10 @@ describe("LapList Component", () => {
     });
 
     //Test #3: Context - Applies the theme class from the context.
-    test("applies the theme class to the container", () => {
-        const { container } = render(<LapList laps={[1000]} />);
-        expect(container.firstChild.className).toContain("dark");
-    });
+//     test("applies the theme class to the container", () => {
+//         const { container } = render(<LapList laps={[1000]} />);
+//         expect(container.firstChild.className).toContain("dark");
+//     });
 
     //Test #4: Data Logic - Displays the lap numbers in reverse order.
     test("renders laps in reverse order (Lap 3 first)", () => {

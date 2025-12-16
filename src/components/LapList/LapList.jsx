@@ -1,19 +1,16 @@
 //File name: LapList.jsx
 //Author: Kyle McColgan
-//Date: 26 October 2025
+//Date: 15 December 2025
 //Description: This file contains the laps component for the React stopwatch project.
 
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { formatTime } from "../../utils/formatTime";
-import { useTheme } from "../../context/ThemeContext.jsx";
 
 import styles from "./LapList.module.css";
 
 const LapList = ({ laps }) => {
-  const { theme } = useTheme();
-
-  if (!laps.length)
+  if ( ! laps.length)
   {
       return null;
   }
@@ -24,8 +21,8 @@ const LapList = ({ laps }) => {
   const slowest = Math.max(...lapDurations);
 
   return (
-    <div className = {`${styles.lapList} ${theme}`}>
-      <AnimatePresence>
+    <div className = {styles.lapList} role="log" aria-label="Lap records">
+      <AnimatePresence initial={false}>
         {laps.map((lap, index) => {
           const lapNumber = laps.length - index;
           const prevLap = laps[index + 1] ?? 0;
@@ -40,22 +37,24 @@ const LapList = ({ laps }) => {
 
           return (
             <motion.div
-              key={index}
+              key={lap}
               className={`${styles.lap} ${highlight}`}
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -4 }}
+              exit={{ opacity: 0, y: -6 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
             >
               <div className = {styles.lapLabel}>Lap {lapNumber}</div>
-              <div className = {styles.lapTime}>
+
+              <span className = {styles.lapTime}>
                 {hours !== "00"
                     ? `${hours}:${minutes}:${seconds}.${centiSeconds}`
                     : `${minutes}:${seconds}.${centiSeconds}`}
-              </div>
-              <div className={styles.lapDelta}>
+              </span>
+
+              <span className={styles.lapDelta}>
                 +{deltaTime.minutes}:{deltaTime.seconds}.{deltaTime.centiSeconds}
-              </div>
+              </span>
             </motion.div>
           );
         })}

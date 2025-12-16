@@ -1,6 +1,6 @@
 //File name: Stopwatch.jsx
 //Author: Kyle McColgan
-//Date: 26 October 2025
+//Date: 15 December 2025
 //Description: This file contains the parent Stopwatch component for the React stopwatch project.
 
 import React, { useState, useEffect, useRef } from "react";
@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import { useStopwatch } from "../../hooks/useStopwatch";
 import { useKeyboardShortcuts } from "../../hooks/useKeyboardShortcuts";
 import { useTheme } from "../../context/ThemeContext.jsx";
+
 import StopwatchDisplay from "../StopwatchDisplay/StopwatchDisplay.jsx";
 import StopwatchControls from "../StopwatchControls/StopwatchControls.jsx";
 import LapList from "../LapList/LapList.jsx";
@@ -18,22 +19,18 @@ import styles from "./Stopwatch.module.css";
 
 const LAP_STORAGE_KEY = "stopwatch-app-laps"; //Key for browser localStorage.
 
-const Stopwatch = ({ dark, toggleTheme }) => {
+const Stopwatch = ({ onToggleTheme }) => {
   const { time, isRunning, toggle, reset, getCurrentTime } = useStopwatch();
+  const { theme } = useTheme();
+
   const [laps, setLaps] = useState([]);
   const [showHelp, setShowHelp] = useState(false);
   const hasLoadedLaps = useRef(false);
-
-  const { theme } = useTheme();
 
   const recordLap = () => {
     const current = getCurrentTime();
     setLaps((prev) => [current, ...prev]);
   };
-
-  useEffect(() => {
-    console.log("Current laps state: ", laps);
-  }, [laps]);
 
   //Load laps from browser localStorage.
   useEffect(() => {
@@ -41,7 +38,7 @@ const Stopwatch = ({ dark, toggleTheme }) => {
     if (!hasLoadedLaps.current)
     {
         const savedLaps = localStorage.getItem(LAP_STORAGE_KEY);
-        console.log("useEffect running on mount, raw saved laps: ", savedLaps);
+        //console.log("useEffect running on mount, raw saved laps: ", savedLaps);
 
         if (savedLaps)
         {
@@ -84,55 +81,52 @@ const Stopwatch = ({ dark, toggleTheme }) => {
     onOpenHelp: () => setShowHelp(true),
   });
 
+  //TODO: Decouple the header from the Stopwatch render below...
   return (
     <motion.div
       className={styles.container}
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <header className={styles.header}>
         <h1 className={styles.banner}>
-          <Clock size={32} className={styles.icon} />
+          <Clock size={32} />
           <span>Stopwatch</span>
         </h1>
+
         <button
           className={styles.themeToggle}
-          onClick={toggleTheme}
-          title="Toggle theme"
+          onClick={onToggleTheme}
           aria-label="Toggle theme"
         >
-          {dark ? <Sun size={20} /> : <Moon size={20} />}
+          {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
         </button>
       </header>
 
       <motion.section
-        className = {styles.landscapeCard}
-        initial={{ opacity: 0, scale: 0.96 }}
+        className={styles.card}
+        initial={{ opacity: 0, scale: 0.97 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.2, duration: 0.5 }}
+        transition={{ delay: 0.15, duration: 0.45 }}
       >
-          <div className = {styles.landscapeContent}>
-            <div className = {styles.stopwatchRow}>
-              <div className = {styles.stopwatchDisplayWrapper}>
-                <StopwatchDisplay time={time} aria-live="polite" />
-              </div>
-            </div>
+        <section className={styles.displayArea} aria-label="Stopwatch display">
+          <StopwatchDisplay time={time} aria-live="polite" />
+        </section>
 
-            <div className={styles.controlsRow}>
-              <StopwatchControls
-                isRunning={isRunning}
-                toggle={toggle}
-                reset={reset}
-                time={time}
-                recordLap={recordLap}
-              />
-            </div>
+          <section className={styles.controlsArea} aria-label="Controls">
+            <StopwatchControls
+              isRunning={isRunning}
+              toggle={toggle}
+              reset={reset}
+              time={time}
+              recordLap={recordLap}
+            />
+          </section>
 
-            <div className={styles.lapRow}>
-              <LapList laps={laps} />
-            </div>
-          </div>
+          <section className={styles.lapsArea} aria-label="Lap times">
+            <LapList laps={laps} />
+          </section>
       </motion.section>
 
         {showHelp && <HelpModal onClose={() => setShowHelp(false)} />}

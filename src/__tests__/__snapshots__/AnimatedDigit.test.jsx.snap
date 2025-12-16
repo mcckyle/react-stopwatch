@@ -2,12 +2,12 @@
 
 exports[`AnimatedDigit Component matches snapshot for digit 9 1`] = `
 <DocumentFragment>
-  <div
+  <span
+    aria-hidden="true"
     class="container"
   >
     <span
       animate="[object Object]"
-      aria-hidden="true"
       class="digit"
       exit="[object Object]"
       initial="[object Object]"
@@ -15,6 +15,6 @@ exports[`AnimatedDigit Component matches snapshot for digit 9 1`] = `
     >
       9
     </span>
-  </div>
+  </span>
 </DocumentFragment>
 `;

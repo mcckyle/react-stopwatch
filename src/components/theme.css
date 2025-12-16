@@ -42,7 +42,7 @@ html.dark
 {
     --surface: var(--surface-dark);
     --text: var(--text-dark);
-    --app-bg: radial-gradient(circle at 50% 50%, #1a1b20, #090a0f);
-    --ambient-glow: rgba(212, 175, 55, 0.06);
-    --glow-accent: 0 0 12px rgba(212, 175, 55, 0.18);
+    --app-bg: radial-gradient(circle at 50% 50%, #1b1c22, #07080c);
+    --ambient-glow: rgba(212, 175, 55, 0.05);
+    --glow-accent: 0 0 14px rgba(212, 175, 55, 0.18);
 }

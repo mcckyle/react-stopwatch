@@ -1,34 +1,32 @@
 //File name: StopwatchControls.jsx
 //Author: Kyle McColgan
-//Date: 26 October 2025
+//Date: 15 December 2025
 //Description: This file contains the stopwatch controls component for the React stopwatch project.
 
 import React from "react";
 import { Button } from "@mantine/core";
 import { motion } from "motion/react";
-import { useTheme } from "../../context/ThemeContext.jsx";
 
 import styles from "./StopwatchControls.module.css";
 
 const MotionButton = motion.create(Button);
 
-const StopwatchControls = ({ isRunning, toggle, reset, recordLap, children }) => {
-  const { theme } = useTheme();
+const StopwatchControls = ({ isRunning, toggle, reset, recordLap }) => {
 
   const motionProps = {
-    whileHover: { scale: 1.05, y: -2 },
-    whileTap: { scale: 0.95 },
-    transition: { type: "spring", stiffness: 200, damping: 16 },
+    whileHover: { scale: 1.025 },
+    whileTap: { scale: 0.96 },
+    transition: { type: "spring", stiffness: 140, damping: 20 },
   };
 
   return (
-    <div className={`${styles.controls} ${theme}`}>
-      {children}
+    <div className={styles.controls} role="group" aria-label="Stopwatch controls">
 
       <MotionButton
         {...motionProps}
         onClick={toggle}
-        className={`${styles.button} ${isRunning ? styles.pause : styles.start}`}
+        data-variant="primary"
+        className={styles.button}
       >
         {isRunning ? "Pause" : "Start"}
       </MotionButton>
@@ -37,7 +35,8 @@ const StopwatchControls = ({ isRunning, toggle, reset, recordLap, children }) =>
         {...motionProps}
         onClick={recordLap}
         disabled={!isRunning}
-        className={`${styles.button} ${styles.lap}`}
+        data-variant="secondary"
+        className={styles.button}
       >
         Lap
       </MotionButton>
@@ -45,7 +44,8 @@ const StopwatchControls = ({ isRunning, toggle, reset, recordLap, children }) =>
       <MotionButton
         {...motionProps}
         onClick={reset}
-        className={`${styles.button} ${styles.reset}`}
+        data-variant="tertiary"
+        className={styles.button}
       >
         Reset
       </MotionButton>

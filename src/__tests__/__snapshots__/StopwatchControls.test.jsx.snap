@@ -3,21 +3,26 @@
 exports[`StopwatchControls Component enables Lap button when isRunning is true 1`] = `
 <DocumentFragment>
   <div
-    class="controls light"
+    aria-label="Stopwatch controls"
+    class="controls"
+    role="group"
   >
     <button
-      class="button start"
+      class="button"
+      data-variant="primary"
     >
       Start
     </button>
     <button
-      class="button lap"
+      class="button"
+      data-variant="secondary"
       disabled=""
     >
       Lap
     </button>
     <button
-      class="button reset"
+      class="button"
+      data-variant="tertiary"
     >
       Reset
     </button>

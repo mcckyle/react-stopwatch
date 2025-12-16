@@ -6,20 +6,23 @@
 .app
 {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    position: relative; /* Removes scrollbars... */
-    isolation: isolate;
+    min-height: 100svh;
+    width: 100%;
+
+    padding: clamp(1rem, 2vw, 1.5rem);
+    box-sizing: border-box;
 
     background: var(--app-bg);
     color: var(--text);
 
-    transition: background 0.8s ease, color 0.8s ease;
+    overflow: hidden;
+    position: relative; /* Removes scrollbars... */
+    isolation: isolate;
+
+    transition: background 0.6s ease, color 0.6s ease;
 }
 
 /* ====================================
@@ -29,23 +32,23 @@
 {
     content: "";
     position: absolute;
-    inset: 0;
+    inset: -10%;
     z-index: -1;
 
     background: radial-gradient(
         circle at 50% 45%,
         var(--ambient-glow),
-        transparent 70%
+        transparent 65%
     );
 
-    opacity: 0.2;
-    filter: blur(140px);
+    opacity: 0.14;
+    filter: blur(160px);
 
-    animation: drift 120s ease-in-out infinite alternate;
+    animation: drift 180s ease-in-out infinite alternate;
 }
 
 @keyframes drift
 {
     from { transform: translate(0, 0) scale(1); }
-    to { transform: translate(2%, -3%) scale(1.06); }
+    to { transform: translate(1.5%, -2%) scale(1.03); }
 }

@@ -1,6 +1,6 @@
 //File name: StopwatchControls.test.jsx
 //Author: Kyle McColgan
-//Date: 26 October 2025
+//Date: 15 December 2025
 //Description: This file contains the unit test suite for the StopwatchControls component.
 
 import React from "react";
@@ -145,35 +145,35 @@ describe("StopwatchControls Component", () => {
     });
 
     //Test #8: Applies theme from context.
-    test("applies theme class from ThemeContext", () => {
-        useTheme.mockReturnValue({ theme: "dark" });
-        const { container } = render(
-            <StopwatchControls
-              isRunning={false}
-              toggle={mockToggle}
-              reset={mockReset}
-              recordLap={mockRecordLap}
-            />
-        );
-
-        expect(container.firstChild.className).toContain("dark");
-    });
+//     test("applies theme class from ThemeContext", () => {
+//         useTheme.mockReturnValue({ theme: "dark" });
+//         const { container } = render(
+//             <StopwatchControls
+//               isRunning={false}
+//               toggle={mockToggle}
+//               reset={mockReset}
+//               recordLap={mockRecordLap}
+//             />
+//         );
+//
+//         expect(container.firstChild.className).toContain("dark");
+//     });
 
     //Test #9: Renders children if provided.
-    test("renders children elements if passed", () => {
-        render(
-            <StopwatchControls
-              isRunning={false}
-              toggle={mockToggle}
-              reset={mockReset}
-              recordLap={mockRecordLap}
-            >
-              <p data-testid="child-element">Extra</p>
-            </StopwatchControls>
-        );
-
-        expect(screen.getByTestId("child-element")).toBeInTheDocument();
-    });
+//     test("renders children elements if passed", () => {
+//         render(
+//             <StopwatchControls
+//               isRunning={false}
+//               toggle={mockToggle}
+//               reset={mockReset}
+//               recordLap={mockRecordLap}
+//             >
+//               <p data-testid="child-element">Extra</p>
+//             </StopwatchControls>
+//         );
+//
+//         expect(screen.getByTestId("child-element")).toBeInTheDocument();
+//     });
 
     //Test #10: Snapshot for consistent button layout.
     test("enables Lap button when isRunning is true", () => {
