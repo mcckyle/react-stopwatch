@@ -1,6 +1,6 @@
 //File name: AnimatedDigit.test.jsx
 //Author: Kyle McColgan
-//Date: 15 December 2025
+//Date: 18 December 2025
 //Description: This file contains the unit test suite for the AnimatedDigit component.
 
 import React from "react";
@@ -39,7 +39,7 @@ describe("AnimatedDigit Component", () => {
         expect(screen.getByText("9")).toBeInTheDocument();
     });
 
-    //Test #4: Structure - Includes a container wrapper. TO BE FIXED!!!
+    //Test #4: Structure - Includes a container wrapper.
     test("renders a container div", () => {
         const { container } = render(<AnimatedDigit value={3} />);
         expect(container.firstChild.className).toContain("container");

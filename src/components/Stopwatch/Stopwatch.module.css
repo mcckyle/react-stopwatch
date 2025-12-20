@@ -1,4 +1,4 @@
-/* Filename: Timer.module.css */
+/* Filename: src/components/Stopwatch/Stopwatch.module.css */
 
 /* ====================================
    STOPWATCH ROOT CONTAINER STYLES.
@@ -7,13 +7,11 @@
 {
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    min-height: 100dvh;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    padding-top: 5.5rem;
 }
 
 /* ====================================
@@ -33,9 +31,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    pointer-events: auto;
 
     background: var(--surface-glass);
-    backdrop-filter: blur(14px);
+    backdrop-filter: blur(16px);
     border-radius: 999px;
     border: 1px solid var(--surface-border);
 }
@@ -81,69 +80,42 @@
 /* ====================================
    MAIN CARD STYLES.
 ======================================= */
-/*.card
+.card
 {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-
-    width: 100%;
-    max-width: none;
-    height: calc(100vh - 6rem);
-    padding: 1rem 1rem 2rem;
-    box-sizing: border-box;
-}*/
-
-.card {
     display: grid;
     grid-template-rows:
       minmax(0, 1fr)
       auto
-      minmax(0, 22vh);
+      minmax(0, 24vh);
+
     width: 100%;
-    height: calc(100vh - 6rem);
-    padding: 1rem 1rem 1.5rem;
+    height: 100dvh;
+
+    padding: 6.5rem 1rem 1.5rem;
     box-sizing: border-box;
 }
 
 /* ====================================
    DISPLAY STYLES.
 ======================================= */
-/*.displayArea
+.displayArea
 {
-    flex: 1;
-    width: 100%;
-    display: grid;
-    place-items: center;
-}*/
-
-.displayArea {
     display: flex;
     align-items: center;
     justify-content: center;
 
     width: 100%;
+    height: 100%;
+
+    padding: clamp(0.5rem, 2vw, 2rem);
     overflow: hidden;
 }
 
 /* ====================================
    CONTROLS ROW STYLES.
 ======================================= */
-/*.controlsArea
+.controlsArea
 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-    width: 100%;
-    max-width: 1100px;
-
-    z-index: 2;
-}*/
-
-.controlsArea {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -152,6 +124,7 @@
     padding: 0.75rem 0;
 
     width: 100%;
+    opacity: 0.95;
 }
 
 /* ====================================
@@ -164,21 +137,11 @@
     overflow-y: auto;
 
     background: var(--surface-glass);
-    backdrop-filter: blur(14px);
+    backdrop-filter: blur(12px);
 
     border-radius: calc(var(--radius) * 0.85);
     border: 1px solid var(--surface-border);
 
     padding: 0.5rem 1rem;
-}
-
-.lapRow::-webkit-scrollbar
-{
-    width: 6px;
-}
-
-.lapRow::-webkit-scrollbar-thumb
-{
-    background-color: rgba(212, 175, 55, 0.35);
-    border-radius: 3px;
+    opacity: 0.85;
 }

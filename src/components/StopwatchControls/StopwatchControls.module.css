@@ -1,4 +1,4 @@
-/* Filename: TimerControls.module.css */
+/* Filename: src/components/StopwatchControls/StopwatchControls.module.css */
 
 /* ====================================
    CONTROLS DOCK STYLES.
@@ -15,11 +15,11 @@
     width: 100%;
 
     background: var(--surface-glass);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
     border-radius: var(--radius);
     border: 1px solid var(--surface-border);
 
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
 /* ====================================
@@ -29,16 +29,17 @@
 {
     font-family: "JetBrains Mono", monospace;
     font-weight: 600;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
 
-    min-width: 118px;
-    padding: 0.75rem 1.6rem;
+    min-width: 116px;
+    padding: 0.7rem 1.5rem;
+
     border-radius: 0.85rem;
     border: none;
     cursor: pointer;
 
-    transition: opacity 0.2s ease;
+    transition: opacity 0.2s ease, filter 0.2s ease;
 }
 
 /* Disabled Button State Styles. */
@@ -46,7 +47,7 @@
 {
     opacity: 0.35;
     cursor: not-allowed;
-    box-shadow: none;
+    filter: grayscale(0.4);
 }
 
 /* ====================================
@@ -56,20 +57,22 @@
 {
     background: linear-gradient(135deg, var(--gold), var(--amber));
     color: #1b1b25;
-    box-shadow: 0 0 16px rgba(212, 175, 55, 0.35);
+
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35),
+                0 0 12px rgba(212, 175, 55, 0.25);
 }
 
 .button[data-variant="secondary"]
 {
-    background: linear-gradient(145deg, #a78bfa, #8b5cf6);
-    color: var(--text);
+    background: rgba(167, 139, 250, 0.18);
+    color: #c4b5fd;
 }
 
 /* RESET BUTTON STYLE. */
 .button[data-variant="tertiary"]
 {
-    background: linear-gradient(145deg, #f87171, #ef4444);
-    color: #fff;
+    background: rgba(239, 68, 68, 0.18);
+    color: #fca5a5;
 }
 
 /* ====================================
@@ -94,14 +97,6 @@
 
 @media(max-width: 480px)
 {
-    .controls
-    {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .button
-    {
-        width: 100%;
-    }
+    .controls { flex-direction: column; align-items: stretch; }
+    .button { width: 100%; }
 }

@@ -1,4 +1,4 @@
-/* Filename: App.css */
+/* Filename: src/App.css */
 
 /* ====================================
    APP ROOT CONTAINER STYLES.
@@ -9,7 +9,7 @@
     align-items: center;
     justify-content: center;
 
-    min-height: 100svh;
+    min-height: 100dvh;
     width: 100%;
 
     padding: clamp(1rem, 2vw, 1.5rem);
@@ -18,7 +18,7 @@
     background: var(--app-bg);
     color: var(--text);
 
-    overflow: hidden;
+    overflow: hidden; /* App manages all scroll regions internally. */
     position: relative; /* Removes scrollbars... */
     isolation: isolate;
 
@@ -41,8 +41,8 @@
         transparent 65%
     );
 
-    opacity: 0.14;
-    filter: blur(160px);
+    opacity: 0.1;
+    filter: blur(180px);
 
     animation: drift 180s ease-in-out infinite alternate;
 }

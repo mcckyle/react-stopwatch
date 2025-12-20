@@ -1,10 +1,11 @@
 //File name: LapList.test.jsx
 //Author: Kyle McColgan
-//Date: 15 December 2025
+//Date: 18 December 2025
 //Description: This file contains the unit test suite for the LapList component.
 
 import React from "react";
 import { render, screen } from "@testing-library/react";
+import { formatTime } from "../utils/formatTime";
 import LapList from "../components/LapList/LapList.jsx";
 
 //Mock Framer Motion and dependencies to simplify the animation behavior for testing purposes.
@@ -15,23 +16,14 @@ jest.mock("framer-motion", () => ({
     AnimatePresence: ({ children }) => <>{children}</>,
 }));
 
-//Mock the ThemeContext.jsx
-jest.mock("../context/ThemeContext.jsx", () => ({
-    useTheme: jest.fn(),
-}));
-
 jest.mock("../utils/formatTime", () => ({
     formatTime: jest.fn(),
 }));
-
-import { useTheme } from "../context/ThemeContext.jsx";
-import { formatTime } from "../utils/formatTime";
 
 describe("LapList Component", () => {
 
     beforeEach(() => {
         jest.clearAllMocks();
-        useTheme.mockReturnValue({ theme: "dark" });
         formatTime.mockImplementation((time, includeCenti) => ({
             hours: "00",
             minutes: "01",
@@ -52,11 +44,13 @@ describe("LapList Component", () => {
         expect(screen.getAllByText(/Lap/i)).toHaveLength(3);
     });
 
-    //Test #3: Context - Applies the theme class from the context.
-//     test("applies the theme class to the container", () => {
-//         const { container } = render(<LapList laps={[1000]} />);
-//         expect(container.firstChild.className).toContain("dark");
-//     });
+    //Test #3: Accessibility - Renders an accessible log when laps exist.
+    test("renders lap list with role='log' and accessible label when laps exist", () => {
+        render(<LapList laps={[1000]} />);
+
+        const log = screen.getByRole("log", { name: /lap records/i });
+        expect(log).toBeInTheDocument();
+    });
 
     //Test #4: Data Logic - Displays the lap numbers in reverse order.
     test("renders laps in reverse order (Lap 3 first)", () => {
@@ -78,7 +72,6 @@ describe("LapList Component", () => {
         render(<LapList laps={[1000]} />);
         expect(screen.getByText("01:23.45")).toBeInTheDocument();
     });
-
 
     //Test #7: Display - Displays the formatted delta correctly.
     test("displays formatted delta time with '+' prefix", () => {

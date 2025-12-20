@@ -1,6 +1,6 @@
 //File name: StopwatchControls.test.jsx
 //Author: Kyle McColgan
-//Date: 15 December 2025
+//Date: 18 December 2025
 //Description: This file contains the unit test suite for the StopwatchControls component.
 
 import React from "react";
@@ -23,13 +23,6 @@ jest.mock("motion/react", () => {
     return { motion };
 });
 
-//Mock the ThemeContext.jsx
-jest.mock("../context/ThemeContext.jsx", () => ({
-    useTheme: jest.fn(),
-}));
-
-import { useTheme } from "../context/ThemeContext.jsx";
-
 describe("StopwatchControls Component", () => {
     const mockToggle = jest.fn();
     const mockReset = jest.fn();
@@ -37,7 +30,6 @@ describe("StopwatchControls Component", () => {
 
     beforeEach(() => {
         jest.clearAllMocks();
-        useTheme.mockReturnValue({ theme: "light" });
     });
 
     //Test #1: Rendering - Renders all the control buttons.
@@ -67,6 +59,7 @@ describe("StopwatchControls Component", () => {
             />
         );
 
+        expect(screen.queryByRole("button", { name: /start/i })).not.toBeInTheDocument();
         expect(screen.getByRole("button", { name: /pause/i })).toBeInTheDocument();
     });
 
@@ -144,38 +137,7 @@ describe("StopwatchControls Component", () => {
         expect(screen.getByRole("button", { name: /lap/i })).not.toBeDisabled();
     });
 
-    //Test #8: Applies theme from context.
-//     test("applies theme class from ThemeContext", () => {
-//         useTheme.mockReturnValue({ theme: "dark" });
-//         const { container } = render(
-//             <StopwatchControls
-//               isRunning={false}
-//               toggle={mockToggle}
-//               reset={mockReset}
-//               recordLap={mockRecordLap}
-//             />
-//         );
-//
-//         expect(container.firstChild.className).toContain("dark");
-//     });
-
-    //Test #9: Renders children if provided.
-//     test("renders children elements if passed", () => {
-//         render(
-//             <StopwatchControls
-//               isRunning={false}
-//               toggle={mockToggle}
-//               reset={mockReset}
-//               recordLap={mockRecordLap}
-//             >
-//               <p data-testid="child-element">Extra</p>
-//             </StopwatchControls>
-//         );
-//
-//         expect(screen.getByTestId("child-element")).toBeInTheDocument();
-//     });
-
-    //Test #10: Snapshot for consistent button layout.
+    //Test #8: Snapshot for consistent button layout.
     test("enables Lap button when isRunning is true", () => {
         const { asFragment } = render(
             <StopwatchControls
@@ -187,5 +149,35 @@ describe("StopwatchControls Component", () => {
         );
 
         expect(asFragment()).toMatchSnapshot();
+    });
+
+    //Test #9: Displays 'Start' when the stopwatch is not running.
+    test("displays 'Start' when the timer is not running", () => {
+        render(
+            <StopwatchControls
+              isRunning={false}
+              toggle={mockToggle}
+              reset={mockReset}
+              recordLap={mockRecordLap}
+            />
+        );
+
+        expect(screen.getByRole("button", { name: /start/i })).toBeInTheDocument();
+        expect(screen.queryByRole("button", { name: /pause/i })).not.toBeInTheDocument();
+    });
+
+    //Test #10: Renders controls as an accessible control group.
+    test("renders controls inside an accessible group with a label", () => {
+        render(
+            <StopwatchControls
+              isRunning={false}
+              toggle={mockToggle}
+              reset={mockReset}
+              recordLap={mockRecordLap}
+            />
+        );
+
+        const group = screen.getByRole("group", { name: /stopwatch controls/i });
+        expect(group).toBeInTheDocument();
     });
 });

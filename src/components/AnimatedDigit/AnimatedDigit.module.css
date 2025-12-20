@@ -1,4 +1,4 @@
-/* Filename: AnimatedDigit.module.css */
+/* Filename: src/components/AnimatedDigit/AnimatedDigit.module.css */
 
 /* ====================================
    DIGIT CONTAINER STYLE.
@@ -10,7 +10,10 @@
     justify-content: center;
 
     width: 1ch;
+    min-width: 1ch;
+
     overflow: hidden;
+    position: relative;
 }
 
 /* ====================================
@@ -26,6 +29,9 @@
     line-height: 1;
     text-align: center;
 
+    font-variant-numeric: tabular-nums;
+    transform-origin: center center;
+
     will-change: transform, opacity;
 }
 
@@ -35,5 +41,5 @@
 html.light .digit
 {
     color: #3a2c00;
-    text-shadow: 0 0 6px rgba(234, 179, 8, 0.2);
+    text-shadow: 0 0 4px rgba(234, 179, 8, 0.18);
 }
