@@ -8,6 +8,7 @@ exports[`StopwatchControls Component enables Lap button when isRunning is true 1
     role="group"
   >
     <button
+      aria-pressed="false"
       class="button"
       data-variant="primary"
     >

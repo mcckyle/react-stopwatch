@@ -1,15 +1,15 @@
 //File name: Stopwatch.jsx
 //Author: Kyle McColgan
-//Date: 15 December 2025
+//Date: 19 December 2025
 //Description: This file contains the parent Stopwatch component for the React stopwatch project.
 
 import React, { useState, useEffect, useRef } from "react";
-import { Clock, Sun, Moon } from "lucide-react";
 import { motion } from "framer-motion";
 import { useStopwatch } from "../../hooks/useStopwatch";
 import { useKeyboardShortcuts } from "../../hooks/useKeyboardShortcuts";
 import { useTheme } from "../../context/ThemeContext.jsx";
 
+import StopwatchHeader from "../StopwatchHeader/StopwatchHeader.jsx";
 import StopwatchDisplay from "../StopwatchDisplay/StopwatchDisplay.jsx";
 import StopwatchControls from "../StopwatchControls/StopwatchControls.jsx";
 import LapList from "../LapList/LapList.jsx";
@@ -81,7 +81,6 @@ const Stopwatch = ({ onToggleTheme }) => {
     onOpenHelp: () => setShowHelp(true),
   });
 
-  //TODO: Decouple the header from the Stopwatch render below...
   return (
     <motion.div
       className={styles.container}
@@ -89,20 +88,7 @@ const Stopwatch = ({ onToggleTheme }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <header className={styles.header}>
-        <h1 className={styles.banner}>
-          <Clock size={32} />
-          <span>Stopwatch</span>
-        </h1>
-
-        <button
-          className={styles.themeToggle}
-          onClick={onToggleTheme}
-          aria-label="Toggle theme"
-        >
-          {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-        </button>
-      </header>
+      <StopwatchHeader theme={theme} onToggleTheme={onToggleTheme} />
 
       <motion.section
         className={styles.card}

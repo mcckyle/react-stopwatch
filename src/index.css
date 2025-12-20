@@ -1,8 +1,6 @@
 /* Filename: src/index.css */
 
-*,
-*::before,
-*::after { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: border-box; }
 
 html, body, #root
 {
@@ -16,7 +14,7 @@ html, body, #root
     line-height: 1.6;
 
     text-rendering: optimizeLegibility;
-    font-variant-numeric: tabular-nums;
+    font-variant-numeric: tabular-nums lining-nums;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }

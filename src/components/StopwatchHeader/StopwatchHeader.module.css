@@ -1,0 +1,64 @@
+/* Filename: src/components/StopwatchHeader/StopwatchHeader.module.css */
+
+/* ====================================
+   STOPWATCH HEADER STYLES.
+======================================= */
+.header
+{
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+
+    width: min(92%, 1100px);
+    padding: 0.55rem 1rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    pointer-events: auto;
+
+    background: var(--surface-glass);
+    backdrop-filter: blur(16px);
+    border-radius: 999px;
+    border: 1px solid var(--surface-border);
+}
+
+.banner
+{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    font-family: "Playfair Display", serif;
+    font-size: clamp(1.4rem, 1.8vw, 1.9rem);
+    font-weight: 700;
+
+    background: linear-gradient(120deg, var(--gold), var(--amber));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ====================================
+   THEME TOGGLE BUTTON STYLES.
+======================================= */
+.themeToggle
+{
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text);
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.themeToggle:hover
+{
+    transform: scale(1.08);
+    box-shadow: 0 0 14px rgba(212, 175, 55, 0.35);
+}

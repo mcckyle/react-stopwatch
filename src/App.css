@@ -41,8 +41,8 @@
         transparent 65%
     );
 
-    opacity: 0.1;
-    filter: blur(180px);
+    opacity: 0.075;
+    filter: blur(200px);
 
     animation: drift 180s ease-in-out infinite alternate;
 }

@@ -27,18 +27,18 @@
     justify-content: center;
 
     font-family: var(--mono);
-    font-size: clamp(10rem, 28vh, 22rem);/*min(30vh, 22rem);*/
+    font-size: clamp(9rem, 26vh, 21rem);
     font-weight: 700;
-    line-height: 0.9;
+    line-height: 0.92;
 
     white-space: nowrap;
     text-align: center;
     color: var(--text);
 
-    letter-spacing: -0.025em;
+    letter-spacing: -0.035em;
 
-    text-shadow: 0 0 24px rgba(212, 175, 55, 0.22),
-                 0 0 64px rgba(212, 175, 55, 0.1);
+    text-shadow: 0 0 18px rgba(212, 175, 55, 0.18),
+                 0 0 48px rgba(212, 175, 55, 0.08);
 
     transition: color 0.35s ease, text-shadow 0.35s ease;
 }
@@ -50,13 +50,13 @@
 ======================================= */
 .separator
 {
-    margin: 0 0.18em;
+    margin: 0 0.16em;
 
-    font-size: 0.72em;
-    font-weight: 600;
+    font-size: 0.7em;
+    font-weight: 500;
 
     color: currentColor;
-    opacity: 0.55;
+    opacity: 0.45;
 
     transform: translateY(-0.04em);
     user-select: none;
@@ -67,6 +67,6 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .time { font-size: clamp(6rem, 18vh, 14rem);/*min(8vh, 16rem);*/ letter-spacing: -0.02em; }
-    .separator { font-size: 0.75em; }
+    .time { font-size: clamp(5.5rem, 17vh, 13rem); letter-spacing: -0.025em; }
+    .separator { font-size: 0.72em; }
 }

@@ -1,4 +1,7 @@
-//src/hooks/useKeyboardShortcuts.js
+//File name: useKeyboardShortcuts.js
+//Author: Kyle McColgan
+//Date: 19 December 2025
+//Description: This file contains the keyboard shortcut implememtation for the React stopwatch.
 
 import { useEffect } from "react";
 

@@ -131,6 +131,7 @@ react-stopwatch/
 - [x] Add lap time deltas (difference from previous lap).
 - [x] Add light/dark mode toggle with animation.
 - [ ] Export laps to CSV or JSON.
+- [ ] Clear laps functionality.
 
 ---
 

@@ -9,6 +9,7 @@ exports[`LapList Component matches snapshot 1`] = `
   >
     <div
       animate="[object Object]"
+      aria-label="Lap 3: 01:23.45 (+01:23.45)"
       class="lap fastest"
       exit="[object Object]"
       initial="[object Object]"
@@ -32,6 +33,7 @@ exports[`LapList Component matches snapshot 1`] = `
     </div>
     <div
       animate="[object Object]"
+      aria-label="Lap 2: 01:23.45 (+01:23.45)"
       class="lap slowest"
       exit="[object Object]"
       initial="[object Object]"
@@ -55,6 +57,7 @@ exports[`LapList Component matches snapshot 1`] = `
     </div>
     <div
       animate="[object Object]"
+      aria-label="Lap 1: 01:23.45 (+01:23.45)"
       class="lap slowest"
       exit="[object Object]"
       initial="[object Object]"

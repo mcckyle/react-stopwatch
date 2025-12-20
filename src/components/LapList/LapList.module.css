@@ -13,10 +13,10 @@
     background: var(--surface-glass);
     border: 1px solid var(--surface-border);
     border-radius: calc(var(--radius) * 0.9);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
 
     overflow-y: auto;
-    max-height: 20vh;
+    max-height: 22vh;
 }
 
 /* ====================================
@@ -25,16 +25,17 @@
 .lap
 {
     display: grid;
-    grid-template-columns: 4.25rem 1fr auto;
+    grid-template-columns: 4.5rem 1fr auto;
     align-items: center;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 
-    padding: 0.6rem 1.1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.035);
-
-    font-family: "JetBrains Mono", monospace;
+    font-family: var(--mono);
     font-size: 0.82rem;
     color: var(--text);
-    opacity: 0.75;
+    opacity: 0.72;
+
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* ====================================
@@ -42,22 +43,14 @@
 ======================================= */
 .lapLabel
 {
-    opacity: 0.5;
-    font-size: 0.72rem;
+    opacity: 0.55;
+    font-size: 0.7rem;
     letter-spacing: 0.06em;
     text-transform: uppercase;
 
 }
-
-.lapTime
-{
-    text-align: left;
-    font-weight: 600;
-    opacity: 0.95;
-
-}
-
-.lapDelta { opacity: 0.45; font-size: 0.78rem; }
+.lapTime { font-weight: 600; opacity: 0.95; }
+.lapDelta { opacity: 0.45; font-size: 0.78rem; text-align: right; }
 
 /* =========================================
    FASTEST / SLOWEST HIGHLIGHT STYLES.
@@ -65,13 +58,13 @@
 .fastest
 {
     color: #38bdf8;
-    background: linear-gradient(to right, rgba(56, 189, 248, 0.07), transparent 70%);
+    background: linear-gradient(90 deg, rgba(56, 189, 248, 0.08), transparent 70%);
 }
 
 .slowest
 {
     color: #ef4444;
-    background: linear-gradient(to right, rgba(239, 68, 68, 0.07), transparent 70%);
+    background: linear-gradient(90 deg, rgba(239, 68, 68, 0.08), transparent 70%);
 }
 
 /* ====================================
@@ -85,11 +78,11 @@
         grid-template-areas:
           "label time"
           "delta delta";
-        row-gap: 0.25rem;
-        padding: 0.5rem 0.85rem;
+        row-gap: 0.2rem;
+        padding: 0.4rem 0.75rem;
     }
 
     .lapLabel { font-size: 0.68rem; }
-    .lapTime { font-size: 0.82rem; }
+    .lapTime { font-size: 0.8rem; }
     .lapDelta { font-size: 0.72rem; }
 }

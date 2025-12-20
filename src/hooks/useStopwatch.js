@@ -1,7 +1,7 @@
 //File name: useStopwatch.js
 //Author: Kyle McColgan
-//Date: 02 June 2025
-//Description: This file contains reusable, repeated utility functions for the React timer site.
+//Date: 19 December 2025
+//Description: This file contains reusable, repeated utility functions for the React stopwatch.
 
 import { useEffect, useRef, useState } from "react";
 
