@@ -1,6 +1,6 @@
 //File name: StopwatchControls.jsx
 //Author: Kyle McColgan
-//Date: 19 December 2025
+//Date: 26 December 2025
 //Description: This file contains the stopwatch controls component for the React stopwatch project.
 
 import React from "react";
@@ -14,9 +14,9 @@ const MotionButton = motion.create(Button);
 const StopwatchControls = ({ isRunning, toggle, reset, recordLap }) => {
 
   const motionProps = {
-    whileHover: { scale: 1.015 },
-    whileTap: { scale: 0.96 },
-    transition: { type: "spring", stiffness: 240, damping: 28, mass: 0.55, },
+    whileHover: { scale: 1.01 },
+    whileTap: { scale: 0.97 },
+    transition: { type: "spring", stiffness: 220, damping: 30, mass: 0.65, },
   };
 
   return (

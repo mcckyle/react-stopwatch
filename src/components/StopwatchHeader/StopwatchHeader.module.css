@@ -6,21 +6,20 @@
 .header
 {
     position: absolute;
-    top: 1rem;
+    top: clamp(0.75rem, 2vh, 1.25rem);
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
 
-    width: min(92%, 1100px);
-    padding: 0.55rem 1rem;
+    width: min(92%, 1040px);
+    padding: 0.45rem 0.9rem;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
-    pointer-events: auto;
 
     background: var(--surface-glass);
-    backdrop-filter: blur(16px);
+    backdrop-filter: blur(var(--blur));
     border-radius: 999px;
     border: 1px solid var(--surface-border);
 }
@@ -32,33 +31,35 @@
     gap: 0.5rem;
 
     font-family: "Playfair Display", serif;
-    font-size: clamp(1.4rem, 1.8vw, 1.9rem);
+    font-size: clamp(1.3rem, 1.6vw, 1.8rem);
     font-weight: 700;
+    letter-spacing: 0.02em;
 
-    background: linear-gradient(120deg, var(--gold), var(--amber));
+    background: linear-gradient(120deg, var(--gold), color-mix(in oklab, var(--gold), var(--amber) 35%));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+.icon { width: 1.1em; height: 1.1em; opacity: 0.85; }
 
 /* ====================================
    THEME TOGGLE BUTTON STYLES.
 ======================================= */
 .themeToggle
 {
-    width: 2.2rem;
-    height: 2.2rem;
+    width: 2.1rem;
+    height: 2.1rem;
     border-radius: 50%;
     border: none;
     cursor: pointer;
 
-    background: rgba(255, 255, 255, 0.08);
+    display: grid;
+    place-items: center;
+
+    background: rgba(255, 255, 255, 0.06);
     color: var(--text);
 
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition: transform 0.2s ease, background 0.2s ease;
 }
 
-.themeToggle:hover
-{
-    transform: scale(1.08);
-    box-shadow: 0 0 14px rgba(212, 175, 55, 0.35);
-}
+.themeToggle:hover { transform: scale(1.05); background: rgba(255, 255, 255, 0.12); }
+.themeToggle:active { transform: scale(0.96); }

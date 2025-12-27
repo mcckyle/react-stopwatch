@@ -1,6 +1,6 @@
 //File name: ThemeWrapper.jsx
 //Author: Kyle McColgan
-//Date: 19 December 2025
+//Date: 26 December 2025
 //Description: This file contains the ThemeWrapper React UI/UX component for the React stopwatch.
 
 import React from "react";
@@ -23,8 +23,8 @@ const ThemeWrapper = ({ children }) => {
                 primaryColor: "yellow",
                 defaultRadius: "lg",
                 shadows: {
-                    md: "0 4px 14px rgba(0, 0, 0, 0.16)",
-                    xl: "0 0 28px rgba(212, 175, 55, 0.2)",
+                    md: "0 2px 8px rgba(0, 0, 0, 0.12)",
+                    xl: "0 0 22px rgba(212, 175, 55, 0.18)",
                 },
                 components: {
                     Button: {

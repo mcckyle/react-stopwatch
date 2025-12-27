@@ -15,7 +15,11 @@
     --text-light: #1b1b1b;
     --text-dark: #f8f8f8;
 
-    --surface-glass: rgba(255, 255, 255, 0.04);
+    --accent: var(--gold);
+    --accent-soft: rgba(212, 175, 55, 0.25);
+    --border-subtle: rgba(255, 255, 255, 0.06);
+
+    --surface-glass: color-mix(in srgb, var(--surface) 92%, white 8%);
     --surface-border: rgba(255, 255, 255, 0.08);
     --surface-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 

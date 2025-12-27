@@ -5,14 +5,15 @@
 ======================================= */
 .app
 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    place-items: center;
+    align-content: start;
 
     min-height: 100dvh;
     width: 100%;
 
     padding: clamp(1rem, 2vw, 1.5rem);
+    padding-top: clamp(1.5rem, 4vh, 3rem);
     box-sizing: border-box;
 
     background: var(--app-bg);
@@ -41,8 +42,8 @@
         transparent 65%
     );
 
-    opacity: 0.075;
-    filter: blur(200px);
+    opacity: 0.045;
+    filter: blur(240px);
 
     animation: drift 180s ease-in-out infinite alternate;
 }

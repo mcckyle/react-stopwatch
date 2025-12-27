@@ -11,10 +11,19 @@ html, body, #root
 
     font-family: "Inter", system-ui, -apple-system, sans-serif;
     font-size: 16px;
-    line-height: 1.6;
+    line-height: 1.5;
 
     text-rendering: optimizeLegibility;
     font-variant-numeric: tabular-nums lining-nums;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-reduced-motion: reduce)
+{
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
