@@ -1,6 +1,6 @@
 //File name: StopwatchDisplay.jsx
 //Author: Kyle McColgan
-//Date: 26 December 2025
+//Date: 28 December 2025
 //Description: This file contains the stopwatch display component for the React stopwatch project.
 
 import React from "react";
@@ -28,11 +28,11 @@ const StopwatchDisplay = ({ time }) => {
         aria-live="polite"
         aria-atomic="true"
       >
-        <span className={styles.unit}>{renderDigits(hours,"h")}</span>
+        <span className={styles.unit} aria-label="Hours">{renderDigits(hours, "h")}</span>
         <span className={styles.separator} aria-hidden="true">:</span>
-        <span className={styles.unit}>{renderDigits(minutes, "m")}</span>
+        <span className={styles.unit} aria-label="Minutes">{renderDigits(minutes, "m")}</span>
         <span className={styles.separator} aria-hidden="true">:</span>
-        <span className={styles.unit}>{renderDigits(seconds, "s")}</span>
+        <span className={styles.unit} aria-label="Seconds">{renderDigits(seconds, "s")}</span>
       </time>
     </section>
   );

@@ -1,6 +1,6 @@
 //File name: Stopwatch.jsx
 //Author: Kyle McColgan
-//Date: 19 December 2025
+//Date: 28 December 2025
 //Description: This file contains the parent Stopwatch component for the React stopwatch project.
 
 import React, { useState, useEffect, useRef } from "react";
@@ -84,23 +84,23 @@ const Stopwatch = ({ onToggleTheme }) => {
   return (
     <motion.div
       className={styles.container}
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 18 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      transition={{ duration: 0.55, ease: "easeOut" }}
     >
       <StopwatchHeader theme={theme} onToggleTheme={onToggleTheme} />
 
-      <motion.section
+      <motion.main
         className={styles.card}
-        initial={{ opacity: 0, scale: 0.97 }}
+        initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.15, duration: 0.45 }}
+        transition={{ delay: 0.12, duration: 0.45, ease: "easeOut" }}
       >
         <section className={styles.displayArea} aria-label="Stopwatch display">
-          <StopwatchDisplay time={time} aria-live="polite" />
+          <StopwatchDisplay time={time} />
         </section>
 
-          <section className={styles.controlsArea} aria-label="Controls">
+          <section className={styles.controlsArea} aria-label="Stopwatch controls">
             <StopwatchControls
               isRunning={isRunning}
               toggle={toggle}
@@ -113,7 +113,7 @@ const Stopwatch = ({ onToggleTheme }) => {
           <section className={styles.lapsArea} aria-label="Lap times">
             <LapList laps={laps} />
           </section>
-      </motion.section>
+      </motion.main>
 
         {showHelp && <HelpModal onClose={() => setShowHelp(false)} />}
     </motion.div>

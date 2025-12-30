@@ -12,9 +12,8 @@
     min-height: 100dvh;
     width: 100%;
 
-    padding: clamp(1rem, 2vw, 1.5rem);
-    padding-top: clamp(1.5rem, 4vh, 3rem);
-    box-sizing: border-box;
+    padding: clamp(1rem, 2vw, 1.4rem);
+    padding-top: clamp(1.25rem, 3.5vh, 2.5rem);
 
     background: var(--app-bg);
     color: var(--text);
@@ -23,7 +22,7 @@
     position: relative; /* Removes scrollbars... */
     isolation: isolate;
 
-    transition: background 0.6s ease, color 0.6s ease;
+    transition: background 0.5s ease, color 0.5s ease;
 }
 
 /* ====================================
@@ -33,23 +32,23 @@
 {
     content: "";
     position: absolute;
-    inset: -10%;
+    inset: -12%;
     z-index: -1;
 
     background: radial-gradient(
         circle at 50% 45%,
         var(--ambient-glow),
-        transparent 65%
+        transparent 70%
     );
 
-    opacity: 0.045;
-    filter: blur(240px);
+    opacity: 0.035;
+    filter: blur(180px);
 
-    animation: drift 180s ease-in-out infinite alternate;
+    animation: drift 200s ease-in-out infinite alternate;
 }
 
 @keyframes drift
 {
     from { transform: translate(0, 0) scale(1); }
-    to { transform: translate(1.5%, -2%) scale(1.03); }
+    to { transform: translate(1.2%, -1.5%) scale(1.025); }
 }

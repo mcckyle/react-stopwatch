@@ -7,21 +7,21 @@
 {
     --gold: #d4af37;
     --amber: #f5c84d;
+
     --ivory: #fffdf6;
     --ink: #0a0b12;
 
     --surface-light: #fdfdfb;
     --surface-dark: #18191f;
+
     --text-light: #1b1b1b;
     --text-dark: #f8f8f8;
 
     --accent: var(--gold);
-    --accent-soft: rgba(212, 175, 55, 0.25);
-    --border-subtle: rgba(255, 255, 255, 0.06);
+    --accent-soft: rgba(212, 175, 55, 0.22);
 
+    --surface-border: rgba(255, 255, 255, 0.07);
     --surface-glass: color-mix(in srgb, var(--surface) 92%, white 8%);
-    --surface-border: rgba(255, 255, 255, 0.08);
-    --surface-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 
     --radius: 1rem;
     --blur: 12px;
@@ -37,8 +37,7 @@ html.light
     --surface: var(--surface-light);
     --text: var(--text-light);
     --app-bg: radial-gradient(circle at 45% 40%, #fffef9, #efefde);
-    --ambient-glow: rgba(212, 175, 55, 0.08);
-    --glow-accent: 0 0 10px rgba(212, 175, 55, 0.15);
+    --ambient-glow: rgba(212, 175, 55, 0.07);
 }
 
 /* ====================================
@@ -49,6 +48,5 @@ html.dark
     --surface: var(--surface-dark);
     --text: var(--text-dark);
     --app-bg: radial-gradient(circle at 50% 50%, #1b1c22, #07080c);
-    --ambient-glow: rgba(212, 175, 55, 0.05);
-    --glow-accent: 0 0 14px rgba(212, 175, 55, 0.18);
+    --ambient-glow: rgba(212, 175, 55, 0.045);
 }

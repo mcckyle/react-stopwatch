@@ -6,17 +6,17 @@
 .lapList
 {
     width: 100%;
-    max-width: 860px;
-    margin: 0.9rem auto 0;
+    max-width: 820px;
+    margin: 0.8rem auto 0;
     padding: 0.25rem 0;
 
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(255, 255, 255, 0.015);
     border: 1px solid var(--surface-border);
-    border-radius: calc(var(--radius) * 0.85);
-    backdrop-filter: blur(10px);
+    border-radius: calc(var(--radius) * 0.8);
+    backdrop-filter: blur(var(--blur));
 
-    overflow-y: auto;
     max-height: 20vh;
+    overflow-y: auto;
 }
 
 /* ====================================
@@ -26,33 +26,33 @@
 {
     position: relative;
     display: grid;
-    grid-template-columns: 4.25rem 1fr auto;
+    grid-template-columns: 4.2rem 1fr auto;
     align-items: center;
-    padding: 0.48rem 0.95rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.025);
+
+    padding: 0.45rem 0.9rem;
 
     font-family: var(--mono);
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     color: var(--text);
-    opacity: 0.65;
+    opacity: 0.6;
 
-    transition: opacity 0.25s ease, background 0.25s ease;
+    transition: opacity 0.2s ease, background 0.2s ease;
 }
-.lap:last-child { border-bottom: none; }
+.lap:not(:last-child) { border-bottom: 1px solid rgba(255, 255, 255, 0.03); }
 
 /* ====================================
    TEXT ELEMENTS STYLES.
 ======================================= */
 .lapLabel
 {
-    font-size: 0.66rem;
-    letter-spacing: 0.08em;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    opacity: 0.45;
+    opacity: 0.4;
 
 }
 .lapTime { font-weight: 600; opacity: 0.95; }
-.lapDelta { font-size: 0.76rem; opacity: 0.38; text-align: right; min-width: 5.8ch; }
+.lapDelta { min-width: 5.6ch; font-size: 0.74rem; text-align: right; opacity: 0.35; }
 
 /* =========================================
    FASTEST / SLOWEST ACCENTS STYLES.
@@ -64,13 +64,13 @@
     content: "";
     position: absolute;
     left: 0;
-    top: 15%;
-    bottom: 15%;
+    top: 18%;
+    bottom: 18%;
     width: 2px;
     border-radius: 2px;
 }
-.fastest::before { background: #38bdf8; }
-.slowest::before { background: #ef4444; }
+.fastest::before { background: rgba(56, 189, 248, 0.9); }
+.slowest::before { background: rgba(239, 68, 68, 0.9); }
 
 /* ====================================
    LAP LIST MEDIA QUERY STYLES.
@@ -83,11 +83,11 @@
         grid-template-areas:
           "label time"
           "delta delta";
-        row-gap: 0.18rem;
+        row-gap: 0.2rem;
         padding: 0.42rem 0.75rem;
     }
 
-    .lapLabel { font-size: 0.64rem; }
-    .lapTime { font-size: 0.78rem; }
+    .lapLabel { font-size: 0.6rem; }
+    .lapTime { font-size: 0.76rem; }
     .lapDelta { font-size: 0.7rem; text-align: right; }
 }

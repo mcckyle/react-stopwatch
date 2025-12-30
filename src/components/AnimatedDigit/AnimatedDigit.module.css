@@ -8,14 +8,11 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     width: 1ch;
-    min-width: 1ch;
-    max-width: 1ch;
 
     overflow: hidden;
     position: relative;
-    vertical-align: middle;
+    vertical-align: baseline;
 }
 
 /* ====================================
@@ -30,9 +27,10 @@
     font-weight: inherit;
     line-height: 1;
     text-align: center;
-    font-variant-numeric: tabular-nums;
 
-    transform-origin: 50% 55%;
+    font-variant-numeric: tabular-nums;
+    transform-origin: 50% 60%;
+
     will-change: transform, opacity;
 }
 
@@ -42,5 +40,5 @@
 html.light .digit
 {
     color: #2c2400;
-    text-shadow: 0 0 1px rgba(234, 179, 8, 0.1);
+    text-shadow: 0 0 1px rgba(234, 179, 8, 0.12);
 }

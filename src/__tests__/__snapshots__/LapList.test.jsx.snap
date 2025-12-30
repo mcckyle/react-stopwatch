@@ -9,17 +9,17 @@ exports[`LapList Component matches snapshot 1`] = `
   >
     <div
       animate="[object Object]"
-      aria-label="Lap 3: 01:23.45 (+01:23.45)"
+      aria-label="Lap 3, time 01:23.45"
       class="lap fastest"
       exit="[object Object]"
       initial="[object Object]"
       transition="[object Object]"
     >
-      <div
+      <span
         class="lapLabel"
       >
         Lap 3
-      </div>
+      </span>
       <span
         class="lapTime"
       >
@@ -33,17 +33,17 @@ exports[`LapList Component matches snapshot 1`] = `
     </div>
     <div
       animate="[object Object]"
-      aria-label="Lap 2: 01:23.45 (+01:23.45)"
+      aria-label="Lap 2, time 01:23.45"
       class="lap slowest"
       exit="[object Object]"
       initial="[object Object]"
       transition="[object Object]"
     >
-      <div
+      <span
         class="lapLabel"
       >
         Lap 2
-      </div>
+      </span>
       <span
         class="lapTime"
       >
@@ -57,17 +57,17 @@ exports[`LapList Component matches snapshot 1`] = `
     </div>
     <div
       animate="[object Object]"
-      aria-label="Lap 1: 01:23.45 (+01:23.45)"
+      aria-label="Lap 1, time 01:23.45"
       class="lap slowest"
       exit="[object Object]"
       initial="[object Object]"
       transition="[object Object]"
     >
-      <div
+      <span
         class="lapLabel"
       >
         Lap 1
-      </div>
+      </span>
       <span
         class="lapTime"
       >

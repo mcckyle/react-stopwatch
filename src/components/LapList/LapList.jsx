@@ -1,6 +1,6 @@
 //File name: LapList.jsx
 //Author: Kyle McColgan
-//Date: 19 December 2025
+//Date: 28 December 2025
 //Description: This file contains the laps component for the React stopwatch project.
 
 import React from "react";
@@ -28,7 +28,7 @@ const LapList = ({ laps }) => {
           const prevLap = laps[index + 1] ?? 0;
           const delta = lap - prevLap;
 
-          const { hours, minutes, seconds, centiSeconds } = formatTime(lap, true);
+          const time = formatTime(lap, true);
           const deltaTime = formatTime(delta, true);
 
           const highlight =
@@ -37,20 +37,20 @@ const LapList = ({ laps }) => {
 
           return (
             <motion.div
-              key={lap}
+              key={`${lap}-${index}`}
               className={`${styles.lap} ${highlight}`}
-              initial={{ opacity: 0, y: 6 }}
+              initial={{ opacity: 0, y: 4 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
-              aria-label={`Lap ${lapNumber}: ${hours !== "00" ? `${hours}:${minutes}:${seconds}.${centiSeconds}` : `${minutes}:${seconds}.${centiSeconds}`} (+${deltaTime.minutes}:${deltaTime.seconds}.${deltaTime.centiSeconds})`}
+              exit={{ opacity: 0, y: -4 }}
+              transition={{ duration: 0.22, ease: "easeOut" }}
+              aria-label={`Lap ${lapNumber}, time ${time.minutes}:${time.seconds}.${time.centiSeconds}`}
             >
-              <div className = {styles.lapLabel}>Lap {lapNumber}</div>
+              <span className={styles.lapLabel}>Lap {lapNumber}</span>
 
-              <span className = {styles.lapTime}>
-                {hours !== "00"
-                    ? `${hours}:${minutes}:${seconds}.${centiSeconds}`
-                    : `${minutes}:${seconds}.${centiSeconds}`}
+              <span className={styles.lapTime}>
+                {time.hours !== "00"
+                    ? `${time.hours}:${time.minutes}:${time.seconds}.${time.centiSeconds}`
+                    : `${time.minutes}:${time.seconds}.${time.centiSeconds}`}
               </span>
 
               <span className={styles.lapDelta}>
