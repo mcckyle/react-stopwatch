@@ -3,7 +3,7 @@
 exports[`LapList Component matches snapshot 1`] = `
 <DocumentFragment>
   <div
-    aria-label="Lap records"
+    aria-label="Lap times"
     class="lapList"
     role="log"
   >

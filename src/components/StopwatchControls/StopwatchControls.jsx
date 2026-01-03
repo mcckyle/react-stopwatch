@@ -1,6 +1,6 @@
 //File name: StopwatchControls.jsx
 //Author: Kyle McColgan
-//Date: 28 December 2025
+//Date: 30 December 2025
 //Description: This file contains the stopwatch controls component for the React stopwatch project.
 
 import React from "react";
@@ -12,9 +12,9 @@ import styles from "./StopwatchControls.module.css";
 const MotionButton = motion.create(Button);
 
 const buttonMotion = {
-  whileHover: { scale: 1.015 },
-  whileTap: { scale: 0.96 },
-  transition: { type: "spring", stiffness: 190, damping: 26, mass: 0.6, },
+  whileHover: { scale: 1.01 },
+  whileTap: { scale: 0.965 },
+  transition: { type: "spring", stiffness: 180, damping: 28, mass: 0.6, },
 };
 
 const StopwatchControls = ({ isRunning, toggle, reset, recordLap }) => {
@@ -27,8 +27,7 @@ const StopwatchControls = ({ isRunning, toggle, reset, recordLap }) => {
       <MotionButton
         {...buttonMotion}
         onClick={toggle}
-        className={styles.button}
-        data-variant="primary"
+        className={styles.primary}
         aria-pressed={isRunning}
       >
         {isRunning ? "Pause" : "Start"}
@@ -38,8 +37,7 @@ const StopwatchControls = ({ isRunning, toggle, reset, recordLap }) => {
         {...buttonMotion}
         onClick={recordLap}
         disabled={!isRunning}
-        className={styles.button}
-        data-variant="secondary"
+        className={styles.secondary}
       >
         Lap
       </MotionButton>
@@ -47,8 +45,7 @@ const StopwatchControls = ({ isRunning, toggle, reset, recordLap }) => {
       <MotionButton
         {...buttonMotion}
         onClick={reset}
-        className={styles.button}
-        data-variant="tertiary"
+        className={styles.tertiary}
       >
         Reset
       </MotionButton>

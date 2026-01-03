@@ -9,21 +9,18 @@ exports[`StopwatchControls Component enables Lap button when isRunning is true 1
   >
     <button
       aria-pressed="false"
-      class="button"
-      data-variant="primary"
+      class="primary"
     >
       Start
     </button>
     <button
-      class="button"
-      data-variant="secondary"
+      class="secondary"
       disabled=""
     >
       Lap
     </button>
     <button
-      class="button"
-      data-variant="tertiary"
+      class="tertiary"
     >
       Reset
     </button>

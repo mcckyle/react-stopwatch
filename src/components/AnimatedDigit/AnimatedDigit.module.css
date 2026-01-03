@@ -5,13 +5,15 @@
 ======================================= */
 .container
 {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 1ch;
+    display: inline-grid;
+    place-items: center;
 
-    overflow: hidden;
+    width: 1ch;
+    height: 1em;
+
     position: relative;
+    overflow: hidden;
+
     vertical-align: baseline;
 }
 
@@ -28,8 +30,8 @@
     line-height: 1;
     text-align: center;
 
-    font-variant-numeric: tabular-nums;
-    transform-origin: 50% 60%;
+    font-variant-numeric: tabular-nums lining-nums;
+    transform-origin: 50% 55%;
 
     will-change: transform, opacity;
 }
@@ -39,6 +41,6 @@
 ======================================= */
 html.light .digit
 {
-    color: #2c2400;
-    text-shadow: 0 0 1px rgba(234, 179, 8, 0.12);
+    color: #2a2300;
+    text-shadow: 0 0 1px rgba(234, 179, 8, 0.1);
 }

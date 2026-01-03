@@ -8,9 +8,6 @@
     --gold: #d4af37;
     --amber: #f5c84d;
 
-    --ivory: #fffdf6;
-    --ink: #0a0b12;
-
     --surface-light: #fdfdfb;
     --surface-dark: #18191f;
 
@@ -21,7 +18,7 @@
     --accent-soft: rgba(212, 175, 55, 0.22);
 
     --surface-border: rgba(255, 255, 255, 0.07);
-    --surface-glass: color-mix(in srgb, var(--surface) 92%, white 8%);
+    --surface-glass: color-mix(in srgb, var(--surface) 94%, white 6%);
 
     --radius: 1rem;
     --blur: 12px;
