@@ -22,7 +22,7 @@
     position: relative; /* Removes scrollbars... */
     isolation: isolate;
 
-    transition: background 0.5s ease, color 0.5s ease;
+    transition: background 0.45s ease, color 0.45s ease;
 }
 
 /* ====================================
@@ -32,23 +32,23 @@
 {
     content: "";
     position: absolute;
-    inset: -10%;
+    inset: -8%;
     z-index: -1;
 
     background: radial-gradient(
         circle at 50% 45%,
         var(--ambient-glow),
-        transparent 70%
+        transparent 72%
     );
 
-    opacity: 0.03;
-    filter: blur(200px);
+    opacity: 0.025;
+    filter: blur(160px);
 
-    animation: drift 240s ease-in-out infinite alternate;
+    animation: drift 300s ease-in-out infinite alternate;
 }
 
 @keyframes drift
 {
     from { transform: translate(0, 0) scale(1); }
-    to { transform: translate(0.8%, -1.1%) scale(1.015); }
+    to { transform: translate(0.6%, -0.9%) scale(1.012); }
 }
