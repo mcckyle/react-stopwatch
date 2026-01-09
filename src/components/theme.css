@@ -10,15 +10,20 @@
     --amber: #f2c94c;
 
     /* Fonts. */
-    --mono: "JetBrains Mono", monospace;
+    --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
 
     /* Shapes & Effects. */
     --radius: 1rem;
+    --radius-sm: 0.6rem;
     --blur: 14px;
 
     /* Semantic Accents. */
     --accent: var(--gold);
-    --accent-soft: color-mix(in srgb, var(--gold) 24%, transparent);
+    --accent-soft: color-mix(in srgb, var(--gold) 22%, transparent);
+
+    /* Motion. */
+    --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ====================================
@@ -27,7 +32,10 @@
 html.light
 {
     --surface: #fdfdfb;
+    --surface-muted: #f3f3ea;
+
     --text: #1a1a1a;
+    --text-muted: rgba(0, 0, 0, 0.6);
 
     --surface-border: rgba(0, 0, 0, 0.06);
     --surface-glass: color-mix(in oklab, var(--surface) 92%, white 8%);
@@ -42,7 +50,10 @@ html.light
 html.dark
 {
     --surface: #17181d;
+    --surface-muted: #121318;
+
     --text: #f6f7f9;
+    --text-muted: rgba(246, 247, 249, 0.65);
 
     --surface-border: rgba(255, 255, 255, 0.08);
     --surface-glass: color-mix(in oklab, var(--surface) 92%, white 6%);

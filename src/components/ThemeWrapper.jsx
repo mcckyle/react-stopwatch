@@ -1,6 +1,6 @@
 //File name: ThemeWrapper.jsx
 //Author: Kyle McColgan
-//Date: 8 January 2026
+//Date: 9 January 2026
 //Description: This file contains the Mantine UI/UX component for the React stopwatch project.
 
 import React from "react";
@@ -17,6 +17,7 @@ const ThemeWrapper = ({ children }) => {
             theme={{
                 colorScheme: theme,
                 fontFamily: "Inter, system-ui, -apple-system, sans-serif",
+                fontFamilyMonospace: "JetBrains Mono, monospace",
                 defaultRadius: "lg",
 
                 focusRing: "auto",

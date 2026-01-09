@@ -15,24 +15,24 @@
 }
 
 /* ====================================
-   MAIN CARD (SPATIAL FRAME) STYLES.
+   MAIN LAYOUT FRAME STYLES.
 ======================================= */
 .card
 {
     display: grid;
     grid-template-rows:
-      minmax(0, 1fr)
+      1fr
       auto
-      minmax(0, 14vh);
+      minmax(0, 18vh);
 
     width: 100%;
     height: 100dvh;
 
-    padding: clamp(4.25rem, 7.5vh, 5.75rem) clamp(1rem, 3vw, 2.2rem) clamp(0.65rem, 1.8vh, 1rem);
+    padding: clamp(4rem, 7vh, 5.5rem) clamp(1rem, 3vw, 2.25rem) clamp(0.75rem, 2vh, 1.1rem);
 }
 
 /* ====================================
-   DISPLAY AREA STYLES.
+   TIME DISPLAY ZONE STYLES.
 ======================================= */
 .displayArea
 {
@@ -42,7 +42,7 @@
     width: 100%;
     height: 100%;
 
-    padding-inline: clamp(0.75rem, 4vw, 3.25rem);
+    padding-inline: clamp(1rem, 5vw, 4rem);
     overflow: hidden;
     pointer-events: none;
 }
@@ -56,21 +56,21 @@
     justify-content: center;
     align-items: center;
 
-    padding: 0.65rem 0 0.45rem;
+    padding-block: 0.75rem 0 0.5rem;
     width: 100%;
 
-    opacity: 0.82;
+    opacity: 0.85;
 }
 
 /* ====================================
-   LAP LIST AREA STYLES.
+   LAP HISTORY PLANE STYLES.
 ======================================= */
 .lapsArea
 {
     width: 100%;
     height: 100%;
-    max-height: 16vh;
     overflow-y: auto;
+    overscroll-behavior: contain;
 
     background: var(--surface-glass);
     backdrop-filter: blur(var(--blur));
@@ -78,6 +78,6 @@
     border-radius: calc(var(--radius) * 0.6);
     border: 1px solid var(--surface-border);
 
-    padding: 0.35rem 0.7rem;
-    opacity: 0.5;
+    padding: 0.4rem 0.75rem;
+    opacity: 0.45;
 }

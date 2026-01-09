@@ -1,7 +1,7 @@
 /* Filename: src/index.css */
 
 /* ====================================
-   GLOBAL RESET & BASELINE STYLES.
+   GLOBAL BASELINE STYLES.
 ======================================= */
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -22,8 +22,11 @@ html, body, #root
     -moz-osx-font-smoothing: grayscale;
 }
 
-body { overscroll-behavior: none; touch-action: manipulation; }
+body { overscroll-behavior: none; touch-action: manipulation; background: var(--app-bg); }
 
+/* ====================================
+   REDUCED MOTION MEDIA QUERY STYLES.
+======================================= */
 @media (prefers-reduced-motion: reduce)
 {
     *, *::before, *::after {
