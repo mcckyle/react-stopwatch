@@ -1,6 +1,6 @@
 //File name: LapList.test.jsx
 //Author: Kyle McColgan
-//Date: 30 December 2025
+//Date: 8 January 2026
 //Description: This file contains the unit test suite for the LapList component.
 
 import React from "react";
@@ -48,7 +48,7 @@ describe("LapList Component", () => {
     test("renders lap list with role='log' and accessible label when laps exist", () => {
         render(<LapList laps={[1000]} />);
 
-        const log = screen.getByRole("log", { name: /lap times/i });
+        const log = screen.getByRole("log", { name: /lap history/i });
         expect(log).toBeInTheDocument();
     });
 

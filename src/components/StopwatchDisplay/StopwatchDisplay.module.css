@@ -17,13 +17,15 @@
 }
 
 /* ====================================
-   TIME READOUT STYLES.
+   TIME CONTAINER STYLES.
 ======================================= */
 .time
 {
     width: 100%;
-    display: flex;
-    justify-content: center;
+    height: 100%;
+
+    display: grid;
+    place-items: center;
 
     font-family: var(--mono);
     font-weight: 700;
@@ -32,43 +34,46 @@
     transition: color 0.35s ease, text-shadow 0.35s ease;
 }
 
+/* ====================================
+   DIGIT ROW STYLES.
+======================================= */
 .line
 {
-    display: inline-flex;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
     align-items: center;
     justify-content: center;
 
-    width: 100%;
-    max-inline-size: 100%;
-
-    padding-inline: clamp(0.5rem, 3vw, 2rem);
-
-    font-size: clamp(6rem, 30vw, 26vh);
+    font-size: clamp(8rem, 38vw, 30vh);
     line-height: 0.9;
-    letter-spacing: -0.035em;
+    letter-spacing: -0.045em;
 
     white-space: nowrap;
     text-align: center;
 
-    text-shadow: 0 0 6px rgba(212, 175, 55, 0.12),
-                 0 0 18px rgba(212, 175, 55, 0.045);
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.14),
+                 0 0 24px rgba(212, 175, 55, 0.05);
 }
-.unit { display: inline-flex; align-items: center; }
 
 /* ====================================
-   COLON (SEPARATOR) STYLES.
+   DIGIT GROUPS STYLES.
+======================================= */
+.unit { display: inline-flex; align-items: center; min-width: 2ch; /* layout stability. */ }
+
+/* ====================================
+   COLON SEPARATORS STYLES.
 ======================================= */
 .separator
 {
-    margin-inline: 0.16em;
+    margin-inline: 0.18em;
 
-    font-size: 0.68em;
+    font-size: 0.65em;
     font-weight: 500;
 
-    opacity: 0.32;
-    color: currentColor;
-
-    transform: translateY(-0.05em);
+    opacity: 0.3;
+    transform: translateY(-0.04em);
     user-select: none;
 }
 
@@ -77,6 +82,5 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .line { font-size: clamp(4.8rem, 36vw, 22vh); letter-spacing: -0.03em; }
-    .separator { font-size: 0.7em; }
+    .line { font-size: clamp(6rem, 42vw, 24vh); letter-spacing: -0.035em; }
 }

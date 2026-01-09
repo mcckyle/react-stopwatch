@@ -26,29 +26,29 @@
 }
 
 /* ====================================
-   SIMPLE AMBIENT GOLDEN GLOW STYLES.
+   SIMPLE AMBIENT PRESENCE STYLES.
 ======================================= */
 .app::before
 {
     content: "";
     position: absolute;
-    inset: -8%;
+    inset: -10%;
     z-index: -1;
 
     background: radial-gradient(
         circle at 50% 45%,
         var(--ambient-glow),
-        transparent 72%
+        transparent 70%
     );
 
-    opacity: 0.025;
+    opacity: 0.03;
     filter: blur(160px);
 
-    animation: drift 300s ease-in-out infinite alternate;
+    animation: drift 240s ease-in-out infinite alternate;
 }
 
 @keyframes drift
 {
     from { transform: translate(0, 0) scale(1); }
-    to { transform: translate(0.6%, -0.9%) scale(1.012); }
+    to { transform: translate(0.5%, -0.8%) scale(1.01); }
 }

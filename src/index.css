@@ -1,22 +1,26 @@
 /* Filename: src/index.css */
 
+/* ====================================
+   GLOBAL RESET & BASELINE STYLES.
+======================================= */
 *, *::before, *::after { box-sizing: border-box; }
 
 html, body, #root
 {
     height: 100%;
+    margin: 0;
+    padding: 0;
+
     font-family: "Inter", system-ui, -apple-system, sans-serif;
     font-size: 16px;
     line-height: 1.45;
 
-    text-rendering: optimizeLegibility;
     font-variant-numeric: tabular-nums lining-nums;
+    text-rendering: optimizeLegibility;
+
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-
-body,
-#root { min-height: 100%; margin: 0; padding: 0; }
 
 body { overscroll-behavior: none; touch-action: manipulation; }
 

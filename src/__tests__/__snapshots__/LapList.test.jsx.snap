@@ -3,13 +3,13 @@
 exports[`LapList Component matches snapshot 1`] = `
 <DocumentFragment>
   <div
-    aria-label="Lap times"
+    aria-label="Lap history"
     class="lapList"
     role="log"
   >
     <div
       animate="[object Object]"
-      aria-label="Lap 3, time 01:23.45"
+      aria-label="Lap 3, duration 01:23.45"
       class="lap fastest"
       exit="[object Object]"
       initial="[object Object]"
@@ -33,7 +33,7 @@ exports[`LapList Component matches snapshot 1`] = `
     </div>
     <div
       animate="[object Object]"
-      aria-label="Lap 2, time 01:23.45"
+      aria-label="Lap 2, duration 01:23.45"
       class="lap slowest"
       exit="[object Object]"
       initial="[object Object]"
@@ -57,7 +57,7 @@ exports[`LapList Component matches snapshot 1`] = `
     </div>
     <div
       animate="[object Object]"
-      aria-label="Lap 1, time 01:23.45"
+      aria-label="Lap 1, duration 01:23.45"
       class="lap slowest"
       exit="[object Object]"
       initial="[object Object]"

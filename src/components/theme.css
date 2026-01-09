@@ -1,29 +1,24 @@
 /* Filename: src/components/theme.css */
 
 /* ====================================
-   CORE THEME COLOR VARIABLES.
+   CORE DESIGN TOKENS.
 ======================================= */
 :root
 {
+    /* Accents. */
     --gold: #d4af37;
     --amber: #f2c94c;
 
-    --surface-light: #fdfdfb;
-    --surface-dark: #17181d;
+    /* Fonts. */
+    --mono: "JetBrains Mono", monospace;
 
-    --text-light: #1a1a1a;
-    --text-dark: #f6f7f9;
-
-    --accent: var(--gold);
-    --accent-soft: color-mix(in srgb, var(--gold) 24%, transparent);
-
-    --surface-border: rgba(255, 255, 255, 0.08);
-    --surface-glass: color-mix(in srgb, var(--surface) 92%, white 8%);
-
+    /* Shapes & Effects. */
     --radius: 1rem;
     --blur: 14px;
 
-    --mono: "JetBrains Mono", monospace;
+    /* Semantic Accents. */
+    --accent: var(--gold);
+    --accent-soft: color-mix(in srgb, var(--gold) 24%, transparent);
 }
 
 /* ====================================
@@ -31,8 +26,12 @@
 ======================================= */
 html.light
 {
-    --surface: var(--surface-light);
-    --text: var(--text-light);
+    --surface: #fdfdfb;
+    --text: #1a1a1a;
+
+    --surface-border: rgba(0, 0, 0, 0.06);
+    --surface-glass: color-mix(in oklab, var(--surface) 92%, white 8%);
+
     --app-bg: radial-gradient(circle at 45% 35%, #fffef8, #efefd9);
     --ambient-glow: rgba(212, 175, 55, 0.06);
 }
@@ -42,8 +41,12 @@ html.light
 ======================================= */
 html.dark
 {
-    --surface: var(--surface-dark);
-    --text: var(--text-dark);
+    --surface: #17181d;
+    --text: #f6f7f9;
+
+    --surface-border: rgba(255, 255, 255, 0.08);
+    --surface-glass: color-mix(in oklab, var(--surface) 92%, white 6%);
+
     --app-bg: radial-gradient(circle at 50% 45%, #1c1d24, #06070b);
     --ambient-glow: rgba(212, 175, 55, 0.04);
 }

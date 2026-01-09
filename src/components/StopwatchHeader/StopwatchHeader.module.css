@@ -6,23 +6,23 @@
 .header
 {
     position: absolute;
-    top: clamp(0.7rem, 2vh, 1.1rem);
+    top: clamp(0.65rem, 2vh, 1rem);
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
 
     width: min(94%, 1080px);
-    padding: 0.35rem 0.7rem;
+    padding: 0.3rem 0.65rem;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    background: color-mix(in oklab, var(--surface-glass), transparent 35%);
-    backdrop-filter: blur(calc(var(--blur) * 0.65));
+    background: color-mix(in oklab, var(--surface-glass), transparent 45%);
+    backdrop-filter: blur(calc(var(--blur) * 0.55));
     border-radius: 999px;
     border: 1px solid var(--surface-border);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
 /* ====================================
@@ -32,34 +32,35 @@
 {
     display: inline-flex;
     align-items: center;
-    gap: 0.45rem;
+    gap: 0.4rem;
 
     font-family: var(--mono);
-    font-size: 1.75rem;
-    letter-spacing: 0.12em;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
 
     color: var(--text);
-    opacity: 0.7;
+    opacity: 0.6;
 }
 .title { line-height: 1; white-space: nowrap; }
-.icon { width: 0.95em; height: 0.95em; opacity: 0.6; flex-shrink: 0; }
+.icon { width: 0.9em; height: 0.9em; opacity: 0.55; flex-shrink: 0; }
 
 /* ====================================
    THEME TOGGLE BUTTON STYLES.
 ======================================= */
 .themeToggle
 {
-    width: 1.75rem;
-    height: 1.75rem;
+    width: 1.65rem;
+    height: 1.65rem;
     border-radius: 50%;
 
     display: grid;
     place-items: center;
 
+    border-radius: 50%;
+    border: 1px solid var(--surface-border);
     background: transparent;
     color: var(--text);
-
-    border: 1px solid var(--surface-border);
+    opacity: 0.55;
     cursor: pointer;
 
     transition: background 0.15s ease, transform 0.15s ease, opacity 0.15s ease;
