@@ -13,14 +13,14 @@
     --font-sans: "Inter", system-ui, -apple-system, sans-serif;
     --font-mono: "JetBrains Mono", monospace;
 
-    /* Shapes & Effects. */
+    /* Shapes & Depth. */
     --radius: 1rem;
     --radius-sm: 0.6rem;
     --blur: 14px;
 
     /* Semantic Accents. */
     --accent: var(--gold);
-    --accent-soft: color-mix(in srgb, var(--gold) 22%, transparent);
+    --accent-soft: color-mix(in oklab, var(--gold) 22%, transparent);
 
     /* Motion. */
     --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);

@@ -9,7 +9,7 @@
     place-items: center;
 
     inline-size: 1ch;
-    block-size: 1.25em;
+    block-size: 1.15em;
 
     position: relative;
     overflow: hidden;
@@ -24,15 +24,11 @@
 .digit
 {
     display: inline-block;
-
-    font-family: inherit; /* inherit from parent time. */
-    font-size: inherit; /* inherit from parent time. */
-    font-weight: inherit;
     line-height: 1;
     text-align: center;
 
     font-variant-numeric: tabular-nums lining-nums;
-    transform-origin: 50% 58%;
+    transform-origin: 50% 60%;
 
     will-change: transform, opacity;
 }
@@ -42,5 +38,5 @@
 ======================================= */
 html.light .digit
 {
-    color: color-mix(in oklab, currentColor, #2a2300 28%);
+    color: color-mix(in oklab, currentColor, #2a2300 24%);
 }

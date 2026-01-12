@@ -9,7 +9,6 @@ html, body, #root
 {
     height: 100%;
     margin: 0;
-    padding: 0;
 
     font-family: "Inter", system-ui, -apple-system, sans-serif;
     font-size: 16px;
@@ -22,7 +21,7 @@ html, body, #root
     -moz-osx-font-smoothing: grayscale;
 }
 
-body { overscroll-behavior: none; touch-action: manipulation; background: var(--app-bg); }
+body { background: var(--app-bg); overscroll-behavior: none; touch-action: manipulation;  }
 
 /* ====================================
    REDUCED MOTION MEDIA QUERY STYLES.

@@ -18,11 +18,11 @@
     align-items: center;
     justify-content: space-between;
 
-    background: color-mix(in oklab, var(--surface-glass), transparent 55%);
-    backdrop-filter: blur(calc(var(--blur) * 0.5));
-    border-radius: 999px;
+    background: color-mix(in oklab, var(--surface-glass), transparent 60%);
+    backdrop-filter: blur(calc(var(--blur) * 0.45));
     border: 1px solid var(--surface-border);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 999px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
 }
 
 /* ====================================
@@ -35,15 +35,15 @@
     gap: 0.45rem;
 
     font-family: var(--font-mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.24em;
+    font-size: 0.65rem;
+    letter-spacing: 0.26em;
     text-transform: uppercase;
 
     color: var(--text);
-    opacity: 0.55;
+    opacity: 0.52;
 }
 .title { line-height: 1; white-space: nowrap; }
-.icon { width: 0.9em; height: 0.9em; opacity: 0.5; flex-shrink: 0; }
+.icon { width: 0.9em; height: 0.9em; flex-shrink: 0; opacity: 0.48; }
 
 /* ====================================
    THEME TOGGLE BUTTON STYLES.
@@ -52,7 +52,6 @@
 {
     width: 1.7rem;
     height: 1.7rem;
-    border-radius: 50%;
 
     display: grid;
     place-items: center;
@@ -60,12 +59,13 @@
     border-radius: 50%;
     border: 1px solid var(--surface-border);
     background: transparent;
+
     color: var(--text);
-    opacity: 0.45;
+    opacity: 0.42;
     cursor: pointer;
 
     transition: opacity 0.18s ease, background 0.18s ease, transform 0.12s ease;
 }
 
-.themeToggle:hover { background: color-mix(in srgb, var(--text) 6%, transparent); opacity: 0.75; }
+.themeToggle:hover { background: color-mix(in oklab, var(--text) 5%, transparent); opacity: 0.7; }
 .themeToggle:active { transform: scale(0.92); }

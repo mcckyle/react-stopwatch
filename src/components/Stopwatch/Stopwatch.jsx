@@ -96,7 +96,7 @@ const Stopwatch = ({ onToggleTheme }) => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.08, duration: 0.4, ease: "easeOut" }}
       >
-        <section className={styles.displayArea} aria-label="Elapsed time">
+        <section className={styles.displayArea} aria-label="Elapsed time" role="region">
           <StopwatchDisplay time={time} />
         </section>
 
