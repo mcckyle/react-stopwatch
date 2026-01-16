@@ -18,7 +18,7 @@
     background: var(--app-bg);
     color: var(--text);
 
-    overflow: hidden; /* App manages all scroll regions internally. */
+    overflow: hidden;
     position: relative; /* Removes scrollbars... */
     isolation: isolate;
 
@@ -41,8 +41,8 @@
         transparent 72%
     );
 
-    opacity: 0.02;
-    filter: blur(160px);
+    opacity: 0.025;
+    filter: blur(140px);
 
     animation: drift 280s ease-in-out infinite alternate;
 }

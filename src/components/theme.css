@@ -13,9 +13,25 @@
     --font-sans: "Inter", system-ui, -apple-system, sans-serif;
     --font-mono: "JetBrains Mono", monospace;
 
+    /* Type Scale. */
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-md: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.5rem;
+    --text-xxl: clamp(3rem, 8vw, 7rem);
+
+    /* Spacing. */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2.5rem;
+
     /* Shapes & Depth. */
-    --radius: 1rem;
     --radius-sm: 0.6rem;
+    --radius: 1rem;
+    --radius-lg: 1.5rem;
     --blur: 14px;
 
     /* Semantic Accents. */
@@ -24,6 +40,8 @@
 
     /* Motion. */
     --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+    --duration-fast: 120ms;
+    --duration-base: 240ms;
 }
 
 /* ====================================
@@ -32,16 +50,16 @@
 html.light
 {
     --surface: #fdfdfb;
-    --surface-muted: #f3f3ea;
+    --surface-muted: #f2f2e9;
 
-    --text: #1a1a1a;
-    --text-muted: rgba(0, 0, 0, 0.6);
+    --text: #181818;
+    --text-muted: rgba(0, 0, 0, 0.55);
 
-    --surface-border: rgba(0, 0, 0, 0.06);
-    --surface-glass: color-mix(in oklab, var(--surface) 92%, white 8%);
+    --surface-border: rgba(0, 0, 0, 0.05);
+    --surface-glass: color-mix(in oklab, var(--surface) 94%, white 6%);
 
-    --app-bg: radial-gradient(circle at 45% 35%, #fffef8, #efefd9);
-    --ambient-glow: rgba(212, 175, 55, 0.06);
+    --app-bg: radial-gradient(circle at 45% 35%, #fffef8, #ececd4);
+    --ambient-glow: rgba(212, 175, 55, 0.05);
 }
 
 /* ====================================
@@ -50,14 +68,14 @@ html.light
 html.dark
 {
     --surface: #17181d;
-    --surface-muted: #121318;
+    --surface-muted: #111217;
 
-    --text: #f6f7f9;
-    --text-muted: rgba(246, 247, 249, 0.65);
+    --text: #f5f6f8;
+    --text-muted: rgba(246, 247, 249, 0.6);
 
-    --surface-border: rgba(255, 255, 255, 0.08);
-    --surface-glass: color-mix(in oklab, var(--surface) 92%, white 6%);
+    --surface-border: rgba(255, 255, 255, 0.07);
+    --surface-glass: color-mix(in oklab, var(--surface) 90%, white 10%);
 
-    --app-bg: radial-gradient(circle at 50% 45%, #1c1d24, #06070b);
-    --ambient-glow: rgba(212, 175, 55, 0.04);
+    --app-bg: radial-gradient(circle at 50% 45%, #1e1f26, #05060a);
+    --ambient-glow: rgba(212, 175, 55, 0.035);
 }

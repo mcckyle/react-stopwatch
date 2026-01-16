@@ -9,7 +9,7 @@
     place-items: center;
 
     inline-size: 1ch;
-    block-size: 1.15em;
+    block-size: 1.12em;
 
     position: relative;
     overflow: hidden;
@@ -24,11 +24,16 @@
 .digit
 {
     display: inline-block;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
     line-height: 1;
     text-align: center;
 
     font-variant-numeric: tabular-nums lining-nums;
-    transform-origin: 50% 60%;
+    font-feature-settings: "tnum", "lnum";
+    transform-origin: 50% 58%;
+    backface-visibility: hidden;
 
     will-change: transform, opacity;
 }
@@ -38,5 +43,5 @@
 ======================================= */
 html.light .digit
 {
-    color: color-mix(in oklab, currentColor, #2a2300 24%);
+    color: color-mix(in oklab, currentColor, #2a2300 20%);
 }

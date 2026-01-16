@@ -1,6 +1,6 @@
 //File name: Stopwatch.jsx
 //Author: Kyle McColgan
-//Date: 8 January 2026
+//Date: 15 January 2026
 //Description: This file contains the parent Stopwatch component for the React stopwatch project.
 
 import React, { useState, useEffect, useRef } from "react";
@@ -35,30 +35,28 @@ const Stopwatch = ({ onToggleTheme }) => {
   //Load laps from browser localStorage.
   useEffect(() => {
 
-    if (!hasLoadedLaps.current)
+    if (hasLoadedLaps.current)
     {
-        const savedLaps = localStorage.getItem(LAP_STORAGE_KEY);
-        //console.log("useEffect running on mount, raw saved laps: ", savedLaps);
-
-        if (savedLaps)
-        {
-            try
-            {
-                const parsed = JSON.parse(savedLaps);
-                console.log("Parsed laps from localStorage: ", parsed);
-                setLaps(parsed);
-            }
-            catch (e)
-            {
-                console.error("Error occured while parsing saved laps: ", e);
-            }
-        }
-        else
-        {
-            console.log("INFO: No laps found in the browser's localStorage.")
-        }
-        hasLoadedLaps.current = true;
+      return;
     }
+    const savedLaps = localStorage.getItem(LAP_STORAGE_KEY);
+    //console.log("useEffect running on mount, raw saved laps: ", savedLaps);
+
+    if (savedLaps)
+    {
+        try
+        {
+            const parsed = JSON.parse(savedLaps);
+            //console.log("Parsed laps from localStorage: ", parsed);
+            setLaps(parsed);
+        }
+        catch
+        {
+            console.warn("Failed to parse stored laps");
+        }
+    }
+
+    hasLoadedLaps.current = true;
   }, []);
 
   //Save laps array to browser localStorage only after initial load.
@@ -67,10 +65,6 @@ const Stopwatch = ({ onToggleTheme }) => {
     {
         console.log("INFO: Saving the laps to the browser's localStorage: ", laps);
         localStorage.setItem(LAP_STORAGE_KEY, JSON.stringify(laps));
-    }
-    else
-    {
-        console.log("Skipped saving laps...");
     }
   }, [laps]);
 
@@ -84,17 +78,17 @@ const Stopwatch = ({ onToggleTheme }) => {
   return (
     <motion.div
       className={styles.container}
-      initial={{ opacity: 0, y: 14 }}
+      initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.45, ease: "easeOut" }}
+      transition={{ duration: 0.35, ease: "easeOut" }}
     >
       <StopwatchHeader theme={theme} onToggleTheme={onToggleTheme} />
 
       <motion.main
         className={styles.card}
-        initial={{ opacity: 0, scale: 0.99 }}
+        initial={{ opacity: 0, scale: 0.995 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.08, duration: 0.4, ease: "easeOut" }}
+        transition={{ delay: 0.06, duration: 0.3, ease: "easeOut" }}
       >
         <section className={styles.displayArea} aria-label="Elapsed time" role="region">
           <StopwatchDisplay time={time} />

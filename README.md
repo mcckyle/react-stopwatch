@@ -58,6 +58,10 @@ react-stopwatch/
 │   │   │   ├── Stopwatch.jsx
 │   │   │   └── Stopwatch.module.css
 │   │   │
+│   │   ├── StopwatchHeader/
+│   │   │   ├── StopwatchHeader.jsx
+│   │   │   └── StopwatchHeader.module.css
+│   │   │
 │   │   ├── StopwatchDisplay/
 │   │   │   ├── StopwatchDisplay.jsx
 │   │   │   └── StopwatchDisplay.module.css

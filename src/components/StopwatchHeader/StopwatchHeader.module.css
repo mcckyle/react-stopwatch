@@ -6,23 +6,23 @@
 .header
 {
     position: absolute;
-    top: clamp(0.65rem, 2vh, 1rem);
+    top: clamp(0.6rem, 1.8vh, 0.95rem);
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
 
-    width: min(94%, 1080px);
-    padding: 0.3rem 0.7rem;
+    width: min(94%, 980px);
+    padding: 0.28rem 0.6rem;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    background: color-mix(in oklab, var(--surface-glass), transparent 60%);
-    backdrop-filter: blur(calc(var(--blur) * 0.45));
+    background: color-mix(in oklab, var(--surface-glass), transparent 70%);
+    backdrop-filter: blur(calc(var(--blur) * 0.4));
     border: 1px solid var(--surface-border);
     border-radius: 999px;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 0.5px 2px rgba(0, 0, 0, 0.03);
 }
 
 /* ====================================
@@ -35,23 +35,24 @@
     gap: 0.45rem;
 
     font-family: var(--font-mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.26em;
+    font-size: 0.6rem;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
 
     color: var(--text);
-    opacity: 0.52;
+    opacity: 0.46;
+    user-select: none;
 }
 .title { line-height: 1; white-space: nowrap; }
-.icon { width: 0.9em; height: 0.9em; flex-shrink: 0; opacity: 0.48; }
+.icon { width: 0.9em; height: 0.9em; flex-shrink: 0; opacity: 0.42; }
 
 /* ====================================
    THEME TOGGLE BUTTON STYLES.
 ======================================= */
 .themeToggle
 {
-    width: 1.7rem;
-    height: 1.7rem;
+    width: 1.6rem;
+    height: 1.6rem;
 
     display: grid;
     place-items: center;
@@ -61,11 +62,11 @@
     background: transparent;
 
     color: var(--text);
-    opacity: 0.42;
+    opacity: 0.38;
     cursor: pointer;
 
     transition: opacity 0.18s ease, background 0.18s ease, transform 0.12s ease;
 }
-
-.themeToggle:hover { background: color-mix(in oklab, var(--text) 5%, transparent); opacity: 0.7; }
-.themeToggle:active { transform: scale(0.92); }
+.themeToggle svg { width: 0.85rem; height: 0.85rem; }
+.themeToggle:hover { background: color-mix(in oklab, var(--text) 4%, transparent); opacity: 0.65; }
+.themeToggle:active { transform: scale(0.9); }
