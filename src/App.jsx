@@ -1,6 +1,6 @@
 //File name: App.jsx
 //Author: Kyle McColgan
-//Date: 15 January 2026
+//Date: 16 January 2026
 //Description: This file contains the entry point component for the React stopwatch project.
 
 import Stopwatch from "./components/Stopwatch/Stopwatch.jsx";
@@ -14,7 +14,7 @@ function App()
     const { onToggleTheme } = useTheme();
 
     return (
-      <main className="app" role="main">
+      <main className="app" role="main" aria-label="Stopwatch application">
         <Stopwatch onToggleTheme={onToggleTheme} />
       </main>
     );
