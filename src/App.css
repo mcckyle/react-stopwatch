@@ -32,23 +32,23 @@
 {
     content: "";
     position: absolute;
-    inset: -14%;
+    inset: -16%;
     z-index: -1;
 
     background: radial-gradient(
         circle at 50% 42%,
         var(--ambient-glow),
-        transparent 72%
+        transparent 74%
     );
 
-    opacity: 0.025;
-    filter: blur(140px);
+    opacity: 0.02;
+    filter: blur(150px);
 
-    animation: drift 280s ease-in-out infinite alternate;
+    animation: drift 320s ease-in-out infinite alternate;
 }
 
 @keyframes drift
 {
     from { transform: translate(0, 0) scale(1); }
-    to { transform: translate(0.35%, -0.6%) scale(1.01); }
+    to { transform: translate(0.4%, -0.5%) scale(1.01); }
 }

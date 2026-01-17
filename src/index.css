@@ -21,7 +21,7 @@ html, body, #root
     -moz-osx-font-smoothing: grayscale;
 }
 
-body { background: var(--app-bg); overscroll-behavior: none; touch-action: manipulation;  }
+body { background: var(--app-bg); overscroll-behavior: none; touch-action: manipulation; }
 
 /* ====================================
    REDUCED MOTION MEDIA QUERY STYLES.
