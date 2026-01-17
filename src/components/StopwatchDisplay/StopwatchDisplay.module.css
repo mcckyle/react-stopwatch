@@ -30,8 +30,6 @@
     font-family: var(--font-mono);
     font-weight: 700;
     color: var(--text);
-
-    transition: color 0.4s ease;
 }
 
 /* ====================================
@@ -47,15 +45,14 @@
     width: 100%;
     height: 100%;
 
-    font-size: min(34vh, 24vw);
-    line-height: 0.88;
+    font-size: min(36vmin, 26vw);
+    line-height: 0.86;
 
     white-space: nowrap;
     text-align: center;
-    transform: translateY(-0.02em);
+    transform: translateY(-0.035em);
 
-    text-shadow: 0 0 14px color-mix(in srgb, var(--accent) 18%, transparent),
-                 0 0 56px color-mix(in srgb, var(--accent) 6%, transparent);
+    text-shadow: 0 0 48px color-mix(in srgb, var(--accent) 12%, transparent);
 }
 
 /* ====================================
@@ -68,11 +65,11 @@
 ======================================= */
 .separator
 {
-    font-size: 0.5em;
+    font-size: 0.48em;
     font-weight: 500;
 
-    opacity: 0.22;
-    transform: translateY(-0.08em);
+    opacity: 0.18;
+    transform: translateY(-0.06em);
     user-select: none;
     pointer-events: none;
 }
@@ -82,5 +79,5 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .line { font-size: min(30vh, 16vw); }
+    .line { font-size: min(32vmin, 16vw); }
 }

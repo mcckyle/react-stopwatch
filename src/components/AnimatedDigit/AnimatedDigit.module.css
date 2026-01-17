@@ -9,7 +9,7 @@
     place-items: center;
 
     inline-size: 1ch;
-    block-size: 1.12em;
+    block-size: 1.05em;
 
     position: relative;
     overflow: hidden;
@@ -19,7 +19,7 @@
 }
 
 /* ====================================
-   DIGIT CHARACTER STYLE.
+   DIGIT CHARACTER GLYPH STYLE.
 ======================================= */
 .digit
 {
@@ -32,7 +32,8 @@
 
     font-variant-numeric: tabular-nums lining-nums;
     font-feature-settings: "tnum", "lnum";
-    transform-origin: 50% 58%;
+
+    transform-origin: 50% 60%;
     backface-visibility: hidden;
 
     will-change: transform, opacity;
@@ -43,5 +44,5 @@
 ======================================= */
 html.light .digit
 {
-    color: color-mix(in oklab, currentColor, #2a2300 20%);
+    color: color-mix(in oklab, currentColor, #2a2300 18%);
 }
