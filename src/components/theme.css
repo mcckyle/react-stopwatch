@@ -19,7 +19,6 @@
     --text-md: 1rem;
     --text-lg: 1.125rem;
     --text-xl: 1.5rem;
-    --text-xxl: clamp(3rem, 8vw, 7rem);
 
     /* Spacing. */
     --space-xs: 0.25rem;
@@ -28,10 +27,11 @@
     --space-lg: 1.5rem;
     --space-xl: 2.5rem;
 
-    /* Shapes & Depth. */
-    --radius-sm: 0.6rem;
-    --radius: 1rem;
-    --radius-lg: 1.5rem;
+    /* Shape & Depth. */
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1.25rem;
+    --radius: var(--radius-md);
     --blur: 14px;
 
     /* Semantic Accents. */
@@ -59,7 +59,7 @@ html.light
     --surface-glass: color-mix(in oklab, var(--surface) 94%, white 6%);
 
     --app-bg: radial-gradient(circle at 45% 35%, #fffef8, #ececd4);
-    --ambient-glow: rgba(212, 175, 55, 0.05);
+    --ambient-glow: rgba(212, 175, 55, 0.045);
 }
 
 /* ====================================
@@ -77,5 +77,5 @@ html.dark
     --surface-glass: color-mix(in oklab, var(--surface) 90%, white 10%);
 
     --app-bg: radial-gradient(circle at 50% 45%, #1e1f26, #05060a);
-    --ambient-glow: rgba(212, 175, 55, 0.035);
+    --ambient-glow: rgba(212, 175, 55, 0.03);
 }
