@@ -1,6 +1,6 @@
 //File name: LapList.jsx
 //Author: Kyle McColgan
-//Date: 16 January 2026
+//Date: 19 January 2026
 //Description: This file contains the laps component for the React stopwatch project.
 
 import React from "react";
@@ -37,12 +37,12 @@ const LapList = ({ laps }) => {
 
           return (
             <motion.div
-              key={`${lap}-${lapNumber}`}
+              key={`lap-${lapNumber}`}
               className={`${styles.lap} ${highlight}`}
-              initial={{ opacity: 0, y: 4 }}
+              initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -4 }}
-              transition={{ duration: 0.18, ease: "easeOut" }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.16, ease: "easeOut" }}
               aria-label={`Lap ${lapNumber}, duration ${deltaTime.minutes} minutes ${deltaTime.seconds} seconds`}
             >
               <span className={styles.lapLabel}>Lap {lapNumber}</span>

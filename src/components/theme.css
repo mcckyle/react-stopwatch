@@ -5,9 +5,8 @@
 ======================================= */
 :root
 {
-    /* Accents. */
+    /* Brand Accent. */
     --gold: #d4af37;
-    --amber: #f2c94c;
 
     /* Fonts. */
     --font-sans: "Inter", system-ui, -apple-system, sans-serif;
@@ -27,16 +26,17 @@
     --space-lg: 1.5rem;
     --space-xl: 2.5rem;
 
-    /* Shape & Depth. */
+    /* Shapes. */
     --radius-sm: 0.5rem;
     --radius-md: 0.75rem;
     --radius-lg: 1.25rem;
+
     --radius: var(--radius-md);
     --blur: 14px;
 
     /* Semantic Accents. */
     --accent: var(--gold);
-    --accent-soft: color-mix(in oklab, var(--gold) 22%, transparent);
+    --accent-soft: color-mix(in oklab, var(--gold) 18%, transparent);
 
     /* Motion. */
     --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
@@ -50,15 +50,15 @@
 html.light
 {
     --surface: #fdfdfb;
-    --surface-muted: #f2f2e9;
+    --surface-muted: #f4f4ea;
 
-    --text: #181818;
-    --text-muted: rgba(0, 0, 0, 0.55);
+    --text: #161616;
+    --text-muted: rgba(0, 0, 0, 0.52);
 
-    --surface-border: rgba(0, 0, 0, 0.05);
-    --surface-glass: color-mix(in oklab, var(--surface) 94%, white 6%);
+    --surface-border: rgba(0, 0, 0, 0.06);
+    --surface-glass: color-mix(in oklab, var(--surface) 96%, white 4%);
 
-    --app-bg: radial-gradient(circle at 45% 35%, #fffef8, #ececd4);
+    --app-bg: radial-gradient(circle at 45% 35%, #fffef9, #ededdb);
     --ambient-glow: rgba(212, 175, 55, 0.045);
 }
 
@@ -67,15 +67,15 @@ html.light
 ======================================= */
 html.dark
 {
-    --surface: #17181d;
+    --surface: #181a1f;
     --surface-muted: #111217;
 
     --text: #f5f6f8;
-    --text-muted: rgba(246, 247, 249, 0.6);
+    --text-muted: rgba(246, 247, 249, 0.58);
 
-    --surface-border: rgba(255, 255, 255, 0.07);
-    --surface-glass: color-mix(in oklab, var(--surface) 90%, white 10%);
+    --surface-border: rgba(255, 255, 255, 0.08);
+    --surface-glass: color-mix(in oklab, var(--surface) 92%, white 8%);
 
-    --app-bg: radial-gradient(circle at 50% 45%, #1e1f26, #05060a);
+    --app-bg: radial-gradient(circle at 50% 45%, #1f2027, #05060a);
     --ambient-glow: rgba(212, 175, 55, 0.03);
 }

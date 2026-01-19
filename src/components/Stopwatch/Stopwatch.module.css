@@ -19,16 +19,19 @@
 ======================================= */
 .card
 {
+    flex: 1;
     display: grid;
     grid-template-rows:
-      minmax(0, 1fr)
+      1fr
       auto
-      minmax(0, 13vh);
+      minmax(10vh, 14vh);
 
     width: 100%;
-    height: 100dvh;
+    height: 100%;
 
-    padding: clamp(3.25rem, 6vh, 4.75rem) clamp(1rem, 3vw, 2.5rem) clamp(0.5rem, 1.5vh, 0.85rem);
+    padding: clamp(3rem, 6vh, 4.5rem)
+             clamp(1rem, 3vw, 2.25rem)
+             clamp(0.6rem, 1.8vh, 1rem);
 }
 
 /* ====================================
@@ -57,8 +60,8 @@
     align-items: center;
 
     width: 100%;
-    padding-block: 0.7rem 0.45rem;
-    opacity: 0.88;
+    padding-block: 0.8rem 0.6rem;
+    opacity: 0.92;
 }
 
 /* ====================================
@@ -72,12 +75,12 @@
     overflow-y: auto;
     overscroll-behavior: contain;
 
-    background: color-mix(in oklab, var(--surface-glass), transparent 48%);
-    backdrop-filter: blur(calc(var(--blur) * 0.8));
+    background: color-mix(in oklab, var(--surface-glass), transparent 42%);
+    backdrop-filter: blur(calc(var(--blur) * 0.75));
 
     border-radius: var(--radius-sm);
     border: 1px solid var(--surface-border);
 
-    padding: 0.35rem 0.7rem;
-    opacity: 0.48;
+    padding: 0.4rem 0.75rem;
+    color: var(--text-muted);
 }

@@ -9,7 +9,7 @@
     place-items: center;
 
     inline-size: 1ch;
-    block-size: 1.05em;
+    block-size: 1em;
 
     position: relative;
     overflow: hidden;
@@ -24,6 +24,7 @@
 .digit
 {
     display: inline-block;
+
     font-family: inherit;
     font-size: inherit;
     font-weight: inherit;
@@ -33,16 +34,16 @@
     font-variant-numeric: tabular-nums lining-nums;
     font-feature-settings: "tnum", "lnum";
 
-    transform-origin: 50% 60%;
+    transform-origin: 50% 62%;
     backface-visibility: hidden;
 
     will-change: transform, opacity;
 }
 
 /* ====================================
-   LIGHT THEME OVERRIDES STYLE.
+   LIGHT THEME TONE CONTROL STYLE.
 ======================================= */
 html.light .digit
 {
-    color: color-mix(in oklab, currentColor, #2a2300 18%);
+    color: color-mix(in oklab, currentColor, #2a2300 16%);
 }
