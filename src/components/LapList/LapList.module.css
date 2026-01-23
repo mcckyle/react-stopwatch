@@ -10,15 +10,15 @@
     margin: 0.6rem auto 0;
     padding: 0.25rem 0;
 
-    background: color-mix(in oklab, var(--surface-glass), transparent 68%);
-    backdrop-filter: blur(calc(var(--blur) * 0.45));
-    border-radius: calc(var(--radius) * 0.6);
+    background: color-mix(in oklab, var(--surface-glass), transparent 72%);
+    backdrop-filter: blur(calc(var(--blur) * 0.4));
+    border-radius: calc(var(--radius) * 0.55);
 
     max-height: 18vh;
     overflow-y: auto;
 
     scrollbar-width: thin;
-    scrollbar-color: color-mix(in oklab, var(--text), transparent 80%) transparent;
+    scrollbar-color: color-mix(in oklab, var(--text), transparent 82%) transparent;
 }
 
 /* ====================================
@@ -28,7 +28,7 @@
 {
     position: relative;
     display: grid;
-    grid-template-columns: 3.2rem 1fr auto;
+    grid-template-columns: 3.1rem 1fr auto;
     align-items: center;
 
     padding: 0.45rem 0.85rem;
@@ -37,44 +37,44 @@
     font-size: 0.74rem;
     line-height: 1.25;
     color: var(--text);
-    opacity: 0.62;
+    opacity: 0.56;
 
     transition: opacity 0.14s ease, background 0.14s ease;
 }
-.lap:hover { opacity: 0.88; background: color-mix(in oklab, white, transparent 97%); }
-.lap:not(:last-child) { border-bottom: 1px solid color-mix(in oklab, white, transparent 98%); }
+.lap:hover { opacity: 0.85; background: color-mix(in oklab, white, transparent 98%); }
+.lap:not(:last-child) { border-bottom: 1px solid color-mix(in oklab, white, transparent 98.5%); }
 
 /* ====================================
    TEXT ELEMENTS STYLES.
 ======================================= */
 .lapLabel
 {
-    font-size: 0.48rem;
+    font-size: 0.46rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    opacity: 0.32;
+    opacity: 0.28;
 
 }
 .lapTime { font-weight: 600; opacity: 0.95; font-variant-numeric: tabular-nums; }
-.lapDelta { min-width: 5.2ch; text-align: right; font-size: 0.64rem; opacity: 0.34; font-variant-numeric: tabular-nums; }
+.lapDelta { min-width: 5.2ch; text-align: right; font-size: 0.62rem; opacity: 0.32; font-variant-numeric: tabular-nums; }
 
 /* =========================================
    FASTEST / SLOWEST ACCENTS STYLES.
 ============================================ */
-.fastest, .slowest { opacity: 0.9; }
+.fastest, .slowest { opacity: 0.92; }
 .fastest::before,
 .slowest::before
 {
     content: "";
     position: absolute;
     left: 0;
-    top: 20%;
-    bottom: 20%;
-    width: 1.5px;
-    border-radius: 2px;
+    top: 22%;
+    bottom: 22%;
+    width: 1px;
+    border-radius: 1px;
 }
-.fastest::before { background: color-mix(in oklab, #38bdf8, transparent 22%); }
-.slowest::before { background: color-mix(in oklab, #ef4444, transparent 22%); }
+.fastest::before { background: color-mix(in oklab, #38bdf8, transparent 28%); }
+.slowest::before { background: color-mix(in oklab, #ef4444, transparent 28%); }
 
 /* ====================================
    LAP LIST MEDIA QUERY STYLES.
@@ -90,5 +90,5 @@
         row-gap: 0.28rem;
         padding: 0.5rem 0.8rem;
     }
-    .lapDelta { text-align: left; font-size: 0.62rem; }
+    .lapDelta { text-align: left; font-size: 0.6rem; }
 }

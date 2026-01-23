@@ -16,8 +16,8 @@ html, body, #root
 
     font-variant-numeric: tabular-nums lining-nums;
     font-feature-settings: "tnum" 1, "ss01" 1;
-    text-rendering: optimizeLegibility;
 
+    text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }

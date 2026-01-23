@@ -8,17 +8,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.6rem;
+    gap: 0.55rem;
 
     width: 100%;
     padding: 0.55rem 0.75rem;
 
-    background: color-mix(in oklab, var(--surface-glass), transparent 58%);
-    backdrop-filter: blur(calc(var(--blur) * 0.6));
-    border-radius: calc(var(--radius) * 0.9);
+    background: color-mix(in oklab, var(--surface-glass), transparent 65%);
+    backdrop-filter: blur(calc(var(--blur) * 0.45));
+    border-radius: var(--radius);
     border: 1px solid var(--surface-border);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06),
-                0 8px 24px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05),
+                0 6px 18px rgba(0, 0, 0, 0.14);
 }
 
 /* ====================================
@@ -31,10 +31,10 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
 
-    min-width: 92px;
+    min-width: 90px;
     padding: 0.5rem 1.05rem;
 
-    border-radius: 0.6rem;
+    border-radius: 0.55rem;
     border: none;
 
     background: transparent;
@@ -43,11 +43,11 @@
     cursor: pointer;
     user-select: none;
 
-    transition: background 0.16s ease, color 0.16s ease, box-shadow 0.16s ease, opacity 0.14s ease, transform 0.12s ease;
+    transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease, opacity 0.12s ease;
 }
 
 /* Disabled Button State Styles. */
-.button:disabled { opacity: 0.28; cursor: not-allowed; filter: saturate(0.6); }
+.button:disabled { opacity: 0.25; cursor: not-allowed; filter: saturate(0.6); }
 
 /* =========================================
    PRIMARY ACTION ( START / PAUSE ) STYLES.
@@ -55,11 +55,11 @@
 .primary
 {
     padding-block: 0.6rem;
-    background: linear-gradient(135deg, var(--gold), color-mix(in oklab, var(--gold), transparent 18%));
-    color: #181818;
+    background: linear-gradient(135deg, var(--gold), color-mix(in oklab, var(--gold), black 12%));
+    color: #1a1a1a;
 
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28),
-                0 4px 14px rgba(212, 175, 55, 0.28);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25),
+                0 4px 12px rgba(212, 175, 55, 0.3);
 }
 
 /* =========================================
@@ -67,8 +67,8 @@
 ============================================ */
 .secondary
 {
-    background: color-mix(in oklab, white, transparent 97%);
-    color: color-mix(in oklab, var(--text), white 52%);
+    background: color-mix(in oklab, var(--surface-glass), transparent 92%);
+    color: var(--text-muted);
 }
 
 /* =========================================
@@ -76,8 +76,8 @@
 ============================================ */
 .tertiary
 {
-    background: color-mix(in oklab, white, transparent 98%);
-    color: color-mix(in oklab, var(--text), #fecaca 38%);
+    background: color-mix(in oklab, var(--surface-glass), transparent 94%);
+    color: color-mix(in oklab, var(--text), #ef4444 32%);
 }
 
 /* ====================================

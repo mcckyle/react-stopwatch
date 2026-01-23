@@ -34,7 +34,7 @@
     --radius: var(--radius-md);
     --blur: 14px;
 
-    /* Semantic Accents. */
+    /* Accents. */
     --accent: var(--gold);
     --accent-soft: color-mix(in oklab, var(--gold) 18%, transparent);
 

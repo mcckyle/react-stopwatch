@@ -12,7 +12,7 @@
     width: 100%;
 
     padding: clamp(1rem, 2vw, 1.4rem);
-    padding-top: clamp(1.25rem, 3.5vh, 2.4rem);
+    padding-top: clamp(1.25rem, 3.5vh, 2.2rem);
 
     background: var(--app-bg);
     color: var(--text);
@@ -31,23 +31,23 @@
 {
     content: "";
     position: absolute;
-    inset: -20%;
+    inset: -18%;
     z-index: -1;
 
     background: radial-gradient(
         circle at 50% 38%,
         var(--ambient-glow),
-        transparent 70%
+        transparent 72%
     );
 
-    opacity: 0.025;
-    filter: blur(160px);
+    opacity: 0.02;
+    filter: blur(140px);
 
-    animation: drift 320s ease-in-out infinite alternate;
+    animation: drift 280s ease-in-out infinite alternate;
 }
 
 @keyframes drift
 {
     from { transform: translate(0, 0) scale(1); }
-    to { transform: translate(0.4%, -0.5%) scale(1.01); }
+    to { transform: translate(0.35%, -0.45%) scale(1.01); }
 }

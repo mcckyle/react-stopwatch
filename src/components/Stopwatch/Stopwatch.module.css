@@ -24,14 +24,14 @@
     grid-template-rows:
       1fr
       auto
-      minmax(10vh, 14vh);
+      minmax(9vh, 13vh);
 
     width: 100%;
     height: 100%;
 
-    padding: clamp(3rem, 6vh, 4.5rem)
-             clamp(1rem, 3vw, 2.25rem)
-             clamp(0.6rem, 1.8vh, 1rem);
+    padding: clamp(2.5rem, 5.5vh, 4rem)
+             clamp(1rem, 3vw, 2rem)
+             clamp(0.5rem, 1.5vh, 0.9rem);
 }
 
 /* ====================================
@@ -45,7 +45,7 @@
     width: 100%;
     height: 100%;
 
-    padding-inline: clamp(1rem, 7vw, 5rem);
+    padding-inline: clamp(1rem, 6vw, 4.5rem);
     overflow: hidden;
     pointer-events: none;
 }
@@ -60,12 +60,12 @@
     align-items: center;
 
     width: 100%;
-    padding-block: 0.8rem 0.6rem;
-    opacity: 0.92;
+    padding-block: 0.75rem 0.5rem;
+    opacity: 0.9;
 }
 
 /* ====================================
-   LAP HISTORY PLANE STYLES.
+   LAP HISTORY SURFACE STYLES.
 ======================================= */
 .lapsArea
 {
@@ -75,12 +75,10 @@
     overflow-y: auto;
     overscroll-behavior: contain;
 
-    background: color-mix(in oklab, var(--surface-glass), transparent 42%);
-    backdrop-filter: blur(calc(var(--blur) * 0.75));
-
+    background: color-mix(in oklab, var(--surface-glass), transparent 48%);
+    backdrop-filter: blur(calc(var(--blur) * 0.7));
     border-radius: var(--radius-sm);
-    border: 1px solid var(--surface-border);
 
-    padding: 0.4rem 0.75rem;
+    padding: 0.35rem 0.65rem;
     color: var(--text-muted);
 }

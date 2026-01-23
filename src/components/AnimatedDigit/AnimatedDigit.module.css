@@ -8,7 +8,7 @@
     display: inline-grid;
     place-items: center;
 
-    inline-size: 1ch;
+    inline-size: 1.05ch;
     block-size: 1em;
 
     position: relative;
@@ -34,16 +34,8 @@
     font-variant-numeric: tabular-nums lining-nums;
     font-feature-settings: "tnum", "lnum";
 
-    transform-origin: 50% 62%;
+    transform-origin: 50% 58%;
     backface-visibility: hidden;
 
     will-change: transform, opacity;
-}
-
-/* ====================================
-   LIGHT THEME TONE CONTROL STYLE.
-======================================= */
-html.light .digit
-{
-    color: color-mix(in oklab, currentColor, #2a2300 16%);
 }

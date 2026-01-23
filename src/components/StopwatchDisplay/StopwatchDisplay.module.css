@@ -1,7 +1,7 @@
 /* Filename: src/components/StopwatchDisplay/StopwatchDisplay.module.css */
 
 /* =========================================
-   STOPWATCH DISPLAY ROOT STYLES.
+   STOPWATCHDISPLAY ROOT STYLES.
 ============================================ */
 .display
 {
@@ -45,15 +45,15 @@
     width: 100%;
     height: 100%;
 
-    font-size: min(38vmin, 28vw);
-    line-height: 0.84;
+    font-size: min(36vmin, 26vw);
+    line-height: 0.88;
 
     white-space: nowrap;
     text-align: center;
-    transform: translateY(-0.045em); /* Optical Centering. */
+    transform: translateY(-0.035em); /* Optical Centering. */
 
-    text-shadow: 0 0 24px color-mix(in srgb, var(--accent) 10%, transparent),
-                 0 0 72px color-mix(in srgb, var(--accent) 4%, transparent);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.04),
+                 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
 /* ====================================
@@ -66,19 +66,19 @@
 ======================================= */
 .separator
 {
-    font-size: 0.46em;
+    font-size: 0.44em;
     font-weight: 500;
 
-    opacity: 0.16;
-    transform: translateY(-0.08em);
+    opacity: 0.14;
+    transform: translateY(-0.06em);
     user-select: none;
     pointer-events: none;
 }
 
 /* ====================================
-   STOPWATCH DISPLAY MEDIA QUERY STYLES.
+   STOPWATCHDISPLAY MEDIA QUERY STYLES.
 ======================================= */
 @media (max-width: 768px)
 {
-    .line { font-size: min(34vmin, 16vw); line-height: 0.86; }
+    .line { font-size: min(32vmin, 16vw); line-height: 0.9; }
 }
