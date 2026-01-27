@@ -30,8 +30,8 @@
     --radius-sm: 0.5rem;
     --radius-md: 0.75rem;
     --radius-lg: 1.25rem;
-
     --radius: var(--radius-md);
+
     --blur: 14px;
 
     /* Accents. */
