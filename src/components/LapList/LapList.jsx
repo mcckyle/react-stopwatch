@@ -1,6 +1,6 @@
 //File name: LapList.jsx
 //Author: Kyle McColgan
-//Date: 26 January 2026
+//Date: 30 January 2026
 //Description: This file contains the laps component for the React stopwatch project.
 
 import React from "react";
@@ -40,23 +40,24 @@ const LapList = ({ laps }) => {
             delta === fastest ? styles.fastest :
             delta === slowest ? styles.slowest : "";
 
+          const fullTime =
+            time.hours !== "00"
+              ? `${time.hours}:${time.minutes}:${time.seconds}.${time.centiSeconds}`
+              : `${time.minutes}:${time.seconds}.${time.centiSeconds}`;
+
           return (
             <motion.div
               key={`lap-${lapNumber}`}
               className={`${styles.lap} ${highlight}`}
-              initial={{ opacity: 0, y: 2 }}
+              initial={{ opacity: 0, y: 1 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -2 }}
-              transition={{ duration: 0.12, ease: "easeOut" }}
+              exit={{ opacity: 0, y: -1 }}
+              transition={{ duration: 0.1, ease: "easeOut" }}
               aria-label={`Lap ${lapNumber}, duration ${deltaTime.minutes} minutes ${deltaTime.seconds} seconds`}
             >
               <span className={styles.lapLabel}>Lap {lapNumber}</span>
 
-              <span className={styles.lapTime}>
-                {time.hours !== "00"
-                    ? `${time.hours}:${time.minutes}:${time.seconds}.${time.centiSeconds}`
-                    : `${time.minutes}:${time.seconds}.${time.centiSeconds}`}
-              </span>
+              <span className={styles.lapTime}>{fullTime}</span>
 
               <span className={styles.lapDelta}>
                 +{deltaTime.minutes}:{deltaTime.seconds}.{deltaTime.centiSeconds}

@@ -5,8 +5,10 @@
 ======================================= */
 :root
 {
-    /* Brand Accent. */
+    /* Brand. */
     --gold: #d4af37;
+    --accent: var(--gold);
+    --accent-soft: color-mix(in oklab, var(--gold) 18%, transparent);
 
     /* Fonts. */
     --font-sans: "Inter", system-ui, -apple-system, sans-serif;
@@ -32,11 +34,8 @@
     --radius-lg: 1.25rem;
     --radius: var(--radius-md);
 
+    /* Effects. */
     --blur: 14px;
-
-    /* Accents. */
-    --accent: var(--gold);
-    --accent-soft: color-mix(in oklab, var(--gold) 18%, transparent);
 
     /* Motion. */
     --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
