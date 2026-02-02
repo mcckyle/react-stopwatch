@@ -12,7 +12,7 @@ html, body, #root
 
     font-family: "Inter", system-ui, -apple-system, sans-serif;
     font-size: 16px;
-    line-height: 1.45;
+    line-height: 1.5;
 
     font-variant-numeric: tabular-nums lining-nums;
     font-feature-settings: "tnum" 1, "ss01" 1;
@@ -22,7 +22,7 @@ html, body, #root
     -moz-osx-font-smoothing: grayscale;
 }
 
-body { background: var(--app-bg); overscroll-behavior: none; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+body { background: var(--app-bg); overscroll-behavior: none; touch-action: manipulation; -webkit-tap-highlight-color: transparent; user-select: none; }
 
 /* ====================================
    REDUCED MOTION MEDIA QUERY STYLES.

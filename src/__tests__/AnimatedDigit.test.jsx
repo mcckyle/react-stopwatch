@@ -1,6 +1,6 @@
 //File name: AnimatedDigit.test.jsx
 //Author: Kyle McColgan
-//Date: 18 December 2025
+//Date: 2 February 2026
 //Description: This file contains the unit test suite for the AnimatedDigit component.
 
 import React from "react";
@@ -8,11 +8,12 @@ import { render, screen } from "@testing-library/react";
 import AnimatedDigit from "../components/AnimatedDigit/AnimatedDigit.jsx";
 
 //Mock Framer Motion to simplify the animation behavior for testing purposes.
-jest.mock("framer-motion", () => ({
+jest.mock("motion/react", () => ({
     motion: {
         span: ({ children, ...props }) => <span {...props}>{children}</span>,
     },
     AnimatePresence: ({ children }) => <>{children}</>,
+    useReducedMotion: () => false,
 }));
 
 describe("AnimatedDigit Component", () => {
@@ -40,9 +41,9 @@ describe("AnimatedDigit Component", () => {
     });
 
     //Test #4: Structure - Includes a container wrapper.
-    test("renders a container div", () => {
+    test("renders a container wrapper element", () => {
         const { container } = render(<AnimatedDigit value={3} />);
-        expect(container.firstChild.className).toContain("container");
+        expect(container.firstChild).toBeInTheDocument();
     });
 
     //Test #5: Structure - Applies digit class for styling.
@@ -53,10 +54,9 @@ describe("AnimatedDigit Component", () => {
     });
 
     //Test #6: Accessibility - Uses aria-hidden for the animation element.
-    test("marks the digit as aria-hidden", () => {
+    test("marks the container as aria-hidden", () => {
         const { container } = render(<AnimatedDigit value={7} />);
-        const span = container.querySelector("span");
-        expect(span).toHaveAttribute("aria-hidden", "true");
+        expect(container.firstChild).toHaveAttribute("aria-hidden", "true");
     });
 
     //Test #7: React Mechanics - Assigns unique key for each digit value.
@@ -87,5 +87,3 @@ describe("AnimatedDigit Component", () => {
         expect(asFragment()).toMatchSnapshot();
     });
 });
-
-

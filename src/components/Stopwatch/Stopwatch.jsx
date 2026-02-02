@@ -1,6 +1,6 @@
 //File name: Stopwatch.jsx
 //Author: Kyle McColgan
-//Date: 30 January 2026
+//Date: 2 February 2026
 //Description: This file contains the parent Stopwatch component for the React stopwatch project.
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
@@ -76,9 +76,9 @@ const Stopwatch = ({ onToggleTheme }) => {
     <motion.section
       className={styles.container}
       aria-label="Stopwatch"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.28, ease: "easeOut" }}
+      initial={{ opacity: 0, y: 4 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
     >
       <StopwatchHeader theme={theme} onToggleTheme={onToggleTheme} />
 
@@ -91,20 +91,18 @@ const Stopwatch = ({ onToggleTheme }) => {
           <StopwatchDisplay time={time} />
         </section>
 
-        <div className={styles.bottomDock}>
-          <section className={styles.controlsArea}>
-            <StopwatchControls
-              isRunning={isRunning}
-              toggle={toggle}
-              reset={reset}
-              recordLap={recordLap}
-            />
-          </section>
+        <section className={styles.interactionArea}>
+          <StopwatchControls
+            isRunning={isRunning}
+            toggle={toggle}
+            reset={reset}
+            recordLap={recordLap}
+          />
 
-          <section className={styles.lapsArea} aria-label="Lap history">
+          <div className={styles.lapsArea} aria-label="Lap history">
             <LapList laps={laps} />
-          </section>
-        </div>
+          </div>
+        </section>
       </div>
 
         {showHelp && <HelpModal onClose={() => setShowHelp(false)} />}

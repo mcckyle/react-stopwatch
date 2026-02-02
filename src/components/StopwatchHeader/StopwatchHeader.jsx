@@ -1,6 +1,6 @@
 //File name: StopwatchHeader.jsx
 //Author: Kyle McColgan
-//Date: 26 January 2026
+//Date: 2 February 2026
 //Description: This file contains the header component for the React stopwatch project.
 
 import React from "react";

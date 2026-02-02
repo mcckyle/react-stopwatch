@@ -7,7 +7,6 @@
 {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
 
     width: 100%;
@@ -25,13 +24,13 @@
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     width: 100%;
-    padding: clamp(2.5rem, 6vh, 4rem)
-             clamp(1rem, 3vw, 2rem)
-             clamp(0.5rem, 1.2vh, 0.9rem);
+    padding: clamp(2.25rem, 6vh, 3.75rem)
+             clamp(1rem, 4vw, 2rem)
+             clamp(0.75rem, 2vh, 1.25rem);
 }
 
 /* ====================================
@@ -43,13 +42,22 @@
     place-items: center;
 
     width: 100%;
-    min-height: 0;
-
-    padding-inline: clamp(1rem, 6vw, 4.5rem);
-    overflow: hidden;
+    padding-inline: clamp(1rem, 6vw, 4rem);
     pointer-events: none;
 }
-.bottomDock { display: flex; flex-direction: column; width: 100%; gap: 0.6rem; }
+
+/* ====================================
+   STOPWATCH INTERACTION AREA STYLES.
+======================================= */
+.interactionArea
+{
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    width: 100%;
+    margin-top: clamp(1.25rem, 3vh, 2rem);
+}
 
 /* ====================================
    CONTROLS DOCK STYLES.
@@ -61,8 +69,7 @@
     align-items: center;
 
     width: 100%;
-    padding-block: 0.6rem 0.5rem;
-    opacity: 0.9;
+    opacity: 0.92;
 }
 
 /* ====================================
@@ -71,16 +78,16 @@
 .lapsArea
 {
     width: 100%;
-    min-height: 0;
+    max-height: 32vh;
 
     overflow-y: auto;
     overscroll-behavior: contain;
 
-    background: color-mix(in oklab, var(--surface-glass), transparent 58%);
-    backdrop-filter: blur(calc(var(--blur) * 0.65));
+    background: color-mix(in oklab, var(--surface-glass), transparent 55%);
+    backdrop-filter: blur(var(--blur));
     border-radius: var(--radius-sm);
     border: 1px solid var(--surface-border);
-    padding: 0.35rem 0.6rem;
-    color: var(--text-muted);
+    padding: 0.4rem 0.65rem;
     font-size: var(--text-sm);
+    color: var(--text-muted);
 }
