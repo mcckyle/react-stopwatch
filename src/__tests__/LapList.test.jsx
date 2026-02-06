@@ -1,12 +1,12 @@
 //File name: LapList.test.jsx
 //Author: Kyle McColgan
-//Date: 8 January 2026
+//Date: 4 February 2026
 //Description: This file contains the unit test suite for the LapList component.
 
 import React from "react";
-import { render, screen } from "@testing-library/react";
-import { formatTime } from "../utils/formatTime";
+import { render, screen, within } from "@testing-library/react";
 import LapList from "../components/LapList/LapList.jsx";
+import { formatTime } from "../utils/formatTime";
 
 //Mock Framer Motion and dependencies to simplify the animation behavior for testing purposes.
 jest.mock("framer-motion", () => ({
@@ -16,12 +16,12 @@ jest.mock("framer-motion", () => ({
     AnimatePresence: ({ children }) => <>{children}</>,
 }));
 
+//Mock formatTime for predictable output...
 jest.mock("../utils/formatTime", () => ({
     formatTime: jest.fn(),
 }));
 
 describe("LapList Component", () => {
-
     beforeEach(() => {
         jest.clearAllMocks();
         formatTime.mockImplementation((time, includeCenti) => ({
@@ -38,10 +38,13 @@ describe("LapList Component", () => {
         expect(container.firstChild).toBeNull();
     });
 
-    //Test #2: Rendering - Renders the correct number of laps.
-    test("returns one div per lap entry", () => {
+    //Test #2: Rendering - Renders the correct number of lap rows.
+    test("returns one lap entry per lap", () => {
         render(<LapList laps={[1000, 800, 400]} />);
-        expect(screen.getAllByText(/Lap/i)).toHaveLength(3);
+
+        //Only select the lap labels, ignoring the header text.
+        const lapLabels = screen.getAllByText(/^Lap \d+$/);
+        expect(lapLabels).toHaveLength(3);
     });
 
     //Test #3: Accessibility - Renders an accessible log when laps exist.
@@ -52,11 +55,11 @@ describe("LapList Component", () => {
         expect(log).toBeInTheDocument();
     });
 
-    //Test #4: Data Logic - Displays the lap numbers in reverse order.
-    test("renders laps in reverse order (Lap 3 first)", () => {
+    //Test #4: Data Logic - Laps appear in reverse order (latest first).
+    test("renders laps in reverse order with correct numbering", () => {
         render(<LapList laps={[1000, 800, 400]} />);
-        const labels = screen.getAllByText(/Lap/i).map(element => element.textContent);
-        expect(labels).toEqual(["Lap 3", "Lap 2", "Lap 1"]);
+        const lapLabels = screen.getAllByText(/^Lap \d+$/).map(element => element.textContent);
+        expect(lapLabels).toEqual(["Lap 3", "Lap 2", "Lap 1"]);
     });
 
     //Test #5: Function Calls - Calls formatTime correctly for each lap and delta.

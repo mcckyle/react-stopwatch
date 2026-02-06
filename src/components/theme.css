@@ -8,7 +8,7 @@
     /* Brand. */
     --gold: #d4af37;
     --accent: var(--gold);
-    --accent-soft: color-mix(in oklab, var(--gold) 14%, transparent);
+    --accent-soft: color-mix(in oklab, var(--accent) 14%, transparent);
 
     /* Fonts. */
     --font-sans: "Inter", system-ui, -apple-system, sans-serif;

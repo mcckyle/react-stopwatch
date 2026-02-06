@@ -1,15 +1,17 @@
 //File name: LapList.jsx
 //Author: Kyle McColgan
-//Date: 2 February 2026
+//Date: 4 February 2026
 //Description: This file contains the laps component for the React stopwatch project.
 
-import React from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { formatTime } from "../../utils/formatTime";
 
 import styles from "./LapList.module.css";
 
-const LapList = ({ laps }) => {
+const LapList = ({ laps, onClear }) => {
+  const [confirmClear, setConfirmClear] = useState(false);
+
   if ( ! laps.length)
   {
       return null;
@@ -20,18 +22,44 @@ const LapList = ({ laps }) => {
   const fastest = Math.min(...lapDurations);
   const slowest = Math.max(...lapDurations);
 
+  const handleClearClick = () => {
+    if (confirmClear)
+    {
+      onClear();
+      setConfirmClear(false);
+    }
+    else
+    {
+      setConfirmClear(true);
+    }
+  };
+
   return (
-    <div
+    <section
       className={styles.lapList}
       role="log"
       aria-label="Lap history"
       aria-live="polite"
     >
+      {/* Header. */}
+      <header className={styles.header}>
+        <span className={styles.title}>Laps</span>
+
+        <button
+          type="button"
+          className={`${styles.clearButton} ${confirmClear ? styles.confirm : ""}`}
+          onClick={handleClearClick}
+          onBlur={() => setConfirmClear(false)}
+          aria-label="Clear all laps"
+        >
+          {confirmClear ? "Confirm" : "Clear"}
+        </button>
+      </header>
+
       <AnimatePresence initial={false}>
         {laps.map((lap, index) => {
           const lapNumber = laps.length - index;
-          const prevLap = laps[index + 1] ?? 0;
-          const delta = lap - prevLap;
+          const delta = lap - (laps[index + 1] ?? 0);
 
           const time = formatTime(lap, true);
           const deltaTime = formatTime(delta, true);
@@ -54,8 +82,7 @@ const LapList = ({ laps }) => {
               initial={{ opacity: 0, y: 2 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -2 }}
-              transition={{ duration: 0.16, ease: "easeOut" }}
-              aria-label={`Lap ${lapNumber}, duration ${deltaTime.minutes} minutes ${deltaTime.seconds} seconds`}
+              transition={{ duration: 0.14, ease: "easeOut" }}
             >
               <span className={styles.lapLabel}>Lap {lapNumber}</span>
               <span className={styles.lapTime}>{fullTime}</span>
@@ -66,7 +93,7 @@ const LapList = ({ laps }) => {
           );
         })}
       </AnimatePresence>
-    </div>
+    </section>
   );
 };
 

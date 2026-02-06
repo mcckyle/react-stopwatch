@@ -1,13 +1,13 @@
 # react-stopwatch
 
-A simple, modern stopwatch app built with **React**, **Mantine UI**, and **Vite**. Designed for focus, simplicity, and speed.
+A simple, modern stopwatch app built with **React**, **Vite**, and **Mantine UI**. Designed for focus, simplicity, and speed.
 
 ---
 
 ## Features
 
 - ⚡ Instant load with [Vite](https://vitejs.dev/)
-- 🎨 Beautiful UI with [Mantine UI](https://mantine.dev/)
+- 🎨 Modern UI with [Mantine UI](https://mantine.dev/)
 - 💡 Minimalist design, dark-themed interface
 - 📱 Responsive layout for desktop and mobile
 - 🧠 Built with composability and future enhancements in mind!
@@ -109,7 +109,7 @@ react-stopwatch/
 │   ├── App.jsx           # Main React application component.
 │   ├── main.jsx          # React DOM entry point.
 │   ├── App.css           # Styles specific to App.jsx.
-│   └── index.css         # Global styles and Tailwind imports.
+│   └── index.css         # Global document-level styles.
 │
 ├── .gitignore            # Specifies intentionally untracked files and folders to ignore.
 ├── LICENSE               # Open source license for the project.
@@ -134,8 +134,8 @@ react-stopwatch/
 - [x] Highlight fastest and slowest lap.
 - [x] Add lap time deltas (difference from previous lap).
 - [x] Add light/dark mode toggle with animation.
+- [x] Clear laps functionality.
 - [ ] Export laps to CSV or JSON.
-- [ ] Clear laps functionality.
 
 ---
 
@@ -148,10 +148,10 @@ Feel free to use it as inspiration, extend it for your own projects, or contribu
 
 ## 🙌 Acknowledgments
 
-This project was made possible thanks to the open-source community and the following tools, frameworks, and libraries:
+This project was made possible thanks to the open-source community and the following technologies:
 
 - [React](https://react.dev) - A modern library designed specifically for building fast, interactive UIs.
-- [Vite](https://vitejs.dev/) - Next-generation frontend tooling with lightning-fase dev server and build optimizations.
+- [Vite](https://vitejs.dev/) - Next-generation frontend tooling with lightning-fast dev server and build optimizations.
 - [Mantine UI](https://mantine.dev/) - Accessible, fully-featured React components for building polished interfaces.
 - [Framer Motion](https://www.framer.com/motion/) - Animation library powering fluid, accessible transitions.
 

@@ -1,6 +1,6 @@
 //File name: Stopwatch.jsx
 //Author: Kyle McColgan
-//Date: 2 February 2026
+//Date: 4 February 2026
 //Description: This file contains the parent Stopwatch component for the React stopwatch project.
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
@@ -31,6 +31,11 @@ const Stopwatch = ({ onToggleTheme }) => {
     const current = getCurrentTime();
     setLaps((prev) => [current, ...prev]);
   }, [getCurrentTime]);
+
+  const clearLaps = useCallback(() => {
+    setLaps([]);
+    localStorage.removeItem(LAP_STORAGE_KEY);
+  }, []);
 
   //Load laps from browser localStorage.
   useEffect(() => {
@@ -80,9 +85,12 @@ const Stopwatch = ({ onToggleTheme }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
     >
+      {/* Header. */}
       <StopwatchHeader theme={theme} onToggleTheme={onToggleTheme} />
 
+      {/* Core Frame. */}
       <div className={styles.frame}>
+        {/* Time Display. */}
         <section
           className={styles.displayArea}
           aria-live="polite"
@@ -91,6 +99,7 @@ const Stopwatch = ({ onToggleTheme }) => {
           <StopwatchDisplay time={time} />
         </section>
 
+        {/* Interaction. */}
         <section className={styles.interactionArea}>
           <StopwatchControls
             isRunning={isRunning}
@@ -100,7 +109,7 @@ const Stopwatch = ({ onToggleTheme }) => {
           />
 
           <div className={styles.lapsArea} aria-label="Lap history">
-            <LapList laps={laps} />
+            <LapList laps={laps} onClear={clearLaps} />
           </div>
         </section>
       </div>

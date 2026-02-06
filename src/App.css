@@ -5,7 +5,8 @@
 ======================================= */
 .app
 {
-    display: block;
+    display: grid;
+    place-items: center;
 
     min-height: 100dvh;
     width: 100%;
@@ -27,7 +28,7 @@
 {
     content: "";
     position: absolute;
-    inset: -30%;
+    inset: -20%;
     z-index: -1;
 
     background: radial-gradient(
@@ -36,8 +37,8 @@
         transparent 80%
     );
 
-    opacity: 0.008;
-    filter: blur(220px);
+    opacity: 0.012;
+    filter: blur(180px);
 
     animation: drift 480s ease-in-out infinite alternate;
 }

@@ -34,7 +34,7 @@
     font-variant-numeric: tabular-nums lining-nums;
     font-feature-settings: "tnum", "lnum";
 
-    transform-origin: 50% 55%;
+    transform-origin: 50% 52%;
     backface-visibility: hidden;
 
     will-change: transform, opacity;

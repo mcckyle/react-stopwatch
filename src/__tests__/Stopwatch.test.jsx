@@ -1,6 +1,6 @@
 //File name: Stopwatch.test.jsx
 //Author: Kyle McColgan
-//Date: 26 October 2025
+//Date: 4 February 2026
 //Description: This file contains the unit test suite for the Stopwatch component.
 
 import React from "react";
@@ -17,7 +17,7 @@ jest.mock("../hooks/useKeyboardShortcuts");
 describe("Stopwatch Component", () => {
     const mockToggle = jest.fn();
     const mockReset = jest.fn();
-    const mockGetCurrentTime = jest.fn(() => "00:00:01");
+    const mockGetCurrentTime = jest.fn(() => 1);
 
     beforeEach(() => {
         useStopWatchModule.useStopwatch.mockReturnValue({
@@ -93,15 +93,21 @@ describe("Stopwatch Component", () => {
     });
 
     //Test #8
-    test("8. Opens HelpModal on showHelp = true", () => {
-        render(<Stopwatch />);
-        act(() => {
-            fireEvent.keyDown(document, { code: "Slash", shiftKey: true });
+    test("8. Opens HelpModal when showHelp gets triggered manually", () => {
+        let helpCallback;
 
+        useKeyboardShortcutsModule.useKeyboardShortcuts.mockImplementation(({ onOpenHelp }) => {
+            helpCallback = onOpenHelp;
         });
-        //Simulate the HelpModal manually...
-        fireEvent.click(screen.getByRole("button", { name: /lap/i }));
-        expect(screen.queryByText(/keyboard shortcuts/i)).not.toBeInTheDocument();
+
+        render(<Stopwatch />);
+
+        act(() => {
+            helpCallback(); //Manually trigger onOpenHelp().
+        });
+
+        const modal = screen.getByText(/keyboard shortcuts/i);
+        expect(modal).toBeInTheDocument();
     });
 
     //Test #9
