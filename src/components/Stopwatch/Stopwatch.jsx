@@ -1,10 +1,11 @@
 //File name: Stopwatch.jsx
 //Author: Kyle McColgan
-//Date: 4 February 2026
+//Date: 6 February 2026
 //Description: This file contains the parent Stopwatch component for the React stopwatch project.
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
+
 import { useStopwatch } from "../../hooks/useStopwatch";
 import { useKeyboardShortcuts } from "../../hooks/useKeyboardShortcuts";
 import { useTheme } from "../../context/ThemeContext.jsx";
@@ -81,26 +82,22 @@ const Stopwatch = ({ onToggleTheme }) => {
     <motion.section
       className={styles.container}
       aria-label="Stopwatch"
-      initial={{ opacity: 0, y: 4 }}
+      initial={{ opacity: 0, y: 6 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, ease: "easeOut" }}
+      transition={{ duration: 0.28, ease: "easeOut" }}
     >
       {/* Header. */}
       <StopwatchHeader theme={theme} onToggleTheme={onToggleTheme} />
 
       {/* Core Frame. */}
-      <div className={styles.frame}>
+      <main className={styles.frame}>
         {/* Time Display. */}
-        <section
-          className={styles.displayArea}
-          aria-live="polite"
-          aria-atomic="true"
-        >
+        <section className={styles.display}>
           <StopwatchDisplay time={time} />
         </section>
 
         {/* Interaction. */}
-        <section className={styles.interactionArea}>
+        <section className={styles.controls}>
           <StopwatchControls
             isRunning={isRunning}
             toggle={toggle}
@@ -108,11 +105,13 @@ const Stopwatch = ({ onToggleTheme }) => {
             recordLap={recordLap}
           />
 
-          <div className={styles.lapsArea} aria-label="Lap history">
-            <LapList laps={laps} onClear={clearLaps} />
-          </div>
+          {laps.length > 0 && (
+            <div className={styles.laps}>
+              <LapList laps={laps} onClear={clearLaps} />
+            </div>
+          )}
         </section>
-      </div>
+      </main>
 
         {showHelp && <HelpModal onClose={() => setShowHelp(false)} />}
     </motion.section>

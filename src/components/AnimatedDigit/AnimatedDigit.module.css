@@ -25,14 +25,9 @@
 {
     display: inline-block;
 
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    text-align: center;
+    font: inherit;
     line-height: 1;
-
-    font-variant-numeric: tabular-nums lining-nums;
-    font-feature-settings: "tnum", "lnum";
+    text-align: center;
 
     transform-origin: 50% 52%;
     backface-visibility: hidden;

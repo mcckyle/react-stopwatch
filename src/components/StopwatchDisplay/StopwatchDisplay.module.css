@@ -17,7 +17,7 @@
 }
 
 /* ====================================
-   STOPWATCHDISPLAY TIME CONTAINER STYLES.
+   STOPWATCHDISPLAY TIME ELEMENT STYLES.
 ======================================= */
 .time
 {
@@ -28,13 +28,13 @@
     place-items: center;
 
     font-family: var(--font-mono);
-    font-weight: 500;
+    font-weight: 450;
     color: var(--text);
     text-rendering: geometricPrecision;
 }
 
 /* ====================================
-   STOPWATCHDISPLAY DIGIT ROW (FULL-WIDTH GRID) STYLES.
+   STOPWATCHDISPLAY DIGIT ROW STYLES.
 ======================================= */
 .line
 {
@@ -46,15 +46,14 @@
     width: 100%;
     height: 100%;
 
-    font-size: clamp(6rem, 28vmin, 17rem);/*min(34vmin, 24vw);*/
+    font-size: clamp(5.75rem, 26vmin, 16rem);
     line-height: 0.92;
 
     white-space: nowrap;
     text-align: center;
     transform: translateY(-0.02em); /* Optical Centering. */
 
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.03),
-                 0 6px 18px rgba(0, 0, 0, 0.06);
+    text-shadow: 0 0.6px 0 rgba(0, 0, 0, 0.04);
 }
 
 /* ====================================
@@ -67,11 +66,11 @@
 ======================================= */
 .separator
 {
-    font-size: 0.32em;
+    font-size: 0.28em;
     font-weight: 400;
 
-    opacity: 0.14;
-    transform: translateY(-0.04em);
+    opacity: 0.12;
+    transform: translateY(-0.05em);
     user-select: none;
     pointer-events: none;
 }
@@ -81,5 +80,6 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .line { font-size: clamp(4.25rem, 22vmin, 11.5rem);/*min(30vmin, 16vw);*/ line-height: 0.94; }
+    .line { font-size: clamp(4.1rem, 21vmin, 11rem); line-height: 0.94; }
+    .separator { opacity: 0.14; }
 }

@@ -6,8 +6,7 @@
 :root
 {
     /* Brand. */
-    --gold: #d4af37;
-    --accent: var(--gold);
+    --accent: #d4af37;
     --accent-soft: color-mix(in oklab, var(--accent) 14%, transparent);
 
     /* Fonts. */
@@ -48,8 +47,8 @@
 ======================================= */
 html.light
 {
-    --surface: #fefefe;
-    --surface-muted: #f3f3ee;
+    --surface: #ffffff;
+    --surface-muted: #f4f4ee;
 
     --text: #161616;
     --text-muted: rgba(0, 0, 0, 0.52);
@@ -57,7 +56,7 @@ html.light
     --surface-border: rgba(0, 0, 0, 0.06);
     --surface-glass: color-mix(in oklab, var(--surface) 94%, white 6%);
 
-    --app-bg: radial-gradient(circle at 45% 35%, #ffffff, #e9e9dc);
+    --app-bg: radial-gradient(circle at 45% 35%, #ffffff, #ececdc);
     --ambient-glow: rgba(212, 175, 55, 0.04);
 }
 
@@ -67,7 +66,7 @@ html.light
 html.dark
 {
     --surface: #17181d;
-    --surface-muted: #101116;
+    --surface-muted: #0f1015;
 
     --text: #f5f6f8;
     --text-muted: rgba(246, 247, 249, 0.56);

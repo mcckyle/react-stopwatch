@@ -17,6 +17,9 @@ html, body, #root
     font-variant-numeric: tabular-nums lining-nums;
     font-feature-settings: "tnum" 1, "ss01" 1;
 
+    background: Canvas;
+    color-scheme: light dark;
+
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -29,9 +32,9 @@ body { overscroll-behavior: none; touch-action: manipulation; -webkit-tap-highli
 ======================================= */
 @media (prefers-reduced-motion: reduce)
 {
-    *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
+    *, *::before, *::after
+    {
+        animation: none !important;
+        transition: none !important;
     }
 }

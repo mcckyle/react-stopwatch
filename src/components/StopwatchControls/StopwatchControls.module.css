@@ -1,24 +1,24 @@
 /* Filename: src/components/StopwatchControls/StopwatchControls.module.css */
 
 /* ====================================
-   CONTROLS DOCK STYLES.
+   STOPWATCHCONTROLS DOCK STYLES.
 ======================================= */
 .controls
 {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.6rem;
+    gap: 0.55rem;
 
     width: 100%;
-    padding: 0.6rem 0.8rem;
+    padding: 0.6rem 0.75rem;
 
-    background: color-mix(in oklab, var(--surface-glass), transparent 78%);
-    backdrop-filter: blur(calc(var(--blur) * 0.5));
+    background: color-mix(in oklab, var(--surface-glass), transparent 82%);
+    backdrop-filter: blur(calc(var(--blur) * 0.45));
     border-radius: var(--radius);
     border: 1px solid var(--surface-border);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05),
-                0 8px 22px rgba(0, 0, 0, 0.16);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04),
+                0 6px 18px rgba(0, 0, 0, 0.14);
 }
 
 /* ====================================
@@ -28,7 +28,7 @@
 {
     font-family: var(--font-mono);
     font-weight: 600;
-    letter-spacing: 0.075em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
 
     min-width: 88px;
@@ -43,11 +43,14 @@
     cursor: pointer;
     user-select: none;
 
-    transition: background 0.14s ease, color 0.14s ease, box-shadow 0.14s ease, opacity 0.12s ease;
+    transition: background 0.14s var(--ease-soft),
+                color 0.14s var(--ease-soft),
+                box-shadow 0.14s var(--ease-soft),
+                opacity 0.12s ease;
 }
 
 /* Disabled Button State Styles. */
-.button:disabled { opacity: 0.22; cursor: not-allowed; filter: saturate(0.5); }
+.button:disabled { opacity: 0.28; cursor: not-allowed; filter: saturate(0.5); }
 
 /* =========================================
    PRIMARY ACTION ( START / PAUSE ) STYLES.
@@ -55,11 +58,11 @@
 .primary
 {
     padding-block: 0.65rem;
-    background: linear-gradient(135deg, var(--gold), color-mix(in oklab, var(--gold), black 18%));
+    background: linear-gradient(135deg, var(--accent), color-mix(in oklab, var(--accent), black 16%));
     color: #141414;
 
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28),
-                0 6px 16px rgba(212, 175, 55, 0.36);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.26),
+                0 5px 14px rgba(212, 175, 55, 0.32);
 }
 
 /* =========================================
@@ -67,7 +70,7 @@
 ============================================ */
 .secondary
 {
-    background: color-mix(in oklab, var(--surface-glass), transparent 94%);
+    background: color-mix(in oklab, var(--surface), transparent 92%);
     color: var(--text-muted);
 }
 
@@ -76,20 +79,20 @@
 ============================================ */
 .tertiary
 {
-    background: color-mix(in oklab, var(--surface-glass), transparent 97%);
-    color: color-mix(in oklab, var(--text), transparent 38%);
+    background: color-mix(in oklab, var(--surface), transparent 96%);
+    color: color-mix(in oklab, var(--text), transparent 42%);
 }
 
 /* ====================================
-   RESPONSIVE DESIGN STYLES.
+   STOPWATCHCONTROLS MEDIA QUERY STYLES.
 ======================================= */
-@media(max-width: 768px)
+@media (max-width: 768px)
 {
-    .controls { gap: 0.5rem; padding: 0.5rem 0.7rem; }
+    .controls { gap: 0.5rem; padding: 0.55rem 0.65rem; }
     .button { min-width: 82px; font-size: 0.75rem; }
 }
 
-@media(max-width: 480px)
+@media (max-width: 480px)
 {
     .controls { flex-direction: column; align-items: stretch; }
     .button { width: 100%; }

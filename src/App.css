@@ -18,36 +18,43 @@
     position: relative; /* Removes scrollbars... */
     isolation: isolate;
 
-    transition: background 0.45s ease, color 0.45s ease;
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* ====================================
-   SIMPLE AMBIENT PRESENCE STYLES.
+   SIMPLE AMBIENT BACKDROP STYLES.
 ======================================= */
 .app::before
 {
     content: "";
     position: absolute;
-    inset: -20%;
+    inset: -25%;
     z-index: -1;
 
     background: radial-gradient(
-        circle at 50% 40%,
+        circle at 50% 35%,
         var(--ambient-glow),
-        transparent 80%
+        transparent 75%
     );
 
-    opacity: 0.012;
-    filter: blur(180px);
-
-    animation: drift 480s ease-in-out infinite alternate;
+    opacity: 0.01;
+    filter: blur(160px);
+    pointer-events: none;
 }
 
 /* ====================================
    APP ANIMATIONS STYLES.
 ======================================= */
-@keyframes drift
+@keyframes ambient-drift
 {
     from { transform: translate(0, 0) scale(1); }
-    to { transform: translate(0.35%, -0.45%) scale(1.01); }
+    to { transform: translate(0.25%, -0.35%) scale(1.01); }
+}
+
+/* ====================================
+   APP REDUCED MOTION MEDIA QUERY STYLES.
+======================================= */
+@media (prefers-reduced-motion: no-preference)
+{
+    .app::before { animation: ambient-drift 420s ease-in-out infinite alternate; }
 }
