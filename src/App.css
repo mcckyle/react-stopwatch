@@ -14,11 +14,11 @@
     background: var(--app-bg);
     color: var(--text);
 
-    overflow: hidden;
     position: relative; /* Removes scrollbars... */
     isolation: isolate;
+    overflow: hidden;
 
-    transition: background-color 0.4s ease, color 0.4s ease;
+    transition: background-color 0.35s ease, color 0.35s ease;
 }
 
 /* ====================================
@@ -28,17 +28,17 @@
 {
     content: "";
     position: absolute;
-    inset: -25%;
+    inset: -20%;
     z-index: -1;
 
     background: radial-gradient(
         circle at 50% 35%,
         var(--ambient-glow),
-        transparent 75%
+        transparent 70%
     );
 
-    opacity: 0.01;
-    filter: blur(160px);
+    opacity: 0.015;
+    filter: blur(140px);
     pointer-events: none;
 }
 
@@ -48,7 +48,7 @@
 @keyframes ambient-drift
 {
     from { transform: translate(0, 0) scale(1); }
-    to { transform: translate(0.25%, -0.35%) scale(1.01); }
+    to { transform: translate(0.2%, -0.3%) scale(1.01); }
 }
 
 /* ====================================
@@ -56,5 +56,5 @@
 ======================================= */
 @media (prefers-reduced-motion: no-preference)
 {
-    .app::before { animation: ambient-drift 420s ease-in-out infinite alternate; }
+    .app::before { animation: ambient-drift 360s ease-in-out infinite alternate; }
 }

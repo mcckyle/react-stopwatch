@@ -13,19 +13,16 @@
     --font-sans: "Inter", system-ui, -apple-system, sans-serif;
     --font-mono: "JetBrains Mono", monospace;
 
-    /* Type Scale. */
-    --text-xs: 0.75rem;
+    /* Font Sizes */
     --text-sm: 0.875rem;
     --text-md: 1rem;
     --text-lg: 1.125rem;
     --text-xl: 1.5rem;
 
     /* Spacing. */
-    --space-xs: 0.25rem;
     --space-sm: 0.5rem;
     --space-md: 1rem;
     --space-lg: 1.5rem;
-    --space-xl: 2.25rem;
 
     /* Shapes. */
     --radius-sm: 0.5rem;

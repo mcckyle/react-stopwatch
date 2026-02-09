@@ -7,11 +7,11 @@
 {
     width: 100%;
     max-width: 680px;
-    margin: 0.75rem auto 0;
-    padding: 0.25rem 0;
+    margin: 0.65rem auto 0;
+    padding: 0.2rem 0;
 
-    background: color-mix(in oklab, var(--surface-glass), transparent 90%);
-    backdrop-filter: blur(calc(var(--blur) * 0.25));
+    background: color-mix(in oklab, var(--surface-glass), transparent 92%);
+    backdrop-filter: blur(calc(var(--blur) * 0.22));
     border-radius: calc(var(--radius) * 0.45);
 
     max-height: 16vh;
@@ -29,17 +29,20 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.3rem 0.75rem 0.2rem;
+    padding: 0.3rem 0.75rem 0.15rem;
 
     font-family: var(--font-mono);
-    font-size: 0.4rem;
+    font-size: 0.38rem;
     letter-spacing: 0.34em;
     text-transform: uppercase;
     color: var(--text-muted);
-    opacity: 0.42;
+    opacity: 0.38;
 }
 .title { pointer-events: none; }
 
+/* ====================================
+   LAPLIST CLEAR BUTTON STYLES.
+======================================= */
 .clearButton
 {
     background: none;
@@ -51,13 +54,13 @@
     text-transform: uppercase;
 
     color: var(--text-muted);
-    opacity: 0.32;
+    opacity: 0.28;
     cursor: pointer;
 
     transition: opacity 0.12s ease, color 0.12s ease;
 }
-.clearButton:hover { opacity: 0.55; }
-.confirm { color: #ef4444; opacity: 0.7; }
+.clearButton:hover { opacity: 0.5; }
+.confirm { color: #ef4444; opacity: 0.65; }
 
 /* ====================================
    LAPLIST LAP ROW STYLES.
@@ -69,51 +72,51 @@
     grid-template-columns: 3rem 1fr auto;
     align-items: center;
 
-    padding: 0.45rem 0.75rem;
+    padding: 0.42rem 0.75rem;
 
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     line-height: 1.35;
     color: var(--text);
-    opacity: 0.42;
+    opacity: 0.38;
 
     transition: opacity 0.14s ease, background 0.14s ease;
 }
-.lap:not(:last-child) { border-bottom: 1px solid color-mix(in oklab, var(--surface-border), transparent 60%); }
-.lap:hover { opacity: 0.6; background: color-mix(in oklab, var(--surface), transparent 96%); }
-.latest { opacity: 0.78; }
+.lap:not(:last-child) { border-bottom: 1px solid color-mix(in oklab, var(--surface-border), transparent 65%); }
+.lap:hover { opacity: 0.55; background: color-mix(in oklab, var(--surface), transparent 97%); }
+.latest { opacity: 0.72; }
 
 /* ====================================
    LAPLIST TEXT ELEMENTS STYLES.
 ======================================= */
 .lapLabel
 {
-    font-size: 0.42rem;
+    font-size: 0.4rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     opacity: 0.22;
 
 }
 .lapTime { font-weight: 600; font-variant-numeric: tabular-nums; }
-.lapDelta { min-width: 5ch; text-align: right; font-size: 0.58rem; opacity: 0.28 ; font-variant-numeric: tabular-nums; }
+.lapDelta { min-width: 5ch; text-align: right; font-size: 0.56rem; opacity: 0.26 ; font-variant-numeric: tabular-nums; }
 
 /* =========================================
    LAPLIST FASTEST / SLOWEST ACCENTS STYLES.
 ============================================ */
-.fastest, .slowest { opacity: 0.68; }
+.fastest, .slowest { opacity: 0.62; }
 .fastest::before,
 .slowest::before
 {
     content: "";
     position: absolute;
     left: 0;
-    top: 30%;
-    bottom: 30%;
+    top: 28%;
+    bottom: 28%;
     width: 1px;
     border-radius: 1px;
 }
-.fastest::before { background: color-mix(in oklab, #38bdf8, transparent 65%); }
-.slowest::before { background: color-mix(in oklab, #ef4444, transparent 65%); }
+.fastest::before { background: color-mix(in oklab, #38bdf8, transparent 68%); }
+.slowest::before { background: color-mix(in oklab, #ef4444, transparent 68%); }
 
 /* ====================================
    LAPLIST MEDIA QUERY STYLES.
@@ -127,7 +130,7 @@
           "label time"
           "delta delta";
         row-gap: 0.25rem;
-        padding: 0.5rem 0.7rem;
+        padding: 0.48rem 0.7rem;
     }
-    .lapDelta { text-align: left; font-size: 0.56rem; }
+    .lapDelta { text-align: left; font-size: 0.54rem; }
 }

@@ -1,7 +1,7 @@
 /* Filename: src/components/AnimatedDigit/AnimatedDigit.module.css */
 
 /* ====================================
-   DIGIT CONTAINER STYLE.
+   ANIMATEDDIGIT DIGIT CONTAINER STYLE.
 ======================================= */
 .container
 {
@@ -13,13 +13,11 @@
 
     position: relative;
     overflow: hidden;
-
-    vertical-align: middle;
     isolation: isolate;
 }
 
 /* ====================================
-   DIGIT CHARACTER GLYPH STYLE.
+   ANIMATEDDIGIT DIGIT GLYPH STYLE.
 ======================================= */
 .digit
 {
@@ -29,7 +27,7 @@
     line-height: 1;
     text-align: center;
 
-    transform-origin: 50% 52%;
+    transform-origin: 50% 50%;
     backface-visibility: hidden;
 
     will-change: transform, opacity;

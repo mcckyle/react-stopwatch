@@ -11,12 +11,11 @@
 
     width: 100%;
     min-height: 100%;
-    position: relative;
     isolation: isolate;
 }
 
 /* ====================================
-   PRIMARY FRAME STYLES.
+   STOPWATCH PRIMARY FRAME STYLES.
 ======================================= */
 .frame
 {
@@ -29,11 +28,11 @@
     justify-content: center;
     padding: clamp(2.5rem, 6vh, 4rem)
              clamp(1rem, 4vw, 2rem)
-             clamp(1rem, 3vh, 1.5rem);
+             clamp(1.25rem, 3vh, 1.75rem);
 }
 
 /* ====================================
-   TIME DISPLAY STYLES.
+   STOPWATCH TIME DISPLAY AREA STYLES.
 ======================================= */
 .display
 {
@@ -48,34 +47,12 @@
 /* ====================================
    STOPWATCH CONTROLS STYLES.
 ======================================= */
-.interactionArea
+.controls
 {
     width: 100%;
     margin-top: clamp(1.5rem, 4vh, 2.25rem);
 
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm);
-}
-
-/* ====================================
-   LAP LIST SURFACE STYLES.
-======================================= */
-.laps
-{
-    width: 100%;
-    max-height: 30vh;
-
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    scrollbar-width: thin;
-
-    background: color-mix(in oklab, var(--surface-glass), transparent 55%);
-    backdrop-filter: blur(var(--blur));
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--surface-border);
-
-    padding: 0.45rem 0.7rem;
-    font-size: var(--text-sm);
-    color: var(--text-muted);
+    gap: var(--space-md);
 }

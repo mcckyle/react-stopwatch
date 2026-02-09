@@ -30,7 +30,9 @@
     font-family: var(--font-mono);
     font-weight: 450;
     color: var(--text);
+
     text-rendering: geometricPrecision;
+    font-variant-numeric: tabular-nums lining-nums;
 }
 
 /* ====================================
@@ -46,14 +48,14 @@
     width: 100%;
     height: 100%;
 
-    font-size: clamp(5.75rem, 26vmin, 16rem);
-    line-height: 0.92;
+    font-size: clamp(5.5rem, 25vmin, 15.5rem);
+    line-height: 0.95;
 
     white-space: nowrap;
     text-align: center;
-    transform: translateY(-0.02em); /* Optical Centering. */
+    transform: translateY(-0.015em); /* Optical Centering. */
 
-    text-shadow: 0 0.6px 0 rgba(0, 0, 0, 0.04);
+    text-shadow: 0 0.4px 0 rgba(0, 0, 0, 0.035);
 }
 
 /* ====================================
@@ -66,11 +68,11 @@
 ======================================= */
 .separator
 {
-    font-size: 0.28em;
+    font-size: 0.26em;
     font-weight: 400;
 
-    opacity: 0.12;
-    transform: translateY(-0.05em);
+    opacity: 0.1;
+    transform: translateY(-0.04em);
     user-select: none;
     pointer-events: none;
 }
@@ -80,6 +82,6 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .line { font-size: clamp(4.1rem, 21vmin, 11rem); line-height: 0.94; }
-    .separator { opacity: 0.14; }
+    .line { font-size: clamp(4rem, 20vmin, 10.5rem); line-height: 0.96; transform: translateY(-0.01em); }
+    .separator { opacity: 0.12; }
 }

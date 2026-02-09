@@ -11,7 +11,6 @@ exports[`AnimatedDigit Component matches snapshot for digit 9 1`] = `
       class="digit"
       exit="[object Object]"
       initial="[object Object]"
-      layout="position"
       transition="[object Object]"
     >
       9
