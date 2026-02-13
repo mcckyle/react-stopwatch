@@ -1,55 +1,76 @@
 //File name: useStopwatch.js
 //Author: Kyle McColgan
-//Date: 19 December 2025
-//Description: This file contains reusable, repeated utility functions for the React stopwatch.
+//Date: 11 February 2026
+//Description: This file contains reusable, repeated utility functions for the React stopwatch project.
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 export function useStopwatch()
 {
   const [elapsed, setElapsed] = useState(0); // Stored in milliseconds.
   const [isRunning, setIsRunning] = useState(false);
 
-  const startTimeRef = useRef(null);
-  const intervalRef = useRef(null);
+  const startRef = useRef(0);
+  const frameRef = useRef(null);
+  const elapsedRef = useRef(0);
+
+  //Drift-Free Animation Loop.
+  const tick = useCallback(() => {
+    const now = performance.now();
+    const nextElapsed = now - startRef.current;
+
+    elapsedRef.current = nextElapsed;
+    setElapsed(nextElapsed);
+    frameRef.current = requestAnimationFrame(tick);
+  }, []);
 
   useEffect(() => {
-    if (isRunning)
+    if ( ! isRunning)
     {
-      intervalRef.current = setInterval(() => {
-        setElapsed(Date.now() - startTimeRef.current);
-      }, 100); // Update the UI every 100ms.
-    }
-    else
-    {
-        clearInterval(intervalRef.current);
+      if (frameRef.current)
+      {
+        cancelAnimationFrame(frameRef.current);
+        frameRef.current = null;
+      }
+      return;
     }
 
-    return () => clearInterval(intervalRef.current);
-  }, [isRunning]);
+    startRef.current = performance.now() - elapsedRef.current;
+    frameRef.current = requestAnimationFrame(tick);
 
-  const toggle = () => {
-    if (!isRunning)
+    return () => {
+      if (frameRef.current)
+      {
+        cancelAnimationFrame(frameRef.current);
+      }
+    };
+  }, [isRunning, tick]);
+
+  const toggle = useCallback(() => {
+    setIsRunning((prev) => ! prev);
+  }, []);
+
+  const reset = useCallback(() => {
+    if (frameRef.current)
     {
-        startTimeRef.current = Date.now() - elapsed;
+      cancelAnimationFrame(frameRef.current);
+      frameRef.current = null;
     }
-    setIsRunning(prev => !prev);
-  };
 
-  const reset = () => {
-    clearInterval(intervalRef.current);
+    elapsedRef.current = 0;
+    startRef.current = 0;
+
     setIsRunning(false);
     setElapsed(0);
-    startTimeRef.current = null;
-  }
+  }, []);
 
-  const getCurrentTime = () => {
-    if (isRunning && startTimeRef.current !== null)
+  const getCurrentTime = useCallback(() => {
+    if ( ! isRunning)
     {
-        return Date.now() - startTimeRef.current;
+        return elapsedRef.current;
     }
-    return elapsed;
-  };
+    return performance.now() - startRef.current;
+  }, [isRunning]);
 
   return {
     time: elapsed, //time in milliseconds.

@@ -7,7 +7,7 @@
 {
     /* Brand. */
     --accent: #d4af37;
-    --accent-soft: color-mix(in oklab, var(--accent) 14%, transparent);
+    --accent-soft: color-mix(in oklab, var(--accent) 18%, transparent);
 
     /* Fonts. */
     --font-sans: "Inter", system-ui, -apple-system, sans-serif;
@@ -31,7 +31,7 @@
     --radius: var(--radius-md);
 
     /* Effects. */
-    --blur: 16px;
+    --blur: 18px;
 
     /* Motion. */
     --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
@@ -45,16 +45,16 @@
 html.light
 {
     --surface: #ffffff;
-    --surface-muted: #f4f4ee;
+    --surface-muted: #f5f5ef;
 
-    --text: #161616;
-    --text-muted: rgba(0, 0, 0, 0.52);
+    --text: #151515;
+    --text-muted: rgba(0, 0, 0, 0.5);
 
     --surface-border: rgba(0, 0, 0, 0.06);
-    --surface-glass: color-mix(in oklab, var(--surface) 94%, white 6%);
+    --surface-glass: color-mix(in oklab, var(--surface) 92%, white 8%);
 
     --app-bg: radial-gradient(circle at 45% 35%, #ffffff, #ececdc);
-    --ambient-glow: rgba(212, 175, 55, 0.04);
+    --ambient-glow: rgba(212, 175, 55, 0.035);
 }
 
 /* ====================================
@@ -62,15 +62,15 @@ html.light
 ======================================= */
 html.dark
 {
-    --surface: #17181d;
+    --surface: #16171c;
     --surface-muted: #0f1015;
 
-    --text: #f5f6f8;
-    --text-muted: rgba(246, 247, 249, 0.56);
+    --text: #f4f6f8;
+    --text-muted: rgba(244, 246, 248, 0.55);
 
     --surface-border: rgba(255, 255, 255, 0.07);
-    --surface-glass: color-mix(in oklab, var(--surface) 90%, white 10%);
+    --surface-glass: color-mix(in oklab, var(--surface) 88%, white 12%);
 
-    --app-bg: radial-gradient(circle at 50% 45%, #1b1c22, #05060a);
-    --ambient-glow: rgba(212, 175, 55, 0.028);
+    --app-bg: radial-gradient(circle at 50% 45%, #1a1b21, #06070b);
+    --ambient-glow: rgba(212, 175, 55, 0.024);
 }

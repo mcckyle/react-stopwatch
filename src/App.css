@@ -28,7 +28,7 @@
 {
     content: "";
     position: absolute;
-    inset: -20%;
+    inset: -25%;
     z-index: -1;
 
     background: radial-gradient(
@@ -37,8 +37,8 @@
         transparent 70%
     );
 
-    opacity: 0.015;
-    filter: blur(140px);
+    opacity: 0.012;
+    filter: blur(160px);
     pointer-events: none;
 }
 
@@ -48,7 +48,7 @@
 @keyframes ambient-drift
 {
     from { transform: translate(0, 0) scale(1); }
-    to { transform: translate(0.2%, -0.3%) scale(1.01); }
+    to { transform: translate(0.2%, -0.2%) scale(1.01); }
 }
 
 /* ====================================
@@ -56,5 +56,5 @@
 ======================================= */
 @media (prefers-reduced-motion: no-preference)
 {
-    .app::before { animation: ambient-drift 360s ease-in-out infinite alternate; }
+    .app::before { animation: ambient-drift 420s ease-in-out infinite alternate; }
 }

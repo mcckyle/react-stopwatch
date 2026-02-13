@@ -1,6 +1,6 @@
 //File name: StopwatchControls.test.jsx
 //Author: Kyle McColgan
-//Date: 18 December 2025
+//Date: 11 February 2026
 //Description: This file contains the unit test suite for the StopwatchControls component.
 
 import React from "react";
@@ -17,10 +17,10 @@ jest.mock("motion/react", () => {
         create:
           (Component) =>
             ({ whileHover, whileTap, transition, ...props }) =>
-            <Component {...props}>{props.children}</Component>,
+            <Component {...props}>{props.children}</Component>
     };
 
-    return { motion };
+    return { motion, useReducedMotion: () => false, };
 });
 
 describe("StopwatchControls Component", () => {

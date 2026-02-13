@@ -4,7 +4,6 @@ exports[`LapList Component matches snapshot 1`] = `
 <DocumentFragment>
   <section
     aria-label="Lap history"
-    aria-live="polite"
     class="lapList"
     role="log"
   >

@@ -7,19 +7,17 @@
 {
     width: 100%;
     max-width: 680px;
-    margin: 0.65rem auto 0;
-    padding: 0.2rem 0;
+    margin-top: 0.75rem;
 
-    background: color-mix(in oklab, var(--surface-glass), transparent 92%);
-    backdrop-filter: blur(calc(var(--blur) * 0.22));
-    border-radius: calc(var(--radius) * 0.45);
+    background: var(--surface);
+    border: 1px solid var(--surface-border);
+    border-radius: var(--radius-md);
 
-    max-height: 16vh;
+    max-height: 22vh;
     overflow-y: auto;
-
-    scrollbar-width: thin;
-    scrollbar-color: color-mix(in oklab, var(--text), transparent 90%) transparent;
 }
+.lapList::-webkit-scrollbar { width: 6px; }
+.lapList::-webkit-scrollbar-thumb { background: color-mix(in oklab, var(--text), transparent 85%); border-radius: 3px; }
 
 /* ====================================
    LAPLIST HEADER STYLES.
@@ -29,14 +27,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.3rem 0.75rem 0.15rem;
+    padding: 0.6rem 0.9rem 0.4rem;
 
     font-family: var(--font-mono);
-    font-size: 0.38rem;
-    letter-spacing: 0.34em;
+    font-size: 0.55rem;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
     color: var(--text-muted);
-    opacity: 0.38;
 }
 .title { pointer-events: none; }
 
@@ -54,13 +51,12 @@
     text-transform: uppercase;
 
     color: var(--text-muted);
-    opacity: 0.28;
     cursor: pointer;
 
-    transition: opacity 0.12s ease, color 0.12s ease;
+    transition: color var(--duration-fast) var(--ease-soft);
 }
-.clearButton:hover { opacity: 0.5; }
-.confirm { color: #ef4444; opacity: 0.65; }
+.clearButton:hover { color: var(--text); }
+.confirm { color: #ef4444; }
 
 /* ====================================
    LAPLIST LAP ROW STYLES.
@@ -69,54 +65,51 @@
 {
     position: relative;
     display: grid;
-    grid-template-columns: 3rem 1fr auto;
+    grid-template-columns: 3.2rem 1fr auto;
     align-items: center;
 
-    padding: 0.42rem 0.75rem;
+    padding: 0.55rem 0.9rem;
 
     font-family: var(--font-mono);
-    font-size: 0.7rem;
-    line-height: 1.35;
+    font-size: 0.78rem;
+    line-height: 1.4;
     color: var(--text);
-    opacity: 0.38;
 
-    transition: opacity 0.14s ease, background 0.14s ease;
+    transition: background var(--duration-fast) var(--ease-soft);
 }
-.lap:not(:last-child) { border-bottom: 1px solid color-mix(in oklab, var(--surface-border), transparent 65%); }
-.lap:hover { opacity: 0.55; background: color-mix(in oklab, var(--surface), transparent 97%); }
-.latest { opacity: 0.72; }
+.lap:not(:last-child) { border-top: 1px solid color-mix(in oklab, var(--surface-border), transparent 60%); }
+.lap:hover { background: var(--surface-muted); }
+.latest { font-weight: 600; }
 
 /* ====================================
    LAPLIST TEXT ELEMENTS STYLES.
 ======================================= */
 .lapLabel
 {
-    font-size: 0.4rem;
+    font-size: 0.5rem;
     letter-spacing: 0.22em;
-    text-transform: uppercase;
-    opacity: 0.22;
+    color: var(--text-muted);
 
 }
 .lapTime { font-weight: 600; font-variant-numeric: tabular-nums; }
-.lapDelta { min-width: 5ch; text-align: right; font-size: 0.56rem; opacity: 0.26 ; font-variant-numeric: tabular-nums; }
+.lapDelta { min-width: 6ch; text-align: right; font-size: 0.65rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
 
 /* =========================================
    LAPLIST FASTEST / SLOWEST ACCENTS STYLES.
 ============================================ */
-.fastest, .slowest { opacity: 0.62; }
 .fastest::before,
 .slowest::before
 {
     content: "";
     position: absolute;
     left: 0;
-    top: 28%;
-    bottom: 28%;
-    width: 1px;
-    border-radius: 1px;
+    top: 30%;
+    bottom: 30%;
+    width: 2px;
+    border-radius: 2px;
 }
-.fastest::before { background: color-mix(in oklab, #38bdf8, transparent 68%); }
-.slowest::before { background: color-mix(in oklab, #ef4444, transparent 68%); }
+.fastest::before { background: color-mix(in oklab, #22c55e, transparent 45%); }
+.slowest::before { background: color-mix(in oklab, #ef4444, transparent 45%); }
 
 /* ====================================
    LAPLIST MEDIA QUERY STYLES.
@@ -125,12 +118,12 @@
 {
     .lap
     {
-        grid-template-columns: auto 1fr;
+        grid-template-columns: 1fr auto;
         grid-template-areas:
-          "label time"
-          "delta delta";
+          "time delta"
+          "label label";
         row-gap: 0.25rem;
-        padding: 0.48rem 0.7rem;
     }
-    .lapDelta { text-align: left; font-size: 0.54rem; }
+    .lapLabel { grid-column: span 2; }
+    .lapDelta { text-align: right; }
 }
