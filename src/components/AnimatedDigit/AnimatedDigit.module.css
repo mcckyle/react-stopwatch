@@ -11,8 +11,8 @@
     inline-size: 1ch;
     block-size: 1em;
 
-    position: relative;
     overflow: hidden;
+    position: relative;
 }
 
 /* ====================================
@@ -26,6 +26,6 @@
     line-height: 1;
     text-align: center;
 
-    transform-origin: center;
     backface-visibility: hidden;
+    will-change: transform, opacity;
 }

@@ -8,8 +8,9 @@
     display: grid;
     place-items: center;
 
-    min-height: 100dvh;
+    height: 100dvh;
     width: 100%;
+    padding: clamp(2rem, 5vw, 4rem);
 
     background: var(--app-bg);
     color: var(--text);
@@ -28,17 +29,36 @@
 {
     content: "";
     position: absolute;
-    inset: -25%;
+    inset: -30%;
     z-index: -1;
 
     background: radial-gradient(
-        circle at 50% 35%,
+        circle at 50% 40%,
         var(--ambient-glow),
-        transparent 70%
+        transparent 65%
     );
 
-    opacity: 0.012;
+    opacity: 0.06;
     filter: blur(160px);
+    pointer-events: none;
+}
+
+/* ====================================
+   SIMPLE DEPTH LAYER STYLES.
+======================================= */
+.app::after
+{
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    background: radial-gradient(
+        circle at center,
+        transparent 60%,
+        color-mix(in oklab, var(--app-bg), black 4%)
+    );
+
     pointer-events: none;
 }
 
@@ -56,5 +76,5 @@
 ======================================= */
 @media (prefers-reduced-motion: no-preference)
 {
-    .app::before { animation: ambient-drift 420s ease-in-out infinite alternate; }
+    .app::before { animation: ambient-drift 240s ease-in-out infinite alternate; }
 }

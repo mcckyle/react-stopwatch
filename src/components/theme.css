@@ -6,8 +6,8 @@
 :root
 {
     /* Brand. */
-    --accent: #d4af37;
-    --accent-soft: color-mix(in oklab, var(--accent) 18%, transparent);
+    --accent: #c7a52f;
+    --accent-soft: color-mix(in oklab, var(--accent) 16%, transparent);
 
     /* Fonts. */
     --font-sans: "Inter", system-ui, -apple-system, sans-serif;
@@ -20,23 +20,26 @@
     --text-xl: 1.5rem;
 
     /* Spacing. */
-    --space-sm: 0.5rem;
+    --space-xs: 0.35rem;
+    --space-sm: 0.6rem;
     --space-md: 1rem;
-    --space-lg: 1.5rem;
+    --space-lg: 1.6rem;
 
     /* Shapes. */
-    --radius-sm: 0.5rem;
+    --radius-sm: 0.45rem;
     --radius-md: 0.75rem;
-    --radius-lg: 1.25rem;
+    --radius-lg: 1.4rem;
     --radius: var(--radius-md);
 
     /* Effects. */
-    --blur: 18px;
+    --blur: 20px;
 
     /* Motion. */
     --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-smooth: cubic-bezier(0.22, 0.61, 0.36, 1);
     --duration-fast: 120ms;
     --duration-base: 220ms;
+    --duration-slow: 420ms;
 }
 
 /* ====================================
@@ -45,16 +48,16 @@
 html.light
 {
     --surface: #ffffff;
-    --surface-muted: #f5f5ef;
+    --surface-muted: #f7f6f1;
 
-    --text: #151515;
+    --text: #141414;
     --text-muted: rgba(0, 0, 0, 0.5);
 
     --surface-border: rgba(0, 0, 0, 0.06);
-    --surface-glass: color-mix(in oklab, var(--surface) 92%, white 8%);
+    --surface-glass: color-mix(in oklab, var(--surface) 94%, white 6%);
 
-    --app-bg: radial-gradient(circle at 45% 35%, #ffffff, #ececdc);
-    --ambient-glow: rgba(212, 175, 55, 0.035);
+    --app-bg: radial-gradient(circle at 50% 35%, #ffffff, #ece9df);
+    --ambient-glow: rgba(199, 165, 47, 0.035);
 }
 
 /* ====================================
@@ -62,15 +65,15 @@ html.light
 ======================================= */
 html.dark
 {
-    --surface: #16171c;
-    --surface-muted: #0f1015;
+    --surface: #17181d;
+    --surface-muted: #101115;
 
-    --text: #f4f6f8;
-    --text-muted: rgba(244, 246, 248, 0.55);
+    --text: #f5f7fa;
+    --text-muted: rgba(245, 247, 250, 0.55);
 
-    --surface-border: rgba(255, 255, 255, 0.07);
-    --surface-glass: color-mix(in oklab, var(--surface) 88%, white 12%);
+    --surface-border: rgba(255, 255, 255, 0.06);
+    --surface-glass: color-mix(in oklab, var(--surface) 90%, white 10%);
 
-    --app-bg: radial-gradient(circle at 50% 45%, #1a1b21, #06070b);
-    --ambient-glow: rgba(212, 175, 55, 0.024);
+    --app-bg: radial-gradient(circle at 50% 45%, #1b1c22, #07080c);
+    --ambient-glow: rgba(199, 165, 47, 0.025);
 }

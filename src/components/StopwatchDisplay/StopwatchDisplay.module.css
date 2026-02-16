@@ -1,14 +1,13 @@
 /* Filename: src/components/StopwatchDisplay/StopwatchDisplay.module.css */
 
 /* =========================================
-   STOPWATCHDISPLAY ROOT STYLES.
+   STOPWATCHDISPLAY DISPLAY ROOT STYLES.
 ============================================ */
 .display
 {
     width: 100%;
     display: grid;
     place-items: center;
-    isolation: isolate;
     user-select: none;
 }
 
@@ -21,7 +20,7 @@
     place-items: center;
 
     font-family: var(--font-mono);
-    font-weight: 500;
+    font-weight: 600;
     color: var(--text);
 
     font-variant-numeric: tabular-nums lining-nums;
@@ -33,14 +32,14 @@
 ======================================= */
 .line
 {
-    display: grid;
-    grid-template-columns: auto auto auto auto auto;
+    display: inline-flex;
     align-items: center;
-    justify-items: center;
-    gap: clamp(0.25rem, 1.2vmin, 0.65rem);
+    justify-content: center;
+    gap: clamp(0.5rem, 1vw, 1rem);
 
-    font-size: clamp(5.5rem, 24vmin, 15rem);
-    line-height: 0.92;
+    /* vmin -> vw, time now scales w/ page width and matches the wide frame. */
+    font-size: clamp(5rem, 10vw, 14rem);
+    line-height: 0.9;
 
     white-space: nowrap;
     text-align: center;
@@ -56,12 +55,14 @@
 ======================================= */
 .separator
 {
-    font-size: 0.28em;
-    font-weight: 400;
+    font-size: 0.26em;
+    font-weight: 500;
 
-    opacity: 0.18;
-    transform: translateY(-0.03em);
+    opacity: 0.22;
+    transform: translateY(-0.02em);
     pointer-events: none;
+
+    transition: opacity var(--duration-base) var(--ease-soft);
 }
 
 /* ====================================
@@ -74,6 +75,7 @@
     height: 1px;
     padding: 0;
     margin: -1px;
+
     overflow: hidden;
     clip: rect(0 0 0 0);
     white-space: nowrap;
@@ -85,6 +87,6 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .line { font-size: clamp(4rem, 20vmin, 10rem); line-height: 0.94; }
-    .separator { opacity: 0.2; }
+    .line { font-size: clamp(4.5rem, 20vmin, 10rem); line-height: 0.94; }
+    .separator { opacity: 0.26; }
 }

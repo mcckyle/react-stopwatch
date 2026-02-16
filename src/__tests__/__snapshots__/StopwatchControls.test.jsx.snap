@@ -11,7 +11,7 @@ exports[`StopwatchControls Component enables Lap button when isRunning is true 1
       aria-label="Start stopwatch"
       aria-pressed="false"
       class="button primary"
-      radius="sm"
+      radius="xl"
       type="button"
     >
       Start
@@ -20,7 +20,7 @@ exports[`StopwatchControls Component enables Lap button when isRunning is true 1
       aria-label="Record lap"
       class="button secondary"
       disabled=""
-      radius="sm"
+      radius="xl"
       type="button"
     >
       Lap
@@ -28,7 +28,7 @@ exports[`StopwatchControls Component enables Lap button when isRunning is true 1
     <button
       aria-label="Reset stopwatch"
       class="button tertiary"
-      radius="sm"
+      radius="xl"
       type="button"
     >
       Reset

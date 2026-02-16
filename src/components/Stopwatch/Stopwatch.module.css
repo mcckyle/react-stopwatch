@@ -5,53 +5,53 @@
 ======================================= */
 .container
 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
     width: 100%;
-    min-height: 100%;
-}
-
-/* ====================================
-   STOPWATCH PRIMARY FRAME STYLES.
-======================================= */
-.frame
-{
-    flex: 1;
-    width: 100%;
+    height: 100%;
+    max-width: 1400px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: clamp(2rem, 6vh, 3rem);
-    padding: clamp(2.5rem, 6vh, 4rem)
-             clamp(1.25rem, 5vw, 2.5rem)
-             clamp(2rem, 5vh, 3rem);
+
+    padding: clamp(2rem, 6vh, 4rem) 0;
 }
 
 /* ====================================
-   STOPWATCH TIME DISPLAY WRAPPER STYLES.
-======================================= */
-.displayWrap
+   STOPWATCH GLASS FRAME WRAPPER STYLES.
+-====================================== */
+.frame
 {
     width: 100%;
-    display: grid;
-    place-items: center;
-    text-align: center;
+    max-width: 1200px;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: clamp(2.5rem, 6vh, 4rem);
+    gap: clamp(3rem, 6vh, 4rem);
+
+    background: var(--surface-glass);
+    border: 1px solid var(--surface-border);
+    border-radius: var(--radius-lg);
+
+    backdrop-filter: blur(calc(var(--blur) * 0.35));
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+
+    transition: background var(--duration-base) var(--ease-soft),
+                border-color var(--duration-base) var(--ease-soft);
 }
 
 /* ====================================
-   STOPWATCH CONTROLS STYLES.
+   STOPWATCH CORE CENTER COLUMN STYLES.
 ======================================= */
-.controls
+.core
 {
     width: 100%;
-    max-width: 560px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-lg);
+
+    gap: clamp(3rem, 6vh, 4rem);
 }

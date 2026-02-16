@@ -7,17 +7,15 @@
 {
     width: 100%;
     max-width: 680px;
-    margin-top: 0.75rem;
+    margin-top: 1rem;
 
-    background: var(--surface);
-    border: 1px solid var(--surface-border);
-    border-radius: var(--radius-md);
+    border-top: 1px solid var(--surface-border);
 
-    max-height: 22vh;
+    max-height: 26vh;
     overflow-y: auto;
 }
 .lapList::-webkit-scrollbar { width: 6px; }
-.lapList::-webkit-scrollbar-thumb { background: color-mix(in oklab, var(--text), transparent 85%); border-radius: 3px; }
+.lapList::-webkit-scrollbar-thumb { background: color-mix(in oklab, var(--text), transparent 88%); border-radius: 3px; }
 
 /* ====================================
    LAPLIST HEADER STYLES.
@@ -27,11 +25,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.6rem 0.9rem 0.4rem;
+
+    padding: 0.75rem 0;
+    margin-bottom: 0.25rem;
 
     font-family: var(--font-mono);
     font-size: 0.55rem;
-    letter-spacing: 0.28em;
+    letter-spacing: 0.32em;
     text-transform: uppercase;
     color: var(--text-muted);
 }
@@ -53,7 +53,7 @@
     color: var(--text-muted);
     cursor: pointer;
 
-    transition: color var(--duration-fast) var(--ease-soft);
+    transition: color 0.18s ease;
 }
 .clearButton:hover { color: var(--text); }
 .confirm { color: #ef4444; }
@@ -63,22 +63,20 @@
 ======================================= */
 .lap
 {
-    position: relative;
     display: grid;
-    grid-template-columns: 3.2rem 1fr auto;
+    grid-template-columns: 3rem 1fr auto;
     align-items: center;
 
-    padding: 0.55rem 0.9rem;
+    padding: 0.6rem 0;
+    gap: 0.5rem;
 
     font-family: var(--font-mono);
     font-size: 0.78rem;
     line-height: 1.4;
-    color: var(--text);
 
-    transition: background var(--duration-fast) var(--ease-soft);
+    border-top: 1px solid color-mix(in oklab, var(--surface-border), transparent 65%);
 }
-.lap:not(:last-child) { border-top: 1px solid color-mix(in oklab, var(--surface-border), transparent 60%); }
-.lap:hover { background: var(--surface-muted); }
+.lap:first-of-type { border-top: none; }
 .latest { font-weight: 600; }
 
 /* ====================================
@@ -95,21 +93,10 @@
 .lapDelta { min-width: 6ch; text-align: right; font-size: 0.65rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
 
 /* =========================================
-   LAPLIST FASTEST / SLOWEST ACCENTS STYLES.
+   LAPLIST FASTEST / SLOWEST STYLES.
 ============================================ */
-.fastest::before,
-.slowest::before
-{
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 30%;
-    bottom: 30%;
-    width: 2px;
-    border-radius: 2px;
-}
-.fastest::before { background: color-mix(in oklab, #22c55e, transparent 45%); }
-.slowest::before { background: color-mix(in oklab, #ef4444, transparent 45%); }
+.fastest { color: color-mix(in oklab, #22c55e, var(--text) 75%); }
+.slowest { color: color-mix(in oklab, #ef4444, var(--text) 75%); }
 
 /* ====================================
    LAPLIST MEDIA QUERY STYLES.
