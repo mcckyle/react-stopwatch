@@ -1,7 +1,7 @@
 /* Filename: src/components/StopwatchControls/StopwatchControls.module.css */
 
 /* ====================================
-   STOPWATCHCONTROLS CONTROL CONTAINER STYLES.
+   STOPWATCHCONTROLS CONTROLS CONTAINER STYLES.
 ======================================= */
 .controls
 {
@@ -9,9 +9,9 @@
     align-items: center;
     justify-content: center;
 
-    gap: 0.75rem;
+    gap: clamp(0.75rem, 2vw, 1.5rem);
     width: 100%;
-    max-width: 560px;
+    max-width: 520px;
 }
 
 /* ====================================
@@ -21,55 +21,56 @@
 {
     font-family: var(--font-mono);
     font-weight: 600;
-    letter-spacing: 0.08em;
+    font-size: 0.7rem;
+
+    letter-spacing: 0.14em;
     text-transform: uppercase;
 
-    min-width: 100px;
+    min-width: 108px;
     padding: 0.7rem 1.4rem;
 
     border-radius: 999px;
-    border: 1px solid transparent;
+    border: 1px solid var(--border-subtle);
 
     background: transparent;
     color: var(--text);
 
-    transition: background 0.2s ease,
-                color 0.2s ease,
-                border-color 0.2s ease,
+    transition: background var(--duration) var(--ease),
+                border-color var(--duration) var(--ease),
+                color var(--duration) var(--ease),
                 opacity 0.15s ease;
 }
 
 /* Disabled Button State Styles. */
-.button:disabled { opacity: 0.3; cursor: not-allowed; }
+.button:disabled { opacity: 0.35; cursor: not-allowed; }
 
 /* =========================================
    PRIMARY ACTION ( START / PAUSE ) STYLES.
 ============================================ */
 .primary
 {
-    background: var(--accent);
-    color: #111;
+    background: var(--text);
+    color: var(--surface);
+    border-color: var(--text);
 }
-.primary:hover:not(:disabled) { background: color-mix(in oklab, var(--accent) 85%, black); }
+.primary:hover:not(:disabled) { opacity: 0.9; }
 
 /* =========================================
    SECONDARY ACTION ( LAP ) STYLES.
 ============================================ */
 .secondary
 {
-    border: 1px solid var(--surface-border);
-    background: var(--surface);
-    color: var(--text-muted);
+    background: transparent;
 }
-.secondary:hover:not(:disabled) { background: var(--surface-muted); color: var(--text); }
+.secondary:hover:not(:disabled) { color: var(--text); }
 
 /* =========================================
    TERTIARY ACTION ( RESET ) STYLES.
 ============================================ */
 .tertiary
 {
-    background: transparent;
-    color: color-mix(in oklab, var(--text) 60%, transparent);
+    border-color: transparent;
+    color: var(--text);
 }
 .tertiary:hover:not(:disabled) { color: var(--text); }
 
@@ -78,6 +79,6 @@
 ======================================= */
 @media (max-width: 480px)
 {
-    .controls { flex-direction: column; gap: 0.65rem; }
+    .controls { flex-direction: column; gap: 0.75rem; }
     .button { width: 100%; }
 }

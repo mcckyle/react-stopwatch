@@ -5,41 +5,25 @@
 ======================================= */
 :root
 {
-    /* Brand. */
-    --accent: #c7a52f;
-    --accent-soft: color-mix(in oklab, var(--accent) 16%, transparent);
-
     /* Fonts. */
     --font-sans: "Inter", system-ui, -apple-system, sans-serif;
     --font-mono: "JetBrains Mono", monospace;
 
-    /* Font Sizes */
-    --text-sm: 0.875rem;
-    --text-md: 1rem;
-    --text-lg: 1.125rem;
-    --text-xl: 1.5rem;
-
-    /* Spacing. */
-    --space-xs: 0.35rem;
-    --space-sm: 0.6rem;
-    --space-md: 1rem;
-    --space-lg: 1.6rem;
-
-    /* Shapes. */
-    --radius-sm: 0.45rem;
-    --radius-md: 0.75rem;
-    --radius-lg: 1.4rem;
-    --radius: var(--radius-md);
-
-    /* Effects. */
-    --blur: 20px;
-
     /* Motion. */
-    --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
-    --ease-smooth: cubic-bezier(0.22, 0.61, 0.36, 1);
-    --duration-fast: 120ms;
-    --duration-base: 220ms;
-    --duration-slow: 420ms;
+    --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+    --duration-fast: 140ms;
+    --duration: 220ms;
+
+    /* Radius. */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+
+    /* Shadows. */
+    --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.04)
+                   0 4px 16px rgba(0, 0, 0, 0.04);
+
+    --focus-ring: 0 0 0 3px rgba(199, 165, 47, 0.35);
 }
 
 /* ====================================
@@ -47,17 +31,15 @@
 ======================================= */
 html.light
 {
+    --app-bg: #f6f7f9;
+
     --surface: #ffffff;
-    --surface-muted: #f7f6f1;
+    --surface-muted: #f2f4f7;
 
-    --text: #141414;
-    --text-muted: rgba(0, 0, 0, 0.5);
+    --text: #111111;
+    --text-muted: rgba(0, 0, 0, 0.55);
 
-    --surface-border: rgba(0, 0, 0, 0.06);
-    --surface-glass: color-mix(in oklab, var(--surface) 94%, white 6%);
-
-    --app-bg: radial-gradient(circle at 50% 35%, #ffffff, #ece9df);
-    --ambient-glow: rgba(199, 165, 47, 0.035);
+    --border-subtle: rgba(0, 0, 0, 0.06);
 }
 
 /* ====================================
@@ -65,15 +47,30 @@ html.light
 ======================================= */
 html.dark
 {
-    --surface: #17181d;
-    --surface-muted: #101115;
+    --app-bg: #0d0f13;
+
+    --surface: #15181d;
+    --surface-muted: #111317;
 
     --text: #f5f7fa;
-    --text-muted: rgba(245, 247, 250, 0.55);
+    --text-muted: rgba(245, 247, 250, 0.6);
 
-    --surface-border: rgba(255, 255, 255, 0.06);
-    --surface-glass: color-mix(in oklab, var(--surface) 90%, white 10%);
-
-    --app-bg: radial-gradient(circle at 50% 45%, #1b1c22, #07080c);
-    --ambient-glow: rgba(199, 165, 47, 0.025);
+    --border-subtle: rgba(255, 255, 255, 0.08);
 }
+
+/* ====================================
+   GLOBAL BASE STYLES.
+======================================= */
+html, body
+{
+    background: var(--app-bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    transition: background var(--duration) var(--ease),
+                color var(--duration) var(--ease);
+}
+:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: var(--radius-sm); }

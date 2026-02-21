@@ -1,80 +1,15 @@
 /* Filename: src/App.css */
 
 /* ====================================
-   APP ROOT CONTAINER STYLES.
+   APP LAYOUT STYLES.
 ======================================= */
 .app
 {
-    display: grid;
+    min-height: 100svh;
+
+    display: grid
     place-items: center;
 
-    height: 100dvh;
-    width: 100%;
-    padding: clamp(2rem, 5vw, 4rem);
-
-    background: var(--app-bg);
-    color: var(--text);
-
-    position: relative; /* Removes scrollbars... */
+    padding: clamp(2rem, 6vw, 5rem);
     isolation: isolate;
-    overflow: hidden;
-
-    transition: background-color 0.35s ease, color 0.35s ease;
-}
-
-/* ====================================
-   SIMPLE AMBIENT BACKDROP STYLES.
-======================================= */
-.app::before
-{
-    content: "";
-    position: absolute;
-    inset: -30%;
-    z-index: -1;
-
-    background: radial-gradient(
-        circle at 50% 40%,
-        var(--ambient-glow),
-        transparent 65%
-    );
-
-    opacity: 0.06;
-    filter: blur(160px);
-    pointer-events: none;
-}
-
-/* ====================================
-   SIMPLE DEPTH LAYER STYLES.
-======================================= */
-.app::after
-{
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-
-    background: radial-gradient(
-        circle at center,
-        transparent 60%,
-        color-mix(in oklab, var(--app-bg), black 4%)
-    );
-
-    pointer-events: none;
-}
-
-/* ====================================
-   APP ANIMATIONS STYLES.
-======================================= */
-@keyframes ambient-drift
-{
-    from { transform: translate(0, 0) scale(1); }
-    to { transform: translate(0.2%, -0.2%) scale(1.01); }
-}
-
-/* ====================================
-   APP REDUCED MOTION MEDIA QUERY STYLES.
-======================================= */
-@media (prefers-reduced-motion: no-preference)
-{
-    .app::before { animation: ambient-drift 240s ease-in-out infinite alternate; }
 }

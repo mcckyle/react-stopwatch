@@ -8,11 +8,12 @@
     display: inline-grid;
     place-items: center;
 
-    inline-size: 1ch;
-    block-size: 1em;
+    width: 1ch;
+    height: 1em;
 
     overflow: hidden;
     position: relative;
+    contain: layout paint;
 }
 
 /* ====================================
@@ -20,12 +21,14 @@
 ======================================= */
 .digit
 {
-    display: inline-block;
+    position: absolute;
 
+    display: inline-block;
     font: inherit;
     line-height: 1;
     text-align: center;
 
     backface-visibility: hidden;
+    transform: translateZ(0);
     will-change: transform, opacity;
 }

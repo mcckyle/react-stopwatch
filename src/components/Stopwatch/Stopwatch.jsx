@@ -1,10 +1,10 @@
 //File name: Stopwatch.jsx
 //Author: Kyle McColgan
-//Date: 15 February 2026
+//Date: 20 February 2026
 //Description: This file contains the parent Stopwatch component for the React stopwatch project.
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 import { useStopwatch } from "../../hooks/useStopwatch";
 import { useKeyboardShortcuts } from "../../hooks/useKeyboardShortcuts";
@@ -79,38 +79,39 @@ const Stopwatch = ({ onToggleTheme }) => {
   });
 
   return (
-    <>
-      <motion.section
-        className={styles.container}
-        aria-label="Stopwatch"
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.32, ease: "easeOut" }}
-      >
-        <div className={styles.frame}>
-          <StopwatchHeader
-            theme={theme}
-            onToggleTheme={onToggleTheme}
+    <motion.main
+      className={styles.stage}
+      aria-label="Stopwatch"
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.4,
+        ease: [0.22, 0.61, 0.36, 1],
+      }}
+    >
+      <div className={styles.container}>
+        <StopwatchHeader
+          theme={theme}
+          onToggleTheme={onToggleTheme}
+        />
+
+        <section className={styles.core}>
+          <StopwatchDisplay time={time} />
+          <StopwatchControls
+            isRunning={isRunning}
+            toggle={toggle}
+            reset={reset}
+            recordLap={recordLap}
           />
 
-          <div className={styles.core}>
-            <StopwatchDisplay time={time} />
-            <StopwatchControls
-              isRunning={isRunning}
-              toggle={toggle}
-              reset={reset}
-              recordLap={recordLap}
-            />
-
-            {laps.length > 0 && (
-              <LapList laps={laps} onClear={clearLaps} />
-            )}
-          </div>
-        </div>
-      </motion.section>
+          {laps.length > 0 && (
+            <LapList laps={laps} onClear={clearLaps} />
+          )}
+        </section>
+      </div>
 
       {showHelp && <HelpModal onClose={() => setShowHelp(false)} />}
-    </>
+    </motion.main>
   );
 };
 

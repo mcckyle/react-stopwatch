@@ -1,16 +1,18 @@
 /* Filename: src/components/StopwatchHeader/StopwatchHeader.module.css */
 
 /* ====================================
-   STOPWATCHHEADER CONTAINER STYLES.
+   STOPWATCHHEADER HEADER CONTAINER STYLES.
 ======================================= */
 .header
 {
+    width: 100%;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    width: 100%;
-    padding-bottom: clamp(1rem, 3vh, 1.5rem);
+    padding-bottom: clamp(1rem, 2vh, 1.5rem);
+    border-bottom: 1px solid var(--border-subtle);
 }
 
 /* ====================================
@@ -20,50 +22,46 @@
 {
     display: inline-flex;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.75rem;
 
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-
-    color: var(--text);
     user-select: none;
 }
-.title { line-height: 1; white-space: nowrap; }
-.icon { width: 1em; height: 1em; opacity: 0.5; transition: transform var(--duration-base) var(--ease-smooth); }
-.brand:hover .icon { transform: rotate(8deg); }
+.brandIcon { width: 1.1rem; height: 1.1rem; opacity: 0.6; transition: opacity var(--duration-fast) var(--ease); }
+
+.title
+{
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+
+    color: var(--text-muted);
+}
 
 /* ====================================
    THEME TOGGLE BUTTON STYLES.
 ======================================= */
-.themeToggle
+.toggle
 {
-    width: 2.25rem;
-    height: 2.25rem;
+    width: 2.4rem;
+    height: 2.4rem;
 
     display: grid;
     place-items: center;
 
     border-radius: 50%;
-    border: 1px solid var(--surface-border);
-    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+
+    background: var(--surface-muted);
     color: var(--text);
     cursor: pointer;
 
-    transition: transform var(--duration-fast) var(--ease-soft),
-                background var(--duration-fast) var(--ease-soft),
-                border-color var(--duration-fast) var(--ease-soft);
+    transition: background var(--duration-fast) var(--ease),
+                border-color var(--duration-fast) var(--ease),
+                transform var(--duration-fast) var(--ease);
 
 }
-.themeToggle:hover
-{
-    background: color-mix(in oklab, var(--accent) 10%, var(--surface));
-}
-.themeToggle:active { transform: scale(0.94); }
-.themeToggle:focus-visible
-{
-    outline: none;
-    box-shadow: 0 0 0 2px color-mix(in oklab, var(--accent) 35%, transparent);
-}
-.themeToggle svg { width: 1rem; height: 1rem; transition: transform var(--duration-base) var(--ease-smooth), color var(--duration-base) var(--ease-smooth); }
+.toggle:hover { background: var(--surface); border-color: var(--border-subtle); }
+.toggle:active { transform: scale(0.94); }
+.toggle svg { width: 1.05rem; height: 1.05rem; transition: transform var(--duration-fast) var(--ease); }

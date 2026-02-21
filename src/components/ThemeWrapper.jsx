@@ -1,6 +1,6 @@
 //File name: ThemeWrapper.jsx
 //Author: Kyle McColgan
-//Date: 15 February 2026
+//Date: 20 February 2026
 //Description: This file contains the Mantine UI/UX component for the React stopwatch project.
 
 import React from "react";
@@ -12,33 +12,51 @@ const ThemeWrapper = ({ children }) => {
 
     return (
         <MantineProvider
-            withNormalizeCSS={false}
-            withGlobalStyles={false}
+            withGlobalStyles
+            withNormalizeCSS
             theme={{
                 colorScheme: theme,
 
                 fontFamily: "var(--font-sans)",
                 fontFamilyMonospace: "var(--font-mono)",
 
-                defaultRadius: "md",
-                focusRing: "never",
-                respectReducedMotion: true,
-
                 primaryColor: "brand",
+                defaultRadius: "md",
+
+                respectReducedMotion: true,
 
                 colors: {
                     brand: [
-                        "#fbf4da",
-                        "#f4e3a4",
-                        "#e9cc6a",
-                        "#ddb63f",
-                        "#c7a52f",
-                        "#a88926",
-                        "#866c1c",
-                        "#644f12",
-                        "#463608",
-                        "#2d2103",
+                        "#f6f2e3",
+                        "#e9ddb6",
+                        "#dbc784",
+                        "#c7a52f", //primary accent.
+                        "#a98c26",
+                        "#8b721d",
+                        "#6c5915",
+                        "#4e400d",
+                        "#312804",
+                        "#1b1501",
                     ],
+                },
+
+                components: {
+                    Button: {
+                        styles: () => ({
+                            root: {
+                                transition: "all var(--duration-fast) var(--ease)",
+                            },
+                        }),
+                    },
+                    Card: {
+                        styles: () => ({
+                            root: {
+                                backgroundColor: "var(--surface)",
+                                boxShadow: "var(--shadow-soft)",
+                                border: "1px solid var(--border-subtle)",
+                            },
+                        }),
+                    },
                 },
             }}
         >

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -7,7 +7,7 @@
       content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
 
-    <title>Stopwatch — Focused & Precise</title>
+    <title>Stopwatch — Precision Timing</title>
     <meta
       name="description"
       content="A simple, modern stopwatch built for focus and precision timing."
@@ -20,11 +20,6 @@
 
     <!-- App Identity. -->
     <meta name="application-name" content="Stopwatch" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="robots" content="index, follow" />
     <link rel="manifest" href="/manifest.json" />
 
     <!-- External Fonts Imports. -->
@@ -41,9 +36,9 @@
   </head>
   <body>
     <noscript>
-      <p style="padding: 1rem; font-family: system-ui, sans-serif;">
-        This Stopwatch requires JavaScript to function!
-      </p>
+      <div class="noscript-message">
+        Stopwatch requires JavaScript to function!
+      </div>
     </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>

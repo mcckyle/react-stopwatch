@@ -1,9 +1,10 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`LapList Component matches snapshot 1`] = `
 <DocumentFragment>
   <section
     aria-label="Lap history"
+    aria-live="polite"
     class="lapList"
     role="log"
   >

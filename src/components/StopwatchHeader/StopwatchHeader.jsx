@@ -1,6 +1,6 @@
 //File name: StopwatchHeader.jsx
 //Author: Kyle McColgan
-//Date: 11 February 2026
+//Date: 20 February 2026
 //Description: This file contains the header component for the React stopwatch project.
 
 import React from "react";
@@ -13,13 +13,13 @@ const StopwatchHeader = ({ theme, onToggleTheme }) => {
   return (
       <header className={styles.header}>
         <div className={styles.brand}>
-          <Clock className={styles.icon} aria-hidden="true" />
+          <Clock className={styles.brandIcon} aria-hidden="true" />
           <span className={styles.title}>Stopwatch</span>
         </div>
 
         <button
           type="button"
-          className={styles.themeToggle}
+          className={styles.toggle}
           onClick={onToggleTheme}
           aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
           aria-pressed={isDark}

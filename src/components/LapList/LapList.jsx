@@ -1,16 +1,17 @@
 //File name: LapList.jsx
 //Author: Kyle McColgan
-//Date: 15 February 2026
+//Date: 20 February 2026
 //Description: This file contains the laps component for the React stopwatch project.
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { formatTime } from "../../utils/formatTime";
 
 import styles from "./LapList.module.css";
 
 const LapList = ({ laps, onClear }) => {
   const [confirmClear, setConfirmClear] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   if ( ! laps.length)
   {
@@ -38,6 +39,7 @@ const LapList = ({ laps, onClear }) => {
     <section
       className={styles.lapList}
       role="log"
+      aria-live="polite"
       aria-label="Lap history"
     >
       {/* Header. */}
@@ -49,7 +51,7 @@ const LapList = ({ laps, onClear }) => {
           className={`${styles.clearButton} ${confirmClear ? styles.confirm : ""}`}
           onClick={handleClearClick}
           onBlur={() => setConfirmClear(false)}
-          aria-label="Clear all laps"
+          aria-label={confirmClear ? "Confirm clearing all laps" : "Clear all laps"}
         >
           {confirmClear ? "Confirm" : "Clear"}
         </button>
@@ -80,10 +82,10 @@ const LapList = ({ laps, onClear }) => {
             <motion.div
               key={`lap-${lapNumber}`}
               className={`${styles.lap} ${highlight} ${isLatest ? styles.latest : ""}`}
-              initial={{ opacity: 0, y: 2 }}
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.14, ease: "easeOut" }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
             >
               <span className={styles.lapLabel}>Lap {lapNumber}</span>
               <span className={styles.lapTime}>{fullTime}</span>

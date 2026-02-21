@@ -1,6 +1,6 @@
 //File name: LapList.test.jsx
 //Author: Kyle McColgan
-//Date: 4 February 2026
+//Date: 19 February 2026
 //Description: This file contains the unit test suite for the LapList component.
 
 import React from "react";
@@ -9,11 +9,12 @@ import LapList from "../components/LapList/LapList.jsx";
 import { formatTime } from "../utils/formatTime";
 
 //Mock Framer Motion and dependencies to simplify the animation behavior for testing purposes.
-jest.mock("framer-motion", () => ({
+jest.mock("motion/react", () => ({
     motion: {
         div: ({ children, ...props }) => <div {...props}>{children}</div>,
     },
     AnimatePresence: ({ children }) => <>{children}</>,
+    useReducedMotion: () => false,
 }));
 
 //Mock formatTime for predictable output...

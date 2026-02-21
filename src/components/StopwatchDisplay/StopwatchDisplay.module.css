@@ -6,75 +6,75 @@
 .display
 {
     width: 100%;
-    display: grid;
-    place-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     user-select: none;
 }
+/* STOPWATCHDISPLAY FRAME STYLES (For Vertical Space). */
+.frame { padding-block: clamp(2rem, 6vh, 4rem); }
 
 /* ====================================
    STOPWATCHDISPLAY TIME ELEMENT STYLES.
 ======================================= */
 .time
 {
-    display: grid;
-    place-items: center;
+    position: relative;
 
     font-family: var(--font-mono);
     font-weight: 600;
     color: var(--text);
 
     font-variant-numeric: tabular-nums lining-nums;
-    text-rendering: optimizeLegibility;
+    font-feature-settings: "tnum" 1, "lnum" 1;
+    letter-spacing: -0.03em;
 }
 
 /* ====================================
    STOPWATCHDISPLAY DIGIT ROW STYLES.
 ======================================= */
-.line
+.row
 {
     display: inline-flex;
-    align-items: center;
+    align-items: baseline;
     justify-content: center;
-    gap: clamp(0.5rem, 1vw, 1rem);
 
-    /* vmin -> vw, time now scales w/ page width and matches the wide frame. */
-    font-size: clamp(5rem, 10vw, 14rem);
-    line-height: 0.9;
+    gap: clamp(0.8rem, 1.2vw, 1.6rem);
 
+    font-size: clamp(4rem, 11vw, 13rem);
+    line-height: 0.88;
     white-space: nowrap;
-    text-align: center;
 }
 
 /* ====================================
    STOPWATCHDISPLAY DIGIT GROUPS STYLES.
 ======================================= */
-.unit { display: inline-flex; align-items: center; justify-content: center; }
+.group { display: inline-flex; align-items: baseline; }
 
 /* ====================================
    STOPWATCHDISPLAY SEPARATORS STYLES.
 ======================================= */
-.separator
+.sep
 {
-    font-size: 0.26em;
+    font-size: 0.18em;
     font-weight: 500;
 
-    opacity: 0.22;
-    transform: translateY(-0.02em);
+    opacity: 0.4;
+    transform: translateY(-0.04em);
     pointer-events: none;
-
-    transition: opacity var(--duration-base) var(--ease-soft);
 }
 
 /* ====================================
-   STOPWATCHDISPLAY VISUALLY HIDDEN (A11Y) STYLES.
+   STOPWATCHDISPLAY SCREEN READERS ONLY STYLES.
 ======================================= */
-.visuallyHidden
+.srOnly
 {
     position: absolute;
     width: 1px;
     height: 1px;
-    padding: 0;
     margin: -1px;
+    padding: 0;
 
     overflow: hidden;
     clip: rect(0 0 0 0);
@@ -87,6 +87,6 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .line { font-size: clamp(4.5rem, 20vmin, 10rem); line-height: 0.94; }
-    .separator { opacity: 0.26; }
+    .row { font-size: clamp(3rem, 14vw, 8rem);}
+    .sep { font-size: 0.22em; }
 }

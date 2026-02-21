@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`AnimatedDigit Component matches snapshot for digit 9 1`] = `
 <DocumentFragment>
@@ -7,11 +7,12 @@ exports[`AnimatedDigit Component matches snapshot for digit 9 1`] = `
     class="container"
   >
     <span
-      animate="[object Object]"
+      animate="animate"
       class="digit"
-      exit="[object Object]"
-      initial="[object Object]"
+      exit="exit"
+      initial="initial"
       transition="[object Object]"
+      variants="[object Object]"
     >
       9
     </span>
