@@ -10,7 +10,7 @@
     --font-mono: "JetBrains Mono", monospace;
 
     /* Motion. */
-    --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
     --duration-fast: 140ms;
     --duration: 220ms;
 
@@ -19,11 +19,7 @@
     --radius-md: 12px;
     --radius-lg: 20px;
 
-    /* Shadows. */
-    --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.04)
-                   0 4px 16px rgba(0, 0, 0, 0.04);
-
-    --focus-ring: 0 0 0 3px rgba(199, 165, 47, 0.35);
+    --focus-ring: 0 0 0 2px color-mix(in oklab, var(--text) 30%, transparent);
 }
 
 /* ====================================
@@ -31,10 +27,10 @@
 ======================================= */
 html.light
 {
-    --app-bg: #f6f7f9;
+    --app-bg: #f4f6f8;
 
     --surface: #ffffff;
-    --surface-muted: #f2f4f7;
+    --surface-muted: #f1f3f5;
 
     --text: #111111;
     --text-muted: rgba(0, 0, 0, 0.55);
@@ -47,13 +43,13 @@ html.light
 ======================================= */
 html.dark
 {
-    --app-bg: #0d0f13;
+    --app-bg: #0c0f14;
 
-    --surface: #15181d;
-    --surface-muted: #111317;
+    --surface: #14171c;
+    --surface-muted: #101318;
 
-    --text: #f5f7fa;
-    --text-muted: rgba(245, 247, 250, 0.6);
+    --text: #f4f6f8;
+    --text-muted: rgba(244, 246, 248, 0.6);
 
     --border-subtle: rgba(255, 255, 255, 0.08);
 }

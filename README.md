@@ -1,6 +1,6 @@
 # react-stopwatch
 
-A simple, modern stopwatch app built with **React**, **Vite**, and **Mantine UI**. Designed for focus, simplicity, and speed.
+A simple, modern stopwatch app built with **React**, **Vite**, and **Mantine UI**. Designed for focus and precision.
 
 ---
 
@@ -142,7 +142,7 @@ react-stopwatch/
 ## 📄 License
 
 This project is licensed under the [MIT License](./LICENSE).
-Feel free to use it as inspiration, extend it for your own projects, or contribute improvements back to the community.
+Feel free to extend it for your own projects, or contribute improvements back to the community.
 
 ---
 
@@ -155,4 +155,4 @@ This project was made possible thanks to the open-source community and the follo
 - [Mantine UI](https://mantine.dev/) - Accessible, fully-featured React components for building polished interfaces.
 - [Framer Motion](https://www.framer.com/motion/) - Animation library powering fluid, accessible transitions.
 
-Special thanks to the broader open-source ecosystem for inspiration, guidance, and tools that empower developers to create and share freely.
+Special thanks to the broader open-source ecosystem for the inspiration and tools that empower developers to create and share freely.

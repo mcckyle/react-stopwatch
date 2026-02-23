@@ -1,6 +1,6 @@
 //File name: Stopwatch.jsx
 //Author: Kyle McColgan
-//Date: 20 February 2026
+//Date: 22 February 2026
 //Description: This file contains the parent Stopwatch component for the React stopwatch project.
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
@@ -79,39 +79,41 @@ const Stopwatch = ({ onToggleTheme }) => {
   });
 
   return (
-    <motion.main
-      className={styles.stage}
-      aria-label="Stopwatch"
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{
-        duration: 0.4,
-        ease: [0.22, 0.61, 0.36, 1],
-      }}
-    >
-      <div className={styles.container}>
-        <StopwatchHeader
-          theme={theme}
-          onToggleTheme={onToggleTheme}
-        />
-
-        <section className={styles.core}>
-          <StopwatchDisplay time={time} />
-          <StopwatchControls
-            isRunning={isRunning}
-            toggle={toggle}
-            reset={reset}
-            recordLap={recordLap}
+    <>
+      <motion.main
+        className={styles.stage}
+        aria-label="Stopwatch"
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.5,
+          ease: [0.22, 0.61, 0.36, 1],
+        }}
+      >
+        <div className={styles.container}>
+          <StopwatchHeader
+            theme={theme}
+            onToggleTheme={onToggleTheme}
           />
 
-          {laps.length > 0 && (
-            <LapList laps={laps} onClear={clearLaps} />
-          )}
-        </section>
-      </div>
+          <section className={styles.core}>
+            <StopwatchDisplay time={time} />
+            <StopwatchControls
+              isRunning={isRunning}
+              toggle={toggle}
+              reset={reset}
+              recordLap={recordLap}
+            />
+
+            {laps.length > 0 && (
+              <LapList laps={laps} onClear={clearLaps} />
+            )}
+          </section>
+        </div>
+      </motion.main>
 
       {showHelp && <HelpModal onClose={() => setShowHelp(false)} />}
-    </motion.main>
+    </>
   );
 };
 

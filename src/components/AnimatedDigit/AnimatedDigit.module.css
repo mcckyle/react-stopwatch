@@ -5,8 +5,7 @@
 ======================================= */
 .container
 {
-    display: inline-grid;
-    place-items: center;
+    display: inline-block;
 
     width: 1ch;
     height: 1em;
@@ -22,13 +21,16 @@
 .digit
 {
     position: absolute;
+    inset: 0;
 
-    display: inline-block;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+
     font: inherit;
     line-height: 1;
     text-align: center;
 
     backface-visibility: hidden;
-    transform: translateZ(0);
     will-change: transform, opacity;
 }

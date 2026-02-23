@@ -1,6 +1,6 @@
 //File name: StopwatchDisplay.jsx
 //Author: Kyle McColgan
-//Date: 18 February 2026
+//Date: 22 February 2026
 //Description: This file contains the stopwatch display component for the React stopwatch project.
 
 import React from "react";
@@ -20,24 +20,22 @@ const StopwatchDisplay = ({ time }) => {
 
   return (
     <section className={styles.display} aria-label="Elapsed time">
-      <div className={styles.frame}>
-        <time
-          className={styles.time}
-          role="timer"
-          aria-live="polite"
-          aria-atomic="true"
-          dateTime={`PT${hours}H${minutes}M${seconds}S`}
-        >
-          <span className={styles.srOnly}>{readableTime}</span>
-          <span className={styles.row} aria-hidden="true">
-            <span className={styles.group}>{renderDigits(hours, "h")}</span>
-            <span className={styles.sep}>:</span>
-            <span className={styles.group}>{renderDigits(minutes, "m")}</span>
-            <span className={styles.sep}>:</span>
-            <span className={styles.group}>{renderDigits(seconds, "s")}</span>
-          </span>
-        </time>
-      </div>
+      <time
+        className={styles.time}
+        role="timer"
+        aria-live="polite"
+        aria-atomic="true"
+        dateTime={`PT${hours}H${minutes}M${seconds}S`}
+      >
+        <span className={styles.srOnly}>{readableTime}</span>
+        <span className={styles.row} aria-hidden="true">
+          <span className={styles.group}>{renderDigits(hours, "h")}</span>
+          <span className={styles.sep}>:</span>
+          <span className={styles.group}>{renderDigits(minutes, "m")}</span>
+          <span className={styles.sep}>:</span>
+          <span className={styles.group}>{renderDigits(seconds, "s")}</span>
+        </span>
+      </time>
     </section>
   );
 };

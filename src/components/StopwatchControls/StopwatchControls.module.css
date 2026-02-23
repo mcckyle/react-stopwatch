@@ -9,9 +9,9 @@
     align-items: center;
     justify-content: center;
 
-    gap: clamp(0.75rem, 2vw, 1.5rem);
+    gap: clamp(0.9rem, 2vw, 1.75rem);
     width: 100%;
-    max-width: 520px;
+    max-width: 560px;
 }
 
 /* ====================================
@@ -21,28 +21,27 @@
 {
     font-family: var(--font-mono);
     font-weight: 600;
-    font-size: 0.7rem;
+    font-size: 0.68rem;
 
-    letter-spacing: 0.14em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
 
-    min-width: 108px;
-    padding: 0.7rem 1.4rem;
+    min-width: 110px;
+    padding: 0.75rem 1.6rem;
 
     border-radius: 999px;
-    border: 1px solid var(--border-subtle);
+    border: none;
 
     background: transparent;
     color: var(--text);
 
     transition: background var(--duration) var(--ease),
-                border-color var(--duration) var(--ease),
                 color var(--duration) var(--ease),
                 opacity 0.15s ease;
 }
 
 /* Disabled Button State Styles. */
-.button:disabled { opacity: 0.35; cursor: not-allowed; }
+.button:disabled { opacity: 0.3; cursor: not-allowed; }
 
 /* =========================================
    PRIMARY ACTION ( START / PAUSE ) STYLES.
@@ -51,18 +50,18 @@
 {
     background: var(--text);
     color: var(--surface);
-    border-color: var(--text);
 }
-.primary:hover:not(:disabled) { opacity: 0.9; }
+.primary:hover:not(:disabled) { opacity: 0.92; }
 
 /* =========================================
    SECONDARY ACTION ( LAP ) STYLES.
 ============================================ */
 .secondary
 {
+    border: 1px solid var(--border-subtle);
     background: transparent;
 }
-.secondary:hover:not(:disabled) { color: var(--text); }
+.secondary:hover:not(:disabled) { background: var(--surface-muted); }
 
 /* =========================================
    TERTIARY ACTION ( RESET ) STYLES.
@@ -70,7 +69,7 @@
 .tertiary
 {
     border-color: transparent;
-    color: var(--text);
+    color: var(--text-muted);
 }
 .tertiary:hover:not(:disabled) { color: var(--text); }
 

@@ -12,23 +12,19 @@
 
     user-select: none;
 }
-/* STOPWATCHDISPLAY FRAME STYLES (For Vertical Space). */
-.frame { padding-block: clamp(2rem, 6vh, 4rem); }
 
 /* ====================================
    STOPWATCHDISPLAY TIME ELEMENT STYLES.
 ======================================= */
 .time
 {
-    position: relative;
-
     font-family: var(--font-mono);
     font-weight: 600;
     color: var(--text);
 
     font-variant-numeric: tabular-nums lining-nums;
     font-feature-settings: "tnum" 1, "lnum" 1;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.035em;
 }
 
 /* ====================================
@@ -40,10 +36,10 @@
     align-items: baseline;
     justify-content: center;
 
-    gap: clamp(0.8rem, 1.2vw, 1.6rem);
+    gap: clamp(1rem, 1.6vw, 2rem);
 
-    font-size: clamp(4rem, 11vw, 13rem);
-    line-height: 0.88;
+    font-size: clamp(4.5rem, 12vw, 14rem);
+    line-height: 0.82;
     white-space: nowrap;
 }
 
@@ -57,11 +53,11 @@
 ======================================= */
 .sep
 {
-    font-size: 0.18em;
+    font-size: 0.16em;
     font-weight: 500;
 
-    opacity: 0.4;
-    transform: translateY(-0.04em);
+    opacity: 0.35;
+    transform: translateY(-0.06em);
     pointer-events: none;
 }
 
@@ -87,6 +83,6 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .row { font-size: clamp(3rem, 14vw, 8rem);}
-    .sep { font-size: 0.22em; }
+    .row { font-size: clamp(3.5rem, 16vw, 9rem);}
+    .sep { font-size: 0.18em; }
 }

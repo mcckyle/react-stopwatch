@@ -1,23 +1,20 @@
 /* Filename: src/index.css */
 
 /* ====================================
-   BASE RESET STYLES.
+   GLOBAL RESET STYLES.
 ======================================= */
 *, *::before, *::after { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
 
-html, body, #root
-{
-    height: 100%;
-    margin: 0;
-}
-
+/* ====================================
+   BASE STYLES.
+======================================= */
 body
 {
     font-family: "Inter", system-ui, -apple-system, sans-serif;
     font-size: 16px;
     line-height: 1.5;
 
-    font-variant-numeric: tabular-nums lining-nums;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
 
@@ -25,8 +22,10 @@ body
     color: var(--text);
     overscroll-behavior: none;
 }
-/* Remove Default Heading Noise. */
+/* Remove Default Heading Spacing Styles. */
 h1, h2, h3, h4, h5, h6 { margin: 0; font-weight: 600; }
+
+/* Normalize Buttons Styles. */
 button { font: inherit; background: none; border: none; padding: 0; cursor: pointer; }
 
 /* ====================================
@@ -37,7 +36,10 @@ button { font: inherit; background: none; border: none; padding: 0; cursor: poin
     min-height: 100vh;
     display: grid;
     place-items: center;
+
     font-family: system-ui, sans-serif;
+    font-size: 0.95rem;
+    color: #555;
 }
 
 /* ====================================

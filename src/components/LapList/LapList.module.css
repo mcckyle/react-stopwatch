@@ -7,19 +7,18 @@
 {
     width: 100%;
     max-width: 560px;
-    margin-top: clamp(2rem, 4vh, 3rem);
-    padding-top: 1.25rem;
+
+    margin-top: clamp(2.5rem, 5vh, 3.5rem);
+    padding-top: 1.5rem;
 
     border-top: 1px solid var(--border-subtle);
 
-    max-height: 26vh;
+    max-height: 28vh;
     overflow-y: auto;
-
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
 }
-.lapList::-webkit-scrollbar { width: 6px; }
-.lapList::-webkit-scrollbar-thumb { background: color-mix(in oklab, var(--text) 70%, transparent); border-radius: 3px; }
+.lapList::-webkit-scrollbar { width: 5px; }
+.lapList::-webkit-scrollbar-thumb { background: color-mix(in oklab, var(--text) 50%, transparent); border-radius: 3px; }
 
 /* ====================================
    LAPLIST HEADER STYLES.
@@ -29,11 +28,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 1rem;
+    margin-bottom: 1.25rem;
 
     font-family: var(--font-mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.24em;
+    font-size: 0.58rem;
+    letter-spacing: 0.26em;
     text-transform: uppercase;
     color: var(--text-muted);
 }
@@ -54,9 +53,7 @@
     color: var(--text-muted);
     cursor: pointer;
 
-    padding: 0.2rem 0.4rem;
-
-    transition: color 0.18s ease;
+    transition: color 0.15s ease;
 }
 .clearButton:hover { color: var(--text); }
 .confirm { color: #ef4444; font-weight: 600; }
@@ -70,18 +67,15 @@
     grid-template-columns: 3rem 1fr auto;
     align-items: baseline;
 
-    padding: 0.6rem 0;
-    gap: 0.75rem;
+    padding: 0.65rem 0;
+    gap: 1rem;
 
     font-family: var(--font-mono);
-    font-size: 0.8rem;
-    line-height: 1.4;
+    font-size: 0.78rem;
 
     font-variant-numeric: tabular-nums lining-nums;
-
-    border-top: color-mix(in oklab, var(--border-subtle) 60%, transparent);
 }
-.lap:first-of-type { border-top: none; }
+.lap + .lap { border-top: 1px solid color-mix(in oklab, var(--border-subtle) 60%, transparent); }
 .latest .lapTime { font-weight: 600; }  /* Latest Emphasis Styles. */
 
 /* ====================================
@@ -89,8 +83,8 @@
 ======================================= */
 .lapLabel
 {
-    font-size: 0.55rem;
-    letter-spacing: 0.2em;
+    font-size: 0.52rem;
+    letter-spacing: 0.22em;
     color: var(--text-muted);
 }
 .lapTime { font-weight: 500; }
@@ -99,21 +93,14 @@
 /* =========================================
    LAPLIST FASTEST / SLOWEST STYLES.
 ============================================ */
-.fastest .lapDelta { color: #22c55e; }
-.slowest .lapDelta { color: #ef4444; }
+.fastest .lapDelta { color: #16a34a; }
+.slowest .lapDelta { color: #dc2626; }
 
 /* ====================================
    LAPLIST MEDIA QUERY STYLES.
 ======================================= */
 @media (max-width: 768px)
 {
-    .lap
-    {
-        grid-template-columns: 1fr auto;
-        grid-template-areas:
-          "time delta"
-          "label label";
-        row-gap: 0.35rem;
-    }
+    .lap { grid-template-columns: 1fr auto; row-gap: 0.4rem; }
     .lapLabel { grid-column: span 2; }
 }

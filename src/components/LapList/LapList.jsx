@@ -1,6 +1,6 @@
 //File name: LapList.jsx
 //Author: Kyle McColgan
-//Date: 20 February 2026
+//Date: 22 February 2026
 //Description: This file contains the laps component for the React stopwatch project.
 
 import React, { useState } from "react";
@@ -51,7 +51,6 @@ const LapList = ({ laps, onClear }) => {
           className={`${styles.clearButton} ${confirmClear ? styles.confirm : ""}`}
           onClick={handleClearClick}
           onBlur={() => setConfirmClear(false)}
-          aria-label={confirmClear ? "Confirm clearing all laps" : "Clear all laps"}
         >
           {confirmClear ? "Confirm" : "Clear"}
         </button>
@@ -82,10 +81,10 @@ const LapList = ({ laps, onClear }) => {
             <motion.div
               key={`lap-${lapNumber}`}
               className={`${styles.lap} ${highlight} ${isLatest ? styles.latest : ""}`}
-              initial={prefersReducedMotion ? false : { opacity: 0, y: 6 }}
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 4 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+              exit={{ opacity: 0, y: -4 }}
+              transition={{ duration: 0.16, ease: [0.25, 0.8, 0.25, 1] }}
             >
               <span className={styles.lapLabel}>Lap {lapNumber}</span>
               <span className={styles.lapTime}>{fullTime}</span>

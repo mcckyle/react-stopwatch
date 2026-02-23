@@ -17,7 +17,6 @@ exports[`LapList Component matches snapshot 1`] = `
         Laps
       </span>
       <button
-        aria-label="Clear all laps"
         class="clearButton "
         type="button"
       >
