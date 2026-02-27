@@ -1,7 +1,7 @@
 /* Filename: src/components/StopwatchHeader/StopwatchHeader.module.css */
 
 /* ====================================
-   STOPWATCHHEADER HEADER CONTAINER STYLES.
+   STOPWATCHHEADER HEADER LAYOUT STYLES.
 ======================================= */
 .header
 {
@@ -11,7 +11,8 @@
     align-items: center;
     justify-content: space-between;
 
-    padding-bottom: clamp(0.5rem, 1vh, 0.75rem);
+    padding-bottom: clamp(0.75rem, 1.5vh, 1.25rem);
+    border-bottom: 1px solid var(--border-subtle);
 }
 
 /* ====================================
@@ -21,19 +22,19 @@
 {
     display: inline-flex;
     align-items: center;
-    gap: 0.85rem;
+    gap: 0.75rem;
 
     user-select: none;
 }
-.brandIcon { width: 1.15rem; height: 1.15rem; opacity: 0.5; transition: opacity var(--duration-fast) var(--ease); }
-.header:hover .brandIcon { opacity: 0.75; }
+.icon { width: 1.2rem; height: 1.2rem; opacity: 0.65; transition: opacity var(--duration-fast) var(--ease), transform var(--duration-fast) var(--ease); }
+.brand:hover .icon { opacity: 0.9; transform: rotate(-3deg); }
 
 .title
 {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.32em;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
 
     color: var(--text-muted);
@@ -51,18 +52,19 @@
     place-items: center;
 
     border-radius: 999px;
-    border: none;
+    border: 1px solid transparent;
     background: transparent;
 
     color: var(--text);
     cursor: pointer;
 
     transition: background var(--duration-fast) var(--ease),
+                border-color var(--duration-fast) var(--ease),
                 transform var(--duration-fast) var(--ease),
-                opacity var(--duration-fast) var(--ease);
+                box-shadow var(--duration-fast) var(--ease);
 
 }
-.toggle:hover { background: var(--surface-muted); }
+.toggle:hover { background: var(--surface-muted); border-color: var(--border-subtle); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); }
 .toggle:active { transform: scale(0.92); }
 .toggle svg { width: 1.1rem; height: 1.1rem; transition: transform var(--duration-fast) var(--ease), opacity var(--duration-fast) var(--ease); }
-.toggle:hover .toggleIcon svg { transform: rotate(12deg); }
+.toggle:hover svg { transform: rotate(14deg); }

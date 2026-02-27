@@ -15,11 +15,16 @@
     --duration: 220ms;
 
     /* Radius. */
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 20px;
+    --radius-xs: 6px;
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
 
-    --focus-ring: 0 0 0 2px color-mix(in oklab, var(--text) 30%, transparent);
+    /* Shadows. */
+    --shadow-sm: 0 6px 24px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 16px 50px rgba(0, 0, 0, 0.08);
+
+    --focus-ring: 0 0 0 2px color-mix(in oklab, var(--text) 28%, transparent);
 }
 
 /* ====================================
@@ -27,15 +32,14 @@
 ======================================= */
 html.light
 {
-    --app-bg: #f4f6f8;
+    --app-bg: #f7f9fb;
 
     --surface: #ffffff;
-    --surface-muted: #f1f3f5;
+    --surface-muted: #f2f5f8;
 
-    --text: #111111;
-    --text-muted: rgba(0, 0, 0, 0.55);
-
-    --border-subtle: rgba(0, 0, 0, 0.06);
+    --text: #0f1115;
+    --text-muted: rgba(15, 17, 21, 0.55);
+    --border-subtle: color-mix(in oklab, var(--text) 10%, transparent);
 }
 
 /* ====================================
@@ -43,30 +47,17 @@ html.light
 ======================================= */
 html.dark
 {
-    --app-bg: #0c0f14;
+    --app-bg: #0c1016;
 
-    --surface: #14171c;
-    --surface-muted: #101318;
+    --surface: #151a23;
+    --surface-muted: #11161e;
 
-    --text: #f4f6f8;
-    --text-muted: rgba(244, 246, 248, 0.6);
-
-    --border-subtle: rgba(255, 255, 255, 0.08);
+    --text: #f5f7fa;
+    --text-muted: rgba(245, 247, 250, 0.6);
+    --border-subtle: color-mix(in oklab, var(--text) 12%, transparent);
 }
 
 /* ====================================
    GLOBAL BASE STYLES.
 ======================================= */
-html, body
-{
-    background: var(--app-bg);
-    color: var(--text);
-    font-family: var(--font-sans);
-
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-
-    transition: background var(--duration) var(--ease),
-                color var(--duration) var(--ease);
-}
-:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: var(--radius-sm); }
+html, body { transition: background var(--duration) var(--ease), color var(--duration) var(--ease); }

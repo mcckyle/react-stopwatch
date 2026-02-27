@@ -7,39 +7,47 @@
 html, body, #root { height: 100%; margin: 0; }
 
 /* ====================================
-   BASE STYLES.
+   BASE FOUNDATION STYLES.
 ======================================= */
 body
 {
-    font-family: "Inter", system-ui, -apple-system, sans-serif;
-    font-size: 16px;
+    font-family: var(--font-sans);
+    font-size: 1rem;
     line-height: 1.5;
 
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 
-    background: var(--app-bg);
+    background: radial-gradient(circle at 50% 30%, color-mix(in oklab, var(--app-bg) 92%, var(--text) 3%), var(--app-bg));
     color: var(--text);
     overscroll-behavior: none;
 }
+html { font-size: 16px; -webkit-text-size-adjust: 100%; }
 /* Remove Default Heading Spacing Styles. */
-h1, h2, h3, h4, h5, h6 { margin: 0; font-weight: 600; }
+h1, h2, h3, h4, h5, h6 { margin: 0; font-weight: 600; letter-spacing: -0.02em; }
 
 /* Normalize Buttons Styles. */
 button { font: inherit; background: none; border: none; padding: 0; cursor: pointer; }
+/* Improve Focus Visibility. */
+:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+/* Improve Selection Feel. */
+::selection { background: color-mix(in oklab, var(--text) 18%, transparent); }
 
 /* ====================================
    NOSCRIPT STYLES.
 ======================================= */
 .noscript-message
 {
-    min-height: 100vh;
+    min-height: 100svh;
+
     display: grid;
     place-items: center;
 
     font-family: system-ui, sans-serif;
     font-size: 0.95rem;
-    color: #555;
+    color: #ffffff;
+    background: #111;
 }
 
 /* ====================================

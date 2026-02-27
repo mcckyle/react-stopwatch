@@ -10,9 +10,8 @@
     display: grid;
     place-items: center;
 
-    padding: clamp(2rem, 5vw, 4rem);
+    padding: clamp(1.75rem, 4vw, 3rem);
     isolation: isolate;
 }
-
 /* Constrain Inner Content Styles. */
-.app > * { width: 100%; max-width: 720px; }
+.app > * { width: 100%; max-width: 640px; }

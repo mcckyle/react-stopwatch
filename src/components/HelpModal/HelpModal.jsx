@@ -1,31 +1,51 @@
 //File name: HelpModal.jsx
 //Author: Kyle McColgan
-//Date: 7 October 2025
-//Description: This file contains the Help modal component for the React timer project.
+//Date: 25 February 2026
+//Description: This file contains the Help modal component for the stopwatch React project.
 
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./HelpModal.module.css";
-import { useTheme } from "../../context/ThemeContext.jsx";
 
 const HelpModal = ({ onClose }) => {
 
-    const { theme } = useTheme();
+    useEffect(() => {
+        const handleKey = (e) => {
+            if (e.key === "Escape") onClose();
+        };
+
+        document.addEventListener("keydown", handleKey);
+        return () => document.removeEventListener("keydown", handleKey);
+    }, [onClose]);
 
     return (
-        <div className = {theme}>
-            <div className = {styles.overlay} onClick = {onClose}>
-                <div className = {styles.modal} onClick = {(e) => e.stopPropagation()}>
-                    <h2> Keyboard Shortcuts </h2>
-                    <ul>
-                        <li><strong>Space</strong>: Start / Stop</li>
-                        <li><strong>L</strong>: Record Lap</li>
-                        <li><strong>R</strong>: Reset Timer</li>
-                        <li><strong>Shift + ?</strong>: Show Help</li>
-                    </ul>
-                    <button onClick = {onClose}>Close</button>
-                </div>
+      <div className="help-modal-root">
+        <div className={styles.overlay} onClick={onClose}>
+            <div
+              className={styles.modal}
+              role="dialog"
+              aria-modal="true"
+              aria-label="Keyboard shortcuts"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <header className={styles.header}>
+                <h2 className={styles.title}>Keyboard Shortcuts</h2>
+              </header>
+                <ul className={styles.list}>
+                    <li><kbd>Space</kbd><span> Start / Pause</span></li>
+                    <li><kbd>L</kbd><span>Record Lap</span></li>
+                    <li><kbd>R</kbd><span>Reset</span></li>
+                    <li><kbd>Shift + ?</kbd><span>Show Help</span></li>
+                </ul>
+                <button
+                  type="button"
+                  className={styles.closeButton}
+                  onClick={onClose}
+                >
+                  Close
+                </button>
             </div>
         </div>
+      </div>
     );
 };
 

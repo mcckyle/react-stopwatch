@@ -24,11 +24,12 @@
 
     font-variant-numeric: tabular-nums lining-nums;
     font-feature-settings: "tnum" 1, "lnum" 1;
-    letter-spacing: -0.035em;
+    letter-spacing: -0.045em;
+    position: relative;
 }
 
 /* ====================================
-   STOPWATCHDISPLAY DIGIT ROW STYLES.
+   STOPWATCHDISPLAY DIGIT ROW (HERO SCALE) STYLES.
 ======================================= */
 .row
 {
@@ -36,11 +37,13 @@
     align-items: baseline;
     justify-content: center;
 
-    gap: clamp(1rem, 1.6vw, 2rem);
+    gap: clamp(1rem, 2vw, 2.25rem);
 
-    font-size: clamp(4.5rem, 12vw, 14rem);
-    line-height: 0.82;
+    font-size: clamp(5rem, 13vw, 15rem);
+    line-height: 0.78;
     white-space: nowrap;
+
+    transition: transform var(--duration) var(--ease);
 }
 
 /* ====================================
@@ -51,15 +54,18 @@
 /* ====================================
    STOPWATCHDISPLAY SEPARATORS STYLES.
 ======================================= */
-.sep
+.separator
 {
-    font-size: 0.16em;
+    font-size: 0.14em;
     font-weight: 500;
 
-    opacity: 0.35;
-    transform: translateY(-0.06em);
+    opacity: 0.28;
+    transform: translateY(-0.08em);
     pointer-events: none;
+
+    transition: opacity var(--duration-fast) var(--ease);
 }
+.display:hover .separator { opacity: 0.45; }
 
 /* ====================================
    STOPWATCHDISPLAY SCREEN READERS ONLY STYLES.
@@ -83,6 +89,6 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .row { font-size: clamp(3.5rem, 16vw, 9rem);}
-    .sep { font-size: 0.18em; }
+    .row { font-size: clamp(3.75rem, 16vw, 9rem);}
+    .separator { font-size: 0.17em; }
 }
