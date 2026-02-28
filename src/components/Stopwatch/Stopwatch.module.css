@@ -1,14 +1,14 @@
 /* Filename: src/components/Stopwatch/Stopwatch.module.css */
 
 /* ====================================
-   STOPWATCH STAGE (FULL SCREEN CENTERING) STYLES.
+   STOPWATCH STAGE (FULL SCREEN WRAPPER) STYLES.
 ======================================= */
 .stage
 {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: clamp(1.5rem, 4vw, 3rem) 0;
+    padding: clamp(2rem, 5vw, 4rem) 0;
 }
 
 /* ====================================
@@ -22,11 +22,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: clamp(2rem, 5vh, 3rem);
+    gap: clamp(2.5rem, 6vh, 3.5rem);
 }
+.header { width: 100%; }
 
 /* ====================================
-   STOPWATCH PRIMARY SURFACE CARD STYLES.
+   STOPWATCH PRIMARY CARD STYLES.
 ======================================= */
 .card
 {
@@ -38,7 +39,7 @@
     align-items: center;
 
     gap: clamp(2rem, 4vh, 3rem);
-    padding: clamp(2rem, 4vh, 3rem);
+    padding: clamp(2.25rem, 4vh, 3.25rem);
 
     background: var(--surface);
     border-radius: var(--radius-lg);
@@ -47,11 +48,13 @@
 
     transition: background var(--duration) var(--ease), border-color var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
 }
+.laps { width: 100%;  padding-top: 1.75rem; border-top: 1px solid var(--border-subtle); }
 
 /* ====================================
    STOPWATCH CARD MEDIA QUERY STYLES.
 ======================================= */
 @media (max-width: 480px)
 {
-    .card { padding: 1.5rem; gap: 1.5rem; }
+    .card { padding: 1.75rem; gap: 1.75rem; }
+    .shell { gap: 2rem; }
 }

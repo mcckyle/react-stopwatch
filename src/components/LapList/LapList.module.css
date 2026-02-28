@@ -15,10 +15,9 @@
 
     max-height: 28vh;
     overflow-y: auto;
-    scrollbar-width: thin;
 }
-.lapList::-webkit-scrollbar { width: 4px; }
-.lapList::-webkit-scrollbar-thumb { background: color-mix(in oklab, var(--text) 40%, transparent); border-radius: 3px; }
+/*.lapList::-webkit-scrollbar { width: 4px; }
+.lapList::-webkit-scrollbar-thumb { background: color-mix(in oklab, var(--text) 40%, transparent); border-radius: 3px; }*/
 
 /* ====================================
    LAPLIST HEADER STYLES.
@@ -28,7 +27,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.1rem;
 
     font-family: var(--font-mono);
     font-size: 0.55rem;
@@ -54,10 +53,10 @@
     cursor: pointer;
     padding: 0;
 
-    transition: color 160ms var(--ease);
+    transition: color 140ms var(--ease);
 }
 .clearButton:hover { color: var(--text); }
-.confirm { color: color-mix(in oklab, #dc2626 75%, var(--text)); font-weight: 600; }
+.confirm { color: color-mix(in oklab, #dc2626 70%, var(--text)); font-weight: 600; }
 
 /* ====================================
    LAPLIST LAP ROW STYLES.
@@ -68,14 +67,14 @@
     grid-template-columns: 3rem 1fr auto;
     align-items: baseline;
 
-    padding: 0.65rem 0;
-    gap: 1.1rem;
+    padding: 0.6rem 0;
+    gap: 1rem;
 
     font-family: var(--font-mono);
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     font-variant-numeric: tabular-nums lining-nums;
 }
-.lap + .lap { border-top: 1px solid color-mix(in oklab, var(--border-subtle) 45%, transparent); }
+.lap + .lap { border-top: 1px solid color-mix(in oklab, var(--border-subtle) 35%, transparent); }
 .latest .lapTime { font-weight: 600; }  /* Latest Emphasis Styles. */
 
 /* ====================================
@@ -93,14 +92,14 @@
 /* =========================================
    LAPLIST FASTEST / SLOWEST STYLES.
 ============================================ */
-.fastest .lapDelta { color: color-mix(in oklab, #16a34a 65%, var(--text)); }
-.slowest .lapDelta { color: color-mix(in oklab, #dc2626 65%, var(--text)); }
+.fastest .lapDelta { color: color-mix(in oklab, #16a34a 60%, var(--text)); }
+.slowest .lapDelta { color: color-mix(in oklab, #dc2626 60%, var(--text)); }
 
 /* ====================================
    LAPLIST MEDIA QUERY STYLES.
 ======================================= */
 @media (max-width: 768px)
 {
-    .lap { grid-template-columns: 1fr auto; row-gap: 0.4rem; }
+    .lap { grid-template-columns: 1fr auto; row-gap: 0.35rem; }
     .lapLabel { grid-column: span 2; }
 }

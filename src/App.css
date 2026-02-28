@@ -7,11 +7,9 @@
 {
     min-height: 100svh;
 
-    display: grid;
-    place-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     padding: clamp(1.75rem, 4vw, 3rem);
-    isolation: isolate;
 }
-/* Constrain Inner Content Styles. */
-.app > * { width: 100%; max-width: 640px; }

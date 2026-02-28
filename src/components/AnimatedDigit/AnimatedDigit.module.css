@@ -12,7 +12,6 @@
     height: 1em;
 
     overflow: hidden;
-    isolation: isolate;
 }
 
 /* ====================================
@@ -26,9 +25,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
     line-height: 1;
     text-align: center;
 
     backface-visibility: hidden;
-    will-change: transform, opacity;
 }

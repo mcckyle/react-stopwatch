@@ -9,7 +9,7 @@
     align-items: center;
     justify-content: center;
 
-    gap: clamp(1rem, 2vw, 1.75rem);
+    gap: clamp(1rem, 2.2vw, 1.8rem);
     width: 100%;
     max-width: 560px;
 }
@@ -21,13 +21,13 @@
 {
     font-family: var(--font-mono);
     font-weight: 600;
-    font-size: 0.72rem;
+    font-size: 0.7rem;
 
-    letter-spacing: 0.16em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
 
     min-width: 120px;
-    padding: 0.85rem 1.9rem;
+    padding: 0.8rem 1.8rem;
 
     border-radius: 999px;
     border: 1px solid transparent;
@@ -39,14 +39,12 @@
     align-items: center;
     justify-content: center;
 
-    transition: background 180ms var(--ease),
-                color 180ms var(--ease),
-                border-color 180ms var(--ease),
-                box-shadow 180ms var(--ease);
+    transition: background 160ms var(--ease),
+                color 160ms var(--ease),
+                border-color 160ms var(--ease);
 }
-
 /* Disabled Button State Styles. */
-.button:disabled { opacity: 0.4; cursor: not-allowed; }
+.button:disabled { opacity: 0.35; cursor: not-allowed; }
 
 /* =========================================
    PRIMARY ACTION ( START / PAUSE ) STYLES.
@@ -57,7 +55,7 @@
     color: var(--surface);
     border-color: var(--text);
 }
-.primary:hover:not(:disabled) { box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08); }
+.primary:hover:not(:disabled) { opacity: 0.92; }
 
 /* =========================================
    SECONDARY ACTION ( LAP ) STYLES.

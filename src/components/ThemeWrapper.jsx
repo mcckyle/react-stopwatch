@@ -32,19 +32,19 @@ const ThemeWrapper = ({ children }) => {
                 respectReducedMotion: true,
                 transitionTimingFunction: "var(--ease)",
 
-                /* Use Design Tokens Instead of Fixed Palette. */
+                /* Neutral System (Token Driven). */
                 colors: {
                     neutral: [
-                        "var(--surface-muted)",
-                        "var(--surface-muted)",
-                        "var(--surface-muted)",
-                        "var(--surface)",
-                        "var(--surface)",
-                        "var(--surface)",
-                        "var(--surface)",
-                        "var(--surface)",
-                        "var(--surface)",
-                        "var(--surface)",
+                        "var(--surface-muted)", //0
+                        "var(--surface-muted)", //1
+                        "var(--surface-muted)", //2
+                        "var(--surface)",       //3
+                        "var(--surface)",       //4
+                        "var(--surface)",       //5
+                        "var(--surface)",       //6
+                        "var(--surface)",       //7
+                        "var(--surface)",       //8
+                        "var(--surface)",       //9
                     ],
                 },
                 primaryColor: "neutral",
@@ -59,11 +59,22 @@ const ThemeWrapper = ({ children }) => {
                                 transition:
                                   "background var(--duration-fast) var(--ease), " +
                                   "color var(--duration-fast) var(--ease), " + "border-color var(--duration-fast) var(--ease), " +
+                                  "box-shadow var(--duration-fast) var(--ease), " +
                                   "transform var(--duration-fast) var(--ease)",
 
                                 "&:focus-visible": {
                                     boxShadow: "var(--focus-ring)",
                                 },
+                            },
+                        }),
+                    },
+
+                    Card: {
+                        styles: () => ({
+                            root: {
+                                background: "var(--surface)",
+                                border: "1px solid var(--border-subtle)",
+                                boxShadow: "var(--shadow-sm)",
                             },
                         }),
                     },

@@ -83,15 +83,17 @@ const Stopwatch = ({ onToggleTheme }) => {
       <motion.section
         className={styles.stage}
         aria-label="Stopwatch"
-        initial={{ opacity: 0, y: 12 }}
+        initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
       >
         <div className={styles.shell}>
-          <StopwatchHeader
-            theme={theme}
-            onToggleTheme={onToggleTheme}
-          />
+          <header className={styles.header}>
+            <StopwatchHeader
+              theme={theme}
+              onToggleTheme={onToggleTheme}
+            />
+          </header>
 
           <div className={styles.card}>
             <StopwatchDisplay time={time} />
@@ -103,7 +105,9 @@ const Stopwatch = ({ onToggleTheme }) => {
             />
 
             {laps.length > 0 && (
-              <LapList laps={laps} onClear={clearLaps} />
+              <section className={styles.laps}>
+                <LapList laps={laps} onClear={clearLaps} />
+              </section>
             )}
           </div>
         </div>

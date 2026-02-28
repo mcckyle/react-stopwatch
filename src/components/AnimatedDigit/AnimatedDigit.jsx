@@ -1,6 +1,6 @@
 //File name: AnimatedDigit.jsx
 //Author: Kyle McColgan
-//Date: 25 February 2026
+//Date: 27 February 2026
 //Description: This file contains the digits component for the React stopwatch project.
 
 import React from "react";
@@ -10,8 +10,8 @@ import styles from "./AnimatedDigit.module.css";
 const AnimatedDigit = ({ value }) => {
   const prefersReducedMotion = useReducedMotion();
   const transition = prefersReducedMotion
-    ? { duration: 0.01 }
-    : { duration: 0.22, ease: [0.25, 1, 0.5, 1] };
+    ? { duration: 0 }
+    : { duration: 0.18, ease: [0.4, 0, 0.2, 1] };
   const variants = prefersReducedMotion
     ? {
         initial: { opacity: 0 },
@@ -19,14 +19,14 @@ const AnimatedDigit = ({ value }) => {
         exit: { opacity: 0 },
       }
     : {
-        initial: { y: "-0.12em", opacity: 0 },
+        initial: { y: "-0.08em", opacity: 0 },
         animate: { y: "0em", opacity: 1 },
-        exit: { y: "0.12em", opacity: 0 },
+        exit: { y: "0.08em", opacity: 0 },
       };
 
   return (
     <span className={styles.container} aria-hidden="true">
-      <AnimatePresence mode="popLayout" initial={false}>
+      <AnimatePresence initial={false}>
         <motion.span
           key={value}
           className={styles.digit}

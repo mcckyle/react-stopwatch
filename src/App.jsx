@@ -14,7 +14,7 @@ function App()
     const { onToggleTheme } = useTheme();
 
     return (
-      <main className="app" role="application">
+      <main className="app">
         <Stopwatch onToggleTheme={onToggleTheme} />
       </main>
     );

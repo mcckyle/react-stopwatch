@@ -14,58 +14,53 @@
 }
 
 /* ====================================
-   STOPWATCHDISPLAY TIME ELEMENT STYLES.
+   STOPWATCHDISPLAY TIME WRAPPER STYLES.
 ======================================= */
 .time
 {
+    position: relative;
+
     font-family: var(--font-mono);
     font-weight: 600;
     color: var(--text);
 
     font-variant-numeric: tabular-nums lining-nums;
     font-feature-settings: "tnum" 1, "lnum" 1;
-    letter-spacing: -0.045em;
-    position: relative;
+    letter-spacing: -0.04em;
 }
 
 /* ====================================
-   STOPWATCHDISPLAY DIGIT ROW (HERO SCALE) STYLES.
+   STOPWATCHDISPLAY HERO DIGIT ROW STYLES.
 ======================================= */
 .row
 {
     display: inline-flex;
-    align-items: baseline;
+    align-items: flex-end;
     justify-content: center;
 
-    gap: clamp(1rem, 2vw, 2.25rem);
+    gap: clamp(1rem, 2.5vw, 2.75rem);
 
-    font-size: clamp(5rem, 13vw, 15rem);
-    line-height: 0.78;
+    font-size: clamp(4.5rem, 12vw, 14rem);
+    line-height: 0.85;
     white-space: nowrap;
-
-    transition: transform var(--duration) var(--ease);
 }
 
 /* ====================================
    STOPWATCHDISPLAY DIGIT GROUPS STYLES.
 ======================================= */
-.group { display: inline-flex; align-items: baseline; }
+.group { display: inline-flex; align-items: flex-end; }
 
 /* ====================================
    STOPWATCHDISPLAY SEPARATORS STYLES.
 ======================================= */
 .separator
 {
-    font-size: 0.14em;
+    font-size: 0.16em;
     font-weight: 500;
 
-    opacity: 0.28;
-    transform: translateY(-0.08em);
+    opacity: 0.35;
     pointer-events: none;
-
-    transition: opacity var(--duration-fast) var(--ease);
 }
-.display:hover .separator { opacity: 0.45; }
 
 /* ====================================
    STOPWATCHDISPLAY SCREEN READERS ONLY STYLES.
@@ -89,6 +84,6 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .row { font-size: clamp(3.75rem, 16vw, 9rem);}
-    .separator { font-size: 0.17em; }
+    .row { font-size: clamp(3.5rem, 15vw, 8.5rem);}
+    .separator { font-size: 0.18em; }
 }

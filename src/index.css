@@ -5,6 +5,7 @@
 ======================================= */
 *, *::before, *::after { box-sizing: border-box; }
 html, body, #root { height: 100%; margin: 0; }
+html { font-size: 16px; -webkit-text-size-adjust: 100%; }
 
 /* ====================================
    BASE FOUNDATION STYLES.
@@ -19,20 +20,20 @@ body
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    background: radial-gradient(circle at 50% 30%, color-mix(in oklab, var(--app-bg) 92%, var(--text) 3%), var(--app-bg));
+    background: radial-gradient(circle at 50% 25%, color-mix(in oklab, var(--app-bg) 92%, var(--text) 4%), var(--app-bg));
     color: var(--text);
-    overscroll-behavior: none;
+    overscroll-behavior-y: none;
+
+    transition: background var(--duration) var(--ease), color var(--duration) var(--ease);
 }
-html { font-size: 16px; -webkit-text-size-adjust: 100%; }
 /* Remove Default Heading Spacing Styles. */
 h1, h2, h3, h4, h5, h6 { margin: 0; font-weight: 600; letter-spacing: -0.02em; }
-
 /* Normalize Buttons Styles. */
 button { font: inherit; background: none; border: none; padding: 0; cursor: pointer; }
 /* Improve Focus Visibility. */
 :focus-visible { outline: none; box-shadow: var(--focus-ring); }
 /* Improve Selection Feel. */
-::selection { background: color-mix(in oklab, var(--text) 18%, transparent); }
+::selection { background: color-mix(in oklab, var(--text) 20%, transparent); }
 
 /* ====================================
    NOSCRIPT STYLES.
@@ -46,8 +47,8 @@ button { font: inherit; background: none; border: none; padding: 0; cursor: poin
 
     font-family: system-ui, sans-serif;
     font-size: 0.95rem;
-    color: #ffffff;
     background: #111;
+    color: #ffffff;
 }
 
 /* ====================================
