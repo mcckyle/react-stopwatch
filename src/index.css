@@ -20,7 +20,7 @@ body
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    background: radial-gradient(circle at 50% 25%, color-mix(in oklab, var(--app-bg) 92%, var(--text) 4%), var(--app-bg));
+    background: var(--app-bg);
     color: var(--text);
     overscroll-behavior-y: none;
 
@@ -33,7 +33,7 @@ button { font: inherit; background: none; border: none; padding: 0; cursor: poin
 /* Improve Focus Visibility. */
 :focus-visible { outline: none; box-shadow: var(--focus-ring); }
 /* Improve Selection Feel. */
-::selection { background: color-mix(in oklab, var(--text) 20%, transparent); }
+::selection { background: color-mix(in oklab, var(--text) 18%, transparent); }
 
 /* ====================================
    NOSCRIPT STYLES.
@@ -47,6 +47,7 @@ button { font: inherit; background: none; border: none; padding: 0; cursor: poin
 
     font-family: system-ui, sans-serif;
     font-size: 0.95rem;
+
     background: #111;
     color: #ffffff;
 }

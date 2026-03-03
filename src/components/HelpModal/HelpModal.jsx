@@ -1,7 +1,7 @@
 //File name: HelpModal.jsx
 //Author: Kyle McColgan
-//Date: 27 February 2026
-//Description: This file contains the Help modal component for the stopwatch React project.
+//Date: 2 March 2026
+//Description: This file contains the Help modal component for the React stopwatch project.
 
 import React, { useEffect } from "react";
 import styles from "./HelpModal.module.css";
@@ -33,21 +33,24 @@ const HelpModal = ({ onClose }) => {
           </header>
 
           <ul className={styles.list}>
-            <li>
-              <kbd className={styles.kbd}>Space</kbd>
+            <li className={styles.item}>
               <span>Start / Pause</span>
+              <kbd className={styles.kbd}>Space</kbd>
             </li>
-            <li>
-              <kbd className={styles.kbd}>L</kbd>
+
+            <li className={styles.item}>
               <span>Record Lap</span>
+              <kbd className={styles.kbd}>L</kbd>
             </li>
-            <li>
-              <kbd className={styles.kbd}>R</kbd>
+
+            <li className={styles.item}>
               <span>Reset</span>
+              <kbd className={styles.kbd}>R</kbd>
             </li>
-            <li>
-              <kbd className={styles.kbd}>Shift + ?</kbd>
+
+            <li className={styles.item}>
               <span>Show Help</span>
+              <kbd className={styles.kbd}>Shift + ?</kbd>
             </li>
           </ul>
           <button

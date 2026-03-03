@@ -1,30 +1,29 @@
 /* Filename: src/components/Stopwatch/Stopwatch.module.css */
 
 /* ====================================
-   STOPWATCH STAGE (FULL SCREEN WRAPPER) STYLES.
+   STOPWATCH STAGE (STRUCTURAL WRAPPER) STYLES.
 ======================================= */
 .stage
 {
     width: 100%;
-    display: flex;
+/*    display: flex;
     justify-content: center;
-    padding: clamp(2rem, 5vw, 4rem) 0;
+    padding: clamp(2rem, 5vw, 4rem) 0;*/
 }
 
 /* ====================================
-   STOPWATCH OUTER SHELL STYLES.
+   STOPWATCH SHELL (LAYOUT CONTAINER) STYLES.
 ======================================= */
 .shell
 {
     width: 100%;
-    max-width: 720px;
+    max-width: 680px;
+    margin: 0 auto;
 
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: clamp(2.5rem, 6vh, 3.5rem);
+    gap: clamp(2rem, 4vw, 3rem);
 }
-.header { width: 100%; }
 
 /* ====================================
    STOPWATCH PRIMARY CARD STYLES.
@@ -32,29 +31,39 @@
 .card
 {
     width: 100%;
-    max-width: 640px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    gap: clamp(2rem, 4vh, 3rem);
-    padding: clamp(2.25rem, 4vh, 3.25rem);
+    gap: clamp(1.75rem, 3vw, 2.5rem);
+    padding: clamp(2rem, 4vw, 3rem);
 
     background: var(--surface);
     border-radius: var(--radius-lg);
     border: 1px solid var(--border-subtle);
     box-shadow: var(--shadow-sm);
 
-    transition: background var(--duration) var(--ease), border-color var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
+    transition: background var(--duration) var(--ease),
+                border-color var(--duration) var(--ease),
+                box-shadow var(--duration) var(--ease);
 }
-.laps { width: 100%;  padding-top: 1.75rem; border-top: 1px solid var(--border-subtle); }
 
 /* ====================================
-   STOPWATCH CARD MEDIA QUERY STYLES.
+   STOPWATCH LAPS SECTION STYLES.
+======================================= */
+.laps
+{
+    width: 100%;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-subtle);
+}
+
+/* ====================================
+   STOPWATCH MEDIA QUERY STYLES.
 ======================================= */
 @media (max-width: 480px)
 {
-    .card { padding: 1.75rem; gap: 1.75rem; }
-    .shell { gap: 2rem; }
+    .card { padding: 1.5rem; gap: 1.5rem; }
+    .shell { gap: 1.75rem; }
 }

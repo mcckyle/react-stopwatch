@@ -25,7 +25,7 @@ exports[`LapList Component matches snapshot 1`] = `
     </header>
     <div
       animate="[object Object]"
-      class="lap fastest latest"
+      class="lap latest fastest "
       exit="[object Object]"
       initial="[object Object]"
       transition="[object Object]"
@@ -48,7 +48,7 @@ exports[`LapList Component matches snapshot 1`] = `
     </div>
     <div
       animate="[object Object]"
-      class="lap slowest "
+      class="lap   slowest"
       exit="[object Object]"
       initial="[object Object]"
       transition="[object Object]"
@@ -71,7 +71,7 @@ exports[`LapList Component matches snapshot 1`] = `
     </div>
     <div
       animate="[object Object]"
-      class="lap slowest "
+      class="lap   slowest"
       exit="[object Object]"
       initial="[object Object]"
       transition="[object Object]"

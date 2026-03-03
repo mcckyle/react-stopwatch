@@ -1,6 +1,6 @@
 //File name: Stopwatch.jsx
 //Author: Kyle McColgan
-//Date: 27 February 2026
+//Date: 2 March 2026
 //Description: This file contains the parent Stopwatch component for the React stopwatch project.
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
@@ -83,17 +83,15 @@ const Stopwatch = ({ onToggleTheme }) => {
       <motion.section
         className={styles.stage}
         aria-label="Stopwatch"
-        initial={{ opacity: 0, y: 16 }}
+        initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
       >
         <div className={styles.shell}>
-          <header className={styles.header}>
-            <StopwatchHeader
-              theme={theme}
-              onToggleTheme={onToggleTheme}
-            />
-          </header>
+          <StopwatchHeader
+            theme={theme}
+            onToggleTheme={onToggleTheme}
+          />
 
           <div className={styles.card}>
             <StopwatchDisplay time={time} />

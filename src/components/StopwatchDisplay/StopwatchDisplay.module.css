@@ -26,7 +26,7 @@
 
     font-variant-numeric: tabular-nums lining-nums;
     font-feature-settings: "tnum" 1, "lnum" 1;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.025em;
 }
 
 /* ====================================
@@ -38,10 +38,10 @@
     align-items: flex-end;
     justify-content: center;
 
-    gap: clamp(1rem, 2.5vw, 2.75rem);
+    gap: clamp(0.9rem, 2.2vw, 2.25rem);
 
-    font-size: clamp(4.5rem, 12vw, 14rem);
-    line-height: 0.85;
+    font-size: clamp(4rem, 10vw, 10rem);
+    line-height: 0.9;
     white-space: nowrap;
 }
 
@@ -55,10 +55,10 @@
 ======================================= */
 .separator
 {
-    font-size: 0.16em;
+    font-size: 0.2em;
     font-weight: 500;
 
-    opacity: 0.35;
+    opacity: 0.45;
     pointer-events: none;
 }
 
@@ -84,6 +84,6 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .row { font-size: clamp(3.5rem, 15vw, 8.5rem);}
-    .separator { font-size: 0.18em; }
+    .row { font-size: clamp(3rem, 14vw, 6.5rem);}
+    .separator { font-size: 0.24em; }
 }

@@ -1,6 +1,6 @@
 //File name: LapList.jsx
 //Author: Kyle McColgan
-//Date: 27 February 2026
+//Date: 2 March 2026
 //Description: This file contains the laps component for the React stopwatch project.
 
 import React, { useState } from "react";
@@ -64,10 +64,8 @@ const LapList = ({ laps, onClear }) => {
           const time = formatTime(lap, true);
           const deltaTime = formatTime(delta, true);
 
-          const highlight =
-            delta === fastest ? styles.fastest :
-            delta === slowest ? styles.slowest : "";
-
+          const isFastest = delta === fastest;
+          const isSlowest = delta === slowest;
           const isLatest = index === 0;
 
           const fullTime =
@@ -80,11 +78,11 @@ const LapList = ({ laps, onClear }) => {
           return (
             <motion.div
               key={`lap-${lapNumber}`}
-              className={`${styles.lap} ${highlight} ${isLatest ? styles.latest : ""}`}
-              initial={prefersReducedMotion ? false : { opacity: 0, y: 2 }}
+              className={`${styles.lap} ${isLatest ? styles.latest : ""} ${isFastest ? styles.fastest : ""} ${isSlowest ? styles.slowest : ""}`}
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 4 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: -2 }}
-              transition={{ duration: prefersReducedMotion ? 0 : 0.14, ease: [0.4, 0, 0.2, 1], }}
+              exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: -4 }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.18, ease: [0.22, 1, 0.36, 1], }}
             >
               <span className={styles.lapLabel}>Lap {lapNumber}</span>
               <span className={styles.lapTime}>{fullTime}</span>
