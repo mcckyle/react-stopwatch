@@ -1,6 +1,6 @@
 //File name: StopwatchDisplay.test.jsx
 //Author: Kyle McColgan
-//Date: 26 October 2025
+//Date: 3 March 2026
 //Description: This file contains the unit test suite for the StopwatchDisplay component.
 
 import React from "react";
@@ -30,23 +30,25 @@ describe("StopwatchDisplay Component", () => {
             hours: "00",
             minutes: "00",
             seconds: "00",
+            centiSeconds: "00",
         });
 
         render(<StopwatchDisplay time={1234} />);
-        expect(spy).toHaveBeenCalledWith(1234);
+        expect(spy).toHaveBeenCalledWith(1234, true);
     });
 
     //Test #3: Structure - verifies total digit count = 6 (hhmmss).
-    test("3. renders the correct number of AnimatedDigit elements", () => {
+    test("3. renders the correct number of digits, including centiseconds", () => {
         jest.spyOn(formatTimeModule, "formatTime").mockReturnValue({
             hours: "12",
             minutes: "34",
             seconds: "56",
+            centiSeconds: "78",
         });
 
         render(<StopwatchDisplay time={123456} />);
         const digits = screen.getAllByTestId("digit");
-        expect(digits).toHaveLength(6); //2 for hour, + 2 for minutes, + 2 for seconds.
+        expect(digits).toHaveLength(8); //hh mm ss cs
     });
 
     //Test #4: Content integrity - checks the exact sequence of rendered digits.
@@ -55,17 +57,18 @@ describe("StopwatchDisplay Component", () => {
             hours: "09",
             minutes: "45",
             seconds: "33",
+            centiSeconds: "21",
         });
 
         render(<StopwatchDisplay time={98765} />);
-        expect(screen.getAllByTestId("digit").map((d) => d.textContent).join("")).toBe("094533");
+        expect(screen.getAllByTestId("digit").map((d) => d.textContent).join("")).toBe("09453321");
     });
 
-    //Test #5: Layout - ensures exactly two colons separate the time segments.
-    test("5. renders exactly two colon separators", () => {
+    //Test #5: Layout - ensures exactly one colon to separate the time segments.
+    test("5. renders exactly one colon separator (before hours are rendered)", () => {
         render(<StopwatchDisplay time={1000} />);
         const separators = screen.getAllByText(":");
-        expect(separators).toHaveLength(2);
+        expect(separators).toHaveLength(1);
     });
 
     //Test #6: Accessibility - validates aria-live="polite" for assistive tech compatability.
@@ -81,6 +84,7 @@ describe("StopwatchDisplay Component", () => {
             hours: "01",
             minutes: "02",
             seconds: "03",
+            centiSeconds: "04",
         });
 
         render(<StopwatchDisplay time={0} />);
@@ -91,11 +95,12 @@ describe("StopwatchDisplay Component", () => {
     });
 
     //Test #8: Leading zero handling - confirms consistent digit count event with "00" and "09".
-    test("8. maintains consistent digit count even when values have leading zeros", () => {
+    test("8. maintains consistent digit count with leading zeros", () => {
         const spy = jest.spyOn(formatTimeModule, "formatTime").mockReturnValue({
             hours: "00",
             minutes: "09",
             seconds: "05",
+            centiSeconds: "01",
         });
 
         render(<StopwatchDisplay time={0} />);

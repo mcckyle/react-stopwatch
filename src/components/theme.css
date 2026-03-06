@@ -17,16 +17,23 @@
     /* Radius. */
     --radius-xs: 6px;
     --radius-sm: 10px;
-    --radius-md: 16px;
-    --radius-lg: 24px;
+    --radius-md: 14px;
+    --radius-lg: 22px;
+    --radius-xl: 28px;
 
-    /* Shadow Base. */
-    --shadow-color: 220 40% 2%;
-    --shadow-xs: 0 2px 8px hsl(var(--shadow-color) / 0.04);
-    --shadow-sm: 0 6px 24px hsl(var(--shadow-color) / 0.06);
-    --shadow-md: 0 18px 60px hsl(var(--shadow-color) / 0.10);
+    /* Spacing. */
+    --space-xs: 6px;
+    --space-sm: 10px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 40px;
 
-    --focus-ring: 0 0 0 2px color-mix(in oklab, var(--text) 26%, transparent);
+    /* Shadows System. */
+    --shadow-xs: 0 1px 4px hsl(220 40% 2% / 0.05);
+    --shadow-sm: 0 12px 32px hsl(220 40% 2% / 0.08);
+    --shadow-md: 0 32px 80px hsl(220 40% 2% / 0.16);
+
+    --focus-ring: 0 0 0 2px color-mix(in oklab, var(--text) 22%, transparent);
 }
 
 /* ====================================
@@ -34,15 +41,14 @@
 ======================================= */
 html.light
 {
-    --app-bg: #f6f8fb;
+    --app-bg: #f6f8fc;
 
     --surface: #ffffff;
-    --surface-muted: #f1f4f8;
+    --surface-muted: #f2f5fa;
 
-    --text: #0f1115;
+    --text: #0d1117;
     --text-muted: color-mix(in oklab, var(--text) 55%, transparent);
     --border-subtle: color-mix(in oklab, var(--text) 10%, transparent);
-    --shadow-color: 220 40% 2%;
 }
 
 /* ====================================
@@ -50,18 +56,17 @@ html.light
 ======================================= */
 html.dark
 {
-    --app-bg: #0b0f14;
+    --app-bg: #0b1016;
 
-    --surface: #141922;
-    --surface-muted: #10151d;
+    --surface: #141b24;
+    --surface-muted: #0f151d;
 
-    --text: #f4f6fa;
+    --text: #f3f6fa;
     --text-muted: color-mix(in oklab, var(--text) 60%, transparent);
     --border-subtle: color-mix(in oklab, var(--text) 14%, transparent);
-    --shadow-color: 0 0% 0%;
 }
 
 /* ====================================
    GLOBAL TRANSITION LAYER STYLES.
 ======================================= */
-html, body { transition: background var(--duration) var(--ease), color var(--duration) var(--ease); }
+html, body { background: var(--app-bg); color: var(--text); transition: background var(--duration) var(--ease), color var(--duration) var(--ease); }

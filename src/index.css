@@ -4,8 +4,8 @@
    GLOBAL RESET STYLES.
 ======================================= */
 *, *::before, *::after { box-sizing: border-box; }
-html, body, #root { height: 100%; margin: 0; }
 html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+html, body, #root { height: 100%; margin: 0; }
 
 /* ====================================
    BASE FOUNDATION STYLES.
@@ -16,27 +16,26 @@ body
     font-size: 1rem;
     line-height: 1.5;
 
+    background: var(--app-bg);
+    color: var(--text);
+
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    background: var(--app-bg);
-    color: var(--text);
-    overscroll-behavior-y: none;
-
-    transition: background var(--duration) var(--ease), color var(--duration) var(--ease);
+    transition: background-color 240ms var(--ease), color 240ms var(--ease);
 }
-/* Remove Default Heading Spacing Styles. */
-h1, h2, h3, h4, h5, h6 { margin: 0; font-weight: 600; letter-spacing: -0.02em; }
+/* Remove Default Heading Margins. */
+h1, h2, h3, h4, h5, h6 { margin: 0; font-weight: 600; letter-spacing: -0.015em; }
 /* Normalize Buttons Styles. */
-button { font: inherit; background: none; border: none; padding: 0; cursor: pointer; }
+button { font: inherit; background: none; border: 0; padding: 0; color: inherit; cursor: pointer; }
 /* Improve Focus Visibility. */
 :focus-visible { outline: none; box-shadow: var(--focus-ring); }
 /* Improve Selection Feel. */
-::selection { background: color-mix(in oklab, var(--text) 18%, transparent); }
+::selection { background: color-mix(in oklab, var(--text) 14%, transparent); }
 
 /* ====================================
-   NOSCRIPT STYLES.
+   NOSCRIPT MESSAGE STYLES.
 ======================================= */
 .noscript-message
 {
@@ -48,7 +47,7 @@ button { font: inherit; background: none; border: none; padding: 0; cursor: poin
     font-family: system-ui, sans-serif;
     font-size: 0.95rem;
 
-    background: #111;
+    background: #0e1116;
     color: #ffffff;
 }
 

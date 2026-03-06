@@ -1,64 +1,43 @@
 //File name: StopwatchControls.jsx
 //Author: Kyle McColgan
-//Date: 2 March 2026
-//Description: This file contains the stopwatch controls component for the React stopwatch project.
+//Date: 6 March 2026
+//Description: This file contains the stopwatch controls component for the stopwatch React project.
 
 import React from "react";
-import { Button } from "@mantine/core";
-import { motion, useReducedMotion } from "motion/react";
-
 import styles from "./StopwatchControls.module.css";
 
-const MotionButton = motion.create(Button);
-
 const StopwatchControls = ({ isRunning, toggle, reset, recordLap }) => {
-  const prefersReducedMotion = useReducedMotion();
-
-  const motionProps = prefersReducedMotion
-    ? {}
-    : {
-        whileHover: { scale: 1.02 },
-        whileTap: { scale: 0.96 },
-        transition: { duration: 0.16, ease: [0.22, 1, 0.36, 1] },
-      };
-
   return (
     <div
       className={styles.controls}
       role="group"
       aria-label="Stopwatch controls"
     >
-      <MotionButton
-        variant="unstyled"
+      <button
         type="button"
-        {...motionProps}
         onClick={toggle}
         className={`${styles.button} ${styles.primary}`}
         aria-pressed={isRunning}
       >
         {isRunning ? "Pause" : "Start"}
-      </MotionButton>
+      </button>
 
-      <MotionButton
-        variant="unstyled"
+      <button
         type="button"
-        {...motionProps}
         onClick={recordLap}
         disabled={!isRunning}
-        className={`${styles.button} ${styles.secondary}`}
+        className={styles.button}
       >
         Lap
-      </MotionButton>
+      </button>
 
-      <MotionButton
-        variant="unstyled"
+      <button
         type="button"
-        {...motionProps}
         onClick={reset}
         className={`${styles.button} ${styles.tertiary}`}
       >
         Reset
-      </MotionButton>
+      </button>
     </div>
   );
 };

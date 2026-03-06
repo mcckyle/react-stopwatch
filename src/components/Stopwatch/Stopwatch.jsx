@@ -1,10 +1,9 @@
 //File name: Stopwatch.jsx
 //Author: Kyle McColgan
-//Date: 2 March 2026
-//Description: This file contains the parent Stopwatch component for the React stopwatch project.
+//Date: 6 March 2026
+//Description: This file contains the parent Stopwatch component for the stopwatch React project.
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { motion } from "motion/react";
 
 import { useStopwatch } from "../../hooks/useStopwatch";
 import { useKeyboardShortcuts } from "../../hooks/useKeyboardShortcuts";
@@ -28,9 +27,12 @@ const Stopwatch = ({ onToggleTheme }) => {
   const [showHelp, setShowHelp] = useState(false);
   const hasLoadedLaps = useRef(false);
 
+  const openHelp = useCallback(() => setShowHelp(true), []);
+  const closeHelp = useCallback(() => setShowHelp(false), []);
+
   const recordLap = useCallback(() => {
     const current = getCurrentTime();
-    setLaps((prev) => [current, ...prev]);
+    setLaps(prev => [current, ...prev]);
   }, [getCurrentTime]);
 
   const clearLaps = useCallback(() => {
@@ -38,7 +40,7 @@ const Stopwatch = ({ onToggleTheme }) => {
     localStorage.removeItem(LAP_STORAGE_KEY);
   }, []);
 
-  //Load laps from browser localStorage.
+  //Load laps from localStorage once.
   useEffect(() => {
     if (hasLoadedLaps.current)
     {
@@ -50,12 +52,16 @@ const Stopwatch = ({ onToggleTheme }) => {
       const savedLaps = localStorage.getItem(LAP_STORAGE_KEY);
       if (savedLaps)
       {
-        setLaps(JSON.parse(savedLaps));
+        const parsed = JSON.parse(savedLaps);
+        if (Array.isArray(parsed))
+        {
+          setLaps(parsed);
+        }
       }
     }
     catch
     {
-      console.warn("Unable to restore laps!");
+      console.warn("Unable to restore saved laps!");
     }
 
     hasLoadedLaps.current = true;
@@ -78,22 +84,18 @@ const Stopwatch = ({ onToggleTheme }) => {
     onOpenHelp: () => setShowHelp(true),
   });
 
+  const hasLaps = laps.length > 0;
+
   return (
     <>
-      <motion.section
-        className={styles.stage}
-        aria-label="Stopwatch"
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <div className={styles.shell}>
-          <StopwatchHeader
-            theme={theme}
-            onToggleTheme={onToggleTheme}
-          />
+      <section className={styles.shell}>
+        <StopwatchHeader
+          theme={theme}
+          onToggleTheme={onToggleTheme}
+        />
 
-          <div className={styles.card}>
+        <article className={styles.container} role="region" aria-label="Stopwatch">
+          <div className={styles.core}>
             <StopwatchDisplay time={time} />
             <StopwatchControls
               isRunning={isRunning}
@@ -101,17 +103,17 @@ const Stopwatch = ({ onToggleTheme }) => {
               reset={reset}
               recordLap={recordLap}
             />
-
-            {laps.length > 0 && (
-              <section className={styles.laps}>
-                <LapList laps={laps} onClear={clearLaps} />
-              </section>
-            )}
           </div>
-        </div>
-      </motion.section>
 
-      {showHelp && <HelpModal onClose={() => setShowHelp(false)} />}
+          {hasLaps && (
+            <div className={styles.laps} aria-label="Lap times">
+              <LapList laps={laps} onClear={clearLaps} />
+            </div>
+          )}
+        </article>
+      </section>
+
+      {showHelp && <HelpModal onClose={closeHelp} />}
     </>
   );
 };

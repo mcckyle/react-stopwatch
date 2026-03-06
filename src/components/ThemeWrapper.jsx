@@ -1,84 +1,92 @@
 //File name: ThemeWrapper.jsx
 //Author: Kyle McColgan
-//Date: 2 March 2026
+//Date: 6 March 2026
 //Description: This file contains the Mantine UI/UX component for the React stopwatch project.
 
-import React from "react";
+import React, { useMemo } from "react";
 import { MantineProvider } from "@mantine/core";
 import { useTheme } from "../context/ThemeContext";
 
 const ThemeWrapper = ({ children }) => {
     const { theme } = useTheme(); //"light" || "dark".
 
+    const mantineTheme = useMemo(() => ({
+        primaryColor: "gray",
+
+        /* Fonts. */
+        fontFamily: "var(--font-sans)",
+        fontFamilyMonospace: "var(--font-mono)",
+
+        /* Radius Systems. */
+        radius: {
+            xs: "var(--radius-xs)",
+            sm: "var(--radius-sm)",
+            md: "var(--radius-md)",
+            lg: "var(--radius-lg)",
+            xl: "var(--radius-xl)",
+        },
+        defaultRadius: "md",
+
+        /* Motion. */
+        respectReducedMotion: true,
+
+        /* Component Customizations. */
+        components: {
+            Button: {
+                defaultProps: {
+                    radius: "sm",
+                },
+                styles: {
+                    root: {
+                        fontWeight: 600,
+                        transition: `
+                          background var(--duration-fast) var(--ease),
+                          color var(--duration-fast) var(--ease),
+                          border-color var(--duration-fast) var(--ease),
+                          transform var(--duration-fast) var(--ease)
+                        `,
+
+                        "&:active": {
+                            transform: "translateY(1px)",
+                        },
+
+                        "&:focus-visible": {
+                            boxShadow: "var(--focus-ring)",
+                        },
+                    },
+                },
+            },
+
+            Card: {
+                defaultProps: {
+                    radius: "lg",
+                },
+                styles: {
+                    root: {
+                        background: "var(--surface)",
+                        border: "1px solid var(--border-subtle)",
+                        boxShadow: "var(--shadow-sm)",
+                        transition: `
+                          background var(--duration) var(--ease),
+                          border-color var(--duration) var(--ease),
+                          box-shadow var(--duration) var(--ease)
+                        `,
+
+                        "&:hover": {
+                            boxShadow: "var(--shadow-md)",
+                        },
+                      },
+                    },
+                  },
+                },
+              }), [theme]);
+
     return (
         <MantineProvider
-            defaultColorScheme={theme}
-            theme={{
-                /* Fonts. */
-                fontFamily: "var(--font-sans)",
-                fontFamilyMonospace: "var(--font-mono)",
-
-                /* Radius Systems. */
-                radius: {
-                  xs: "var(--radius-xs)",
-                  sm: "var(--radius-sm)",
-                  md: "var(--radius-md)",
-                  lg: "var(--radius-lg)",
-                },
-                defaultRadius: "md",
-
-                /* Motion. */
-                respectReducedMotion: true,
-                transitionTimingFunction: "var(--ease)",
-
-                /* Neutral System (Token Driven). */
-                colors: {
-                    neutral: [
-                        "var(--surface-muted)", //0
-                        "var(--surface-muted)", //1
-                        "var(--surface-muted)", //2
-                        "var(--surface)",       //3
-                        "var(--surface)",       //4
-                        "var(--surface)",       //5
-                        "var(--surface)",       //6
-                        "var(--surface)",       //7
-                        "var(--surface)",       //8
-                        "var(--surface)",       //9
-                    ],
-                },
-                primaryColor: "neutral",
-
-                /* Component Customizations. */
-                components: {
-                    Button: {
-                        styles: () => ({
-                            root: {
-                                borderRadius: "var(--radius-sm)",
-                                fontWeight: 600,
-                                transition:
-                                  "background var(--duration-fast) var(--ease), " +
-                                  "color var(--duration-fast) var(--ease), " + "border-color var(--duration-fast) var(--ease), " +
-                                  "box-shadow var(--duration-fast) var(--ease), " +
-                                  "transform var(--duration-fast) var(--ease)",
-
-                                "&:focus-visible": {
-                                    boxShadow: "var(--focus-ring)",
-                                },
-                            },
-                        }),
-                    },
-
-                    Card: {
-                        styles: () => ({
-                            root: {
-                                background: "var(--surface)",
-                                border: "1px solid var(--border-subtle)",
-                                boxShadow: "var(--shadow-sm)",
-                            },
-                        }),
-                    },
-                },
-            }}
+          theme={mantineTheme}
+          defaultColorScheme={theme}
+          withGlobalStyles
+          withNormalizeCSS
         >
             {children}
         </MantineProvider>

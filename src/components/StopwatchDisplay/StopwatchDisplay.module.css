@@ -8,7 +8,6 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
 
     user-select: none;
 }
@@ -25,7 +24,6 @@
     color: var(--text);
 
     font-variant-numeric: tabular-nums lining-nums;
-    font-feature-settings: "tnum" 1, "lnum" 1;
     letter-spacing: -0.025em;
 }
 
@@ -35,31 +33,45 @@
 .row
 {
     display: inline-flex;
-    align-items: flex-end;
+    align-items: baseline;
     justify-content: center;
 
-    gap: clamp(0.9rem, 2.2vw, 2.25rem);
-
-    font-size: clamp(4rem, 10vw, 10rem);
-    line-height: 0.9;
+    font-size: clamp(4.6rem, 9vw, 9.2rem);
+    line-height: 0.84;
     white-space: nowrap;
+
+    gap: clamp(0.9rem, 2vw, 1.8rem);
 }
 
 /* ====================================
    STOPWATCHDISPLAY DIGIT GROUPS STYLES.
 ======================================= */
-.group { display: inline-flex; align-items: flex-end; }
+.group { display: inline-flex; align-items: baseline; }
+.centi
+{
+    display: inline-flex;
+    align-items: baseline;
+
+    font-size: 0.24em;
+    font-weight: 500;
+    color: var(--text-muted);
+    opacity: 0.9;
+    margin-left: 0.16em;
+    transform: translateY(-0.03em);
+}
 
 /* ====================================
    STOPWATCHDISPLAY SEPARATORS STYLES.
 ======================================= */
 .separator
 {
-    font-size: 0.2em;
+    font-size: 0.17em;
     font-weight: 500;
 
-    opacity: 0.45;
+    opacity: 0.30;
+    transform: translateY(-0.05em);
     pointer-events: none;
+    letter-spacing: 0.02em;
 }
 
 /* ====================================
@@ -84,6 +96,5 @@
 ======================================= */
 @media (max-width: 768px)
 {
-    .row { font-size: clamp(3rem, 14vw, 6.5rem);}
-    .separator { font-size: 0.24em; }
+    .row { font-size: clamp(3.1rem, 14vw, 6.3rem); gap: clamp(0.6rem, 3vw, 1.2rem); }
 }

@@ -1,46 +1,19 @@
 //File name: AnimatedDigit.jsx
 //Author: Kyle McColgan
-//Date: 2 March 2026
-//Description: This file contains the digits component for the React stopwatch project.
+//Date: 6 March 2026
+//Description: This file contains the digits component for the stopwatch React project.
 
 import React from "react";
-import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import styles from "./AnimatedDigit.module.css";
 
-const AnimatedDigit = ({ value }) => {
-  const prefersReducedMotion = useReducedMotion();
-  const transition = prefersReducedMotion
-    ? { duration: 0 }
-    : { duration: 0.22, ease: [0.22, 1, 0.36, 1] };
-  const variants = prefersReducedMotion
-    ? {
-        initial: { opacity: 0 },
-        animate: { opacity: 1 },
-        exit: { opacity: 0 },
-      }
-    : {
-        initial: { y: "-0.06em", opacity: 0 },
-        animate: { y: "0em", opacity: 1 },
-        exit: { y: "0.06em", opacity: 0 },
-      };
+const AnimatedDigit = ({ value, isCenti = false }) => {
+  const className = `${styles.digitBase} ${isCenti ? styles.centi : styles.slot}`;
 
   return (
-    <span className={styles.container} aria-hidden="true">
-      <AnimatePresence mode="popLayout" initial={false}>
-        <motion.span
-          key={value}
-          className={styles.digit}
-          variants={variants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          transition={transition}
-        >
-          {value}
-        </motion.span>
-      </AnimatePresence>
+    <span className={className} aria-hidden="true">
+      <span className={styles.value}>{value}</span>
     </span>
   );
-}
+};
 
 export default AnimatedDigit;

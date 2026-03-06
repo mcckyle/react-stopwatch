@@ -1,35 +1,29 @@
 /* Filename: src/components/AnimatedDigit/AnimatedDigit.module.css */
 
 /* ====================================
-   ANIMATEDDIGIT DIGIT CONTAINER STYLE.
+   ANIMATEDDIGIT BASE DIGIT WRAPPER STYLE.
 ======================================= */
-.container
+.digitBase
 {
-    position: relative;
-    display: inline-block;
+    display: inline-flex;
+    align-items: baseline;
+    justify-content: center;
 
     width: 1ch;
     height: 1em;
+    line-height: 1;
 
-    overflow: hidden;
-    contain: layout paint;
+    font-variant-numeric: tabular-nums;
 }
 
 /* ====================================
-   ANIMATEDDIGIT DIGIT GLYPH STYLE.
+   ANIMATEDDIGIT PRIMARY DIGIT SLOT STYLE.
 ======================================= */
-.digit
-{
-    position: absolute;
-    inset: 0;
+.slot { position: relative; overflow: hidden; }
+/* Inner Value Styles. */
+.value { display: inline-block; line-height: 1; }
 
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-
-    line-height: 1;
-    text-align: center;
-
-    backface-visibility: hidden;
-    will-change: transform, opacity;
-}
+/* ====================================
+   ANIMATEDDIGIT CENTISECOND DIGIT STYLE.
+======================================= */
+.centi { opacity: 0.9; }

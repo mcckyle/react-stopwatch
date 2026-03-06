@@ -1,6 +1,6 @@
 //File name: Stopwatch.test.jsx
 //Author: Kyle McColgan
-//Date: 4 February 2026
+//Date: 3 March 2026
 //Description: This file contains the unit test suite for the Stopwatch component.
 
 import React from "react";
@@ -44,7 +44,7 @@ describe("Stopwatch Component", () => {
 
         const timer = screen.getByRole("timer");
 
-        expect(timer).toHaveTextContent("00:00:00");
+        expect(timer).toHaveTextContent("00:00.00");
     });
 
     //Test #3

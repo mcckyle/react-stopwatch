@@ -86,7 +86,6 @@ react-stopwatch/
 │   │   └── theme.css
 │   │     
 │   ├── hooks/            # Custom React hooks.
-│   │   ├── useTheme.js
 │   │   ├── useStopwatch.js
 │   │   └── useKeyboardShortcuts.js
 │   │
@@ -153,6 +152,5 @@ This project was made possible thanks to the open-source community and the follo
 - [React](https://react.dev) - A modern library designed specifically for building fast, interactive UIs.
 - [Vite](https://vitejs.dev/) - Next-generation frontend tooling with lightning-fast dev server and build optimizations.
 - [Mantine UI](https://mantine.dev/) - Accessible, fully-featured React components for building polished interfaces.
-- [Framer Motion](https://www.framer.com/motion/) - Animation library powering fluid, accessible transitions.
 
 Special thanks to the broader open-source ecosystem for the inspiration and tools that empower developers to create and share freely.

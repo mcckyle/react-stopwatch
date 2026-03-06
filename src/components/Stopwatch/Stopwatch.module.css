@@ -1,52 +1,50 @@
 /* Filename: src/components/Stopwatch/Stopwatch.module.css */
 
 /* ====================================
-   STOPWATCH STAGE (STRUCTURAL WRAPPER) STYLES.
-======================================= */
-.stage
-{
-    width: 100%;
-/*    display: flex;
-    justify-content: center;
-    padding: clamp(2rem, 5vw, 4rem) 0;*/
-}
-
-/* ====================================
-   STOPWATCH SHELL (LAYOUT CONTAINER) STYLES.
+   STOPWATCH SHELL (VERTICAL STACK) STYLES.
 ======================================= */
 .shell
 {
     width: 100%;
-    max-width: 680px;
-    margin: 0 auto;
+    max-width: 44rem;
 
     display: flex;
     flex-direction: column;
-    gap: clamp(2rem, 4vw, 3rem);
+    gap: clamp(2.25rem, 5vw, 3.25rem);
+    margin-inline: auto;
 }
 
 /* ====================================
-   STOPWATCH PRIMARY CARD STYLES.
+   STOPWATCH MAIN CONTAINER STYLES.
 ======================================= */
-.card
+.container
 {
     width: 100%;
 
     display: flex;
     flex-direction: column;
-    align-items: center;
-
-    gap: clamp(1.75rem, 3vw, 2.5rem);
-    padding: clamp(2rem, 4vw, 3rem);
+    padding: clamp(2.5rem, 5vw, 3.5rem);
 
     background: var(--surface);
-    border-radius: var(--radius-lg);
     border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-xl);
     box-shadow: var(--shadow-sm);
 
     transition: background var(--duration) var(--ease),
                 border-color var(--duration) var(--ease),
                 box-shadow var(--duration) var(--ease);
+}
+.container:hover { box-shadow: var(--shadow-md); }
+
+/* ====================================
+   STOPWATCH CORE (TIME + CONTROLS) STYLES.
+======================================= */
+.core
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(1.75rem, 4vw, 2.5rem);
 }
 
 /* ====================================
@@ -55,8 +53,14 @@
 .laps
 {
     width: 100%;
-    padding-top: 1.5rem;
+
+    margin-top: clamp(2rem, 4vw, 2.5rem);
+    padding-top: clamp(1.5rem, 3vw, 2rem);
     border-top: 1px solid var(--border-subtle);
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 /* ====================================
@@ -64,6 +68,6 @@
 ======================================= */
 @media (max-width: 480px)
 {
-    .card { padding: 1.5rem; gap: 1.5rem; }
-    .shell { gap: 1.75rem; }
+    .container { padding: 2rem; }
+    .shell { gap: 2rem; }
 }

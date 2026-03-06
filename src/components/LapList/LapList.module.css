@@ -6,16 +6,20 @@
 .lapList
 {
     width: 100%;
-    max-width: 520px;
+    max-width: 480px;
 
-    margin-top: clamp(2.5rem, 4vh, 3.2rem);
-    padding-top: 1.4rem;
-
-    border-top: 1px solid var(--border-subtle);
-
-    max-height: 30vh;
+    max-height: 28vh;
     overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+    padding: 0.65rem 0.95rem 0.55rem;
+
+    border-radius: 0.9rem;
+    background: var(--surface-muted);
+    scrollbar-width: none;
 }
+.lapList::-webkit-scrollbar { display: none; }
 
 /* ====================================
    LAPLIST HEADER STYLES.
@@ -23,13 +27,14 @@
 .header
 {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    margin-bottom: 1.25rem;
+    align-items: center;
+
+    margin-bottom: 0.65rem;
 
     font-family: var(--font-mono);
-    font-size: 0.56rem;
-    letter-spacing: 0.18em;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--text-muted);
 }
@@ -42,19 +47,21 @@
 {
     background: none;
     border: none;
+    padding: 0.25rem 0.6rem;
 
     font: inherit;
     letter-spacing: inherit;
     text-transform: inherit;
 
     color: var(--text-muted);
+    border-radius: 0.45rem;
     cursor: pointer;
-    padding: 0;
 
-    transition: color 160ms var(--ease), opacity 160ms ease;
+    transition: color 120ms var(--ease), background 120ms var(--ease), transform 120ms var(--ease);
 }
-.clearButton:hover { color: var(--text); }
-.confirm { color: color-mix(in oklab, #dc2626 70%, var(--text)); font-weight: 600; }
+.clearButton:hover { color: var(--text); background: var(--surface); }
+.clearButton:active { transform: scale(0.96); }
+.confirm { color: #dc2626; background: color-mix(in oklab, #dc2626 12%, transparent); }
 
 /* ====================================
    LAPLIST LAP ROW STYLES.
@@ -63,44 +70,48 @@
 {
     display: grid;
     grid-template-columns: 3.2rem 1fr auto;
-    align-items: baseline;
+    align-items: center;
 
-    padding: 0.65rem 0;
-    gap: 1rem;
+    gap: 0.9rem;
+    padding: 0.6rem 0.2rem;
 
     font-family: var(--font-mono);
     font-size: 0.78rem;
     font-variant-numeric: tabular-nums lining-nums;
+    border-radius: 0.65rem;
 
-    transition: opacity 160ms ease;
+    transition: background 140ms var(--ease), transform 140ms var(--ease);
 }
-.lap + .lap { border-top: 1px solid color-mix(in oklab, var(--border-subtle) 25%, transparent); }
-.latest .lapTime { font-weight: 600; }  /* Latest Emphasis Styles. */
+.lap + .lap { margin-top: 0.22rem; /* Row Separation Without Borders. */ }
+.lap:hover { background: var(--surface); }
 
 /* ====================================
    LAPLIST TEXT ELEMENTS STYLES.
 ======================================= */
 .lapLabel
 {
-    font-size: 0.5rem;
-    letter-spacing: 0.14em;
+    font-size: 0.56rem;
+    letter-spacing: 0.16em;
     color: var(--text-muted);
 }
 .lapTime { font-weight: 500; }
+.latest .lapTime { font-weight: 650; }  /* Latest Emphasis Styles. */
 .lapDelta { min-width: 7ch; text-align: right; font-size: 0.72rem; color: var(--text-muted); }
 
 /* =========================================
    LAPLIST FASTEST / SLOWEST STYLES.
 ============================================ */
-.fastest .lapDelta { color: color-mix(in oklab, #16a34a 55%, var(--text)); }
-.slowest .lapDelta { color: color-mix(in oklab, #dc2626 55%, var(--text)); }
+.fastest { background: color-mix(in oklab, #16a34a 7%, transparent); }
+.fastest .lapDelta { color: #16a34a; }
+.slowest { background: color-mix(in oklab, #dc2626 7%, transparent);}
+.slowest .lapDelta { color: #dc2626;  }
 
 /* ====================================
    LAPLIST MEDIA QUERY STYLES.
 ======================================= */
 @media (max-width: 768px)
 {
-    .lap { grid-template-columns: 1fr auto; row-gap: 0.35rem; }
+    .lap { grid-template-columns: 1fr auto; row-gap: 0.3rem; }
     .lapLabel { grid-column: span 2; }
 }
 
