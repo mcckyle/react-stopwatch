@@ -14,7 +14,7 @@ exports[`LapList Component matches snapshot 1`] = `
       <span
         class="title"
       >
-        Laps
+        History
       </span>
       <button
         class="clearButton "
@@ -41,6 +41,13 @@ exports[`LapList Component matches snapshot 1`] = `
       >
         +01:23.45
       </span>
+      <button
+        aria-label="Delete lap 3"
+        class="delete"
+        type="button"
+      >
+        ×
+      </button>
     </div>
     <div
       class="lap slowest"
@@ -60,6 +67,13 @@ exports[`LapList Component matches snapshot 1`] = `
       >
         +01:23.45
       </span>
+      <button
+        aria-label="Delete lap 2"
+        class="delete"
+        type="button"
+      >
+        ×
+      </button>
     </div>
     <div
       class="lap slowest"
@@ -79,6 +93,13 @@ exports[`LapList Component matches snapshot 1`] = `
       >
         +01:23.45
       </span>
+      <button
+        aria-label="Delete lap 1"
+        class="delete"
+        type="button"
+      >
+        ×
+      </button>
     </div>
   </section>
 </DocumentFragment>

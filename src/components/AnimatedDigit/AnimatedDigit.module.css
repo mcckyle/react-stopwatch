@@ -5,6 +5,8 @@
 ======================================= */
 .digitBase
 {
+    position: relative;
+
     display: inline-flex;
     align-items: baseline;
     justify-content: center;
@@ -13,17 +15,31 @@
     height: 1em;
     line-height: 1;
 
-    font-variant-numeric: tabular-nums;
+    font-variant-numeric: tabular-nums lining-nums;
+    contain: layout paint;
 }
 
 /* ====================================
    ANIMATEDDIGIT PRIMARY DIGIT SLOT STYLE.
 ======================================= */
-.slot { position: relative; overflow: hidden; }
-/* Inner Value Styles. */
-.value { display: inline-block; line-height: 1; }
+.slot { overflow: hidden; }
+
+/* ====================================
+   ANIMATEDDIGIT DIGIT VALUE STYLE.
+======================================= */
+.value
+{
+    display: inline-block;
+    line-height: 1;
+    transform: translateZ(0);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+
+    transition: transform var(--duration-fast) var(--ease),
+                opacity var(--duration-fast) var(--ease);
+}
 
 /* ====================================
    ANIMATEDDIGIT CENTISECOND DIGIT STYLE.
 ======================================= */
-.centi { opacity: 0.9; }
+.centi { opacity: 0.85; }

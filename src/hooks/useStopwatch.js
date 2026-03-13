@@ -12,9 +12,9 @@ export function useStopwatch()
   const [isRunning, setIsRunning] = useState(false);
 
   //Internal refs (no re-renders).
-  const startRef = useRef(0); //timestamp when started/resumed.
-  const elapsedRef = useRef(0); //accumulated elapsed time.
-  const frameRef = useRef(null); //requestAnimationFrame ID.
+  const startTimeRef = useRef(0); //Timestamp when current run started/resumed.
+  const elapsedRef = useRef(0); //Accumulated elapsed time when paused.
+  const frameRef = useRef(null); // current Animation Frame ID.
 
   //Cancel the animation loop safely.
   const cancelLoop = useCallback(() => {
@@ -29,7 +29,7 @@ export function useStopwatch()
   //Uses performance.now() to avoid cumulative errors.
   const tick = useCallback(() => {
     const now = performance.now();
-    const nextElapsed = now - startRef.current;
+    const nextElapsed = now - startTimeRef.current;
 
     if (nextElapsed !== elapsedRef.current)
     {
@@ -48,32 +48,35 @@ export function useStopwatch()
         return;
     }
 
-    //Resume from previous elapsed value...
-    startRef.current = performance.now() - elapsedRef.current;
+    //Resume from existing elapsed value.
+    startTimeRef.current = performance.now() - elapsedRef.current;
     frameRef.current = requestAnimationFrame(tick);
 
     return cancelLoop;
   }, [isRunning, tick, cancelLoop]);
 
   //Toggle running state.
-  const toggle = useCallback(() => setIsRunning(prev => ! prev), []);
+  const toggle = useCallback(() => setIsRunning(prev => !prev), []);
 
   //Fully reset the stopwatch.
   const reset = useCallback(() => {
     cancelLoop();
 
     elapsedRef.current = 0;
-    startRef.current = 0;
+    startTimeRef.current = 0;
 
     setElapsedMs(0);
     setIsRunning(false);
   }, [cancelLoop]);
 
-  //Get precise current time (without waiting for the next frame).
+  //Returns precise time without waiting for the next frame.
   const getCurrentTime = useCallback(() => {
-    return isRunning
-      ? performance.now() - startRef.current
-      : elapsedRef.current;
+    if (!isRunning)
+    {
+      return elapsedRef.current;
+    }
+
+    return performance.now() - startTimeRef.current;
   }, [isRunning]);
 
   return {

@@ -14,24 +14,24 @@
     --duration-fast: 140ms;
     --duration: 220ms;
 
-    /* Radius. */
+    /* Radius System. */
     --radius-xs: 6px;
     --radius-sm: 10px;
     --radius-md: 14px;
-    --radius-lg: 22px;
+    --radius-lg: 20px;
     --radius-xl: 28px;
 
-    /* Spacing. */
+    /* Spacing Scale. */
     --space-xs: 6px;
     --space-sm: 10px;
     --space-md: 16px;
     --space-lg: 24px;
-    --space-xl: 40px;
+    --space-xl: 36px;
 
     /* Shadows System. */
-    --shadow-xs: 0 1px 4px hsl(220 40% 2% / 0.05);
-    --shadow-sm: 0 12px 32px hsl(220 40% 2% / 0.08);
-    --shadow-md: 0 32px 80px hsl(220 40% 2% / 0.16);
+    --shadow-xs: 0 1px 3px hsl(220 40% 2% / 0.04);
+    --shadow-sm: 0 12px 28px hsl(220 40% 2% / 0.08);
+    --shadow-md: 0 28px 70px hsl(220 40% 2% / 0.14);
 
     --focus-ring: 0 0 0 2px color-mix(in oklab, var(--text) 22%, transparent);
 }
@@ -41,7 +41,7 @@
 ======================================= */
 html.light
 {
-    --app-bg: #f6f8fc;
+    --app-bg: #f7f9fc;
 
     --surface: #ffffff;
     --surface-muted: #f2f5fa;

@@ -5,9 +5,11 @@
 ============================================ */
 .display
 {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+    width: 100vw;
+    min-height: 65vh;
+
+    display: grid;
+    place-items: center;
 
     user-select: none;
 }
@@ -18,13 +20,16 @@
 .time
 {
     position: relative;
+    width: 100%;
+    text-align: center;
 
     font-family: var(--font-mono);
-    font-weight: 600;
+    font-weight: 700;
     color: var(--text);
 
     font-variant-numeric: tabular-nums lining-nums;
-    letter-spacing: -0.025em;
+    letter-spacing: -0.03em;
+    text-rendering: optimizeLegibility;
 }
 
 /* ====================================
@@ -35,12 +40,12 @@
     display: inline-flex;
     align-items: baseline;
     justify-content: center;
-
-    font-size: clamp(4.6rem, 9vw, 9.2rem);
-    line-height: 0.84;
     white-space: nowrap;
 
-    gap: clamp(0.9rem, 2vw, 1.8rem);
+    font-size: clamp(4rem, 14vmin, 35vmin);
+    line-height: 0.82;
+
+    gap: clamp(0.2rem, 1.1vw, 0.8rem);
 }
 
 /* ====================================
@@ -49,15 +54,12 @@
 .group { display: inline-flex; align-items: baseline; }
 .centi
 {
-    display: inline-flex;
-    align-items: baseline;
-
-    font-size: 0.24em;
+    font-size: 0.22em;
     font-weight: 500;
     color: var(--text-muted);
-    opacity: 0.9;
-    margin-left: 0.16em;
-    transform: translateY(-0.03em);
+    margin-left: 0.24em;
+    opacity: 0.92;
+    transform: translateY(-0.05em);
 }
 
 /* ====================================
@@ -65,13 +67,13 @@
 ======================================= */
 .separator
 {
-    font-size: 0.17em;
+    font-size: 0.18em;
     font-weight: 500;
 
-    opacity: 0.30;
+    opacity: 0.32;
+    letter-spacing: 0.03em;
     transform: translateY(-0.05em);
     pointer-events: none;
-    letter-spacing: 0.02em;
 }
 
 /* ====================================
@@ -94,7 +96,45 @@
 /* ====================================
    STOPWATCHDISPLAY MEDIA QUERY STYLES.
 ======================================= */
-@media (max-width: 768px)
+
+/* Ultra-large monitors (4K / 2560x1440+ ). */
+@media (min-width: 2500px)
 {
-    .row { font-size: clamp(3.1rem, 14vw, 6.3rem); gap: clamp(0.6rem, 3vw, 1.2rem); }
+    .row { font-size: 35vmin; line-height: 0.82; }
+    .centi { font-size: 0.22em; }
+}
+
+/* Large desktops (1440 - 2560px). */
+@media (min-width: 1400px) and (max-width: 2559px)
+{
+    .row { font-size: clamp(30vmin, 32vmin, 35vmin); line-height: 0.82; }
+    .centi { font-size: 0.22em; }
+}
+
+/* Standard desktops (1024 - 1439px). */
+@media (min-width: 1024px) and (max-width: 1439px)
+{
+    .row { font-size: clamp(20vmin, 25vmin, 30vmin); line-height: 0.84; }
+    .centi { font-size: 0.24em; }
+}
+
+/* Tablets (768 - 1023px). */
+@media (min-width: 768px) and (max-width: 1023px)
+{
+    .row { font-size: clamp(14vmin, 18vmin, 22vmin); line-height: 0.86; }
+    .centi { font-size: 0.26em; }
+}
+
+/* Small tablets / large phones (480 - 767px). */
+@media (min-width: 480px) and (max-width: 767px)
+{
+    .row { font-size: clamp(10vmin, 14vmin, 16vmin); line-height: 0.88; }
+    .centi { font-size: 0.28em; }
+}
+
+/* Mobile (under 480px). */
+@media (max-width: 479px)
+{
+    .row { font-size: clamp(4rem, 12vmin, 12rem); line-height: 0.9; }
+    .centi { font-size: 0.3em; }
 }

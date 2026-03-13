@@ -1,6 +1,6 @@
 //File name: StopwatchControls.jsx
 //Author: Kyle McColgan
-//Date: 6 March 2026
+//Date: 11 March 2026
 //Description: This file contains the stopwatch controls component for the stopwatch React project.
 
 import React from "react";
@@ -26,7 +26,7 @@ const StopwatchControls = ({ isRunning, toggle, reset, recordLap }) => {
         type="button"
         onClick={recordLap}
         disabled={!isRunning}
-        className={styles.button}
+        className={`${styles.button} ${styles.secondary}`}
       >
         Lap
       </button>

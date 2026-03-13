@@ -1,6 +1,6 @@
 //File name: LapList.jsx
 //Author: Kyle McColgan
-//Date: 6 March 2026
+//Date: 11 March 2026
 //Description: This file contains the laps component for the stopwatch React project.
 
 import React, { useState } from "react";
@@ -8,7 +8,7 @@ import { formatTime } from "../../utils/formatTime";
 
 import styles from "./LapList.module.css";
 
-const LapList = ({ laps, onClear }) => {
+const LapList = ({ laps, onClear, onDelete }) => {
   const [confirmClear, setConfirmClear] = useState(false);
 
   if (!laps.length)
@@ -16,7 +16,7 @@ const LapList = ({ laps, onClear }) => {
       return null;
   }
 
-  //Calculate lap durations...
+  //Calculate lap durations.
   const lapDurations = laps.map((lap, index) => lap - (laps[index + 1] ?? 0));
   const fastest = Math.min(...lapDurations);
   const slowest = Math.max(...lapDurations);
@@ -40,9 +40,8 @@ const LapList = ({ laps, onClear }) => {
       aria-live="polite"
       aria-label="Lap history"
     >
-      {/* Header. */}
       <header className={styles.header}>
-        <span className={styles.title}>Laps</span>
+        <span className={styles.title}>History</span>
 
         <button
           type="button"
@@ -76,16 +75,22 @@ const LapList = ({ laps, onClear }) => {
           styles.lap,
           isLatest && styles.latest,
           isFastest && styles.fastest,
-          isSlowest && styles.slowest,
-        ]
-        .filter(Boolean)
-        .join(" ");
+          isSlowest && styles.slowest
+        ].filter(Boolean).join(" ");
 
         return (
           <div key={`lap-${lapNumber}`} className={rowClass}>
             <span className={styles.lapLabel}>Lap {lapNumber}</span>
             <span className={styles.lapTime}>{fullTime}</span>
             <span className={styles.lapDelta}>{formattedDelta}</span>
+            <button
+              type="button"
+              className={styles.delete}
+              onClick={() => onDelete(index)}
+              aria-label={`Delete lap ${lapNumber}`}
+            >
+              ×
+            </button>
           </div>
         );
       })}

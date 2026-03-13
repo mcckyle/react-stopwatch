@@ -1,6 +1,6 @@
 //File name: Stopwatch.jsx
 //Author: Kyle McColgan
-//Date: 6 March 2026
+//Date: 11 March 2026
 //Description: This file contains the parent Stopwatch component for the stopwatch React project.
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
@@ -25,10 +25,15 @@ const Stopwatch = ({ onToggleTheme }) => {
 
   const [laps, setLaps] = useState([]);
   const [showHelp, setShowHelp] = useState(false);
+  const [showLaps, setShowLaps] = useState(true);
   const hasLoadedLaps = useRef(false);
 
   const openHelp = useCallback(() => setShowHelp(true), []);
   const closeHelp = useCallback(() => setShowHelp(false), []);
+
+  const toggleLaps = useCallback(() => {
+    setShowLaps(prev => !prev);
+  }, []);
 
   const recordLap = useCallback(() => {
     const current = getCurrentTime();
@@ -38,6 +43,10 @@ const Stopwatch = ({ onToggleTheme }) => {
   const clearLaps = useCallback(() => {
     setLaps([]);
     localStorage.removeItem(LAP_STORAGE_KEY);
+  }, []);
+
+  const deleteLap = useCallback((index) => {
+    setLaps(prev => prev.filter((_, i) => i !== index));
   }, []);
 
   //Load laps from localStorage once.
@@ -81,20 +90,18 @@ const Stopwatch = ({ onToggleTheme }) => {
     onToggle: toggle,
     onReset: reset,
     onLap: recordLap,
-    onOpenHelp: () => setShowHelp(true),
+    onOpenHelp: openHelp
   });
-
-  const hasLaps = laps.length > 0;
 
   return (
     <>
-      <section className={styles.shell}>
+      <section className={styles.shell} aria-label="Stopwatch application">
         <StopwatchHeader
           theme={theme}
           onToggleTheme={onToggleTheme}
         />
 
-        <article className={styles.container} role="region" aria-label="Stopwatch">
+        <section className={styles.container} aria-label="Stopwatch">
           <div className={styles.core}>
             <StopwatchDisplay time={time} />
             <StopwatchControls
@@ -105,12 +112,24 @@ const Stopwatch = ({ onToggleTheme }) => {
             />
           </div>
 
-          {hasLaps && (
-            <div className={styles.laps} aria-label="Lap times">
-              <LapList laps={laps} onClear={clearLaps} />
-            </div>
+          {laps.length > 0 && (
+            <section className={styles.laps} aria-label="Lap times">
+              <header className={styles.lapHeader}>
+                <span>Laps</span>
+                <button
+                  type="button"
+                  className={styles.lapToggle}
+                  onClick={toggleLaps}
+                >
+                  {showLaps ? "Hide" : "Show"}
+                </button>
+              </header>
+              {showLaps && (
+                <LapList laps={laps} onClear={clearLaps} onDelete={deleteLap} />
+              )}
+            </section>
           )}
-        </article>
+        </section>
       </section>
 
       {showHelp && <HelpModal onClose={closeHelp} />}

@@ -9,10 +9,11 @@
     max-width: 520px;
 
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 
-    gap: clamp(0.9rem, 2vw, 1.6rem);
+    gap: var(--space-md);
 }
 
 /* ====================================
@@ -22,17 +23,15 @@
 {
     font-family: var(--font-mono);
     font-weight: 500;
-    font-size: 0.72rem;
-
-    letter-spacing: 0.18em;
     text-transform: uppercase;
-
-    min-width: 8.5rem;
-    padding: 0.78rem 1.9rem;
+    letter-spacing: 0.18em;
 
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
+    min-width: 7.6rem;
+    padding: 0.75rem 1.6rem;
 
     border-radius: 999px;
     border: 1px solid var(--border-subtle);
@@ -42,15 +41,16 @@
     cursor: pointer;
 
     transition: background var(--duration-fast) var(--ease),
-                border-color var(--duration-fast) var(--ease),
                 color var(--duration-fast) var(--ease),
+                border-color var(--duration-fast) var(--ease),
                 transform var(--duration-fast) var(--ease),
-                opacity var(--duration-fast) var(--ease);
+                opacity var(--duration-fast) var(--ease),
+                box-shadow var(--duration-fast) var(--ease);
 }
 .button:hover:not(:disabled) { background: var(--surface-muted); }
 .button:active:not(:disabled) { transform: translateY(1px); }
 .button:focus-visible { box-shadow: var(--focus-ring); }
-.button:disabled { opacity: 0.38; cursor: not-allowed; }
+.button:disabled { opacity: 0.4; cursor: not-allowed; }
 
 /* =========================================
    PRIMARY ACTION ( START / PAUSE ) STYLES.
@@ -62,6 +62,12 @@
     border-color: var(--text);
 }
 .primary:hover:not(:disabled) { opacity: 0.92; color: var(--text); }
+
+/* ====================================
+   SECONDARY ACTION ( LAP ) STYLES.
+======================================= */
+.secondary { background: transparent; color: var(--text); }
+.secondary:hover:not(:disabled) { color: var(--text); background: color-mix(in oklab, var(--text) 5%, var(--surface-muted)); }
 
 /* =========================================
    TERTIARY ACTION ( RESET ) STYLES.
@@ -78,6 +84,6 @@
 ======================================= */
 @media (max-width: 480px)
 {
-    .controls { flex-direction: column; gap: 0.9rem; }
+    .controls { flex-direction: column; gap: var(--space-sm); }
     .button { width: 100%; min-width: 0; }
 }

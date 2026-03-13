@@ -15,7 +15,7 @@ exports[`StopwatchControls Component enables Lap button when isRunning is true 1
       Start
     </button>
     <button
-      class="button"
+      class="button secondary"
       disabled=""
       type="button"
     >
