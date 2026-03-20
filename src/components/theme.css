@@ -6,8 +6,8 @@
 :root
 {
     /* Fonts. */
-    --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-    --font-mono: "JetBrains Mono", monospace;
+    --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 
     /* Motion. */
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -27,13 +27,15 @@
     --space-md: 16px;
     --space-lg: 24px;
     --space-xl: 36px;
+    --space-2xl: 48px;
 
     /* Shadows System. */
-    --shadow-xs: 0 1px 3px hsl(220 40% 2% / 0.04);
-    --shadow-sm: 0 12px 28px hsl(220 40% 2% / 0.08);
-    --shadow-md: 0 28px 70px hsl(220 40% 2% / 0.14);
+    --shadow-xs: 0 1px 2px hsl(220 40% 2% / 0.05);
+    --shadow-sm: 0 10px 30px hsl(220 40% 2% / 0.08);
+    --shadow-md: 0 24px 70px hsl(220 40% 2% / 0.14);
 
     --focus-ring: 0 0 0 2px color-mix(in oklab, var(--text) 22%, transparent);
+    --backdrop-blur: saturate(140%) blur(16px);
 }
 
 /* ====================================
@@ -42,12 +44,13 @@
 html.light
 {
     --app-bg: #f7f9fc;
+    --app-bg-accent: #eef3f9;
 
-    --surface: #ffffff;
+    --surface: rgb(255 255 255 / 0.82);
     --surface-muted: #f2f5fa;
 
     --text: #0d1117;
-    --text-muted: color-mix(in oklab, var(--text) 55%, transparent);
+    --text-muted: color-mix(in oklab, var(--text) 58%, transparent);
     --border-subtle: color-mix(in oklab, var(--text) 10%, transparent);
 }
 
@@ -58,15 +61,15 @@ html.dark
 {
     --app-bg: #0b1016;
 
-    --surface: #141b24;
+    --surface: rgb(20 27 36 / 0.82);
     --surface-muted: #0f151d;
 
     --text: #f3f6fa;
-    --text-muted: color-mix(in oklab, var(--text) 60%, transparent);
+    --text-muted: color-mix(in oklab, var(--text) 62%, transparent);
     --border-subtle: color-mix(in oklab, var(--text) 14%, transparent);
 }
 
 /* ====================================
    GLOBAL TRANSITION LAYER STYLES.
 ======================================= */
-html, body { background: var(--app-bg); color: var(--text); transition: background var(--duration) var(--ease), color var(--duration) var(--ease); }
+html, body { background-color: var(--app-bg); color: var(--text); transition: background-color var(--duration) var(--ease), color var(--duration) var(--ease); }

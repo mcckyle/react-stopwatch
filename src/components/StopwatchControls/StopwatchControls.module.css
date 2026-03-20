@@ -9,11 +9,10 @@
     max-width: 520px;
 
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 
-    gap: var(--space-md);
+    gap: clamp(0.6rem, 1.5vw, 1.2rem);
 }
 
 /* ====================================
@@ -24,14 +23,14 @@
     font-family: var(--font-mono);
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.16em;
 
     display: inline-flex;
     align-items: center;
     justify-content: center;
 
-    min-width: 7.6rem;
-    padding: 0.75rem 1.6rem;
+    padding: 0.7rem 1.5rem;
+    min-width: 7rem;
 
     border-radius: 999px;
     border: 1px solid var(--border-subtle);
@@ -42,15 +41,14 @@
 
     transition: background var(--duration-fast) var(--ease),
                 color var(--duration-fast) var(--ease),
-                border-color var(--duration-fast) var(--ease),
                 transform var(--duration-fast) var(--ease),
-                opacity var(--duration-fast) var(--ease),
-                box-shadow var(--duration-fast) var(--ease);
+                box-shadow var(--duration-fast) var(--ease),
+                opacity var(--duration-fast) var(--ease);
 }
 .button:hover:not(:disabled) { background: var(--surface-muted); }
 .button:active:not(:disabled) { transform: translateY(1px); }
 .button:focus-visible { box-shadow: var(--focus-ring); }
-.button:disabled { opacity: 0.4; cursor: not-allowed; }
+.button:disabled { opacity: 0.35; cursor: not-allowed; }
 
 /* =========================================
    PRIMARY ACTION ( START / PAUSE ) STYLES.
@@ -60,14 +58,16 @@
     background: var(--text);
     color: var(--surface);
     border-color: var(--text);
+
+    min-width: 8.2rem;
 }
-.primary:hover:not(:disabled) { opacity: 0.92; color: var(--text); }
+.primary:hover:not(:disabled) { opacity: 0.9; color: var(--text); }
 
 /* ====================================
    SECONDARY ACTION ( LAP ) STYLES.
 ======================================= */
-.secondary { background: transparent; color: var(--text); }
-.secondary:hover:not(:disabled) { color: var(--text); background: color-mix(in oklab, var(--text) 5%, var(--surface-muted)); }
+.secondary { color: var(--text); }
+.secondary:hover:not(:disabled) { background: color-mix(in oklab, var(--text) 6%, transparent); }
 
 /* =========================================
    TERTIARY ACTION ( RESET ) STYLES.
@@ -82,8 +82,8 @@
 /* ====================================
    STOPWATCHCONTROLS MEDIA QUERY STYLES.
 ======================================= */
-@media (max-width: 480px)
+@media (max-width: 520px)
 {
-    .controls { flex-direction: column; gap: var(--space-sm); }
+    .controls { flex-direction: column; align-items: stretch; }
     .button { width: 100%; min-width: 0; }
 }

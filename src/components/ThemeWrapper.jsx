@@ -1,6 +1,6 @@
 //File name: ThemeWrapper.jsx
 //Author: Kyle McColgan
-//Date: 12 March 2026
+//Date: 20 March 2026
 //Description: This file contains the Mantine UI/UX component for the stopwatch React project.
 
 import React, { useMemo } from "react";
@@ -22,41 +22,39 @@ const ThemeWrapper = ({ children }) =>
       `;
 
       return {
-        colorScheme: theme,
         primaryColor: "gray",
-
-        /* Fonts. */
         fontFamily: "var(--font-sans)",
         fontFamilyMonospace: "var(--font-mono)",
+        respectReducedMotion: true,
+        defaultRadius: "md",
 
         /* Radius Systems. */
         radius: {
-            xs: "var(--radius-xs)",
-            sm: "var(--radius-sm)",
-            md: "var(--radius-md)",
-            lg: "var(--radius-lg)",
-            xl: "var(--radius-xl)",
+          xs: "var(--radius-xs)",
+          sm: "var(--radius-sm)",
+          md: "var(--radius-md)",
+          lg: "var(--radius-lg)",
+          xl: "var(--radius-xl)",
         },
-        respectReducedMotion: true,
 
         /* Component Customizations. */
         components: {
           Button: {
             defaultProps: { radius: "sm" },
             styles: {
-                root: {
-                  fontWeight: 600,
-                  transition: interactiveTransition,
-                  "&:active": { transform: "translateY(1px)" },
-                  "&:focus-visible": { boxShadow: "var(--focus-ring)" }
-                }
+              root: {
+                fontWeight: 600,
+                transition: interactiveTransition,
+                "&:active": { transform: "translateY(1px)" },
+                "&:focus-visible": { boxShadow: "var(--focus-ring)" }
               }
+             }
             },
             Card: {
               defaultProps: { radius: "lg" },
               styles: {
                 root: {
-                  background: "var(--surface)",
+                  backgroundColor: "var(--surface)",
                   border: "1px solid var(--border-subtle)",
                   boxShadow: "var(--shadow-sm)",
                   transition: `

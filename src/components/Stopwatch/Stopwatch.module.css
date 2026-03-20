@@ -6,18 +6,17 @@
 .shell
 {
     width: 100%;
-    min-height: 100%;
+    flex: 1;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-
     padding: var(--space-lg) var(--space-md);
-    gap: var(--space-lg);
+    gap: var(--space-lg)
 }
 
 /* ====================================
-   STOPWATCH MAIN CONTAINER STYLES.
+   STOPWATCH MAIN CONTENT CONTAINER STYLES.
 ======================================= */
 .container
 {
@@ -27,7 +26,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    flex: 1;
+    min-height: 0;
     gap: var(--space-xl);
 }
 
@@ -37,14 +37,13 @@
 .core
 {
     width: 100%;
+    flex: 1;
+    min-height: 0;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-
     gap: var(--space-lg);
-    flex: 1;
 }
 
 /* ====================================
@@ -58,6 +57,15 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
+
+/*    padding: clamp(0.875rem, 1.5vw, 1.125rem);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+
+    background: var(--surface);
+    box-shadow: var(--shadow-xs);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);*/
 }
 
 /* ====================================
@@ -65,15 +73,16 @@
 ======================================= */
 .lapHeader
 {
-    width: 100%;
-
     display: flex;
-    justify-content: space-between;
     align-items: center;
-
+    justify-content: space-between;
+    gap: var(--space-md);
+}
+.lapTitle
+{
     font-family: var(--font-mono);
-    font-size: 0.65rem;
-
+    font-size: 0.7rem;
+    font-weight: 600;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--text-muted);
@@ -84,21 +93,34 @@
 ======================================= */
 .lapToggle
 {
-    font: inherit;
-    letter-spacing: inherit;
-    text-transform: inherit;
-    color: var(--text-muted);
-    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-    transition: color var(--duration-fast) var(--ease);
+    min-height: 2rem;
+    padding: 0.35rem 0.65rem;
+    border-radius: 999px;
+
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    transition: color var(--duration-fast) var(--ease),
+                background-color var(--duration-fast) var(--ease),
+                transform var(--duration-fast) var(--ease);
 }
-.lapToggle:hover { color: var(--text); }
+.lapToggle:hover { color: var(--text); background: color-mix(in oklab, var(--text) 6%, transparent); }
+.lapToggle:active { transform: translateY(1px); }
+.lapListWrap { min-width: 0; }
 
 /* ====================================
    STOPWATCH MEDIA QUERY STYLES.
 ======================================= */
 @media (max-width: 480px)
 {
-    .shell { padding: var(--space-md); gap: var(--space-md); }
-    .container { gap: var(--space-lg); }
+    .shell { gap: var(--space-md); }
+    .stage { gap: var(--space-lg); }
+    .laps { padding: 0.875rem; border-radius: var(--radius-md); }
 }

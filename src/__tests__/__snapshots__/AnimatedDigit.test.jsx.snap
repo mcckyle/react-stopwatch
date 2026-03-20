@@ -4,7 +4,7 @@ exports[`AnimatedDigit Component 10. matches snapshot for digit 9 1`] = `
 <DocumentFragment>
   <span
     aria-hidden="true"
-    class="digitBase slot"
+    class="digit "
   >
     <span
       class="value"

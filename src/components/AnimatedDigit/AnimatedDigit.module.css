@@ -3,7 +3,7 @@
 /* ====================================
    ANIMATEDDIGIT BASE DIGIT WRAPPER STYLE.
 ======================================= */
-.digitBase
+.digit
 {
     position: relative;
 
@@ -13,16 +13,11 @@
 
     width: 1ch;
     height: 1em;
+    overflow: hidden;
+
     line-height: 1;
-
     font-variant-numeric: tabular-nums lining-nums;
-    contain: layout paint;
 }
-
-/* ====================================
-   ANIMATEDDIGIT PRIMARY DIGIT SLOT STYLE.
-======================================= */
-.slot { overflow: hidden; }
 
 /* ====================================
    ANIMATEDDIGIT DIGIT VALUE STYLE.
@@ -31,15 +26,22 @@
 {
     display: inline-block;
     line-height: 1;
-    transform: translateZ(0);
     will-change: transform, opacity;
-    backface-visibility: hidden;
 
-    transition: transform var(--duration-fast) var(--ease),
-                opacity var(--duration-fast) var(--ease);
+    /* Animation does not work with centiseconds...*/
+    /*animation: digit-enter var(--duration-fast) var(--ease) forwards;*/
 }
 
 /* ====================================
    ANIMATEDDIGIT CENTISECOND DIGIT STYLE.
 ======================================= */
 .centi { opacity: 0.85; }
+
+/* ====================================
+   ANIMATEDDIGIT ANIMATION KEYFRAMES STYLES.
+======================================= */
+/*@keyframes digit-enter
+{
+    from { transform: translateY(0.35em); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}*/

@@ -6,15 +6,14 @@
 .header
 {
     width: 100%;
-    max-width: 1440px;
+    max-width: 960px;
     margin: 0 auto; /* Center on wide screens. */
 
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: var(--space-sm) var(--space-md);
+    padding: var(--space-sm) var(--space-md);
     border-bottom: 1px solid var(--border-subtle);
-    box-sizing: border-box;
 }
 
 /* ====================================
@@ -27,17 +26,16 @@
     gap: var(--space-xs);
 
     user-select: none;
-    flex-shrink: 1; /* Allow shrinking. */
     min-width: 0;
 }
-.icon { width: 1.1rem; height: 1.1rem; opacity: 0.55; flex-shrink: 0; }
+.icon { width: 1.1rem; height: 1.1rem; opacity: 0.55; }
 .title
 {
     font-family: var(--font-mono);
     font-size: 0.68rem;
     font-weight: 500;
 
-    letter-spacing: 0.30em;
+    letter-spacing: 0.26em;
     text-transform: uppercase;
 
     color: var(--text-muted);
@@ -64,42 +62,25 @@
     cursor: pointer;
 
     transition: background var(--duration-fast) var(--ease),
-                border-color var(--duration-fast) var(--ease),
                 box-shadow var(--duration-fast) var(--ease),
                 transform var(--duration-fast) var(--ease);
 
 }
-.iconWrap { display: grid; place-items: center; transition: transform var(--duration-fast) var(--ease); }
-.toggle svg { width: 1rem; height: 1rem; opacity: 0.85; }
+.toggleIcon { width: 1rem; height: 1rem; opacity: 0.85; }
 .toggle:hover { background: var(--surface-muted); box-shadow: var(--shadow-xs); }
-.toggle:hover .iconWrap { transform: rotate(10deg); }
 .toggle:active { transform: translateY(1px); }
 .toggle:focus-visible { box-shadow: var(--focus-ring); }
 
 /* ====================================
    STOPWATCHHEADER MEDIA QUERY STYLES.
 ======================================= */
-
-/* Narrow screens: shrink brand, toggle, and padding. */
-@media (max-width: 1000px)
+@media (max-width: 640px)
 {
-
-    .header { padding: var(--space-sm) var(--space-xs); max-width: 80%; }
-    .brand { gap: var(--space-xs); }
-    .title { font-size: 0.6rem; }
+    .header { padding: var(--space-sm); max-width: 90%; }
+    .title { font-size: 0.62rem; }
     .toggle { width: 2rem; height: 2rem; }
 }
-
-/* Very narrow mobile: allow brand text to truncate. */
-@media (max-width: 600px)
-{
-    .brand { max-width: 65%; }
-    .title { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-}
-
-/* Extra narrow mobile: stack brand and toggle vertically if needed. */
-@media (max-width: 400px)
+@media (max-width: 420px)
 {
     .header { flex-direction: column; align-items: flex-start; gap: var(--space-xs); }
-    .brand { max-width: 100%; }
 }

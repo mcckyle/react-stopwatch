@@ -1,6 +1,6 @@
 //File name: AnimatedDigit.test.jsx
 //Author: Kyle McColgan
-//Date: 3 March 2026
+//Date: 17 March 2026
 //Description: This file contains the unit test suite for the AnimatedDigit component.
 
 import React from "react";
@@ -26,7 +26,6 @@ describe("AnimatedDigit Component", () => {
         const { rerender } = render(<AnimatedDigit value={1} />);
         expect(screen.getByText("1")).toBeInTheDocument();
 
-
         rerender(<AnimatedDigit value={9} />);
         expect(screen.getByText("9")).toBeInTheDocument();
     });
@@ -41,7 +40,7 @@ describe("AnimatedDigit Component", () => {
     test("5. applies the correct class to the animated digit", () => {
         const { container } = render(<AnimatedDigit value={4} />);
         const digit = container.querySelector("span");
-        expect(digit.className).toContain("slot");
+        expect(digit.className).toContain("digit");
     });
 
     //Test #6: Accessibility - Uses aria-hidden for the animation element.
@@ -59,8 +58,10 @@ describe("AnimatedDigit Component", () => {
     //Test #8: React Mechanics - Supports multiple sequential renders.
     test("8. renders correctly across multiple rerenders", () => {
         const { rerender } = render(<AnimatedDigit value={2} />);
+
         rerender(<AnimatedDigit value={3} />);
         rerender(<AnimatedDigit value={4} />);
+
         expect(screen.getByText("4")).toBeInTheDocument();
     });
 

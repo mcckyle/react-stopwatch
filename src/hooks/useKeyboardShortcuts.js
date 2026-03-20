@@ -1,13 +1,21 @@
 //File name: useKeyboardShortcuts.js
 //Author: Kyle McColgan
-//Date: 19 December 2025
-//Description: This file contains the keyboard shortcut implememtation for the React stopwatch.
+//Date: 18 March 2026
+//Description: This file contains the keyboard shortcut implememtation for the stopwatch React project.
 
 import { useEffect } from "react";
 
 export function useKeyboardShortcuts({ onToggle, onReset, onLap, onOpenHelp }) {
     useEffect(() => {
         const handleKeyDown = (e) => {
+            const tag = e.target.tagName;
+
+            //Avoid interfering with inputs or editable content.
+            if ( (tag === "INPUT") || (tag === "TEXTAREA") || (e.target.isContentEditable))
+            {
+                return;
+            }
+
             switch(e.code)
             {
                 case "Space":

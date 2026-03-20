@@ -1,6 +1,6 @@
 //File name: Stopwatch.jsx
 //Author: Kyle McColgan
-//Date: 11 March 2026
+//Date: 20 March 2026
 //Description: This file contains the parent Stopwatch component for the stopwatch React project.
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
@@ -30,27 +30,28 @@ const Stopwatch = ({ onToggleTheme }) => {
 
   const openHelp = useCallback(() => setShowHelp(true), []);
   const closeHelp = useCallback(() => setShowHelp(false), []);
+  const toggleLaps = useCallback(() => setShowLaps((prev) => !prev), []);
 
-  const toggleLaps = useCallback(() => {
-    setShowLaps(prev => !prev);
-  }, []);
-
-  const recordLap = useCallback(() => {
-    const current = getCurrentTime();
-    setLaps(prev => [current, ...prev]);
+  const recordLap = useCallback(() =>
+  {
+    const currentTime = getCurrentTime();
+    setLaps((prev) => [currentTime, ...prev]);
   }, [getCurrentTime]);
 
-  const clearLaps = useCallback(() => {
+  const clearLaps = useCallback(() =>
+  {
     setLaps([]);
     localStorage.removeItem(LAP_STORAGE_KEY);
   }, []);
 
-  const deleteLap = useCallback((index) => {
-    setLaps(prev => prev.filter((_, i) => i !== index));
+  const deleteLap = useCallback((index) =>
+  {
+    setLaps((prev) => prev.filter((_, lapIndex) => lapIndex !== index));
   }, []);
 
   //Load laps from localStorage once.
-  useEffect(() => {
+  useEffect(() =>
+  {
     if (hasLoadedLaps.current)
     {
       return;
@@ -61,10 +62,10 @@ const Stopwatch = ({ onToggleTheme }) => {
       const savedLaps = localStorage.getItem(LAP_STORAGE_KEY);
       if (savedLaps)
       {
-        const parsed = JSON.parse(savedLaps);
-        if (Array.isArray(parsed))
+        const parsedLaps = JSON.parse(savedLaps);
+        if (Array.isArray(parsedLaps))
         {
-          setLaps(parsed);
+          setLaps(parsedLaps);
         }
       }
     }
@@ -77,8 +78,9 @@ const Stopwatch = ({ onToggleTheme }) => {
   }, []);
 
   //Save laps array to browser localStorage only after initial load.
-  useEffect(() => {
-    if ( ! hasLoadedLaps.current)
+  useEffect(() =>
+  {
+    if (!hasLoadedLaps.current)
     {
       return;
     }
@@ -93,6 +95,9 @@ const Stopwatch = ({ onToggleTheme }) => {
     onOpenHelp: openHelp
   });
 
+  const hasLaps = laps.length > 0;
+  const lapsRegionId = "stopwatch-laps-panel";
+
   return (
     <>
       <section className={styles.shell} aria-label="Stopwatch application">
@@ -101,8 +106,8 @@ const Stopwatch = ({ onToggleTheme }) => {
           onToggleTheme={onToggleTheme}
         />
 
-        <section className={styles.container} aria-label="Stopwatch">
-          <div className={styles.core}>
+        <main className={styles.container} aria-label="Stopwatch timer">
+          <section className={styles.core} aria-label="Current time and controls">
             <StopwatchDisplay time={time} />
             <StopwatchControls
               isRunning={isRunning}
@@ -110,26 +115,34 @@ const Stopwatch = ({ onToggleTheme }) => {
               reset={reset}
               recordLap={recordLap}
             />
-          </div>
+          </section>
 
-          {laps.length > 0 && (
-            <section className={styles.laps} aria-label="Lap times">
+          {hasLaps && (
+            <aside className={styles.laps} aria-label="Lap times">
               <header className={styles.lapHeader}>
-                <span>Laps</span>
+                <span className={styles.lapTitle}>Laps</span>
                 <button
                   type="button"
                   className={styles.lapToggle}
                   onClick={toggleLaps}
+                  aria-expanded={showLaps}
+                  aria-controls={lapsRegionId}
                 >
                   {showLaps ? "Hide" : "Show"}
                 </button>
               </header>
               {showLaps && (
-                <LapList laps={laps} onClear={clearLaps} onDelete={deleteLap} />
+                <div id={lapsRegionId} className={styles.lapListWrap}>
+                  <LapList
+                    laps={laps}
+                    onClear={clearLaps}
+                    onDelete={deleteLap}
+                  />
+                </div>
               )}
-            </section>
+            </aside>
           )}
-        </section>
+        </main>
       </section>
 
       {showHelp && <HelpModal onClose={closeHelp} />}

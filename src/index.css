@@ -5,7 +5,8 @@
 ======================================= */
 *, *::before, *::after { box-sizing: border-box; }
 html { font-size: 16px; -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
-html, body, #root { height: 100%; margin: 0; }
+body { margin: 0; }
+html, body, #root { min-height: 100svh; }
 
 /* ====================================
    BASE FOUNDATION STYLES.
@@ -27,13 +28,10 @@ body
     transition: background-color var(--duration) var(--ease),
                 color var(--duration) var(--ease);
 }
-/* Remove Default Heading Margins. */
-h1, h2, h3, h4, h5, h6 { margin: 0; font-weight: 600; letter-spacing: -0.015em; }
-/* Normalize Buttons Styles. */
-button { font: inherit; background: none; border: 0; padding: 0; color: inherit; cursor: pointer; }
-/* Improve Focus Visibility. */
+img, picture, svg, canvas, video { display: block; max-width: 100%; }
+input, button, textarea, select { font: inherit; }
+h1, h2, h3, h4, h5, h6, p { margin: 0; }
 :focus-visible { outline: none; box-shadow: var(--focus-ring); }
-/* Improve Selection Feel. */
 ::selection { background: color-mix(in oklab, var(--text) 14%, transparent); }
 
 /* ====================================
@@ -45,9 +43,11 @@ button { font: inherit; background: none; border: 0; padding: 0; color: inherit;
 
     display: grid;
     place-items: center;
+    padding: 1.5rem;
 
     font-family: system-ui, sans-serif;
     font-size: 0.95rem;
+    text-align: center;
 
     background: #0e1116;
     color: #ffffff;

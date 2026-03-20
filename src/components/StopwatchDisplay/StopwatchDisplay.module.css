@@ -5,13 +5,16 @@
 ============================================ */
 .display
 {
-    width: 100vw;
-    min-height: 65vh;
+    width: 100%;
+    flex: 1;
 
-    display: grid;
-    place-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(0.5rem, 2vh, 2rem); /* Prevent edge clipping. */
 
     user-select: none;
+    overflow: visible; /* allow digits to overflow, if needed. */
 }
 
 /* ====================================
@@ -19,8 +22,10 @@
 ======================================= */
 .time
 {
-    position: relative;
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    width: auto; /* Shrink to fit row width. */
     text-align: center;
 
     font-family: var(--font-mono);
@@ -28,7 +33,7 @@
     color: var(--text);
 
     font-variant-numeric: tabular-nums lining-nums;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.045em;
     text-rendering: optimizeLegibility;
 }
 
@@ -37,15 +42,16 @@
 ======================================= */
 .row
 {
-    display: inline-flex;
+    display: flex; /* block-level flex for proper centering. */
     align-items: baseline;
     justify-content: center;
     white-space: nowrap;
 
-    font-size: clamp(4rem, 14vmin, 35vmin);
-    line-height: 0.82;
+    font-size: clamp(6rem, 20vw, 40rem);
+    line-height: 0.72;
+    max-width: 100%;
 
-    gap: clamp(0.2rem, 1.1vw, 0.8rem);
+    gap: clamp(0.2rem, 0.8vw, 0.75rem);
 }
 
 /* ====================================
@@ -54,12 +60,12 @@
 .group { display: inline-flex; align-items: baseline; }
 .centi
 {
-    font-size: 0.22em;
+    font-size: 0.18em;
     font-weight: 500;
     color: var(--text-muted);
-    margin-left: 0.24em;
-    opacity: 0.92;
-    transform: translateY(-0.05em);
+    margin-left: 0.22em;
+    opacity: 0.85;
+    transform: translateY(-0.08em);
 }
 
 /* ====================================
@@ -70,9 +76,8 @@
     font-size: 0.18em;
     font-weight: 500;
 
-    opacity: 0.32;
-    letter-spacing: 0.03em;
-    transform: translateY(-0.05em);
+    opacity: 0.3;
+    transform: translateY(-0.06em);
     pointer-events: none;
 }
 
@@ -98,43 +103,42 @@
 ======================================= */
 
 /* Ultra-large monitors (4K / 2560x1440+ ). */
-@media (min-width: 2500px)
+/*@media (min-width: 2500px)
 {
     .row { font-size: 35vmin; line-height: 0.82; }
-    .centi { font-size: 0.22em; }
-}
+}*/
 
 /* Large desktops (1440 - 2560px). */
-@media (min-width: 1400px) and (max-width: 2559px)
+/*@media (min-width: 1400px) and (max-width: 2559px)
 {
     .row { font-size: clamp(30vmin, 32vmin, 35vmin); line-height: 0.82; }
     .centi { font-size: 0.22em; }
-}
+}*/
 
 /* Standard desktops (1024 - 1439px). */
-@media (min-width: 1024px) and (max-width: 1439px)
+/*@media (min-width: 1024px) and (max-width: 1439px)
 {
     .row { font-size: clamp(20vmin, 25vmin, 30vmin); line-height: 0.84; }
     .centi { font-size: 0.24em; }
-}
+}*/
 
 /* Tablets (768 - 1023px). */
-@media (min-width: 768px) and (max-width: 1023px)
+/*@media (min-width: 768px) and (max-width: 1023px)
 {
     .row { font-size: clamp(14vmin, 18vmin, 22vmin); line-height: 0.86; }
     .centi { font-size: 0.26em; }
-}
+}*/
 
 /* Small tablets / large phones (480 - 767px). */
-@media (min-width: 480px) and (max-width: 767px)
+/*@media (min-width: 480px) and (max-width: 767px)
 {
     .row { font-size: clamp(10vmin, 14vmin, 16vmin); line-height: 0.88; }
     .centi { font-size: 0.28em; }
-}
+}*/
 
 /* Mobile (under 480px). */
-@media (max-width: 479px)
+/*@media (max-width: 479px)
 {
     .row { font-size: clamp(4rem, 12vmin, 12rem); line-height: 0.9; }
     .centi { font-size: 0.3em; }
-}
+}*/
