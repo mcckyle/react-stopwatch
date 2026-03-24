@@ -1,6 +1,6 @@
 //File name: StopwatchDisplay.jsx
 //Author: Kyle McColgan
-//Date: 11 March 2026
+//Date: 22 March 2026
 //Description: This file contains the stopwatch display component for the stopwatch React project.
 
 import React, { useMemo } from "react";
@@ -28,7 +28,7 @@ const StopwatchDisplay = ({ time }) => {
     ));
 
   return (
-    <section className={styles.display}>
+    <section className={styles.display} aria-label="Current stopwatch time">
       <time
         className={styles.time}
         role="timer"

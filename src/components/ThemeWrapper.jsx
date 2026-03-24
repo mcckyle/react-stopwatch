@@ -1,6 +1,6 @@
 //File name: ThemeWrapper.jsx
 //Author: Kyle McColgan
-//Date: 20 March 2026
+//Date: 22 March 2026
 //Description: This file contains the Mantine UI/UX component for the stopwatch React project.
 
 import React, { useMemo } from "react";
@@ -21,12 +21,20 @@ const ThemeWrapper = ({ children }) =>
         transform var(--duration-fast) var(--ease)
       `;
 
+      const surfaceTransition = `
+        background-color var(--duration) var(--ease),
+        border-color var(--duration) var(--ease),
+        box-shadow var(--duration) var(--ease),
+        color var(--duration) var(--ease)
+      `;
+
       return {
         primaryColor: "gray",
+        defaultRadius: "md",
+        respectReducedMotion: true,
+
         fontFamily: "var(--font-sans)",
         fontFamilyMonospace: "var(--font-mono)",
-        respectReducedMotion: true,
-        defaultRadius: "md",
 
         /* Radius Systems. */
         radius: {
@@ -47,8 +55,8 @@ const ThemeWrapper = ({ children }) =>
                 transition: interactiveTransition,
                 "&:active": { transform: "translateY(1px)" },
                 "&:focus-visible": { boxShadow: "var(--focus-ring)" }
-              }
-             }
+              },
+             },
             },
             Card: {
               defaultProps: { radius: "lg" },
@@ -57,17 +65,35 @@ const ThemeWrapper = ({ children }) =>
                   backgroundColor: "var(--surface)",
                   border: "1px solid var(--border-subtle)",
                   boxShadow: "var(--shadow-sm)",
-                  transition: `
-                    background-color var(--duration) var(--ease),
-                    border-color var(--duration) var(--ease),
-                    box-shadow var(--duration) var(--ease)
-                  `
-                  }
-                }
-              }
-            }
-          };
-       }, [theme]);
+                  transition: surfaceTransition,
+                },
+              },
+            },
+            ActionIcon: {
+              defaultProps: { radius: "xl" },
+                styles: {
+                  root: {
+                    transition: interactiveTransition,
+                    "&:focus-visible": { boxShadow: "var(--focus-ring)" }
+                  },
+                },
+             },
+            Modal: {
+              styles: {
+                  content: {
+                    backgroundColor: "var(--surface)",
+                    border: "1px solid var(--border-subtle)",
+                    boxShadow: "var(--shadow-md)",
+                    transition: surfaceTransition,
+                  },
+                  header: {
+                    backgroundColor: "transparent",
+                  },
+              },
+            },
+          },
+        };
+      }, [theme]);
 
     return (
       <MantineProvider

@@ -7,12 +7,12 @@
 {
     position: relative;
 
-    display: inline-flex;
-    align-items: baseline;
-    justify-content: center;
+    display: inline-grid;
+    place-items: center;
 
     width: 1ch;
     height: 1em;
+    min-width: 1ch;
     overflow: hidden;
 
     line-height: 1;
@@ -24,24 +24,14 @@
 ======================================= */
 .value
 {
-    display: inline-block;
+    display: block;
     line-height: 1;
-    will-change: transform, opacity;
-
-    /* Animation does not work with centiseconds...*/
-    /*animation: digit-enter var(--duration-fast) var(--ease) forwards;*/
+    text-align: center;
+    /*backface-visibility: hidden;*/
+/*    transform: translateZ(0);*/
 }
 
 /* ====================================
    ANIMATEDDIGIT CENTISECOND DIGIT STYLE.
 ======================================= */
-.centi { opacity: 0.85; }
-
-/* ====================================
-   ANIMATEDDIGIT ANIMATION KEYFRAMES STYLES.
-======================================= */
-/*@keyframes digit-enter
-{
-    from { transform: translateY(0.35em); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}*/
+.centi { opacity: 0.92; }

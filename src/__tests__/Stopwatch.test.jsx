@@ -150,7 +150,7 @@ describe("Stopwatch Component", () => {
         expect(screen.queryByText(/keyboard shortcuts/i)).toBeInTheDocument();
 
         //Click the close button...
-        fireEvent.click(screen.getByRole("button", { name: /close/i }));
+        fireEvent.click(screen.getByText(/close/i));
 
         //The HelpModal should no longer appear.
         expect(screen.queryByText(/keyboard shortcuts/i)).not.toBeInTheDocument();

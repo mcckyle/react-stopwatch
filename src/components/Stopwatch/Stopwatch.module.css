@@ -6,13 +6,16 @@
 .shell
 {
     width: 100%;
+    max-width: 960px;
     flex: 1;
 
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    margin: 0 auto;
     padding: var(--space-lg) var(--space-md);
-    gap: var(--space-lg)
+    gap: var(--space-lg);
 }
 
 /* ====================================
@@ -21,13 +24,12 @@
 .container
 {
     width: 100%;
-    max-width: 960px;
+    flex: 1;
+    min-height: 0;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex: 1;
-    min-height: 0;
     gap: var(--space-xl);
 }
 
@@ -37,6 +39,7 @@
 .core
 {
     width: 100%;
+    max-width: 720px;
     flex: 1;
     min-height: 0;
 
@@ -58,14 +61,14 @@
     flex-direction: column;
     gap: var(--space-sm);
 
-/*    padding: clamp(0.875rem, 1.5vw, 1.125rem);
+    padding: 0.9rem, 0.95rem;
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-lg);
 
     background: var(--surface);
     box-shadow: var(--shadow-xs);
     backdrop-filter: var(--backdrop-blur);
-    -webkit-backdrop-filter: var(--backdrop-blur);*/
+    -webkit-backdrop-filter: var(--backdrop-blur);
 }
 
 /* ====================================
@@ -113,14 +116,15 @@
 }
 .lapToggle:hover { color: var(--text); background: color-mix(in oklab, var(--text) 6%, transparent); }
 .lapToggle:active { transform: translateY(1px); }
-.lapListWrap { min-width: 0; }
+.lapListWrap { width: 100%; min-width: 0; }
 
 /* ====================================
    STOPWATCH MEDIA QUERY STYLES.
 ======================================= */
 @media (max-width: 480px)
 {
-    .shell { gap: var(--space-md); }
-    .stage { gap: var(--space-lg); }
+    .shell { padding: var(--space-md); gap: var(--space-md); }
+    .container { gap: var(--space-lg); }
+    .core { gap: var(--space-md); }
     .laps { padding: 0.875rem; border-radius: var(--radius-md); }
 }

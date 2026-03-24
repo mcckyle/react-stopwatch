@@ -7,12 +7,13 @@
 {
     width: 100%;
     flex: 1;
+    min-height: 0;
 
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: clamp(0.5rem, 2vh, 2rem); /* Prevent edge clipping. */
+    justify-content: center;
 
+    padding: clamp(0.5rem, 2vh, 2rem); /* Prevent edge clipping. */
     user-select: none;
     overflow: visible; /* allow digits to overflow, if needed. */
 }
@@ -22,10 +23,14 @@
 ======================================= */
 .time
 {
-    display: flex;
-    justify-content: center;
+    position: relative;
+
+    display: inline-flex;
     align-items: baseline;
+    justify-content: center;
+
     width: auto; /* Shrink to fit row width. */
+    max-width: 100%;
     text-align: center;
 
     font-family: var(--font-mono);
@@ -42,16 +47,16 @@
 ======================================= */
 .row
 {
-    display: flex; /* block-level flex for proper centering. */
+    display: inline-flex;
     align-items: baseline;
     justify-content: center;
+
+    max-width: 100%;
     white-space: nowrap;
 
     font-size: clamp(6rem, 20vw, 40rem);
-    line-height: 0.72;
-    max-width: 100%;
-
-    gap: clamp(0.2rem, 0.8vw, 0.75rem);
+    line-height: 0.82;
+    gap: clamp(0.12rem, 0.7vw, 0.6rem);
 }
 
 /* ====================================
@@ -60,12 +65,17 @@
 .group { display: inline-flex; align-items: baseline; }
 .centi
 {
-    font-size: 0.18em;
-    font-weight: 500;
+    display: inline-flex;
+    align-items: baseline;
+
+    margin-left: 0.18em;
+    font-size: 0.2em;
+    font-weight: 600;
+    line-height: 1;
     color: var(--text-muted);
-    margin-left: 0.22em;
-    opacity: 0.85;
-    transform: translateY(-0.08em);
+
+    opacity: 0.92;
+    transform: translateY(-0.06em);
 }
 
 /* ====================================
@@ -73,11 +83,17 @@
 ======================================= */
 .separator
 {
+    display: inline-flex;
+    align-items: baseline;
+    justify-content: center;
+
     font-size: 0.18em;
     font-weight: 500;
+    line-height: 1;
+    color: currentColor;
 
-    opacity: 0.3;
-    transform: translateY(-0.06em);
+    opacity: 0.34;
+    transform: translateY(-0.05em);
     pointer-events: none;
 }
 

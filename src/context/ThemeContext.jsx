@@ -1,35 +1,71 @@
 //File name: ThemeContext.jsx
 //Author: Kyle McColgan
-//Date: 15 December 2025
-//Description: This file contains the theming context component for the React timer project.
+//Date: 22 March 2026
+//Description: This file contains the theming context component for the stopwatch React project.
 
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 
-const ThemeContext = createContext();
+const ThemeContext = createContext(undefined);
+const THEME_STORAGE_KEY = "theme";
 
-export const ThemeProvider = ({ children }) => {
-    const getInitialTheme = () =>
-      localStorage.getItem("theme") ||
-      (window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light");
+function getPreferredTheme()
+{
+  if (typeof window === "undefined")
+  {
+    return "light";
+  }
 
-    const [theme, setTheme] = useState(getInitialTheme);
+  const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
 
-    const onToggleTheme = () => {
-        setTheme((prev) => (prev === "dark" ? "light" : "dark"));
-    };
+  if ( (storedTheme === "light") || (storedTheme === "dark") )
+  {
+    return storedTheme;
+  }
 
-    useEffect(() => {
-        document.documentElement.className = theme;
-        localStorage.setItem("theme", theme);
-    }, [theme]);
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+}
 
-    return (
-        <ThemeContext.Provider value={{ theme, onToggleTheme }}>
-          {children}
-        </ThemeContext.Provider>
-    );
+export const ThemeProvider = ({ children }) =>
+{
+  const [theme, setTheme] = useState(getPreferredTheme);
+
+  const onToggleTheme = useCallback(() =>
+  {
+    setTheme((previousTheme) => (previousTheme === "dark" ? "light" : "dark"));
+  }, []);
+
+  useEffect(() =>
+  {
+    const root = document.documentElement;
+
+    root.classList.remove("light", "dark");
+    root.classList.add(theme);
+
+    window.localStorage.setItem(THEME_STORAGE_KEY, theme);
+  }, [theme]);
+
+  const contextValue = useMemo(() => ({
+    theme,
+    onToggleTheme
+  }), [theme, onToggleTheme]);
+
+  return (
+    <ThemeContext.Provider value={contextValue}>
+      {children}
+    </ThemeContext.Provider>
+  );
 };
 
-export const useTheme = () => useContext(ThemeContext);
+export function useTheme()
+{
+  const context = useContext(ThemeContext);
+
+  if (!context)
+  {
+    throw new Error("useTheme must be used within a ThemeProvider.");
+  }
+
+  return context;
+}

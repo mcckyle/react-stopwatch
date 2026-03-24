@@ -24,82 +24,86 @@ exports[`LapList Component matches snapshot 1`] = `
       </button>
     </header>
     <div
-      class="lap latest fastest"
+      class="rows"
     >
-      <span
-        class="lapLabel"
+      <article
+        class="lap latest fastest"
       >
-        Lap 3
-      </span>
-      <span
-        class="lapTime"
+        <span
+          class="lapLabel"
+        >
+          Lap 3
+        </span>
+        <span
+          class="lapTime"
+        >
+          01:23.45
+        </span>
+        <span
+          class="lapDelta"
+        >
+          +01:23.45
+        </span>
+        <button
+          aria-label="Delete lap 3"
+          class="delete"
+          type="button"
+        >
+          ×
+        </button>
+      </article>
+      <article
+        class="lap slowest"
       >
-        01:23.45
-      </span>
-      <span
-        class="lapDelta"
+        <span
+          class="lapLabel"
+        >
+          Lap 2
+        </span>
+        <span
+          class="lapTime"
+        >
+          01:23.45
+        </span>
+        <span
+          class="lapDelta"
+        >
+          +01:23.45
+        </span>
+        <button
+          aria-label="Delete lap 2"
+          class="delete"
+          type="button"
+        >
+          ×
+        </button>
+      </article>
+      <article
+        class="lap slowest"
       >
-        +01:23.45
-      </span>
-      <button
-        aria-label="Delete lap 3"
-        class="delete"
-        type="button"
-      >
-        ×
-      </button>
-    </div>
-    <div
-      class="lap slowest"
-    >
-      <span
-        class="lapLabel"
-      >
-        Lap 2
-      </span>
-      <span
-        class="lapTime"
-      >
-        01:23.45
-      </span>
-      <span
-        class="lapDelta"
-      >
-        +01:23.45
-      </span>
-      <button
-        aria-label="Delete lap 2"
-        class="delete"
-        type="button"
-      >
-        ×
-      </button>
-    </div>
-    <div
-      class="lap slowest"
-    >
-      <span
-        class="lapLabel"
-      >
-        Lap 1
-      </span>
-      <span
-        class="lapTime"
-      >
-        01:23.45
-      </span>
-      <span
-        class="lapDelta"
-      >
-        +01:23.45
-      </span>
-      <button
-        aria-label="Delete lap 1"
-        class="delete"
-        type="button"
-      >
-        ×
-      </button>
+        <span
+          class="lapLabel"
+        >
+          Lap 1
+        </span>
+        <span
+          class="lapTime"
+        >
+          01:23.45
+        </span>
+        <span
+          class="lapDelta"
+        >
+          +01:23.45
+        </span>
+        <button
+          aria-label="Delete lap 1"
+          class="delete"
+          type="button"
+        >
+          ×
+        </button>
+      </article>
     </div>
   </section>
 </DocumentFragment>

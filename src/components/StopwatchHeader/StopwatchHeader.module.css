@@ -6,42 +6,56 @@
 .header
 {
     width: 100%;
-    max-width: 960px;
-    margin: 0 auto; /* Center on wide screens. */
 
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: var(--space-sm) var(--space-md);
-    border-bottom: 1px solid var(--border-subtle);
+
+    gap: var(--space-md);
+    padding: var(--space-sm) 0;
+    margin: 0 auto; /* Center on wide screens. */
 }
 
 /* ====================================
-   STOPWATCHHEADER BRAND MARK STYLES.
+   STOPWATCHHEADER HEADER BRAND STYLES.
 ======================================= */
 .brand
 {
+    min-width: 0;
     display: inline-flex;
     align-items: center;
-    gap: var(--space-xs);
-
+    gap: var(--space-sm);
     user-select: none;
-    min-width: 0;
 }
-.icon { width: 1.1rem; height: 1.1rem; opacity: 0.55; }
+.brandMark
+{
+    width: 2rem;
+    height: 2rem;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    border: 1px solid var(--border-subtle);
+    border-radius: 999px;
+    background: var(--surface);
+    box-shadow: var(--shadow-xs);
+}
+.icon { width: 0.95rem; height: 0.95rem; opacity: 0.72; }
 .title
 {
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    font-weight: 500;
-
-    letter-spacing: 0.26em;
-    text-transform: uppercase;
-
-    color: var(--text-muted);
+    min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-muted);
 }
 
 /* ====================================
@@ -49,38 +63,44 @@
 ======================================= */
 .toggle
 {
-    width: 2.35rem;
-    height: 2.35rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex-shrink: 0;
 
     display: grid;
     place-items: center;
 
-    border-radius: 999px;
     border: 1px solid var(--border-subtle);
+    border-radius: 999px;
     background: var(--surface);
     color: var(--text);
-    cursor: pointer;
+    box-shadow: var(--shadow-xs);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
 
-    transition: background var(--duration-fast) var(--ease),
+    transition: background-color var(--duration-fast) var(--ease),
+                border-color var(--duration-fast) var(--ease),
                 box-shadow var(--duration-fast) var(--ease),
-                transform var(--duration-fast) var(--ease);
+                transform var(--duration-fast) var(--ease),
+                color var(--duration-fast) var(--ease);
 
 }
-.toggleIcon { width: 1rem; height: 1rem; opacity: 0.85; }
-.toggle:hover { background: var(--surface-muted); box-shadow: var(--shadow-xs); }
+.toggle:hover { background: var(--surface-muted); box-shadow: var(--shadow-sm); }
 .toggle:active { transform: translateY(1px); }
 .toggle:focus-visible { box-shadow: var(--focus-ring); }
+.toggleIcon { width: 1rem; height: 1rem; opacity: 0.9; }
 
 /* ====================================
    STOPWATCHHEADER MEDIA QUERY STYLES.
 ======================================= */
 @media (max-width: 640px)
 {
-    .header { padding: var(--space-sm); max-width: 90%; }
-    .title { font-size: 0.62rem; }
-    .toggle { width: 2rem; height: 2rem; }
+    .header { gap: var(--space-sm); }
+    .title { font-size: 0.64rem; letter-spacing: 0.2em; }
+    .brandMark, .toggle { width: 2.25rem; height: 2.25rem; }
 }
 @media (max-width: 420px)
 {
-    .header { flex-direction: column; align-items: flex-start; gap: var(--space-xs); }
+    .header { align-items: flex-start; }
+    .title { max-width: 14rem; }
 }

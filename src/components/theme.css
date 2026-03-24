@@ -36,6 +36,7 @@
 
     --focus-ring: 0 0 0 2px color-mix(in oklab, var(--text) 22%, transparent);
     --backdrop-blur: saturate(140%) blur(16px);
+    --border-strong: color-mix(in oklab, var(--text) 18%, transparent);
 }
 
 /* ====================================
@@ -60,6 +61,7 @@ html.light
 html.dark
 {
     --app-bg: #0b1016;
+    --app-bg-accent: #121a24;
 
     --surface: rgb(20 27 36 / 0.82);
     --surface-muted: #0f151d;
