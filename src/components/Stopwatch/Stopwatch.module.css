@@ -7,29 +7,29 @@
 {
     width: 100%;
     max-width: 960px;
-    flex: 1;
+    flex: 1; /* Vertically centers the Stopwatch. */
 
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    margin: 0 auto;
+    margin-inline: auto;
     padding: var(--space-lg) var(--space-md);
     gap: var(--space-lg);
 }
 
 /* ====================================
-   STOPWATCH MAIN CONTENT CONTAINER STYLES.
+   STOPWATCH MAIN CONTAINER STYLES.
 ======================================= */
 .container
 {
     width: 100%;
     flex: 1;
-    min-height: 0;
 
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     gap: var(--space-xl);
 }
 
@@ -40,12 +40,12 @@
 {
     width: 100%;
     max-width: 720px;
-    flex: 1;
-    min-height: 0;
 
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    flex: 1;
     gap: var(--space-lg);
 }
 
@@ -61,7 +61,7 @@
     flex-direction: column;
     gap: var(--space-sm);
 
-    padding: 0.9rem, 0.95rem;
+    padding: var(--space-sm) var(--space-md);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-lg);
 
@@ -126,5 +126,5 @@
     .shell { padding: var(--space-md); gap: var(--space-md); }
     .container { gap: var(--space-lg); }
     .core { gap: var(--space-md); }
-    .laps { padding: 0.875rem; border-radius: var(--radius-md); }
+    .laps { padding: var(--space-sm); border-radius: var(--radius-md); }
 }

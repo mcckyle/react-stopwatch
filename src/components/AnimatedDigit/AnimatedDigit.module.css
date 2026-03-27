@@ -7,8 +7,9 @@
 {
     position: relative;
 
-    display: inline-grid;
-    place-items: center;
+    display: inline-flex;
+    align-items: flex-end;
+    justify-content: center;
 
     width: 1ch;
     height: 1em;
@@ -17,6 +18,7 @@
 
     line-height: 1;
     font-variant-numeric: tabular-nums lining-nums;
+    contain: layout paint; /* Prevent subpixel jitter on rapid updates. */
 }
 
 /* ====================================
@@ -24,14 +26,22 @@
 ======================================= */
 .value
 {
-    display: block;
+    display: inline-block;
     line-height: 1;
     text-align: center;
-    /*backface-visibility: hidden;*/
-/*    transform: translateZ(0);*/
+
+    /* Smoother rendering at large sizes. */
+    transform: translateZ(0);
+    will-change: transform, opacity;
 }
 
 /* ====================================
    ANIMATEDDIGIT CENTISECOND DIGIT STYLE.
 ======================================= */
-.centi { opacity: 0.92; }
+.centi { opacity: 0.9; }
+
+/*@keyframes digitFade
+{
+    from { opacity: 0; transform: translateY(0.15em); }
+    to { opacity: 1; transform: translateY(0); }
+}*/

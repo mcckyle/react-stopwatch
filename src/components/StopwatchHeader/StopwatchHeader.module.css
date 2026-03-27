@@ -6,6 +6,7 @@
 .header
 {
     width: 100%;
+    max-width: 960px;
 
     display: flex;
     align-items: center;
@@ -39,10 +40,9 @@
 
     border: 1px solid var(--border-subtle);
     border-radius: 999px;
-    background: var(--surface);
-    box-shadow: var(--shadow-xs);
+    background: color-mix(in oklab, var(--surface) 85%, transparent);
 }
-.icon { width: 0.95rem; height: 0.95rem; opacity: 0.72; }
+.icon { width: 0.95rem; height: 0.95rem; opacity: 0.75; }
 .title
 {
     min-width: 0;
@@ -51,9 +51,9 @@
     white-space: nowrap;
 
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     font-weight: 600;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
     color: var(--text-muted);
 }
@@ -63,8 +63,8 @@
 ======================================= */
 .toggle
 {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.4rem;
+    height: 2.4rem;
     flex-shrink: 0;
 
     display: grid;
@@ -72,11 +72,9 @@
 
     border: 1px solid var(--border-subtle);
     border-radius: 999px;
-    background: var(--surface);
+    background: color-mix(in oklab, var(--surface) 90%, transparent);
     color: var(--text);
     box-shadow: var(--shadow-xs);
-    backdrop-filter: var(--backdrop-blur);
-    -webkit-backdrop-filter: var(--backdrop-blur);
 
     transition: background-color var(--duration-fast) var(--ease),
                 border-color var(--duration-fast) var(--ease),
@@ -97,7 +95,7 @@
 {
     .header { gap: var(--space-sm); }
     .title { font-size: 0.64rem; letter-spacing: 0.2em; }
-    .brandMark, .toggle { width: 2.25rem; height: 2.25rem; }
+    .brandMark, .toggle { width: 2.2rem; height: 2.2rem; }
 }
 @media (max-width: 420px)
 {

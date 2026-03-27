@@ -16,15 +16,20 @@ const shortcuts = [
 const HelpModal = ({ onClose }) =>
 {
   const closeRef = useRef(null);
+  const previouslyFocusedRef = useRef(null);
+
   const titleId = useId();
   const descriptionId = useId();
 
   useEffect(() =>
   {
+    previouslyFocusedRef.current = document.activeElement;
+
     const handleKeyDown = (event) =>
     {
       if (event.key === "Escape")
       {
+        event.stopPropagation();
         onClose();
       }
     };
@@ -32,11 +37,15 @@ const HelpModal = ({ onClose }) =>
     document.addEventListener("keydown", handleKeyDown);
     closeRef.current?.focus();
 
-    return () => document.removeEventListener("keydown", handleKeyDown);
+    return () =>
+    {
+      document.removeEventListener("keydown", handleKeyDown);
+      previouslyFocusedRef.current?.focus?.();
+    }
   }, [onClose]);
 
   return (
-    <div className={styles.overlay} onClick={onClose} aria-hidden="true">
+    <div className={styles.overlay} onClick={onClose}>
       <section
         className={styles.modal}
         role="dialog"
@@ -66,7 +75,6 @@ const HelpModal = ({ onClose }) =>
         <button
           ref={closeRef}
           type="button"
-          role="button"
           aria-label="Close help dialog"
           className={styles.closeButton}
           onClick={onClose}
