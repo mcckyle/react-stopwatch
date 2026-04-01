@@ -1,10 +1,9 @@
 //File name: Stopwatch.jsx
 //Author: Kyle McColgan
-//Date: 27 March 2026
+//Date: 31 March 2026
 //Description: This file contains the parent Stopwatch component for the stopwatch React project.
 
-import React, { useState, useEffect, useRef, useCallback } from "react";
-
+import React, { useState, useEffect, useCallback } from "react";
 import { useStopwatch } from "../../hooks/useStopwatch";
 import { useKeyboardShortcuts } from "../../hooks/useKeyboardShortcuts";
 import { useTheme } from "../../context/ThemeContext.jsx";
@@ -23,11 +22,21 @@ const Stopwatch = ({ onToggleTheme }) => {
   const { time, isRunning, toggle, reset, getCurrentTime } = useStopwatch();
   const { theme } = useTheme();
 
-  const [laps, setLaps] = useState([]);
+  const [laps, setLaps] = useState(() => {
+    try
+    {
+      const savedLaps = localStorage.getItem(LAP_STORAGE_KEY);
+      return savedLaps ? JSON.parse(savedLaps) : [];
+    }
+    catch
+    {
+      console.warm("Unable to restore saved laps!");
+      return [];
+    }
+  });
+
   const [showHelp, setShowHelp] = useState(false);
   const [showLaps, setShowLaps] = useState(true);
-  const hasLoadedLaps = useRef(false);
-
   const openHelp = useCallback(() => setShowHelp(true), []);
   const closeHelp = useCallback(() => setShowHelp(false), []);
   const toggleLaps = useCallback(() => setShowLaps((prev) => !prev), []);
@@ -49,42 +58,9 @@ const Stopwatch = ({ onToggleTheme }) => {
     setLaps((prev) => prev.filter((_, lapIndex) => lapIndex !== index));
   }, []);
 
-  //Load laps from localStorage once.
-  useEffect(() =>
-  {
-    if (hasLoadedLaps.current)
-    {
-      return;
-    }
-
-    try
-    {
-      const savedLaps = localStorage.getItem(LAP_STORAGE_KEY);
-      if (savedLaps)
-      {
-        const parsedLaps = JSON.parse(savedLaps);
-        if (Array.isArray(parsedLaps))
-        {
-          setLaps(parsedLaps);
-        }
-      }
-    }
-    catch
-    {
-      console.warn("Unable to restore saved laps!");
-    }
-
-    hasLoadedLaps.current = true;
-  }, []);
-
   //Save laps array to browser localStorage only after initial load.
   useEffect(() =>
   {
-    if (!hasLoadedLaps.current)
-    {
-      return;
-    }
-
     localStorage.setItem(LAP_STORAGE_KEY, JSON.stringify(laps));
   }, [laps]);
 

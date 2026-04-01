@@ -7,9 +7,8 @@
 {
     position: relative;
 
-    display: inline-flex;
-    align-items: flex-end;
-    justify-content: center;
+    display: inline-grid;
+    place-items: center;
 
     width: 1ch;
     height: 1em;
@@ -18,7 +17,7 @@
 
     line-height: 1;
     font-variant-numeric: tabular-nums lining-nums;
-    contain: layout paint; /* Prevent subpixel jitter on rapid updates. */
+    contain: strict; /* Stronger isolation for stability purposes. */
 }
 
 /* ====================================
@@ -26,19 +25,24 @@
 ======================================= */
 .value
 {
-    display: inline-block;
+    display: block;
     line-height: 1;
     text-align: center;
 
-    /* Smoother rendering at large sizes. */
-    transform: translateZ(0);
-    will-change: transform, opacity;
+    /* Stabilize rendering. */
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+
+    transition: transform var(--duration-fast) var(--ease),
+                opacity var(--duration-fast) var(--ease);
+
+    /* Animations do not perform well on centiseconds. */
 }
 
 /* ====================================
    ANIMATEDDIGIT CENTISECOND DIGIT STYLE.
 ======================================= */
-.centi { opacity: 0.9; }
+.centi { opacity: 0.88; }
 
 /*@keyframes digitFade
 {

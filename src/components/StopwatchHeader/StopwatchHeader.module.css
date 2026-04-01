@@ -13,8 +13,8 @@
     justify-content: space-between;
 
     gap: var(--space-md);
-    padding: var(--space-sm) 0;
-    margin: 0 auto; /* Center on wide screens. */
+    padding-block: var(--space-xs);
+    margin-inline: auto;
 }
 
 /* ====================================
@@ -38,11 +38,10 @@
     justify-content: center;
     flex-shrink: 0;
 
-    border: 1px solid var(--border-subtle);
     border-radius: 999px;
-    background: color-mix(in oklab, var(--surface) 85%, transparent);
+    background: color-mix(in oklab, var(--text) 6%, transparent);
 }
-.icon { width: 0.95rem; height: 0.95rem; opacity: 0.75; }
+.icon { width: 0.95rem; height: 0.95rem; opacity: 0.82; }
 .title
 {
     min-width: 0;
@@ -51,9 +50,9 @@
     white-space: nowrap;
 
     font-family: var(--font-mono);
-    font-size: 0.68rem;
+    font-size: 0.66rem;
     font-weight: 600;
-    letter-spacing: 0.24em;
+    letter-spacing: 0.26em;
     text-transform: uppercase;
     color: var(--text-muted);
 }
@@ -72,18 +71,16 @@
 
     border: 1px solid var(--border-subtle);
     border-radius: 999px;
-    background: color-mix(in oklab, var(--surface) 90%, transparent);
+    background: var(--surface);
     color: var(--text);
-    box-shadow: var(--shadow-xs);
 
     transition: background-color var(--duration-fast) var(--ease),
                 border-color var(--duration-fast) var(--ease),
-                box-shadow var(--duration-fast) var(--ease),
                 transform var(--duration-fast) var(--ease),
                 color var(--duration-fast) var(--ease);
 
 }
-.toggle:hover { background: var(--surface-muted); box-shadow: var(--shadow-sm); }
+.toggle:hover { background: color-mix(in oklab, var(--text) 6%, var(--surface)); }
 .toggle:active { transform: translateY(1px); }
 .toggle:focus-visible { box-shadow: var(--focus-ring); }
 .toggleIcon { width: 1rem; height: 1rem; opacity: 0.9; }
@@ -93,8 +90,7 @@
 ======================================= */
 @media (max-width: 640px)
 {
-    .header { gap: var(--space-sm); }
-    .title { font-size: 0.64rem; letter-spacing: 0.2em; }
+    .title { font-size: 0.62rem; letter-spacing: 0.22em; }
     .brandMark, .toggle { width: 2.2rem; height: 2.2rem; }
 }
 @media (max-width: 420px)

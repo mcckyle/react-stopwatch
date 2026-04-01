@@ -1,6 +1,6 @@
 //File name: ThemeWrapper.jsx
 //Author: Kyle McColgan
-//Date: 22 March 2026
+//Date: 31 March 2026
 //Description: This file contains the Mantine UI/UX component for the stopwatch React project.
 
 import React, { useMemo } from "react";
@@ -13,21 +13,6 @@ const ThemeWrapper = ({ children }) =>
 
     const mantineTheme = useMemo(() =>
     {
-      const interactiveTransition = `
-        background-color var(--duration-fast) var(--ease),
-        color var(--duration-fast) var(--ease),
-        border-color var(--duration-fast) var(--ease),
-        box-shadow var(--duration-fast) var(--ease),
-        transform var(--duration-fast) var(--ease)
-      `;
-
-      const surfaceTransition = `
-        background-color var(--duration) var(--ease),
-        border-color var(--duration) var(--ease),
-        box-shadow var(--duration) var(--ease),
-        color var(--duration) var(--ease)
-      `;
-
       return {
         primaryColor: "gray",
         defaultRadius: "md",
@@ -52,7 +37,7 @@ const ThemeWrapper = ({ children }) =>
             styles: {
               root: {
                 fontWeight: 600,
-                transition: interactiveTransition,
+                transition: "var(--transition-interactive)",
                 "&:active": { transform: "translateY(1px)" },
                 "&:focus-visible": { boxShadow: "var(--focus-ring)" }
               },
@@ -65,7 +50,7 @@ const ThemeWrapper = ({ children }) =>
                   backgroundColor: "var(--surface)",
                   border: "1px solid var(--border-subtle)",
                   boxShadow: "var(--shadow-sm)",
-                  transition: surfaceTransition,
+                  transition: "var(--transition-surface)",
                 },
               },
             },
@@ -73,7 +58,7 @@ const ThemeWrapper = ({ children }) =>
               defaultProps: { radius: "xl" },
                 styles: {
                   root: {
-                    transition: interactiveTransition,
+                    transition: "var(--transition-interactive)",
                     "&:focus-visible": { boxShadow: "var(--focus-ring)" }
                   },
                 },
@@ -84,7 +69,7 @@ const ThemeWrapper = ({ children }) =>
                     backgroundColor: "var(--surface)",
                     border: "1px solid var(--border-subtle)",
                     boxShadow: "var(--shadow-md)",
-                    transition: surfaceTransition,
+                    transition: "var(--transition-surface)",
                   },
                   header: {
                     backgroundColor: "transparent",
@@ -93,14 +78,11 @@ const ThemeWrapper = ({ children }) =>
             },
           },
         };
-      }, [theme]);
+      }, []);
 
     return (
-      <MantineProvider
-        theme={mantineTheme}
-        defaultColorScheme={theme}
-      >
-          {children}
+      <MantineProvider theme={mantineTheme} defaultColorScheme={theme}>
+        {children}
       </MantineProvider>
     );
 };
