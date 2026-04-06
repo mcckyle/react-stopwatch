@@ -29,8 +29,8 @@
     --shadow-sm: 0 12px 32px hsl(220 40% 2% / 0.08);
     --shadow-md: 0 28px 80px hsl(220 40% 2% / 0.14);
 
-    --focus-ring: 0 0 0 2px color-mix(in oklab, var(--text) 22%, transparent);
     --backdrop-blur: saturate(140%) blur(16px);
+    --focus-ring: 0 0 0 2px color-mix(in oklab, var(--text) 22%, transparent);
     --border-strong: color-mix(in oklab, var(--text) 18%, transparent);
 
     /* Motion. */

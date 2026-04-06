@@ -1,6 +1,6 @@
 //File name: Stopwatch.jsx
 //Author: Kyle McColgan
-//Date: 31 March 2026
+//Date: 5 April 2026
 //Description: This file contains the parent Stopwatch component for the stopwatch React project.
 
 import React, { useState, useEffect, useCallback } from "react";
@@ -26,11 +26,13 @@ const Stopwatch = ({ onToggleTheme }) => {
     try
     {
       const savedLaps = localStorage.getItem(LAP_STORAGE_KEY);
-      return savedLaps ? JSON.parse(savedLaps) : [];
+      const parsedLaps = savedLaps ? JSON.parse(savedLaps) : [];
+
+      return Array.isArray(parsedLaps) ? parsedLaps : [];
     }
     catch
     {
-      console.warm("Unable to restore saved laps!");
+      console.warn("Unable to restore saved laps!");
       return [];
     }
   });
@@ -61,7 +63,14 @@ const Stopwatch = ({ onToggleTheme }) => {
   //Save laps array to browser localStorage only after initial load.
   useEffect(() =>
   {
-    localStorage.setItem(LAP_STORAGE_KEY, JSON.stringify(laps));
+    try
+    {
+      localStorage.setItem(LAP_STORAGE_KEY, JSON.stringify(laps));
+    }
+    catch
+    {
+      console.warn("Unable to persist laps!");
+    }
   }, [laps]);
 
   useKeyboardShortcuts({

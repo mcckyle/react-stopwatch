@@ -17,7 +17,6 @@ exports[`LapList Component matches snapshot 1`] = `
         History
       </span>
       <button
-        aria-live="polite"
         class="clearButton "
         type="button"
       >

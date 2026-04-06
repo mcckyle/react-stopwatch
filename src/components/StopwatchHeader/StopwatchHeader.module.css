@@ -36,12 +36,11 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
 
     border-radius: 999px;
-    background: color-mix(in oklab, var(--text) 6%, transparent);
+    background: color-mix(in oklab, var(--text) 5%, transparent);
 }
-.icon { width: 0.95rem; height: 0.95rem; opacity: 0.82; }
+.icon { width: 0.95rem; height: 0.95rem; opacity: 0.8; }
 .title
 {
     min-width: 0;
@@ -50,9 +49,9 @@
     white-space: nowrap;
 
     font-family: var(--font-mono);
-    font-size: 0.66rem;
+    font-size: 0.64rem;
     font-weight: 600;
-    letter-spacing: 0.26em;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
     color: var(--text-muted);
 }
@@ -64,24 +63,20 @@
 {
     width: 2.4rem;
     height: 2.4rem;
-    flex-shrink: 0;
 
     display: grid;
     place-items: center;
 
-    border: 1px solid var(--border-subtle);
     border-radius: 999px;
     background: var(--surface);
     color: var(--text);
+    box-shadow: var(--shadow-xs);
 
-    transition: background-color var(--duration-fast) var(--ease),
-                border-color var(--duration-fast) var(--ease),
-                transform var(--duration-fast) var(--ease),
-                color var(--duration-fast) var(--ease);
+    transition: var(--transition-interactive);
 
 }
-.toggle:hover { background: color-mix(in oklab, var(--text) 6%, var(--surface)); }
-.toggle:active { transform: translateY(1px); }
+.toggle:hover { box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+.toggle:active { transform: translateY(0); box-shadow: var(--shadow-xs); }
 .toggle:focus-visible { box-shadow: var(--focus-ring); }
 .toggleIcon { width: 1rem; height: 1rem; opacity: 0.9; }
 
@@ -90,7 +85,7 @@
 ======================================= */
 @media (max-width: 640px)
 {
-    .title { font-size: 0.62rem; letter-spacing: 0.22em; }
+    .title { font-size: 0.6rem; letter-spacing: 0.24em; }
     .brandMark, .toggle { width: 2.2rem; height: 2.2rem; }
 }
 @media (max-width: 420px)

@@ -1,6 +1,6 @@
 //File name: ThemeContext.jsx
 //Author: Kyle McColgan
-//Date: 22 March 2026
+//Date: 5 April 2026
 //Description: This file contains the theming context component for the stopwatch React project.
 
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
@@ -15,7 +15,7 @@ function getPreferredTheme()
     return "light";
   }
 
-  const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
+  const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
 
   if ( (storedTheme === "light") || (storedTheme === "dark") )
   {
@@ -36,15 +36,39 @@ export const ThemeProvider = ({ children }) =>
     setTheme((previousTheme) => (previousTheme === "dark" ? "light" : "dark"));
   }, []);
 
+  //Sync DOM + storage.
   useEffect(() =>
   {
     const root = document.documentElement;
 
-    root.classList.remove("light", "dark");
-    root.classList.add(theme);
+    if (!root.classList.contains(theme))
+    {
+      root.classList.remove("light", "dark");
+      root.classList.add(theme);
+    }
 
-    window.localStorage.setItem(THEME_STORAGE_KEY, theme);
+    localStorage.setItem(THEME_STORAGE_KEY, theme);
   }, [theme]);
+
+  //Sync with system preference (only if user hasn't overridden).
+  useEffect(() =>
+  {
+    const media = window.matchMedia("(prefers-color-scheme: dark)");
+
+    const handleChange = (event) =>
+    {
+      const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+      if ( (storedTheme === "light") || (storedTheme === "dark") )
+      {
+        return;
+      }
+
+      setTheme(event.matches ? "dark" : "light");
+    };
+
+    media.addEventListener("change", handleChange);
+    return () => media.removeEventListener("change", handleChange);
+  }, []);
 
   const contextValue = useMemo(() => ({
     theme,

@@ -1,6 +1,6 @@
 //File name: ThemeWrapper.jsx
 //Author: Kyle McColgan
-//Date: 31 March 2026
+//Date: 5 April 2026
 //Description: This file contains the Mantine UI/UX component for the stopwatch React project.
 
 import React, { useMemo } from "react";
@@ -10,10 +10,7 @@ import { useTheme } from "../context/ThemeContext";
 const ThemeWrapper = ({ children }) =>
 {
     const { theme } = useTheme(); //"light" || "dark".
-
-    const mantineTheme = useMemo(() =>
-    {
-      return {
+    const mantineTheme = useMemo(() => ({
         primaryColor: "gray",
         defaultRadius: "md",
         respectReducedMotion: true,
@@ -40,8 +37,8 @@ const ThemeWrapper = ({ children }) =>
                 transition: "var(--transition-interactive)",
                 "&:active": { transform: "translateY(1px)" },
                 "&:focus-visible": { boxShadow: "var(--focus-ring)" }
-              },
-             },
+              }
+             }
             },
             Card: {
               defaultProps: { radius: "lg" },
@@ -50,9 +47,10 @@ const ThemeWrapper = ({ children }) =>
                   backgroundColor: "var(--surface)",
                   border: "1px solid var(--border-subtle)",
                   boxShadow: "var(--shadow-sm)",
-                  transition: "var(--transition-surface)",
-                },
-              },
+                  backdropFilter: "var(--backdrop-blur)",
+                  transition: "var(--transition-surface)"
+                }
+              }
             },
             ActionIcon: {
               defaultProps: { radius: "xl" },
@@ -60,8 +58,8 @@ const ThemeWrapper = ({ children }) =>
                   root: {
                     transition: "var(--transition-interactive)",
                     "&:focus-visible": { boxShadow: "var(--focus-ring)" }
-                  },
-                },
+                  }
+                }
              },
             Modal: {
               styles: {
@@ -69,16 +67,16 @@ const ThemeWrapper = ({ children }) =>
                     backgroundColor: "var(--surface)",
                     border: "1px solid var(--border-subtle)",
                     boxShadow: "var(--shadow-md)",
-                    transition: "var(--transition-surface)",
+                    backdropFilter: "var(--backdrop-blur)",
+                    transition: "var(--transition-surface)"
                   },
                   header: {
-                    backgroundColor: "transparent",
-                  },
-              },
-            },
-          },
-        };
-      }, []);
+                    backgroundColor: "transparent"
+                  }
+              }
+            }
+          }
+        }), []);
 
     return (
       <MantineProvider theme={mantineTheme} defaultColorScheme={theme}>

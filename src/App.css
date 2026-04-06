@@ -5,11 +5,14 @@
 ======================================= */
 .app
 {
-    min-height: 100svh;
     width: 100%;
+    min-height: 100dvh; /* Modern Viewport Unit. */
+    min-height: 100svh; /* Fallback. */
 
     display: flex;
     flex-direction: column;
+
+    /* Let children control alignment. */
     align-items: stretch;
     justify-content: flex-start;
     margin-inline: auto;
