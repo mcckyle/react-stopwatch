@@ -7,7 +7,6 @@
 {
     width: 100%;
     min-height: 100dvh; /* Modern Viewport Unit. */
-    min-height: 100svh; /* Fallback. */
 
     display: flex;
     flex-direction: column;

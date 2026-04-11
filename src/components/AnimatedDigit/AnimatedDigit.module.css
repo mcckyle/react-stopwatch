@@ -8,7 +8,7 @@
     position: relative;
 
     display: inline-flex;
-    align-items: flex-end;
+    align-items: baseline;
     justify-content: center;
 
     width: 1ch;
@@ -18,7 +18,7 @@
 
     line-height: 1;
     font-variant-numeric: tabular-nums lining-nums;
-    contain: layout paint; /* Isolate layout without over-constraining paint. */
+    contain: content; /* Content is safer than partial values here... */
 }
 
 /* ====================================
@@ -32,12 +32,9 @@
 
     /* GPU hint without forcing unnecessary layers. */
     transform: translateZ(0);
-    will-change: transform, opacity;
-
+    /* Removed unnecessary will-change (can hurt performance at scale). */
     transition: transform var(--duration-fast) var(--ease),
                 opacity var(--duration-fast) var(--ease);
-
-    /* Animations do not perform well on centiseconds. */
 }
 
 /* ====================================

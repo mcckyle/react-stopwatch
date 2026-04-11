@@ -1,6 +1,6 @@
 //File name: AnimatedDigit.jsx
 //Author: Kyle McColgan
-//Date: 22 March 2026
+//Date: 8 April 2026
 //Description: This file contains the digits component for the stopwatch React project.
 
 import React from "react";
@@ -13,9 +13,7 @@ const AnimatedDigit = ({ value, isCenti = false }) => {
 
   return (
     <span className={className} aria-hidden="true">
-      <span key={value} className={styles.value}>
-        {value}
-      </span>
+      <span className={styles.value}>{value}</span>
     </span>
   );
 };

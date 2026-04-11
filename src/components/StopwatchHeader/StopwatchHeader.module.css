@@ -12,9 +12,9 @@
     align-items: center;
     justify-content: space-between;
 
-    gap: var(--space-md);
-    padding-block: var(--space-xs);
     margin-inline: auto;
+    padding-block: var(--space-xs);
+    gap: var(--space-md);
 }
 
 /* ====================================
@@ -40,7 +40,7 @@
     border-radius: 999px;
     background: color-mix(in oklab, var(--text) 5%, transparent);
 }
-.icon { width: 0.95rem; height: 0.95rem; opacity: 0.8; }
+.icon { width: 0.95rem; height: 0.95rem; opacity: 0.78; }
 .title
 {
     min-width: 0;
@@ -51,7 +51,7 @@
     font-family: var(--font-mono);
     font-size: 0.64rem;
     font-weight: 600;
-    letter-spacing: 0.28em;
+    letter-spacing: 0.26em;
     text-transform: uppercase;
     color: var(--text-muted);
 }
@@ -67,18 +67,20 @@
     display: grid;
     place-items: center;
 
+    border: 1px solid var(--border-subtle);
     border-radius: 999px;
     background: var(--surface);
     color: var(--text);
-    box-shadow: var(--shadow-xs);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
 
     transition: var(--transition-interactive);
 
 }
-.toggle:hover { box-shadow: var(--shadow-sm); transform: translateY(-1px); }
-.toggle:active { transform: translateY(0); box-shadow: var(--shadow-xs); }
+.toggle:hover { background: color-mix(in oklab, var(--text) 5%, var(--surface)); transform: translateY(-1px); }
+.toggle:active { transform: translateY(0); }
 .toggle:focus-visible { box-shadow: var(--focus-ring); }
-.toggleIcon { width: 1rem; height: 1rem; opacity: 0.9; }
+.toggleIcon { width: 1rem; height: 1rem; opacity: 0.88; }
 
 /* ====================================
    STOPWATCHHEADER MEDIA QUERY STYLES.

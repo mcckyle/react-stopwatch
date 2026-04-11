@@ -23,8 +23,8 @@
 .button
 {
     min-width: 6.5rem;
-    min-height: 2.75rem;
-    padding: 0.7rem 1.2rem;
+    min-height: 2.7rem;
+    padding: 0.65rem 1.15rem;
 
     display: inline-flex;
     align-items: center;
@@ -32,7 +32,7 @@
     border-radius: 999px;
 
     font-family: var(--font-mono);
-    font-size: 0.66rem;
+    font-size: 0.64rem;
     font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -45,10 +45,10 @@
 
     transition: var(--transition-interactive);
 }
-.button:hover:not(:disabled) { transform: translateY(-1px); box-shadow: var(--shadow-sm); }
-.button:active:not(:disabled) { transform: translateY(0); box-shadow: var(--shadow-xs); }
+.button:hover:not(:disabled) { transform: translateY(-1px); }
+.button:active:not(:disabled) { transform: translateY(0); }
 .button:focus-visible { box-shadow: var(--focus-ring); }
-.button:disabled { opacity: 0.4; box-shadow: none; cursor: not-allowed; }
+.button:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 
 /* =========================================
    PRIMARY ACTION ( START / PAUSE ) STYLES.
@@ -58,14 +58,13 @@
     min-width: 7.75rem;
     background: var(--text);
     color: var(--surface);
-    box-shadow: vaR(--shadow-sm);
 }
-.primary:hover:not(:disabled) { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.primary:hover:not(:disabled) { filter: brightness(1.05); }
 
 /* ====================================
    SECONDARY ACTION ( LAP ) STYLES.
 ======================================= */
-.secondary { /* Uses base styles intentionally. */ }
+.secondary { opacity: 0.92; /* intentionally minimal - relies on base styles. */ }
 
 /* =========================================
    TERTIARY ACTION ( RESET ) STYLES.
@@ -74,9 +73,8 @@
 {
     background: transparent;
     color: var(--text-muted);
-    box-shadow: none;
 }
-.tertiary:hover:not(:disabled) { background: color-mix(in oklab, var(--text) 6%, transparent); color: var(--text); }
+.tertiary:hover:not(:disabled) { color: var(--text); background: color-mix(in oklab, var(--text) 6%, transparent); }
 
 /* ====================================
    STOPWATCHCONTROLS MEDIA QUERY STYLES.

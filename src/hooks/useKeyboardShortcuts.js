@@ -1,6 +1,6 @@
 //File name: useKeyboardShortcuts.js
 //Author: Kyle McColgan
-//Date: 22 March 2026
+//Date: 8 April 2026
 //Description: This file contains the keyboard shortcut implememtation for the stopwatch React project.
 
 import { useEffect } from "react";
@@ -12,56 +12,75 @@ function isEditableTarget(target)
         return false;
     }
 
-    const tagName = target.tagName;
+    const tag = target.tagName;
 
     return (
         target.isContentEditable ||
-        tagName === "INPUT" ||
-        tagName === "TEXTAREA" ||
-        tagName === "SELECT"
+        tag === "INPUT" ||
+        tag === "TEXTAREA" ||
+        tag === "SELECT"
     );
 }
 
 export function useKeyboardShortcuts({ onToggle, onReset, onLap, onOpenHelp }) {
     useEffect(() => {
-        const handleKeyDown = (event) => {
+        const handleKeyDown = (event) =>
+        {
+            //Ignore IME composition (important for international inputs).
+            if (event.isComposing)
+            {
+                return;
+            }
+
+            //Ignore typing contexts.
             if (isEditableTarget(event.target))
             {
                 return;
             }
 
+            //Prevent key-hold spam.
             if (event.repeat)
             {
                 return;
             }
 
+            //Ignore modified shortcuts (preserve OS/browser combos).
             const hasModifierKey = (event.metaKey) || (event.ctrlKey) || (event.altKey);
-
             if (hasModifierKey)
             {
                 return;
             }
 
-            if (event.code === "Space")
+            switch (event.code)
             {
-                event.preventDefault();
-                onToggle();
-                return;
-            }
-            if (event.code === "KeyL")
-            {
-                onLap();
-                return;
-            }
-            if (event.code === "KeyR")
-            {
-                onReset();
-                return;
-            }
-            if ( (event.code === "Slash") && (event.shiftKey) )
-            {
-                event.preventDefault();
-                onOpenHelp();
+                case "Space":
+                {
+                    event.preventDefault(); //Prevent page scroll.
+                    onToggle();
+                    break;
+                }
+                case "KeyL":
+                {
+                    onLap();
+                    break;
+                }
+                case "KeyR":
+                {
+                    onReset();
+                    break;
+                }
+                case "Slash":
+                {
+                    //Shift + / -> ?
+                    if (event.shiftKey)
+                    {
+                        event.preventDefault();
+                        onOpenHelp();
+                    }
+                    break;
+                }
+                default:
+                    break;
             }
         };
 
