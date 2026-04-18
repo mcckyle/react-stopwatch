@@ -1,6 +1,6 @@
 //File name: StopwatchDisplay.jsx
 //Author: Kyle McColgan
-//Date: 8 April 2026
+//Date: 17 April 2026
 //Description: This file contains the stopwatch display component for the stopwatch React project.
 
 import React, { useMemo, useCallback } from "react";
@@ -13,14 +13,17 @@ const StopwatchDisplay = ({ time }) => {
   const { hours, minutes, seconds, centiSeconds } = formatTime(time, true);
   const showHours = Number(hours) > 0;
 
-  const readableTime = useMemo(
-    () => `${hours}:${minutes}:${seconds}.${centiSeconds}`,
-    [hours, minutes, seconds, centiSeconds]
-  );
+  const readableTime = useMemo(() => {
+    return showHours
+      ? `${hours} hours ${minutes} minutes ${seconds} seconds`
+      : `${minutes} minutes ${seconds} seconds`;
+  }, [hours, minutes, seconds, showHours]);
+
+  const splitDigits = (value) => value.split("");
 
   const renderDigits = useCallback(
     (value, keyPrefix, isCenti = false) =>
-      [...value].map((digit, index) => (
+      splitDigits(value).map((digit, index) => (
         <AnimatedDigit
           key={`${keyPrefix}-${index}`}
           value={Number(digit)}

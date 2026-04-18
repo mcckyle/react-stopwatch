@@ -38,9 +38,10 @@
     justify-content: center;
 
     border-radius: 999px;
-    background: color-mix(in oklab, var(--text) 5%, transparent);
+    background: color-mix(in oklab, var(--text) 4%, transparent);
+    opacity: 0.9;
 }
-.icon { width: 0.95rem; height: 0.95rem; opacity: 0.78; }
+.icon { width: 0.95rem; height: 0.95rem; opacity: 0.7; }
 .title
 {
     min-width: 0;
@@ -51,7 +52,7 @@
     font-family: var(--font-mono);
     font-size: 0.64rem;
     font-weight: 600;
-    letter-spacing: 0.26em;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
     color: var(--text-muted);
 }
@@ -71,23 +72,24 @@
     border-radius: 999px;
     background: var(--surface);
     color: var(--text);
+    box-shadow: var(--shadow-xs);
     backdrop-filter: var(--backdrop-blur);
     -webkit-backdrop-filter: var(--backdrop-blur);
 
     transition: var(--transition-interactive);
 
 }
-.toggle:hover { background: color-mix(in oklab, var(--text) 5%, var(--surface)); transform: translateY(-1px); }
-.toggle:active { transform: translateY(0); }
+.toggle:hover { transform: translateY(-1px); box-shadow: var(--shadow-sm); background: color-mix(in oklab, var(--text) 6%, var(--surface));  }
+.toggle:active { transform: translateY(0); box-shadow: var(--shadow-xs); }
 .toggle:focus-visible { box-shadow: var(--focus-ring); }
-.toggleIcon { width: 1rem; height: 1rem; opacity: 0.88; }
+.toggleIcon { width: 1rem; height: 1rem; opacity: 0.9; }
 
 /* ====================================
    STOPWATCHHEADER MEDIA QUERY STYLES.
 ======================================= */
 @media (max-width: 640px)
 {
-    .title { font-size: 0.6rem; letter-spacing: 0.24em; }
+    .title { font-size: 0.6rem; letter-spacing: 0.22em; }
     .brandMark, .toggle { width: 2.2rem; height: 2.2rem; }
 }
 @media (max-width: 420px)

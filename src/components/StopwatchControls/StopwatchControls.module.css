@@ -13,8 +13,7 @@
     justify-content: center;
     flex-wrap: wrap;
 
-    gap: clamp(0.6rem, 1.4vw, 0.9rem);
-    user-select: none;
+    gap: clamp(0.55rem, 1.2vw, 0.85rem);
 }
 
 /* ====================================
@@ -22,9 +21,9 @@
 ======================================= */
 .button
 {
-    min-width: 6.5rem;
-    min-height: 2.7rem;
-    padding: 0.65rem 1.15rem;
+    min-width: 6.25rem;
+    min-height: 2.6rem;
+    padding: 0.6rem 1.1rem;
 
     display: inline-flex;
     align-items: center;
@@ -41,30 +40,37 @@
     background: var(--surface);
     color: var(--text);
     cursor: pointer;
-    user-select: none;
 
     transition: var(--transition-interactive);
 }
-.button:hover:not(:disabled) { transform: translateY(-1px); }
-.button:active:not(:disabled) { transform: translateY(0); }
+.button:hover:not(:disabled) { transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+.button:active:not(:disabled) { transform: translateY(0); box-shadow: var(--shadow-xs); }
 .button:focus-visible { box-shadow: var(--focus-ring); }
-.button:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+.button:disabled
+{
+    color: var(--text-muted);
+    background: color-mix(in oklab, var(--surface) 90%, transparent);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
 
 /* =========================================
    PRIMARY ACTION ( START / PAUSE ) STYLES.
 ============================================ */
 .primary
 {
-    min-width: 7.75rem;
+    min-width: 7.5rem;
     background: var(--text);
     color: var(--surface);
+    box-shadow: var(--shadow-sm);
 }
-.primary:hover:not(:disabled) { filter: brightness(1.05); }
+.primary:hover:not(:disabled) { box-shadow: var(--shadow-md); }
 
 /* ====================================
    SECONDARY ACTION ( LAP ) STYLES.
 ======================================= */
-.secondary { opacity: 0.92; /* intentionally minimal - relies on base styles. */ }
+.secondary { /* intentionally minimal - inherits base styles. */ }
 
 /* =========================================
    TERTIARY ACTION ( RESET ) STYLES.

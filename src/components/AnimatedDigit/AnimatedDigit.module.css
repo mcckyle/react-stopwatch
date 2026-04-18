@@ -13,12 +13,11 @@
 
     width: 1ch;
     height: 1em;
-    min-width: 1ch;
     overflow: hidden;
 
     line-height: 1;
     font-variant-numeric: tabular-nums lining-nums;
-    contain: content; /* Content is safer than partial values here... */
+    contain: layout style; /* Isolate layout without over-isolating paint... */
 }
 
 /* ====================================
@@ -30,8 +29,9 @@
     line-height: 1;
     text-align: center;
 
-    /* GPU hint without forcing unnecessary layers. */
-    transform: translateZ(0);
+    /* Stabilize rendering under rapid updates. */
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
     /* Removed unnecessary will-change (can hurt performance at scale). */
     transition: transform var(--duration-fast) var(--ease),
                 opacity var(--duration-fast) var(--ease);
@@ -40,7 +40,7 @@
 /* ====================================
    ANIMATEDDIGIT CENTISECOND DIGIT STYLE.
 ======================================= */
-.centi { opacity: 0.9; }
+.centi { opacity: 0.85; }
 
 /*@keyframes digitFade
 {

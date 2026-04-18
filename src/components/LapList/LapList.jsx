@@ -1,9 +1,9 @@
 //File name: LapList.jsx
 //Author: Kyle McColgan
-//Date: 5 April 2026
+//Date: 17 April 2026
 //Description: This file contains the laps component for the stopwatch React project.
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { formatTime } from "../../utils/formatTime";
 
 import styles from "./LapList.module.css";
@@ -18,7 +18,11 @@ const LapList = ({ laps, onClear, onDelete }) =>
   }
 
   //Calculate lap durations.
-  const lapDurations = laps.map((lap, index) => lap - (laps[index + 1] ?? 0));
+  const lapDurations = useMemo(
+    () => laps.map((lap, index) => lap - (laps[index + 1] ?? 0)),
+    [laps]
+  );
+
   const fastest = Math.min(...lapDurations);
   const slowest = Math.max(...lapDurations);
 
@@ -28,10 +32,11 @@ const LapList = ({ laps, onClear, onDelete }) =>
     {
       onClear();
       setConfirmClear(false);
-      return;
     }
-
-    setConfirmClear(true);
+    else
+    {
+      setConfirmClear(true);
+    }
   };
 
   return (
@@ -46,7 +51,9 @@ const LapList = ({ laps, onClear, onDelete }) =>
 
         <button
           type="button"
-          className={`${styles.clearButton} ${confirmClear ? styles.confirm : ""}`}
+          className={`${styles.clearButton} ${
+            confirmClear ? styles.confirm : ""
+          }`}
           onClick={handleClearClick}
           onBlur={() => setConfirmClear(false)}
         >
@@ -55,8 +62,7 @@ const LapList = ({ laps, onClear, onDelete }) =>
       </header>
 
       <div className={styles.rows}>
-        {laps.map((lap, index) =>
-        {
+        {laps.map((lap, index) => {
           const lapNumber = laps.length - index;
           const delta = lapDurations[index];
 
@@ -82,7 +88,7 @@ const LapList = ({ laps, onClear, onDelete }) =>
           ].filter(Boolean).join(" ");
 
           return (
-            <article key={`lap-${lapNumber}`} className={rowClass}>
+            <article key={lapNumber} className={rowClass}>
               <span className={styles.lapLabel}>Lap {lapNumber}</span>
               <span className={styles.lapTime}>{fullTime}</span>
               <span className={styles.lapDelta}>{formattedDelta}</span>

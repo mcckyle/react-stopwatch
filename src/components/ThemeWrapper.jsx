@@ -1,6 +1,6 @@
 //File name: ThemeWrapper.jsx
 //Author: Kyle McColgan
-//Date: 5 April 2026
+//Date: 17 April 2026
 //Description: This file contains the Mantine UI/UX component for the stopwatch React project.
 
 import React, { useMemo } from "react";
@@ -18,7 +18,7 @@ const ThemeWrapper = ({ children }) =>
         fontFamily: "var(--font-sans)",
         fontFamilyMonospace: "var(--font-mono)",
 
-        /* Radius Systems. */
+        /* Radius System. */
         radius: {
           xs: "var(--radius-xs)",
           sm: "var(--radius-sm)",
@@ -40,18 +40,6 @@ const ThemeWrapper = ({ children }) =>
               }
              }
             },
-            Card: {
-              defaultProps: { radius: "lg" },
-              styles: {
-                root: {
-                  backgroundColor: "var(--surface)",
-                  border: "1px solid var(--border-subtle)",
-                  boxShadow: "var(--shadow-sm)",
-                  backdropFilter: "var(--backdrop-blur)",
-                  transition: "var(--transition-surface)"
-                }
-              }
-            },
             ActionIcon: {
               defaultProps: { radius: "xl" },
                 styles: {
@@ -60,19 +48,29 @@ const ThemeWrapper = ({ children }) =>
                     "&:focus-visible": { boxShadow: "var(--focus-ring)" }
                   }
                 }
-             },
+            },
+            Card: {
+              defaultProps: { radius: "lg" },
+              styles: {
+                root: {
+                  backgroundColor: "var(--surface)",
+                  border: "1px solid var(--border-subtle)",
+                  boxShadow: "var(--shadow-sm)",
+                  backdropFilter: "var(--backdrop-blur)"
+                }
+              }
+            },
             Modal: {
               styles: {
-                  content: {
-                    backgroundColor: "var(--surface)",
-                    border: "1px solid var(--border-subtle)",
-                    boxShadow: "var(--shadow-md)",
-                    backdropFilter: "var(--backdrop-blur)",
-                    transition: "var(--transition-surface)"
-                  },
-                  header: {
-                    backgroundColor: "transparent"
-                  }
+                content: {
+                  backgroundColor: "var(--surface)",
+                  border: "1px solid var(--border-subtle)",
+                  boxShadow: "var(--shadow-lg)",
+                  backdropFilter: "var(--backdrop-blur)"
+                },
+                header: {
+                  backgroundColor: "transparent"
+                }
               }
             }
           }

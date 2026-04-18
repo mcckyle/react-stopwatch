@@ -6,14 +6,13 @@
 .app
 {
     width: 100%;
-    min-height: 100dvh; /* Modern Viewport Unit. */
+    min-height: 100dvh; /* Use Modern Viewport with fallback handled globally. */
 
     display: flex;
     flex-direction: column;
 
     /* Let children control alignment. */
     align-items: stretch;
-    justify-content: flex-start;
     margin-inline: auto;
     padding: max(1rem, env(safe-area-inset-top))
              max(1rem, env(safe-area-inset-right))

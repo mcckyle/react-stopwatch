@@ -21,6 +21,8 @@
     background: var(--surface);
     box-shadow: var(--shadow-xs);
     backdrop-filter: var(--backdrop-blur);
+
+    transition: var(--transition-surface);
 }
 
 /* ====================================
@@ -62,10 +64,10 @@
     transition: var(--transition-interactive);
 }
 .clearButton:hover { color: var(--text); background: color-mix(in oklab, var(--text) 6%, transparent); }
-.confirm { color: #dc2626; background: color-mix(in oklab, #dc2626 12%, transparent); }
+.confirm { color: #dc2626; background: color-mix(in oklab, #dc2626 10%, transparent); }
 
 /* ====================================
-   LAPLIST ROW WRAPPER STYLES.
+   LAPLIST ROW CONTAINER STYLES.
 ======================================= */
 .rows
 {
@@ -95,9 +97,9 @@
     font-size: 0.68rem;
     font-variant-numeric: tabular-nums lining-nums;
 
-    transition: background-color var(--duration-fast) var(--ease);
+    transition: var(--transition-interactive);
 }
-.lap:hover { background: color-mix(in oklab, var(--surface-muted) 70%, transparent); }
+.lap:hover { background: color-mix(in oklab, var(--surface-muted) 65%, transparent); transform: translateY(-1px); }
 
 /* ====================================
    LAPLIST TEXT ELEMENTS STYLES.
@@ -117,8 +119,8 @@
    LAPLIST STATE EMPHASIS STYLES.
 ======================================= */
 .latest .lapTime { color: var(--text); }
-.fastest .lapDelta { color: #16a34a; }
-.slowest .lapDelta { color: #dc2626;  }
+.fastest .lapDelta { color: color-mix(in oklab, #16a34a 80%, var(--text)); }
+.slowest .lapDelta { color: color-mix(in oklab, #dc2626 80%, var(--text)); }
 
 /* ====================================
    LAPLIST LAP DELETE BUTTON STYLES.
@@ -134,15 +136,15 @@
     font-size: 0.75rem;
     border-radius: 999px;
 
-    color: var(--text-muted);
     background: transparent;
+    color: var(--text-muted);
 
     opacity: 0;
     transform: translateY(1px);
 
     transition: var(--transition-interactive);
 }
-.lap:hover .delete, .delete:focus-visible { opacity: 0.75; transform: translateY(0); }
+.lap:hover .delete, .delete:focus-visible { opacity: 0.8; transform: translateY(0); }
 .delete:hover { color: #dc2626; background: color-mix(in oklab, #dc2626 10%, transparent); }
 
 /* ====================================
