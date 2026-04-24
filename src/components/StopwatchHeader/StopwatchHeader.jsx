@@ -1,15 +1,28 @@
 //File name: StopwatchHeader.jsx
 //Author: Kyle McColgan
-//Date: 8 April 2026
+//Date: 21 April 2026
 //Description: This file contains the header component for the stopwatch React project.
 
-import React from "react";
+import React, { useState, useCallback } from "react";
 import { Clock, Sun, Moon } from "lucide-react";
+import LapList from "../LapList/LapList.jsx";
 import styles from "./StopwatchHeader.module.css";
 
-const StopwatchHeader = ({ theme, onToggleTheme }) => {
+const StopwatchHeader = ({
+  theme,
+  onToggleTheme,
+  laps,
+  hasLaps,
+  onClearLaps,
+  onDeleteLap
+}) => {
   const isDark = theme === "dark";
   const nextThemeLabel = isDark ? "light" : "dark";
+
+  const [open, setOpen] = useState(false);
+  const togglePanel = useCallback(() => {
+    setOpen((prev) => !prev);
+  }, []);
 
   return (
     <header className={styles.header}>
@@ -20,20 +33,48 @@ const StopwatchHeader = ({ theme, onToggleTheme }) => {
         <span className={styles.title}>Precision Stopwatch</span>
       </div>
 
-      <button
-        type="button"
-        className={styles.toggle}
-        onClick={onToggleTheme}
-        aria-label={`Switch to ${nextThemeLabel} theme`}
-        aria-pressed={isDark}
-        title={`Switch to ${nextThemeLabel} theme`}
-      >
-        {isDark ? (
-          <Sun className={styles.toggleIcon} aria-hidden="true" />
-        ) :(
-          <Moon className={styles.toggleIcon} aria-hidden="true" />
+      <div className={styles.actions}>
+        {hasLaps && (
+          <button
+            type="button"
+            className={styles.lapButton}
+            onClick={togglePanel}
+            aria-expanded={open}
+            aria-controls="lap-panel"
+          >
+            {open ? "Close" : "Laps"}
+          </button>
         )}
-      </button>
+
+        <button
+          type="button"
+          className={styles.toggle}
+          onClick={onToggleTheme}
+          aria-label={`Switch to ${nextThemeLabel} theme`}
+          aria-pressed={isDark}
+          title={`Switch to ${nextThemeLabel} theme`}
+        >
+          {isDark ? (
+            <Sun className={styles.toggleIcon} aria-hidden="true" />
+          ) :(
+            <Moon className={styles.toggleIcon} aria-hidden="true" />
+          )}
+        </button>
+      </div>
+
+      {hasLaps && (
+        <div
+          id="lap-panel"
+          className={`${styles.panel} ${open ? styles.open : ""}`}
+          aria-hidden={!open}
+        >
+          <LapList
+            laps={laps}
+            onClear={onClearLaps}
+            onDelete={onDeleteLap}
+          />
+        </div>
+      )}
     </header>
   );
 };

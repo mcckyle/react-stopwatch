@@ -1,6 +1,6 @@
 //File name: Stopwatch.jsx
 //Author: Kyle McColgan
-//Date: 17 April 2026
+//Date: 21 April 2026
 //Description: This file contains the parent Stopwatch component for the stopwatch React project.
 
 import React, { useState, useEffect, useCallback } from "react";
@@ -11,7 +11,6 @@ import { useTheme } from "../../context/ThemeContext.jsx";
 import StopwatchHeader from "../StopwatchHeader/StopwatchHeader.jsx";
 import StopwatchDisplay from "../StopwatchDisplay/StopwatchDisplay.jsx";
 import StopwatchControls from "../StopwatchControls/StopwatchControls.jsx";
-import LapList from "../LapList/LapList.jsx";
 import HelpModal from "../HelpModal/HelpModal.jsx";
 
 import styles from "./Stopwatch.module.css";
@@ -37,13 +36,9 @@ const Stopwatch = ({ onToggleTheme }) => {
     }
   });
   const hasLaps = laps.length > 0;
-  const lapsRegionId = "stopwatch-laps-panel";
-
   const [showHelp, setShowHelp] = useState(false);
-  const [showLaps, setShowLaps] = useState(true);
   const openHelp = useCallback(() => setShowHelp(true), []);
   const closeHelp = useCallback(() => setShowHelp(false), []);
-  const toggleLaps = useCallback(() => setShowLaps((prev) => !prev), []);
 
   const recordLap = useCallback(() =>
   {
@@ -92,7 +87,14 @@ const Stopwatch = ({ onToggleTheme }) => {
   return (
     <>
       <section className={styles.shell} aria-label="Stopwatch application">
-        <StopwatchHeader theme={theme} onToggleTheme={onToggleTheme} />
+        <StopwatchHeader
+          theme={theme}
+          onToggleTheme={onToggleTheme}
+          laps={laps}
+          hasLaps={hasLaps}
+          onClearLaps={clearLaps}
+          onDeleteLap={deleteLap}
+        />
 
         <main className={styles.container}>
           <section className={styles.core}>
@@ -104,32 +106,6 @@ const Stopwatch = ({ onToggleTheme }) => {
               recordLap={recordLap}
             />
           </section>
-
-          {hasLaps && (
-            <aside className={styles.laps}>
-              <header className={styles.lapHeader}>
-                <span className={styles.lapTitle}>Laps</span>
-                <button
-                  type="button"
-                  className={styles.lapToggle}
-                  onClick={toggleLaps}
-                  aria-expanded={showLaps}
-                  aria-controls={lapsRegionId}
-                >
-                  {showLaps ? "Hide" : "Show"}
-                </button>
-              </header>
-              {showLaps && (
-                <div id={lapsRegionId} className={styles.lapListWrap}>
-                  <LapList
-                    laps={laps}
-                    onClear={clearLaps}
-                    onDelete={deleteLap}
-                  />
-                </div>
-              )}
-            </aside>
-          )}
         </main>
       </section>
 

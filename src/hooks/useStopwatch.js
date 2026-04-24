@@ -1,6 +1,6 @@
 //File name: useStopwatch.js
 //Author: Kyle McColgan
-//Date: 8 April 2026
+//Date: 22 April 2026
 //Description: This file contains the stopwatch functions for the stopwatch React project.
 
 import { useEffect, useRef, useState, useCallback } from "react";
@@ -13,7 +13,7 @@ export function useStopwatch()
   const [elapsedMs, setElapsedMs] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
 
-  //Internal refs (single source of truth).
+  //Internal timing state (single source of truth).
   const startTimeRef = useRef(0); //Timestamp when current run started/resumed.
   const elapsedRef = useRef(0); //Accumulated elapsed time when paused.
   const frameRef = useRef(null); // current Animation Frame ID.
@@ -29,20 +29,35 @@ export function useStopwatch()
     }
   }, []);
 
+  //Display Update Pipeline.
   const updateElapsed = useCallback((nextElapsed) =>
   {
-    elapsedRef.current = nextElapsed;
-
     const nextBucket = Math.floor(nextElapsed / DISPLAY_PRECISION_MS);
 
-    //Only update React when display value actually changes.
-    //~10ms precision keeps digits smooth but avoids excessive renders.
+    //Avoid unnecessary internal writes.
+    if (nextElapsed !== elapsedRef.current)
+    {
+      elapsedRef.current = nextElapsed;
+    }
+
+    //Only trigger React updates when
+    //visible precision actually changes.
     if (nextBucket !== lastRenderedBucketRef.current)
     {
       lastRenderedBucketRef.current = nextBucket;
       setElapsedMs(nextElapsed);
     }
   }, []);
+
+  //Animation Loop.
+  const animate = useCallback(() =>
+  {
+    const now = performance.now();
+    const nextElapsed = now - startTimeRef.current;
+
+    updateElapsed(nextElapsed);
+    frameRef.current = requestAnimationFrame(animate);
+  }, [updateElapsed]);
 
   //Start / pause lifecycle.
   useEffect(() => {
@@ -52,18 +67,8 @@ export function useStopwatch()
       return;
     }
 
-    //Resume from paused state.
+    //Resume from paused position.
     startTimeRef.current = performance.now() - elapsedRef.current;
-
-    const animate = () =>
-    {
-      const now = performance.now();
-      const nextElapsed = now - startTimeRef.current;
-
-      updateElapsed(nextElapsed);
-      frameRef.current = requestAnimationFrame(animate);
-    }
-
     frameRef.current = requestAnimationFrame(animate);
 
     return cancelLoop;
@@ -83,9 +88,9 @@ export function useStopwatch()
   {
     cancelLoop();
 
+    lastRenderedBucketRef.current = -1;
     startTimeRef.current = 0;
     elapsedRef.current = 0;
-    lastRenderedBucketRef.current = -1;
 
     setElapsedMs(0);
     setIsRunning(false);

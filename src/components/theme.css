@@ -26,12 +26,12 @@
 
     /* Shadows System. */
     --shadow-xs: 0 1px 2px hsl(220 40% 2% / 0.05);
-    --shadow-sm: 0 10px 30px hsl(220 40% 2% / 0.08);
-    --shadow-md: 0 20px 60px hsl(220 40% 2% / 0.12);
-    --shadow-lg: 0 40px 100px hsl(220 40% 2% / 0.18);
+    --shadow-sm: 0 8px 24px hsl(220 40% 2% / 0.08);
+    --shadow-md: 0 16px 48px hsl(220 40% 2% / 0.12);
+    --shadow-lg: 0 32px 80px hsl(220 40% 2% / 0.18);
 
     /* Effects. */
-    --backdrop-blur: saturate(140%) blur(16px);
+    --backdrop-blur: saturate(140%) blur(14px);
     --focus-ring: 0 0 0 2px color-mix(in oklab, var(--text) 22%, transparent);
 
     /* Motion. */

@@ -17,7 +17,7 @@
 
     line-height: 1;
     font-variant-numeric: tabular-nums lining-nums;
-    contain: layout style; /* Isolate layout without over-isolating paint... */
+    /* contain: layout style; Remove - Slightly aggressive. Also prevents separators from being pushed down. */
 }
 
 /* ====================================
@@ -42,8 +42,10 @@
 ======================================= */
 .centi { opacity: 0.85; }
 
-/*@keyframes digitFade
+/*
+@keyframes digitFade
 {
     from { opacity: 0; transform: translateY(0.15em); }
     to { opacity: 1; transform: translateY(0); }
-}*/
+}
+*/

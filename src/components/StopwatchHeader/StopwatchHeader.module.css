@@ -5,14 +5,13 @@
 ======================================= */
 .header
 {
+    position: relative; /* Required for panel anchoring. */
     width: 100%;
-    max-width: 960px;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    margin-inline: auto;
     padding-block: var(--space-xs);
     gap: var(--space-md);
 }
@@ -56,6 +55,50 @@
     text-transform: uppercase;
     color: var(--text-muted);
 }
+
+.actions
+{
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.lapButton
+{
+    padding: 0.35rem 0.65rem;
+    border-radius: 999px;
+
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+
+    transition: var(--transition-interactive);
+}
+.lapButton:hover { color: var(--text); background: color-mix(in oklab, var(--text) 6%, transparent); }
+.lapButton:active { transform: translateY(1px); }
+.panel
+{
+    position: absolute;
+    top: calc(100% + var(--space-sm));
+    right: 0;
+
+    width: min(460px, 100vw - 2rem);
+    z-index: 20;
+
+    display: flex;
+    justify-content: flex-end;
+
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+    pointer-events: none;
+
+    transition: opacity var(--duration-fast) var(--ease),
+                transform var(--duration-fast) var(--ease);
+}
+.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
 
 /* ====================================
    THEME TOGGLE BUTTON STYLES.

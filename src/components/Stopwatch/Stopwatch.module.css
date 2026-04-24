@@ -7,13 +7,14 @@
 {
     width: 100%;
     max-width: 960px;
-    flex: 1; /* Vertically centers the Stopwatch. */
+    margin-inline: auto;
 
     display: flex;
     flex-direction: column;
-    margin-inline: auto;
-    padding: var(--space-lg) var(--space-md);
     gap: var(--space-lg);
+
+    flex: 1; /* Vertically centers the Stopwatch. */
+    padding: var(--space-lg) var(--space-md);
 }
 
 /* ====================================
@@ -21,12 +22,11 @@
 ======================================= */
 .container
 {
-    width: 100%;
-    flex: 1;
-
     display: flex;
     flex-direction: column;
     gap: var(--space-xl);
+
+    flex: 1;
 }
 
 /* ====================================
@@ -41,80 +41,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex: 1;
-    min-height: 0;
-    gap: var(--space-lg);
-}
-
-/* ====================================
-   STOPWATCH LAPS PANEL STYLES.
-======================================= */
-.laps
-{
-    width: 100%;
-    max-width: 520px;
-    margin-inline: auto;
-
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-sm);
-
-    padding: var(--space-sm) var(--space-md);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-lg);
-
-    background: var(--surface);
-    box-shadow: var(--shadow-xs);
-    backdrop-filter: var(--backdrop-blur);
-    -webkit-backdrop-filter: var(--backdrop-blur);
-    opacity: 0.96;
-
-    transition: var(--transition-surface);
-}
-
-/* ====================================
-   STOPWATCH LAP HEADER STYLES.
-======================================= */
-.lapHeader
-{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.lapTitle
-{
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-}
-
-/* ====================================
-   STOPWATCH LAP TOGGLE BUTTON STYLES.
-======================================= */
-.lapToggle
-{
-    display: inline-flex;
-    align-items: center;
     justify-content: center;
 
-    min-height: 2rem;
-    padding: 0.35rem 0.65rem;
-    border-radius: 999px;
-
-    font-family: var(--font-mono);
-    font-size: 0.66rem;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    transition: var(--transition-interactive);
+    gap: var(--space-lg);
+    flex: 1;
 }
-.lapToggle:hover { color: var(--text); background: color-mix(in oklab, var(--text) 6%, transparent); }
-.lapToggle:active { transform: translateY(1px); }
-.lapListWrap { width: 100%; min-width: 0; }
 
 /* ====================================
    STOPWATCH MEDIA QUERY STYLES.
@@ -124,5 +55,4 @@
     .shell { padding: var(--space-md); gap: var(--space-md); }
     .container { gap: var(--space-lg); }
     .core { gap: var(--space-md); }
-    .laps { padding: var(--space-sm); border-radius: var(--radius-md); }
 }
