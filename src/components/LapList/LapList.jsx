@@ -1,6 +1,6 @@
 //File name: LapList.jsx
 //Author: Kyle McColgan
-//Date: 17 April 2026
+//Date: 6 May 2026
 //Description: This file contains the laps component for the stopwatch React project.
 
 import React, { useState, useMemo } from "react";
@@ -18,13 +18,16 @@ const LapList = ({ laps, onClear, onDelete }) =>
   }
 
   //Calculate lap durations.
-  const lapDurations = useMemo(
-    () => laps.map((lap, index) => lap - (laps[index + 1] ?? 0)),
-    [laps]
-  );
+  const lapDurations = useMemo(() =>
+  {
+    return laps.map((lap, index) =>
+    {
+      return lap - (laps[index + 1] ?? 0);
+    });
+  }, [laps]);
 
-  const fastest = Math.min(...lapDurations);
-  const slowest = Math.max(...lapDurations);
+  const fastestLap = Math.min(...lapDurations);
+  const slowestLap = Math.max(...lapDurations);
 
   const handleClearClick = () =>
   {
@@ -32,11 +35,10 @@ const LapList = ({ laps, onClear, onDelete }) =>
     {
       onClear();
       setConfirmClear(false);
+      return;
     }
-    else
-    {
-      setConfirmClear(true);
-    }
+
+    setConfirmClear(true);
   };
 
   return (
@@ -62,25 +64,26 @@ const LapList = ({ laps, onClear, onDelete }) =>
       </header>
 
       <div className={styles.rows}>
-        {laps.map((lap, index) => {
+        {laps.map((lap, index) =>
+        {
           const lapNumber = laps.length - index;
-          const delta = lapDurations[index];
+          const duration = lapDurations[index];
 
-          const time = formatTime(lap, true);
-          const deltaTime = formatTime(delta, true);
+          const formattedLap = formatTime(lap, true);
+          const formattedDuration = formatTime(duration, true);
 
-          const isFastest = delta === fastest;
-          const isSlowest = delta === slowest;
+          const isFastest = duration === fastestLap;
+          const isSlowest = duration === slowestLap;
           const isLatest = index === 0;
 
           const fullTime =
-            time.hours !== "00"
-              ? `${time.hours}:${time.minutes}:${time.seconds}.${time.centiSeconds}`
-              : `${time.minutes}:${time.seconds}.${time.centiSeconds}`;
+            formattedLap.hours !== "00"
+              ? `${formattedLap.hours}:${formattedLap.minutes}:${formattedLap.seconds}.${formattedLap.centiSeconds}`
+              : `${formattedLap.minutes}:${formattedLap.seconds}.${formattedLap.centiSeconds}`;
 
-          const formattedDelta = `+${deltaTime.minutes}:${deltaTime.seconds}.${deltaTime.centiSeconds}`;
+          const deltaTime = `+${formattedDuration.minutes}:${formattedDuration.seconds}.${formattedDuration.centiSeconds}`;
 
-          const rowClass = [
+          const rowClassName = [
             styles.lap,
             isLatest && styles.latest,
             isFastest && styles.fastest,
@@ -88,10 +91,10 @@ const LapList = ({ laps, onClear, onDelete }) =>
           ].filter(Boolean).join(" ");
 
           return (
-            <article key={lapNumber} className={rowClass}>
+            <article key={lapNumber} className={rowClassName}>
               <span className={styles.lapLabel}>Lap {lapNumber}</span>
               <span className={styles.lapTime}>{fullTime}</span>
-              <span className={styles.lapDelta}>{formattedDelta}</span>
+              <span className={styles.lapDelta}>{deltaTime}</span>
               <button
                 type="button"
                 className={styles.delete}

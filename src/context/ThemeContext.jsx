@@ -1,6 +1,6 @@
 //File name: ThemeContext.jsx
 //Author: Kyle McColgan
-//Date: 5 April 2026
+//Date: 6 May 2026
 //Description: This file contains the theming context component for the stopwatch React project.
 
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
@@ -8,7 +8,14 @@ import React, { createContext, useCallback, useContext, useEffect, useMemo, useS
 const ThemeContext = createContext(undefined);
 const THEME_STORAGE_KEY = "theme";
 
-function getPreferredTheme()
+function getSystemTheme()
+{
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+}
+
+function getInitialTheme()
 {
   if (typeof window === "undefined")
   {
@@ -17,52 +24,52 @@ function getPreferredTheme()
 
   const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
 
-  if ( (storedTheme === "light") || (storedTheme === "dark") )
+  if ((storedTheme === "light") || (storedTheme === "dark"))
   {
     return storedTheme;
   }
 
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
+  return getSystemTheme();
 }
 
 export const ThemeProvider = ({ children }) =>
 {
-  const [theme, setTheme] = useState(getPreferredTheme);
+  const [theme, setTheme] = useState(getInitialTheme);
 
   const onToggleTheme = useCallback(() =>
   {
-    setTheme((previousTheme) => (previousTheme === "dark" ? "light" : "dark"));
+    setTheme((previousTheme) =>
+    {
+      const nextTheme =
+        previousTheme === "dark"
+          ? "light"
+          : "dark";
+
+      localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+      return nextTheme;
+    });
   }, []);
 
-  //Sync DOM + storage.
+  //Sync DOM theme.
   useEffect(() =>
   {
-    const root = document.documentElement;
-
-    if (!root.classList.contains(theme))
-    {
-      root.classList.remove("light", "dark");
-      root.classList.add(theme);
-    }
-
-    localStorage.setItem(THEME_STORAGE_KEY, theme);
+    document.documentElement.className = theme;
   }, [theme]);
 
-  //Sync with system preference (only if user hasn't overridden).
+  //Sync with system theme when no override exists.
   useEffect(() =>
   {
+    const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+
+    if (storedTheme)
+    {
+      return undefined;
+    }
+
     const media = window.matchMedia("(prefers-color-scheme: dark)");
 
     const handleChange = (event) =>
     {
-      const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
-      if ( (storedTheme === "light") || (storedTheme === "dark") )
-      {
-        return;
-      }
-
       setTheme(event.matches ? "dark" : "light");
     };
 
@@ -70,10 +77,13 @@ export const ThemeProvider = ({ children }) =>
     return () => media.removeEventListener("change", handleChange);
   }, []);
 
-  const contextValue = useMemo(() => ({
-    theme,
-    onToggleTheme
-  }), [theme, onToggleTheme]);
+  const contextValue = useMemo(() =>
+  {
+    return {
+      theme,
+      onToggleTheme
+    };
+  }, [theme, onToggleTheme]);
 
   return (
     <ThemeContext.Provider value={contextValue}>
@@ -88,7 +98,7 @@ export function useTheme()
 
   if (!context)
   {
-    throw new Error("useTheme must be used within a ThemeProvider.");
+    throw new Error("useTheme must be used within ThemeProvider.");
   }
 
   return context;

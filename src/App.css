@@ -5,14 +5,12 @@
 ======================================= */
 .app
 {
+    flex: 1;
     min-height: 100dvh; /* Use Modern Viewport with fallback handled globally. */
 
     display: flex;
-    flex-direction: column;
-
-    /* Prevent horizontal overflow issues. */
+    overflow: hidden;
     width: 100%;
-    margin-inline: auto;
     padding: max(1rem, env(safe-area-inset-top))
              max(1rem, env(safe-area-inset-right))
              max(1rem, env(safe-area-inset-bottom))

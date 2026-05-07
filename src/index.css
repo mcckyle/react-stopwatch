@@ -4,22 +4,33 @@
    GLOBAL RESET STYLES.
 ======================================= */
 *, *::before, *::after { box-sizing: border-box; }
-html { font-size: 16px; -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
-body { margin: 0; }
-html, body { height: 100%; } /* Use height instead of min-height to stabilize the layout. */
-/* Root container should flex correctly. */
-#root { min-height: 100%; display: flex; flex-direction: column; }
+html
+{
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    color-scheme: light dark;
+}
+html, body, #root { min-height: 100%; }
+#root { display: flex; flex-direction: column; }
 
 /* ====================================
    BASE FOUNDATION STYLES.
 ======================================= */
 body
 {
+    margin: 0;
     font-family: var(--font-sans);
     font-size: 1rem;
     line-height: 1.5;
 
-    background: var(--app-bg);
+    background: radial-gradient(
+        circle at top,
+        color-mix(in oklab, var(--accent) 12%, transparent),
+        transparent 55%
+    ),
+    var(--app-bg);
     color: var(--text);
 
     text-rendering: optimizeLegibility;
@@ -32,11 +43,11 @@ body
 }
 img, picture, svg, canvas, video { display: block; max-width: 100%; }
 input, button, textarea, select { font: inherit; color: inherit; }
-button { background: none; border: 0; padding: 0; cursor: pointer; line-height: inherit; }
+button { padding: 0; background: none; border: none; cursor: pointer; }
 textarea { resize: vertical; }
 a { color: inherit; text-decoration: none; }
 h1, h2, h3, h4, h5, h6, p { margin: 0; }
-h1, h2, h3, h4, h5, h6 { font-weight: 600; letter-spacing: -0.015em; }
+h1, h2, h3, h4, h5, h6 { letter-spacing: -0.025em; font-weight: 600; }
 :focus-visible { outline: none; box-shadow: var(--focus-ring); }
 ::selection { background: color-mix(in oklab, var(--text) 14%, transparent); }
 
@@ -51,12 +62,12 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; letter-spacing: -0.015em; }
     place-items: center;
     padding: 1.5rem;
 
+    background: #0e1116;
+    color: #ffffff;
+
     font-family: system-ui, sans-serif;
     font-size: 0.95rem;
     text-align: center;
-
-    background-color: #0e1116;
-    color: #ffffff;
 }
 
 /* ====================================

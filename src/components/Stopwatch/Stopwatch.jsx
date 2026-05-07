@@ -1,6 +1,6 @@
 //File name: Stopwatch.jsx
 //Author: Kyle McColgan
-//Date: 21 April 2026
+//Date: 6 May 2026
 //Description: This file contains the parent Stopwatch component for the stopwatch React project.
 
 import React, { useState, useEffect, useCallback } from "react";
@@ -21,7 +21,8 @@ const Stopwatch = ({ onToggleTheme }) => {
   const { time, isRunning, toggle, reset, getCurrentTime } = useStopwatch();
   const { theme } = useTheme();
 
-  const [laps, setLaps] = useState(() => {
+  const [laps, setLaps] = useState(() =>
+  {
     try
     {
       const savedLaps = localStorage.getItem(LAP_STORAGE_KEY);
@@ -39,11 +40,10 @@ const Stopwatch = ({ onToggleTheme }) => {
   const [showHelp, setShowHelp] = useState(false);
   const openHelp = useCallback(() => setShowHelp(true), []);
   const closeHelp = useCallback(() => setShowHelp(false), []);
-
   const recordLap = useCallback(() =>
   {
     const currentTime = getCurrentTime();
-    setLaps((prev) => [currentTime, ...prev]);
+    setLaps((previousLaps) => [currentTime, ...previousLaps]);
   }, [getCurrentTime]);
 
   const clearLaps = useCallback(() =>
@@ -61,7 +61,13 @@ const Stopwatch = ({ onToggleTheme }) => {
 
   const deleteLap = useCallback((index) =>
   {
-    setLaps((prev) => prev.filter((_, lapIndex) => lapIndex !== index));
+    setLaps((previousLaps) =>
+    {
+      return previousLaps.filter(
+        (_, lapIndex) =>
+          lapIndex !== index
+      );
+    });
   }, []);
 
   //Save laps array to browser localStorage only after initial load.
@@ -86,7 +92,7 @@ const Stopwatch = ({ onToggleTheme }) => {
 
   return (
     <>
-      <section className={styles.shell} aria-label="Stopwatch application">
+      <section className={styles.shell} aria-label="Stopwatch">
         <StopwatchHeader
           theme={theme}
           onToggleTheme={onToggleTheme}
@@ -96,16 +102,14 @@ const Stopwatch = ({ onToggleTheme }) => {
           onDeleteLap={deleteLap}
         />
 
-        <main className={styles.container}>
-          <section className={styles.core}>
-            <StopwatchDisplay time={time} />
-            <StopwatchControls
-              isRunning={isRunning}
-              toggle={toggle}
-              reset={reset}
-              recordLap={recordLap}
-            />
-          </section>
+        <main className={styles.core}>
+          <StopwatchDisplay time={time} />
+          <StopwatchControls
+            isRunning={isRunning}
+            toggle={toggle}
+            reset={reset}
+            recordLap={recordLap}
+          />
         </main>
       </section>
 

@@ -7,16 +7,16 @@
 {
     position: relative;
 
-    display: inline-flex;
-    align-items: baseline;
-    justify-content: center;
+    display: inline-grid;
+    place-items: center;
 
     width: 1ch;
     height: 1em;
-    overflow: hidden;
+    overflow: clip;
 
     line-height: 1;
     font-variant-numeric: tabular-nums lining-nums;
+    isolation: isolate;
     /* contain: layout style; Remove - Slightly aggressive. Also prevents separators from being pushed down. */
 }
 
@@ -29,18 +29,17 @@
     line-height: 1;
     text-align: center;
 
-    /* Stabilize rendering under rapid updates. */
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
     /* Removed unnecessary will-change (can hurt performance at scale). */
-    transition: transform var(--duration-fast) var(--ease),
-                opacity var(--duration-fast) var(--ease);
+    transition: opacity var(--duration-fast) var(--ease),
+                transform var(--duration-fast) var(--ease);
 }
 
 /* ====================================
    ANIMATEDDIGIT CENTISECOND DIGIT STYLE.
 ======================================= */
-.centi { opacity: 0.85; }
+.centi { opacity: 0.82; }
 
 /*
 @keyframes digitFade

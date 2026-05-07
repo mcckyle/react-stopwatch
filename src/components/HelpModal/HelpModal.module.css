@@ -16,9 +16,9 @@
              max(1rem, env(safe-area-inset-bottom))
              max(1rem, env(safe-area-inset-left));
 
-    background: color-mix(in oklab, var(--app-bg) 74%, transparent);
-    backdrop-filter: blur(18px) saturate(135%);
-    -webkit-backdrop-filter: blur(18px) saturate(135%);
+    background: color-mix(in oklab, var(--app-bg) 72%, transparent);
+    backdrop-filter: blur(14px) saturate(125%);
+    -webkit-backdrop-filter: blur(14px) saturate(125%);
 
     animation: overlay-in var(--duration-fast) var(--ease);
 }
@@ -28,19 +28,19 @@
 ======================================= */
 .modal
 {
-    width: min(24rem, 100%);
+    width: min(25rem, 100%);
 
     display: flex;
     flex-direction: column;
-    gap: var(--space-md);
+    gap: var(--space-lg);
 
-    padding: 1rem;
+    padding: 1.15rem;
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-xl);
 
-    background: var(--surface);
+    background: color-mix(in oklab, var(--surface) 94%, transparent);
     color: var(--text);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-lg);
 
     backdrop-filter: var(--backdrop-blur);
     -webkit-backdrop-filter: var(--backdrop-blur);
@@ -51,7 +51,7 @@
 /* ====================================
    HELPMODAL HEADER STYLES.
 ======================================= */
-.header { display: flex; flex-direction: column; gap: 0.35rem; }
+.header { display: flex; flex-direction: column; gap: 0.45rem; }
 .eyebrow
 {
     font-family: var(--font-mono);
@@ -63,16 +63,18 @@
 }
 .title
 {
-    max-width: 18ch;
-    font-size: 0.82rem;
-    line-height: 1.5;
-    color: var(--text-muted);
+    max-width: 20ch;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+    color: var(--text);
 }
 .subtitle
 {
-    max-width: 30ch;
+    max-width: 32ch;
     font-size: 0.82rem;
-    line-height: 1.5;
+    line-height: 1.6;
     color: var(--text-muted);
 }
 
@@ -82,7 +84,7 @@
 .list
 {
     display: grid;
-    gap: 0.3rem;
+    gap: 0.35rem;
 }
 
 .item
@@ -90,23 +92,24 @@
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: center;
+    gap: 1rem;
 
-    padding: 0.55rem 0.6rem;
+    padding: 0.7rem 0.75rem;
     border-radius: var(--radius-md);
 
     transition: background-color var(--duration-fast) var(--ease);
 }
-.item:hover { background: color-mix(in oklab, var(--surface-muted) 70%, transparent); }
+.item:hover { background: color-mix(in oklab, var(--surface-muted) 72%, transparent); }
 .label { font-size: 0.82rem; font-weight: 500; color: var(--text); }
 
 /* ====================================
-   HELPMODAL KEYBOARD KEY STYLES.
+   HELPMODAL KEYBOARD KEYS STYLES.
 ======================================= */
 .kbd
 {
-    min-height: 1.7rem;
-    min-width: 1.7rem;
-    padding: 0.2rem 0.48rem;
+    min-width: 1.8rem;
+    min-height: 1.8rem;
+    padding: 0.24rem 0.5rem;
 
     display: inline-flex;
     align-items: center;
@@ -115,7 +118,7 @@
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-sm);
 
-    background: color-mix(in oklab, var(--surface-muted) 92%, transparent);
+    background: color-mix(in oklab, var(--surface-muted) 90%, transparent);
     box-shadow: inset 0 -1px 0 color-mix(in oklab, var(--text) 8%, transparent);
 
     font-family: var(--font-mono);
@@ -131,7 +134,7 @@
 .closeButton
 {
     width: 100%;
-    min-height: 2.7rem;
+    min-height: 2.8rem;
 
     display: inline-flex;
     align-items: center;
@@ -150,8 +153,7 @@
 
     transition: var(--transition-interactive);
 }
-.closeButton:hover { background: color-mix(in oklab, var(--text) 6%, transparent); color: var(--text); }
-.closeButton:active { transform: translateY(1px); }
+.closeButton:hover { background: color-mix(in oklab, var(--text) 5%, transparent); color: var(--text); }
 .closeButton:focus-visible { box-shadow: var(--focus-ring); }
 
 /* ====================================
@@ -165,8 +167,8 @@
 
 @keyframes modal-in
 {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(6px) scale(0.985); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 /* ====================================
@@ -174,8 +176,8 @@
 ======================================= */
 @media (max-width: 480px)
 {
-    .modal { gap: var(--space-sm); padding: 0.95rem; }
-    .item { padding: 0.5rem 0.55rem; }
+    .modal { gap: var(--space-md); padding: 1rem; }
+    .item { padding: 0.65rem 0.7rem; }
     .label { font-size: 0.78rem; }
     .kbd { font-size: 0.6rem; }
 }

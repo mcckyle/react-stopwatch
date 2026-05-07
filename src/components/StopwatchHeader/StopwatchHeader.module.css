@@ -11,8 +11,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    padding-block: var(--space-xs);
     gap: var(--space-md);
 }
 
@@ -29,18 +27,20 @@
 }
 .brandMark
 {
-    width: 2rem;
-    height: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
 
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    place-items: center;
 
+    border: 1px solid var(--border-subtle);
     border-radius: 999px;
-    background: color-mix(in oklab, var(--text) 4%, transparent);
-    opacity: 0.9;
+    background: color-mix(in oklab, var(--surface) 88%, transparent);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    box-shadow: var(--shadow-xs);
 }
-.icon { width: 0.95rem; height: 0.95rem; opacity: 0.7; }
+.icon { width: 1rem; height: 1rem; opacity: 0.72; }
 .title
 {
     min-width: 0;
@@ -49,13 +49,16 @@
     white-space: nowrap;
 
     font-family: var(--font-mono);
-    font-size: 0.64rem;
+    font-size: 0.68rem;
     font-weight: 600;
-    letter-spacing: 0.24em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--text-muted);
 }
 
+/* ====================================
+   STOPWATCHHEADER HEADER ACTIONS STYLES.
+ ======================================= */
 .actions
 {
     display: flex;
@@ -63,50 +66,50 @@
     gap: var(--space-sm);
 }
 
+/* ====================================
+   STOPWATCHHEADER LAP BUTTON STYLES.
+ ======================================= */
 .lapButton
 {
-    padding: 0.35rem 0.65rem;
+    padding: 0.5rem 0.85rem;
     border-radius: 999px;
+    color: var(--text-muted);
 
     font-family: var(--font-mono);
-    font-size: 0.6rem;
+    font-size: 0.62rem;
     font-weight: 600;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--text-muted);
 
     transition: var(--transition-interactive);
 }
-.lapButton:hover { color: var(--text); background: color-mix(in oklab, var(--text) 6%, transparent); }
+.lapButton:hover { background: color-mix(in oklab, var(--text) 6%, transparent); color: var(--text); }
 .lapButton:active { transform: translateY(1px); }
 .panel
 {
     position: absolute;
-    top: calc(100% + var(--space-sm));
+    top: calc(100% + var(--space-md));
     right: 0;
 
     width: min(460px, 100vw - 2rem);
     z-index: 20;
-
-    display: flex;
-    justify-content: flex-end;
-
     opacity: 0;
-    transform: translateY(-6px) scale(0.98);
     pointer-events: none;
+    transform: translateY(-6px) scale(0.98);
+    transform-origin: top right;
 
     transition: opacity var(--duration-fast) var(--ease),
                 transform var(--duration-fast) var(--ease);
 }
-.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+.open { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
 
 /* ====================================
    THEME TOGGLE BUTTON STYLES.
 ======================================= */
 .toggle
 {
-    width: 2.4rem;
-    height: 2.4rem;
+    width: 2.5rem;
+    height: 2.5rem;
 
     display: grid;
     place-items: center;
@@ -122,21 +125,21 @@
     transition: var(--transition-interactive);
 
 }
-.toggle:hover { transform: translateY(-1px); box-shadow: var(--shadow-sm); background: color-mix(in oklab, var(--text) 6%, var(--surface));  }
-.toggle:active { transform: translateY(0); box-shadow: var(--shadow-xs); }
+.toggle:hover { transform: translateY(-1px); background: color-mix(in oklab, var(--surface) 82%, white); box-shadow: var(--shadow-sm); }
+.toggle:active { transform: translateY(0); }
 .toggle:focus-visible { box-shadow: var(--focus-ring); }
-.toggleIcon { width: 1rem; height: 1rem; opacity: 0.9; }
+.toggleIcon { width: 1rem; height: 1rem; opacity: 0.88; }
 
 /* ====================================
    STOPWATCHHEADER MEDIA QUERY STYLES.
 ======================================= */
 @media (max-width: 640px)
 {
-    .title { font-size: 0.6rem; letter-spacing: 0.22em; }
-    .brandMark, .toggle { width: 2.2rem; height: 2.2rem; }
+    .brandMark, .toggle { width: 2.35rem; height: 2.35rem; }
+    .title { font-size: 0.62rem; letter-spacing: 0.2em; }
 }
 @media (max-width: 420px)
 {
     .header { align-items: flex-start; }
-    .title { max-width: 14rem; }
+    .title { max-width: 12rem; }
 }

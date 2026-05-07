@@ -1,6 +1,6 @@
 //File name: StopwatchHeader.jsx
 //Author: Kyle McColgan
-//Date: 21 April 2026
+//Date: 6 May 2026
 //Description: This file contains the header component for the stopwatch React project.
 
 import React, { useState, useCallback } from "react";
@@ -19,9 +19,10 @@ const StopwatchHeader = ({
   const isDark = theme === "dark";
   const nextThemeLabel = isDark ? "light" : "dark";
 
-  const [open, setOpen] = useState(false);
-  const togglePanel = useCallback(() => {
-    setOpen((prev) => !prev);
+  const [isPanelOpen, setIsPanelOpen] = useState(false);
+  const togglePanel = useCallback(() =>
+  {
+    setIsPanelOpen((previous) => !previous);
   }, []);
 
   return (
@@ -39,10 +40,10 @@ const StopwatchHeader = ({
             type="button"
             className={styles.lapButton}
             onClick={togglePanel}
-            aria-expanded={open}
+            aria-expanded={isPanelOpen}
             aria-controls="lap-panel"
           >
-            {open ? "Close" : "Laps"}
+            {isPanelOpen ? "Close" : "Laps"}
           </button>
         )}
 
@@ -51,12 +52,11 @@ const StopwatchHeader = ({
           className={styles.toggle}
           onClick={onToggleTheme}
           aria-label={`Switch to ${nextThemeLabel} theme`}
-          aria-pressed={isDark}
           title={`Switch to ${nextThemeLabel} theme`}
         >
           {isDark ? (
             <Sun className={styles.toggleIcon} aria-hidden="true" />
-          ) :(
+          ) : (
             <Moon className={styles.toggleIcon} aria-hidden="true" />
           )}
         </button>
@@ -65,8 +65,8 @@ const StopwatchHeader = ({
       {hasLaps && (
         <div
           id="lap-panel"
-          className={`${styles.panel} ${open ? styles.open : ""}`}
-          aria-hidden={!open}
+          className={`${styles.panel} ${isPanelOpen ? styles.open : ""}`}
+          aria-hidden={!isPanelOpen}
         >
           <LapList
             laps={laps}
