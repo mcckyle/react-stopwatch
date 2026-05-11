@@ -6,11 +6,11 @@
 .shell
 {
     width: min(100%, 960px);
-    flex: 1; /* Vertically centers the Stopwatch. */
     min-height: 100%;
+    flex: 1; /* Vertically centers the Stopwatch. */
 
     display: grid;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto minmax(0, 1fr);
     gap: clamp(var(--space-lg), 4vw, var(--space-2xl));
 
     padding: clamp(var(--space-md), 3vw, var(--space-xl));
@@ -18,22 +18,38 @@
 }
 
 /* ====================================
-   STOPWATCH CORE (CENTERED TIME AREA) STYLES.
+   STOPWATCH MAIN STAGE STYLES.
 ======================================= */
-.core
+.stage
 {
-    width: 100%;
-    max-width: 720px;
-    margin-inline: auto;
-    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    gap: clamp(var(--space-xl), 6vw, 5rem);
+}
+
+/* ====================================
+   STOPWATCH DISPLAY REGION STYLES.
+======================================= */
+.displayRegion
+{
+    width: min(100%, 720px);
+    min-height: 0;
 
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    margin-inline: auto;
+}
 
-    gap: clamp(var(--space-lg), 4vw, var(--space-2xl));
-    text-align: center;
+/* ====================================
+   STOPWATCH CONTROLS REGION STYLES.
+======================================= */
+.controlsRegion
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 /* ====================================
@@ -41,7 +57,6 @@
 ======================================= */
 @media (max-width: 480px)
 {
-    .shell { padding: var(--space-md); gap: var(--space-md); }
-    .container { gap: var(--space-lg); }
-    .core { gap: var(--space-md); }
+    .shell { gap: var(--space-md); padding: var(--space-md); }
+    .stage { gap: var(--space-lg); }
 }

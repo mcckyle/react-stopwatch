@@ -64,10 +64,14 @@ html.light
     --app-bg-accent: #edf2f8;
 
     --surface: rgb(255 255 255 / 0.72);
+    --surface-raised: rgb(255 255 255 / 0.84);
+    --surface-overlay: rgb(255 255 255 / 0.92);
     --surface-muted: rgb(248 250 252 / 0.82);
 
     --text: #0f1722;
+    --text-soft: color-mix(in oklab, var(--text) 78%, transparent);
     --text-muted: color-mix(in oklab, var(--text) 58%, transparent);
+    --text-faint: color-mix(in oklab, var(--text) 38%, transparent);
 
     --border-subtle: color-mix(in oklab, var(--text) 10%, transparent);
     --border-strong: color-mix(in oklab, var(--text) 18%, transparent);
@@ -82,10 +86,14 @@ html.dark
     --app-bg-accent: #111821;
 
     --surface: rgb(18 24 32 / 0.72);
+    --surface-raised: rgb(22 29 38 / 0.84);
+    --surface-overlay: rgb(24 32 42 / 0.92);
     --surface-muted: rgb(15 20 28 / 0.82);
 
     --text: #f5f7fb;
+    --text-soft: color-mix(in oklab, var(--text) 82%, transparent);
     --text-muted: color-mix(in oklab, var(--text) 64%, transparent);
+    --text-faint: color-mix(in oklab, var(--text) 42%, transparent);
 
     --border-subtle: color-mix(in oklab, var(--text) 12%, transparent);
     --border-strong: color-mix(in oklab, var(--text) 22%, transparent);

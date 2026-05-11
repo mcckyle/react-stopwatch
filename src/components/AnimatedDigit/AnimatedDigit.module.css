@@ -12,7 +12,7 @@
 
     width: 1ch;
     height: 1em;
-    overflow: clip;
+    overflow: hidden;
 
     line-height: 1;
     font-variant-numeric: tabular-nums lining-nums;
@@ -29,7 +29,7 @@
     line-height: 1;
     text-align: center;
 
-    transform: translate3d(0, 0, 0);
+    transform: translateZ(0);
     backface-visibility: hidden;
     /* Removed unnecessary will-change (can hurt performance at scale). */
     transition: opacity var(--duration-fast) var(--ease),
@@ -39,7 +39,15 @@
 /* ====================================
    ANIMATEDDIGIT CENTISECOND DIGIT STYLE.
 ======================================= */
-.centi { opacity: 0.82; }
+.centi { opacity: 0.8; }
+
+/* ====================================
+   ANIMATEDDIGIT MEDIA QUERY STYLES.
+======================================= */
+@media (prefers-reduced-motion: reduce)
+{
+    .value { transition: none; }
+}
 
 /*
 @keyframes digitFade

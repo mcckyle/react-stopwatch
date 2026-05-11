@@ -12,7 +12,8 @@ html
     scroll-behavior: smooth;
     color-scheme: light dark;
 }
-html, body, #root { min-height: 100%; }
+/* Already control viewport height with 100dvh, avoid nested min-height expansion issues. */
+html, body, #root { height: 100%; }
 #root { display: flex; flex-direction: column; }
 
 /* ====================================
@@ -27,16 +28,22 @@ body
 
     background: radial-gradient(
         circle at top,
-        color-mix(in oklab, var(--accent) 12%, transparent),
-        transparent 55%
+        color-mix(in oklab, var(--accent) 10%, transparent),
+        transparent 58%
     ),
-    var(--app-bg);
+    linear-gradient(
+        to bottom,
+        color-mix(in oklab, var(--app-bg-accent) 26%,
+        transparent
+    ), transparent 22%), var(--app-bg);
     color: var(--text);
 
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
     overflow-x: hidden;
+    overscroll-behavior: none; /* Prevent pull-bounce artifacts. */
 
     transition: background-color var(--duration) var(--ease),
                 color var(--duration) var(--ease);
@@ -47,7 +54,7 @@ button { padding: 0; background: none; border: none; cursor: pointer; }
 textarea { resize: vertical; }
 a { color: inherit; text-decoration: none; }
 h1, h2, h3, h4, h5, h6, p { margin: 0; }
-h1, h2, h3, h4, h5, h6 { letter-spacing: -0.025em; font-weight: 600; }
+h1, h2, h3, h4, h5, h6 { font-weight: 600; letter-spacing: -0.025em; }
 :focus-visible { outline: none; box-shadow: var(--focus-ring); }
 ::selection { background: color-mix(in oklab, var(--text) 14%, transparent); }
 

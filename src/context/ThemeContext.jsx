@@ -1,9 +1,9 @@
 //File name: ThemeContext.jsx
 //Author: Kyle McColgan
-//Date: 6 May 2026
+//Date: 10 May 2026
 //Description: This file contains the theming context component for the stopwatch React project.
 
-import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useState, useRef } from "react";
 
 const ThemeContext = createContext(undefined);
 const THEME_STORAGE_KEY = "theme";
@@ -34,8 +34,22 @@ function getInitialTheme()
 
 export const ThemeProvider = ({ children }) =>
 {
-  const [theme, setTheme] = useState(getInitialTheme);
+  const hasManualThemeRef = useRef(false);
+  const [theme, setTheme] = useState(() =>
+  {
+    const initialTheme = getInitialTheme();
 
+    if (typeof window !== "undefined")
+    {
+      const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+      if ((storedTheme === "light") || (storedTheme === "dark"))
+      {
+        hasManualThemeRef.current = true;
+      }
+    }
+
+    return initialTheme;
+  });
   const onToggleTheme = useCallback(() =>
   {
     setTheme((previousTheme) =>
@@ -45,31 +59,34 @@ export const ThemeProvider = ({ children }) =>
           ? "light"
           : "dark";
 
+      hasManualThemeRef.current = true;
       localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
       return nextTheme;
     });
   }, []);
 
-  //Sync DOM theme.
+  //Explicitly Sync DOM Theme Dynamically.
   useEffect(() =>
   {
-    document.documentElement.className = theme;
+    const root = document.documentElement;
+
+    root.classList.remove("light", "dark");
+    root.classList.add(theme);
+
+    root.style.colorScheme = theme;
   }, [theme]);
 
   //Sync with system theme when no override exists.
   useEffect(() =>
   {
-    const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
-
-    if (storedTheme)
-    {
-      return undefined;
-    }
-
     const media = window.matchMedia("(prefers-color-scheme: dark)");
 
     const handleChange = (event) =>
     {
+      if (hasManualThemeRef.current)
+      {
+        return;
+      }
       setTheme(event.matches ? "dark" : "light");
     };
 

@@ -6,14 +6,14 @@
 .controls
 {
     width: 100%;
-    max-width: 540px;
+    max-width: 34rem;
 
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
 
-    gap: clamp(0.65rem, 1vw, 0.9rem);
+    gap: clamp(0.7rem, 1.2vw, 1rem);
 }
 
 /* ====================================
@@ -21,9 +21,12 @@
 ======================================= */
 .button
 {
-    min-width: 6.5rem;
-    min-height: 2.9rem;
-    padding: 0.72rem 1.2rem;
+    position: relative;
+    isolation: isolate;
+
+    min-width: 6.75rem;
+    min-height: 3rem;
+    padding: 0.78rem 1.25rem;
 
     display: inline-flex;
     align-items: center;
@@ -39,37 +42,68 @@
     text-transform: uppercase;
     white-space: nowrap;
 
-    background: color-mix(in oklab, var(--surface) 92%, transparent);
+    background: linear-gradient(
+        180deg,
+        color-mix(in oklab, var(--surface) 96%, white 4%),
+        color-mix(in oklab, var(--surface) 92%, transparent)
+    );
     color: var(--text);
 
-    box-shadow: var(--shadow-xs);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.04), var(--shadow-xs);
     backdrop-filter: var(--backdrop-blur);
     -webkit-backdrop-filter: var(--backdrop-blur);
 
-    transition: var(--transition-interactive);
+    transition: background-color var(--duration-fast) var(--ease),
+                border-color var(--duration-fast) var(--ease),
+                color var(--duration-fast) var(--ease),
+                box-shadow var(--duration-fast) var(--ease),
+                transform var(--duration-fast) var(--ease),
+                opacity var(--duration-fast) var(--ease);
 }
-.button:hover:not(:disabled) { background: color-mix(in oklab, var(--surface-muted) 72%, var(--surface)); border-color: var(--border-strong); }
-.button:active:not(:disabled) { opacity: 0.9; }
-.button:focus-visible { box-shadow: var(--focus-ring); }
-.button:disabled { opacity: 0.42; cursor: not-allowed; box-shadow: var(--shadow-xs); }
+.button:hover:not(:disabled)
+{
+    background: linear-gradient(
+        180deg,
+        color-mix(in oklab, var(--surface-muted) 86%, white 6%),
+        color-mix(in oklab, var(--surface) 92%, transparent)
+    );
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-1px);
+}
+.button:active:not(:disabled) { transform: translateY(0); box-shadow: var(--shadow-xs); }
+.button:focus-visible {  box-shadow: var(--focus-ring), var(--shadow-sm); }
+.button:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: var(--shadow-xs); }
 
 /* =========================================
    PRIMARY ACTION ( START / PAUSE ) STYLES.
 ============================================ */
 .primary
 {
-    min-width: 7.75rem;
-    background: var(--text);
+    min-width: 8rem;
+    background: linear-gradient(
+        180deg,
+        color-mix(in oklab, var(--text) 92%, white 8%),
+        var(--text)
+    );
     color: var(--app-bg);
     border-color: transparent;
-    box-shadow: 0 10px 32px color-mix(in oklab, var(--text) 12%, transparent);
+    box-shadow: 0 14px 38px color-mix(in oklab, var(--text) 14%, transparent);
 }
-.primary:hover:not(:disabled) { background: color-mix(in oklab, var(--text) 92%, white); }
+.primary:hover:not(:disabled)
+{
+    background: linear-gradient(
+        180deg,
+        color-mix(in oklab, var(--text) 86%, white 14%),
+        color-mix(in oklab, var(--text) 96%, black 4%)
+    );
+}
 
 /* ====================================
    SECONDARY ACTION ( LAP ) STYLES.
 ======================================= */
-.secondary { background: color-mix(in oklab, var(--surface) 94%, transparent); }
+.secondary { color: var(--text-muted); }
+.secondary:hover:not(:disabled) { color: var(--text); }
 
 /* =========================================
    TERTIARY ACTION ( RESET ) STYLES.
@@ -80,6 +114,12 @@
     box-shadow: none;
 }
 .tertiary:hover:not(:disabled) { background: color-mix(in oklab, var(--text) 5%, transparent); }
+
+@media (prefers-reduced-motion: reduce)
+{
+    .button { transition: background-color var(--duration-fast) linear, border-color var(--duration-fast) linear, color var(--duration-fast) linear, opacity var(--duration-fast) linear; }
+    .button:hover:not(:disabled), .button:active:not(:disabled) { transform: none; }
+}
 
 /* ====================================
    STOPWATCHCONTROLS MEDIA QUERY STYLES.

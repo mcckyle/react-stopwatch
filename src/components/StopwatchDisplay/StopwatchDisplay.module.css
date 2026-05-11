@@ -36,8 +36,9 @@
     color: var(--text);
 
     font-variant-numeric: tabular-nums lining-nums;
-    letter-spacing: -0.045em;
-    text-shadow: 0 0 24px color-mix(in oklab, var(--text) 4%, transparent);
+    letter-spacing: -0.05em;
+    text-shadow: 0 0 18px color-mix(in oklab, var(--text) 3%, transparent);
+    isolation: isolate;
 }
 
 /* ====================================
@@ -48,13 +49,13 @@
     display: inline-flex;
     align-items: baseline;
     justify-content: center;
-    gap: clamp(0.06rem, 0.22vw, 0.24rem);
+    gap: clamp(0.04rem, 0.16vw, 0.2rem);
 
     max-width: 100%;
     white-space: nowrap;
 
-    font-size: clamp(5rem, 20vw, 32rem);
-    line-height: 0.86;
+    font-size: clamp(5rem, 20vw, 32rem); /* As large as possible. */
+    line-height: 0.82;
 }
 
 /* ====================================
@@ -66,15 +67,16 @@
     display: inline-flex;
     align-items: baseline;
 
-    margin-left: 0.04em;
+    margin-left: 0.045em;
     font-size: 0.18em;
     font-weight: 600;
     line-height: 1;
+    letter-spacing: -0.035em;
 
     color: var(--text-muted);
-    opacity: 0.82;
+    opacity: 0.78;
 
-    transform: translateY(-0.02em);
+    transform: translateY(-0.018em);
 }
 
 /* ====================================
@@ -83,16 +85,16 @@
 .separator
 {
     display: inline-flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: center;
-    width: 0.34em;
+    width: 0.32em;
 
     font-size: 0.14em;
     font-weight: 500;
     line-height: 1;
 
-    opacity: 0.24;
-    transform: translateY(-0.015em);
+    opacity: 0.2;
+    transform: translateY(-0.012em);
     pointer-events: none;
 }
 
@@ -116,6 +118,10 @@
 /* ====================================
    STOPWATCHDISPLAY MEDIA QUERY STYLES.
 ======================================= */
+@media (prefers-reduced-motion: reduce)
+{
+    .time { text-shadow: none; }
+}
 
 /* Ultra-large monitors (4K / 2560x1440+ ). */
 /*@media (min-width: 2500px)

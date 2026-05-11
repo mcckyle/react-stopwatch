@@ -16,9 +16,14 @@
              max(1rem, env(safe-area-inset-bottom))
              max(1rem, env(safe-area-inset-left));
 
-    background: color-mix(in oklab, var(--app-bg) 72%, transparent);
-    backdrop-filter: blur(14px) saturate(125%);
-    -webkit-backdrop-filter: blur(14px) saturate(125%);
+    background: radial-gradient(
+        circle at top,
+        color-mix(in oklab, var(--accent) 10%, transparent),
+        transparent 48%
+    ),
+    color-mix(in oklab, var(--app-bg) 76%, transparent);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
 
     animation: overlay-in var(--duration-fast) var(--ease);
 }
@@ -28,30 +33,53 @@
 ======================================= */
 .modal
 {
+    postiion: relative;
+    isolation: isolate;
     width: min(25rem, 100%);
 
     display: flex;
     flex-direction: column;
     gap: var(--space-lg);
 
-    padding: 1.15rem;
+    padding: 1.2rem;
     border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-xl);
+    border-radius: calc(var(--radius-xl) + 2px);
 
-    background: color-mix(in oklab, var(--surface) 94%, transparent);
+    background: linear-gradient(
+        180deg,
+        color-mix(in oklab, var(--surface) 96%, white 4%),
+        color-mix(in oklab, var(--surface) 92%, transparent)
+    );
     color: var(--text);
-    box-shadow: var(--shadow-lg);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05), var(--shadow-lg);
 
     backdrop-filter: var(--backdrop-blur);
     -webkit-backdrop-filter: var(--backdrop-blur);
+    overflow: hidden;
 
     animation: modal-in var(--duration) var(--ease);
+}
+.modal::before
+{
+    /* Soft Ambient Highlight Styles. */
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1000;
+    background: radial-gradient(
+        circle at top,
+        color-mix(in oklab, var(--accent) 10%, transparent),
+        transparent 60%
+    );
+
+    opacity: 0.7;
+    pointer-events: none;
 }
 
 /* ====================================
    HELPMODAL HEADER STYLES.
 ======================================= */
-.header { display: flex; flex-direction: column; gap: 0.45rem; }
+.header { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 0.45rem; }
 .eyebrow
 {
     font-family: var(--font-mono);
@@ -66,15 +94,15 @@
     max-width: 20ch;
     font-size: 1rem;
     font-weight: 600;
-    line-height: 1.4;
-    letter-spacing: -0.02em;
+    line-height: 1.35;
+    letter-spacing: -0.03em;
     color: var(--text);
 }
 .subtitle
 {
     max-width: 32ch;
     font-size: 0.82rem;
-    line-height: 1.6;
+    line-height: 1.65;
     color: var(--text-muted);
 }
 
@@ -83,8 +111,10 @@
 ======================================= */
 .list
 {
+    position: relative;
+    z-index: 1;
     display: grid;
-    gap: 0.35rem;
+    gap: 0.4rem;
 }
 
 .item
@@ -94,37 +124,43 @@
     align-items: center;
     gap: 1rem;
 
-    padding: 0.7rem 0.75rem;
+    padding: 0.72rem 0.8rem;
     border-radius: var(--radius-md);
+    background: transparent;
 
-    transition: background-color var(--duration-fast) var(--ease);
+    transition: background-color var(--duration-fast) var(--ease),
+                transform var(--duration-fast) var(--ease);
 }
-.item:hover { background: color-mix(in oklab, var(--surface-muted) 72%, transparent); }
-.label { font-size: 0.82rem; font-weight: 500; color: var(--text); }
+.item:hover { background: color-mix(in oklab, var(--surface-muted) 74%, transparent); transform: translateY(-1px); }
+.label { font-size: 0.82rem; font-weight: 500; letter-spacing: -0.01em; color: var(--text); }
 
 /* ====================================
    HELPMODAL KEYBOARD KEYS STYLES.
 ======================================= */
 .kbd
 {
-    min-width: 1.8rem;
-    min-height: 1.8rem;
-    padding: 0.24rem 0.5rem;
+    min-width: 1.9rem;
+    min-height: 1.9rem;
+    padding: 0.24rem 0.55rem;
 
     display: inline-flex;
     align-items: center;
     justify-content: center;
 
     border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-sm);
+    border-radius: 0.8rem;
 
-    background: color-mix(in oklab, var(--surface-muted) 90%, transparent);
-    box-shadow: inset 0 -1px 0 color-mix(in oklab, var(--text) 8%, transparent);
+    background: linear-gradient(
+        180deg,
+        color-mix(in oklab, var(--surface-muted) 96%, white 4%),
+        color-mix(in oklab, var(--surface-muted) 88%, transparent)
+    );
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05), inset 0 -1px 0 rgb(0 0 0 / 0.08);
 
     font-family: var(--font-mono);
     font-size: 0.64rem;
     font-weight: 600;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
     color: var(--text);
 }
 
@@ -133,8 +169,11 @@
 ======================================= */
 .closeButton
 {
+    position: relative;
+    z-index: 1;
+
     width: 100%;
-    min-height: 2.8rem;
+    min-height: 2.9rem;
 
     display: inline-flex;
     align-items: center;
@@ -148,13 +187,15 @@
 
     font-family: var(--font-mono);
     font-size: 0.62rem;
+    font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
 
     transition: var(--transition-interactive);
 }
 .closeButton:hover { background: color-mix(in oklab, var(--text) 5%, transparent); color: var(--text); }
-.closeButton:focus-visible { box-shadow: var(--focus-ring); }
+.closeButton:active { transform: translateY(1px); }
+.closeButton:focus-visible { box-shadow: var(--focus-ring), var(--shadow-sm); }
 
 /* ====================================
    HELPMODAL ANIMATIONS STYLES.
@@ -167,7 +208,7 @@
 
 @keyframes modal-in
 {
-    from { opacity: 0; transform: translateY(6px) scale(0.985); }
+    from { opacity: 0; transform: translateY(10px) scale(0.985); }
     to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
@@ -177,14 +218,15 @@
 @media (max-width: 480px)
 {
     .modal { gap: var(--space-md); padding: 1rem; }
-    .item { padding: 0.65rem 0.7rem; }
+    .item { padding: 0.68rem 0.72rem; }
     .label { font-size: 0.78rem; }
-    .kbd { font-size: 0.6rem; }
+    .kbd { min-width: 1.75rem; min-height: 1.75rem; font-size: 0.6rem; }
 }
 @media (prefers-reduced-motion: reduce)
 {
     .overlay, .modal { animation: none; }
-    .item, .closeButton { transition: none; }
+    .item, .closeButton { transition: background-color var(--duration-fast) linear, color var(--duration-fast) linear, opacity var(--duration-fast) linear; }
+    .item:hover, .closeButton:active { transform: none; }
 }
 
 /* === LIGHT THEME VARIANTS. === */

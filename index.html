@@ -17,8 +17,8 @@
     />
     <meta name="format-detection" content="telephone=no" />
 
-    <!-- Theme. -->
-    <meta name="color-scheme" content="light dark" />
+    <!-- Theme (Bias initial render toward dark-first experience). -->
+    <meta name="color-scheme" content="dark light" />
     <meta name="theme-color" content="#0b1016" />
 
     <!-- PWA. -->
@@ -27,9 +27,6 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="Precision Stopwatch" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
-    <!-- Performance. -->
-    <meta name="renderer" content="webkit" />
 
     <!-- Fonts. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -44,7 +41,7 @@
     <link rel="apple-touch-icon" href="/images/favicon.png" sizes="180x180" />
 
     <!-- Prevent White Flash Before CSS Loads. -->
-    <style>html { background: #0b1016; color-scheme: dark; }</style>
+    <style>html { background: #0b1016; color-scheme: dark; } body { background: #0b1016; }</style>
   </head>
   <body>
     <noscript>

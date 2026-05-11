@@ -13,18 +13,20 @@ const StopwatchDisplay = ({ time }) => {
   const { hours, minutes, seconds, centiSeconds } = formatTime(time, true);
   const showHours = Number(hours) > 0;
 
-  const acessibleTime = showHours
-      ? `${hours} hours ${minutes} minutes ${seconds} seconds`
-      : `${minutes} minutes ${seconds} seconds`;
+  const accessibleTime = showHours
+    ? `${hours} hours ${minutes} minutes ${seconds} seconds`
+    : `${minutes} minutes ${seconds} seconds`;
 
   const renderDigits = (value, keyPrefix, isCenti = false) =>
-      value.split("").map((digit, index) => (
-        <AnimatedDigit
-          key={`${keyPrefix}-${index}`}
-          value={Number(digit)}
-          isCenti={isCenti}
-        />
-      ));
+  {
+    return value.split("").map((digit, index) => (
+      <AnimatedDigit
+        key={`${keyPrefix}-${index}`}
+        value={Number(digit)}
+        isCenti={isCenti}
+      />
+    ));
+  };
 
   return (
     <section className={styles.display} aria-label="Current stopwatch time">
@@ -35,7 +37,7 @@ const StopwatchDisplay = ({ time }) => {
         aria-atomic="true"
         dateTime={`PT${hours}H${minutes}M${seconds}.${centiSeconds}S`}
       >
-        <span className={styles.srOnly}>{acessibleTime}</span>
+        <span className={styles.srOnly}>{accessibleTime}</span>
         <span className={styles.row} aria-hidden="true">
           {showHours && (
             <>
