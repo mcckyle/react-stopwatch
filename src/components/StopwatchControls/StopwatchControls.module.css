@@ -6,7 +6,7 @@
 .controls
 {
     width: 100%;
-    max-width: 34rem;
+    max-width: 32rem;
 
     display: flex;
     align-items: center;
@@ -24,9 +24,9 @@
     position: relative;
     isolation: isolate;
 
-    min-width: 6.75rem;
-    min-height: 3rem;
-    padding: 0.78rem 1.25rem;
+    min-width: 6.5rem;
+    min-height: 2.9rem;
+    padding: 0.75rem 1.15rem;
 
     display: inline-flex;
     align-items: center;
@@ -36,20 +36,16 @@
     border-radius: 999px;
 
     font-family: var(--font-mono);
-    font-size: 0.64rem;
+    font-size: 0.62rem;
     font-weight: 600;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     white-space: nowrap;
 
-    background: linear-gradient(
-        180deg,
-        color-mix(in oklab, var(--surface) 96%, white 4%),
-        color-mix(in oklab, var(--surface) 92%, transparent)
-    );
+    background: color-mix(in oklab, var(--surface-raised) 88%, transparent);
     color: var(--text);
 
-    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.04), var(--shadow-xs);
+    box-shadow: var(--shadow-xs);
     backdrop-filter: var(--backdrop-blur);
     -webkit-backdrop-filter: var(--backdrop-blur);
 
@@ -69,35 +65,24 @@
     );
     border-color: var(--border-strong);
     box-shadow: var(--shadow-sm);
-    transform: translateY(-1px);
+    transform: translateY(-0.5px);
 }
 .button:active:not(:disabled) { transform: translateY(0); box-shadow: var(--shadow-xs); }
 .button:focus-visible {  box-shadow: var(--focus-ring), var(--shadow-sm); }
-.button:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: var(--shadow-xs); }
+.button:disabled { opacity: 0.34; cursor: not-allowed; transform: none; box-shadow: var(--shadow-xs); }
 
 /* =========================================
    PRIMARY ACTION ( START / PAUSE ) STYLES.
 ============================================ */
 .primary
 {
-    min-width: 8rem;
-    background: linear-gradient(
-        180deg,
-        color-mix(in oklab, var(--text) 92%, white 8%),
-        var(--text)
-    );
+    min-width: 7.5rem;
+    background: color-mix(in oklab, var(--text) 94%, white 6%);
     color: var(--app-bg);
     border-color: transparent;
-    box-shadow: 0 14px 38px color-mix(in oklab, var(--text) 14%, transparent);
+    box-shadow: 0 10px 30px color-mix(in oklab, var(--text) 12%, transparent);
 }
-.primary:hover:not(:disabled)
-{
-    background: linear-gradient(
-        180deg,
-        color-mix(in oklab, var(--text) 86%, white 14%),
-        color-mix(in oklab, var(--text) 96%, black 4%)
-    );
-}
+.primary:hover:not(:disabled) { background: color-mix(in oklab, var(--text) 88%, white 12%); }
 
 /* ====================================
    SECONDARY ACTION ( LAP ) STYLES.
@@ -111,6 +96,7 @@
 .tertiary
 {
     background: transparent;
+    border-color: transparent;
     box-shadow: none;
 }
 .tertiary:hover:not(:disabled) { background: color-mix(in oklab, var(--text) 5%, transparent); }

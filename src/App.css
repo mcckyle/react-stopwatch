@@ -1,17 +1,30 @@
 /* Filename: src/App.css */
 
 /* ====================================
+   APPLICATION SHELL STYLES.
+======================================= */
+.app-shell
+{
+    width: 100%;
+    min-height: 100dvh; /* Use Modern Viewport with fallback handled globally. */
+
+    display: flex;
+    justify-content: center;
+
+    isolation: isolate;
+    overflow: clip;
+}
+
+/* ====================================
    APPLICATION ROOT LAYOUT STYLES.
 ======================================= */
 .app
 {
     flex: 1;
-    width: 100%;
-    min-height: 100dvh; /* Use Modern Viewport with fallback handled globally. */
+    width: min(100%, 96rem);
 
     display: flex;
-    overflow-x: hidden;
-    isolation: isolate;
+    flex-direction: column;
     padding: max(1rem, env(safe-area-inset-top))
              max(1rem, env(safe-area-inset-right))
              max(1rem, env(safe-area-inset-bottom))

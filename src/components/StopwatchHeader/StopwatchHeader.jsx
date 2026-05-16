@@ -1,6 +1,6 @@
 //File name: StopwatchHeader.jsx
 //Author: Kyle McColgan
-//Date: 10 May 2026
+//Date: 15 May 2026
 //Description: This file contains the header component for the stopwatch React project.
 
 import React, { useState, useCallback } from "react";
@@ -19,10 +19,10 @@ const StopwatchHeader = ({
   const isDark = theme === "dark";
   const nextThemeLabel = isDark ? "light" : "dark";
 
-  const [isPanelOpen, setIsPanelOpen] = useState(false);
+  const [isLapPanelOpen, setIsLapPanelOpen] = useState(false);
   const togglePanel = useCallback(() =>
   {
-    setIsPanelOpen((previous) => !previous);
+    setIsLapPanelOpen((previous) => !previous);
   }, []);
 
   return (
@@ -40,11 +40,11 @@ const StopwatchHeader = ({
             type="button"
             className={styles.lapButton}
             onClick={togglePanel}
-            aria-expanded={isPanelOpen}
+            aria-expanded={isLapPanelOpen}
             aria-controls="lap-panel"
-            aria-haspopup="dialog"
+            aria-haspopup="true"
           >
-            {isPanelOpen ? "Close" : "Laps"}
+            {isLapPanelOpen ? "Hide Laps" : "Show Laps"}
           </button>
         )}
 
@@ -67,8 +67,8 @@ const StopwatchHeader = ({
       {hasLaps && (
         <div
           id="lap-panel"
-          className={`${styles.panel} ${isPanelOpen ? styles.open : ""}`}
-          aria-hidden={!isPanelOpen}
+          className={`${styles.panel} ${isLapPanelOpen ? styles.open : ""}`}
+          aria-hidden={!isLapPanelOpen}
         >
           <LapList
             laps={laps}

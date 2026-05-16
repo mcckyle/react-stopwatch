@@ -1,20 +1,29 @@
 /* Filename: src/components/Stopwatch/Stopwatch.module.css */
 
 /* ====================================
+   STOPWATCH VIEWPORT STYLES.
+======================================= */
+.viewport
+{
+    flex: 1;
+    display: flex;
+}
+
+/* ====================================
    STOPWATCH SHELL STYLES.
 ======================================= */
 .shell
 {
-    width: min(100%, 960px);
-    min-height: 100%;
     flex: 1; /* Vertically centers the Stopwatch. */
+    width: min(100%, 72rem);
+    min-height: 100%;
 
     display: grid;
     grid-template-rows: auto minmax(0, 1fr);
-    gap: clamp(var(--space-lg), 4vw, var(--space-2xl));
+    gap: clamp(var(--space-lg), 5vw, var(--space-2xl));
 
-    padding: clamp(var(--space-md), 3vw, var(--space-xl));
     margin-inline: auto;
+    padding: clamp(var(--space-md), 3vw, var(--space-2xl));
 }
 
 /* ====================================
@@ -24,8 +33,9 @@
 {
     min-height: 0;
     display: grid;
+    align-content: center;
     grid-template-rows: minmax(0, 1fr) auto;
-    gap: clamp(var(--space-xl), 6vw, 5rem);
+    gap: clamp(2rem, 8vh, 6rem);
 }
 
 /* ====================================
@@ -33,7 +43,7 @@
 ======================================= */
 .displayRegion
 {
-    width: min(100%, 720px);
+    width: min(100%, 46rem);
     min-height: 0;
 
     display: flex;
@@ -47,7 +57,6 @@
 ======================================= */
 .controlsRegion
 {
-    width: 100%;
     display: flex;
     justify-content: center;
 }
@@ -55,8 +64,12 @@
 /* ====================================
    STOPWATCH MEDIA QUERY STYLES.
 ======================================= */
+@media (max-width: 640px)
+{
+    .shell { gap: var(--space-lg); }
+    .stage { gap: clamp(1.5rem, 5vh, 3rem); }
+}
 @media (max-width: 480px)
 {
-    .shell { gap: var(--space-md); padding: var(--space-md); }
-    .stage { gap: var(--space-lg); }
+    .shell { padding: var(--space-md); }
 }

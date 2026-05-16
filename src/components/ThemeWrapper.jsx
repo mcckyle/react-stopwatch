@@ -1,6 +1,6 @@
 //File name: ThemeWrapper.jsx
 //Author: Kyle McColgan
-//Date: 10 May 2026
+//Date: 15 May 2026
 //Description: This file contains the Mantine UI/UX component for the stopwatch React project.
 
 import React, { useMemo } from "react";
@@ -15,8 +15,8 @@ const ThemeWrapper = ({ children }) =>
       return createTheme({
         primaryColor: "gray",
         defaultRadius: "md",
-        respectReducedMotion: true,
         focusRing: "never",
+        respectReducedMotion: true,
 
         fontFamily: "var(--font-sans)",
         fontFamilyMonospace: "var(--font-mono)",
@@ -25,12 +25,10 @@ const ThemeWrapper = ({ children }) =>
         /* Component Customizations. */
         components: {
           Button: {
-            defaultProps: { radius: "sm" },
+            defaultProps: { radius: "xl" },
             styles: {
               root: {
-                fontWeight: 600,
-                transition: "var(--transition-interactive)",
-                "&:focus-visible": { boxShadow: "var(--focus-ring)" }
+                transition: "var(--transition-interactive)"
               }
             }
           },
@@ -39,12 +37,10 @@ const ThemeWrapper = ({ children }) =>
             styles: {
               root: {
                 transition: "var(--transition-interactive)",
-                "&:focus-visible": { boxShadow: "var(--focus-ring)" }
               }
             }
           },
           Card: {
-            defaultProps: { radius: "lg" },
             styles: {
               root: {
                 background: "var(--surface)",
@@ -57,7 +53,7 @@ const ThemeWrapper = ({ children }) =>
           Modal: {
             styles: {
               content: {
-                background: "var(--surface)",
+                background: "var(--surface-overlay)",
                 border: "1px solid var(--border-subtle)",
                 boxShadow: "var(--shadow-lg)",
                 backdropFilter: "var(--backdrop-blur)"

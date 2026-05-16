@@ -1,12 +1,10 @@
 //File name: StopwatchDisplay.jsx
 //Author: Kyle McColgan
-//Date: 6 May 2026
+//Date: 15 May 2026
 //Description: This file contains the stopwatch display component for the stopwatch React project.
 
 import React from "react";
-import AnimatedDigit from "../AnimatedDigit/AnimatedDigit.jsx";
 import { formatTime } from "../../utils/formatTime";
-
 import styles from "./StopwatchDisplay.module.css";
 
 const StopwatchDisplay = ({ time }) => {
@@ -17,15 +15,26 @@ const StopwatchDisplay = ({ time }) => {
     ? `${hours} hours ${minutes} minutes ${seconds} seconds`
     : `${minutes} minutes ${seconds} seconds`;
 
-  const renderDigits = (value, keyPrefix, isCenti = false) =>
+  const renderDigits = (value, keyPrefix, variant = "default") =>
   {
-    return value.split("").map((digit, index) => (
-      <AnimatedDigit
-        key={`${keyPrefix}-${index}`}
-        value={Number(digit)}
-        isCenti={isCenti}
-      />
-    ));
+    return value.split("").map((digit, index) =>
+    {
+      const className =
+        variant === "centi"
+          ? `${styles.digit} ${styles.centiDigit}`
+          : styles.digit;
+
+      return (
+        <span
+          key={`${keyPrefix}-${index}`}
+          data-testid="digit" //For testing purposes...
+          className={className}
+          aria-hidden="true"
+        >
+          {digit}
+        </span>
+      );
+    });
   };
 
   return (
@@ -41,15 +50,15 @@ const StopwatchDisplay = ({ time }) => {
         <span className={styles.row} aria-hidden="true">
           {showHours && (
             <>
-              <span className={styles.group}>{renderDigits(hours, "h")}</span>
+              <span className={styles.group}>{renderDigits(hours, "hours")}</span>
               <span className={styles.separator}>:</span>
             </>
           )}
-          <span className={styles.group}>{renderDigits(minutes, "m")}</span>
+          <span className={styles.group}>{renderDigits(minutes, "minutes")}</span>
           <span className={styles.separator}>:</span>
-          <span className={styles.group}>{renderDigits(seconds, "s")}</span>
+          <span className={styles.group}>{renderDigits(seconds, "seconds")}</span>
           <span className={styles.separator}>.</span>
-          <span className={styles.centi}>{renderDigits(centiSeconds, "cs", true)}</span>
+          <span className={styles.centi}>{renderDigits(centiSeconds, "centiseconds", "centi")}</span>
         </span>
       </time>
     </section>

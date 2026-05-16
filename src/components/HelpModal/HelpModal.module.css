@@ -21,9 +21,9 @@
         color-mix(in oklab, var(--accent) 10%, transparent),
         transparent 48%
     ),
-    color-mix(in oklab, var(--app-bg) 76%, transparent);
-    backdrop-filter: blur(18px) saturate(140%);
-    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    color-mix(in oklab, var(--app-bg) 82%, transparent);
+    backdrop-filter: blur(14px) saturate(130%);
+    -webkit-backdrop-filter: blur(14px) saturate(130%);
 
     animation: overlay-in var(--duration-fast) var(--ease);
 }
@@ -33,9 +33,9 @@
 ======================================= */
 .modal
 {
-    postiion: relative;
+    position: relative;
     isolation: isolate;
-    width: min(25rem, 100%);
+    width: min(24rem, 100%);
 
     display: flex;
     flex-direction: column;
@@ -43,13 +43,9 @@
 
     padding: 1.2rem;
     border: 1px solid var(--border-subtle);
-    border-radius: calc(var(--radius-xl) + 2px);
+    border-radius: var(--radius-xl);
 
-    background: linear-gradient(
-        180deg,
-        color-mix(in oklab, var(--surface) 96%, white 4%),
-        color-mix(in oklab, var(--surface) 92%, transparent)
-    );
+    background: color-mix(in oklab, var(--surface-overlay) 88%, transparent);
     color: var(--text);
     box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05), var(--shadow-lg);
 
@@ -72,7 +68,7 @@
         transparent 60%
     );
 
-    opacity: 0.7;
+    opacity: 0.45;
     pointer-events: none;
 }
 
@@ -91,11 +87,11 @@
 }
 .title
 {
-    max-width: 20ch;
-    font-size: 1rem;
+    max-width: 18ch;
+    font-size: 0.98rem;
     font-weight: 600;
-    line-height: 1.35;
-    letter-spacing: -0.03em;
+    line-height: 1.32;
+    letter-spacing: -0.035em;
     color: var(--text);
 }
 .subtitle
@@ -124,14 +120,14 @@
     align-items: center;
     gap: 1rem;
 
-    padding: 0.72rem 0.8rem;
+    padding: 0.68rem 0.78rem;
     border-radius: var(--radius-md);
     background: transparent;
 
     transition: background-color var(--duration-fast) var(--ease),
                 transform var(--duration-fast) var(--ease);
 }
-.item:hover { background: color-mix(in oklab, var(--surface-muted) 74%, transparent); transform: translateY(-1px); }
+.item:hover { background: color-mix(in oklab, var(--surface-muted) 74%, transparent); transform: translateY(-0.5px); }
 .label { font-size: 0.82rem; font-weight: 500; letter-spacing: -0.01em; color: var(--text); }
 
 /* ====================================
@@ -150,12 +146,8 @@
     border: 1px solid var(--border-subtle);
     border-radius: 0.8rem;
 
-    background: linear-gradient(
-        180deg,
-        color-mix(in oklab, var(--surface-muted) 96%, white 4%),
-        color-mix(in oklab, var(--surface-muted) 88%, transparent)
-    );
-    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05), inset 0 -1px 0 rgb(0 0 0 / 0.08);
+    background: color-mix(in oklab, var(--surface-muted) 92%, transparent);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.04);
 
     font-family: var(--font-mono);
     font-size: 0.64rem;

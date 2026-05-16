@@ -11,7 +11,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--space-md);
+    gap: var(--space-lg);
 }
 
 /* ====================================
@@ -27,15 +27,15 @@
 }
 .brandMark
 {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.35rem;
+    height: 2.35rem;
 
     display: grid;
     place-items: center;
 
     border: 1px solid var(--border-subtle);
     border-radius: 999px;
-    background: var(--surface-raised);
+    background: color-mix(in oklab, var(--surface-raised) 88%, transparent);
     box-shadow: var(--shadow-xs);
     backdrop-filter: var(--backdrop-blur);
     -webkit-backdrop-filter: var(--backdrop-blur);
@@ -51,11 +51,11 @@
     white-space: nowrap;
 
     font-family: var(--font-mono);
-    font-size: 0.68rem;
+    font-size: 0.64rem;
     font-weight: 600;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--text-muted);
+    color: var(--text-faint);
 }
 
 /* ====================================
@@ -97,7 +97,7 @@
     z-index: 20;
     opacity: 0;
     pointer-events: none;
-    transform: translateY(-6px) scale(0.985);
+    transform: translateY(-0.5rem) scale(0.985);
     transform-origin: top right;
     box-shadow: var(--shadow-lg);
 
@@ -119,7 +119,7 @@
 
     border: 1px solid var(--border-subtle);
     border-radius: 999px;
-    background: var(--surface-raised);
+    background: color-mix(in oklab, var(--surface-raised) 88%, transparent);
     color: var(--text);
     box-shadow: var(--shadow-xs);
     backdrop-filter: var(--backdrop-blur);
@@ -128,7 +128,7 @@
     transition: var(--transition-interactive);
 
 }
-.toggle:hover { transform: translateY(-1px); background: color-mix(in oklab, var(--surface-raised) 88%, var(--text) 4%); box-shadow: var(--shadow-sm); }
+.toggle:hover { transform: translateY(-1px); background: color-mix(in oklab, var(--surface-raised) 92%, white 3%); box-shadow: var(--shadow-sm); }
 .toggle:active { transform: translateY(0); }
 .toggle:focus-visible { box-shadow: var(--focus-ring); }
 .toggleIcon { width: 1rem; height: 1rem; opacity: 0.88; }

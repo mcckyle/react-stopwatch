@@ -5,15 +5,15 @@
 ============================================ */
 .display
 {
-    width: 100%;
     flex: 1;
+    width: 100%;
     min-height: 0;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    padding: clamp(0.75rem, 3vh, 2rem);
+    padding: clamp(1rem, 4vh, 3rem);
     user-select: none;
 }
 
@@ -36,8 +36,7 @@
     color: var(--text);
 
     font-variant-numeric: tabular-nums lining-nums;
-    letter-spacing: -0.05em;
-    text-shadow: 0 0 18px color-mix(in oklab, var(--text) 3%, transparent);
+    letter-spacing: -0.055em;
     isolation: isolate;
 }
 
@@ -49,7 +48,7 @@
     display: inline-flex;
     align-items: baseline;
     justify-content: center;
-    gap: clamp(0.04rem, 0.16vw, 0.2rem);
+    gap: clamp(0.03rem, 0.14vw, 0.16rem);
 
     max-width: 100%;
     white-space: nowrap;
@@ -61,23 +60,32 @@
 /* ====================================
    STOPWATCHDISPLAY DIGIT GROUPS STYLES.
 ======================================= */
-.group { display: inline-flex; align-items: baseline; }
-.centi
+.group, .centi { display: inline-flex; align-items: baseline; }
+.group { gap: 0.015em; }
+.digit
 {
     display: inline-flex;
-    align-items: baseline;
-
-    margin-left: 0.045em;
+    align-items: center;
+    justify-content: center;
+    width: 0.92ch;
+    line-height: 1;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+.centi
+{
+    margin-left: 0.05em;
     font-size: 0.18em;
     font-weight: 600;
     line-height: 1;
-    letter-spacing: -0.035em;
+    letter-spacing: -0.04em;
 
     color: var(--text-muted);
-    opacity: 0.78;
+    opacity: 0.76;
 
-    transform: translateY(-0.018em);
+    transform: translateY(-0.02em);
 }
+.centiDigit { opacity: 0.88; }
 
 /* ====================================
    STOPWATCHDISPLAY SEPARATORS ( : and . ) STYLES.
@@ -87,14 +95,15 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 0.32em;
+    width: 0.28em;
 
-    font-size: 0.14em;
+    font-size: 0.13em;
     font-weight: 500;
     line-height: 1;
+    color: var(--text-faint);
 
-    opacity: 0.2;
-    transform: translateY(-0.012em);
+    opacity: 0.42;
+    transform: translateY(-0.01em);
     pointer-events: none;
 }
 
@@ -120,7 +129,7 @@
 ======================================= */
 @media (prefers-reduced-motion: reduce)
 {
-    .time { text-shadow: none; }
+    .digit { transition: none; }
 }
 
 /* Ultra-large monitors (4K / 2560x1440+ ). */

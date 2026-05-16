@@ -1,17 +1,12 @@
 //File name: StopwatchDisplay.test.jsx
 //Author: Kyle McColgan
-//Date: 3 March 2026
+//Date: 15 May 2026
 //Description: This file contains the unit test suite for the StopwatchDisplay component.
 
 import React from "react";
 import { render, screen } from "../test/test-utils";
 import StopwatchDisplay from "../components/StopwatchDisplay/StopwatchDisplay.jsx";
 import * as formatTimeModule from "../utils/formatTime";
-
-//Mock the AnimatedDigit component.
-jest.mock("../components/AnimatedDigit/AnimatedDigit.jsx", () => ({ value }) => (
-    <span data-testid="digit">{value}</span>
-));
 
 describe("StopwatchDisplay Component", () => {
     beforeEach(() => {

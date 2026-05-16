@@ -1,6 +1,6 @@
 //File name: HelpModal.jsx
 //Author: Kyle McColgan
-//Date: 6 May 2026
+//Date: 15 May 2026
 //Description: This file contains the Help modal component for the stopwatch React project.
 
 import React, { useEffect, useId, useRef } from "react";
@@ -27,7 +27,7 @@ const HelpModal = ({ onClose }) =>
 
     const handleKeyDown = (event) =>
     {
-      if ( (event.key === "Escape") && (!event.isComposing))
+      if ((event.key === "Escape") && (!event.isComposing))
       {
         event.stopPropagation();
         onClose();
@@ -57,14 +57,14 @@ const HelpModal = ({ onClose }) =>
         <header className={styles.header}>
           <p className={styles.eyebrow}>Keyboard shortcuts</p>
           <h2 id={titleId} className={styles.title}>
-            Move faster without touching the mouse
+            Shortcuts for speed
           </h2>
           <p id={descriptionId} className={styles.subtitle}>
-            Quick controls for running, lapping, resetting, and reopening help.
+            Use keyboard controls to start, pause, lap, reset, and reopen help instantly.
           </p>
         </header>
 
-        <ul className={styles.list}>
+        <ul className={styles.list} aria-label="Keyboard shortcuts">
           {shortcuts.map(({ label, keyLabel }) => (
             <li key={label} className={styles.item}>
               <span className={styles.label}>{label}</span>

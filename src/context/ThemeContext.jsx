@@ -1,9 +1,9 @@
 //File name: ThemeContext.jsx
 //Author: Kyle McColgan
-//Date: 10 May 2026
+//Date: 15 May 2026
 //Description: This file contains the theming context component for the stopwatch React project.
 
-import React, { createContext, useCallback, useContext, useEffect, useMemo, useState, useRef } from "react";
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 
 const ThemeContext = createContext(undefined);
 const THEME_STORAGE_KEY = "theme";
@@ -19,43 +19,40 @@ function getInitialTheme()
 {
   if (typeof window === "undefined")
   {
-    return "light";
+    return {
+      theme: "light",
+      hasManualTheme: false
+    };
   }
 
   const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
 
   if ((storedTheme === "light") || (storedTheme === "dark"))
   {
-    return storedTheme;
+    return {
+      theme: storedTheme,
+      hasManualTheme: true
+    };
   }
 
-  return getSystemTheme();
+  return {
+    theme: getSystemTheme(),
+    hasManualTheme: false
+  };
 }
 
 export const ThemeProvider = ({ children }) =>
 {
-  const hasManualThemeRef = useRef(false);
-  const [theme, setTheme] = useState(() =>
-  {
-    const initialTheme = getInitialTheme();
+  const initialState = getInitialTheme();
+  const hasManualThemeRef = useRef(initialState.hasManualTheme);
+  const [theme, setTheme] = useState(initialState.theme);
 
-    if (typeof window !== "undefined")
-    {
-      const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
-      if ((storedTheme === "light") || (storedTheme === "dark"))
-      {
-        hasManualThemeRef.current = true;
-      }
-    }
-
-    return initialTheme;
-  });
   const onToggleTheme = useCallback(() =>
   {
-    setTheme((previousTheme) =>
+    setTheme((currentTheme) =>
     {
       const nextTheme =
-        previousTheme === "dark"
+        currentTheme === "dark"
           ? "light"
           : "dark";
 
@@ -65,33 +62,31 @@ export const ThemeProvider = ({ children }) =>
     });
   }, []);
 
-  //Explicitly Sync DOM Theme Dynamically.
+  //Sync Theme to DOM.
   useEffect(() =>
   {
     const root = document.documentElement;
 
-    root.classList.remove("light", "dark");
-    root.classList.add(theme);
-
+    root.className = theme;
     root.style.colorScheme = theme;
   }, [theme]);
 
-  //Sync with system theme when no override exists.
+  //Sync With System Theme Until Manual Override Exists.
   useEffect(() =>
   {
-    const media = window.matchMedia("(prefers-color-scheme: dark)");
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
-    const handleChange = (event) =>
+    const onSystemThemeChange = ({ matches }) =>
     {
       if (hasManualThemeRef.current)
       {
         return;
       }
-      setTheme(event.matches ? "dark" : "light");
+      setTheme(matches ? "dark" : "light");
     };
 
-    media.addEventListener("change", handleChange);
-    return () => media.removeEventListener("change", handleChange);
+    mediaQuery.addEventListener("change", onSystemThemeChange);
+    return () => mediaQuery.removeEventListener("change", onSystemThemeChange);
   }, []);
 
   const contextValue = useMemo(() =>

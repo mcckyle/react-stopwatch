@@ -19,7 +19,8 @@
 
     <!-- Theme (Bias initial render toward dark-first experience). -->
     <meta name="color-scheme" content="dark light" />
-    <meta name="theme-color" content="#0b1016" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f4f7fb" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0b1016" />
 
     <!-- PWA. -->
     <link rel="manifest" href="/manifest.json" />
@@ -29,6 +30,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
     <!-- Fonts. -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -41,7 +44,7 @@
     <link rel="apple-touch-icon" href="/images/favicon.png" sizes="180x180" />
 
     <!-- Prevent White Flash Before CSS Loads. -->
-    <style>html { background: #0b1016; color-scheme: dark; } body { background: #0b1016; }</style>
+    <style>html { background: #0b1016; color: #f5f7fa; color-scheme: dark; } body { margin: 0; background: #0b1016; }</style>
   </head>
   <body>
     <noscript>
