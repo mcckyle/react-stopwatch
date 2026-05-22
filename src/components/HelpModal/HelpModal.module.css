@@ -16,14 +16,9 @@
              max(1rem, env(safe-area-inset-bottom))
              max(1rem, env(safe-area-inset-left));
 
-    background: radial-gradient(
-        circle at top,
-        color-mix(in oklab, var(--accent) 10%, transparent),
-        transparent 48%
-    ),
-    color-mix(in oklab, var(--app-bg) 82%, transparent);
-    backdrop-filter: blur(14px) saturate(130%);
-    -webkit-backdrop-filter: blur(14px) saturate(130%);
+    background: rgb(0 0 0 / 0.42);/*color-mix(in oklab, var(--app-bg) 72%, transparent);*/
+    backdrop-filter: blur(10px) saturate(115%);
+    -webkit-backdrop-filter: blur(10px) saturate(115%);
 
     animation: overlay-in var(--duration-fast) var(--ease);
 }
@@ -35,29 +30,25 @@
 {
     position: relative;
     isolation: isolate;
-    width: min(24rem, 100%);
+    width: min(22rem, 100%);
 
     display: flex;
     flex-direction: column;
     gap: var(--space-lg);
 
-    padding: 1.2rem;
+    padding: 1rem;
     border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-xl);
+    border-radius: var(--radius-lg);
 
     background: color-mix(in oklab, var(--surface-overlay) 88%, transparent);
     color: var(--text);
-    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05), var(--shadow-lg);
-
-    backdrop-filter: var(--backdrop-blur);
-    -webkit-backdrop-filter: var(--backdrop-blur);
+    box-shadow: 0 18px 60px rgb(0 0 0 / 0.18);
     overflow: hidden;
 
     animation: modal-in var(--duration) var(--ease);
 }
-.modal::before
+/*.modal::before
 {
-    /* Soft Ambient Highlight Styles. */
     content: "";
     position: absolute;
     inset: 0;
@@ -70,7 +61,7 @@
 
     opacity: 0.45;
     pointer-events: none;
-}
+}*/
 
 /* ====================================
    HELPMODAL HEADER STYLES.
@@ -79,18 +70,18 @@
 .eyebrow
 {
     font-family: var(--font-mono);
-    font-size: 0.54rem;
+    font-size: 0.52rem;
     font-weight: 600;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--text-muted);
 }
 .title
 {
     max-width: 18ch;
-    font-size: 0.98rem;
+    font-size: 1.05rem;
     font-weight: 600;
-    line-height: 1.32;
+    line-height: 1.2;
     letter-spacing: -0.035em;
     color: var(--text);
 }
@@ -98,7 +89,7 @@
 {
     max-width: 32ch;
     font-size: 0.82rem;
-    line-height: 1.65;
+    line-height: 1.5;
     color: var(--text-muted);
 }
 
@@ -120,14 +111,13 @@
     align-items: center;
     gap: 1rem;
 
-    padding: 0.68rem 0.78rem;
+    padding: 0.62rem 0.72rem;
     border-radius: var(--radius-md);
     background: transparent;
 
-    transition: background-color var(--duration-fast) var(--ease),
-                transform var(--duration-fast) var(--ease);
+    transition: background-color var(--duration-fast) var(--ease);
 }
-.item:hover { background: color-mix(in oklab, var(--surface-muted) 74%, transparent); transform: translateY(-0.5px); }
+.item:hover { background: color-mix(in oklab, var(--surface-muted) 74%, transparent); }
 .label { font-size: 0.82rem; font-weight: 500; letter-spacing: -0.01em; color: var(--text); }
 
 /* ====================================
@@ -144,10 +134,10 @@
     justify-content: center;
 
     border: 1px solid var(--border-subtle);
-    border-radius: 0.8rem;
+    border-radius: 0.7rem;
 
     background: color-mix(in oklab, var(--surface-muted) 92%, transparent);
-    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.04);
+    box-shadow: none;/*inset 0 1px 0 rgb(255 255 255 / 0.04);*/
 
     font-family: var(--font-mono);
     font-size: 0.64rem;
@@ -165,7 +155,7 @@
     z-index: 1;
 
     width: 100%;
-    min-height: 2.9rem;
+    min-height: 2.65rem;
 
     display: inline-flex;
     align-items: center;
@@ -178,14 +168,14 @@
     color: var(--text-muted);
 
     font-family: var(--font-mono);
-    font-size: 0.62rem;
+    font-size: 0.58rem;
     font-weight: 600;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
 
     transition: var(--transition-interactive);
 }
-.closeButton:hover { background: color-mix(in oklab, var(--text) 5%, transparent); color: var(--text); }
+.closeButton:hover { border-color: var(--border-strong); color: var(--text); }
 .closeButton:active { transform: translateY(1px); }
 .closeButton:focus-visible { box-shadow: var(--focus-ring), var(--shadow-sm); }
 
@@ -200,7 +190,7 @@
 
 @keyframes modal-in
 {
-    from { opacity: 0; transform: translateY(10px) scale(0.985); }
+    from { opacity: 0; transform: translateY(6px) scale(0.985); }
     to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
@@ -209,8 +199,8 @@
 ======================================= */
 @media (max-width: 480px)
 {
-    .modal { gap: var(--space-md); padding: 1rem; }
-    .item { padding: 0.68rem 0.72rem; }
+    .modal { gap: var(--space-md); padding: 0.9rem; }
+    .item { padding: 0.58rem 0.65rem; }
     .label { font-size: 0.78rem; }
     .kbd { min-width: 1.75rem; min-height: 1.75rem; font-size: 0.6rem; }
 }

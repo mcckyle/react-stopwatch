@@ -1,16 +1,17 @@
 //File name: ThemeContext.jsx
 //Author: Kyle McColgan
-//Date: 15 May 2026
+//Date: 21 May 2026
 //Description: This file contains the theming context component for the stopwatch React project.
 
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 
 const ThemeContext = createContext(undefined);
 const THEME_STORAGE_KEY = "theme";
+const DARK_MEDIA_QUERY = "(prefers-color-scheme: dark)";
 
 function getSystemTheme()
 {
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
+  return window.matchMedia(DARK_MEDIA_QUERY).matches
     ? "dark"
     : "light";
 }
@@ -41,6 +42,14 @@ function getInitialTheme()
   };
 }
 
+function syncThemeToDocument(theme)
+{
+  const root = document.documentElement;
+
+  root.dataset.theme = theme;
+  root.style.colorScheme = theme;
+}
+
 export const ThemeProvider = ({ children }) =>
 {
   const initialState = getInitialTheme();
@@ -65,16 +74,13 @@ export const ThemeProvider = ({ children }) =>
   //Sync Theme to DOM.
   useEffect(() =>
   {
-    const root = document.documentElement;
-
-    root.className = theme;
-    root.style.colorScheme = theme;
+    syncThemeToDocument(theme);
   }, [theme]);
 
   //Sync With System Theme Until Manual Override Exists.
   useEffect(() =>
   {
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const mediaQuery = window.matchMedia(DARK_MEDIA_QUERY);
 
     const onSystemThemeChange = ({ matches }) =>
     {
@@ -85,8 +91,25 @@ export const ThemeProvider = ({ children }) =>
       setTheme(matches ? "dark" : "light");
     };
 
-    mediaQuery.addEventListener("change", onSystemThemeChange);
-    return () => mediaQuery.removeEventListener("change", onSystemThemeChange);
+    if (mediaQuery.addEventListener)
+    {
+      mediaQuery.addEventListener("change", onSystemThemeChange);
+    }
+    else
+    {
+      mediaQuery.addListener(onSystemThemeChange);
+    }
+    return () =>
+    {
+      if (mediaQuery.removeEventListener)
+      {
+        mediaQuery.removeEventListener("change", onSystemThemeChange);
+      }
+      else
+      {
+        mediaQuery.removeListener(onSystemThemeChange);
+      }
+    };
   }, []);
 
   const contextValue = useMemo(() =>

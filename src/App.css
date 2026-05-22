@@ -13,12 +13,16 @@
 
     isolation: isolate;
     overflow: clip;
+    padding: max(1rem, env(safe-area-inset-top))
+             max(1rem, env(safe-area-inset-right))
+             max(1rem, env(safe-area-inset-bottom))
+             max(1rem, env(safe-area-inset-left));
 }
 
 /* ====================================
    APPLICATION ROOT LAYOUT STYLES.
 ======================================= */
-.app
+/*.app
 {
     flex: 1;
     width: min(100%, 96rem);
@@ -29,4 +33,4 @@
              max(1rem, env(safe-area-inset-right))
              max(1rem, env(safe-area-inset-bottom))
              max(1rem, env(safe-area-inset-left));
-}
+}*/

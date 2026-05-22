@@ -14,10 +14,9 @@
     --accent-strong: #4cb8ff;
 
     /* Radius System. */
-    --radius-sm: 0.75rem;
-    --radius-md: 1.125rem;
-    --radius-lg: 1.75rem;
-    --radius-xl: 2.25rem;
+    --radius-sm: 0.875rem;
+    --radius-md: 1.5rem;
+    --radius-lg: 2.25rem;
 
     /* Spacing Scale. */
     --space-xs: 0.375rem;
@@ -29,13 +28,14 @@
 
     /* Shadows System. */
     --shadow-xs: 0 1px 2px rgb(0 0 0 / 0.04);
-    --shadow-sm: 0 4px 24px rgb(0 0 0 / 0.06), 0 1px 2px rgb(0 0 0 / 0.04);
-    --shadow-md: 0 12px 48px rgb(0 0 0 / 0.12), 0 2px 4px rgb(0 0 0 / 0.05);
-    --shadow-lg: 0 24px 80px rgb(0 0 0 / 0.18), 0 4px 12px rgb(0 0 0 / 0.06);
+    --shadow-sm: 0 8px 24px rgb(0 0 0 / 0.06);
+    --shadow-md: 0 16px 48px rgb(0 0 0 / 0.10);
+    --shadow-lg: 0 24px 72px rgb(0 0 0 / 0.16);
 
     /* Effects. */
     --backdrop-blur: saturate(180%) blur(20px);
     --focus-ring: 0 0 0 2px color-mix(in oklab, var(--accent) 34%, transparent);
+    --surface-border: color-mix(in oklab, var(--text) 10%, transparent);
 
     /* Motion. */
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -58,7 +58,7 @@
 /* ====================================
    LIGHT THEME VARIABLES.
 ======================================= */
-html.light
+:root[data-theme="light"]
 {
     --app-bg: #f5f7fb;
     --app-bg-accent: #edf2f8;
@@ -80,7 +80,7 @@ html.light
 /* ====================================
    DARK THEME VARIABLES.
 ======================================= */
-html.dark
+:root[data-theme="dark"]
 {
     --app-bg: #080b11;
     --app-bg-accent: #111821;
@@ -107,6 +107,17 @@ html, body
     background-color: var(--app-bg);
     color: var(--text);
 
-    transition: background-color var(--duration) var(--ease),
+    transition: background var(--duration) var(--ease),
                 color var(--duration) var(--ease);
+}
+
+@media (prefers-reduced-motion: reduce)
+{
+    *, *::before, *::after
+    {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
 }

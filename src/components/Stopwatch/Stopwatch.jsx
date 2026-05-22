@@ -1,10 +1,11 @@
 //File name: Stopwatch.jsx
 //Author: Kyle McColgan
-//Date: 15 May 2026
+//Date: 21 May 2026
 //Description: This file contains the parent Stopwatch component for the stopwatch React project.
 
 import React, { useState, useEffect, useCallback } from "react";
 import { useStopwatch } from "../../hooks/useStopwatch";
+import { loadStoredLaps, persistLaps } from "../../utils/lapHelpers";
 import { useKeyboardShortcuts } from "../../hooks/useKeyboardShortcuts";
 import { useTheme } from "../../context/ThemeContext.jsx";
 
@@ -20,23 +21,9 @@ const LAP_STORAGE_KEY = "stopwatch-app-laps"; //Key for browser localStorage.
 const Stopwatch = ({ onToggleTheme }) => {
   const { time, isRunning, toggle, reset, getCurrentTime } = useStopwatch();
   const { theme } = useTheme();
-
-  const [laps, setLaps] = useState(() =>
-  {
-    try
-    {
-      const savedLaps = localStorage.getItem(LAP_STORAGE_KEY);
-      const parsedLaps = savedLaps ? JSON.parse(savedLaps) : [];
-
-      return Array.isArray(parsedLaps) ? parsedLaps : [];
-    }
-    catch
-    {
-      console.warn("Unable to restore saved laps!");
-      return [];
-    }
-  });
+  const [laps, setLaps] = useState(loadStoredLaps);
   const hasLaps = laps.length > 0;
+
   const [showHelp, setShowHelp] = useState(false);
   const openHelp = useCallback(() => setShowHelp(true), []);
   const closeHelp = useCallback(() => setShowHelp(false), []);
@@ -72,14 +59,7 @@ const Stopwatch = ({ onToggleTheme }) => {
   //Save laps array to browser localStorage only after initial load.
   useEffect(() =>
   {
-    try
-    {
-      localStorage.setItem(LAP_STORAGE_KEY, JSON.stringify(laps));
-    }
-    catch
-    {
-      console.warn("Unable to persist laps!");
-    }
+    persistLaps(laps);
   }, [laps]);
 
   useKeyboardShortcuts({
@@ -90,7 +70,7 @@ const Stopwatch = ({ onToggleTheme }) => {
   });
 
   return (
-    <div className={styles.viewport}>
+    <>
       <section className={styles.shell} aria-label="Precision Stopwatch">
         <StopwatchHeader
           theme={theme}
@@ -101,7 +81,7 @@ const Stopwatch = ({ onToggleTheme }) => {
           onDeleteLap={deleteLap}
         />
 
-        <div className={styles.stage}>
+        <main className={styles.stage}>
           <section className={styles.displayRegion} aria-label="Elapsed time">
             <StopwatchDisplay time={time} />
           </section>
@@ -116,11 +96,11 @@ const Stopwatch = ({ onToggleTheme }) => {
               recordLap={recordLap}
             />
           </section>
-        </div>
+        </main>
       </section>
 
       {showHelp && <HelpModal onClose={closeHelp} />}
-    </div>
+    </>
   );
 };
 

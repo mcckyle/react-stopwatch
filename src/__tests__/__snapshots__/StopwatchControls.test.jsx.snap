@@ -2,7 +2,7 @@
 
 exports[`StopwatchControls Component enables Lap button when isRunning is true 1`] = `
 <DocumentFragment>
-  <section
+  <nav
     aria-label="Stopwatch controls"
     class="controls"
     role="group"
@@ -27,6 +27,6 @@ exports[`StopwatchControls Component enables Lap button when isRunning is true 1
     >
       Reset
     </button>
-  </section>
+  </nav>
 </DocumentFragment>
 `;

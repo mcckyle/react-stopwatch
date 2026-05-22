@@ -6,14 +6,14 @@
 .controls
 {
     width: 100%;
-    max-width: 32rem;
+    max-width: 26rem;
 
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
 
-    gap: clamp(0.7rem, 1.2vw, 1rem);
+    gap: clamp(0.5rem, 1vw, 0.75rem);
 }
 
 /* ====================================
@@ -25,8 +25,8 @@
     isolation: isolate;
 
     min-width: 6.5rem;
-    min-height: 2.9rem;
-    padding: 0.75rem 1.15rem;
+    min-height: 2.65rem;
+    padding: 0.7rem 1rem;
 
     display: inline-flex;
     align-items: center;
@@ -36,25 +36,20 @@
     border-radius: 999px;
 
     font-family: var(--font-mono);
-    font-size: 0.62rem;
+    font-size: 0.58rem;
     font-weight: 600;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     white-space: nowrap;
 
-    background: color-mix(in oklab, var(--surface-raised) 88%, transparent);
+    background: var(--surface-raised);
     color: var(--text);
-
-    box-shadow: var(--shadow-xs);
-    backdrop-filter: var(--backdrop-blur);
-    -webkit-backdrop-filter: var(--backdrop-blur);
+    box-shadow: none;
+    touch-action: manipulation;
 
     transition: background-color var(--duration-fast) var(--ease),
                 border-color var(--duration-fast) var(--ease),
-                color var(--duration-fast) var(--ease),
-                box-shadow var(--duration-fast) var(--ease),
-                transform var(--duration-fast) var(--ease),
-                opacity var(--duration-fast) var(--ease);
+                color var(--duration-fast) var(--ease);
 }
 .button:hover:not(:disabled)
 {
@@ -65,11 +60,10 @@
     );
     border-color: var(--border-strong);
     box-shadow: var(--shadow-sm);
-    transform: translateY(-0.5px);
 }
 .button:active:not(:disabled) { transform: translateY(0); box-shadow: var(--shadow-xs); }
 .button:focus-visible {  box-shadow: var(--focus-ring), var(--shadow-sm); }
-.button:disabled { opacity: 0.34; cursor: not-allowed; transform: none; box-shadow: var(--shadow-xs); }
+.button:disabled { opacity: 0.46; cursor: not-allowed; transform: none; box-shadow: var(--shadow-xs); }
 
 /* =========================================
    PRIMARY ACTION ( START / PAUSE ) STYLES.
@@ -80,7 +74,7 @@
     background: color-mix(in oklab, var(--text) 94%, white 6%);
     color: var(--app-bg);
     border-color: transparent;
-    box-shadow: 0 10px 30px color-mix(in oklab, var(--text) 12%, transparent);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 0.12);
 }
 .primary:hover:not(:disabled) { background: color-mix(in oklab, var(--text) 88%, white 12%); }
 
@@ -99,7 +93,7 @@
     border-color: transparent;
     box-shadow: none;
 }
-.tertiary:hover:not(:disabled) { background: color-mix(in oklab, var(--text) 5%, transparent); }
+.tertiary:hover:not(:disabled) { color: var(--text); }
 
 @media (prefers-reduced-motion: reduce)
 {
@@ -110,7 +104,7 @@
 /* ====================================
    STOPWATCHCONTROLS MEDIA QUERY STYLES.
 ======================================= */
-@media (max-width: 520px)
+@media (max-width: 420px)
 {
     .controls { flex-direction: column; align-items: center; }
     .button { width: 100%; min-width: 0; }

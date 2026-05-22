@@ -1,24 +1,16 @@
 /* Filename: src/components/Stopwatch/Stopwatch.module.css */
 
 /* ====================================
-   STOPWATCH VIEWPORT STYLES.
-======================================= */
-.viewport
-{
-    flex: 1;
-    display: flex;
-}
-
-/* ====================================
    STOPWATCH SHELL STYLES.
 ======================================= */
 .shell
 {
     flex: 1; /* Vertically centers the Stopwatch. */
-    width: min(100%, 72rem);
+    width: min(100%, 68rem);
     min-height: 100%;
 
     display: grid;
+    align-content: center;
     grid-template-rows: auto minmax(0, 1fr);
     gap: clamp(var(--space-lg), 5vw, var(--space-2xl));
 
@@ -35,7 +27,7 @@
     display: grid;
     align-content: center;
     grid-template-rows: minmax(0, 1fr) auto;
-    gap: clamp(2rem, 8vh, 6rem);
+    gap: clamp(2rem, 6vh, 4.5rem);
 }
 
 /* ====================================
@@ -43,7 +35,7 @@
 ======================================= */
 .displayRegion
 {
-    width: min(100%, 46rem);
+    width: min(100%, 42rem);
     min-height: 0;
 
     display: flex;

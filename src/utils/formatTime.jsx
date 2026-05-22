@@ -1,6 +1,6 @@
-//File name: formatTime.js
+//File name: formatTime.jsx
 //Author: Kyle McColgan
-//Date: 8 April 2026
+//Date: 21 May 2026
 //Description: This file contains a custom formatting helper function built for the stopwatch React project.
 
 const MS_PER_SECOND = 1000;

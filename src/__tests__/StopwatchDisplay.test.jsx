@@ -1,6 +1,6 @@
 //File name: StopwatchDisplay.test.jsx
 //Author: Kyle McColgan
-//Date: 15 May 2026
+//Date: 22 May 2026
 //Description: This file contains the unit test suite for the StopwatchDisplay component.
 
 import React from "react";
@@ -66,11 +66,11 @@ describe("StopwatchDisplay Component", () => {
         expect(separators).toHaveLength(1);
     });
 
-    //Test #6: Accessibility - validates aria-live="polite" for assistive tech compatability.
-    test("6. uses aria-live=polite and role=timer for accessibility", () => {
+    //Test #6: Accessibility - validates aria-live="off" for assistive tech compatability.
+    test("6. uses aria-live=off and role=timer for accessibility", () => {
         render(<StopwatchDisplay time={0} />);
         const timer = screen.getByRole("timer");
-        expect(timer).toHaveAttribute("aria-live", "polite");
+        expect(timer).toHaveAttribute("aria-live", "off");
     });
 
     //Test #7: Type safety - ensures the digits rendered are numeric values.

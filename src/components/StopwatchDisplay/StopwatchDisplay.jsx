@@ -1,6 +1,6 @@
 //File name: StopwatchDisplay.jsx
 //Author: Kyle McColgan
-//Date: 15 May 2026
+//Date: 21 May 2026
 //Description: This file contains the stopwatch display component for the stopwatch React project.
 
 import React from "react";
@@ -15,20 +15,15 @@ const StopwatchDisplay = ({ time }) => {
     ? `${hours} hours ${minutes} minutes ${seconds} seconds`
     : `${minutes} minutes ${seconds} seconds`;
 
-  const renderDigits = (value, keyPrefix, variant = "default") =>
+  const renderDigits = (value, keyPrefix, className = "") =>
   {
     return value.split("").map((digit, index) =>
     {
-      const className =
-        variant === "centi"
-          ? `${styles.digit} ${styles.centiDigit}`
-          : styles.digit;
-
       return (
         <span
           key={`${keyPrefix}-${index}`}
           data-testid="digit" //For testing purposes...
-          className={className}
+          className={`${styles.digit} ${className}`}
           aria-hidden="true"
         >
           {digit}
@@ -38,11 +33,11 @@ const StopwatchDisplay = ({ time }) => {
   };
 
   return (
-    <section className={styles.display} aria-label="Current stopwatch time">
+    <div className={styles.display} aria-label="Current stopwatch time">
       <time
         className={styles.time}
         role="timer"
-        aria-live="polite"
+        aria-live="off" //OFF - Constant updates can become noisy...
         aria-atomic="true"
         dateTime={`PT${hours}H${minutes}M${seconds}.${centiSeconds}S`}
       >
@@ -58,10 +53,10 @@ const StopwatchDisplay = ({ time }) => {
           <span className={styles.separator}>:</span>
           <span className={styles.group}>{renderDigits(seconds, "seconds")}</span>
           <span className={styles.separator}>.</span>
-          <span className={styles.centi}>{renderDigits(centiSeconds, "centiseconds", "centi")}</span>
+          <span className={styles.centi}>{renderDigits(centiSeconds, "centiseconds", styles.centiDigit)}</span>
         </span>
       </time>
-    </section>
+    </div>
   );
 };
 

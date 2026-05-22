@@ -13,7 +13,7 @@
     align-items: center;
     justify-content: center;
 
-    padding: clamp(1rem, 4vh, 3rem);
+    padding: clamp(0.5rem, 2vw, 1.5rem);
     user-select: none;
 }
 
@@ -25,10 +25,11 @@
     position: relative;
 
     display: inline-flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: center;
 
     max-width: 100%;
+    min-height: 100%;
     text-align: center;
 
     font-family: var(--font-mono);
@@ -36,7 +37,8 @@
     color: var(--text);
 
     font-variant-numeric: tabular-nums lining-nums;
-    letter-spacing: -0.055em;
+    font-feature-settings: "tnum", "lnum"; /* More reliable than relying solely on font-variant-numeric. */
+    letter-spacing: -0.07em;
     isolation: isolate;
 }
 
@@ -48,12 +50,12 @@
     display: inline-flex;
     align-items: baseline;
     justify-content: center;
-    gap: clamp(0.03rem, 0.14vw, 0.16rem);
 
     max-width: 100%;
+    max-inline-size: 100%; /* Improve overflow behavior. */
     white-space: nowrap;
 
-    font-size: clamp(5rem, 20vw, 32rem); /* As large as possible. */
+    font-size: clamp(5rem, 24vw, 38rem); /* As large as possible. */
     line-height: 0.82;
 }
 
@@ -61,7 +63,7 @@
    STOPWATCHDISPLAY DIGIT GROUPS STYLES.
 ======================================= */
 .group, .centi { display: inline-flex; align-items: baseline; }
-.group { gap: 0.015em; }
+.group { gap: 0.01em; }
 .digit
 {
     display: inline-flex;
@@ -69,21 +71,20 @@
     justify-content: center;
     width: 0.92ch;
     line-height: 1;
-    transform: translateZ(0);
-    backface-visibility: hidden;
+/*  transform: translateZ(0); Unnecessary GPU Hacks, handeled by modern browsers.
+    backface-visibility: hidden;*/
 }
 .centi
 {
-    margin-left: 0.05em;
-    font-size: 0.18em;
+    margin-left: 0.015em;
+    font-size: 0.16em;
     font-weight: 600;
-    line-height: 1;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.05em;
 
     color: var(--text-muted);
-    opacity: 0.76;
+    opacity: 0.68;
 
-    transform: translateY(-0.02em);
+    transform: translateY(-0.015em);
 }
 .centiDigit { opacity: 0.88; }
 
@@ -95,15 +96,14 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 0.28em;
+    width: 0.22em;
 
-    font-size: 0.13em;
+    font-size: 0.1em;
     font-weight: 500;
-    line-height: 1;
-    color: var(--text-faint);
+    color: var(--text-muted);
 
-    opacity: 0.42;
-    transform: translateY(-0.01em);
+    opacity: 0.32;
+    transform: translateY(-0.02em);
     pointer-events: none;
 }
 
