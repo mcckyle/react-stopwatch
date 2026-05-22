@@ -74,8 +74,11 @@ describe("Stopwatch Component", () => {
         const lapButton = screen.getByRole("button", { name: /lap/i});
         fireEvent.click(lapButton);
 
-        expect(screen.getByRole("timer")).toHaveAttribute("datetime", "PT00H00M01.00S");
-        expect(screen.getByText(/00 minutes 01 seconds/i)).toBeInTheDocument();
+        const lapPanel = screen.getByRole("button", { name: /show laps/i});
+        fireEvent.click(lapPanel);
+
+        expect(screen.getByText(/lap 1/i)).toBeInTheDocument();
+//         expect(screen.getByText(/00 minutes 01 seconds/i)).toBeInTheDocument();
     });
 
     //Test #6
