@@ -1,6 +1,6 @@
 //File name: lapHelpers.jsx
 //Author: Kyle McColgan
-//Date: 21 May 2026
+//Date: 22 May 2026
 //Description: This file contains a lap helper functions built for the stopwatch React project.
 
 const LAP_STORAGE_KEY = "stopwatch-app-laps"; //Key for browser localStorage.
@@ -27,6 +27,6 @@ export function persistLaps(laps)
     }
     catch
     {
-        console.warn("Unable to persistlaps!");
+        console.warn("Unable to persist laps!");
     }
 }
