@@ -5,9 +5,8 @@
 ============================================ */
 .display
 {
-    flex: 1;
-    width: 100%;
-    min-height: 0;
+    width: min(100%, 42rem);
+    margin-inline: auto;
 
     display: flex;
     align-items: center;
@@ -37,9 +36,7 @@
     color: var(--text);
 
     font-variant-numeric: tabular-nums lining-nums;
-    font-feature-settings: "tnum", "lnum"; /* More reliable than relying solely on font-variant-numeric. */
     letter-spacing: -0.07em;
-    isolation: isolate;
 }
 
 /* ====================================
@@ -55,7 +52,7 @@
     max-inline-size: 100%; /* Improve overflow behavior. */
     white-space: nowrap;
 
-    font-size: clamp(5rem, 24vw, 38rem); /* As large as possible. */
+    font-size: clamp(5rem, 24vw, 38rem); /* Digits as large as possible. */
     line-height: 0.82;
 }
 
@@ -69,7 +66,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 0.92ch;
+    width: 1ch;
     line-height: 1;
 /*  transform: translateZ(0); Unnecessary GPU Hacks, handeled by modern browsers.
     backface-visibility: hidden;*/
@@ -127,10 +124,10 @@
 /* ====================================
    STOPWATCHDISPLAY MEDIA QUERY STYLES.
 ======================================= */
-@media (prefers-reduced-motion: reduce)
+/*@media (prefers-reduced-motion: reduce)
 {
     .digit { transition: none; }
-}
+}*/
 
 /* Ultra-large monitors (4K / 2560x1440+ ). */
 /*@media (min-width: 2500px)

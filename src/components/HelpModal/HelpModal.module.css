@@ -29,7 +29,6 @@
 .modal
 {
     position: relative;
-    isolation: isolate;
     width: min(22rem, 100%);
 
     display: flex;
@@ -42,31 +41,16 @@
 
     background: color-mix(in oklab, var(--surface-overlay) 88%, transparent);
     color: var(--text);
-    box-shadow: 0 18px 60px rgb(0 0 0 / 0.18);
+    box-shadow: var(--shadow-lg);
     overflow: hidden;
 
     animation: modal-in var(--duration) var(--ease);
 }
-/*.modal::before
-{
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 1000;
-    background: radial-gradient(
-        circle at top,
-        color-mix(in oklab, var(--accent) 10%, transparent),
-        transparent 60%
-    );
-
-    opacity: 0.45;
-    pointer-events: none;
-}*/
 
 /* ====================================
    HELPMODAL HEADER STYLES.
 ======================================= */
-.header { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 0.45rem; }
+.header { position: relative; display: flex; flex-direction: column; gap: 0.45rem; }
 .eyebrow
 {
     font-family: var(--font-mono);
@@ -99,7 +83,6 @@
 .list
 {
     position: relative;
-    z-index: 1;
     display: grid;
     gap: 0.4rem;
 }
@@ -113,7 +96,6 @@
 
     padding: 0.62rem 0.72rem;
     border-radius: var(--radius-md);
-    background: transparent;
 
     transition: background-color var(--duration-fast) var(--ease);
 }
@@ -134,7 +116,7 @@
     justify-content: center;
 
     border: 1px solid var(--border-subtle);
-    border-radius: 0.7rem;
+    border-radius: var(--radius-sm);
 
     background: color-mix(in oklab, var(--surface-muted) 92%, transparent);
     box-shadow: none;/*inset 0 1px 0 rgb(255 255 255 / 0.04);*/
@@ -152,8 +134,6 @@
 .closeButton
 {
     position: relative;
-    z-index: 1;
-
     width: 100%;
     min-height: 2.65rem;
 
@@ -204,13 +184,14 @@
     .label { font-size: 0.78rem; }
     .kbd { min-width: 1.75rem; min-height: 1.75rem; font-size: 0.6rem; }
 }
-@media (prefers-reduced-motion: reduce)
+
+
+/*@media (prefers-reduced-motion: reduce)
 {
     .overlay, .modal { animation: none; }
     .item, .closeButton { transition: background-color var(--duration-fast) linear, color var(--duration-fast) linear, opacity var(--duration-fast) linear; }
     .item:hover, .closeButton:active { transform: none; }
-}
-
+}*/
 /* === LIGHT THEME VARIANTS. === */
 /*
 :global(.light) .modal

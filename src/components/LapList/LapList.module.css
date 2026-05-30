@@ -103,7 +103,6 @@
     font-variant-numeric: tabular-nums lining-nums;
 
     transition: background-color var(--duration-fast) var(--ease),
-                border-color var(--duration-fast) var(--ease),
                 opacity var(--duration-fast) var(--ease);
 }
 .lap:hover { background: color-mix(in oklab, var(--surface-muted) 72%, transparent); }
@@ -119,7 +118,7 @@
     text-transform: uppercase;
     color: var(--text-muted);
 }
-.lapTime { text-align: right; font-weight: 600; color: var(--text); letter-spacing: 0.01em; color: var(--text); }
+.lapTime { text-align: right; font-weight: 600; color: var(--text); letter-spacing: 0.01em; }
 .lapDelta { min-width: 4.8rem; text-align: right; font-size: 0.6rem; letter-spacing: 0.01em; color: var(--text-muted); }
 
 /* ====================================
@@ -136,7 +135,7 @@
     width: 2px;
     border-radius: 999px;
     background: color-mix(in oklab, var(--accent) 78%, white);
-    opacity: 0.72;
+    opacity: 0.6;
 }
 .latest .lapTime { color: color-mix(in oklab, var(--text) 92%, white); }
 .fastest .lapDelta { color: color-mix(in oklab, #22c55e 72%, var(--text)); }
@@ -160,17 +159,16 @@
     line-height: 1;
 
     opacity: 0.32;
-    transform: scale(0.96);
 
     transition: var(--transition-interactive);
 }
-.lap:hover .delete, .delete:focus-visible { opacity: 0.82; transform: scale(1); }
+.lap:hover .delete, .delete:focus-visible { opacity: 0.82; }
 .delete:hover { background: color-mix(in oklab, #ef4444 10%, transparent); color: color-mix(in oklab, #ef4444 84%, var(--text)); }
 
-@media (prefers-reduced-motion: reduce)
+/*@media (prefers-reduced-motion: reduce)
 {
     .lap, .delete, .clearButton { transition: none; }
-}
+}*/
 
 /* ====================================
    LAPLIST MEDIA QUERY STYLES.

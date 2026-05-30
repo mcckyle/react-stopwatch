@@ -1,6 +1,6 @@
 //File name: LapList.jsx
 //Author: Kyle McColgan
-//Date: 15 May 2026
+//Date: 29 May 2026
 //Description: This file contains the laps component for the stopwatch React project.
 
 import React, { useState, useMemo } from "react";
@@ -25,9 +25,12 @@ const LapList = ({ laps, onClear, onDelete }) =>
       return lap - (laps[index + 1] ?? 0);
     });
   }, [laps]);
-
-  const fastestLap = Math.min(...lapDurations);
-  const slowestLap = Math.max(...lapDurations);
+  const { fastestLap, slowestLap } = useMemo(() => {
+    return {
+      fastestLap: Math.min(...lapDurations),
+      slowestLap: Math.max(...lapDurations)
+    };
+  }, [lapDurations]);
 
   const handleClearClick = () =>
   {
@@ -63,7 +66,7 @@ const LapList = ({ laps, onClear, onDelete }) =>
         </button>
       </header>
 
-      <div className={styles.rows}>
+      <ul className={styles.rows}>
         {laps.map((lap, index) =>
         {
           const lapNumber = laps.length - index;
@@ -91,7 +94,7 @@ const LapList = ({ laps, onClear, onDelete }) =>
           ].join(" ").trim();
 
           return (
-            <div key={lapNumber} className={rowClassName}>
+            <li key={lapNumber} className={rowClassName}>
               <span className={styles.lapLabel}>Lap {lapNumber}</span>
               <span className={styles.lapTime}>{fullTime}</span>
               <span className={styles.lapDelta}>{deltaTime}</span>
@@ -103,10 +106,10 @@ const LapList = ({ laps, onClear, onDelete }) =>
               >
                 ×
               </button>
-            </div>
+            </li>
           );
         })}
-      </div>
+      </ul>
     </section>
   );
 };

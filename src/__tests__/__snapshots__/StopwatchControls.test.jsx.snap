@@ -5,10 +5,38 @@ exports[`StopwatchControls Component enables Lap button when isRunning is true 1
   <nav
     aria-label="Stopwatch controls"
     class="controls"
-    role="group"
   >
     <button
       aria-pressed="false"
+      class="button primary"
+      type="button"
+    >
+      Start
+    </button>
+    <button
+      class="button secondary"
+      disabled=""
+      type="button"
+    >
+      Lap
+    </button>
+    <button
+      class="button tertiary"
+      type="button"
+    >
+      Reset
+    </button>
+  </nav>
+</DocumentFragment>
+`;
+
+exports[`StopwatchControls Component matches snapshot 1`] = `
+<DocumentFragment>
+  <nav
+    aria-label="Stopwatch controls"
+    class="controls"
+  >
+    <button
       class="button primary"
       type="button"
     >

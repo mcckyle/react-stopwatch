@@ -21,9 +21,6 @@
 ======================================= */
 .button
 {
-    position: relative;
-    isolation: isolate;
-
     min-width: 6.5rem;
     min-height: 2.65rem;
     padding: 0.7rem 1rem;
@@ -53,15 +50,11 @@
 }
 .button:hover:not(:disabled)
 {
-    background: linear-gradient(
-        180deg,
-        color-mix(in oklab, var(--surface-muted) 86%, white 6%),
-        color-mix(in oklab, var(--surface) 92%, transparent)
-    );
+    background: color-mix(in oklab, var(--surface-muted) 82%, transparent);
     border-color: var(--border-strong);
     box-shadow: var(--shadow-sm);
 }
-.button:active:not(:disabled) { transform: translateY(0); box-shadow: var(--shadow-xs); }
+.button:active:not(:disabled) { box-shadow: var(--shadow-xs); }
 .button:focus-visible {  box-shadow: var(--focus-ring), var(--shadow-sm); }
 .button:disabled { opacity: 0.46; cursor: not-allowed; transform: none; box-shadow: var(--shadow-xs); }
 
@@ -74,7 +67,7 @@
     background: color-mix(in oklab, var(--text) 94%, white 6%);
     color: var(--app-bg);
     border-color: transparent;
-    box-shadow: 0 8px 24px rgb(0 0 0 / 0.12);
+    box-shadow: var(--shadow-sm);
 }
 .primary:hover:not(:disabled) { background: color-mix(in oklab, var(--text) 88%, white 12%); }
 
@@ -95,11 +88,11 @@
 }
 .tertiary:hover:not(:disabled) { color: var(--text); }
 
-@media (prefers-reduced-motion: reduce)
+/*@media (prefers-reduced-motion: reduce)
 {
     .button { transition: background-color var(--duration-fast) linear, border-color var(--duration-fast) linear, color var(--duration-fast) linear, opacity var(--duration-fast) linear; }
     .button:hover:not(:disabled), .button:active:not(:disabled) { transform: none; }
-}
+}*/
 
 /* ====================================
    STOPWATCHCONTROLS MEDIA QUERY STYLES.

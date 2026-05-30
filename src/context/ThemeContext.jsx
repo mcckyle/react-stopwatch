@@ -1,6 +1,6 @@
 //File name: ThemeContext.jsx
 //Author: Kyle McColgan
-//Date: 21 May 2026
+//Date: 29 May 2026
 //Description: This file contains the theming context component for the stopwatch React project.
 
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
@@ -56,7 +56,7 @@ export const ThemeProvider = ({ children }) =>
   const hasManualThemeRef = useRef(initialState.hasManualTheme);
   const [theme, setTheme] = useState(initialState.theme);
 
-  const onToggleTheme = useCallback(() =>
+  const toggleTheme = useCallback(() =>
   {
     setTheme((currentTheme) =>
     {
@@ -91,24 +91,11 @@ export const ThemeProvider = ({ children }) =>
       setTheme(matches ? "dark" : "light");
     };
 
-    if (mediaQuery.addEventListener)
-    {
-      mediaQuery.addEventListener("change", onSystemThemeChange);
-    }
-    else
-    {
-      mediaQuery.addListener(onSystemThemeChange);
-    }
+    mediaQuery.addEventListener("change", onSystemThemeChange);
+
     return () =>
     {
-      if (mediaQuery.removeEventListener)
-      {
-        mediaQuery.removeEventListener("change", onSystemThemeChange);
-      }
-      else
-      {
-        mediaQuery.removeListener(onSystemThemeChange);
-      }
+      mediaQuery.removeEventListener("change", onSystemThemeChange);
     };
   }, []);
 
@@ -116,9 +103,9 @@ export const ThemeProvider = ({ children }) =>
   {
     return {
       theme,
-      onToggleTheme
+      toggleTheme
     };
-  }, [theme, onToggleTheme]);
+  }, [theme, toggleTheme]);
 
   return (
     <ThemeContext.Provider value={contextValue}>

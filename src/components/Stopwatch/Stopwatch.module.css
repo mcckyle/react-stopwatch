@@ -23,25 +23,10 @@
 ======================================= */
 .stage
 {
-    min-height: 0;
     display: grid;
     align-content: center;
     grid-template-rows: minmax(0, 1fr) auto;
     gap: clamp(2rem, 6vh, 4.5rem);
-}
-
-/* ====================================
-   STOPWATCH DISPLAY REGION STYLES.
-======================================= */
-.displayRegion
-{
-    width: min(100%, 42rem);
-    min-height: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-inline: auto;
 }
 
 /* ====================================

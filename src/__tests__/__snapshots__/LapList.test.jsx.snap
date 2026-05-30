@@ -23,10 +23,10 @@ exports[`LapList Component matches snapshot 1`] = `
         Clear
       </button>
     </header>
-    <div
+    <ul
       class="rows"
     >
-      <div
+      <li
         class="lap latest fastest"
       >
         <span
@@ -51,8 +51,8 @@ exports[`LapList Component matches snapshot 1`] = `
         >
           ×
         </button>
-      </div>
-      <div
+      </li>
+      <li
         class="lap   slowest"
       >
         <span
@@ -77,8 +77,8 @@ exports[`LapList Component matches snapshot 1`] = `
         >
           ×
         </button>
-      </div>
-      <div
+      </li>
+      <li
         class="lap   slowest"
       >
         <span
@@ -103,8 +103,8 @@ exports[`LapList Component matches snapshot 1`] = `
         >
           ×
         </button>
-      </div>
-    </div>
+      </li>
+    </ul>
   </section>
 </DocumentFragment>
 `;

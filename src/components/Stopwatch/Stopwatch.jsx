@@ -1,6 +1,6 @@
 //File name: Stopwatch.jsx
 //Author: Kyle McColgan
-//Date: 21 May 2026
+//Date: 29 May 2026
 //Description: This file contains the parent Stopwatch component for the stopwatch React project.
 
 import React, { useState, useEffect, useCallback } from "react";
@@ -18,7 +18,7 @@ import styles from "./Stopwatch.module.css";
 
 const LAP_STORAGE_KEY = "stopwatch-app-laps"; //Key for browser localStorage.
 
-const Stopwatch = ({ onToggleTheme }) => {
+const Stopwatch = ({ toggleTheme }) => {
   const { time, isRunning, toggle, reset, getCurrentTime } = useStopwatch();
   const { theme } = useTheme();
   const [laps, setLaps] = useState(loadStoredLaps);
@@ -74,7 +74,7 @@ const Stopwatch = ({ onToggleTheme }) => {
       <section className={styles.shell} aria-label="Precision Stopwatch">
         <StopwatchHeader
           theme={theme}
-          onToggleTheme={onToggleTheme}
+          toggleTheme={toggleTheme}
           laps={laps}
           hasLaps={hasLaps}
           onClearLaps={clearLaps}
@@ -82,13 +82,8 @@ const Stopwatch = ({ onToggleTheme }) => {
         />
 
         <main className={styles.stage}>
-          <section className={styles.displayRegion} aria-label="Elapsed time">
-            <StopwatchDisplay time={time} />
-          </section>
-          <section
-            className={styles.controlsRegion}
-            aria-label="Playback controls"
-          >
+          <StopwatchDisplay time={time} />
+          <section className={styles.controlsRegion}>
             <StopwatchControls
               isRunning={isRunning}
               toggle={toggle}

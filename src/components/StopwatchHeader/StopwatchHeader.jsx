@@ -1,6 +1,6 @@
 //File name: StopwatchHeader.jsx
 //Author: Kyle McColgan
-//Date: 21 May 2026
+//Date: 29 May 2026
 //Description: This file contains the header component for the stopwatch React project.
 
 import React, { useState, useCallback } from "react";
@@ -10,7 +10,7 @@ import styles from "./StopwatchHeader.module.css";
 
 const StopwatchHeader = ({
   theme,
-  onToggleTheme,
+  toggleTheme,
   laps,
   hasLaps,
   onClearLaps,
@@ -51,7 +51,7 @@ const StopwatchHeader = ({
         <button
           type="button"
           className={styles.toggle}
-          onClick={onToggleTheme}
+          onClick={toggleTheme}
           aria-pressed={isDark}
           aria-label={`Activate ${nextThemeLabel} theme`}
           title={`Activate ${nextThemeLabel} theme`}
@@ -65,17 +65,13 @@ const StopwatchHeader = ({
       </nav>
 
       {(hasLaps) && (isLapPanelOpen) && (
-        <div
-          id="lap-panel"
-          className={styles.panel}
-          aria-hidden={!isLapPanelOpen}
-        >
+        <aside id="lap-panel" className={styles.panel}>
           <LapList
             laps={laps}
             onClear={onClearLaps}
             onDelete={onDeleteLap}
           />
-        </div>
+        </aside>
       )}
     </header>
   );

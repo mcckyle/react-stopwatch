@@ -1,11 +1,11 @@
 //File name: useStopwatch.js
 //Author: Kyle McColgan
-//Date: 6 May 2026
+//Date: 29 May 2026
 //Description: This file contains the stopwatch functions for the stopwatch React project.
 
 import { useEffect, useRef, useState, useCallback } from "react";
 
-const DISPLAY_PRECISION_MS = 10;
+const CENTISECOND_MS = 10;
 
 export function useStopwatch()
 {
@@ -32,8 +32,8 @@ export function useStopwatch()
   //Display Update Pipeline.
   const updateElapsed = useCallback((nextElapsed) =>
   {
-    const nextBucket = Math.floor(nextElapsed / DISPLAY_PRECISION_MS);
     elapsedRef.current = nextElapsed;
+    const nextBucket = Math.floor(nextElapsed / CENTISECOND_MS);
 
     //Render only when visible precision changes.
     if (nextBucket !== lastRenderedBucketRef.current)
@@ -56,7 +56,8 @@ export function useStopwatch()
     //Animation Loop.
     const tick = () =>
     {
-      const nextElapsed = performance.now() - startTimeRef.current;
+      const now = performance.now();
+      const nextElapsed = now - startTimeRef.current;
 
       updateElapsed(nextElapsed);
       frameRef.current = requestAnimationFrame(tick);
