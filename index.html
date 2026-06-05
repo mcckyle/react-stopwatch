@@ -19,6 +19,7 @@
 
     <!-- Theme (Bias initial render toward dark-first experience). -->
     <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#0b1016" /> <!-- Theme-color fallback - some browsers ignore the media-specific versions below. -->
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f4f7fb" />
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0b1016" />
 
@@ -30,6 +31,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
     <!-- Fonts. -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" /> <!-- Helps reduce perceived loading delay on less quick connections. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -42,7 +45,7 @@
     <link rel="apple-touch-icon" href="/images/favicon.png" sizes="180x180" />
 
     <!-- Prevent White Flash Before CSS Loads. -->
-    <style>html { background: #0b1016; color-scheme: dark; } body { margin: 0; }</style>
+    <style>html { background: radial-gradient(circle at top, rgba(88, 166, 255, 0.12), transparent 50%), #0b1016; color-scheme: dark; } body { margin: 0; }</style>
   </head>
   <body>
     <noscript>

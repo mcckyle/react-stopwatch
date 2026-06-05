@@ -6,7 +6,7 @@
 .controls
 {
     width: 100%;
-    max-width: 26rem;
+    max-width: 30rem;
 
     display: flex;
     align-items: center;
@@ -22,7 +22,7 @@
 .button
 {
     min-width: 6.5rem;
-    min-height: 2.65rem;
+    min-height: 3rem;
     padding: 0.7rem 1rem;
 
     display: inline-flex;
@@ -33,7 +33,7 @@
     border-radius: 999px;
 
     font-family: var(--font-mono);
-    font-size: 0.58rem;
+    font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -87,12 +87,6 @@
     box-shadow: none;
 }
 .tertiary:hover:not(:disabled) { color: var(--text); }
-
-/*@media (prefers-reduced-motion: reduce)
-{
-    .button { transition: background-color var(--duration-fast) linear, border-color var(--duration-fast) linear, color var(--duration-fast) linear, opacity var(--duration-fast) linear; }
-    .button:hover:not(:disabled), .button:active:not(:disabled) { transform: none; }
-}*/
 
 /* ====================================
    STOPWATCHCONTROLS MEDIA QUERY STYLES.

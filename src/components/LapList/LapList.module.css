@@ -165,11 +165,6 @@
 .lap:hover .delete, .delete:focus-visible { opacity: 0.82; }
 .delete:hover { background: color-mix(in oklab, #ef4444 10%, transparent); color: color-mix(in oklab, #ef4444 84%, var(--text)); }
 
-/*@media (prefers-reduced-motion: reduce)
-{
-    .lap, .delete, .clearButton { transition: none; }
-}*/
-
 /* ====================================
    LAPLIST MEDIA QUERY STYLES.
 ======================================= */

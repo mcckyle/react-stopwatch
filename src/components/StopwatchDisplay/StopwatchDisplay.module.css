@@ -32,8 +32,9 @@
     text-align: center;
 
     font-family: var(--font-mono);
-    font-weight: 700;
+    font-weight: 600;
     color: var(--text);
+    text-shadow: 0 0 24px color-mix(in oklab, var(--accent) 10%, transparent);
 
     font-variant-numeric: tabular-nums lining-nums;
     letter-spacing: -0.07em;
@@ -52,7 +53,7 @@
     max-inline-size: 100%; /* Improve overflow behavior. */
     white-space: nowrap;
 
-    font-size: clamp(5rem, 24vw, 38rem); /* Digits as large as possible. */
+    font-size: clamp(4.5rem, 24vw, 38rem); /* Digits as large as possible. */
     line-height: 0.82;
 }
 
@@ -79,7 +80,7 @@
     letter-spacing: -0.05em;
 
     color: var(--text-muted);
-    opacity: 0.68;
+    opacity: 0.78;
 
     transform: translateY(-0.015em);
 }

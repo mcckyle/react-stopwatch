@@ -7,6 +7,7 @@
 html
 {
     font-size: 16px;
+    scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
 }
@@ -26,14 +27,19 @@ body
     line-height: 1.5;
 
     background: radial-gradient(
-        circle at top,
-        color-mix(in oklab, var(--accent) 10%, transparent),
-        transparent 55%
+        circle at 50% -10%,
+        color-mix(in oklab, var(--accent) 12%, transparent),
+        transparent 45%
     ),
     radial-gradient(
         circle at bottom,
         color-mix(in oklab, var(--app-bg-accent) 18%, transparent),
         transparent 60%
+    ),
+    radial-gradient(
+        circle at center,
+        color-mix(in oklab, var(--accent) 4%, transparent),
+        transparent 75%
     ), var(--app-bg);
     color: var(--text);
 
@@ -49,13 +55,13 @@ body
                 color var(--duration) var(--ease);
 }
 img, picture, svg, canvas, video { display: block; max-width: 100%; height: auto; }
-input, button, textarea, select, a { font: inherit; color: inherit; transition: box-shadow var(--duration-fast) var(--ease), background-color var(--duration-fast) var(--ease), border-color var(--duration-fast) var(--ease), color var(--duration-fast) var(--ease); }
+input, button, textarea, select, a { font: inherit; color: inherit; transition: color var(--duration-fast) var(--ease), background-color var(--duration-fast) var(--ease), border-color var(--duration-fast) var(--ease), box-shadow var(--duration-fast) var(--ease), opacity var(--duration-fast) var(--ease); }
 button { padding: 0; background: none; border: none; cursor: pointer; }
 textarea { resize: vertical; }
 a { color: inherit; text-decoration: none; }
 h1, h2, h3, h4, h5, h6, p { margin: 0; }
 h1, h2, h3, h4, h5, h6 { font-weight: 600; letter-spacing: -0.025em; }
-:focus-visible { outline: none; box-shadow: var(--focus-ring); z-index: 1; }
+:focus-visible { outline: none; box-shadow: var(--focus-ring); }
 ::selection { background: color-mix(in oklab, var(--text) 14%, transparent); }
 
 /* ====================================
@@ -80,11 +86,13 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; letter-spacing: -0.025em; }
 /* ====================================
    REDUCED MOTION MEDIA QUERY STYLES.
 ======================================= */
-/*@media (prefers-reduced-motion: reduce)
+@media (prefers-reduced-motion: reduce)
 {
     *, *::before, *::after
     {
-        animation: none !important;
-        transition: none !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
     }
-}*/
+}

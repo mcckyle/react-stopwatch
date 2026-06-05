@@ -1,6 +1,6 @@
 //File name: StopwatchHeader.jsx
 //Author: Kyle McColgan
-//Date: 29 May 2026
+//Date: 4 June 2026
 //Description: This file contains the header component for the stopwatch React project.
 
 import React, { useState, useCallback } from "react";
@@ -19,10 +19,10 @@ const StopwatchHeader = ({
   const isDark = theme === "dark";
   const nextThemeLabel = isDark ? "light" : "dark";
 
-  const [isLapPanelOpen, setIsLapPanelOpen] = useState(false);
+  const [isLapPanelOpen, setLapPanelOpen] = useState(false);
   const togglePanel = useCallback(() =>
   {
-    setIsLapPanelOpen((previous) => !previous);
+    setLapPanelOpen((previous) => !previous);
   }, []);
 
   return (
@@ -42,7 +42,7 @@ const StopwatchHeader = ({
             onClick={togglePanel}
             aria-expanded={isLapPanelOpen}
             aria-controls="lap-panel"
-            aria-haspopup="true"
+            aria-haspopup="dialog"
           >
             {isLapPanelOpen ? "Hide Laps" : "Show Laps"}
           </button>
@@ -53,8 +53,8 @@ const StopwatchHeader = ({
           className={styles.toggle}
           onClick={toggleTheme}
           aria-pressed={isDark}
-          aria-label={`Activate ${nextThemeLabel} theme`}
-          title={`Activate ${nextThemeLabel} theme`}
+          aria-label={`Switch to ${nextThemeLabel} mode`}
+          title={`Switch to ${nextThemeLabel} mode`}
         >
           {isDark ? (
             <Sun className={styles.toggleIcon} aria-hidden="true" />
