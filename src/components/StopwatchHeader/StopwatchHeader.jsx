@@ -1,9 +1,9 @@
 //File name: StopwatchHeader.jsx
 //Author: Kyle McColgan
-//Date: 4 June 2026
+//Date: 9 June 2026
 //Description: This file contains the header component for the stopwatch React project.
 
-import React, { useState, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Clock, Sun, Moon } from "lucide-react";
 import LapList from "../LapList/LapList.jsx";
 import styles from "./StopwatchHeader.module.css";
@@ -24,6 +24,13 @@ const StopwatchHeader = ({
   {
     setLapPanelOpen((previous) => !previous);
   }, []);
+
+  useEffect(() => {
+    if (!hasLaps)
+    {
+      setLapPanelOpen(false);
+    }
+  }, [hasLaps]);
 
   return (
     <header className={styles.header}>
@@ -65,7 +72,7 @@ const StopwatchHeader = ({
       </nav>
 
       {(hasLaps) && (isLapPanelOpen) && (
-        <aside id="lap-panel" className={styles.panel}>
+        <aside id="lap-panel" className={styles.panel} aria-label="Lap history">
           <LapList
             laps={laps}
             onClear={onClearLaps}

@@ -25,18 +25,20 @@
     --space-lg: 1.5rem;
     --space-xl: 2.25rem;
     --space-2xl: 3rem;
+    --content-width: 42rem;
 
     /* Shadows System. */
-    --shadow-xs: 0 1px 2px rgb(0 0 0 / 0.04);
     --shadow-sm: 0 8px 24px rgb(0 0 0 / 0.06);
     --shadow-md: 0 16px 48px rgb(0 0 0 / 0.10);
-    --shadow-lg: 0 24px 72px rgb(0 0 0 / 0.16);
 
     /* Effects. */
+    --success: #22c55e;
+    --danger: #ef4444;
     --backdrop-blur: saturate(180%) blur(20px);
+    --overlay-blur: saturate(120%) blur(12px);
     --focus-ring: 0 0 0 2px color-mix(in oklab, var(--accent) 55%, transparent),
                   0 0 0 6px color-mix(in oklab, var(--accent) 18%, transparent);
-    --surface-border: color-mix(in oklab, var(--text) 10%, transparent);
+    --surface-border: var(--border-subtle);
     --ambient-glow: 0 0 80px color-mix(in oklab, var(--accent) 14%, transparent);
     --ambient-glow-strong: 0 0 120px color-mix(in oklab, var(--accent) 24%, transparent);
     --header-action-size: 2.5rem;
@@ -67,11 +69,13 @@
 {
     --app-bg: #f5f7fb;
     --app-bg-accent: #edf2f8;
+    --accent-text: #0369a1;
 
     --surface: rgb(255 255 255 / 0.65);
     --surface-raised: rgb(255 255 255 / 0.82);
     --surface-overlay: rgb(255 255 255 / 0.92);
     --surface-muted: rgb(248 250 252 / 0.82);
+    --surface-hover: rgb(255 255 255 / 0.88);
 
     --text: #0f1722;
     --text-soft: color-mix(in oklab, var(--text) 78%, transparent);
@@ -89,11 +93,13 @@
 {
     --app-bg: #080b11;
     --app-bg-accent: #111821;
+    --accent-text: #7dd3fc;
 
     --surface: rgb(17 22 30 / 0.72);
     --surface-raised: rgb(21 27 37 / 0.84);
     --surface-overlay: rgb(25 33 45 / 0.92);
     --surface-muted: rgb(15 20 28 / 0.82);
+    --surface-hover: rgb(28 36 48 / 0.9);
 
     --text: #f5f7fb;
     --text-soft: color-mix(in oklab, var(--text) 82%, transparent);
@@ -105,13 +111,6 @@
 }
 
 /* ====================================
-   GLOBAL TRANSITIONS STYLES.
+   GLOBAL THEME STYLES.
 ======================================= */
-html, body
-{
-    background-color: var(--app-bg);
-    color: var(--text);
-
-    transition: background-color var(--duration-slow) var(--ease),
-                color var(--duration-slow) var(--ease);
-}
+html, body { background-color: var(--app-bg); color: var(--text); }

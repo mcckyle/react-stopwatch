@@ -16,9 +16,9 @@
              max(1rem, env(safe-area-inset-bottom))
              max(1rem, env(safe-area-inset-left));
 
-    background: rgb(0 0 0 / 0.42);/*color-mix(in oklab, var(--app-bg) 72%, transparent);*/
-    backdrop-filter: blur(10px) saturate(115%);
-    -webkit-backdrop-filter: blur(10px) saturate(115%);
+    background: rgb(0 0 0 / 0.42);
+    backdrop-filter: var(--overlay-blur);
+    -webkit-backdrop-filter: var(--overlay-blur);
 
     animation: overlay-in var(--duration-fast) var(--ease);
 }
@@ -29,7 +29,7 @@
 .modal
 {
     position: relative;
-    width: min(22rem, 100%);
+    width: min(24rem, 100%);
 
     display: flex;
     flex-direction: column;
@@ -39,9 +39,11 @@
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-lg);
 
-    background: color-mix(in oklab, var(--surface-overlay) 88%, transparent);
+    background: var(--surface-overlay);
     color: var(--text);
     box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(var(--backdrop-blur));
+    -webkit-backdrop-filter: blur(var(--backdrop-blur));
     overflow: hidden;
 
     animation: modal-in var(--duration) var(--ease);
@@ -63,8 +65,8 @@
 .title
 {
     max-width: 18ch;
-    font-size: 1.05rem;
-    font-weight: 600;
+    font-size: 1.125rem;
+    font-weight: 650;
     line-height: 1.2;
     letter-spacing: -0.035em;
     color: var(--text);
@@ -97,7 +99,7 @@
     padding: 0.62rem 0.72rem;
     border-radius: var(--radius-md);
 
-    transition: background-color var(--duration-fast) var(--ease);
+    transition: var(--transition-interactive);
 }
 .item:hover { background: color-mix(in oklab, var(--surface-muted) 74%, transparent); }
 .label { font-size: 0.82rem; font-weight: 500; letter-spacing: -0.01em; color: var(--text); }
@@ -118,8 +120,8 @@
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-sm);
 
-    background: color-mix(in oklab, var(--surface-muted) 92%, transparent);
-    box-shadow: none;/*inset 0 1px 0 rgb(255 255 255 / 0.04);*/
+    background: var(--surface-muted);
+    border-color: var(--border-subtle);
 
     font-family: var(--font-mono);
     font-size: 0.64rem;
@@ -156,7 +158,6 @@
     transition: var(--transition-interactive);
 }
 .closeButton:hover { border-color: var(--border-strong); color: var(--text); }
-.closeButton:active { transform: translateY(1px); }
 .closeButton:focus-visible { box-shadow: var(--focus-ring), var(--shadow-sm); }
 
 /* ====================================
@@ -170,7 +171,7 @@
 
 @keyframes modal-in
 {
-    from { opacity: 0; transform: translateY(6px) scale(0.985); }
+    from { opacity: 0; transform: translateY(4px) scale(0.99); }
     to { opacity: 1; transform: translateY(0) scale(1); }
 }
 

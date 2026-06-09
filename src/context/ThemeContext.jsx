@@ -1,6 +1,6 @@
 //File name: ThemeContext.jsx
 //Author: Kyle McColgan
-//Date: 4 June 2026
+//Date: 9 June 2026
 //Description: This file contains the theming context component for the stopwatch React project.
 
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, useLayoutEffect } from "react";
@@ -52,7 +52,7 @@ function syncThemeToDocument(theme)
 
 export const ThemeProvider = ({ children }) =>
 {
-  const initialState = getInitialTheme();
+  const initialState = useMemo(() => getInitialTheme(), []);
   const hasManualThemeRef = useRef(initialState.hasManualTheme);
   const [theme, setTheme] = useState(initialState.theme);
 
@@ -66,7 +66,14 @@ export const ThemeProvider = ({ children }) =>
           : "dark";
 
       hasManualThemeRef.current = true;
-      localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+      try
+      {
+        localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+      }
+      catch
+      {
+        //Ignore storage failures.
+      }
       return nextTheme;
     });
   }, []);
@@ -91,11 +98,22 @@ export const ThemeProvider = ({ children }) =>
       setTheme(matches ? "dark" : "light");
     };
 
-    mediaQuery.addEventListener("change", onSystemThemeChange);
+    //Support older browsers gracefully.
+    if (mediaQuery.addEventListener)
+    {
+      mediaQuery.addEventListener("change", onSystemThemeChange);
+
+      return () =>
+      {
+        mediaQuery.removeEventListener("change", onSystemThemeChange);
+      };
+    }
+
+    mediaQuery.addListener(onSystemThemeChange);
 
     return () =>
     {
-      mediaQuery.removeEventListener("change", onSystemThemeChange);
+      mediaQuery.removeListener(onSystemThemeChange);
     };
   }, []);
 

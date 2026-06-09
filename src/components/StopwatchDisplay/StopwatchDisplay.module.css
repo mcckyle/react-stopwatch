@@ -34,7 +34,7 @@
     font-family: var(--font-mono);
     font-weight: 600;
     color: var(--text);
-    text-shadow: 0 0 24px color-mix(in oklab, var(--accent) 10%, transparent);
+    text-shadow: 0 0 12px color-mix(in oklab, var(--accent) 8%, transparent);
 
     font-variant-numeric: tabular-nums lining-nums;
     letter-spacing: -0.07em;
@@ -64,6 +64,7 @@
 .group { gap: 0.01em; }
 .digit
 {
+    flex: 0 0 1ch;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -84,7 +85,7 @@
 
     transform: translateY(-0.015em);
 }
-.centiDigit { opacity: 0.88; }
+/*.centiDigit { opacity: 0.88; }*/
 
 /* ====================================
    STOPWATCHDISPLAY SEPARATORS ( : and . ) STYLES.

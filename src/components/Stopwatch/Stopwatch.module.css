@@ -6,8 +6,7 @@
 .shell
 {
     flex: 1; /* Vertically centers the Stopwatch. */
-    width: min(100%, 64rem);
-    min-height: 100%;
+    width: min(100%, var(--content-width));
 
     display: grid;
     align-content: center;
@@ -23,9 +22,9 @@
 ======================================= */
 .stage
 {
-    display: grid;
-    align-content: center;
-    grid-template-rows: minmax(0, 1fr) auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     gap: clamp(1.75rem, 5vh, 4rem);
     min-height: 0;
 }

@@ -22,7 +22,7 @@
 .button
 {
     min-width: 6.5rem;
-    min-height: 3rem;
+    min-height: 3.5rem;
     padding: 0.7rem 1rem;
 
     display: inline-flex;
@@ -44,15 +44,12 @@
     box-shadow: none;
     touch-action: manipulation;
 
-    transition: background-color var(--duration-fast) var(--ease),
-                border-color var(--duration-fast) var(--ease),
-                color var(--duration-fast) var(--ease);
+    transition: var(--transition-interactive);
 }
 .button:hover:not(:disabled)
 {
-    background: color-mix(in oklab, var(--surface-muted) 82%, transparent);
+    background: var(--surface-hover);
     border-color: var(--border-strong);
-    box-shadow: var(--shadow-sm);
 }
 .button:active:not(:disabled) { box-shadow: var(--shadow-xs); }
 .button:focus-visible {  box-shadow: var(--focus-ring), var(--shadow-sm); }

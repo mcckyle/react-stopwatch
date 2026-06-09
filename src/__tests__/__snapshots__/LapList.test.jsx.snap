@@ -53,7 +53,7 @@ exports[`LapList Component matches snapshot 1`] = `
         </button>
       </li>
       <li
-        class="lap   slowest"
+        class="lap slowest"
       >
         <span
           class="lapLabel"
@@ -79,7 +79,7 @@ exports[`LapList Component matches snapshot 1`] = `
         </button>
       </li>
       <li
-        class="lap   slowest"
+        class="lap slowest"
       >
         <span
           class="lapLabel"
