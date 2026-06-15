@@ -8,11 +8,10 @@
     width: 100%;
     min-height: 100dvh; /* Use Modern Viewport with fallback handled globally. */
 
-    display: flex;
-    justify-content: center;
+    display: grid;
+    place-items: center;
 
-    isolation: isolate;
-    overflow: clip;
+    overflow: hidden;
     padding: max(1rem, env(safe-area-inset-top))
              max(1rem, env(safe-area-inset-right))
              max(1rem, env(safe-area-inset-bottom))

@@ -5,14 +5,12 @@
 ============================================ */
 .display
 {
-    width: min(100%, 42rem);
-    margin-inline: auto;
+    width: 100%;
+    min-width: 0;
 
     display: flex;
-    align-items: center;
     justify-content: center;
-
-    padding: clamp(0.5rem, 2vw, 1.5rem);
+    overflow: visible;
     user-select: none;
 }
 
@@ -45,16 +43,15 @@
 ======================================= */
 .row
 {
-    display: inline-flex;
+    display: flex;
     align-items: baseline;
     justify-content: center;
 
-    max-width: 100%;
-    max-inline-size: 100%; /* Improve overflow behavior. */
+    width: max-content;
     white-space: nowrap;
 
-    font-size: clamp(4.5rem, 24vw, 38rem); /* Digits as large as possible. */
-    line-height: 0.82;
+    font-size: clamp(4rem, 24vw, 38rem); /* Digits as large as possible. */
+    line-height: 0.85;
 }
 
 /* ====================================
@@ -70,23 +67,7 @@
     justify-content: center;
     width: 1ch;
     line-height: 1;
-/*  transform: translateZ(0); Unnecessary GPU Hacks, handeled by modern browsers.
-    backface-visibility: hidden;*/
 }
-.centi
-{
-    margin-left: 0.015em;
-    font-size: 0.16em;
-    font-weight: 600;
-    letter-spacing: -0.05em;
-
-    color: var(--text-muted);
-    opacity: 0.78;
-
-    transform: translateY(-0.015em);
-}
-/*.centiDigit { opacity: 0.88; }*/
-
 /* ====================================
    STOPWATCHDISPLAY SEPARATORS ( : and . ) STYLES.
 ======================================= */
@@ -106,6 +87,19 @@
     pointer-events: none;
 }
 
+.centi
+{
+    margin-left: 0.015em;
+    font-size: 0.16em;
+    font-weight: 600;
+    letter-spacing: -0.05em;
+
+    color: var(--text-muted);
+    opacity: 0.78;
+
+    transform: translateY(-0.015em);
+}
+
 /* ====================================
    STOPWATCHDISPLAY SCREEN READERS ONLY STYLES.
 ======================================= */
@@ -114,13 +108,9 @@
     position: absolute;
     width: 1px;
     height: 1px;
-    margin: -1px;
-    padding: 0;
-
     overflow: hidden;
     clip: rect(0 0 0 0);
     white-space: nowrap;
-    border: 0;
 }
 
 /* ====================================

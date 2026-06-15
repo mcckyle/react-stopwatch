@@ -5,16 +5,16 @@
 ======================================= */
 .shell
 {
-    flex: 1; /* Vertically centers the Stopwatch. */
-    width: min(100%, var(--content-width));
+    width: 100%;
+    min-height: 100%;
+    min-width: 0;
 
     display: grid;
-    align-content: center;
-    grid-template-rows: auto minmax(0, 1fr);
-    gap: clamp(var(--space-lg), 5vw, var(--space-2xl));
+    grid-template-rows: auto 1fr;
+    gap: clamp(var(--space-lg), 5vh, var(--space-2xl));
 
-    margin-inline: auto;
-    padding: clamp(var(--space-md), 3vw, var(--space-2xl));
+    margin: 0;
+    padding: var(--space-md);
 }
 
 /* ====================================
@@ -22,26 +22,18 @@
 ======================================= */
 .stage
 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: clamp(1.75rem, 5vh, 4rem);
-    min-height: 0;
-}
-
-/* ====================================
-   STOPWATCH CONTROLS REGION STYLES.
-======================================= */
-.controlsRegion
-{
-    display: flex;
-    justify-content: center;
+    width: 100%;
+    min-width: 0;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: clamp(2rem, 8vh, 5rem);
 }
 
 /* ====================================
    STOPWATCH MEDIA QUERY STYLES.
 ======================================= */
-@media (max-width: 640px)
+/*@media (max-width: 640px)
 {
     .shell { gap: var(--space-lg); }
     .stage { gap: clamp(1.5rem, 5vh, 3rem); }
@@ -49,4 +41,4 @@
 @media (max-width: 480px)
 {
     .shell { padding: var(--space-md); }
-}
+}*/

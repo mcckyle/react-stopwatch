@@ -1,6 +1,6 @@
 //File name: Stopwatch.jsx
 //Author: Kyle McColgan
-//Date: 4 June 2026
+//Date: 15 June 2026
 //Description: This file contains the parent Stopwatch component for the stopwatch React project.
 
 import React, { useState, useEffect, useCallback } from "react";
@@ -25,12 +25,9 @@ const Stopwatch = ({ toggleTheme }) => {
   const hasLaps = laps.length > 0;
 
   const [showHelp, setShowHelp] = useState(false);
-  const openHelp = useCallback(() => setShowHelp(true), []);
-  const closeHelp = useCallback(() => setShowHelp(false), []);
   const recordLap = useCallback(() =>
   {
-    const currentTime = getCurrentTime();
-    setLaps((previousLaps) => [currentTime, ...previousLaps]);
+    setLaps((previous) => [getCurrentTime(), ...previous]);
   }, [getCurrentTime]);
 
   const clearLaps = useCallback(() =>
@@ -40,17 +37,14 @@ const Stopwatch = ({ toggleTheme }) => {
     {
       localStorage.removeItem(LAP_STORAGE_KEY);
     }
-    catch
-    {
-      console.warn("Unable to clear laps!");
-    }
+    catch {}
   }, []);
 
   const deleteLap = useCallback((index) =>
   {
-    setLaps((previousLaps) =>
+    setLaps(previous =>
     {
-      return previousLaps.filter(
+      return previous.filter(
         (_, lapIndex) => lapIndex !== index
       );
     });
@@ -66,7 +60,7 @@ const Stopwatch = ({ toggleTheme }) => {
     onToggle: toggle,
     onReset: reset,
     onLap: recordLap,
-    onOpenHelp: openHelp
+    onOpenHelp: () => setShowHelp(true)
   });
 
   return (
@@ -81,20 +75,18 @@ const Stopwatch = ({ toggleTheme }) => {
           onDeleteLap={deleteLap}
         />
 
-        <main className={styles.stage}>
+        <div className={styles.stage}>
           <StopwatchDisplay time={time} />
-          <section className={styles.controlsRegion}>
             <StopwatchControls
               isRunning={isRunning}
               toggle={toggle}
               reset={reset}
               recordLap={recordLap}
             />
-          </section>
-        </main>
+        </div>
       </section>
 
-      {showHelp && <HelpModal onClose={closeHelp} />}
+      {showHelp && <HelpModal onClose={() => setShowHelp(false)} />}
     </>
   );
 };
