@@ -1,104 +1,104 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`LapList Component matches snapshot 1`] = `
+exports[`LapList Component > matches snapshot 1`] = `
 <DocumentFragment>
   <section
     aria-label="Lap history"
     aria-live="polite"
-    class="lapList"
+    class="_lapList_2af36b"
     role="log"
   >
     <header
-      class="header"
+      class="_header_2af36b"
     >
       <span
-        class="title"
+        class="_title_2af36b"
       >
         History
       </span>
       <button
-        class="clearButton "
+        class="_clearButton_2af36b "
         type="button"
       >
         Clear
       </button>
     </header>
     <ul
-      class="rows"
+      class="_rows_2af36b"
     >
       <li
-        class="lap latest fastest"
+        class="_lap_2af36b _latest_2af36b _fastest_2af36b"
       >
         <span
-          class="lapLabel"
+          class="_lapLabel_2af36b"
         >
           Lap 3
         </span>
         <span
-          class="lapTime"
+          class="_lapTime_2af36b"
         >
           01:23.45
         </span>
         <span
-          class="lapDelta"
+          class="_lapDelta_2af36b"
         >
           +01:23.45
         </span>
         <button
           aria-label="Delete lap 3"
-          class="delete"
+          class="_delete_2af36b"
           type="button"
         >
           ×
         </button>
       </li>
       <li
-        class="lap slowest"
+        class="_lap_2af36b _slowest_2af36b"
       >
         <span
-          class="lapLabel"
+          class="_lapLabel_2af36b"
         >
           Lap 2
         </span>
         <span
-          class="lapTime"
+          class="_lapTime_2af36b"
         >
           01:23.45
         </span>
         <span
-          class="lapDelta"
+          class="_lapDelta_2af36b"
         >
           +01:23.45
         </span>
         <button
           aria-label="Delete lap 2"
-          class="delete"
+          class="_delete_2af36b"
           type="button"
         >
           ×
         </button>
       </li>
       <li
-        class="lap slowest"
+        class="_lap_2af36b _slowest_2af36b"
       >
         <span
-          class="lapLabel"
+          class="_lapLabel_2af36b"
         >
           Lap 1
         </span>
         <span
-          class="lapTime"
+          class="_lapTime_2af36b"
         >
           01:23.45
         </span>
         <span
-          class="lapDelta"
+          class="_lapDelta_2af36b"
         >
           +01:23.45
         </span>
         <button
           aria-label="Delete lap 1"
-          class="delete"
+          class="_delete_2af36b"
           type="button"
         >
           ×

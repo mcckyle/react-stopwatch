@@ -113,10 +113,8 @@ react-stopwatch/
 ├── .gitignore            # Specifies intentionally untracked files and folders to ignore.
 ├── LICENSE               # Open source license for the project.
 ├── README.md             # Project overview, instructions, and documentation.
-├── babel.config.cjs      # Babel config for Jest.
 ├── eslint.config.js      # ESLint configuration.
 ├── index.html            # HTML entry point.
-├── jest.config.js        # Jest testing configuration.
 ├── setUpTests.js         # Global setup for Jest tests.
 ├── vite.config.js        # Vite config for build and development.
 ├── package.json          # Project metadata, dependencies, and scripts.

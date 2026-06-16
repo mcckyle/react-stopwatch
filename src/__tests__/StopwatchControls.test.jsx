@@ -1,24 +1,25 @@
 //File name: StopwatchControls.test.jsx
 //Author: Kyle McColgan
-//Date: 29 May 2026
+//Date: 16 June 2026
 //Description: This file contains the unit test suite for the StopwatchControls component.
 
 import React from "react";
+import { beforeAll, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import StopwatchControls from "../components/StopwatchControls/StopwatchControls.jsx";
 
 //Mock Mantine and Framer Motion to simplify the animation behavior for testing purposes.
-jest.mock("@mantine/core", () => ({
+vi.mock("@mantine/core", () => ({
     Button: ({ children, ...props }) => <button {...props}>{children}</button>,
 }));
 
 describe("StopwatchControls Component", () => {
-    const mockToggle = jest.fn();
-    const mockReset = jest.fn();
-    const mockRecordLap = jest.fn();
+    const mockToggle = vi.fn();
+    const mockReset = vi.fn();
+    const mockRecordLap = vi.fn();
 
     beforeEach(() => {
-        jest.clearAllMocks();
+        vi.clearAllMocks();
     });
 
     //Test #1: Rendering - Renders all the control buttons.
@@ -160,19 +161,4 @@ describe("StopwatchControls Component", () => {
         const { asFragment } = render(<StopwatchControls/>);
         expect(asFragment()).toMatchSnapshot();
     });
-
-    //Test #10: Renders controls as an accessible control group.
-//     test("renders controls inside an accessible group with a label", () => {
-//         render(
-//             <StopwatchControls
-//               isRunning={false}
-//               toggle={mockToggle}
-//               reset={mockReset}
-//               recordLap={mockRecordLap}
-//             />
-//         );
-//
-//         const group = screen.getByRole("group", { name: /stopwatch controls/i });
-//         expect(group).toBeInTheDocument();
-//     });
 });

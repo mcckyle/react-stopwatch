@@ -1,21 +1,22 @@
 //File name: LapList.test.jsx
 //Author: Kyle McColgan
-//Date: 3 March 2026
+//Date: 16 June 2026
 //Description: This file contains the unit test suite for the LapList component.
 
 import React from "react";
+import { beforeAll, vi } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import LapList from "../components/LapList/LapList.jsx";
 import { formatTime } from "../utils/formatTime";
 
 //Mock formatTime for predictable output...
-jest.mock("../utils/formatTime", () => ({
-    formatTime: jest.fn(),
+vi.mock("../utils/formatTime", () => ({
+    formatTime: vi.fn(),
 }));
 
 describe("LapList Component", () => {
     beforeEach(() => {
-        jest.clearAllMocks();
+        vi.clearAllMocks();
         formatTime.mockImplementation((time, includeCenti) => ({
             hours: "00",
             minutes: "01",

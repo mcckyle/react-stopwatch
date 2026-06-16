@@ -1,16 +1,17 @@
 //File name: StopwatchDisplay.test.jsx
 //Author: Kyle McColgan
-//Date: 22 May 2026
+//Date: 16 June 2026
 //Description: This file contains the unit test suite for the StopwatchDisplay component.
 
 import React from "react";
 import { render, screen } from "../test/test-utils";
+import { beforeAll, vi } from "vitest";
 import StopwatchDisplay from "../components/StopwatchDisplay/StopwatchDisplay.jsx";
 import * as formatTimeModule from "../utils/formatTime";
 
 describe("StopwatchDisplay Component", () => {
     beforeEach(() => {
-        jest.restoreAllMocks();
+        vi.restoreAllMocks();
     });
 
     //Test #1: Sanity - ensures the component renders without crashing adn includes role="timer".
@@ -21,7 +22,7 @@ describe("StopwatchDisplay Component", () => {
 
     //Test #2: Logic correctness - confirms formatTime() is called with the correct prop.
     test("2. calls formatTime with the correct time prop", () => {
-        const spy = jest.spyOn(formatTimeModule, "formatTime").mockReturnValue({
+        const spy = vi.spyOn(formatTimeModule, "formatTime").mockReturnValue({
             hours: "00",
             minutes: "00",
             seconds: "00",
@@ -34,7 +35,7 @@ describe("StopwatchDisplay Component", () => {
 
     //Test #3: Structure - verifies total digit count = 6 (hhmmss).
     test("3. renders the correct number of digits, including centiseconds", () => {
-        jest.spyOn(formatTimeModule, "formatTime").mockReturnValue({
+        vi.spyOn(formatTimeModule, "formatTime").mockReturnValue({
             hours: "12",
             minutes: "34",
             seconds: "56",
@@ -48,7 +49,7 @@ describe("StopwatchDisplay Component", () => {
 
     //Test #4: Content integrity - checks the exact sequence of rendered digits.
     test("4. displays the correct sequence of digits", () => {
-        const spy = jest.spyOn(formatTimeModule, "formatTime").mockReturnValue({
+        const spy = vi.spyOn(formatTimeModule, "formatTime").mockReturnValue({
             hours: "09",
             minutes: "45",
             seconds: "33",
@@ -75,7 +76,7 @@ describe("StopwatchDisplay Component", () => {
 
     //Test #7: Type safety - ensures the digits rendered are numeric values.
     test("7. each AnimatedDigit receives a numeric value", () => {
-        jest.spyOn(formatTimeModule, "formatTime").mockReturnValue({
+        vi.spyOn(formatTimeModule, "formatTime").mockReturnValue({
             hours: "01",
             minutes: "02",
             seconds: "03",
@@ -91,7 +92,7 @@ describe("StopwatchDisplay Component", () => {
 
     //Test #8: Leading zero handling - confirms consistent digit count event with "00" and "09".
     test("8. maintains consistent digit count with leading zeros", () => {
-        const spy = jest.spyOn(formatTimeModule, "formatTime").mockReturnValue({
+        const spy = vi.spyOn(formatTimeModule, "formatTime").mockReturnValue({
             hours: "00",
             minutes: "09",
             seconds: "05",

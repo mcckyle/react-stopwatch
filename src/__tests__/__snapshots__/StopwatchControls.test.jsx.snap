@@ -1,27 +1,27 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`StopwatchControls Component enables Lap button when isRunning is true 1`] = `
+exports[`StopwatchControls Component > enables Lap button when isRunning is true 1`] = `
 <DocumentFragment>
   <nav
     aria-label="Stopwatch controls"
-    class="controls"
+    class="_controls_78cbd2"
   >
     <button
       aria-pressed="false"
-      class="button primary"
+      class="_button_78cbd2 _primary_78cbd2"
       type="button"
     >
       Start
     </button>
     <button
-      class="button secondary"
+      class="_button_78cbd2 _secondary_78cbd2"
       disabled=""
       type="button"
     >
       Lap
     </button>
     <button
-      class="button tertiary"
+      class="_button_78cbd2 _tertiary_78cbd2"
       type="button"
     >
       Reset
@@ -30,27 +30,27 @@ exports[`StopwatchControls Component enables Lap button when isRunning is true 1
 </DocumentFragment>
 `;
 
-exports[`StopwatchControls Component matches snapshot 1`] = `
+exports[`StopwatchControls Component > matches snapshot 1`] = `
 <DocumentFragment>
   <nav
     aria-label="Stopwatch controls"
-    class="controls"
+    class="_controls_78cbd2"
   >
     <button
-      class="button primary"
+      class="_button_78cbd2 _primary_78cbd2"
       type="button"
     >
       Start
     </button>
     <button
-      class="button secondary"
+      class="_button_78cbd2 _secondary_78cbd2"
       disabled=""
       type="button"
     >
       Lap
     </button>
     <button
-      class="button tertiary"
+      class="_button_78cbd2 _tertiary_78cbd2"
       type="button"
     >
       Reset

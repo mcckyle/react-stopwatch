@@ -1,23 +1,24 @@
 //File name: Stopwatch.test.jsx
 //Author: Kyle McColgan
-//Date: 22 May 2026
+//Date: 16 June 2026
 //Description: This file contains the unit test suite for the Stopwatch component.
 
 import React from "react";
 import { render, screen } from "../test/test-utils";
 import { fireEvent, act } from "@testing-library/react";
+import { beforeAll, vi } from "vitest";
 import Stopwatch from "../components/Stopwatch/Stopwatch.jsx";
 import * as useStopWatchModule from "../hooks/useStopwatch";
 import * as useKeyboardShortcutsModule from "../hooks/useKeyboardShortcuts";
 
 // Mock hooks
-jest.mock("../hooks/useStopwatch");
-jest.mock("../hooks/useKeyboardShortcuts");
+vi.mock("../hooks/useStopwatch");
+vi.mock("../hooks/useKeyboardShortcuts");
 
 describe("Stopwatch Component", () => {
-    const mockToggle = jest.fn();
-    const mockReset = jest.fn();
-    const mockGetCurrentTime = jest.fn(() => 1);
+    const mockToggle = vi.fn();
+    const mockReset = vi.fn();
+    const mockGetCurrentTime = vi.fn(() => 1);
 
     beforeEach(() => {
         useStopWatchModule.useStopwatch.mockReturnValue({
@@ -29,7 +30,7 @@ describe("Stopwatch Component", () => {
         });
 
         useKeyboardShortcutsModule.useKeyboardShortcuts.mockImplementation(() => {});
-        jest.clearAllMocks();
+        vi.clearAllMocks();
     });
 
     //Test #1
@@ -65,9 +66,9 @@ describe("Stopwatch Component", () => {
         useStopWatchModule.useStopwatch.mockReturnValue({
             time: 1000, //One second.
             isRunning: true, //Enable the Lap button.
-            toggle: jest.fn(),
-            reset: jest.fn(),
-            getCurrentTime: jest.fn(() => 1000),
+            toggle: vi.fn(),
+            reset: vi.fn(),
+            getCurrentTime: vi.fn(() => 1000),
         });
 
         render(<Stopwatch />);
@@ -78,7 +79,6 @@ describe("Stopwatch Component", () => {
         fireEvent.click(lapPanel);
 
         expect(screen.getByText(/lap 1/i)).toBeInTheDocument();
-//         expect(screen.getByText(/00 minutes 01 seconds/i)).toBeInTheDocument();
     });
 
     //Test #6

@@ -1,10 +1,11 @@
 //File name: useStopwatch.test.jsx
 //Author: Kyle McColgan
-//Date: 22 April 2026
+//Date: 16 June 2026
 //Description: This file contains unit tests for the useStopwatch hook.
 
 import React from "react";
 import { renderHook, act } from "@testing-library/react";
+import { beforeAll, vi } from "vitest";
 import { useStopwatch } from "../hooks/useStopwatch";
 
 describe("useStopwatch", () => {
@@ -12,23 +13,23 @@ describe("useStopwatch", () => {
     let rafCallbacks;
     let rafId;
 
-    jest.spyOn(performance, "now").mockImplementation(() => currentTime);
+    vi.spyOn(performance, "now").mockImplementation(() => currentTime);
 
     beforeEach(() => {
         currentTime = 0;
         rafCallbacks = new Map();
         rafId = 0;
 
-        jest.spyOn(performance, "now").mockImplementation(() => currentTime);
+        vi.spyOn(performance, "now").mockImplementation(() => currentTime);
 
-        global.requestAnimationFrame = jest.fn((callback) =>
+        global.requestAnimationFrame = vi.fn((callback) =>
         {
             const id = ++rafId;
             rafCallbacks.set(id, callback);
             return id;
         });
 
-        global.cancelAnimationFrame = jest.fn((id) =>
+        global.cancelAnimationFrame = vi.fn((id) =>
         {
             rafCallbacks.delete(id);
         });
@@ -36,7 +37,7 @@ describe("useStopwatch", () => {
 
     afterEach(() =>
     {
-        jest.restoreAllMocks();
+        vi.restoreAllMocks();
         rafCallbacks.clear();
     });
 
