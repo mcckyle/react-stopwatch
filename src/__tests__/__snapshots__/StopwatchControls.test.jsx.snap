@@ -2,9 +2,10 @@
 
 exports[`StopwatchControls Component > enables Lap button when isRunning is true 1`] = `
 <DocumentFragment>
-  <nav
+  <div
     aria-label="Stopwatch controls"
     class="_controls_78cbd2"
+    role="group"
   >
     <button
       aria-pressed="false"
@@ -26,15 +27,16 @@ exports[`StopwatchControls Component > enables Lap button when isRunning is true
     >
       Reset
     </button>
-  </nav>
+  </div>
 </DocumentFragment>
 `;
 
 exports[`StopwatchControls Component > matches snapshot 1`] = `
 <DocumentFragment>
-  <nav
+  <div
     aria-label="Stopwatch controls"
     class="_controls_78cbd2"
+    role="group"
   >
     <button
       class="_button_78cbd2 _primary_78cbd2"
@@ -55,6 +57,6 @@ exports[`StopwatchControls Component > matches snapshot 1`] = `
     >
       Reset
     </button>
-  </nav>
+  </div>
 </DocumentFragment>
 `;

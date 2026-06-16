@@ -14,12 +14,14 @@
     --accent-strong: #38bdf8;
 
     /* Layout. */
-    --content-width: 42rem;
+    --content-width: 100%;
 
-    /* Radius. */
+    /* Radius / Shape. */
     --radius-sm: 0.75rem;
     --radius-md: 1rem;
     --radius-lg: 1.5rem;
+    --radius-control: 999px;
+    --radius-panel: 1.25rem;
 
     /* Spacing. */
     --space-xs: 0.375rem;
@@ -27,10 +29,13 @@
     --space-md: 1rem;
     --space-lg: 1.5rem;
     --space-xl: 2.25rem;
+    --space-display: clamp(2rem, 8vw, 8rem);
 
     /* Shadows. */
     --shadow-sm: 0 8px 24px rgb(0 0 0 / 0.06);
     --shadow-md: 0 20px 60px rgb(0 0 0 / 0.12);
+    --shadow-soft: 0 40px 120px rgb(0 0 0 / 0.22);
+    --shadow-glow: 0 0 120px color-mix(in oklab, var(--accent) 22%, transparent);
 
     /* Effects. */
     --success: #22c55e;
@@ -57,7 +62,7 @@
 :root[data-theme="light"]
 {
     --app-bg: #f5f7fb;
-
+    --display-glow: color-mix(in oklab, var(--accent) 18%, transparent);
     --surface: rgb(255 255 255 / 0.72);
     --surface-raised: rgb(255 255 255 / 0.88);
     --surface-overlay: rgb(255 255 255 / 0.92);
@@ -78,7 +83,8 @@
 ======================================= */
 :root[data-theme="dark"]
 {
-    --app-bg: #080b11;
+    --app-bg: #05070a;
+    --display-glow: color-mix(in oklab, var(--accent) 26%, transparent);
     --app-bg-accent: #111821;
     --accent-text: #7dd3fc;
 

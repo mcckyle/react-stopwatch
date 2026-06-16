@@ -2,6 +2,11 @@
 
 A simple, modern stopwatch app built with **React**, **Vite**, and **Mantine UI**. Designed for focus and precision.
 
+![Screenshot](./public/images/Screenshot_20260616_185315.png)
+*A glimpse of the stopwatch, captured with a screenshot.*
+
+*🌐 [Visit the live site](https://mcckyle.github.io/react-stopwatch/)*
+
 ---
 
 ## Features
@@ -74,10 +79,6 @@ react-stopwatch/
 │   │   │   ├── LapList.jsx
 │   │   │   └── LapList.module.css
 │   │   │
-│   │   ├── AnimatedDigit/
-│   │   │   ├── AnimatedDigit.jsx
-│   │   │   └── AnimatedDigit.module.css
-│   │   │
 │   │   ├── HelpModal/
 │   │   │   ├── HelpModal.jsx
 │   │   │   └── HelpModal.module.css
@@ -99,8 +100,7 @@ react-stopwatch/
 │   │   ├── Stopwatch.test.jsx
 │   │   ├── StopwatchDisplay.test.jsx
 │   │   ├── StopwatchControls.test.jsx
-│   │   ├── LapList.test.jsx
-│   │   └── AnimatedDigit.test.jsx
+│   │   └── LapList.test.jsx
 │   │
 │   ├── test/
 │   │   └── test-utils.jsx

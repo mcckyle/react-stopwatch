@@ -1,20 +1,21 @@
 /* Filename: src/components/Stopwatch/Stopwatch.module.css */
 
 /* ====================================
-   STOPWATCH SHELL STYLES.
+   STOPWATCH IMMERSIVE SHELL STYLES.
 ======================================= */
 .shell
 {
     width: 100%;
     min-height: 100%;
-    min-width: 0;
 
     display: grid;
-    grid-template-rows: auto 1fr;
-    gap: clamp(var(--space-lg), 5vh, var(--space-2xl));
-
-    margin: 0;
-    padding: var(--space-md);
+    grid-template-rows: auto 1fr auto;
+    position: relative;
+    overflow: hidden;
+    padding: max(1rem, env(safe-area-inset-top))
+             max(1rem, env(safe-area-inset-right))
+             max(1rem, env(safe-area-inset-bottom))
+             max(1rem, env(safe-area-inset-left));
 }
 
 /* ====================================
@@ -23,11 +24,11 @@
 .stage
 {
     width: 100%;
-    min-width: 0;
-    display: grid;
-    place-items: center;
-    align-content: center;
-    gap: clamp(2rem, 8vh, 5rem);
+    min-height: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(1.5rem, 5vh, 4rem);
 }
 
 /* ====================================

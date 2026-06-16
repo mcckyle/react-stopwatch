@@ -8,14 +8,11 @@
     width: 100%;
     min-height: 100dvh; /* Use Modern Viewport with fallback handled globally. */
 
-    display: grid;
-    place-items: center;
-
+    display: flex;
+    justify-content: center;
+    position: relative;
     overflow: hidden;
-    padding: max(1rem, env(safe-area-inset-top))
-             max(1rem, env(safe-area-inset-right))
-             max(1rem, env(safe-area-inset-bottom))
-             max(1rem, env(safe-area-inset-left));
+    isolation: isolate;
 }
 
 /* ====================================

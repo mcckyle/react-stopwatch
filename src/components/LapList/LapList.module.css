@@ -5,24 +5,21 @@
 ======================================= */
 .lapList
 {
-    width: min(100%, 460px);
-    max-height: clamp(15rem, 30vh, 22rem);
+    width: min(100%, 34rem);
+    max-height: clamp(14rem, 30vh, 22rem);
 
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
 
     overflow: hidden;
-    padding: 0.85rem;
+    padding: 1rem;
 
     border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-lg);
-    background: var(--surface-overlay);
-    box-shadow: var(--shadow-sm);
-    backdrop-filter: var(--backdrop-blur);
-    -webkit-backdrop-filter: var(--backdrop-blur);
-
-    transition: var(--transition-surface);
+    border-radius: var(--radius-panel);
+    background: color-mix(in oklab, var(--surface) 70%, transparent);
+    color: var(--text);
+    backdrop-filter: var(--overlay-blur);
 }
 
 /* ====================================
@@ -96,8 +93,8 @@
     align-items: center;
     gap: 0.65rem;
 
-    padding: 0.68rem 0.78rem;
-    border-radius: var(--radius-sm);
+    padding: 0.6rem 0.7rem;
+    border-radius: 0.8rem;
 
     font-family: var(--font-mono);
     font-size: 0.68rem;

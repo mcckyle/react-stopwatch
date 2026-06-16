@@ -7,11 +7,12 @@
 {
     position: relative; /* Required for panel anchoring. */
     width: 100%;
+    z-index: 10; /* Lap panel and controls never visually fight with digits. */
 
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--space-lg);
+    padding-bottom: clamp(0.5rem, 2vh, 1.5rem);
 }
 
 /* ====================================
@@ -27,17 +28,16 @@
 }
 .brandMark
 {
-    width: var(--header-action-size);
-    height: var(--header-action-size);
+    width: 2.25rem;
+    height: 2.25rem;
 
     display: grid;
     place-items: center;
 
-    border: 1px solid var(--border-subtle);
+    border: 1px solid color-mix(in oklab, var(--accent) 22%, transparent);
     border-radius: 999px;
-    background: color-mix(in oklab, var(--surface-raised) 88%, transparent);
-
-    transition: var(--transition-surface);
+    background: color-mix(in oklab, var(--accent) 10%, transparent);
+    color: var(--accent);
 }
 .icon { width: 1rem; height: 1rem; opacity: 0.72; }
 .title
@@ -48,9 +48,9 @@
     white-space: nowrap;
 
     font-family: var(--font-mono);
-    font-size: 0.64rem;
+    font-size: 0.58rem;
     font-weight: 600;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--text-faint);
 }
@@ -70,29 +70,29 @@
  ======================================= */
 .lapButton
 {
-    padding: 0.5rem 0.85rem;
+    padding: 0.6rem 1rem;
     border-radius: 999px;
     color: var(--text-muted);
 
     font-family: var(--font-mono);
     font-size: 0.62rem;
     font-weight: 600;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
 
-    transition: var(--transition-interactive);
+    transition: background var(--duration-fast) var(--ease),
+                color var(--duration-fast) var(--ease);
 }
-.lapButton:hover { background: color-mix(in oklab, var(--text) 6%, transparent); color: var(--text); }
+.lapButton:hover { background: color-mix(in oklab, var(--accent) 10%, transparent); color: var(--text); }
 .lapButton:active { transform: translateY(1px); }
 .panel
 {
     position: absolute;
-    top: calc(100% + var(--space-md));
+    top: calc(100% + 1rem);
     right: 0;
 
     width: min(28rem, calc(100vw - 2rem));
     z-index: 20;
-    box-shadow: var(--shadow-lg);
     transform-origin: top right;
 }
 
@@ -101,22 +101,22 @@
 ======================================= */
 .toggle
 {
-    width: var(--header-action-size);
-    height: var(--header-action-size);
+    width: 2.5rem;
+    height: 2.5rem;
 
     display: grid;
     place-items: center;
 
-    border: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+    border: 1px solid var(--border-subtle);
     border-radius: 999px;
-    background: color-mix(in oklab, var(--surface-raised) 88%, transparent);
+    background: color-mix(in oklab, var(--surface) 70%, transparent);
     color: var(--text);
-    box-shadow: var(--shadow-xs);
+    backdrop-filter: var(--overlay-blur);
 
-    transition: var(--transition-interactive);
-
+    transition: transform var(--duration-fast) var(--ease),
+                background var(--duration-fast) var(--ease);
 }
-.toggle:hover { background: var(--surface-hover); border-color: var(--border-strong); }
+.toggle:hover { background: var(--surface-hover); transform: translateY(-2px); }
 .toggle:active { transform: translateY(0); }
 .toggle:focus-visible { box-shadow: var(--focus-ring); }
 .toggleIcon { width: 1rem; height: 1rem; opacity: 0.88; }
