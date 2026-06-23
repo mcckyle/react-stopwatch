@@ -1,7 +1,7 @@
 /* Filename: src/components/HelpModal/HelpModal.module.css*/
 
 /* ====================================
-   HELPMODAL OVERLAY STYLES.
+   HELPMODAL MODAL BACKDROP STYLES.
 ======================================= */
 .overlay
 {
@@ -16,9 +16,9 @@
              max(1rem, env(safe-area-inset-bottom))
              max(1rem, env(safe-area-inset-left));
 
-    background: rgb(0 0 0 / 0.42);
-    backdrop-filter: var(--overlay-blur);
-    -webkit-backdrop-filter: var(--overlay-blur);
+    background: rgb(0 0 0 / 0.38);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
 
     animation: overlay-in var(--duration-fast) var(--ease);
 }
@@ -28,23 +28,21 @@
 ======================================= */
 .modal
 {
-    position: relative;
-    width: min(24rem, 100%);
+    width: min(26rem, 100%);
 
     display: flex;
     flex-direction: column;
     gap: var(--space-lg);
 
-    padding: 1rem;
+    padding: 1.5rem;
     border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-lg);
+    border-radius: 1.25rem;
 
-    background: var(--surface-overlay);
+    background: color-mix(in oklab, var(--app-bg) 88%, transparent);
     color: var(--text);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-glow);
     backdrop-filter: blur(var(--backdrop-blur));
     -webkit-backdrop-filter: blur(var(--backdrop-blur));
-    overflow: hidden;
 
     animation: modal-in var(--duration) var(--ease);
 }
@@ -52,29 +50,28 @@
 /* ====================================
    HELPMODAL HEADER STYLES.
 ======================================= */
-.header { position: relative; display: flex; flex-direction: column; gap: 0.45rem; }
+.header { display: flex; flex-direction: column; gap: 0.5rem; }
 .eyebrow
 {
     font-family: var(--font-mono);
-    font-size: 0.52rem;
+    font-size: 0.55rem;
     font-weight: 600;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--text-muted);
+    color: var(--text-faint);
 }
 .title
 {
-    max-width: 18ch;
-    font-size: 1.125rem;
-    font-weight: 650;
-    line-height: 1.2;
-    letter-spacing: -0.035em;
+    max-width: 20ch;
+    font-size: 1.35rem;
+    line-height: 1.35;
+    letter-spacing: -0.045em;
     color: var(--text);
 }
 .subtitle
 {
-    max-width: 32ch;
-    font-size: 0.82rem;
+    max-width: 34ch;
+    font-size: 0.85rem;
     line-height: 1.5;
     color: var(--text-muted);
 }
@@ -82,13 +79,7 @@
 /* ====================================
    HELPMODAL SHORTCUT LIST STYLES.
 ======================================= */
-.list
-{
-    position: relative;
-    display: grid;
-    gap: 0.4rem;
-}
-
+.list { display: grid; gap: 0.35rem; }
 .item
 {
     display: grid;
@@ -96,69 +87,61 @@
     align-items: center;
     gap: 1rem;
 
-    padding: 0.62rem 0.72rem;
-    border-radius: var(--radius-md);
+    padding: 0.65rem 0.75rem;
+    border-radius: 0.85rem;
 
-    transition: var(--transition-interactive);
+    transition: background var(--duration-fast) var(--ease);
 }
-.item:hover { background: color-mix(in oklab, var(--surface-muted) 74%, transparent); }
-.label { font-size: 0.82rem; font-weight: 500; letter-spacing: -0.01em; color: var(--text); }
+.item:hover { background: var(--surface); }
+.label { font-size: 0.82rem; color: var(--text); }
 
 /* ====================================
-   HELPMODAL KEYBOARD KEYS STYLES.
+   HELPMODAL KEYCAPS STYLES.
 ======================================= */
 .kbd
 {
-    min-width: 1.9rem;
-    min-height: 1.9rem;
-    padding: 0.24rem 0.55rem;
+    min-width: 2rem;
+    min-height: 2rem;
+    padding: 0.25rem 0.55rem;
 
     display: inline-flex;
     align-items: center;
     justify-content: center;
 
     border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-sm);
+    border-radius: 0.65rem;
 
-    background: var(--surface-muted);
-    border-color: var(--border-subtle);
-
+    background: var(--surface);
     font-family: var(--font-mono);
-    font-size: 0.64rem;
-    font-weight: 600;
-    letter-spacing: 0.01em;
+    font-size: 0.65rem;
+    font-weight: 700;
     color: var(--text);
 }
 
 /* ====================================
-   HELPMODAL CLOSE BUTTON STYLES.
+   HELPMODAL CLOSE ACTION STYLES.
 ======================================= */
 .closeButton
 {
-    position: relative;
     width: 100%;
-    min-height: 2.65rem;
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    min-height: 2.8rem;
 
     border: 1px solid var(--border-subtle);
-    border-radius: 999px;
+    border-radius: var(--radius-control);
 
     background: transparent;
     color: var(--text-muted);
 
     font-family: var(--font-mono);
-    font-size: 0.58rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
 
-    transition: var(--transition-interactive);
+    transition: background var(--duration-fast) var(--ease), color var(--duration-fast) var(--ease);
 }
-.closeButton:hover { border-color: var(--border-strong); color: var(--text); }
-.closeButton:focus-visible { box-shadow: var(--focus-ring), var(--shadow-sm); }
+.closeButton:hover { background: var(--surface); color: var(--text); }
+.closeButton:focus-visible { box-shadow: var(--focus-ring); }
 
 /* ====================================
    HELPMODAL ANIMATIONS STYLES.
@@ -171,7 +154,7 @@
 
 @keyframes modal-in
 {
-    from { opacity: 0; transform: translateY(4px) scale(0.99); }
+    from { opacity: 0; transform: translateY(8px) scale(0.98); }
     to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
@@ -180,10 +163,8 @@
 ======================================= */
 @media (max-width: 480px)
 {
-    .modal { gap: var(--space-md); padding: 0.9rem; }
-    .item { padding: 0.58rem 0.65rem; }
-    .label { font-size: 0.78rem; }
-    .kbd { min-width: 1.75rem; min-height: 1.75rem; font-size: 0.6rem; }
+    .modal { padding: 1.1rem; }
+    .title { font-size: 1.2rem; }
 }
 
 

@@ -10,8 +10,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: clamp(0.75rem, 2vw, 1.25rem);
+    gap: 1rem;
+    padding-top: 1rem;
 }
 
 /* ====================================
@@ -19,31 +19,18 @@
 ======================================= */
 .button
 {
-    min-width: 7rem;
-    min-height: 3rem;
-    padding: 0.75rem 1.5rem;
+    min-height: 3.25rem;
+    padding: 0.8rem 1.75rem;
 
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    border: 1px solid var(--border-subtle);
-    border-radius: 999px;
+    border-radius: var(--radius-control);
+    backdrop-filter: var(--backdrop-blur);
 
     font-family: var(--font-mono);
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-
-    background: color-mix(in oklab, var(--surface) 72%, transparent);
-    color: var(--text);
-    backdrop-filter: var(--overlay-blur);
-    touch-action: manipulation;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
 
     transition: transform var(--duration-fast) var(--ease),
-                background var(--duration-fast) var(--ease),
-                border-color var(--duration-fast) var(--ease);
+                background var(--duration-fast) var(--ease);
 }
 .button:hover:not(:disabled)
 {
@@ -88,9 +75,7 @@
 /* ====================================
    STOPWATCHCONTROLS MEDIA QUERY STYLES.
 ======================================= */
-@media (max-width: 420px)
+@media (max-width: 600px)
 {
-    .controls { gap: 0.5rem; }
-    .button { min-width: auto; flex: 1; }
-    .primary { min-width: 0; }
+    .button { padding-inline: 1rem; }
 }

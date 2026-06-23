@@ -16,10 +16,9 @@
     padding: 1rem;
 
     border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-panel);
-    background: color-mix(in oklab, var(--surface) 70%, transparent);
-    color: var(--text);
-    backdrop-filter: var(--overlay-blur);
+    border-radius: 1rem;
+    background: color-mix(in oklab, var(--app-bg) 82%, transparent);
+    backdrop-filter: var(--backdrop-blur);
 }
 
 /* ====================================

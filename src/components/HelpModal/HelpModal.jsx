@@ -1,6 +1,6 @@
 //File name: HelpModal.jsx
 //Author: Kyle McColgan
-//Date: 9 June 2026
+//Date: 23 June 2026
 //Description: This file contains the Help modal component for the stopwatch React project.
 
 import React, { useEffect, useId, useRef } from "react";
@@ -55,7 +55,7 @@ const HelpModal = ({ onClose }) =>
         onClick={(event) => event.stopPropagation()}
       >
         <header className={styles.header}>
-          <p className={styles.eyebrow}>Keyboard shortcuts</p>
+          <p className={styles.eyebrow}>Shortcuts</p>
           <h2 id={titleId} className={styles.title}>
             Shortcuts for speed
           </h2>

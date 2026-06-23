@@ -6,10 +6,9 @@
 .display
 {
     width: 100%;
-    overflow: visible;
-
     display: flex;
     align-items: center;
+    justify-content: center;
     user-select: none;
 }
 
@@ -26,7 +25,7 @@
     font-family: var(--font-mono);
     font-weight: 700;
     font-variant-numeric: tabular-nums lining-nums;
-    letter-spacing: -0.09em;
+    letter-spacing: var(--display-spacing);
     color: var(--text);
 
     text-shadow: var(--shadow-glow);
@@ -43,8 +42,8 @@
     justify-content: center;
     white-space: nowrap;
 
-    font-size: clamp(5rem, 27vw, 32rem); /* IMPORTANT: Digits as large as possible. */
-    line-height: 0.8;
+    font-size: var(--display-size); /* IMPORTANT: Digits as large as possible. */
+    line-height: 0.82;
 }
 
 /* ====================================
@@ -54,12 +53,11 @@
 .group { gap: 0.01em; }
 .digit
 {
-    flex: 0 0 1ch;
     display: inline-flex;
+    width: 1ch;
     align-items: center;
     justify-content: center;
-    width: 1ch;
-    line-height: 1;
+    line-height: 0.9;
 }
 /* ====================================
    STOPWATCHDISPLAY SEPARATORS ( : and . ) STYLES.
@@ -67,17 +65,13 @@
 .separator
 {
     display: inline-flex;
-    align-items: center;
     justify-content: center;
-    width: 0.14em;
+    width: 0.12em;
 
-    font-size: 0.085em;
+    font-size: 0.08em;
     font-weight: 500;
     color: var(--text-faint);
-
-    opacity: 0.45;
-    transform: translateY(-0.02em);
-    pointer-events: none;
+    opacity: 0.35;
 }
 
 .centi

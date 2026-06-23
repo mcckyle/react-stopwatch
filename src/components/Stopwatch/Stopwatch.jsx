@@ -1,6 +1,6 @@
 //File name: Stopwatch.jsx
 //Author: Kyle McColgan
-//Date: 16 June 2026
+//Date: 23 June 2026
 //Description: This file contains the parent Stopwatch component for the stopwatch React project.
 
 import React, { useState, useEffect, useCallback } from "react";
@@ -75,9 +75,9 @@ const Stopwatch = ({ toggleTheme }) => {
           onDeleteLap={deleteLap}
         />
 
-        <div className={styles.stage}>
+        <section className={styles.hero}>
           <StopwatchDisplay time={time} />
-        </div>
+        </section>
           <StopwatchControls
             isRunning={isRunning}
             toggle={toggle}

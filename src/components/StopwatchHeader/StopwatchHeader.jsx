@@ -1,6 +1,6 @@
 //File name: StopwatchHeader.jsx
 //Author: Kyle McColgan
-//Date: 16 June 2026
+//Date: 23 June 2026
 //Description: This file contains the header component for the stopwatch React project.
 
 import React, { useState, useEffect, useCallback } from "react";
@@ -35,9 +35,7 @@ const StopwatchHeader = ({
   return (
     <header className={styles.header}>
       <div className={styles.brand}>
-        <div className={styles.brandMark} aria-hidden="true">
-          <Clock className={styles.icon} />
-        </div>
+        <Clock className={styles.icon} aria-hidden="true" />
         <span className={styles.title}>Precision Stopwatch</span>
       </div>
 

@@ -1,7 +1,7 @@
 /* Filename: src/components/Stopwatch/Stopwatch.module.css */
 
 /* ====================================
-   STOPWATCH IMMERSIVE SHELL STYLES.
+   STOPWATCH FULL VIEWPORT CLOCK SHELL STYLES.
 ======================================= */
 .shell
 {
@@ -12,23 +12,22 @@
     grid-template-rows: auto 1fr auto;
     position: relative;
     overflow: hidden;
-    padding: max(1rem, env(safe-area-inset-top))
-             max(1rem, env(safe-area-inset-right))
-             max(1rem, env(safe-area-inset-bottom))
-             max(1rem, env(safe-area-inset-left));
+    padding: max(1.25rem, env(safe-area-inset-top))
+             max(1.5rem, env(safe-area-inset-right))
+             max(1.5rem, env(safe-area-inset-bottom))
+             max(1.5rem, env(safe-area-inset-left));
 }
 
 /* ====================================
-   STOPWATCH MAIN STAGE STYLES.
+   STOPWATCH HERO DISPLAY REGION STYLES.
 ======================================= */
-.stage
+.hero
 {
-    width: 100%;
     min-height: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: clamp(1.5rem, 5vh, 4rem);
+    width: 100%;
 }
 
 /* ====================================
