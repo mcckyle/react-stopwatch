@@ -8,7 +8,7 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    overflow: hidden;
     user-select: none;
 }
 
@@ -17,7 +17,7 @@
 ======================================= */
 .time
 {
-    width: 100%;
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -27,8 +27,6 @@
     font-variant-numeric: tabular-nums lining-nums;
     letter-spacing: var(--display-spacing);
     color: var(--text);
-
-    text-shadow: var(--shadow-glow);
 }
 
 /* ====================================
@@ -40,17 +38,18 @@
     display: flex;
     align-items: baseline;
     justify-content: center;
+    padding-inline: clamp(1rem, 4vw, 4rem);
     white-space: nowrap;
 
     font-size: var(--display-size); /* IMPORTANT: Digits as large as possible. */
-    line-height: 0.82;
+    line-height: 0.9;
+    user-select: none;
 }
 
 /* ====================================
    STOPWATCHDISPLAY DIGIT GROUPS STYLES.
 ======================================= */
 .group, .centi { display: inline-flex; align-items: baseline; }
-.group { gap: 0.01em; }
 .digit
 {
     display: inline-flex;
@@ -69,15 +68,15 @@
     width: 0.12em;
 
     font-size: 0.08em;
-    font-weight: 500;
+    font-weight: 400;
     color: var(--text-faint);
-    opacity: 0.35;
+    opacity: 0.2;
 }
 
 .centi
 {
     margin-left: 0.02em;
-    font-size: 0.18em;
+    font-size: 0.22em;
     font-weight: 600;
     letter-spacing: -0.05em;
 

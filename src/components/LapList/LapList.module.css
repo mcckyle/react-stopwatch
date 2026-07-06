@@ -10,13 +10,13 @@
 
     display: flex;
     flex-direction: column;
-    gap: var(--space-md);
+    gap: var(--space-sm);
 
     overflow: hidden;
     padding: 1rem;
 
     border: 1px solid var(--border-subtle);
-    border-radius: 1rem;
+    border-radius: 0.75rem;
     background: color-mix(in oklab, var(--app-bg) 82%, transparent);
     backdrop-filter: var(--backdrop-blur);
 }
@@ -93,7 +93,7 @@
     gap: 0.65rem;
 
     padding: 0.6rem 0.7rem;
-    border-radius: 0.8rem;
+    border-radius: 0.4rem;
 
     font-family: var(--font-mono);
     font-size: 0.68rem;
@@ -129,10 +129,10 @@
     inset-block: 0.7rem;
     left: 0;
 
-    width: 1px;
+    width: 2px;
     border-radius: 999px;
     background: color-mix(in oklab, var(--accent) 78%, white);
-    opacity: 0.45;
+    opacity: 0.4;
 }
 .latest .lapTime { color: color-mix(in oklab, var(--text) 92%, white); }
 .fastest .lapDelta { color: color-mix(in oklab, var(--success) 72%, var(--text)); }
@@ -155,7 +155,7 @@
     font-size: 0.78rem;
     line-height: 1;
 
-    opacity: 0.5;
+    opacity: 0.25;
 
     transition: var(--transition-interactive);
 }

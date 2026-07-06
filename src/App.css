@@ -10,8 +10,9 @@
 
     display: flex;
     justify-content: center;
+
     position: relative;
-    overflow: hidden;
+    overflow: clip;
     isolation: isolate;
 }
 

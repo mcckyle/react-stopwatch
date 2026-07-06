@@ -23,12 +23,13 @@
 ======================================= */
 .hero
 {
-    min-height: 0;
+    flex: 1;
     display: flex;
-    justify-content: center;
     align-items: center;
-    width: 100%;
+    justify-content: stretch;
+    min-height: 0;
 }
+.footer { display: flex; justify-content: center; padding-top: 2rem; }
 
 /* ====================================
    STOPWATCH MEDIA QUERY STYLES.

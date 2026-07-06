@@ -11,36 +11,29 @@
 
     /* Accents. */
     --accent: #7dd3fc;
+    --accent-soft: color-mix(in oklab, var(--accent) 18%, transparent);
     --accent-strong: #38bdf8;
 
     /* Display Scale. */
-    --display-size: clamp(5rem, 27vw, 32rem);
-    --display-spacing: -0.08em;
-
-    /* Layout. */
-    --content-width: 100%;
-
-    /* Radius. */
-    --radius-control: 999px;
+    --display-size: clamp(5rem, 30vw, 36rem);
+    --display-spacing: -0.065em;
 
     /* Spacing. */
     --space-xs: 0.5rem;
     --space-sm: 0.75rem;
     --space-md: 1.25rem;
     --space-lg: 2rem;
-    --space-xl: 4rem;
 
     /* Shadows. */
     --shadow-sm: 0 8px 24px rgb(0 0 0 / 0.06);
-    --shadow-md: 0 20px 60px rgb(0 0 0 / 0.12);
-    --shadow-soft: 0 40px 120px rgb(0 0 0 / 0.22);
+    --shadow-lg: 0 20px 60px rgb(0 0 0 / 0.12);
     --shadow-glow: 0 0 120px color-mix(in oklab, var(--accent) 25%, transparent);
 
     /* Effects. */
     --success: #22c55e;
     --danger: #ef4444;
-    --backdrop-blur: saturate(160%) blur(24px);
-    --overlay-blur: saturate(120%) blur(12px);
+    --backdrop-blur: saturate(160%) blur(16px);
+    --overlay-blur: saturate(120%) blur(8px);
     --focus-ring: 0 0 0 3px color-mix(in oklab, var(--accent) 45%, transparent);
     --surface-border: var(--border-subtle);
     --ambient-glow: 0 0 80px color-mix(in oklab, var(--accent) 14%, transparent);
