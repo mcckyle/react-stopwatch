@@ -162,39 +162,3 @@
     .modal { padding: 1.1rem; }
     .title { font-size: 1.2rem; }
 }
-
-/*@media (prefers-reduced-motion: reduce)
-{
-    .overlay, .modal { animation: none; }
-    .item, .closeButton { transition: background-color var(--duration-fast) linear, color var(--duration-fast) linear, opacity var(--duration-fast) linear; }
-    .item:hover, .closeButton:active { transform: none; }
-}*/
-/* === LIGHT THEME VARIANTS. === */
-/*
-:global(.light) .modal
-{
- background: linear-gradient(to bottom right, #fffaf0, #fef3c7);
- color: #3b2f2f;
- border: 2px solid rgba(234, 179, 8, 0.3);
- box-shadow:
- 0 0 10px rgba(212, 175, 55, 0.15),
- inset 0 0 4px rgba(255, 255, 255, 0.1);
-}
-
-:global(.light) .modal h2
-{
-color: #92400e;
-text-shadow: none;
-}
-
-:global(.light) .modal li
-{
-color: #5c4033;
-}
-
-:global(.light) .modal button
-{
-background: linear-gradient(to right, #fde68a, #facc15);
-color: #7c2d12;
-}
-*/

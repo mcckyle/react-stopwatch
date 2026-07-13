@@ -8,26 +8,7 @@
     width: 100%;
     min-height: 100dvh; /* Use Modern Viewport with fallback handled globally. */
 
-    display: flex;
-    justify-content: center;
-
     position: relative;
     overflow: clip;
     isolation: isolate;
 }
-
-/* ====================================
-   APPLICATION ROOT LAYOUT STYLES.
-======================================= */
-/*.app
-{
-    flex: 1;
-    width: min(100%, 96rem);
-
-    display: flex;
-    flex-direction: column;
-    padding: max(1rem, env(safe-area-inset-top))
-             max(1rem, env(safe-area-inset-right))
-             max(1rem, env(safe-area-inset-bottom))
-             max(1rem, env(safe-area-inset-left));
-}*/

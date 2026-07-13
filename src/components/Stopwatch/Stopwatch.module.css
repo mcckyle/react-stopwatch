@@ -23,23 +23,8 @@
 ======================================= */
 .hero
 {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: stretch;
+    display: grid;
+    place-items: center;
     min-height: 0;
 }
 .footer { display: flex; justify-content: center; padding-top: 2rem; }
-
-/* ====================================
-   STOPWATCH MEDIA QUERY STYLES.
-======================================= */
-/*@media (max-width: 640px)
-{
-    .shell { gap: var(--space-lg); }
-    .stage { gap: clamp(1.5rem, 5vh, 3rem); }
-}
-@media (max-width: 480px)
-{
-    .shell { padding: var(--space-md); }
-}*/

@@ -15,8 +15,8 @@ html
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
 }
-html, body, #root { width: 100%; min-height: 100%; }
-#root { display: flex; isolation: isolate; }
+body, #root { min-height: 100dvh; }
+#root { display: flex; /* flex vertically centers stopwatch.*/ isolation: isolate; }
 
 /* ====================================
    BASE FOUNDATION STYLES.
