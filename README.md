@@ -1,3 +1,5 @@
+[![Deploy to GitHub Pages](https://github.com/mcckyle/react-stopwatch/actions/workflows/deploy.yml/badge.svg)](https://github.com/mcckyle/react-stopwatch/actions/workflows/deploy.yml)
+
 # react-stopwatch
 
 A simple, modern stopwatch app built with **React**, **Vite**, and **Mantine UI**. Designed for focus and precision.

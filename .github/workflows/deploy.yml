@@ -1,7 +1,7 @@
 #File name: deploy.yml
 #Author: Kyle McColgan
-#Date: 26 May 2025
-#Description: Workflow file for GitHub Actions and GitHub Pages deployment processes.
+#Date: 31 July 2026
+#Description: This file contains the workflow for GitHub Actions and the GitHub Pages deployment processes.
 
 name: Deploy to GitHub Pages
 
@@ -23,7 +23,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: '24'
           cache: 'npm'
 
       - name: Install package dependencies
