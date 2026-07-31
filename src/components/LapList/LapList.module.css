@@ -6,7 +6,7 @@
 .lapList
 {
     width: min(100%, 34rem);
-    max-height: clamp(14rem, 30vh, 22rem);
+    max-height: clamp(14rem, 40vh, 22rem);
 
     display: flex;
     flex-direction: column;

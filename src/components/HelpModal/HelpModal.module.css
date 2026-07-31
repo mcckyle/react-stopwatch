@@ -63,7 +63,7 @@
 {
     max-width: 20ch;
     font-size: 1.35rem;
-    line-height: 1.5;
+    line-height: 1.45;
     letter-spacing: -0.045em;
     color: var(--text);
 }

@@ -6,16 +6,16 @@
 .shell
 {
     width: 100%;
-    min-height: 100%;
+    min-height: 100dvh; /* Make the shell own the viewport, use dvh instead of %. */
 
     display: grid;
     grid-template-rows: auto 1fr auto;
     position: relative;
     overflow: hidden;
-    padding: max(1.25rem, env(safe-area-inset-top))
-             max(1.5rem, env(safe-area-inset-right))
-             max(1.5rem, env(safe-area-inset-bottom))
-             max(1.5rem, env(safe-area-inset-left));
+    padding: max(var(--viewport-padding), env(safe-area-inset-top))
+             max(var(--viewport-padding), env(safe-area-inset-right))
+             max(var(--viewport-padding), env(safe-area-inset-bottom))
+             max(var(--viewport-padding), env(safe-area-inset-left));
 }
 
 /* ====================================

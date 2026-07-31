@@ -54,7 +54,7 @@ const StopwatchHeader = ({
     <header className={styles.header}>
       <div className={styles.brand}>
         <Clock className={styles.icon} aria-hidden="true" />
-        <span className={styles.title}>Precision Stopwatch</span>
+        <span className={styles.title}>STOPWATCH</span>
       </div>
 
       <div className={styles.actions} role="group" aria-label="Stopwatch actions">

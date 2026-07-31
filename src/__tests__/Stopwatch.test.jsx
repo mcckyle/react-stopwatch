@@ -1,6 +1,6 @@
 //File name: Stopwatch.test.jsx
 //Author: Kyle McColgan
-//Date: 16 June 2026
+//Date: 31 July 2026
 //Description: This file contains the unit test suite for the Stopwatch component.
 
 import React from "react";
@@ -36,7 +36,7 @@ describe("Stopwatch Component", () => {
     //Test #1
     test("1. Renders title.", () => {
         render(<Stopwatch />);
-        expect(screen.getByText("Precision Stopwatch")).toBeInTheDocument();
+        expect(screen.getByText("STOPWATCH")).toBeInTheDocument();
     });
 
     //Test #2
@@ -109,7 +109,7 @@ describe("Stopwatch Component", () => {
             helpCallback(); //Manually trigger onOpenHelp().
         });
 
-        const modal = screen.getByText(/shortcuts for speed/i);
+        const modal = screen.getByText(/Keyboard Shortcuts/i);
         expect(modal).toBeInTheDocument();
     });
 
@@ -130,7 +130,7 @@ describe("Stopwatch Component", () => {
         });
 
         //Help modal should appear...
-        expect(screen.queryByText(/shortcuts for speed/i)).not.toBeNull();
+        expect(screen.queryByText(/Keyboard Shortcuts/i)).not.toBeNull();
     });
 
     //Test #10
@@ -150,12 +150,12 @@ describe("Stopwatch Component", () => {
         });
 
         //Help modal should appear...
-        expect(screen.queryByText(/shortcuts for speed/i)).toBeInTheDocument();
+        expect(screen.queryByText(/Keyboard Shortcuts/i)).toBeInTheDocument();
 
         //Click the close button...
         fireEvent.click(screen.getByText(/close/i));
 
         //The HelpModal should no longer appear.
-        expect(screen.queryByText(/shortcuts for speed/i)).not.toBeInTheDocument();
+        expect(screen.queryByText(/Keyboard Shortcuts/i)).not.toBeInTheDocument();
     });
 });

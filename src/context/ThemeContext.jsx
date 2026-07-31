@@ -1,19 +1,23 @@
 //File name: ThemeContext.jsx
 //Author: Kyle McColgan
-//Date: 12 July 2026
+//Date: 31 July 2026
 //Description: This file contains the theming context component for the stopwatch React project.
 
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, useLayoutEffect } from "react";
 
 const ThemeContext = createContext(undefined);
-const THEME_STORAGE_KEY = "precision-stopwatch-theme";
+const THEME_STORAGE_KEY = "stopwatch-theme";
 const DARK_MEDIA_QUERY = "(prefers-color-scheme: dark)";
+const THEMES = Object.freeze({
+  LIGHT: "light",
+  DARK: "dark",
+});
 
 function getSystemTheme()
 {
   return window.matchMedia(DARK_MEDIA_QUERY).matches
-    ? "dark"
-    : "light";
+    ? THEMES.DARK
+    : THEMES.LIGHT;
 }
 
 function getInitialTheme()
@@ -21,14 +25,14 @@ function getInitialTheme()
   if (typeof window === "undefined")
   {
     return {
-      theme: "light",
+      theme: THEMES.LIGHT,
       manual: false
     };
   }
 
   const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
 
-  if ((savedTheme === "dark") || (savedTheme === "light"))
+  if ((savedTheme === THEMES.DARK) || (savedTheme === THEMES.LIGHT))
   {
     return {
       theme: savedTheme,
@@ -85,9 +89,9 @@ export function ThemeProvider({ children })
     setTheme(current =>
     {
       const next =
-        current === "dark"
-          ? "light"
-          : "dark";
+        current === THEMES.DARK
+          ? THEMES.LIGHT
+          : THEMES.DARK;
 
       hasManualTheme.current = true;
       saveTheme(next);
@@ -106,7 +110,7 @@ export function ThemeProvider({ children })
       {
         return;
       }
-      setTheme(event.matches ? "dark" : "light");
+      setTheme(event.matches ? THEMES.DARK : THEMES.LIGHT);
     }
 
     //Gracefully support older browsers.

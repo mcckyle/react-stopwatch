@@ -51,7 +51,7 @@
     color: #071018;
     border-color: transparent;
 }
-.primary:hover:not(:disabled) { background: var(--accent-strong); transform: translateY(-2px) scale(1.02); }
+.primary:hover:not(:disabled) { background: var(--accent-strong); transform: translateY(-2px); }
 
 /* ====================================
    SECONDARY ACTION ( LAP ) STYLES.

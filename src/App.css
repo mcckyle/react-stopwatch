@@ -5,10 +5,8 @@
 ======================================= */
 .app-shell
 {
-    width: 100%;
     min-height: 100dvh; /* Use Modern Viewport with fallback handled globally. */
 
     position: relative;
-    overflow: clip;
     isolation: isolate;
 }

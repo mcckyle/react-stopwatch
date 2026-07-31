@@ -6,8 +6,8 @@
 .display
 {
     width: 100%;
-    display: flex;
-    align-items: center;
+    display: grid;
+    place-items: center;
     overflow: hidden;
     user-select: none;
 }
@@ -18,6 +18,7 @@
 .time
 {
     flex: 1;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,7 +43,7 @@
     white-space: nowrap;
 
     font-size: var(--display-size); /* IMPORTANT: Digits as large as possible. */
-    line-height: 0.9;
+    line-height: var(--display-line-height);
     user-select: none;
 }
 
@@ -70,7 +71,7 @@
     font-size: 0.08em;
     font-weight: 400;
     color: var(--text-faint);
-    opacity: 0.2;
+    opacity: 0.45;
 }
 
 .centi
