@@ -20,13 +20,13 @@
 .button
 {
     min-height: 3.25rem;
-    padding: 0.8rem 1.75rem;
+    padding: 0.95rem 2.25rem;
     border-radius: 999px;
 
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: 0.72rem;
     font-weight: 600;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.10em;
     text-transform: uppercase;
 
     transition: border-color var(--duration-fast) var(--ease),
@@ -57,7 +57,7 @@
    SECONDARY ACTION ( LAP ) STYLES.
 ======================================= */
 .secondary { color: var(--text-muted); }
-.secondary:hover:not(:disabled) { color: var(--text); }
+.secondary:hover:not(:disabled) { color: var(--text-primary); }
 
 /* =========================================
    TERTIARY ACTION ( RESET ) STYLES.
@@ -68,7 +68,7 @@
     border-color: transparent;
     color: var(--text-faint);
 }
-.tertiary:hover:not(:disabled) { color: var(--text); }
+.tertiary:hover:not(:disabled) { color: var(--text-primary); }
 
 /* ====================================
    STOPWATCHCONTROLS MEDIA QUERY STYLES.

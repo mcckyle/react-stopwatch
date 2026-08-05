@@ -16,7 +16,7 @@ html
     text-size-adjust: 100%;
 }
 html, body, #root { min-height: 100dvh; }
-#root { min-height: 100dvh; isolation: isolate; }
+#root { isolation: isolate; }
 
 /* ====================================
    BASE FOUNDATION STYLES.
@@ -41,9 +41,9 @@ body
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
 }
-img, svg, canvas, video { display: block; max-width: 100%; }
+img, svg, canvas, video { display: block; max-width: 100%; height: auto; }
 input, button, textarea, select, a { font: inherit; color: inherit; }
-button { padding: 0; background: none; border: none; cursor: pointer; }
+button { appearance: none; padding: 0; background: none; border: none; cursor: pointer; }
 a { color: inherit; text-decoration: none; }
 h1, h2, h3, h4, h5, h6, p { margin: 0; }
 h1, h2, h3, h4, h5, h6 { letter-spacing: -0.025em; }

@@ -5,11 +5,11 @@
 ============================================ */
 .display
 {
+    display: flex;
+    align-items: stretch;
     width: 100%;
-    display: grid;
-    place-items: center;
+    height: 100%;
     overflow: hidden;
-    user-select: none;
 }
 
 /* ====================================
@@ -21,13 +21,12 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
 
     font-family: var(--font-mono);
     font-weight: 700;
     font-variant-numeric: tabular-nums lining-nums;
-    letter-spacing: var(--display-spacing);
-    color: var(--text);
+    letter-spacing: var(--display-letter-spacing);
+    color: var(--text-primary);
 }
 
 /* ====================================
@@ -35,14 +34,15 @@
 ======================================= */
 .row
 {
+    flex: 1;
     width: 100%;
     display: flex;
-    align-items: baseline;
+    align-items: baseline; /* Keep centiseconds on bottom. */
     justify-content: center;
     padding-inline: clamp(1rem, 4vw, 4rem);
     white-space: nowrap;
 
-    font-size: var(--display-size); /* IMPORTANT: Digits as large as possible. */
+    font-size: var(--display-font-size); /* IMPORTANT: Digits as large as possible. */
     line-height: var(--display-line-height);
     user-select: none;
 }
@@ -68,10 +68,10 @@
     justify-content: center;
     width: 0.12em;
 
-    font-size: 0.08em;
+    font-size: 0.14em;
     font-weight: 400;
-    color: var(--text-faint);
-    opacity: 0.45;
+    color: var(--text-disabled);
+    opacity: 0.32;
 }
 
 .centi
@@ -82,7 +82,7 @@
     letter-spacing: -0.05em;
 
     color: var(--accent);
-    opacity: 0.9;
+    opacity: 0.65;
 
     transform: translateY(-0.015em);
 }

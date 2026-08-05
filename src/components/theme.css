@@ -15,21 +15,25 @@
     --accent-strong: #38bdf8;
 
     /* Display Scale. */
-    --display-size: clamp(5rem, 30vw, 36rem);
-    --display-spacing: -0.065em;
+    --display-font-size: clamp(5rem, 30vw, 36rem);
+    --display-font-weight: 700;
+    --display-letter-spacing: -0.065em;
     --display-line-height: 0.90;
-    --display-weight: 700;
-    --display-glow: 0 0 48px color-mix(in oklab, var(--accent) 18%, transparent);
+    --display-shadow: 0 0 48px color-mix(in oklab, var(--accent) 18%, transparent);
     --header-action-size: 2.5rem;
     --viewport-padding: clamp(1rem, 3vw, 3rem);
     --header-height: clamp(4rem, 8vh, 5.5rem);
     --controls-height: clamp(5rem, 10vh, 7rem);
 
     /* Spacing. */
-    --space-xs: 0.5rem;
-    --space-sm: 0.75rem;
-    --space-md: 1.25rem;
-    --space-lg: 2rem;
+    --space-1: 0.25rem;
+    --space-2: 0.50rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --space-7: 3rem;
+    --space-8: 4rem;
 
     /* Shadows. */
     --shadow-sm: 0 8px 24px rgb(0 0 0 / 0.06);
@@ -64,10 +68,10 @@
 {
     --app-bg: #f7f9fc;
 
-    --text: #101827;
-    --text-soft: color-mix(in oklab, var(--text) 80%, transparent);
+    --text-primary: #101827;
+    --text-secondary: color-mix(in oklab, var(--text) 80%, transparent);
     --text-muted: color-mix(in oklab, var(--text) 55%, transparent);
-    --text-faint: color-mix(in oklab, var(--text) 38%, transparent);
+    --text-disabled: color-mix(in oklab, var(--text) 38%, transparent);
 
     --surface: rgb(255 255 255 / 0.55);
     --surface-hover: rgb(255 255 255 / 0.85);
@@ -82,10 +86,10 @@
 {
     --app-bg: #05070a;
 
-    --text: #f8fafc;
-    --text-soft: color-mix(in oklab, var(--text) 82%, transparent);
+    --text-primary: #f8fafc;
+    --text-secondary: color-mix(in oklab, var(--text) 82%, transparent);
     --text-muted: color-mix(in oklab, var(--text) 55%, transparent);
-    --text-faint: color-mix(in oklab, var(--text) 42%, transparent);
+    --text-disabled: color-mix(in oklab, var(--text) 42%, transparent);
 
     --surface: rgb(255 255 255 / 0.06);
     --surface-hover: rgb(255 255 255 / 0.12);

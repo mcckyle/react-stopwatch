@@ -23,8 +23,9 @@
 ======================================= */
 .hero
 {
-    display: grid;
-    place-items: center;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
     min-height: 0;
 }
-.footer { display: flex; justify-content: center; padding-top: 2rem; }
+.footer { display: flex; align-items: flex-end; justify-content: center; padding-top: clamp(2rem, 5vh, 4rem); }

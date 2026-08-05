@@ -16,9 +16,9 @@
              max(1rem, env(safe-area-inset-bottom))
              max(1rem, env(safe-area-inset-left));
 
-    background: rgb(0 0 0 / 0.28);
-    backdrop-filter: blur(12px) saturate(120%);
-    -webkit-backdrop-filter: blur(12px) saturate(120%);
+    background: rgb(0 0 0 / 0.26);
+    backdrop-filter: blur(14px) saturate(120%);
+    -webkit-backdrop-filter: blur(14px) saturate(120%);
 
     animation: overlay-in var(--duration-fast) var(--ease);
 }
@@ -32,14 +32,14 @@
 
     display: flex;
     flex-direction: column;
-    gap: var(--space-lg);
+    gap: var(--space-6);
 
     padding: 1.5rem;
     border: 1px solid var(--border-subtle);
     border-radius: 0.9rem;
 
     background: color-mix(in oklab, var(--app-bg) 88%, transparent);
-    color: var(--text);
+    color: var(--text-primary);
     backdrop-filter: blur(var(--backdrop-blur));
     -webkit-backdrop-filter: blur(var(--backdrop-blur));
 
@@ -55,17 +55,17 @@
     font-family: var(--font-mono);
     font-size: 0.55rem;
     font-weight: 600;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--text-faint);
+    color: var(--text-disabled);
 }
 .title
 {
     max-width: 20ch;
     font-size: 1.35rem;
-    line-height: 1.45;
+    line-height: 1.25;
     letter-spacing: -0.045em;
-    color: var(--text);
+    color: var(--text-primary);
 }
 .subtitle
 {
@@ -98,20 +98,20 @@
 {
     min-width: 2rem;
     min-height: 2rem;
-    padding: 0.25rem 0.55rem;
+    padding: 0.25rem 0.60rem;
 
     display: inline-flex;
     align-items: center;
     justify-content: center;
 
     border: 1px solid var(--border-subtle);
-    border-radius: 0.5rem;
+    border-radius: 0.25rem;
 
     background: var(--surface);
+    color: var(--text-primary);
     font-family: var(--font-mono);
     font-size: 0.65rem;
     font-weight: 700;
-    color: var(--text);
 }
 
 /* ====================================
@@ -136,7 +136,7 @@
 
     transition: background var(--duration-fast) var(--ease), color var(--duration-fast) var(--ease);
 }
-.closeButton:hover { background: var(--surface); color: var(--text); }
+.closeButton:hover { background: var(--surface); color: var(--text-primary); }
 .closeButton:focus-visible { box-shadow: var(--focus-ring); }
 
 /* ====================================
@@ -150,7 +150,7 @@
 
 @keyframes modal-in
 {
-    from { opacity: 0; transform: translateY(4px); }
+    from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
 }
 

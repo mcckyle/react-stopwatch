@@ -25,15 +25,15 @@
     gap: 0.60rem;
     user-select: none;
 }
-.icon { width: 0.85rem; height: 0.85rem; color: var(--accent); opacity: 0.75; }
+.icon { width: 0.85rem; height: 0.85rem; color: var(--accent); opacity: 0.45; }
 .title
 {
     font-family: var(--font-mono);
     font-size: 0.60rem;
     font-weight: 600;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--text-faint);
+    color: var(--text-disabled);
 }
 
 /* ====================================
@@ -43,7 +43,7 @@
 {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.75rem;
 }
 
 /* ====================================
@@ -64,7 +64,7 @@
     transition: background var(--duration-fast) var(--ease),
                 color var(--duration-fast) var(--ease);
 }
-.lapButton:hover { background: var(--surface); color: var(--text); }
+.lapButton:hover { background: var(--surface); color: var(--text-primary); }
 .lapButton:active { transform: translateY(1px); }
 .panel
 {
@@ -90,7 +90,7 @@
     border: 1px solid var(--border-subtle);
     border-radius: 50%;
     background: transparent;
-    color: var(--text);
+    color: var(--text-primary);
     backdrop-filter: var(--backdrop-blur);
 
     transition: background var(--duration-fast) var(--ease);
