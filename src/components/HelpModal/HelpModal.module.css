@@ -16,9 +16,9 @@
              max(1rem, env(safe-area-inset-bottom))
              max(1rem, env(safe-area-inset-left));
 
-    background: rgb(0 0 0 / 0.26);
-    backdrop-filter: blur(14px) saturate(120%);
-    -webkit-backdrop-filter: blur(14px) saturate(120%);
+    background: rgb(0 0 0 / 0.38);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 
     animation: overlay-in var(--duration-fast) var(--ease);
 }
@@ -28,20 +28,21 @@
 ======================================= */
 .modal
 {
-    width: min(26rem, 100%);
+    width: min(30rem, 100%);
 
     display: flex;
     flex-direction: column;
-    gap: var(--space-6);
+    gap: 1.5rem;
 
-    padding: 1.5rem;
-    border: 1px solid var(--border-subtle);
-    border-radius: 0.9rem;
+    padding: clamp(1.25rem, 3vw, 1.75rem);
+    border: 1px solid var(--surface-border);
+    border-radius: 0.70rem;
 
-    background: color-mix(in oklab, var(--app-bg) 88%, transparent);
-    color: var(--text-primary);
-    backdrop-filter: blur(var(--backdrop-blur));
-    -webkit-backdrop-filter: blur(var(--backdrop-blur));
+    background: color-mix(in oklab, var(--app-bg) 94%, transparent);
+    color: var(--text);
+    box-shadow: 0 24px 80px rgb(0 0 0 / 0.22);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
 
     animation: modal-in var(--duration) var(--ease);
 }
@@ -49,69 +50,77 @@
 /* ====================================
    HELPMODAL HEADER STYLES.
 ======================================= */
-.header { display: flex; flex-direction: column; gap: 0.5rem; }
+.header { display: flex; flex-direction: column; gap: 0.55rem; }
+.heading { display: flex; flex-direction: column; gap: 0.35rem; }
 .eyebrow
 {
+    color: var(--accent);
     font-family: var(--font-mono);
-    font-size: 0.55rem;
+    font-size: 0.54rem;
     font-weight: 600;
     letter-spacing: 0.18em;
+    line-height: 1;
     text-transform: uppercase;
-    color: var(--text-disabled);
+    opacity: 0.70;
 }
 .title
 {
-    max-width: 20ch;
-    font-size: 1.35rem;
-    line-height: 1.25;
-    letter-spacing: -0.045em;
     color: var(--text-primary);
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.045em;
 }
 .subtitle
 {
-    max-width: 34ch;
-    font-size: 0.85rem;
-    line-height: 1.5;
+    max-width: 38ch;
     color: var(--text-muted);
+    font-size: 0.78rem;
+    line-height: 1.5;
 }
 
 /* ====================================
    HELPMODAL SHORTCUT LIST STYLES.
 ======================================= */
-.list { display: grid; gap: 0.35rem; }
+.list { display: grid; margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--surface-border); }
 .item
 {
+    min-height: 3.15rem;
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
     gap: 1rem;
 
-    padding: 0.65rem 0.75rem;
-    border-radius: 0.85rem;
+    border-bottom: 1px solid color-mix(in oklab, var(--text) 6%, transparent);
+
+    transition: background-color var(--duration-fast) var(--ease);
 }
-.label { font-size: 0.82rem; color: var(--text); }
+.item:hover { background: color-mix(in oklab, var(--surface) 70%, transparent); }
+.label { padding-left: 0.25rem; font-size: 0.78rem; color: var(--text-secondary); }
 
 /* ====================================
    HELPMODAL KEYCAPS STYLES.
 ======================================= */
 .kbd
 {
-    min-width: 2rem;
-    min-height: 2rem;
-    padding: 0.25rem 0.60rem;
+    min-width: 2.2rem;
+    min-height: 1.9rem;
+    padding-inline: 0.55rem;
 
     display: inline-flex;
     align-items: center;
     justify-content: center;
 
     border: 1px solid var(--border-subtle);
-    border-radius: 0.25rem;
+    border-radius: 0.35rem;
 
     background: var(--surface);
     color: var(--text-primary);
     font-family: var(--font-mono);
-    font-size: 0.65rem;
-    font-weight: 700;
+    font-size: 0.58rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    box-shadow: inset 0 -1px 0 color-mix(in oklab, var(--text) 8%, transparent);
 }
 
 /* ====================================
@@ -119,25 +128,26 @@
 ======================================= */
 .closeButton
 {
-    width: 100%;
-    min-height: 2.8rem;
+    min-height: 2.75rem;
+    padding-inline: 1rem;
 
-    border: 1px solid var(--border-subtle);
-    border-radius: 999px;
+    border: 1px solid var(--surface-border);
+    border-radius: 0.55rem;
 
-    background: transparent;
-    color: var(--text-muted);
+    background: var(--surface);
+    color: var(--text-secondary);
 
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
 
-    transition: background var(--duration-fast) var(--ease), color var(--duration-fast) var(--ease);
+    transition: background-color var(--duration-fast) var(--ease),
+                border-color var(--duration-fast) var(--ease),
+                color var(--duration-fast) var(--ease),
+                transform var(--duration-fast) var(--ease);
 }
-.closeButton:hover { background: var(--surface); color: var(--text-primary); }
-.closeButton:focus-visible { box-shadow: var(--focus-ring); }
+.closeButton:hover { background: var(--surface-hover); border-color: color-mix(in oklab, var(--accent) 22%, var(--surface-border)); color: var(--text-primary); }
+.closeButton:active { transform: translateY(1px); }
 
 /* ====================================
    HELPMODAL ANIMATIONS STYLES.
@@ -150,8 +160,8 @@
 
 @keyframes modal-in
 {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(6px) scale(0.99); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 /* ====================================
@@ -160,5 +170,5 @@
 @media (max-width: 480px)
 {
     .modal { padding: 1.1rem; }
-    .title { font-size: 1.2rem; }
+    .item { min-height: 3rem; }
 }

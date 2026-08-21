@@ -1,6 +1,6 @@
 //File name: HelpModal.jsx
 //Author: Kyle McColgan
-//Date: 5 August 2026
+//Date: 20 August 2026
 //Description: This file contains the Help modal component for the stopwatch React project.
 
 import React, { useEffect, useId, useRef } from "react";
@@ -23,12 +23,16 @@ const HelpModal = ({ onClose }) =>
 
   useEffect(() =>
   {
-    previouslyFocusedRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    previouslyFocusedRef.current =
+      document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null;
 
-    const handleKeyDown = (event) =>
+    const handleKeyDown = event =>
     {
       if ((event.key === "Escape") && (!event.isComposing))
       {
+        event.preventDefault();
         event.stopPropagation();
         onClose();
       }
@@ -45,22 +49,24 @@ const HelpModal = ({ onClose }) =>
   }, [onClose]);
 
   return (
-    <div className={styles.overlay} onClick={onClose}>
+    <div className={styles.overlay} onClick={onClose} role="presentation">
       <section
         className={styles.modal}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
         aria-describedby={descriptionId}
-        onClick={(event) => event.stopPropagation()}
+        onClick={event => event.stopPropagation()}
       >
         <header className={styles.header}>
-          <p className={styles.eyebrow}>Shortcuts</p>
-          <h2 id={titleId} className={styles.title}>
-            Keyboard Shortcuts
-          </h2>
+          <div className={styles.heading}>
+            <p className={styles.eyebrow}>Shortcuts</p>
+            <h2 id={titleId} className={styles.title}>
+              Keyboard Shortcuts
+            </h2>
+          </div>
           <p id={descriptionId} className={styles.subtitle}>
-            No mouse required.
+            Control the stopwatch without leaving the keyboard.
           </p>
         </header>
 
@@ -75,7 +81,6 @@ const HelpModal = ({ onClose }) =>
         <button
           ref={closeRef}
           type="button"
-          aria-label="Close help dialog"
           className={styles.closeButton}
           onClick={onClose}
         >

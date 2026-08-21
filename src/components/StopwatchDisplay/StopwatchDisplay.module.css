@@ -5,10 +5,12 @@
 ============================================ */
 .display
 {
-    display: flex;
-    align-items: stretch;
     width: 100%;
+    min-width: 0;
     height: 100%;
+
+    display: flex;
+    align-items: center;
     overflow: hidden;
 }
 
@@ -17,16 +19,17 @@
 ======================================= */
 .time
 {
-    flex: 1;
     width: 100%;
     display: flex;
     align-items: center;
 
     font-family: var(--font-mono);
-    font-weight: 700;
+    font-weight: var(--display-font-weight);
     font-variant-numeric: tabular-nums lining-nums;
     letter-spacing: var(--display-letter-spacing);
-    color: var(--text-primary);
+    text-shadow: var(--display-glow);
+    color: var(--text);
+    user-select: none;
 }
 
 /* ====================================
@@ -34,17 +37,16 @@
 ======================================= */
 .row
 {
-    flex: 1;
     width: 100%;
     display: flex;
     align-items: baseline; /* Keep centiseconds on bottom. */
-    justify-content: center;
-    padding-inline: clamp(1rem, 4vw, 4rem);
+    justify-content: center; /* Needed for horizontal centering purposes. */
     white-space: nowrap;
+    padding-inline: clamp(0.25rem, 1.5vw, 1.5rem);
+
 
     font-size: var(--display-font-size); /* IMPORTANT: Digits as large as possible. */
     line-height: var(--display-line-height);
-    user-select: none;
 }
 
 /* ====================================
@@ -53,8 +55,8 @@
 .group, .centi { display: inline-flex; align-items: baseline; }
 .digit
 {
-    display: inline-flex;
     width: 1ch;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     line-height: 0.9;
@@ -71,7 +73,7 @@
     font-size: 0.14em;
     font-weight: 400;
     color: var(--text-disabled);
-    opacity: 0.32;
+    opacity: 0.30;
 }
 
 .centi
@@ -82,7 +84,7 @@
     letter-spacing: -0.05em;
 
     color: var(--accent);
-    opacity: 0.65;
+    opacity: 0.68;
 
     transform: translateY(-0.015em);
 }
@@ -95,7 +97,11 @@
     position: absolute;
     width: 1px;
     height: 1px;
+    padding: 0;
+    margin: -1px;
     overflow: hidden;
-    clip: rect(0 0 0 0);
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
     white-space: nowrap;
+    border: 0;
 }

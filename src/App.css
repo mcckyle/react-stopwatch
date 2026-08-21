@@ -5,13 +5,7 @@
 ======================================= */
 .app-shell
 {
-    position: relative;
-
-    display: flex;
-    flex-direction: column;
-
-    min-height: 100dvh; /* Use Modern Viewport with fallback handled globally. */
     width: 100%;
-
+    min-height: 100dvh; /* Use Modern Viewport with fallback handled globally. */
     isolation: isolate;
 }

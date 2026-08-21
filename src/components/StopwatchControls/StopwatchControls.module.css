@@ -1,7 +1,7 @@
 /* Filename: src/components/StopwatchControls/StopwatchControls.module.css */
 
 /* ====================================
-   STOPWATCHCONTROLS CONTAINER STYLES.
+   STOPWATCHCONTROLS COMMAND RAIL STYLES.
 ======================================= */
 .controls
 {
@@ -9,9 +9,9 @@
 
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: clamp(0.75rem, 2vw, 2rem);
-    padding-top: 1rem;
+    justify-content: center; /* Centered controls. */
+    gap: 0.50rem;
+    padding-bottom: 0.25rem;
 }
 
 /* ====================================
@@ -19,61 +19,61 @@
 ======================================= */
 .button
 {
-    min-height: 3.25rem;
-    padding: 0.95rem 2.25rem;
-    border-radius: 999px;
+    min-height: 2.75rem;
+    min-width: 5.5rem;
+    padding: 0.70rem 1.15rem;
+
+    border: 1px solid transparent;
+    border-radius: 0.65rem;
 
     font-family: var(--font-mono);
     font-size: 0.72rem;
     font-weight: 600;
-    letter-spacing: 0.10em;
-    text-transform: uppercase;
+    letter-spacing: 0.04em;
 
-    transition: border-color var(--duration-fast) var(--ease),
-                background var(--duration-fast) var(--ease);
+    transition: background-color var(--duration-fast) var(--ease),
+                border-color var(--duration-fast) var(--ease),
+                color var(--duration-fast) var(--ease),
+                transform var(--duration-fast) var(--ease),
+                opacity var(--duration-fast) var(--ease);
 }
-.button:hover:not(:disabled)
-{
-    border-color: var(--border-strong);
-    background: var(--surface-hover);
-}
+.button:hover:not(:disabled) { transform: translateY(-1px); }
 .button:active:not(:disabled) { transform: translateY(0); }
-.button:focus-visible {  box-shadow: var(--focus-ring); }
-.button:disabled { opacity: 0.35; cursor: not-allowed; }
+.button:disabled { opacity: 0.30; cursor: not-allowed; }
 
 /* =========================================
    PRIMARY ACTION ( START / PAUSE ) STYLES.
 ============================================ */
 .primary
 {
-    min-width: 9rem;
+    min-width: 7rem;
     background: var(--accent);
     color: #071018;
-    border-color: transparent;
 }
-.primary:hover:not(:disabled) { background: var(--accent-strong); transform: translateY(-2px); }
+.primary:hover:not(:disabled) { background: var(--accent-strong); }
 
 /* ====================================
    SECONDARY ACTION ( LAP ) STYLES.
 ======================================= */
-.secondary { color: var(--text-muted); }
-.secondary:hover:not(:disabled) { color: var(--text-primary); }
+.secondary { border-color: var(--surface-border); background: var(--surface); color: var(--text-secondary); }
+.secondary:hover:not(:disabled) { border-color: color-mix(in oklab, var(--accent) 35%, var(--surface-border)); background: var(--surface-hover); color: var(--text); }
 
 /* =========================================
    TERTIARY ACTION ( RESET ) STYLES.
 ============================================ */
 .tertiary
 {
-    background: transparent;
-    border-color: transparent;
-    color: var(--text-faint);
+    min-width: auto;
+    color: var(--text-muted);
 }
-.tertiary:hover:not(:disabled) { color: var(--text-primary); }
+.tertiary:hover:not(:disabled) { color: var(--text); }
 
 /* ====================================
    STOPWATCHCONTROLS MEDIA QUERY STYLES.
 ======================================= */
 @media (max-width: 600px)
 {
-    .button { padding-inline: 1rem; }
+    .controls { gap: 0.35rem; }
+    .button { min-width: 0; padding-inline: 0.90rem; }
+    .primary { min-width: 6rem; }
 }

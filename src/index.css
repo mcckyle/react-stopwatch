@@ -7,8 +7,8 @@
 html
 {
     min-height: 100%;
-    font-size: 16px;
 
+    font-size: 16px;
     scroll-behavior: smooth;
     scrollbar-gutter: stable;
 
@@ -41,9 +41,9 @@ body
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
 }
-img, svg, canvas, video { display: block; max-width: 100%; height: auto; }
+img, svg, canvas, video { display: block; max-width: 100%; }
 input, button, textarea, select, a { font: inherit; color: inherit; }
-button { appearance: none; padding: 0; background: none; border: none; cursor: pointer; }
+button { appearance: none; padding: 0; background: none; border: 0; cursor: pointer; }
 a { color: inherit; text-decoration: none; }
 h1, h2, h3, h4, h5, h6, p { margin: 0; }
 h1, h2, h3, h4, h5, h6 { letter-spacing: -0.025em; }

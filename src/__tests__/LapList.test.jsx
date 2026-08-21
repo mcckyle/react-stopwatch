@@ -1,10 +1,10 @@
 //File name: LapList.test.jsx
 //Author: Kyle McColgan
-//Date: 16 June 2026
+//Date: 20 August 2026
 //Description: This file contains the unit test suite for the LapList component.
 
 import React from "react";
-import { beforeAll, vi } from "vitest";
+import { vi, describe, beforeEach, test, expect } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import LapList from "../components/LapList/LapList.jsx";
 import { formatTime } from "../utils/formatTime";
@@ -17,7 +17,9 @@ vi.mock("../utils/formatTime", () => ({
 describe("LapList Component", () => {
     beforeEach(() => {
         vi.clearAllMocks();
-        formatTime.mockImplementation((time, includeCenti) => ({
+
+        //Return consistent layout structures for formatting related purposes.
+        vi.mocked(formatTime).mockImplementation(() => ({
             hours: "00",
             minutes: "01",
             seconds: "23",
@@ -33,11 +35,11 @@ describe("LapList Component", () => {
 
     //Test #2: Rendering - Renders the correct number of lap rows.
     test("returns one lap entry per lap", () => {
-        render(<LapList laps={[1000, 800, 400]} />);
+        render(<LapList laps={[1000, 800, 400]} onDelete={vi.fn()} onClear={vi.fn()}/>);
 
         //Only select the lap labels, ignoring the header text.
-        const lapLabels = screen.getAllByText(/^Lap \d+$/);
-        expect(lapLabels).toHaveLength(3);
+        const lapRows = screen.getAllByRole("listitem");
+        expect(lapRows).toHaveLength(3);
     });
 
     //Test #3: Accessibility - Renders an accessible log when laps exist.
@@ -50,9 +52,12 @@ describe("LapList Component", () => {
 
     //Test #4: Data Logic - Laps appear in reverse order (latest first).
     test("renders laps in reverse order with correct numbering", () => {
-        render(<LapList laps={[1000, 800, 400]} />);
-        const lapLabels = screen.getAllByText(/^Lap \d+$/).map(element => element.textContent);
-        expect(lapLabels).toEqual(["Lap 3", "Lap 2", "Lap 1"]);
+        render(<LapList laps={[1000, 800, 400]} onDelete={vi.fn()} onClear={vi.fn()}/>);
+        const lapRows = screen.getAllByRole("listitem");
+        const lapLabels = lapRows.map(row => {
+            return within(row).getByText(/^\d+$/).textContent;
+        })
+        expect(lapLabels).toEqual(["3", "2", "1"]);
     });
 
     //Test #5: Function Calls - Calls formatTime correctly for each lap and delta.
@@ -77,20 +82,20 @@ describe("LapList Component", () => {
 
     //Test #8: Logic - Highlights the fastest lap.
     test("applies fastest class to lap with smallest delta", () => {
-        render(<LapList laps={[1000, 900, 800]} />);
+        render(<LapList laps={[1200, 700, 600]} onDelete={vi.fn()} onClear={vi.fn()}/>);
 
-        const lapDivs = screen.getAllByText(/Lap/i).map(lap => lap.parentElement);
-        const fastestLap = lapDivs.find(div => div.className.includes("fastest"));
+        const lapRows = screen.getAllByRole("listitem");
+        const fastestLap = lapRows.find(div => div.className.includes("fastest"));
 
         expect(fastestLap).toBeTruthy();
     });
 
     //Test #9: Logic - Highlights the slowest lap.
     test("applies slowest class to lap with largest delta", () => {
-        render(<LapList laps={[1000, 950, 600]} />);
+        render(<LapList laps={[1000, 900, 800]} onDelete={vi.fn()} onClear={vi.fn()}/>);
 
-        const lapDivs = screen.getAllByText(/Lap/i).map(lap => lap.parentElement);
-        const slowestLap = lapDivs.find(div => div.className.includes("slowest"));
+        const lapRows = screen.getAllByRole("listitem");
+        const slowestLap = lapRows.find(div => div.className.includes("slowest"));
 
         expect(slowestLap).toBeTruthy();
     });

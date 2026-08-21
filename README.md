@@ -4,7 +4,7 @@
 
 A simple, modern stopwatch app built with **React**, **Vite**, and **Mantine UI**. Designed for focus and precision.
 
-![Screenshot](./public/images/Screenshot_20260805_170706.png)
+![Screenshot](./public/images/Screenshot_20260820_194849.png)
 *A glimpse of the stopwatch, captured with a screenshot.*
 
 *🌐 [Visit the live site](https://mcckyle.github.io/react-stopwatch/)*
@@ -141,7 +141,7 @@ react-stopwatch/
 ## 📄 License
 
 This project is licensed under the [MIT License](./LICENSE).
-Feel free to extend it for your own projects, or contribute improvements back to the community.
+Feel free to extend it for your own projects or contribute improvements.
 
 ---
 

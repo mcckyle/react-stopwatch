@@ -1,6 +1,6 @@
 //File name: StopwatchHeader.jsx
 //Author: Kyle McColgan
-//Date: 5 August 2026
+//Date: 20 August 2026
 //Description: This file contains the header component for the stopwatch React project.
 
 import React, { useState, useEffect, useCallback } from "react";
@@ -22,15 +22,19 @@ const StopwatchHeader = ({
   const [isLapPanelOpen, setLapPanelOpen] = useState(false);
   const toggleLapPanel = useCallback(() =>
   {
-    setLapPanelOpen((previous) => !previous);
+    setLapPanelOpen(previous => !previous);
+  }, []);
+  const closeLapPanel = useCallback(() =>
+  {
+    setLapPanelOpen(false);
   }, []);
 
   useEffect(() => {
     if (!hasLaps)
     {
-      setLapPanelOpen(false);
+      closeLapPanel();
     }
-  }, [hasLaps]);
+  }, [hasLaps, closeLapPanel]);
 
   useEffect(() => {
     if (!isLapPanelOpen)
@@ -38,23 +42,23 @@ const StopwatchHeader = ({
       return;
     }
 
-    const handleKeyDown = (event) =>
+    const handleKeyDown = event =>
     {
       if (event.key === "Escape")
       {
-        setLapPanelOpen(false);
+        closeLapPanel();
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isLapPanelOpen]);
+  }, [isLapPanelOpen, closeLapPanel]);
 
   return (
     <header className={styles.header}>
       <div className={styles.brand}>
         <Clock className={styles.icon} aria-hidden="true" />
-        <span className={styles.title}>STOPWATCH</span>
+        <span className={styles.title}>Stopwatch</span>
       </div>
 
       <div className={styles.actions} role="group" aria-label="Stopwatch actions">
@@ -67,7 +71,13 @@ const StopwatchHeader = ({
             aria-controls="lap-panel"
             aria-haspopup="dialog"
           >
-            {isLapPanelOpen ? "Hide Laps" : "Show Laps"}
+            <span>{isLapPanelOpen ? "Hide Laps" : "Laps"}</span>
+            <span
+              className={styles.lapCount}
+              aria-label={`${laps.length} laps`}
+            >
+              {laps.length}
+            </span>
           </button>
         )}
 
@@ -88,7 +98,13 @@ const StopwatchHeader = ({
       </div>
 
       {(hasLaps) && (isLapPanelOpen) && (
-        <aside id="lap-panel" className={styles.panel} aria-label="Lap history">
+        <aside
+          id="lap-panel"
+          className={styles.panel}
+          role="dialog"
+          aria-label="Lap history"
+          aria-modal="false"
+        >
           <LapList
             laps={laps}
             onClear={onClearLaps}

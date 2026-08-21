@@ -1,6 +1,6 @@
 //File name: ThemeContext.jsx
 //Author: Kyle McColgan
-//Date: 5 August 2026
+//Date: 20 August 2026
 //Description: This file contains the theming context component for the stopwatch React project.
 
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, useLayoutEffect } from "react";
@@ -15,6 +15,11 @@ const THEMES = Object.freeze({
 
 function getSystemTheme()
 {
+  if (typeof window === "undefined")
+  {
+    return THEMES.LIGHT;
+  }
+
   return window.matchMedia(DARK_MEDIA_QUERY).matches
     ? THEMES.DARK
     : THEMES.LIGHT;
@@ -30,14 +35,21 @@ function getInitialTheme()
     };
   }
 
-  const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
-
-  if ((savedTheme === THEMES.DARK) || (savedTheme === THEMES.LIGHT))
+  try
   {
-    return {
-      theme: savedTheme,
-      manual: true
-    };
+    const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+
+    if ((savedTheme === THEMES.LIGHT) || (savedTheme === THEMES.DARK))
+    {
+      return {
+        theme: savedTheme,
+        manual: true
+      };
+    }
+  }
+  catch
+  {
+    //Local storage unavailable...
   }
 
   return {
@@ -62,17 +74,17 @@ function saveTheme(theme)
   }
   catch
   {
-    //Storage unavailable.
+    //Local storage unavailable...
   }
 }
 
 export function ThemeProvider({ children })
 {
   const initialThemeState = useMemo(() => getInitialTheme(), []);
-  const hasManualTheme = useRef(initialThemeState.manual);
   const [theme, setTheme] = useState(initialThemeState.theme);
+  const hasManualTheme = useRef(initialThemeState.manual);
 
-  //Sync Theme to DOM.
+  //Keep document theme synchronized with React state.
   useLayoutEffect(() =>
   {
     applyTheme(theme);
@@ -80,32 +92,37 @@ export function ThemeProvider({ children })
 
   const toggleTheme = useCallback(() =>
   {
-    setTheme(current =>
+    setTheme(currentTheme =>
     {
-      const next =
-        current === THEMES.DARK
+      const nextTheme =
+        currentTheme === THEMES.DARK
           ? THEMES.LIGHT
           : THEMES.DARK;
 
       hasManualTheme.current = true;
-      saveTheme(next);
-      return next;
+      saveTheme(nextTheme);
+      return nextTheme;
     });
   }, []);
 
-  //Sync With System Theme Until Manual Override Exists.
+  //Follow the OS Theme until the user chooses manually.
   useEffect(() =>
   {
+    if (hasManualTheme.current)
+    {
+      return;
+    }
+
     const media = window.matchMedia(DARK_MEDIA_QUERY);
 
-    function handleSystemTheme(event)
+    const handleSystemTheme = event =>
     {
       if (hasManualTheme.current)
       {
         return;
       }
       setTheme(event.matches ? THEMES.DARK : THEMES.LIGHT);
-    }
+    };
 
     //Gracefully support older browsers.
     if (media.addEventListener)
@@ -121,7 +138,7 @@ export function ThemeProvider({ children })
   }, []);
 
   const value = useMemo(
-    () => Object.freeze({
+    () => ({
       theme,
       toggleTheme
     }), [theme, toggleTheme]

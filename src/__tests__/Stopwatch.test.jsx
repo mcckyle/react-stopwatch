@@ -1,15 +1,15 @@
 //File name: Stopwatch.test.jsx
 //Author: Kyle McColgan
-//Date: 31 July 2026
+//Date: 20 August 2026
 //Description: This file contains the unit test suite for the Stopwatch component.
 
 import React from "react";
 import { render, screen } from "../test/test-utils";
 import { fireEvent, act } from "@testing-library/react";
-import { beforeAll, vi } from "vitest";
+import { vi, describe, beforeEach, test, expect } from "vitest";
 import Stopwatch from "../components/Stopwatch/Stopwatch.jsx";
-import * as useStopWatchModule from "../hooks/useStopwatch";
-import * as useKeyboardShortcutsModule from "../hooks/useKeyboardShortcuts";
+import { useStopwatch } from "../hooks/useStopwatch";
+import { useKeyboardShortcuts } from "../hooks/useKeyboardShortcuts";
 
 // Mock hooks
 vi.mock("../hooks/useStopwatch");
@@ -21,7 +21,8 @@ describe("Stopwatch Component", () => {
     const mockGetCurrentTime = vi.fn(() => 1);
 
     beforeEach(() => {
-        useStopWatchModule.useStopwatch.mockReturnValue({
+        vi.clearAllMocks();
+        vi.mocked(useStopwatch).mockReturnValue({
             time: 0,
             isRunning: false,
             toggle: mockToggle,
@@ -29,14 +30,13 @@ describe("Stopwatch Component", () => {
             getCurrentTime: mockGetCurrentTime,
         });
 
-        useKeyboardShortcutsModule.useKeyboardShortcuts.mockImplementation(() => {});
-        vi.clearAllMocks();
+        vi.mocked(useKeyboardShortcuts).mockImplementation(() => {});
     });
 
     //Test #1
     test("1. Renders title.", () => {
         render(<Stopwatch />);
-        expect(screen.getByText("STOPWATCH")).toBeInTheDocument();
+        expect(screen.getByText("Stopwatch")).toBeInTheDocument();
     });
 
     //Test #2
@@ -63,7 +63,7 @@ describe("Stopwatch Component", () => {
     //Test #5
     test("5. Records a lap and renders it.", () => {
 
-        useStopWatchModule.useStopwatch.mockReturnValue({
+        vi.mocked(useStopwatch).mockReturnValue({
             time: 1000, //One second.
             isRunning: true, //Enable the Lap button.
             toggle: vi.fn(),
@@ -75,10 +75,12 @@ describe("Stopwatch Component", () => {
         const lapButton = screen.getByRole("button", { name: /lap/i});
         fireEvent.click(lapButton);
 
-        const lapPanel = screen.getByRole("button", { name: /show laps/i});
+        const lapPanel = screen.getByRole("button", { name: /laps/i});
         fireEvent.click(lapPanel);
 
-        expect(screen.getByText(/lap 1/i)).toBeInTheDocument();
+        const lapRow = screen.getByRole("listitem");
+        expect(lapRow).toBeInTheDocument();
+        expect(lapRow.textContent).toContain("1");
     });
 
     //Test #6
@@ -99,7 +101,7 @@ describe("Stopwatch Component", () => {
     test("8. Opens HelpModal when showHelp gets triggered manually", () => {
         let helpCallback;
 
-        useKeyboardShortcutsModule.useKeyboardShortcuts.mockImplementation(({ onOpenHelp }) => {
+        vi.mocked(useKeyboardShortcuts).mockImplementation(({ onOpenHelp }) => {
             helpCallback = onOpenHelp;
         });
 
@@ -118,7 +120,7 @@ describe("Stopwatch Component", () => {
         let helpCallback;
 
         //Capture the onOpenHelp callback from the mock.
-        useKeyboardShortcutsModule.useKeyboardShortcuts.mockImplementation(({ onOpenHelp }) => {
+        vi.mocked(useKeyboardShortcuts).mockImplementation(({ onOpenHelp }) => {
             helpCallback = onOpenHelp;
         });
 
@@ -138,7 +140,7 @@ describe("Stopwatch Component", () => {
         let helpCallback;
 
         //Capture the onOpenHelp callback from the mock.
-        useKeyboardShortcutsModule.useKeyboardShortcuts.mockImplementation(({ onOpenHelp }) => {
+        vi.mocked(useKeyboardShortcuts).mockImplementation(({ onOpenHelp }) => {
             helpCallback = onOpenHelp;
         });
 

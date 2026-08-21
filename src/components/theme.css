@@ -11,19 +11,21 @@
 
     /* Accents. */
     --accent: #7dd3fc;
-    --accent-soft: color-mix(in oklab, var(--accent) 18%, transparent);
     --accent-strong: #38bdf8;
+    --accent-soft: color-mix(in oklab, var(--accent) 16%, transparent);
 
     /* Display Scale. */
-    --display-font-size: clamp(5rem, 30vw, 36rem);
+    --display-font-size: clamp(5rem, 24vw, 36rem);
     --display-font-weight: 700;
     --display-letter-spacing: -0.065em;
     --display-line-height: 0.90;
-    --display-shadow: 0 0 48px color-mix(in oklab, var(--accent) 18%, transparent);
-    --header-action-size: 2.5rem;
+    --display-glow: 0 0 48px color-mix(in oklab, var(--accent) 18%, transparent);
+
+    /* Stopwatch Layout. */
     --viewport-padding: clamp(1rem, 3vw, 3rem);
     --header-height: clamp(4rem, 8vh, 5.5rem);
     --controls-height: clamp(5rem, 10vh, 7rem);
+    --header-action-size: 2.5rem;
 
     /* Spacing. */
     --space-1: 0.25rem;
@@ -35,20 +37,24 @@
     --space-7: 3rem;
     --space-8: 4rem;
 
+    /* Feedback. */
+    --success: #22c55e;
+    --danger: #ef4444;
+
     /* Shadows. */
     --shadow-sm: 0 8px 24px rgb(0 0 0 / 0.06);
     --shadow-lg: 0 20px 60px rgb(0 0 0 / 0.12);
     --shadow-glow: 0 0 120px color-mix(in oklab, var(--accent) 25%, transparent);
 
-    /* Effects. */
-    --success: #22c55e;
-    --danger: #ef4444;
-    --backdrop-blur: saturate(160%) blur(16px);
-    --overlay-blur: saturate(120%) blur(8px);
+    /* Surfaces. */
+    --surface: color-mix(in oklab, var(--text) 5%, transparent);
+    --surface-hover: color-mix(in oklab, var(--text) 9%, transparent);
+    --surface-border: color-mix(in oklab, var(--text) 11%, transparent);
+
+    /* Focus. */
     --focus-ring: 0 0 0 3px color-mix(in oklab, var(--accent) 45%, transparent);
-    --surface-border: var(--border-subtle);
-    --ambient-glow: 0 0 80px color-mix(in oklab, var(--accent) 14%, transparent);
-    --ambient-glow-strong: 0 0 120px color-mix(in oklab, var(--accent) 24%, transparent);
+
+    /* Ambient Effects. */
     --ambient-opacity: 0.14;
     --ambient-blur: 160px;
     --ambient-scale: 1.3;
@@ -68,15 +74,10 @@
 {
     --app-bg: #f7f9fc;
 
-    --text-primary: #101827;
-    --text-secondary: color-mix(in oklab, var(--text) 80%, transparent);
-    --text-muted: color-mix(in oklab, var(--text) 55%, transparent);
-    --text-disabled: color-mix(in oklab, var(--text) 38%, transparent);
-
-    --surface: rgb(255 255 255 / 0.55);
-    --surface-hover: rgb(255 255 255 / 0.85);
-
-    --border-subtle: color-mix(in oklab, var(--text) 10%, transparent);
+    --text: #101827;
+    --text-secondary: color-mix(in oklab, var(--text) 78%, transparent);
+    --text-muted: color-mix(in oklab, var(--text) 52%, transparent);
+    --text-disabled: color-mix(in oklab, var(--text) 36%, transparent);
 }
 
 /* ====================================
@@ -86,18 +87,13 @@
 {
     --app-bg: #05070a;
 
-    --text-primary: #f8fafc;
+    --text: #f8fafc;
     --text-secondary: color-mix(in oklab, var(--text) 82%, transparent);
-    --text-muted: color-mix(in oklab, var(--text) 55%, transparent);
-    --text-disabled: color-mix(in oklab, var(--text) 42%, transparent);
-
-    --surface: rgb(255 255 255 / 0.06);
-    --surface-hover: rgb(255 255 255 / 0.12);
-
-    --border-subtle: color-mix(in oklab, var(--text) 12%, transparent);
+    --text-muted: color-mix(in oklab, var(--text) 56%, transparent);
+    --text-disabled: color-mix(in oklab, var(--text) 40%, transparent);
 }
 
 /* ====================================
    GLOBAL THEME STYLES.
 ======================================= */
-html, body { background-color: var(--app-bg); color: var(--text); }
+html, body { background: var(--app-bg); color: var(--text-primary); }

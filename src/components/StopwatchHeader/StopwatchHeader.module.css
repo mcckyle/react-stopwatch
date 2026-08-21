@@ -12,7 +12,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: clamp(0.75rem, 3vh, 2rem);
+    padding-bottom: clamp(0.75rem, 2.5vh, 1.5rem);
 }
 
 /* ====================================
@@ -20,20 +20,21 @@
 ======================================= */
 .brand
 {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 0.60rem;
+    gap: 0.55rem;
     user-select: none;
 }
-.icon { width: 0.85rem; height: 0.85rem; color: var(--accent); opacity: 0.45; }
+.icon { width: 0.85rem; height: 0.85rem; color: var(--accent); opacity: 0.55; }
 .title
 {
+    color: var(--text-muted);
     font-family: var(--font-mono);
     font-size: 0.60rem;
     font-weight: 600;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.20em;
+    line-height: 1;
     text-transform: uppercase;
-    color: var(--text-disabled);
 }
 
 /* ====================================
@@ -43,7 +44,7 @@
 {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.40rem;
 }
 
 /* ====================================
@@ -51,29 +52,43 @@
  ======================================= */
 .lapButton
 {
-    padding: 0.55rem 0.9rem;
-    border-radius: 999px;
+    min-height: var(--header-action-size);
+
+    display: inline-flex;
+    align-items: center;
+    gap: 0.50rem;
+    padding-inline: 0.70rem;
+
+    border: 1px solid transparent;
+    border-radius: 0.55rem;
     color: var(--text-muted);
 
     font-family: var(--font-mono);
-    font-size: 0.6rem;
+    font-size: 0.68rem;
     font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
 
-    transition: background var(--duration-fast) var(--ease),
-                color var(--duration-fast) var(--ease);
+    transition: background-color var(--duration-fast) var(--ease),
+                border-color var(--duration-fast) var(--ease),
+                color var(--duration-fast) var(--ease),
+                transform var(--duration-fast) var(--ease);
 }
-.lapButton:hover { background: var(--surface); color: var(--text-primary); }
+.lapButton:hover { background: var(--surface); border-color: var(--surface-border); color: var(--text); }
 .lapButton:active { transform: translateY(1px); }
-.panel
+.lapCount
 {
-    position: absolute;
-    top: calc(100% + 0.75rem);
-    right: 0;
+    min-width: 1.15rem;
+    height: 1.15rem;
 
-    width: min(28rem, calc(100vw - 2rem));
-    z-index: 20;
+    display: inline-grid;
+    place-items: center;
+    border-radius: 50%;
+
+    background: var(--accent-soft);
+    color: var(--accent);
+
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    font-variant-numeric: tabular-nums;
 }
 
 /* ====================================
@@ -87,28 +102,39 @@
     display: grid;
     place-items: center;
 
-    border: 1px solid var(--border-subtle);
-    border-radius: 50%;
+    border: 1px solid var(--surface-border);
+    border-radius: 0.55rem;
     background: transparent;
-    color: var(--text-primary);
-    backdrop-filter: var(--backdrop-blur);
+    color: var(--text-muted);
 
-    transition: background var(--duration-fast) var(--ease);
+    transition: background-color var(--duration-fast) var(--ease),
+                border-color var(--duration-fast) var(--ease),
+                color var(--duration-fast) var(--ease),
+                transform var(--duration-fast) var(--ease);
 }
-.toggle:hover { background: var(--surface-hover); }
-.toggle:focus-visible { box-shadow: var(--focus-ring); }
-.toggleIcon { width: 1rem; height: 1rem; }
+.toggle:hover { background: var(--surface); border-color: color-mix(in oklab, var(--accent) 25%, var(--surface-border)); color: var(--text); }
+.toggle:active { transform: translateY(1px); }
+.toggleIcon { width: 0.95rem; height: 0.95rem; }
+
+/* ====================================
+   STOPWATCHHEADER LAP PANEL STYLES.
+======================================= */
+.panel
+{
+    position: absolute;
+    top: calc(100% + 0.50rem);
+    right: 0;
+
+    width: min(30rem, calc(100vw - 2rem * var(--viewport-padding)));
+    z-index: 20;
+}
 
 /* ====================================
    STOPWATCHHEADER MEDIA QUERY STYLES.
 ======================================= */
-@media (max-width: 640px)
+@media (max-width: 480px)
 {
-    .brandMark, .toggle { width: 2.35rem; height: 2.35rem; }
-    .title { font-size: 0.62rem; letter-spacing: 0.2em; }
-}
-@media (max-width: 420px)
-{
-    .header { align-items: flex-start; }
-    .title { max-width: 12rem; }
+    .title { font-size: 0.56rem; letter-spacing: 0.17em; }
+    .lapButton { padding-inline: 0.55rem; }
+    .lapButton > span:first-child { display: none; }
 }

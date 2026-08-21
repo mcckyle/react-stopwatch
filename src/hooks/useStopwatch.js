@@ -1,6 +1,6 @@
 //File name: useStopwatch.js
 //Author: Kyle McColgan
-//Date: 5 August 2026
+//Date: 20 August 2026
 //Description: This file contains the stopwatch functions for the stopwatch React project.
 
 import { useEffect, useRef, useState, useCallback } from "react";
