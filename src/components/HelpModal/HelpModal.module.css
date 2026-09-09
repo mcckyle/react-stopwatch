@@ -65,7 +65,7 @@
 }
 .title
 {
-    color: var(--text-primary);
+    color: var(--text);
     font-size: clamp(1.25rem, 3vw, 1.5rem);
     font-weight: 600;
     line-height: 1.15;
@@ -96,7 +96,7 @@
     transition: background-color var(--duration-fast) var(--ease);
 }
 .item:hover { background: color-mix(in oklab, var(--surface) 70%, transparent); }
-.label { padding-left: 0.25rem; font-size: 0.78rem; color: var(--text-secondary); }
+.label { padding-left: 0.25rem; color: var(--text-secondary); font-size: 0.78rem; }
 
 /* ====================================
    HELPMODAL KEYCAPS STYLES.
@@ -111,11 +111,11 @@
     align-items: center;
     justify-content: center;
 
-    border: 1px solid var(--border-subtle);
+    border: 1px solid var(--surface-border);
     border-radius: 0.35rem;
 
     background: var(--surface);
-    color: var(--text-primary);
+    color: var(--text);
     font-family: var(--font-mono);
     font-size: 0.58rem;
     font-weight: 600;
@@ -146,7 +146,7 @@
                 color var(--duration-fast) var(--ease),
                 transform var(--duration-fast) var(--ease);
 }
-.closeButton:hover { background: var(--surface-hover); border-color: color-mix(in oklab, var(--accent) 22%, var(--surface-border)); color: var(--text-primary); }
+.closeButton:hover { background: var(--surface-hover); border-color: color-mix(in oklab, var(--accent) 22%, var(--surface-border)); color: var(--text); }
 .closeButton:active { transform: translateY(1px); }
 
 /* ====================================

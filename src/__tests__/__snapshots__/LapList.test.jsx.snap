@@ -39,6 +39,7 @@ exports[`LapList Component > matches snapshot 1`] = `
         class="_lap_2af36b _latest_2af36b _fastest_2af36b"
       >
         <span
+          aria-label="Lap 3"
           class="_lapLabel_2af36b"
         >
           3
@@ -69,6 +70,7 @@ exports[`LapList Component > matches snapshot 1`] = `
         class="_lap_2af36b _slowest_2af36b"
       >
         <span
+          aria-label="Lap 2"
           class="_lapLabel_2af36b"
         >
           2
@@ -99,6 +101,7 @@ exports[`LapList Component > matches snapshot 1`] = `
         class="_lap_2af36b _slowest_2af36b"
       >
         <span
+          aria-label="Lap 1"
           class="_lapLabel_2af36b"
         >
           1

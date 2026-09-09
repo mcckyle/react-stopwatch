@@ -3,9 +3,9 @@
 /* ====================================
    APPLICATION SHELL STYLES.
 ======================================= */
-.app-shell
+/*.app-shell
 {
     width: 100%;
-    min-height: 100dvh; /* Use Modern Viewport with fallback handled globally. */
+    min-height: 100dvh;
     isolation: isolate;
-}
+}*/

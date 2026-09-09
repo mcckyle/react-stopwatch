@@ -1,6 +1,6 @@
 //File name: ThemeContext.jsx
 //Author: Kyle McColgan
-//Date: 20 August 2026
+//Date: 8 September 2026
 //Description: This file contains the theming context component for the stopwatch React project.
 
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, useLayoutEffect } from "react";
@@ -17,7 +17,7 @@ function getSystemTheme()
 {
   if (typeof window === "undefined")
   {
-    return THEMES.LIGHT;
+    return THEMES.DARK;
   }
 
   return window.matchMedia(DARK_MEDIA_QUERY).matches
@@ -30,7 +30,7 @@ function getInitialTheme()
   if (typeof window === "undefined")
   {
     return {
-      theme: THEMES.LIGHT,
+      theme: THEMES.DARK,
       manual: false
     };
   }
@@ -80,9 +80,9 @@ function saveTheme(theme)
 
 export function ThemeProvider({ children })
 {
-  const initialThemeState = useMemo(() => getInitialTheme(), []);
-  const [theme, setTheme] = useState(initialThemeState.theme);
-  const hasManualTheme = useRef(initialThemeState.manual);
+  const initialTheme = useMemo(() => getInitialTheme(), []);
+  const [theme, setTheme] = useState(initialTheme.theme);
+  const hasManualTheme = useRef(initialTheme.manual);
 
   //Keep document theme synchronized with React state.
   useLayoutEffect(() =>

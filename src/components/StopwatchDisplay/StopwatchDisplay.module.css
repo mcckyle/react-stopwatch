@@ -33,7 +33,7 @@
 }
 
 /* ====================================
-   STOPWATCHDISPLAY HERO DIGIT ROW STYLES.
+   STOPWATCHDISPLAY GIANT BANNER ROW STYLES.
 ======================================= */
 .row
 {
@@ -42,8 +42,7 @@
     align-items: baseline; /* Keep centiseconds on bottom. */
     justify-content: center; /* Needed for horizontal centering purposes. */
     white-space: nowrap;
-    padding-inline: clamp(0.25rem, 1.5vw, 1.5rem);
-
+    padding-inline: clamp(0.25rem, 1vw, 1rem);
 
     font-size: var(--display-font-size); /* IMPORTANT: Digits as large as possible. */
     line-height: var(--display-line-height);

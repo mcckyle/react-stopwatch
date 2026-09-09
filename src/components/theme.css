@@ -15,7 +15,7 @@
     --accent-soft: color-mix(in oklab, var(--accent) 16%, transparent);
 
     /* Display Scale. */
-    --display-font-size: clamp(5rem, 24vw, 36rem);
+    --display-font-size: clamp(5rem, 23vw, 36rem);
     --display-font-weight: 700;
     --display-letter-spacing: -0.065em;
     --display-line-height: 0.90;
@@ -41,15 +41,15 @@
     --success: #22c55e;
     --danger: #ef4444;
 
-    /* Shadows. */
-    --shadow-sm: 0 8px 24px rgb(0 0 0 / 0.06);
-    --shadow-lg: 0 20px 60px rgb(0 0 0 / 0.12);
-    --shadow-glow: 0 0 120px color-mix(in oklab, var(--accent) 25%, transparent);
-
     /* Surfaces. */
     --surface: color-mix(in oklab, var(--text) 5%, transparent);
     --surface-hover: color-mix(in oklab, var(--text) 9%, transparent);
     --surface-border: color-mix(in oklab, var(--text) 11%, transparent);
+
+    /* Shadows. */
+    --shadow-sm: 0 8px 24px rgb(0 0 0 / 0.06);
+    --shadow-lg: 0 20px 60px rgb(0 0 0 / 0.12);
+    --shadow-glow: 0 0 120px color-mix(in oklab, var(--accent) 25%, transparent);
 
     /* Focus. */
     --focus-ring: 0 0 0 3px color-mix(in oklab, var(--accent) 45%, transparent);
@@ -96,4 +96,4 @@
 /* ====================================
    GLOBAL THEME STYLES.
 ======================================= */
-html, body { background: var(--app-bg); color: var(--text-primary); }
+html, body { background: var(--app-bg); color: var(--text); }

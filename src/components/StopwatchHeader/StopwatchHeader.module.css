@@ -125,7 +125,7 @@
     top: calc(100% + 0.50rem);
     right: 0;
 
-    width: min(30rem, calc(100vw - 2rem * var(--viewport-padding)));
+    width: min(28rem, calc(100vw - var(--viewport-padding) - var(--viewport-padding)));
     z-index: 20;
 }
 
@@ -135,6 +135,6 @@
 @media (max-width: 480px)
 {
     .title { font-size: 0.56rem; letter-spacing: 0.17em; }
+    .lapLabel { display: none; }
     .lapButton { padding-inline: 0.55rem; }
-    .lapButton > span:first-child { display: none; }
 }
