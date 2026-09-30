@@ -1,13 +1,12 @@
 /* Filename: src/components/StopwatchDisplay/StopwatchDisplay.module.css */
 
 /* =========================================
-   STOPWATCHDISPLAY DISPLAY ROOT STYLES.
+   STOPWATCHDISPLAY DISPLAY CANVAS STYLES.
 ============================================ */
 .display
 {
     width: 100%;
     min-width: 0;
-    height: 100%;
 
     display: flex;
     align-items: center;
@@ -15,25 +14,25 @@
 }
 
 /* ====================================
-   STOPWATCHDISPLAY TIME WRAPPER STYLES.
+   STOPWATCHDISPLAY ACCESSIBLE TIME ELEMENT STYLES.
 ======================================= */
 .time
 {
     width: 100%;
     display: flex;
     align-items: center;
+    color: var(--text);
 
     font-family: var(--font-mono);
     font-weight: var(--display-font-weight);
     font-variant-numeric: tabular-nums lining-nums;
     letter-spacing: var(--display-letter-spacing);
     text-shadow: var(--display-glow);
-    color: var(--text);
     user-select: none;
 }
 
 /* ====================================
-   STOPWATCHDISPLAY GIANT BANNER ROW STYLES.
+   STOPWATCHDISPLAY GIANT BANNER CLOCK STYLES.
 ======================================= */
 .row
 {
@@ -42,6 +41,7 @@
     align-items: baseline; /* Keep centiseconds on bottom. */
     justify-content: center; /* Needed for horizontal centering purposes. */
     white-space: nowrap;
+    overflow: hidden;
     padding-inline: clamp(0.25rem, 1vw, 1rem);
 
     font-size: var(--display-font-size); /* IMPORTANT: Digits as large as possible. */
@@ -54,10 +54,10 @@
 .group, .centi { display: inline-flex; align-items: baseline; }
 .digit
 {
-    width: 1ch;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    width: 1ch;
     line-height: 0.9;
 }
 /* ====================================
@@ -89,7 +89,7 @@
 }
 
 /* ====================================
-   STOPWATCHDISPLAY SCREEN READERS ONLY STYLES.
+   STOPWATCHDISPLAY SCREEN READER CONTENT STYLES.
 ======================================= */
 .srOnly
 {

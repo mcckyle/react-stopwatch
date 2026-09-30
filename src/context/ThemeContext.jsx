@@ -1,6 +1,6 @@
 //File name: ThemeContext.jsx
 //Author: Kyle McColgan
-//Date: 8 September 2026
+//Date: 29 September 2026
 //Description: This file contains the theming context component for the stopwatch React project.
 
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, useLayoutEffect } from "react";
@@ -10,7 +10,11 @@ const THEME_STORAGE_KEY = "stopwatch-theme";
 const DARK_MEDIA_QUERY = "(prefers-color-scheme: dark)";
 const THEMES = Object.freeze({
   LIGHT: "light",
-  DARK: "dark",
+  DARK: "dark"
+});
+const THEME_COLORS = Object.freeze({
+  light: "#f7f9fc",
+  dark: "#05070a"
 });
 
 function getSystemTheme()
@@ -64,6 +68,12 @@ function applyTheme(theme)
 
   root.dataset.theme = theme;
   root.style.colorScheme = theme;
+
+  const themeColor = document.querySelector('meta[name="theme-color"]');
+  if (themeColor)
+  {
+    themeColor.setAttribute("content", THEME_COLORS[theme]);
+  }
 }
 
 function saveTheme(theme)
@@ -84,7 +94,7 @@ export function ThemeProvider({ children })
   const [theme, setTheme] = useState(initialTheme.theme);
   const hasManualTheme = useRef(initialTheme.manual);
 
-  //Keep document theme synchronized with React state.
+  //Synchronize the document with React state.
   useLayoutEffect(() =>
   {
     applyTheme(theme);
@@ -105,7 +115,8 @@ export function ThemeProvider({ children })
     });
   }, []);
 
-  //Follow the OS Theme until the user chooses manually.
+  //Follow the operating-system theme until
+  //the user explicitly chooses a theme.
   useEffect(() =>
   {
     if (hasManualTheme.current)

@@ -15,10 +15,10 @@
     border: 1px solid var(--surface-border);
     border-radius: 0.70rem;
 
-    background: color-mix(in oklab, var(--app-bg) 94%, transparent);
+    background: color-mix(in oklab, var(--app-bg) 96%, transparent);
     box-shadow: 0 20px 60px rgb(0 0 0 / 0.18);
-    backdrop-filter: blur(14px) saturate(140%);
-    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 }
 
 /* ====================================
@@ -104,8 +104,6 @@
     display: grid;
     grid-template-columns: 2rem minmax(0, 1fr) auto 1.7rem;
     align-items: center;
-    gap: 0;
-
     padding: 0.45rem 0.75rem;
     border-bottom: 1px solid color-mix(in oklab, var(--text) 5%, transparent);
 
@@ -132,7 +130,7 @@
 .lapDelta { min-width: 4.8rem; color: var(--text-muted); font-size: 0.58rem; letter-spacing: 0.01em; text-align: right; }
 
 /* ====================================
-   LAPLIST STATE EMPHASIS STYLES.
+   LAPLIST STATES STYLES.
 ======================================= */
 .latest { background: color-mix(in oklab, var(--accent) 4%, transparent); }
 .latest::before

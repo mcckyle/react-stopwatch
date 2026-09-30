@@ -1,6 +1,6 @@
 //File name: Stopwatch.jsx
 //Author: Kyle McColgan
-//Date: 20 August 2026
+//Date: 29 September 2026
 //Description: This file contains the parent Stopwatch component for the stopwatch React project.
 
 import React, { useState, useEffect, useCallback } from "react";
@@ -43,11 +43,10 @@ const Stopwatch = ({ toggleTheme }) => {
   const deleteLap = useCallback((index) =>
   {
     setLaps(previous =>
-    {
-      return previous.filter(
+      previous.filter(
         (_, lapIndex) => lapIndex !== index
-      );
-    });
+      )
+    );
   }, []);
   const openHelp = useCallback(() =>
   {
@@ -58,7 +57,7 @@ const Stopwatch = ({ toggleTheme }) => {
     setShowHelp(false);
   }, []);
 
-  //Save laps array to browser localStorage only after initial load.
+  //Persist laps whenever the collection changes.
   useEffect(() =>
   {
     persistLaps(laps);

@@ -1,6 +1,6 @@
 //File name: LapList.jsx
 //Author: Kyle McColgan
-//Date: 8 September 2026
+//Date: 29 September 2026
 //Description: This file contains the laps component for the stopwatch React project.
 
 import React, { useState, useMemo } from "react";
@@ -21,9 +21,8 @@ const LapList = ({ laps, onClear, onDelete }) =>
   const lapDurations = useMemo(() =>
   {
     return laps.map((lap, index) =>
-    {
-      return lap - (laps[index + 1] ?? 0);
-    });
+      lap - (laps[index + 1] ?? 0)
+    );
   }, [laps]);
   const { fastestLap, slowestLap } = useMemo(() =>
   {
@@ -89,7 +88,10 @@ const LapList = ({ laps, onClear, onDelete }) =>
               ? `${formattedLap.hours}:${formattedLap.minutes}:${formattedLap.seconds}.${formattedLap.centiSeconds}`
               : `${formattedLap.minutes}:${formattedLap.seconds}.${formattedLap.centiSeconds}`;
 
-          const deltaTime = `+${formattedDuration.minutes}:${formattedDuration.seconds}.${formattedDuration.centiSeconds}`;
+          const deltaTime =
+          formattedDuration.hours !== "00"
+            ? `+${formattedDuration.hours}:${formattedDuration.minutes}:${formattedDuration.seconds}.${formattedDuration.centiSeconds}`
+            : `+${formattedDuration.minutes}:${formattedDuration.seconds}.${formattedDuration.centiSeconds}`;
 
           const rowClassName = [
             styles.lap,

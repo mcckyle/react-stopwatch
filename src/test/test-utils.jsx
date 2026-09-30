@@ -1,17 +1,16 @@
 //File name: test-utils.jsx
 //Author: Kyle McColgan
-//Date: 16 June 2026
+//Date: 29 September 2026
 //Description: This file contains set up related code for Vitest unit testing on the React stopwatch project.
 
 import React from "react";
 import { render } from "@testing-library/react";
 import { ThemeProvider } from "../context/ThemeContext.jsx";
-import ThemeWrapper from "../components/ThemeWrapper.jsx";
 
 const AllProviders = ({ children }) => (
-    <ThemeProvider>
-      <ThemeWrapper>{children}</ThemeWrapper>
-    </ThemeProvider>
+  <ThemeProvider>
+    {children}
+  </ThemeProvider>
 );
 
 const customRender = (ui, options) =>

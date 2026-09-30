@@ -21,8 +21,6 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@mantine/core": "^9.3.2",
-    "@mantine/hooks": "^9.3.2",
     "@testing-library/jest-dom": "^7.0.0",
     "@testing-library/react": "^16.3.0",
     "@types/react": "^19.1.2",

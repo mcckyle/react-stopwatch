@@ -16,7 +16,7 @@
              max(1rem, env(safe-area-inset-bottom))
              max(1rem, env(safe-area-inset-left));
 
-    background: rgb(0 0 0 / 0.38);
+    background: rgb(0 0 0 / 0.42);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 
@@ -38,11 +38,9 @@
     border: 1px solid var(--surface-border);
     border-radius: 0.70rem;
 
-    background: color-mix(in oklab, var(--app-bg) 94%, transparent);
+    background: color-mix(in oklab, var(--app-bg) 97%, transparent);
     color: var(--text);
-    box-shadow: 0 24px 80px rgb(0 0 0 / 0.22);
-    backdrop-filter: blur(18px) saturate(140%);
-    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    box-shadow: 0 24px 80px rgb(0 0 0 / 0.24);
 
     animation: modal-in var(--duration) var(--ease);
 }
@@ -95,7 +93,7 @@
 
     transition: background-color var(--duration-fast) var(--ease);
 }
-.item:hover { background: color-mix(in oklab, var(--surface) 70%, transparent); }
+.item:hover { background: var(--surface); }
 .label { padding-left: 0.25rem; color: var(--text-secondary); font-size: 0.78rem; }
 
 /* ====================================

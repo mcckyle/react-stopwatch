@@ -19,7 +19,7 @@
 }
 
 /* ====================================
-   STOPWATCH HERO CLOCK REGION STYLES.
+   STOPWATCH GIANT CLOCK REGION STYLES.
 ======================================= */
 .hero
 {
@@ -29,4 +29,8 @@
     align-items: center;
     width: 100%;
 }
-.footer { display: flex; align-items: center; width: 100%; padding-top: clamp(1rem, 3vh, 2rem); padding-bottom: 0.25rem; }
+
+/* ====================================
+   STOPWATCH COMMAND RAIL STYLES.
+ ======================================= */
+.footer { display: flex; align-items: center; width: 100%; padding-block: clamp(1rem, 3vh, 2rem) 0.25rem; }

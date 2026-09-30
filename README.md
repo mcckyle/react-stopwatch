@@ -1,27 +1,56 @@
 [![Deploy to GitHub Pages](https://github.com/mcckyle/react-stopwatch/actions/workflows/deploy.yml/badge.svg)](https://github.com/mcckyle/react-stopwatch/actions/workflows/deploy.yml)
+[![License](https://img.shields.io/badge/License-MIT-blue)](./LICENSE)
 
 # react-stopwatch
 
-A simple, modern stopwatch app built with **React**, **Vite**, and **Mantine UI**. Designed for focus and precision.
+A simple, modern stopwatch built with **React** and **Vite**.
 
-![Screenshot](./public/images/Screenshot_20260820_194849.png)
-*A glimpse of the stopwatch, captured with a screenshot.*
+Designed around a fullscreen, distraction-free experience with a giant time display, keyboard controls, lap history, persistent laps, and light/dark themes.
 
-*🌐 [Visit the live site](https://mcckyle.github.io/react-stopwatch/)*
+[**Live Demo →**](https://mcckyle.github.io/react-stopwatch/)
+
+![Stopwatch Screenshot](./public/images/Screenshot_20260929_190451.png)
 
 ---
 
 ## Features
 
-- ⚡ Instant load with [Vite](https://vitejs.dev/)
-- 🎨 Modern UI with [Mantine UI](https://mantine.dev/)
-- 💡 Minimalist design, dark-themed interface
-- 📱 Responsive layout for desktop and mobile
-- 🧠 Built with composability and future enhancements in mind!
+- Full-width, fullscreen stopwatch display
+- Start, pause, reset, and lap controls
+- Keyboard shortcuts for core actions
+- Persistent lap history with `localStorage`
+- Lap duration deltas
+- Fastest and slowest lap highlighting
+- Light and dark themes
+- Responsive desktop and mobile layouts
+- Accessible controls and semantic markup
+- Reduced-motion support
+- No UI framework or component libraries
+
+### Keyboard shortcuts
+
+| Key | Action |
+| --- | --- |
+| `Space` | Start / pause |
+| `L` | Record lap |
+| `R` | Reset |
+| `Shift + ?` | Open help |
 
 ---
 
-## 🚀 Getting Started
+## Tech Stack
+
+| Technology | Purpose |
+| --- | --- |
+| [React](https://react.dev/) | User interface |
+| [Vite](https://vite.dev/) | Development and production tooling |
+| CSS Modules | Component-scoped styling |
+| CSS | Design system, responsive layout, themes, and motion |
+| `localStorage` | Persistent lap history |
+
+---
+
+## Getting Started
 
 Clone the repository and install dependencies:
 
@@ -45,15 +74,7 @@ npm run build
 
 ---
 
-## 🛠️ Tech Stack
-
-- [React](https://reactjs.org/)
-- [Vite](https://vitejs.dev/)
-- [Mantine UI](https://mantine.dev/) (for theme configuration)
-
----
-
-## 📁 Project Structure
+## Project Structure
 
 ```
 react-stopwatch/
@@ -85,7 +106,6 @@ react-stopwatch/
 │   │   │   ├── HelpModal.jsx
 │   │   │   └── HelpModal.module.css
 │   │   │
-│   │   ├── ThemeWrapper.jsx
 │   │   └── theme.css
 │   │     
 │   ├── hooks/            # Custom React hooks.
@@ -125,32 +145,50 @@ react-stopwatch/
 
 ---
 
-## 🎯 Roadmap
+## Design Principles
 
-- [x] Basic lap functionality.
-- [x] Keyboard shortcuts for core controls.
-- [x] Persist laps using browser localStorage.
-- [x] Highlight fastest and slowest lap.
-- [x] Add lap time deltas (difference from previous lap).
-- [x] Add light/dark mode toggle with animation.
-- [x] Clear laps functionality.
-- [ ] Export laps to CSV or JSON.
+The interface is intentionally built around a small set of principles:
+
+1. Time first - The stopwatch display dominates the viepwort. Supporting controls stay visually secondary.
+
+2. Simple by default - The application avoids unnecessary panels, decoration, dependencies, and interaction layers.
+
+3. Responsive by design - The same composition adapts from large desktop displays to smaller touch devices without turning into a separate mobile interface.
+
+4. Accessible interaction - Semantic HTML, keyboard controls, visible focus states, accessible labels, and reduction-motion support are treated as part of the interface rather than afterthoughts.
+
+5. Explicit styling - The project uses native CSS and CSS modules instead of a general-purpose component library, keeping the visual system small and understandable.
 
 ---
 
-## 📄 License
+## Roadmap
+
+- [x] Core stopwatch functionality
+- [x] Start / pause / reset controls
+- [x] Lap functionality
+- [x] Keyboard shortcuts
+- [x] Persistent lap history
+- [x] Lap time deltas
+- [x] Fastest and slowest lap highlighting
+- [x] Clear lap history
+- [x] Light / dark themes
+- [x] Responsive layout
+- [x] Reduced-motion support
+- [ ] Export laps to CSV or JSON
+
+---
+
+## License
 
 This project is licensed under the [MIT License](./LICENSE).
-Feel free to extend it for your own projects or contribute improvements.
 
 ---
 
-## 🙌 Acknowledgments
+## Acknowledgments
 
 This project was made possible thanks to the open-source community and the following technologies:
 
 - [React](https://react.dev) - A modern library designed specifically for building fast, interactive UIs.
 - [Vite](https://vitejs.dev/) - Next-generation frontend tooling with lightning-fast dev server and build optimizations.
-- [Mantine UI](https://mantine.dev/) - Accessible, fully-featured React components for building polished interfaces.
 
 Special thanks to the broader open-source ecosystem for the inspiration and tools that empower developers to create and share freely.

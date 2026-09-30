@@ -1,6 +1,6 @@
 //File name: StopwatchHeader.jsx
 //Author: Kyle McColgan
-//Date: 8 September 2026
+//Date: 29 September 2026
 //Description: This file contains the header component for the stopwatch React project.
 
 import React, { useState, useEffect, useCallback } from "react";
@@ -29,6 +29,7 @@ const StopwatchHeader = ({
     setLapPanelOpen(false);
   }, []);
 
+  //A lap panel cannot remain open after its data disappears.
   useEffect(() => {
     if (!hasLaps)
     {
@@ -36,6 +37,7 @@ const StopwatchHeader = ({
     }
   }, [hasLaps, closeLapPanel]);
 
+  //Escape closes the lap panel.
   useEffect(() => {
     if (!isLapPanelOpen)
     {
@@ -44,11 +46,13 @@ const StopwatchHeader = ({
 
     const handleKeyDown = event =>
     {
-      if (event.key === "Escape")
+      if (event.key !== "Escape")
       {
-        event.preventDefault();
-        closeLapPanel();
+        return;
       }
+
+      event.preventDefault();
+      closeLapPanel();
     };
 
     window.addEventListener("keydown", handleKeyDown);
