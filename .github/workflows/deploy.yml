@@ -1,6 +1,6 @@
 #File name: deploy.yml
 #Author: Kyle McColgan
-#Date: 5 August 2026
+#Date: 29 September 2026
 #Description: This file contains the workflow for GitHub Actions and the GitHub Pages deployment processes.
 
 name: Deploy to GitHub Pages
@@ -13,21 +13,26 @@ on:
 permissions:
   contents: write  # For push to the gh-pages branch...
 
+#Prevents multiple concurrent deployments from stepping on each other...
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
 
       - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v7
         with:
           node-version: '24'
           cache: 'npm'
 
-      - name: Install package dependencies
-        run: npm install
+      - name: Install dependencies
+        run: npm ci #Safer/faster alternative to npm install in CI environments.
 
       - name: Build the project
         run: npm run build  # Vite outputs to ./dist directory.

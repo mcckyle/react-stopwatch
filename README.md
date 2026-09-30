@@ -149,13 +149,13 @@ react-stopwatch/
 
 The interface is intentionally built around a small set of principles:
 
-1. Time first - The stopwatch display dominates the viepwort. Supporting controls stay visually secondary.
+1. Time first - The stopwatch display dominates the viewport. Supporting controls stay visually secondary.
 
 2. Simple by default - The application avoids unnecessary panels, decoration, dependencies, and interaction layers.
 
 3. Responsive by design - The same composition adapts from large desktop displays to smaller touch devices without turning into a separate mobile interface.
 
-4. Accessible interaction - Semantic HTML, keyboard controls, visible focus states, accessible labels, and reduction-motion support are treated as part of the interface rather than afterthoughts.
+4. Accessible interaction - Semantic HTML, keyboard controls, visible focus states, accessible labels, and reduced-motion support are treated as part of the interface rather than afterthoughts.
 
 5. Explicit styling - The project uses native CSS and CSS modules instead of a general-purpose component library, keeping the visual system small and understandable.
 
