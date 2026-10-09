@@ -4,9 +4,7 @@ exports[`LapList Component > matches snapshot 1`] = `
 <DocumentFragment>
   <section
     aria-label="Lap history"
-    aria-live="polite"
     class="_lapList_2af36b"
-    role="log"
   >
     <header
       class="_header_2af36b"
@@ -26,6 +24,7 @@ exports[`LapList Component > matches snapshot 1`] = `
         </span>
       </div>
       <button
+        aria-label="Clear all laps"
         class="_clearButton_2af36b "
         type="button"
       >
@@ -39,10 +38,18 @@ exports[`LapList Component > matches snapshot 1`] = `
         class="_lap_2af36b _latest_2af36b _fastest_2af36b"
       >
         <span
-          aria-label="Lap 3"
           class="_lapLabel_2af36b"
         >
-          3
+          <span
+            aria-hidden="true"
+          >
+            3
+          </span>
+          <span
+            class="_srOnly_2af36b"
+          >
+            Lap 3
+          </span>
         </span>
         <span
           class="_lapTime_2af36b"
@@ -50,6 +57,7 @@ exports[`LapList Component > matches snapshot 1`] = `
           01:23.45
         </span>
         <span
+          aria-label="Lap duration +01:23.45"
           class="_lapDelta_2af36b"
         >
           +01:23.45
@@ -70,10 +78,18 @@ exports[`LapList Component > matches snapshot 1`] = `
         class="_lap_2af36b _slowest_2af36b"
       >
         <span
-          aria-label="Lap 2"
           class="_lapLabel_2af36b"
         >
-          2
+          <span
+            aria-hidden="true"
+          >
+            2
+          </span>
+          <span
+            class="_srOnly_2af36b"
+          >
+            Lap 2
+          </span>
         </span>
         <span
           class="_lapTime_2af36b"
@@ -81,6 +97,7 @@ exports[`LapList Component > matches snapshot 1`] = `
           01:23.45
         </span>
         <span
+          aria-label="Lap duration +01:23.45"
           class="_lapDelta_2af36b"
         >
           +01:23.45
@@ -101,10 +118,18 @@ exports[`LapList Component > matches snapshot 1`] = `
         class="_lap_2af36b _slowest_2af36b"
       >
         <span
-          aria-label="Lap 1"
           class="_lapLabel_2af36b"
         >
-          1
+          <span
+            aria-hidden="true"
+          >
+            1
+          </span>
+          <span
+            class="_srOnly_2af36b"
+          >
+            Lap 1
+          </span>
         </span>
         <span
           class="_lapTime_2af36b"
@@ -112,6 +137,7 @@ exports[`LapList Component > matches snapshot 1`] = `
           01:23.45
         </span>
         <span
+          aria-label="Lap duration +01:23.45"
           class="_lapDelta_2af36b"
         >
           +01:23.45

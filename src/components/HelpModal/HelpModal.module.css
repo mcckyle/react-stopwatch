@@ -16,6 +16,7 @@
              max(1rem, env(safe-area-inset-bottom))
              max(1rem, env(safe-area-inset-left));
 
+    overflow-y: auto;
     background: rgb(0 0 0 / 0.42);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -28,19 +29,21 @@
 ======================================= */
 .modal
 {
-    width: min(30rem, 100%);
-
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 
+    width: min(30rem, 100%);
+    max-height: 100%;
+    overflow-y: auto;
     padding: clamp(1.25rem, 3vw, 1.75rem);
+
     border: 1px solid var(--surface-border);
     border-radius: 0.70rem;
 
     background: color-mix(in oklab, var(--app-bg) 97%, transparent);
     color: var(--text);
-    box-shadow: 0 24px 80px rgb(0 0 0 / 0.24);
+    box-shadow: var(--shadow-lg);
 
     animation: modal-in var(--duration) var(--ease);
 }
@@ -83,12 +86,12 @@
 .list { display: grid; margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--surface-border); }
 .item
 {
-    min-height: 3.15rem;
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
     gap: 1rem;
 
+    min-height: 3.15rem;
     border-bottom: 1px solid color-mix(in oklab, var(--text) 6%, transparent);
 
     transition: background-color var(--duration-fast) var(--ease);
@@ -101,13 +104,13 @@
 ======================================= */
 .kbd
 {
-    min-width: 2.2rem;
-    min-height: 1.9rem;
-    padding-inline: 0.55rem;
-
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
+    min-width: 2.2rem;
+    min-height: 1.9rem;
+    padding-inline: 0.55rem;
 
     border: 1px solid var(--surface-border);
     border-radius: 0.35rem;
@@ -134,7 +137,6 @@
 
     background: var(--surface);
     color: var(--text-secondary);
-
     font-family: var(--font-sans);
     font-size: 0.72rem;
     font-weight: 600;
@@ -160,6 +162,11 @@
 {
     from { opacity: 0; transform: translateY(6px) scale(0.99); }
     to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce)
+{
+    .overlay, .modal, .item, .closeButton { transition: none; animation: none; }
 }
 
 /* ====================================

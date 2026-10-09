@@ -5,11 +5,12 @@
 ======================================= */
 .controls
 {
-    width: 100%; /* Centered controls. */
     display: flex;
     align-items: center;
     justify-content: center; /* Centered controls. */
     gap: 0.375rem;
+
+    width: 100%; /* Centered controls. */
 }
 
 /* ====================================
@@ -17,8 +18,8 @@
 ======================================= */
 .button
 {
-    min-height: 2.75rem;
     min-width: 5.5rem;
+    min-height: 2.75rem;
     padding: 0.70rem 1.15rem;
 
     border: 1px solid transparent;
@@ -65,6 +66,11 @@
     color: var(--text-muted);
 }
 .tertiary:hover:not(:disabled) { color: var(--text); }
+
+@media (hover: none)
+{
+    .button:hover:not(:disabled) { transform: none; }
+}
 
 /* ====================================
    STOPWATCHCONTROLS MEDIA QUERY STYLES.

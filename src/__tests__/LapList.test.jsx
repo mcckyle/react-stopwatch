@@ -1,6 +1,6 @@
 //File name: LapList.test.jsx
 //Author: Kyle McColgan
-//Date: 20 August 2026
+//Date: 9 October 2026
 //Description: This file contains the unit test suite for the LapList component.
 
 import React from "react";
@@ -29,7 +29,7 @@ describe("LapList Component", () => {
 
     //Test #1: Rendering - Renders nothing when there are no laps.
     test("returns null when the laps array is empty", () => {
-        const { container } = render(<LapList laps={[]} />);
+        const { container } = render(<LapList laps={[]} onClear={() => {}} onDelete={() => {}} />);
         expect(container.firstChild).toBeNull();
     });
 
@@ -42,12 +42,12 @@ describe("LapList Component", () => {
         expect(lapRows).toHaveLength(3);
     });
 
-    //Test #3: Accessibility - Renders an accessible log when laps exist.
-    test("renders lap list with role='log' and accessible label when laps exist", () => {
-        render(<LapList laps={[1000]} />);
+    //Test #3: Accessibility - Renders an accessible region when laps exist.
+    test("renders lap list with role='region' and accessible label when laps exist", () => {
+        render(<LapList laps={[1000]} onClear={() => {}} onDelete={() => {}}/>);
 
-        const log = screen.getByRole("log", { name: /lap history/i });
-        expect(log).toBeInTheDocument();
+        const region = screen.getByRole("region", { name: /lap history/i });
+        expect(region).toBeInTheDocument();
     });
 
     //Test #4: Data Logic - Laps appear in reverse order (latest first).
@@ -62,7 +62,7 @@ describe("LapList Component", () => {
 
     //Test #5: Function Calls - Calls formatTime correctly for each lap and delta.
     test("calls formatTime with correct arguments for laps", () => {
-        render(<LapList laps={[1000, 800, 400]} />);
+        render(<LapList laps={[1000, 800, 400]} onClear={() => {}} onDelete={() => {}} />);
         expect(formatTime).toHaveBeenCalled();
         //Should be called for lap times AND deltas.
         expect(formatTime).toHaveBeenCalledWith(expect.any(Number), true);
@@ -70,13 +70,13 @@ describe("LapList Component", () => {
 
     //Test #6: Display - Displays the formatted lap time correctly.
     test("displays the formatted lap time string", () => {
-        render(<LapList laps={[1000]} />);
+        render(<LapList laps={[1000]} onClear={() => {}} onDelete={() => {}} />);
         expect(screen.getByText("01:23.45")).toBeInTheDocument();
     });
 
     //Test #7: Display - Displays the formatted delta correctly.
     test("displays formatted delta time with '+' prefix", () => {
-        render(<LapList laps={[1000]} />);
+        render(<LapList laps={[1000]} onClear={() => {}} onDelete={() => {}} />);
         expect(screen.getByText("+01:23.45")).toBeInTheDocument();
     });
 
@@ -102,7 +102,7 @@ describe("LapList Component", () => {
 
     //Test #10: Regression - Snapshot for layout consistency.
     test("matches snapshot", () => {
-        const { asFragment } = render(<LapList laps={[1000, 800, 400]} />);
+        const { asFragment } = render(<LapList laps={[1000, 800, 400]} onClear={() => {}} onDelete={() => {}} />);
         expect(asFragment()).toMatchSnapshot();
     });
 });

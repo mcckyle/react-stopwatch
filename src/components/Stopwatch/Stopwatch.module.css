@@ -6,12 +6,11 @@
 .shell
 {
     position: relative;
-    overflow: hidden;
-    width: 100%;
-    min-height: 100dvh; /* Make the shell own the viewport, use dvh instead of %. */
-
     display: grid;
     grid-template-rows: auto minmax(0, 1fr) auto;
+    width: 100%;
+    min-height: 100vh; /* Make the shell own the viewport, use dvh instead of %. */
+    min-height: 100dvh;
     padding: max(var(--viewport-padding), env(safe-area-inset-top))
              max(var(--viewport-padding), env(safe-area-inset-right))
              max(var(--viewport-padding), env(safe-area-inset-bottom))
@@ -23,14 +22,20 @@
 ======================================= */
 .hero
 {
-    min-width: 0;
-    min-height: 0;
-    display: flex;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
 }
 
 /* ====================================
    STOPWATCH COMMAND RAIL STYLES.
  ======================================= */
 .footer { display: flex; align-items: center; width: 100%; padding-block: clamp(1rem, 3vh, 2rem) 0.25rem; }
+
+@media (max-height: 500px) and (min-width: 601px)
+{
+  .footer { padding-top: 0.75rem; }
+}

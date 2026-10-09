@@ -1,6 +1,6 @@
 //File name: useKeyboardShortcuts.js
 //Author: Kyle McColgan
-//Date: 22 April 2026
+//Date: 9 October 2026
 //Description: This file contains the keyboard shortcut implememtation for the stopwatch React project.
 
 import { useEffect } from "react";
@@ -12,46 +12,39 @@ function isEditableTarget(target)
         return false;
     }
 
-    const tag = target.tagName;
-
     return (
         target.isContentEditable ||
-        tag === "INPUT" ||
-        tag === "TEXTAREA" ||
-        tag === "SELECT"
+        target.closest(
+            'input, textarea, select, [contenteditable="true"], [contenteditable="false"]'
+        ) !== null
     );
 }
 
 export function useKeyboardShortcuts({ onToggle, onReset, onLap, onOpenHelp }) {
-    useEffect(() => {
+    useEffect(() =>
+    {
         const handleKeyDown = (event) =>
         {
             //Ignore IME composition (important for international inputs).
-            if (event.isComposing)
+            if ((event.defaultPrevented) || (event.isComposing) || (event.repeat))
             {
                 return;
             }
+
+            if ((event.metaKey) || (event.ctrlKey) || (event.altKey))
+            {
+                return;
+            }
+
+            const target = event.target;
 
             //Ignore typing contexts.
-            if (isEditableTarget(event.target))
+            if (isEditableTarget(target))
             {
                 return;
             }
 
-            if ( (event.target instanceof HTMLElement) && (event.target.closest('[role="dialog"]')))
-            {
-                return;
-            }
-
-            //Prevent key-hold spam.
-            if (event.repeat)
-            {
-                return;
-            }
-
-            //Ignore modified shortcuts (preserve OS/browser combos).
-            const hasModifierKey = (event.metaKey) || (event.ctrlKey) || (event.altKey);
-            if (hasModifierKey)
+            if ((target instanceof HTMLElement) && (target.closest('[role="dialog"]')))
             {
                 return;
             }
@@ -77,7 +70,7 @@ export function useKeyboardShortcuts({ onToggle, onReset, onLap, onOpenHelp }) {
                 case "Slash":
                 {
                     //Shift + / -> ?
-                    if (event.shiftKey)
+                    if ((event.shiftKey) || (event.key === "?"))
                     {
                         event.preventDefault();
                         onOpenHelp();

@@ -1,6 +1,6 @@
 //File name: HelpModal.jsx
 //Author: Kyle McColgan
-//Date: 20 August 2026
+//Date: 9 October 2026
 //Description: This file contains the Help modal component for the stopwatch React project.
 
 import React, { useEffect, useId, useRef } from "react";
@@ -16,6 +16,7 @@ const shortcuts = Object.freeze([
 const HelpModal = ({ onClose }) =>
 {
   const closeRef = useRef(null);
+  const modalRef = useRef(null);
   const previouslyFocusedRef = useRef(null);
 
   const titleId = useId();
@@ -28,6 +29,8 @@ const HelpModal = ({ onClose }) =>
         ? document.activeElement
         : null;
 
+    const modal = modalRef.current;
+
     const handleKeyDown = event =>
     {
       if ((event.key === "Escape") && (!event.isComposing))
@@ -35,6 +38,37 @@ const HelpModal = ({ onClose }) =>
         event.preventDefault();
         event.stopPropagation();
         onClose();
+        return;
+      }
+
+      if ((event.key !== "Tab") || (!modal))
+      {
+        return;
+      }
+
+      const focusable = modal.querySelectorAll(
+        'button:not(:disabled), [href], input:not(:disabled), ' +
+        'select:not(:disabled), textarea:not(:disabled), ' +
+        '[tabindex]:not([tabindex="-1"])'
+      );
+
+      const elements = Array.from(focusable).filter(element =>
+        element instanceof HTMLElement &&
+        element.getClientRects().length > 0
+      );
+
+      const first = elements[0];
+      const last = elements[elements.length - 1];
+
+      if ((event.shiftKey) && (document.activeElement === first))
+      {
+        event.preventDefault();
+        last.focus();
+      }
+      else if ((!event.shiftKey) && (document.activeElement === last))
+      {
+        event.preventDefault();
+        first.focus();
       }
     };
 
@@ -51,11 +85,13 @@ const HelpModal = ({ onClose }) =>
   return (
     <div className={styles.overlay} onClick={onClose} role="presentation">
       <section
+        ref={modalRef}
         className={styles.modal}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
         aria-describedby={descriptionId}
+        tabIndex={-1}
         onClick={event => event.stopPropagation()}
       >
         <header className={styles.header}>

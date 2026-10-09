@@ -5,12 +5,11 @@
 ============================================ */
 .display
 {
-    width: 100%;
-    min-width: 0;
-
     display: flex;
     align-items: center;
-    overflow: hidden;
+
+    width: 100%;
+    min-width: 0;
 }
 
 /* ====================================
@@ -18,11 +17,13 @@
 ======================================= */
 .time
 {
-    width: 100%;
     display: flex;
     align-items: center;
-    color: var(--text);
 
+    width: 100%;
+    min-width: 0;
+
+    color: var(--text);
     font-family: var(--font-mono);
     font-weight: var(--display-font-weight);
     font-variant-numeric: tabular-nums lining-nums;
@@ -36,22 +37,23 @@
 ======================================= */
 .row
 {
-    width: 100%;
     display: flex;
     align-items: baseline; /* Keep centiseconds on bottom. */
     justify-content: center; /* Needed for horizontal centering purposes. */
-    white-space: nowrap;
-    overflow: hidden;
-    padding-inline: clamp(0.25rem, 1vw, 1rem);
+
+    width: 100%;
+    min-width: 0;
+    padding-inline: clamp(0.125rem, 0.75vw, 0.75rem);
 
     font-size: var(--display-font-size); /* IMPORTANT: Digits as large as possible. */
     line-height: var(--display-line-height);
+    white-space: nowrap;
 }
 
 /* ====================================
    STOPWATCHDISPLAY DIGIT GROUPS STYLES.
 ======================================= */
-.group, .centi { display: inline-flex; align-items: baseline; }
+.group, .centi { display: inline-flex; align-items: baseline; flex-shrink: 0; }
 .digit
 {
     display: inline-flex;
@@ -67,25 +69,24 @@
 {
     display: inline-flex;
     justify-content: center;
-    width: 0.12em;
+    flex-shrink: 0;
 
+    width: 0.12em;
+    color: var(--text-disabled);
     font-size: 0.14em;
     font-weight: 400;
-    color: var(--text-disabled);
     opacity: 0.30;
 }
 
 .centi
 {
     margin-left: 0.02em;
+
+    color: var(--accent);
     font-size: 0.22em;
     font-weight: 600;
     letter-spacing: -0.05em;
-
-    color: var(--accent);
-    opacity: 0.68;
-
-    transform: translateY(-0.015em);
+    opacity: 0.75;
 }
 
 /* ====================================
@@ -99,8 +100,13 @@
     padding: 0;
     margin: -1px;
     overflow: hidden;
-    clip: rect(0, 0, 0, 0);
+
     clip-path: inset(50%);
     white-space: nowrap;
     border: 0;
+}
+
+@media (prefers-reduced-motion: reduce)
+{
+    .time { text-shadow: none; }
 }

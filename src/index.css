@@ -65,7 +65,7 @@ h1, h2, h3, h4, h5, h6 { letter-spacing: -0.025em; }
     padding: max(1.5rem, env(safe-area-inset-top))
              max(1.5rem, env(safe-area-inset-right))
              max(1.5rem, env(safe-area-inset-bottom))
-             max(1.5rem, env(safe-area-inset-left))
+             max(1.5rem, env(safe-area-inset-left));
 
     background: #05070a;
     color: #ffffff;

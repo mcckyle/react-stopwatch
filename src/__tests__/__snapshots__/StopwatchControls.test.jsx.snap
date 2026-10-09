@@ -8,6 +8,7 @@ exports[`StopwatchControls Component > enables Lap button when isRunning is true
     role="group"
   >
     <button
+      aria-label="Start stopwatch"
       aria-pressed="false"
       class="_button_78cbd2 _primary_78cbd2"
       type="button"
@@ -39,6 +40,7 @@ exports[`StopwatchControls Component > matches snapshot 1`] = `
     role="group"
   >
     <button
+      aria-label="Start stopwatch"
       class="_button_78cbd2 _primary_78cbd2"
       type="button"
     >

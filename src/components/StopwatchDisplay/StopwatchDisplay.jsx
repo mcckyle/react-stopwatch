@@ -1,6 +1,6 @@
 //File name: StopwatchDisplay.jsx
 //Author: Kyle McColgan
-//Date: 20 August 2026
+//Date: 9 October 2026
 //Description: This file contains the stopwatch display component for the stopwatch React project.
 
 import React from "react";
@@ -11,9 +11,12 @@ const StopwatchDisplay = ({ time }) => {
   const { hours, minutes, seconds, centiSeconds } = formatTime(time, true);
   const showHours = Number(hours) > 0;
 
-  const accessibleTime = showHours
-    ? `${hours} hours ${minutes} minutes ${seconds} seconds`
-    : `${minutes} minutes ${seconds} seconds`;
+  const accessibleTime = [
+    showHours ? `${Number(hours)} hours` : null,
+    `${Number(minutes)} minutes`,
+    `${Number(seconds)} seconds`,
+    `${Number(centiSeconds)} hundredths of a second`
+  ].filter(Boolean).join(", ");
 
   const renderDigits = (value, prefix) =>
     value.split("").map((digit, index) => (
@@ -34,7 +37,7 @@ const StopwatchDisplay = ({ time }) => {
         role="timer"
         aria-live="off" //OFF - Constant updates can become noisy...
         aria-atomic="true"
-        dateTime={`PT${hours}H${minutes}M${seconds}.${centiSeconds}S`}
+        dateTime={`PT${Number(hours)}H${Number(minutes)}M${Number(seconds)}.${Number(centiSeconds)}S`}
       >
         <span className={styles.srOnly}>{accessibleTime}</span>
         <span className={styles.row} aria-hidden="true">
