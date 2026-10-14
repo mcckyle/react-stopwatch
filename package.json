@@ -31,7 +31,7 @@
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.13.0",
     "jsdom": "^30.1.2",
-    "lucide-react": "^1.52.0",
+    "lucide-react": "^1.55.0",
     "postcss": "^8.5.3",
     "vite": "^8.3.2",
     "vitest": "^5.0.0"
