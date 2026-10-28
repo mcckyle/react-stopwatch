@@ -4,41 +4,33 @@
    GLOBAL RESET STYLES.
 ======================================= */
 *, *::before, *::after { box-sizing: border-box; }
-html, body, #root { min-height: 100%; }
 html
 {
+    min-height: 100%;
     font-size: 16px;
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
 }
-
-/* ====================================
-   DOCUMENT FOUNDATION STYLES.
-======================================= */
-html { background: var(--app-bg); color: var(--text); }
-#root { min-height: 100svh; }
+#root { min-height: 100vh; min-height: 100dvh; }
 body
 {
     min-width: 320px;
-    min-height: 100svh;
+    min-height: 100vh;
+    min-height: 100dvh;
     margin: 0;
-
-    background: var(--app-bg);
-    color: var(--text);
-
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    line-height: 1.5;
-    font-variant-numeric: tabular-nums;
-
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 
     overflow-x: clip;
     overscroll-behavior: none;
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
+
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.5;
+    font-variant-numeric: tabular-nums;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 img, svg, canvas, video { display: block; max-width: 100%; }
 button, input, textarea, select { color: inherit; font: inherit; }
@@ -50,7 +42,7 @@ h1, h2, h3, h4, h5, h6 { letter-spacing: -0.025em; }
 /* ====================================
    GLOBAL ACCESSIBILITY STYLES.
 ======================================= */
-:where(button, a, input, textarea, select):focus-visible { outline: none; box-shadow: var(--focus-ring); }
+:where(button, a, input, textarea, select):focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; box-shadow: var(--focus-ring); }
 ::selection { background: color-mix(in oklab, var(--accent) 24%, transparent); }
 
 /* ====================================
@@ -58,7 +50,8 @@ h1, h2, h3, h4, h5, h6 { letter-spacing: -0.025em; }
 ======================================= */
 .noscript-message
 {
-    min-height: 100svh;
+    min-height: 100vh;
+    min-height: 100dvh;
 
     display: grid;
     place-items: center;
@@ -68,7 +61,7 @@ h1, h2, h3, h4, h5, h6 { letter-spacing: -0.025em; }
              max(1.5rem, env(safe-area-inset-left));
 
     background: #05070a;
-    color: #ffffff;
+    color: #fff;
 
     font-family: system-ui, sans-serif;
     text-align: center;

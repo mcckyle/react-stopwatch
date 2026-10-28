@@ -5,9 +5,6 @@
 ============================================ */
 .display
 {
-    display: flex;
-    align-items: center;
-
     width: 100%;
     min-width: 0;
 }
@@ -33,7 +30,7 @@
 }
 
 /* ====================================
-   STOPWATCHDISPLAY GIANT BANNER CLOCK STYLES.
+   STOPWATCHDISPLAY OVERSIZED BANNER CLOCK STYLES.
 ======================================= */
 .row
 {
@@ -49,6 +46,7 @@
     line-height: var(--display-line-height);
     white-space: nowrap;
 }
+.rowWithHours { font-size: clamp(3rem, 15vw, 24rem); }
 
 /* ====================================
    STOPWATCHDISPLAY DIGIT GROUPS STYLES.
@@ -75,7 +73,7 @@
     color: var(--text-disabled);
     font-size: 0.14em;
     font-weight: 400;
-    opacity: 0.30;
+    opacity: 0.3;
 }
 
 .centi
@@ -99,11 +97,23 @@
     height: 1px;
     padding: 0;
     margin: -1px;
-    overflow: hidden;
 
+    overflow: hidden;
     clip-path: inset(50%);
     white-space: nowrap;
     border: 0;
+}
+
+@media (max-width: 600px)
+{
+    .row { font-size: clamp(2rem, 18vw, 6.75rem); }
+    .rowWithHours { font-size: clamp(1.75rem, 14vw, 5rem); }
+}
+
+@media (max-height: 500px) and (min-width: 601px)
+{
+    .row { font-size: clamp(3rem, 18vh, 16rem); }
+    .rowWithHours { font-size: clamp(2.5rem, 13vh, 12rem); }
 }
 
 @media (prefers-reduced-motion: reduce)

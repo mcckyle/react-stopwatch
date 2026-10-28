@@ -1,6 +1,6 @@
 //File name: HelpModal.jsx
 //Author: Kyle McColgan
-//Date: 9 October 2026
+//Date: 27 October 2026
 //Description: This file contains the Help modal component for the stopwatch React project.
 
 import React, { useEffect, useId, useRef } from "react";
@@ -12,6 +12,15 @@ const shortcuts = Object.freeze([
   { label: "Reset", keyLabel: "R" },
   { label: "Open Help", keyLabel: "Shift + ?" }
 ]);
+
+const FOCUSABLE_SELECTOR = [
+  "button:not(:disabled)",
+  "[href]",
+  "input:not(:disabled)",
+  "select:not(:disabled)",
+  "textarea:not(:disabled)",
+  '[tabindex]:not([tabindex="-1"])'
+].join(", ");
 
 const HelpModal = ({ onClose }) =>
 {
@@ -31,7 +40,7 @@ const HelpModal = ({ onClose }) =>
 
     const modal = modalRef.current;
 
-    const handleKeyDown = event =>
+    const handleKeyDown = (event) =>
     {
       if ((event.key === "Escape") && (!event.isComposing))
       {
@@ -46,26 +55,28 @@ const HelpModal = ({ onClose }) =>
         return;
       }
 
-      const focusable = modal.querySelectorAll(
-        'button:not(:disabled), [href], input:not(:disabled), ' +
-        'select:not(:disabled), textarea:not(:disabled), ' +
-        '[tabindex]:not([tabindex="-1"])'
-      );
-
-      const elements = Array.from(focusable).filter(element =>
+      const elements = Array.from(modal.querySelectorAll(FOCUSABLE_SELECTOR)).filter((element) =>
         element instanceof HTMLElement &&
         element.getClientRects().length > 0
       );
 
+      if (!elements.length)
+      {
+        event.preventDefault();
+        modal.focus();
+        return;
+      }
+
       const first = elements[0];
       const last = elements[elements.length - 1];
+      const activeElement = document.activeElement;
 
-      if ((event.shiftKey) && (document.activeElement === first))
+      if ((event.shiftKey) && ((activeElement === first) || (!modal.contains(activeElement))))
       {
         event.preventDefault();
         last.focus();
       }
-      else if ((!event.shiftKey) && (document.activeElement === last))
+      else if ((!event.shiftKey) && ((activeElement === last) || (!modal.contains(activeElement))))
       {
         event.preventDefault();
         first.focus();
@@ -78,8 +89,12 @@ const HelpModal = ({ onClose }) =>
     return () =>
     {
       document.removeEventListener("keydown", handleKeyDown);
-      previouslyFocusedRef.current?.focus?.();
-    }
+      const previouslyFocused = previouslyFocusedRef.current;
+      if (previouslyFocused?.isConnected)
+      {
+        previouslyFocused.focus();
+      }
+    };
   }, [onClose]);
 
   return (
@@ -92,7 +107,7 @@ const HelpModal = ({ onClose }) =>
         aria-labelledby={titleId}
         aria-describedby={descriptionId}
         tabIndex={-1}
-        onClick={event => event.stopPropagation()}
+        onClick={(event) => event.stopPropagation()}
       >
         <header className={styles.header}>
           <div className={styles.heading}>

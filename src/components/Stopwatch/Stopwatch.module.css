@@ -5,7 +5,6 @@
 ======================================= */
 .shell
 {
-    position: relative;
     display: grid;
     grid-template-rows: auto minmax(0, 1fr) auto;
     width: 100%;
@@ -24,8 +23,6 @@
 {
   display: flex;
   align-items: center;
-
-  width: 100%;
   min-width: 0;
   min-height: 0;
 }
@@ -33,7 +30,7 @@
 /* ====================================
    STOPWATCH COMMAND RAIL STYLES.
  ======================================= */
-.footer { display: flex; align-items: center; width: 100%; padding-block: clamp(1rem, 3vh, 2rem) 0.25rem; }
+.footer { display: flex; align-items: center; padding-block: clamp(1rem, 3vh, 2rem) 0.25rem; }
 
 @media (max-height: 500px) and (min-width: 601px)
 {

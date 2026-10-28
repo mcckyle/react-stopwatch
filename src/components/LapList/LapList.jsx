@@ -1,6 +1,6 @@
 //File name: LapList.jsx
 //Author: Kyle McColgan
-//Date: 9 October 2026
+//Date: 27 October 2026
 //Description: This file contains the laps component for the stopwatch React project.
 
 import React, { useState, useEffect, useMemo } from "react";
@@ -66,9 +66,16 @@ const LapList = ({ laps, onClear, onDelete }) =>
           }`}
           onClick={handleClearClick}
           aria-label={confirmClear ? "Confirm clearing all laps" : "Clear all laps"}
+          aria-describedby={confirmClear ? "clear-laps-hint" : undefined}
         >
           {confirmClear ? "Confirm" : "Clear"}
         </button>
+
+        {confirmClear && (
+          <span id="clear-laps-hint" className={styles.srOnly}>
+            Activate again to permanently clear all recorded laps.
+          </span>
+        )}
       </header>
 
       <ul className={styles.rows}>

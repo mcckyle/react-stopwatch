@@ -5,14 +5,14 @@
 ======================================= */
 :root
 {
+    color-scheme: dark;
+
     /* Fonts. */
     --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     --font-mono: "JetBrains Mono", Consolas, monospace;
 
     /* Application Canvas. */
     --app-bg: #05070a;
-
-    /* Text. */
     --text: #f8fafc;
     --text-secondary: color-mix(in oklab, var(--text) 82%, transparent);
     --text-muted: color-mix(in oklab, var(--text) 56%, transparent);
@@ -27,7 +27,7 @@
     --display-font-size: clamp(5rem, 23vw, 36rem);
     --display-font-weight: 700;
     --display-letter-spacing: -0.065em;
-    --display-line-height: 0.90;
+    --display-line-height: 0.9;
     --display-glow: 0 0 48px color-mix(in oklab, var(--accent) 18%, transparent);
 
     /* Viewport Geometry. */
@@ -59,14 +59,7 @@
     --shadow-sm: 0 8px 24px rgb(0 0 0 / 0.06);
     --shadow-lg: 0 20px 60px rgb(0 0 0 / 0.12);
     --shadow-glow: 0 0 120px color-mix(in oklab, var(--accent) 25%, transparent);
-
-    /* Focus. */
     --focus-ring: 0 0 0 3px color-mix(in oklab, var(--accent) 45%, transparent);
-
-    /* Ambient Effects. */
-    --ambient-opacity: 0.14;
-    --ambient-blur: 160px;
-    --ambient-scale: 1.3;
 
     /* Motion. */
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -81,8 +74,9 @@
 ======================================= */
 :root[data-theme="light"]
 {
-    --app-bg: #f7f9fc;
+    color-scheme: light;
 
+    --app-bg: #f7f9fc;
     --text: #101827;
     --text-secondary: color-mix(in oklab, var(--text) 78%, transparent);
     --text-muted: color-mix(in oklab, var(--text) 52%, transparent);
@@ -94,8 +88,9 @@
 ======================================= */
 :root[data-theme="dark"]
 {
-    --app-bg: #05070a;
+    color-scheme: dark;
 
+    --app-bg: #05070a;
     --text: #f8fafc;
     --text-secondary: color-mix(in oklab, var(--text) 82%, transparent);
     --text-muted: color-mix(in oklab, var(--text) 56%, transparent);
