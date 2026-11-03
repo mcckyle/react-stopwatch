@@ -5,8 +5,8 @@
 ============================================ */
 .display
 {
-    width: 100%;
-    min-width: 0;
+    inline-size: 100%;
+    min-inline-size: 0;
 }
 
 /* ====================================
@@ -14,11 +14,9 @@
 ======================================= */
 .time
 {
-    display: flex;
-    align-items: center;
-
-    width: 100%;
-    min-width: 0;
+    display: block;
+    inline-size: 100%;
+    min-inline-size: 0;
 
     color: var(--text);
     font-family: var(--font-mono);
@@ -27,6 +25,10 @@
     letter-spacing: var(--display-letter-spacing);
     text-shadow: var(--display-glow);
     user-select: none;
+
+    /* Keep non-layout global tokens here, but pass sizes down cleanly. */
+    --base-font-size: var(--display-font-size);
+    --base-line-height: var(--display-line-height);
 }
 
 /* ====================================
@@ -38,13 +40,17 @@
     align-items: baseline; /* Keep centiseconds on bottom. */
     justify-content: center; /* Needed for horizontal centering purposes. */
 
-    width: 100%;
-    min-width: 0;
+    inline-size: 100%;
+    min-inline-size: 0;
     padding-inline: clamp(0.125rem, 0.75vw, 0.75rem);
-
-    font-size: var(--display-font-size); /* IMPORTANT: Digits as large as possible. */
-    line-height: var(--display-line-height);
     white-space: nowrap;
+
+    /* Bind the size computation directly to the flex layout context. */
+    font-size: var(--base-font-size); /* IMPORTANT: Digits as large as possible. */
+    line-height: var(--base-line-height);
+
+    /* Strict rendering containment: prevents updates from spilling past the row. */
+    contain: layout paint;
 }
 .rowWithHours { font-size: clamp(3rem, 15vw, 24rem); }
 
@@ -69,7 +75,7 @@
     justify-content: center;
     flex-shrink: 0;
 
-    width: 0.12em;
+    inline-size: 0.12em;
     color: var(--text-disabled);
     font-size: 0.14em;
     font-weight: 400;
@@ -78,13 +84,16 @@
 
 .centi
 {
-    margin-left: 0.02em;
-
+    margin-inline-start: 0.02em;
     color: var(--accent);
     font-size: 0.22em;
     font-weight: 600;
     letter-spacing: -0.05em;
     opacity: 0.75;
+
+    /* Isolate the hyper-active centiseconds completely. */
+    contain: layout paint;
+    inline-size: 2ch; /* Explicitly constrain width to exactly two monospace characters. */
 }
 
 /* ====================================
@@ -93,8 +102,8 @@
 .srOnly
 {
     position: absolute;
-    width: 1px;
-    height: 1px;
+    inline-size: 1px;
+    block-size: 1px;
     padding: 0;
     margin: -1px;
 
@@ -116,7 +125,7 @@
     .rowWithHours { font-size: clamp(2.5rem, 13vh, 12rem); }
 }
 
-@media (prefers-reduced-motion: reduce)
+/*@media (prefers-reduced-motion: reduce)
 {
     .time { text-shadow: none; }
-}
+}*/

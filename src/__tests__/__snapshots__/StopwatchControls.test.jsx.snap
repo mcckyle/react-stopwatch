@@ -16,6 +16,7 @@ exports[`StopwatchControls Component > enables Lap button when isRunning is true
       Start
     </button>
     <button
+      aria-label="Record lap"
       class="_button_78cbd2 _secondary_78cbd2"
       disabled=""
       type="button"
@@ -23,6 +24,7 @@ exports[`StopwatchControls Component > enables Lap button when isRunning is true
       Lap
     </button>
     <button
+      aria-label="Reset stopwatch"
       class="_button_78cbd2 _tertiary_78cbd2"
       type="button"
     >
@@ -47,6 +49,7 @@ exports[`StopwatchControls Component > matches snapshot 1`] = `
       Start
     </button>
     <button
+      aria-label="Record lap"
       class="_button_78cbd2 _secondary_78cbd2"
       disabled=""
       type="button"
@@ -54,6 +57,7 @@ exports[`StopwatchControls Component > matches snapshot 1`] = `
       Lap
     </button>
     <button
+      aria-label="Reset stopwatch"
       class="_button_78cbd2 _tertiary_78cbd2"
       type="button"
     >

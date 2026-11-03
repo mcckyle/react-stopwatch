@@ -7,9 +7,9 @@
 {
     display: grid;
     grid-template-rows: auto minmax(0, 1fr) auto;
-    width: 100%;
-    min-height: 100vh; /* Make the shell own the viewport, use dvh instead of %. */
-    min-height: 100dvh;
+    inline-size: 100%;
+    min-block-size: 100vh; /* Make the shell own the viewport, use dvh instead of %. */
+    min-block-size: 100dvh;
     padding: max(var(--viewport-padding), env(safe-area-inset-top))
              max(var(--viewport-padding), env(safe-area-inset-right))
              max(var(--viewport-padding), env(safe-area-inset-bottom))
@@ -23,8 +23,8 @@
 {
   display: flex;
   align-items: center;
-  min-width: 0;
-  min-height: 0;
+  min-inline-size: 0;
+  min-block-size: 0;
 }
 
 /* ====================================
@@ -34,5 +34,5 @@
 
 @media (max-height: 500px) and (min-width: 601px)
 {
-  .footer { padding-top: 0.75rem; }
+  .footer { padding-block-start: 0.75rem; }
 }

@@ -1,6 +1,6 @@
 //File name: LapList.jsx
 //Author: Kyle McColgan
-//Date: 27 October 2026
+//Date: 2 November 2026
 //Description: This file contains the laps component for the stopwatch React project.
 
 import React, { useState, useEffect, useMemo } from "react";
@@ -11,29 +11,28 @@ import styles from "./LapList.module.css";
 const LapList = ({ laps, onClear, onDelete }) =>
 {
   const [confirmClear, setConfirmClear] = useState(false);
+  const hasComparableLaps = laps.length > 1;
 
-  //Calculate lap durations.
-  const lapDurations = useMemo(
-    () => laps.map((lap, index) => lap - (laps[index + 1] ?? 0)),
-    [laps]
-  );
-  const { fastestLap, slowestLap } = useMemo(() =>
+  //Calculate lap durations and comparison values
+  const { durations, fastestLap, slowestLap } = useMemo(() =>
   {
-    if (!lapDurations.length)
-    {
-      return { fastestLap: 0, slowestLap: 0 };
-    }
+    const durations = laps.map(
+      (lap, index) => lap - (laps[index + 1] ?? 0),
+    );
 
     return {
-      fastestLap: Math.min(...lapDurations),
-      slowestLap: Math.max(...lapDurations)
+      durations,
+      fastestLap: durations.length ? Math.min(...durations) : 0,
+      slowestLap: durations.length ?  Math.max(...durations) : 0
     };
-  }, [lapDurations]);
+  }, [laps]);
 
+  //Reset confirmation when lap history changes.
   useEffect(() => {
     setConfirmClear(false);
   }, [laps.length]);
 
+  //Require confirmation before clearing history.
   const handleClearClick = () =>
   {
     if (!confirmClear)
@@ -82,15 +81,14 @@ const LapList = ({ laps, onClear, onDelete }) =>
         {laps.map((lap, index) =>
         {
           const lapNumber = laps.length - index;
-          const duration = lapDurations[index];
-          const hasComparableLaps = laps.length > 1;
+          const duration = durations[index];
 
           const formattedLap = formatTime(lap, true);
           const formattedDuration = formatTime(duration, true);
 
+          const isLatest = index === 0;
           const isFastest = (hasComparableLaps) && (duration === fastestLap);
           const isSlowest = (hasComparableLaps) && (duration === slowestLap);
-          const isLatest = index === 0;
 
           const fullTime =
             formattedLap.hours !== "00"
@@ -110,7 +108,7 @@ const LapList = ({ laps, onClear, onDelete }) =>
           ].filter(Boolean).join(" ");
 
           return (
-            <li key={lapNumber} className={rowClassName}>
+            <li key={`${lap}-${lapNumber}`} className={rowClassName}>
               <span className={styles.lapLabel}>
                 <span aria-hidden="true">{lapNumber}</span>
                 <span className={styles.srOnly}>

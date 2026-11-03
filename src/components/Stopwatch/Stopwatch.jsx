@@ -1,6 +1,6 @@
 //File name: Stopwatch.jsx
 //Author: Kyle McColgan
-//Date: 9 October 2026
+//Date: 2 November 2026
 //Description: This file contains the parent Stopwatch component for the stopwatch React project.
 
 import React, { useState, useEffect, useCallback } from "react";
@@ -22,38 +22,39 @@ const Stopwatch = ({ toggleTheme }) => {
   const { time, isRunning, toggle, reset, getCurrentTime } = useStopwatch();
   const { theme } = useTheme();
   const [laps, setLaps] = useState(loadStoredLaps);
+  const [showHelp, setShowHelp] = useState(false);
   const hasLaps = laps.length > 0;
 
-  const [showHelp, setShowHelp] = useState(false);
+  //Record a lap only while the stopwatch is running.
   const recordLap = useCallback(() =>
   {
     setLaps((previous) => [getCurrentTime(), ...previous]);
   }, [getCurrentTime]);
 
+  //Clear recorded lap history.
   const clearLaps = useCallback(() =>
   {
     setLaps([]);
-    try
-    {
-      localStorage.removeItem(LAP_STORAGE_KEY);
-    }
-    catch {}
   }, []);
 
+  //Delete an individual lap.
   const deleteLap = useCallback((index) =>
   {
     setLaps(previous =>
       previous.filter((_, lapIndex) => lapIndex !== index));
   }, []);
+
+  //HelpModal controls.
   const openHelp = useCallback(() => setShowHelp(true), []);
   const closeHelp = useCallback(() => setShowHelp(false), []);
 
-  //Persist laps whenever the collection changes.
+  //Persist laps history whenever it changes.
   useEffect(() =>
   {
     persistLaps(laps);
   }, [laps]);
 
+  //Register keyboard shortcuts.
   useKeyboardShortcuts({
     onToggle: toggle,
     onReset: reset,

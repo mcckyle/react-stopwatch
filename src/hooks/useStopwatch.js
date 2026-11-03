@@ -1,6 +1,6 @@
 //File name: useStopwatch.js
 //Author: Kyle McColgan
-//Date: 9 October 2026
+//Date: 2 November 2026
 //Description: This file contains the stopwatch functions for the stopwatch React project.
 
 import { useEffect, useRef, useState, useCallback } from "react";
@@ -10,7 +10,7 @@ const CENTISECOND_MS = 10;
 export function useStopwatch()
 {
   //Render state (what React sees) (stored in milliseconds).
-  //const DEMO_TIME_MS = ((12 * 60 * 60) + (34 * 60) + 56) * 1000;
+  //const DEMO_TIME_MS = (((12 * 60 * 60) + (34 * 60) + 56) * 1000) + 780;
   //const [elapsedMs, setElapsedMs] = useState(DEMO_TIME_MS);
   const [elapsedMs, setElapsedMs] = useState(0);
   const [isRunning, setIsRunning] = useState(false);

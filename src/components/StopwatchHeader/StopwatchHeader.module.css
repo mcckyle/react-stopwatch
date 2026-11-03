@@ -12,7 +12,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    padding-bottom: clamp(0.75rem, 2.5vh, 1.5rem);
+    padding-block-end: clamp(0.75rem, 2.5vh, 1.5rem);
 }
 
 /* ====================================
@@ -23,10 +23,10 @@
     display: inline-flex;
     align-items: center;
     gap: 0.55rem;
-    min-width: 0;
+    min-inline-size: 0;
     user-select: none;
 }
-.icon { width: 0.85rem; height: 0.85rem; flex: 0 0 auto; color: var(--accent); opacity: 0.65; }
+.icon { inline-size: 0.85rem; block-size: 0.85rem; flex: 0 0 auto; color: var(--accent); opacity: 0.65; }
 .title
 {
     color: var(--text-muted);
@@ -59,7 +59,7 @@
     justify-content: center;
     gap: 0.5rem;
 
-    min-height: var(--header-action-size);
+    min-block-size: var(--header-action-size);
     padding-inline: 0.7rem;
 
     border: 1px solid transparent;
@@ -82,8 +82,8 @@
     display: grid;
     place-items: center;
 
-    min-width: 1.15rem;
-    height: 1.15rem;
+    min-inline-size: 1.15rem;
+    block-size: 1.15rem;
     padding-inline: 0.2rem;
     border-radius: 999px;
 
@@ -102,8 +102,8 @@
     place-items: center;
     flex: 0 0 auto;
 
-    width: var(--header-action-size);
-    height: var(--header-action-size);
+    inline-size: var(--header-action-size);
+    block-size: var(--header-action-size);
 
     border: 1px solid var(--surface-border);
     border-radius: 0.55rem;
@@ -116,7 +116,7 @@
 }
 .toggle:hover { background: var(--surface); border-color: color-mix(in oklab, var(--accent) 25%, var(--surface-border)); color: var(--text); }
 .toggle:active { transform: translateY(1px); }
-.toggleIcon { width: 0.95rem; height: 0.95rem; }
+.toggleIcon { inline-size: 0.95rem; block-size: 0.95rem; }
 
 /* ====================================
    STOPWATCHHEADER LAP PANEL STYLES.
@@ -124,19 +124,19 @@
 .panel
 {
     position: absolute;
-    top: calc(100% - 0.25rem);
-    right: 0;
+    inset-block-start: calc(100% - 0.25rem);
+    inset-inline-end: 0;
     z-index: 20;
 
-    width: min(28rem, calc(100vw - 2 * var(--viewport-padding)));
-    max-width: 100%;
+    inline-size: min(28rem, calc(100vw - 2 * var(--viewport-padding)));
+    max-inline-size: 100%;
 }
 
 .srOnly
 {
     position: absolute;
-    width: 1px;
-    height: 1px;
+    inline-size: 1px;
+    block-size: 1px;
     padding: 0;
     margin: -1px;
 
@@ -146,10 +146,10 @@
     border: 0;
 }
 
-@media (prefers-reduced-motion: reduce)
+/*@media (prefers-reduced-motion: reduce)
 {
     .lapButton, .toggle { transition: none; }
-}
+}*/
 
 /* ====================================
    STOPWATCHHEADER MEDIA QUERY STYLES.

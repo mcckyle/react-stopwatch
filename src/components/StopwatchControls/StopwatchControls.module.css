@@ -9,8 +9,7 @@
     align-items: center;
     justify-content: center; /* Centered controls. */
     gap: 0.375rem;
-
-    width: 100%; /* Centered controls. */
+    inline-size: 100%; /* Centered controls. */
 }
 
 /* ====================================
@@ -18,8 +17,8 @@
 ======================================= */
 .button
 {
-    min-width: 5.5rem;
-    min-height: 2.75rem;
+    min-inline-size: 5.5rem;
+    min-block-size: 2.75rem;
     padding: 0.7rem 1.15rem;
 
     border: 1px solid transparent;
@@ -45,7 +44,7 @@
 ============================================ */
 .primary
 {
-    min-width: 7rem;
+    min-inline-size: 7rem;
     background: var(--accent);
     color: #071018;
 }
@@ -62,7 +61,7 @@
 ============================================ */
 .tertiary
 {
-    min-width: auto;
+    min-inline-size: auto;
     color: var(--text-muted);
 }
 .tertiary:hover:not(:disabled) { color: var(--text); }
@@ -78,6 +77,6 @@
 @media (max-width: 600px)
 {
     .controls { gap: 0.35rem; }
-    .button { min-width: 0; padding-inline: 0.9rem; }
-    .primary { min-width: 6rem; }
+    .button { min-inline-size: 0; padding-inline: 0.9rem; }
+    .primary { min-inline-size: 6rem; }
 }

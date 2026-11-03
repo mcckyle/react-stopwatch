@@ -26,7 +26,7 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="Stopwatch" />
-    <meta name="apple-touch-icon" href="/images/favicon.png" />
+    <link  name="apple-touch-icon" href="/images/favicon.png" />
 
     <!-- Fonts. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -39,8 +39,45 @@
     <!-- Icons. -->
     <link rel="icon" href="/images/favicon.svg" type="image/svg+xml" />
 
-    <!-- Prevent a White Flash Before CSS Loads. -->
-    <style>html { background: #05070a; color-scheme: dark; } body { min-width: 320px; margin: 0; background: #05070a; }</style>
+    <!-- Initialize Theme Before Rendering. -->
+    <script>
+      (() => {
+        const root = document.documentElement;
+        const storageKey = "stopwatch-theme";
+        const colors = { light: "#f7f9fc", dark: "#05070a" };
+        let theme;
+
+        try
+        {
+          const savedTheme = localStorage.getItem(storageKey);
+          if ((savedTheme === "light") || (savedTheme === "dark"))
+          {
+            theme = savedTheme;
+          }
+        }
+        catch
+        {
+          //Local storage unavailable.
+        }
+
+        if (!theme)
+        {
+          theme = window.matchMedia?.("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+
+        root.dataset.theme = theme;
+        root.style.colorScheme = theme;
+
+        const themeColor = document.querySelector('meta[name="theme-color"]');
+        if (themeColor)
+        {
+          themeColor.content = colors[theme];
+        }
+      })();
+    </script>
+
+    <!-- Prevent Initial Background Flash. -->
+    <style>html { min-height: 100%; background: #05070a; color-scheme: dark; } html[data-theme="light"] { background: #f7f9fc; color-scheme: light; } body { min-width: 320px; margin: 0; }</style>
   </head>
   <body>
     <noscript>

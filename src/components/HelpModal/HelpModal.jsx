@@ -1,6 +1,6 @@
 //File name: HelpModal.jsx
 //Author: Kyle McColgan
-//Date: 27 October 2026
+//Date: 2 November 2026
 //Description: This file contains the Help modal component for the stopwatch React project.
 
 import React, { useEffect, useId, useRef } from "react";
@@ -42,7 +42,7 @@ const HelpModal = ({ onClose }) =>
 
     const handleKeyDown = (event) =>
     {
-      if ((event.key === "Escape") && (!event.isComposing))
+      if ((event.key === "Escape") && (!event.isComposing) && (!event.defaultPrevented))
       {
         event.preventDefault();
         event.stopPropagation();
@@ -69,14 +69,19 @@ const HelpModal = ({ onClose }) =>
 
       const first = elements[0];
       const last = elements[elements.length - 1];
-      const activeElement = document.activeElement;
+      const activeIndex = elements.indexOf(document.activeElement);
 
-      if ((event.shiftKey) && ((activeElement === first) || (!modal.contains(activeElement))))
+      if ((event.shiftKey) && (activeIndex <= 0))
       {
         event.preventDefault();
         last.focus();
       }
-      else if ((!event.shiftKey) && ((activeElement === last) || (!modal.contains(activeElement))))
+      else if ((!event.shiftKey) && (activeIndex === -1))
+      {
+        event.preventDefault();
+        first.focus();
+      }
+      else if ((!event.shiftKey) && (activeIndex === elements.length - 1))
       {
         event.preventDefault();
         first.focus();
@@ -97,8 +102,19 @@ const HelpModal = ({ onClose }) =>
     };
   }, [onClose]);
 
+  const handleOverlayClick = event => {
+    if (event.target === event.currentTarget)
+    {
+      onClose();
+    }
+  };
+
   return (
-    <div className={styles.overlay} onClick={onClose} role="presentation">
+    <div
+      className={styles.overlay}
+      role="presentation"
+      onClick={handleOverlayClick}
+    >
       <section
         ref={modalRef}
         className={styles.modal}
@@ -107,7 +123,6 @@ const HelpModal = ({ onClose }) =>
         aria-labelledby={titleId}
         aria-describedby={descriptionId}
         tabIndex={-1}
-        onClick={(event) => event.stopPropagation()}
       >
         <header className={styles.header}>
           <div className={styles.heading}>

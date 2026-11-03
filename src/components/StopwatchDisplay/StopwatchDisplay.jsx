@@ -1,6 +1,6 @@
 //File name: StopwatchDisplay.jsx
 //Author: Kyle McColgan
-//Date: 27 October 2026
+//Date: 2 November 2026
 //Description: This file contains the stopwatch display component for the stopwatch React project.
 
 import React from "react";
@@ -11,6 +11,7 @@ const StopwatchDisplay = ({ time }) => {
   const { hours, minutes, seconds, centiSeconds } = formatTime(time, true);
   const showHours = Number(hours) > 0;
 
+  //Readable representation for assistive technology.
   const accessibleTime = [
     showHours ? `${Number(hours)} hours` : null,
     `${Number(minutes)} minutes`,
@@ -18,6 +19,7 @@ const StopwatchDisplay = ({ time }) => {
     `${Number(centiSeconds)} hundredths of a second`
   ].filter(Boolean).join(", ");
 
+  //Render individually addressable clock digits.
   const renderDigits = (value, prefix) =>
     value.split("").map((digit, index) => (
         <span
@@ -30,13 +32,18 @@ const StopwatchDisplay = ({ time }) => {
         </span>
     ));
 
+  //Preserve centisecond precision and leading zeros.
+  const dateTime =
+    `PT${Number(hours)}H${Number(minutes)}M` +
+    `${Number(seconds)}.${String(centiSeconds).padStart(2, "0")}S`;
+
   return (
-    <section className={styles.display} aria-label="Stopwatch display">
+    <div className={styles.display}>
       <time
         className={styles.time}
         role="timer"
         aria-live="off" //OFF - Constant updates can become noisy...
-        dateTime={`PT${Number(hours)}H${Number(minutes)}M${Number(seconds)}.${Number(centiSeconds)}S`}
+        dateTime={dateTime}
       >
         <span className={styles.srOnly}>{accessibleTime}</span>
         <span
@@ -56,7 +63,7 @@ const StopwatchDisplay = ({ time }) => {
           <span className={styles.centi}>{renderDigits(centiSeconds, "centiseconds")}</span>
         </span>
       </time>
-    </section>
+    </div>
   );
 };
 

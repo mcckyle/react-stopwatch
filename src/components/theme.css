@@ -1,7 +1,7 @@
 /* Filename: src/components/theme.css */
 
 /* ====================================
-   CORE DESIGN TOKENS.
+   STOPWATCH DESIGN TOKENS.
 ======================================= */
 :root
 {
@@ -84,20 +84,6 @@
 }
 
 /* ====================================
-   DARK THEME VARIABLES.
-======================================= */
-:root[data-theme="dark"]
-{
-    color-scheme: dark;
-
-    --app-bg: #05070a;
-    --text: #f8fafc;
-    --text-secondary: color-mix(in oklab, var(--text) 82%, transparent);
-    --text-muted: color-mix(in oklab, var(--text) 56%, transparent);
-    --text-disabled: color-mix(in oklab, var(--text) 40%, transparent);
-}
-
-/* ====================================
    GLOBAL THEME STYLES.
 ======================================= */
-html, body { background: var(--app-bg); color: var(--text); transition: background-color var(--duration-slow) var(--ease), color var(--duration-slow) var(--ease); }
+html, body { background-color: var(--app-bg); color: var(--text); transition: background-color var(--duration-slow) var(--ease), color var(--duration-slow) var(--ease); }
