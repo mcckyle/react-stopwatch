@@ -17,6 +17,7 @@
              max(1rem, env(safe-area-inset-left));
 
     overflow-y: auto;
+    overscroll-behavior: contain;
     background: rgb(0 0 0 / 0.42);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -34,6 +35,7 @@
     gap: 1.5rem;
 
     inline-size: min(30rem, 100%);
+    min-block-size: 0;
     max-block-size: 100%;
     overflow-y: auto;
     padding: clamp(1.25rem, 3vw, 1.75rem);
@@ -51,8 +53,9 @@
 /* ====================================
    HELPMODAL HEADER STYLES.
 ======================================= */
-.header { display: flex; flex-direction: column; gap: 0.55rem; }
-.heading { display: flex; flex-direction: column; gap: 0.35rem; }
+.header, .heading { display: flex; flex-direction: column; }
+.header { gap: 0.55rem; }
+.heading { gap: 0.35rem; }
 .eyebrow
 {
     color: var(--accent);
@@ -93,10 +96,7 @@
 
     min-block-size: 3.15rem;
     border-block-end: 1px solid color-mix(in oklab, var(--text) 6%, transparent);
-
-    transition: background-color var(--duration-fast) var(--ease);
 }
-.item:hover { background: var(--surface); }
 .label { padding-inline-start: 0.25rem; color: var(--text-secondary); font-size: 0.78rem; }
 
 /* ====================================
@@ -117,6 +117,7 @@
 
     background: var(--surface);
     color: var(--text);
+
     font-family: var(--font-mono);
     font-size: 0.58rem;
     font-weight: 600;
@@ -163,11 +164,6 @@
     from { opacity: 0; transform: translateY(6px) scale(0.99); }
     to { opacity: 1; transform: translateY(0) scale(1); }
 }
-
-/*@media (prefers-reduced-motion: reduce)
-{
-    .overlay, .modal, .item, .closeButton { transition: none; animation: none; }
-}*/
 
 /* ====================================
    HELPMODAL MEDIA QUERY STYLES.

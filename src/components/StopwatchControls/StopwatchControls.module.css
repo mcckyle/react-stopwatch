@@ -19,7 +19,7 @@
 {
     min-inline-size: 5.5rem;
     min-block-size: 2.75rem;
-    padding: 0.7rem 1.15rem;
+    padding: 0.625rem 1.15rem;
 
     border: 1px solid transparent;
     border-radius: 0.65rem;
@@ -37,7 +37,7 @@
 }
 .button:hover:not(:disabled) { transform: translateY(-1px); }
 .button:active:not(:disabled) { transform: translateY(0); }
-.button:disabled { opacity: 0.3; cursor: not-allowed; }
+.button:disabled { cursor: not-allowed; opacity: 0.3; }
 
 /* =========================================
    PRIMARY ACTION ( START / PAUSE ) STYLES.
@@ -76,7 +76,6 @@
 ======================================= */
 @media (max-width: 600px)
 {
-    .controls { gap: 0.35rem; }
     .button { min-inline-size: 0; padding-inline: 0.9rem; }
     .primary { min-inline-size: 6rem; }
 }

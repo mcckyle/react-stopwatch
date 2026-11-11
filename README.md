@@ -5,27 +5,32 @@
 
 A simple, modern stopwatch built with **React** and **Vite**.
 
-Designed around a fullscreen, distraction-free experience with a giant time display, keyboard controls, lap history, persistent laps, and light/dark themes.
+Designed around a fullscreen digital display and a distraction-free interface. Features include keyboard shortcuts, persistent lap history, lap comparisons, and adaptive light and dark themes.
 
 [**Live Demo →**](https://mcckyle.github.io/react-stopwatch/)
 
-![Stopwatch Screenshot](./public/images/Screenshot_20260929_190451.png)
+![Stopwatch Screenshot](./public/images/Screenshot_20261110_192751.png)
 
 ---
 
 ## Features
 
-- Full-width, fullscreen stopwatch display
+- Fullscreen digital stopwatch with an expansive time display
+- High-resolution timing using the browser's monotonic clock
+- Centisecond display precision
 - Start, pause, reset, and lap controls
-- Keyboard shortcuts for core actions
-- Persistent lap history with `localStorage`
-- Lap duration deltas
+- Keyboard shortcuts for common operations
+- Persistent lap history using `localStorage`
+- Individual lap deletion and lap history management
+- Lap duration comparisons
 - Fastest and slowest lap highlighting
-- Light and dark themes
+- Adaptive light and dark themes
+- System color preference detection
 - Responsive desktop and mobile layouts
-- Accessible controls and semantic markup
+- Accessible controls and semantic HTML
+- Visible keyboard focus indicators
 - Reduced-motion support
-- No UI framework or component libraries
+- Native CSS and CSS modules without a UI framework
 
 ### Keyboard shortcuts
 
@@ -34,23 +39,35 @@ Designed around a fullscreen, distraction-free experience with a giant time disp
 | `Space` | Start / pause |
 | `L` | Record lap |
 | `R` | Reset |
-| `Shift + ?` | Open help |
+| `Shift + ?` | Open keyboard shortcuts |
 
 ---
 
-## Tech Stack
+## Technology Stack
 
 | Technology | Purpose |
 | --- | --- |
-| [React](https://react.dev/) | User interface |
-| [Vite](https://vite.dev/) | Development and production tooling |
+| [React](https://react.dev/) | Component-based user interface |
+| [Vite](https://vite.dev/) | Development server and production builds |
+| JavaScript (ES Modules) | Application logic and stopwatch functionality |
+| CSS | Design system and responsive layouts |
 | CSS Modules | Component-scoped styling |
-| CSS | Design system, responsive layout, themes, and motion |
+| `requestAnimationFrame` | Efficient display synchronization |
+| `performance.now()` | High-resolution monotonic timing |
 | `localStorage` | Persistent lap history |
+| Vitest | Unit and component testing |
+| React Testing Librarry | Component interaction and accessibility testing |
 
 ---
 
 ## Getting Started
+
+### Prerequisites
+
+- Node.js
+- npm
+
+### Installation
 
 Clone the repository and install dependencies:
 
@@ -60,13 +77,17 @@ cd react-stopwatch
 npm install
 ```
 
+### Development
+
 Start the development server:
 
 ```bash
 npm run dev
 ```
 
-Build for production:
+### Production Build
+
+Generate an optimized production build:
 
 ```bash
 npm run build
@@ -78,8 +99,12 @@ npm run build
 
 ```
 react-stopwatch/
-├── .github/              # GitHub workflows (CI/CD).
-├── public/               # Static assets (served as-is).
+├── .github/
+│   └── workflows/        # GitHub Actions workflows (CI/CD).
+│
+├── public/
+│   └── images/           # Static application assets.
+│
 ├── src/                  # Application Source code.
 │   ├── components/       # Reusable React components.
 │   │   ├── Stopwatch/
@@ -147,34 +172,47 @@ react-stopwatch/
 
 ## Design Principles
 
-The interface is intentionally built around a small set of principles:
+The application follows a deliberately minimal design philosophy:
 
-1. Time first - The stopwatch display dominates the viewport. Supporting controls stay visually secondary.
+**Time First**
 
-2. Simple by default - The application avoids unnecessary panels, decoration, dependencies, and interaction layers.
+The stopwatch display is the primary focus. Supporting controls and interface elements remain visually secondary.
 
-3. Responsive by design - The same composition adapts from large desktop displays to smaller touch devices without turning into a separate mobile interface.
+**Simplicity**
 
-4. Accessible interaction - Semantic HTML, keyboard controls, visible focus states, accessible labels, and reduced-motion support are treated as part of the interface rather than afterthoughts.
+Every component serves a specific purpose. Unnecessary dependencies and decorative elements are avoided.
 
-5. Explicit styling - The project uses native CSS and CSS modules instead of a general-purpose component library, keeping the visual system small and understandable.
+**Responsive Design**
+
+The interface adapts naturally to different screen sizes while maintaining a consistent visual identity.
+
+**Accessibility**
+
+Semantic HTML, keyboard interaction, visible focus indicators, and reduced-motion preferences are integrated into the application.
+
+**Native Styling**
+
+The visual system is built with native CSS and CSS modules, providing component-level styling without the overhead of a UI framework.
+
+**Reliable Timing**
+
+Elapsed time is calculated using `performance.now()` rather than animation-frame counts or interval-based accumulation. React rendering is synchronized with the displayed centisecond precision.
 
 ---
 
 ## Roadmap
 
 - [x] Core stopwatch functionality
-- [x] Start / pause / reset controls
-- [x] Lap functionality
+- [x] Start, pause, and reset controls
+- [x] Lap recording and history management
 - [x] Keyboard shortcuts
 - [x] Persistent lap history
-- [x] Lap time deltas
+- [x] Lap duration comparisons
 - [x] Fastest and slowest lap highlighting
-- [x] Clear lap history
-- [x] Light / dark themes
-- [x] Responsive layout
+- [x] Light and dark themes
+- [x] Responsive layouts
 - [x] Reduced-motion support
-- [ ] Export laps to CSV or JSON
+- [ ] Export lap history to CSV or JSON
 
 ---
 
@@ -191,4 +229,4 @@ This project was made possible thanks to the open-source community and the follo
 - [React](https://react.dev) - A modern library designed specifically for building fast, interactive UIs.
 - [Vite](https://vitejs.dev/) - Next-generation frontend tooling with lightning-fast dev server and build optimizations.
 
-Special thanks to the broader open-source ecosystem for the inspiration and tools that empower developers to create and share freely.
+Special thanks to the broader open-source ecosystem for the tools and technologies that make projects like this possible.

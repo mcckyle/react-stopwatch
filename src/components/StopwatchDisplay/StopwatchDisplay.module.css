@@ -72,10 +72,12 @@
 .separator
 {
     display: inline-flex;
+    align-items: baseline;
     justify-content: center;
-    flex-shrink: 0;
 
-    inline-size: 0.12em;
+    flex-shrink: 0;
+    inline-size: 1em;
+
     color: var(--text-disabled);
     font-size: 0.14em;
     font-weight: 400;
@@ -84,16 +86,14 @@
 
 .centi
 {
+    inline-size: 2ch; /* Explicitly constrain width to exactly two monospace characters. */
     margin-inline-start: 0.02em;
+
     color: var(--accent);
     font-size: 0.22em;
     font-weight: 600;
     letter-spacing: -0.05em;
     opacity: 0.75;
-
-    /* Isolate the hyper-active centiseconds completely. */
-    contain: layout paint;
-    inline-size: 2ch; /* Explicitly constrain width to exactly two monospace characters. */
 }
 
 /* ====================================
@@ -124,8 +124,3 @@
     .row { font-size: clamp(3rem, 18vh, 16rem); }
     .rowWithHours { font-size: clamp(2.5rem, 13vh, 12rem); }
 }
-
-/*@media (prefers-reduced-motion: reduce)
-{
-    .time { text-shadow: none; }
-}*/

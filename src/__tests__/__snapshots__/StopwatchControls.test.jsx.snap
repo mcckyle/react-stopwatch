@@ -9,7 +9,6 @@ exports[`StopwatchControls Component > enables Lap button when isRunning is true
   >
     <button
       aria-label="Start stopwatch"
-      aria-pressed="false"
       class="_button_78cbd2 _primary_78cbd2"
       type="button"
     >

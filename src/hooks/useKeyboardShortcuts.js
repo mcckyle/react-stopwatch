@@ -1,9 +1,17 @@
 //File name: useKeyboardShortcuts.js
 //Author: Kyle McColgan
-//Date: 9 October 2026
+//Date: 10 November 2026
 //Description: This file contains the keyboard shortcut implememtation for the stopwatch React project.
 
 import { useEffect } from "react";
+
+const EDITABLE_SELECTOR = [
+    "input",
+    "textarea",
+    "select",
+    '[contenteditable="true"]',
+    '[contenteditable="false"]'
+].join(", ");
 
 function isEditableTarget(target)
 {
@@ -12,12 +20,12 @@ function isEditableTarget(target)
         return false;
     }
 
-    return (
-        target.isContentEditable ||
-        target.closest(
-            'input, textarea, select, [contenteditable="true"], [contenteditable="false"]'
-        ) !== null
-    );
+    return ((target.isContentEditable) || (target.closest(EDITABLE_SELECTOR) !== null));
+}
+
+function isDialogTarget(target)
+{
+    return ((target instanceof HTMLElement) && (target.closest('[role="dialog"]') !== null));
 }
 
 export function useKeyboardShortcuts({ onToggle, onReset, onLap, onOpenHelp }) {
@@ -26,7 +34,7 @@ export function useKeyboardShortcuts({ onToggle, onReset, onLap, onOpenHelp }) {
         const handleKeyDown = (event) =>
         {
             //Ignore IME composition (important for international inputs).
-            if ((event.defaultPrevented) || (event.isComposing) || (event.repeat))
+            if ((event.defaultPrevented) || (event.repeat) || (event.isComposing))
             {
                 return;
             }
@@ -36,15 +44,10 @@ export function useKeyboardShortcuts({ onToggle, onReset, onLap, onOpenHelp }) {
                 return;
             }
 
-            const target = event.target;
+            const { target } = event;
 
-            //Ignore typing contexts.
-            if (isEditableTarget(target))
-            {
-                return;
-            }
-
-            if ((target instanceof HTMLElement) && (target.closest('[role="dialog"]')))
+            //Respect text editing and dialog interactions.
+            if ((isEditableTarget(target) || (isDialogTarget(target))))
             {
                 return;
             }
@@ -67,18 +70,14 @@ export function useKeyboardShortcuts({ onToggle, onReset, onLap, onOpenHelp }) {
                     onReset();
                     break;
                 }
-                case "Slash":
+                default:
                 {
-                    //Shift + / -> ?
-                    if ((event.shiftKey) || (event.key === "?"))
+                    if (event.key === "?")
                     {
                         event.preventDefault();
                         onOpenHelp();
                     }
-                    break;
                 }
-                default:
-                    break;
             }
         };
 

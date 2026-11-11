@@ -1,6 +1,6 @@
 //File name: formatTime.jsx
 //Author: Kyle McColgan
-//Date: 21 May 2026
+//Date: 10 November 2026
 //Description: This file contains a custom formatting helper function built for the stopwatch React project.
 
 const MS_PER_SECOND = 1000;
@@ -13,6 +13,12 @@ function pad(value, length = 2)
 {
     return String(value).padStart(length, "0");
 }
+
+export function formatUnit(value, singular, plural)
+{
+    const amount = Number(value);
+    return `${amount} ${amount === 1 ? singular : plural}`;
+};
 
 export function formatTime(ms, includeCentiseconds = false)
 {

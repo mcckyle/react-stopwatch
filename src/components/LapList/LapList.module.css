@@ -9,7 +9,6 @@
     flex-direction: column;
 
     inline-size: 100%;
-    max-block-size: min(42vh, 24rem);
     max-block-size: min(42dvh, 24rem);
     overflow: hidden;
 
@@ -88,9 +87,10 @@
     overflow-y: auto;
 
     list-style: none;
+    overscroll-behavior: contain;
+
     scrollbar-width: thin;
     scrollbar-color: var(--surface-border) transparent;
-    overscroll-behavior: contain;
 }
 .rows::-webkit-scrollbar { inline-size: 0.3rem; }
 .rows::-webkit-scrollbar-track { background: transparent; }

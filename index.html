@@ -8,7 +8,7 @@
       content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
 
-    <!-- Identity. -->
+    <!-- Application Identity. -->
     <title>Stopwatch</title>
     <meta name="application-name" content="Stopwatch" />
     <meta
@@ -26,7 +26,7 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="Stopwatch" />
-    <link  name="apple-touch-icon" href="/images/favicon.png" />
+    <link rel="apple-touch-icon" href="/images/favicon.png" />
 
     <!-- Fonts. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -67,12 +67,7 @@
 
         root.dataset.theme = theme;
         root.style.colorScheme = theme;
-
-        const themeColor = document.querySelector('meta[name="theme-color"]');
-        if (themeColor)
-        {
-          themeColor.content = colors[theme];
-        }
+        document.querySelector('meta[name="theme-color"]').content = colors[theme];
       })();
     </script>
 

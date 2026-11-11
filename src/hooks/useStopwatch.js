@@ -1,6 +1,6 @@
 //File name: useStopwatch.js
 //Author: Kyle McColgan
-//Date: 2 November 2026
+//Date: 10 November 2026
 //Description: This file contains the stopwatch functions for the stopwatch React project.
 
 import { useEffect, useRef, useState, useCallback } from "react";
@@ -15,15 +15,15 @@ export function useStopwatch()
   const [elapsedMs, setElapsedMs] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
 
-  //Timing state remains independent of React render timing.
+  //Keep timing state independent of React's render cycle.
   const isRunningRef = useRef(false);
   const startTimeRef = useRef(0); //Timestamp when active run began.
   const elapsedRef = useRef(0); //Accumulated elapsed time.
   //const elapsedRef = useRef(DEMO_TIME_MS); //Accumulated elapsed time.
   const frameRef = useRef(null); // requestAnimationFrame ID.
-  const lastRenderedBucketRef = useRef(-1); //Render precision tracking.
+  const lastRenderedBucketRef = useRef(0); //Render precision tracking.
 
-  //Cancel the animation loop safely.
+  //Cancel any pending animation frames.
   const cancelLoop = useCallback(() =>
   {
     if (frameRef.current !== null)
@@ -36,18 +36,18 @@ export function useStopwatch()
   //Update React only when the displayed centisecond changes.
   const updateElapsed = useCallback((nextElapsed) =>
   {
-    elapsedRef.current = nextElapsed;
     const bucket = Math.floor(nextElapsed / CENTISECOND_MS);
 
-    //Render only when visible precision changes.
-    if (bucket !== lastRenderedBucketRef.current)
+    if (bucket === lastRenderedBucketRef.current)
     {
-      lastRenderedBucketRef.current = bucket;
-      setElapsedMs(nextElapsed);
+      return;
     }
+
+    lastRenderedBucketRef.current = bucket;
+    setElapsedMs(nextElapsed);
   }, []);
 
-  //Animation loop runs only while the stopwatch is active.
+  //Run the display animation only while the stopwatch is active.
   useEffect(() =>
   {
     if (!isRunning)
@@ -56,7 +56,7 @@ export function useStopwatch()
       return;
     }
 
-     //Animation Loop.
+    //Animation Loop.
     const tick = () =>
     {
       if (!isRunningRef.current)
@@ -74,18 +74,18 @@ export function useStopwatch()
     return cancelLoop;
   }, [isRunning, cancelLoop, updateElapsed]);
 
-  //Start and pause without waiting for another animation frame.
+  //Start or pause the stopwatch.
   const toggle = useCallback(() =>
   {
     if (isRunningRef.current)
     {
-      const finalElapsed = Math.max(0, performance.now() - startTimeRef.current);
-      isRunningRef.current = false;
-      cancelLoop();
+      const finalElapsed = performance.now() - startTimeRef.current;
 
+      isRunningRef.current = false;
       elapsedRef.current = finalElapsed;
       lastRenderedBucketRef.current = Math.floor(finalElapsed / CENTISECOND_MS);
 
+      cancelLoop();
       setElapsedMs(finalElapsed);
       setIsRunning(false);
       return;
@@ -96,7 +96,7 @@ export function useStopwatch()
     setIsRunning(true);
   }, [cancelLoop]);
 
-  //Reset timing state and cancel any pending animation frames.
+  //Reset elapsed time and stop the animation.
   const reset = useCallback(() =>
   {
     isRunningRef.current = false;
@@ -110,15 +110,10 @@ export function useStopwatch()
     setIsRunning(false);
   }, [cancelLoop]);
 
-  //Read current elapsed time without waiting for a React render.
+  //Read the most accurate available elapsed time.
   const getCurrentTime = useCallback(() =>
   {
-    if (!isRunningRef.current)
-    {
-      return elapsedRef.current;
-    }
-
-    return Math.max(0, performance.now() - startTimeRef.current);
+    return isRunningRef.current ? performance.now() - startTimeRef.current : elapsedRef.current;
   }, []);
 
   return {

@@ -1,6 +1,6 @@
 //File name: LapList.jsx
 //Author: Kyle McColgan
-//Date: 2 November 2026
+//Date: 10 November 2026
 //Description: This file contains the laps component for the stopwatch React project.
 
 import React, { useState, useEffect, useMemo } from "react";
@@ -16,21 +16,31 @@ const LapList = ({ laps, onClear, onDelete }) =>
   //Calculate lap durations and comparison values
   const { durations, fastestLap, slowestLap } = useMemo(() =>
   {
-    const durations = laps.map(
-      (lap, index) => lap - (laps[index + 1] ?? 0),
+    const durations = laps.map((lap, index) =>
+      lap - (laps[index + 1] ?? 0)
     );
+
+    const fastestLap = durations.length
+      ? durations.reduce((fastest, duration) =>
+          Math.min(fastest, duration), Infinity)
+      : 0;
+
+    const slowestLap = durations.length
+      ? durations.reduce((slowest, duration) =>
+          Math.max(slowest, duration), -Infinity)
+      : 0;
 
     return {
       durations,
-      fastestLap: durations.length ? Math.min(...durations) : 0,
-      slowestLap: durations.length ?  Math.max(...durations) : 0
+      fastestLap,
+      slowestLap
     };
   }, [laps]);
 
   //Reset confirmation when lap history changes.
   useEffect(() => {
     setConfirmClear(false);
-  }, [laps.length]);
+  }, [laps]);
 
   //Require confirmation before clearing history.
   const handleClearClick = () =>

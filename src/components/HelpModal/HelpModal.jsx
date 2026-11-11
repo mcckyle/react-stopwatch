@@ -1,6 +1,6 @@
 //File name: HelpModal.jsx
 //Author: Kyle McColgan
-//Date: 2 November 2026
+//Date: 10 November 2026
 //Description: This file contains the Help modal component for the stopwatch React project.
 
 import React, { useEffect, useId, useRef } from "react";
@@ -33,12 +33,25 @@ const HelpModal = ({ onClose }) =>
 
   useEffect(() =>
   {
+    const modal = modalRef.current;
+    const appContent = document.querySelector("main");
+
+    //Preserve the existing application state.
     previouslyFocusedRef.current =
       document.activeElement instanceof HTMLElement
         ? document.activeElement
         : null;
 
-    const modal = modalRef.current;
+    const previousOverflow = document.body.style.overflow;
+    const previousInert = appContent?.inert ?? false;
+
+    //Prevent interaction with the background.
+    document.body.style.overflow = "hidden";
+
+    if (appContent)
+    {
+      appContent.inert = true;
+    }
 
     const handleKeyDown = (event) =>
     {
@@ -94,6 +107,15 @@ const HelpModal = ({ onClose }) =>
     return () =>
     {
       document.removeEventListener("keydown", handleKeyDown);
+
+      //Restore the application environment.
+      document.body.style.overflow = previousOverflow;
+      if (appContent)
+      {
+        appContent.inert = previousInert;
+      }
+
+      //Return focus to the previously active element.
       const previouslyFocused = previouslyFocusedRef.current;
       if (previouslyFocused?.isConnected)
       {
@@ -149,6 +171,7 @@ const HelpModal = ({ onClose }) =>
           type="button"
           className={styles.closeButton}
           onClick={onClose}
+          aria-label="Close keyboard shortcuts"
         >
           Close
         </button>
