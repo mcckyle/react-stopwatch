@@ -9,7 +9,7 @@ Designed around a fullscreen digital display and a distraction-free interface. F
 
 [**Live Demo →**](https://mcckyle.github.io/react-stopwatch/)
 
-![Stopwatch Screenshot](./public/images/Screenshot_20261110_192751.png)
+![Stopwatch Screenshot](./public/images/Screenshot_20261125_172548.png)
 
 ---
 
