@@ -17,6 +17,9 @@
 ======================================= */
 .button
 {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; /* Centered controls. */
     min-inline-size: 5.5rem;
     min-block-size: 2.75rem;
     padding: 0.625rem 1.15rem;
@@ -28,6 +31,7 @@
     font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 0.04em;
+    white-space: nowrap;
 
     transition: background-color var(--duration-fast) var(--ease),
                 border-color var(--duration-fast) var(--ease),
