@@ -11,16 +11,15 @@ html
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
 }
-#root { min-height: 100vh; min-height: 100dvh; }
 body
 {
+    min-width: 320px;
     min-height: 100vh;
     min-height: 100dvh;
 
     overflow-x: clip;
     overscroll-behavior: none;
     touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
 
     font-family: var(--font-sans);
     font-size: 1rem;
@@ -30,6 +29,7 @@ body
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
 }
 :where(img, svg, canvas, video) { display: block; max-width: 100%; }
 :where(button, input, textarea, select) { color: inherit; font: inherit; }
