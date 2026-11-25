@@ -5,8 +5,8 @@
 ======================================= */
 .lapList
 {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
 
     inline-size: 100%;
     max-block-size: min(42dvh, 24rem);
@@ -29,7 +29,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex: 0 0 auto;
     gap: 1rem;
 
     padding: 0.8rem 0.9rem;
@@ -71,16 +70,13 @@
                 color var(--duration-fast) var(--ease);
 }
 .clearButton:hover { background: var(--surface); color: var(--text); }
-.confirm { background: color-mix(in oklab, var(--danger) 10%, transparent); color: var(--danger); }
+.confirm, .confirm:hover { background: color-mix(in oklab, var(--danger) 10%, transparent); color: var(--danger); }
 
 /* ====================================
-   LAPLIST ROWS CONTAINER STYLES.
+   LAPLIST LAP HISTORY SCROLL AREA STYLES.
 ======================================= */
 .rows
 {
-    display: flex;
-    flex-direction: column;
-
     min-block-size: 0;
     margin: 0;
     padding: 0;
@@ -97,7 +93,7 @@
 .rows::-webkit-scrollbar-thumb { background: var(--surface-border); border-radius: 999px; }
 
 /* ====================================
-   LAPLIST LAP ROW STYLES.
+   LAPLIST LAP ROWS STYLES.
 ======================================= */
 .lap
 {
@@ -134,7 +130,7 @@
 .lapDelta { min-inline-size: 4.8rem; color: var(--text-muted); font-size: 0.58rem; letter-spacing: 0.01em; text-align: end; white-space: nowrap; }
 
 /* ====================================
-   LAPLIST STATES STYLES.
+   LAPLIST COMPARISON STATES STYLES.
 ======================================= */
 .latest { background: color-mix(in oklab, var(--accent) 4%, transparent); }
 .latest::before
@@ -155,7 +151,7 @@
 .slowest .lapDelta { color: var(--danger); }
 
 /* ====================================
-   LAPLIST LAP DELETE BUTTON STYLES.
+   LAPLIST DELETE LAP ACTION STYLES.
 ======================================= */
 .delete
 {

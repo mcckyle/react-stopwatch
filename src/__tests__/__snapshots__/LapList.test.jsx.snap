@@ -57,7 +57,7 @@ exports[`LapList Component > matches snapshot 1`] = `
           01:23.45
         </span>
         <span
-          aria-label="Lap duration +01:23.45"
+          aria-label="fastest lap. Lap duration +01:23.45"
           class="_lapDelta_2af36b"
         >
           +01:23.45
@@ -97,7 +97,7 @@ exports[`LapList Component > matches snapshot 1`] = `
           01:23.45
         </span>
         <span
-          aria-label="Lap duration +01:23.45"
+          aria-label="slowest lap. Lap duration +01:23.45"
           class="_lapDelta_2af36b"
         >
           +01:23.45
@@ -137,7 +137,7 @@ exports[`LapList Component > matches snapshot 1`] = `
           01:23.45
         </span>
         <span
-          aria-label="Lap duration +01:23.45"
+          aria-label="slowest lap. Lap duration +01:23.45"
           class="_lapDelta_2af36b"
         >
           +01:23.45

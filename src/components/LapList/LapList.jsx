@@ -1,6 +1,6 @@
 //File name: LapList.jsx
 //Author: Kyle McColgan
-//Date: 10 November 2026
+//Date: 25 November 2026
 //Description: This file contains the laps component for the stopwatch React project.
 
 import React, { useState, useEffect, useMemo } from "react";
@@ -20,20 +20,22 @@ const LapList = ({ laps, onClear, onDelete }) =>
       lap - (laps[index + 1] ?? 0)
     );
 
-    const fastestLap = durations.length
-      ? durations.reduce((fastest, duration) =>
-          Math.min(fastest, duration), Infinity)
-      : 0;
+    const comparison = durations.reduce((result, duration) =>
+    {
+      result.fastestLap = Math.min(result.fastestLap, duration);
+      result.slowestLap = Math.max(result.slowestLap, duration);
 
-    const slowestLap = durations.length
-      ? durations.reduce((slowest, duration) =>
-          Math.max(slowest, duration), -Infinity)
-      : 0;
+      return result;
+    },
+    {
+      fastestLap: Infinity,
+      slowestLap: -Infinity
+    });
 
     return {
       durations,
-      fastestLap,
-      slowestLap
+      fastestLap: durations.length ? comparison.fastestLap : 0,
+      slowestLap: durations.length ? comparison.slowestLap : 0
     };
   }, [laps]);
 
@@ -51,7 +53,6 @@ const LapList = ({ laps, onClear, onDelete }) =>
       return;
     }
 
-    setConfirmClear(false);
     onClear();
   };
 
@@ -81,7 +82,7 @@ const LapList = ({ laps, onClear, onDelete }) =>
         </button>
 
         {confirmClear && (
-          <span id="clear-laps-hint" className={styles.srOnly}>
+          <span id="clear-laps-hint" className={styles.srOnly} role="status">
             Activate again to permanently clear all recorded laps.
           </span>
         )}
@@ -99,17 +100,16 @@ const LapList = ({ laps, onClear, onDelete }) =>
           const isLatest = index === 0;
           const isFastest = (hasComparableLaps) && (duration === fastestLap);
           const isSlowest = (hasComparableLaps) && (duration === slowestLap);
+          const formatLapTime = ({ hours, minutes, seconds, centiSeconds }) =>
+            `${Number(hours) > 0 ? `${hours}:` : ""}${minutes}:${seconds}.${centiSeconds}`;
 
-          const fullTime =
-            formattedLap.hours !== "00"
-              ? `${formattedLap.hours}:${formattedLap.minutes}:${formattedLap.seconds}.${formattedLap.centiSeconds}`
-              : `${formattedLap.minutes}:${formattedLap.seconds}.${formattedLap.centiSeconds}`;
+          const fullTime = formatLapTime(formattedLap);
+          const deltaTime = `+${formatLapTime(formattedDuration)}`;
 
-          const deltaTime =
-          formattedDuration.hours !== "00"
-            ? `+${formattedDuration.hours}:${formattedDuration.minutes}:${formattedDuration.seconds}.${formattedDuration.centiSeconds}`
-            : `+${formattedDuration.minutes}:${formattedDuration.seconds}.${formattedDuration.centiSeconds}`;
-
+          const comparisonLabel = [
+            isFastest && "fastest lap",
+            isSlowest && "slowest lap",
+          ].filter(Boolean).join(" and ");
           const rowClassName = [
             styles.lap,
             isLatest && styles.latest,
@@ -128,7 +128,7 @@ const LapList = ({ laps, onClear, onDelete }) =>
               <span className={styles.lapTime}>{fullTime}</span>
               <span
                 className={styles.lapDelta}
-                aria-label={`Lap duration ${deltaTime}`}
+                aria-label={`${comparisonLabel ? `${comparisonLabel}. ` : ""}Lap duration ${deltaTime}`}
               >
                 {deltaTime}
               </span>
