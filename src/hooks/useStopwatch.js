@@ -1,6 +1,6 @@
 //File name: useStopwatch.js
 //Author: Kyle McColgan
-//Date: 10 November 2026
+//Date: 25 November 2026
 //Description: This file contains the stopwatch functions for the stopwatch React project.
 
 import { useEffect, useRef, useState, useCallback } from "react";
@@ -57,7 +57,7 @@ export function useStopwatch()
     }
 
     //Animation Loop.
-    const tick = () =>
+    function tick()
     {
       if (!isRunningRef.current)
       {
@@ -65,9 +65,10 @@ export function useStopwatch()
         return;
       }
 
-      updateElapsed(performance.now() - startTimeRef.current);
+      const currentElapsed = elapsedRef.current + performance.now() - startTimeRef.current;
+      updateElapsed(currentElapsed);
       frameRef.current = requestAnimationFrame(tick);
-    };
+    }
 
     frameRef.current = requestAnimationFrame(tick);
 
@@ -79,7 +80,7 @@ export function useStopwatch()
   {
     if (isRunningRef.current)
     {
-      const finalElapsed = performance.now() - startTimeRef.current;
+      const finalElapsed = elapsedRef.current + performance.now() - startTimeRef.current;
 
       isRunningRef.current = false;
       elapsedRef.current = finalElapsed;
@@ -91,7 +92,7 @@ export function useStopwatch()
       return;
     }
 
-    startTimeRef.current = performance.now() - elapsedRef.current;
+    startTimeRef.current = performance.now();
     isRunningRef.current = true;
     setIsRunning(true);
   }, [cancelLoop]);
@@ -102,8 +103,8 @@ export function useStopwatch()
     isRunningRef.current = false;
     cancelLoop();
 
-    startTimeRef.current = 0;
     elapsedRef.current = 0;
+    startTimeRef.current = 0;
     lastRenderedBucketRef.current = 0;
 
     setElapsedMs(0);
@@ -113,7 +114,12 @@ export function useStopwatch()
   //Read the most accurate available elapsed time.
   const getCurrentTime = useCallback(() =>
   {
-    return isRunningRef.current ? performance.now() - startTimeRef.current : elapsedRef.current;
+    if (!isRunningRef.current)
+    {
+      return elapsedRef.current;
+    }
+
+    return elapsedRef.current + performance.now() - startTimeRef.current;
   }, []);
 
   return {
