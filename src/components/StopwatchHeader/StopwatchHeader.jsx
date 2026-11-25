@@ -1,6 +1,6 @@
 //File name: StopwatchHeader.jsx
 //Author: Kyle McColgan
-//Date: 10 November 2026
+//Date: 25 November 2026
 //Description: This file contains the header component for the stopwatch React project.
 
 import React, { useState, useEffect, useCallback } from "react";
@@ -30,7 +30,8 @@ const StopwatchHeader = ({
   }, []);
 
   //Close the panel when lap history becomes empty.
-  useEffect(() => {
+  useEffect(() =>
+  {
     if (!hasLaps)
     {
       closeLapPanel();
@@ -38,13 +39,14 @@ const StopwatchHeader = ({
   }, [hasLaps, closeLapPanel]);
 
   //Close the lap panel with Escape.
-  useEffect(() => {
+  useEffect(() =>
+  {
     if (!isLapPanelOpen)
     {
       return undefined;
     }
 
-    const handleKeyDown = (event) =>
+    const handleKeyDown = event =>
     {
       if ((event.key !== "Escape") || (event.defaultPrevented) || (event.isComposing))
       {
@@ -79,15 +81,13 @@ const StopwatchHeader = ({
             aria-expanded={isLapPanelOpen}
             aria-controls={isLapPanelOpen ? "lap-panel" : undefined}
             aria-haspopup="dialog"
+            aria-label={`Lap history, ${laps.length} ${laps.length === 1 ? "lap" : "laps"}`}
           >
             <span className={styles.lapLabel}>
               {isLapPanelOpen ? "Hide Laps" : "Laps"}
             </span>
-            <span className={styles.lapCount}>
-              <span aria-hidden="true">{laps.length}</span>
-              <span className={styles.srOnly}>
-                {`${laps.length} laps`}
-              </span>
+            <span className={styles.lapCount} aria-hidden="true">
+              {laps.length}
             </span>
           </button>
         )}
@@ -96,7 +96,6 @@ const StopwatchHeader = ({
           type="button"
           className={styles.toggle}
           onClick={toggleTheme}
-          aria-pressed={isDark}
           aria-label={`Switch to ${nextThemeLabel} mode`}
           title={`Switch to ${nextThemeLabel} mode`}
         >
@@ -114,7 +113,6 @@ const StopwatchHeader = ({
           className={styles.panel}
           role="dialog"
           aria-label="Lap history"
-          aria-modal="false"
         >
           <LapList laps={laps} onClear={onClearLaps} onDelete={onDeleteLap} />
         </aside>

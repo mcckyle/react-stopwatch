@@ -1,6 +1,6 @@
 //File name: Stopwatch.test.jsx
 //Author: Kyle McColgan
-//Date: 20 August 2026
+//Date: 25 November 2026
 //Description: This file contains the unit test suite for the Stopwatch component.
 
 import React from "react";
@@ -72,10 +72,10 @@ describe("Stopwatch Component", () => {
         });
 
         render(<Stopwatch />);
-        const lapButton = screen.getByRole("button", { name: /lap/i});
+        const lapButton = screen.getByRole("button", { name: /record lap/i});
         fireEvent.click(lapButton);
 
-        const lapPanel = screen.getByRole("button", { name: /laps/i});
+        const lapPanel = screen.getByRole("button", { name: /lap history/i});
         fireEvent.click(lapPanel);
 
         const lapRow = screen.getByRole("listitem");
