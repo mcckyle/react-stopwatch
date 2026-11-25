@@ -62,7 +62,8 @@
 
         if (!theme)
         {
-          theme = window.matchMedia?.("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+          const prefersDark = window.matchMedia?.("(prefers-color-scheme: dark)");
+          theme = prefersDark?.matches ? "dark" : "light";
         }
 
         root.dataset.theme = theme;
