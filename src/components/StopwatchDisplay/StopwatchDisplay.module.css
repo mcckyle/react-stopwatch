@@ -25,10 +25,6 @@
     letter-spacing: var(--display-letter-spacing);
     text-shadow: var(--display-glow);
     user-select: none;
-
-    /* Keep non-layout global tokens here, but pass sizes down cleanly. */
-    --base-font-size: var(--display-font-size);
-    --base-line-height: var(--display-line-height);
 }
 
 /* ====================================
@@ -45,12 +41,8 @@
     padding-inline: clamp(0.125rem, 0.75vw, 0.75rem);
     white-space: nowrap;
 
-    /* Bind the size computation directly to the flex layout context. */
-    font-size: var(--base-font-size); /* IMPORTANT: Digits as large as possible. */
-    line-height: var(--base-line-height);
-
-    /* Strict rendering containment: prevents updates from spilling past the row. */
-    contain: layout paint;
+    font-size: var(--display-font-size); /* IMPORTANT: Digits as large as possible. */
+    line-height: var(--display-line-height);
 }
 .rowWithHours { font-size: clamp(3rem, 15vw, 24rem); }
 
@@ -63,7 +55,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 1ch;
+    flex: 0 0 1ch;
     line-height: 0.9;
 }
 /* ====================================
@@ -75,9 +67,7 @@
     align-items: baseline;
     justify-content: center;
 
-    flex-shrink: 0;
-    inline-size: 1em;
-
+    flex: 0 0 0.38em;
     color: var(--text-disabled);
     font-size: 0.14em;
     font-weight: 400;
