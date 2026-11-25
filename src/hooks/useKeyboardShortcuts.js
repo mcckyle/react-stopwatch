@@ -1,6 +1,6 @@
 //File name: useKeyboardShortcuts.js
 //Author: Kyle McColgan
-//Date: 10 November 2026
+//Date: 25 November 2026
 //Description: This file contains the keyboard shortcut implememtation for the stopwatch React project.
 
 import { useEffect } from "react";
@@ -15,12 +15,7 @@ const EDITABLE_SELECTOR = [
 
 function isEditableTarget(target)
 {
-    if (!(target instanceof HTMLElement))
-    {
-        return false;
-    }
-
-    return ((target.isContentEditable) || (target.closest(EDITABLE_SELECTOR) !== null));
+    return (target instanceof HTMLElement && (target.isContentEditable || target.closest(EDITABLE_SELECTOR) !== null));
 }
 
 function isDialogTarget(target)
@@ -31,15 +26,10 @@ function isDialogTarget(target)
 export function useKeyboardShortcuts({ onToggle, onReset, onLap, onOpenHelp }) {
     useEffect(() =>
     {
-        const handleKeyDown = (event) =>
+        function handleKeyDown(event)
         {
             //Ignore IME composition (important for international inputs).
-            if ((event.defaultPrevented) || (event.repeat) || (event.isComposing))
-            {
-                return;
-            }
-
-            if ((event.metaKey) || (event.ctrlKey) || (event.altKey))
+            if ((event.defaultPrevented) || (event.repeat) || (event.isComposing) || (event.metaKey) || (event.ctrlKey) || (event.altKey))
             {
                 return;
             }
@@ -79,7 +69,7 @@ export function useKeyboardShortcuts({ onToggle, onReset, onLap, onOpenHelp }) {
                     }
                 }
             }
-        };
+        }
 
         document.addEventListener("keydown", handleKeyDown);
         return () => document.removeEventListener("keydown", handleKeyDown);
