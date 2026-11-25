@@ -35,8 +35,9 @@
     gap: 1.5rem;
 
     inline-size: min(30rem, 100%);
-    min-block-size: 0;
     max-block-size: 100%;
+    min-block-size: 0;
+
     overflow-y: auto;
     padding: clamp(1.25rem, 3vw, 1.75rem);
 

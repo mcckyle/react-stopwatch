@@ -57,7 +57,7 @@
 
     /* Shadows. */
     --shadow-sm: 0 8px 24px rgb(0 0 0 / 0.06);
-    --shadow-lg: 0 20px 60px rgb(0 0 0 / 0.12); /* Used in LapList. */
+    --shadow-lg: 0 20px 60px rgb(0 0 0 / 0.12); /* Used in LapList / HelpModal. */
     --focus-ring: 0 0 0 3px color-mix(in oklab, var(--accent) 45%, transparent);
 
     /* Motion. */

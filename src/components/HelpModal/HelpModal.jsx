@@ -1,6 +1,6 @@
 //File name: HelpModal.jsx
 //Author: Kyle McColgan
-//Date: 10 November 2026
+//Date: 25 November 2026
 //Description: This file contains the Help modal component for the stopwatch React project.
 
 import React, { useEffect, useId, useRef } from "react";
@@ -24,8 +24,8 @@ const FOCUSABLE_SELECTOR = [
 
 const HelpModal = ({ onClose }) =>
 {
-  const closeRef = useRef(null);
   const modalRef = useRef(null);
+  const closeRef = useRef(null);
   const previouslyFocusedRef = useRef(null);
 
   const titleId = useId();
@@ -53,12 +53,26 @@ const HelpModal = ({ onClose }) =>
       appContent.inert = true;
     }
 
-    const handleKeyDown = (event) =>
+    //Return visible, enabled focusable elements.
+    const getFocusableElements = () =>
+      Array.from(
+        modal?.querySelectorAll(FOCUSABLE_SELECTOR) ?? []
+      ).filter(element =>
+        element instanceof HTMLElement &&
+        element.getClientRects().length > 0
+      );
+
+    const handleKeyDown = event =>
     {
-      if ((event.key === "Escape") && (!event.isComposing) && (!event.defaultPrevented))
+      if ((event.isComposing) || (event.defaultPrevented))
+      {
+        return;
+      }
+
+      //Close the dialog with Escape.
+      if (event.key === "Escape")
       {
         event.preventDefault();
-        event.stopPropagation();
         onClose();
         return;
       }
@@ -68,10 +82,7 @@ const HelpModal = ({ onClose }) =>
         return;
       }
 
-      const elements = Array.from(modal.querySelectorAll(FOCUSABLE_SELECTOR)).filter((element) =>
-        element instanceof HTMLElement &&
-        element.getClientRects().length > 0
-      );
+      const elements = getFocusableElements();
 
       if (!elements.length)
       {
@@ -82,19 +93,17 @@ const HelpModal = ({ onClose }) =>
 
       const first = elements[0];
       const last = elements[elements.length - 1];
-      const activeIndex = elements.indexOf(document.activeElement);
+      const activeElement = document.activeElement;
 
-      if ((event.shiftKey) && (activeIndex <= 0))
+      if (event.shiftKey)
       {
-        event.preventDefault();
-        last.focus();
+        if ((activeElement === first) || (!modal.contains(activeElement)))
+        {
+          event.preventDefault();
+          last.focus();
+        }
       }
-      else if ((!event.shiftKey) && (activeIndex === -1))
-      {
-        event.preventDefault();
-        first.focus();
-      }
-      else if ((!event.shiftKey) && (activeIndex === elements.length - 1))
+      else if ((activeElement === last) || (!modal.contains(activeElement)))
       {
         event.preventDefault();
         first.focus();
@@ -124,7 +133,9 @@ const HelpModal = ({ onClose }) =>
     };
   }, [onClose]);
 
-  const handleOverlayClick = event => {
+  //Close the modal when clicking the backdrop.
+  const handleOverlayClick = event =>
+  {
     if (event.target === event.currentTarget)
     {
       onClose();
@@ -171,7 +182,6 @@ const HelpModal = ({ onClose }) =>
           type="button"
           className={styles.closeButton}
           onClick={onClose}
-          aria-label="Close keyboard shortcuts"
         >
           Close
         </button>
